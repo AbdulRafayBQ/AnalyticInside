@@ -1,7 +1,3 @@
-/* =============================================
-   SERVICES PAGE — services.js (complete rewrite)
-   Fixed click · Videos in cards · Desc update
-   ============================================= */
 (function () {
   'use strict';
 
@@ -157,8 +153,14 @@
   const total  = cards.length;
   const stage  = qs('#coverflowStage');
 
+  /* Mobile devices choke when several videos decode at once —
+     this is what caused the stutter/jerk-back-and-forth playback
+     on phones. Desktop stays exactly as before (all cards loop). */
+  const isMobile = () => window.innerWidth <= 768;
+
   /* Render positions */
   function render() {
+    const mobile = isMobile();
     cards.forEach((card, i) => {
       let offset = i - current;
       if (offset >  total / 2) offset -= total;
@@ -172,14 +174,26 @@
           /* Center — restart from 0, play full duration then loop */
           video.currentTime = 0;
           video.play().catch(() => {});
+        } else if (mobile) {
+          /* On mobile: pause side-card videos so only one video decodes
+             at a time — fixes the stutter. Desktop keeps them looping. */
+          video.pause();
         }
-        /* Side cards: keep looping — do NOT pause */
+        /* Desktop side cards: keep looping — do NOT pause */
       }
     });
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
     updateDesc(current);
     updateDetail(current);
   }
+
+  /* Re-apply play/pause state if the viewport crosses the mobile
+     breakpoint (e.g. phone rotation, resizing a browser window). */
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(render, 200);
+  }, { passive: true });
 
   function goTo(index) {
     current = ((index % total) + total) % total;
@@ -317,4 +331,4 @@
     });
   });
 
-})();
+})();                   
