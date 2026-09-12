@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Services — Analytic Insider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./services.css">
+</head>
+<body class="services-page">
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="logo" href="index.html">ANALYTIC INSIDER</a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li><a href="index.html"          class="nav-link">Home</a></li>
+          <li><a href="#services-carousel"  class="nav-link active">Services</a></li>
+          <li><a href="index.html#work"     class="nav-link">Work</a></li>
+          <li><a href="index.html#about"    class="nav-link">About</a></li>
+        </ul>
+      </nav>
+      <a class="btn-nav-cta" href="index.html#contact">Start a Project</a>
+      <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════ HERO + CAROUSEL (merged) ═══════ -->
+    <section class="shc-section" id="services-carousel">
+
+      <!-- Background image -->
+      <img class="shc-bg-img" src="images/services bg image.jpg" alt="Services background" id="shcBgImg"/>
+
+      <!-- Gradient overlays -->
+      <div class="shc-overlay"></div>
+
+      <!-- Floating geometric shapes -->
+      <div class="shc-geo" aria-hidden="true">
+        <svg class="sg sg-1" viewBox="0 0 100 100"><polygon points="50,5 95,27 95,73 50,95 5,73 5,27" fill="none" stroke="currentColor" stroke-width="0.8"/><line x1="5" y1="27" x2="95" y2="73" stroke="currentColor" stroke-width="0.4"/><line x1="95" y1="27" x2="5" y2="73" stroke="currentColor" stroke-width="0.4"/></svg>
+        <svg class="sg sg-2" viewBox="0 0 100 100"><polygon points="50,5 95,75 5,75" fill="none" stroke="currentColor" stroke-width="0.8"/><line x1="50" y1="5" x2="50" y2="75" stroke="currentColor" stroke-width="0.4"/></svg>
+        <svg class="sg sg-3" viewBox="0 0 100 100"><polygon points="50,5 95,50 50,95 5,50" fill="none" stroke="currentColor" stroke-width="0.8"/><polygon points="50,22 78,50 50,78 22,50" fill="none" stroke="currentColor" stroke-width="0.5"/></svg>
+        <svg class="sg sg-4" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.8"/><circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="0.4"/><line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="0.3"/></svg>
+        <svg class="sg sg-5" viewBox="0 0 100 100"><polygon points="50,5 95,27 95,73 50,95 5,73 5,27" fill="none" stroke="currentColor" stroke-width="0.6"/></svg>
+      </div>
+
+      <!-- Page heading -->
+      <div class="shc-head" id="shcHead">
+        <p class="shc-eyebrow">What We Do</p>
+        <h1 class="shc-title">
+          <span class="lw"><span class="li">We build things</span></span>
+          <span class="lw"><span class="li italic">people actually use.</span></span>
+        </h1>
+      </div>
+
+      <!-- 3D COVERFLOW with videos inside cards -->
+      <div class="coverflow-outer" id="services-carousel">
+        <div class="coverflow-stage" id="coverflowStage">
+
+          <!-- 01 Software -->
+          <div class="cf-card" data-index="0">
+            <video class="cf-video" autoplay muted loop playsinline>
+              <source src="videos/services/service-software.mp4" type="video/mp4">
+            </video>
+            <div class="cf-inner">
+              <span class="cf-num">01</span>
+              <h3 class="cf-title">Software Development</h3>
+              <div class="cf-tech-row">
+                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.08)">Node.js</span>
+                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.08)">Python</span>
+                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.08)">React</span>
+                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.08)">AWS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 Website -->
+          <div class="cf-card" data-index="1">
+            <video class="cf-video" autoplay muted loop playsinline>
+              <source src="videos/services/service-website.mp4" type="video/mp4">
+            </video>
+            <div class="cf-inner">
+              <span class="cf-num">02</span>
+              <h3 class="cf-title">Website Development</h3>
+              <div class="cf-tech-row">
+                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.08)">React</span>
+                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.08)">Next.js</span>
+                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.08)">TypeScript</span>
+                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.08)">AWS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 Mobile -->
+          <div class="cf-card" data-index="2">
+            <video class="cf-video" autoplay muted loop playsinline>
+              <source src="videos/services/service-mobile.mp4" type="video/mp4">
+            </video>
+            <div class="cf-inner">
+              <span class="cf-num">03</span>
+              <h3 class="cf-title">Mobile App Development</h3>
+              <div class="cf-tech-row">
+                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.08)">Swift</span>
+                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.08)">Kotlin</span>
+                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.08)">Flutter</span>
+                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.08)">Firebase</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 AI -->
+          <div class="cf-card" data-index="3">
+            <video class="cf-video" autoplay muted loop playsinline>
+              <source src="videos/services/service-ai.mp4" type="video/mp4">
+            </video>
+            <div class="cf-inner">
+              <span class="cf-num">04</span>
+              <h3 class="cf-title">AI Development</h3>
+              <div class="cf-tech-row">
+                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08)">Python</span>
+                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08)">TensorFlow</span>
+                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08)">LLMs</span>
+                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08)">MongoDB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 Design -->
+          <div class="cf-card" data-index="4">
+            <video class="cf-video" autoplay muted loop playsinline>
+              <source src="videos/services/service-design.mp4" type="video/mp4">
+            </video>
+            <div class="cf-inner">
+              <span class="cf-num">05</span>
+              <h3 class="cf-title">Product Design</h3>
+              <div class="cf-tech-row">
+                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.08)">Figma</span>
+                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.08)">React</span>
+                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.08)">TypeScript</span>
+                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.08)">GraphQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 Marketing -->
+          <div class="cf-card" data-index="5">
+            <video class="cf-video" autoplay muted loop playsinline>
+              <source src="videos/services/service-marketing.mp4" type="video/mp4">
+            </video>
+            <div class="cf-inner">
+              <span class="cf-num">06</span>
+              <h3 class="cf-title">Marketing &amp; Branding</h3>
+              <div class="cf-tech-row">
+                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">Figma</span>
+                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">Adobe CC</span>
+                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">AI Tools</span>
+                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">Social</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /stage -->
+
+        <!-- Mobile arrows -->
+        <button class="cf-arrow cf-prev" id="cfPrev" aria-label="Previous">
+          <svg width="18" height="18" viewBox="0 0 18 18"><path d="M11 4L5 9L11 14" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </button>
+        <button class="cf-arrow cf-next" id="cfNext" aria-label="Next">
+          <svg width="18" height="18" viewBox="0 0 18 18"><path d="M7 4L13 9L7 14" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <!-- Active service description (updates dynamically) -->
+      <div class="shc-desc" id="shcDesc">
+        <div class="shc-desc-inner">
+          <p class="shc-desc-label" id="shcNum">Service 01</p>
+          <h2 class="shc-desc-title" id="shcDescTitle">Software Development</h2>
+          <p class="shc-desc-text" id="shcDescText">Custom systems, APIs and scalable backends built to hold up under real load.</p>
+          <div class="shc-tech-tags" id="shcTechTags"></div>
+          <a class="shc-learn" href="#srv-detail">Explore service <svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Dots -->
+      <div class="cf-dots" id="cfDots">
+        <button class="cf-dot active" data-target="0"></button>
+        <button class="cf-dot" data-target="1"></button>
+        <button class="cf-dot" data-target="2"></button>
+        <button class="cf-dot" data-target="3"></button>
+        <button class="cf-dot" data-target="4"></button>
+        <button class="cf-dot" data-target="5"></button>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="shc-scroll">
+        <span class="scroll-line"></span>
+        <span>scroll</span>
+      </div>
+
+    </section><!-- /shc-section -->
+
+    <!-- ═══════ SERVICE DETAIL ═══════ -->
+    <section class="section srv-detail-section" id="srv-detail">
+      <div class="container srv-detail-layout">
+        <div class="sdd-left">
+          <p class="section-label" id="sdd-num">Service 01</p>
+          <h2 class="section-title" id="sdd-title">Software Development</h2>
+          <div class="sdd-body" id="sdd-body">
+            <p>We write code the way most people write — clearly, with intent, and in a way someone else can understand six months later. Every system we build is made to hold up, scale when it needs to, and not require constant firefighting just to stay alive.</p>
+            <p>Whether it is a backend API, a data pipeline, or a full platform from scratch, we treat architecture decisions seriously from day one. Because changing them later costs far more than getting them right to begin with.</p>
+          </div>
+          <ul class="sdd-list" id="sdd-list">
+            <li>Custom web applications &amp; APIs</li>
+            <li>Cloud-native architecture</li>
+            <li>Database design &amp; optimization</li>
+            <li>System integrations &amp; microservices</li>
+          </ul>
+          <a href="index.html#contact" class="btn primary">Work With Us</a>
+        </div>
+        <div class="sdd-right">
+          <div class="sdd-stats">
+            <div class="sdd-stat"><span class="sdd-stat-num" id="stat-1">120+</span><p id="stat-1-label">Projects delivered</p></div>
+            <div class="sdd-stat"><span class="sdd-stat-num" id="stat-2">98%</span><p id="stat-2-label">On-time delivery rate</p></div>
+            <div class="sdd-stat"><span class="sdd-stat-num" id="stat-3">5★</span><p id="stat-3-label">Average client rating</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ WHY US ═══════ -->
+    <section class="section srv-why-section">
+      <div class="geo-bg" data-section="services" aria-hidden="true">
+        <svg class="gb gb-3" viewBox="0 0 100 100"><polygon points="50,5 95,50 50,95 5,50" fill="none" stroke="currentColor" stroke-width="0.7"/><polygon points="50,20 80,50 50,80 20,50" fill="none" stroke="currentColor" stroke-width="0.4"/></svg>
+        <svg class="gb gb-1" viewBox="0 0 100 100"><polygon points="50,5 95,27 95,73 50,95 5,73 5,27" fill="none" stroke="currentColor" stroke-width="0.7"/></svg>
+      </div>
+      <div class="container">
+        <div class="section-label reveal-up">The Difference</div>
+        <h2 class="section-title reveal-up" data-delay="0.1">Why clients come back.</h2>
+        <div class="why-grid">
+          <div class="why-card reveal-up" data-delay="0.0" data-tilt>
+            <div class="why-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="13" cy="13" r="11"/><polyline points="8,13 12,17 19,9"/></svg></div>
+            <h3>No hand-holding required</h3>
+            <p>We ask the right questions upfront and manage the work without needing you to chase us. You stay in the without being pulled into every decision.</p>
+          </div>
+          <div class="why-card reveal-up" data-delay="0.1" data-tilt>
+            <div class="why-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="4" y="7" width="18" height="13" rx="2"/><line x1="8" y1="7" x2="8" y2="20"/><line x1="18" y1="7" x2="18" y2="20"/><line x1="4" y1="14" x2="22" y2="14"/></svg></div>
+            <h3>Honest timelines</h3>
+            <p>We tell you what is realistic from the start. If something changes, you hear about it early — not after a deadline has already passed.</p>
+          </div>
+          <div class="why-card reveal-up" data-delay="0.2" data-tilt>
+            <div class="why-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2"><polygon points="13,3 24,20 2,20"/><line x1="13" y1="10" x2="13" y2="15"/><circle cx="13" cy="18" r="1" fill="currentColor"/></svg></div>
+            <h3>Quality that holds up</h3>
+            <p>We are not done when it ships. Code is written to be maintained. Design is built to last past the first version.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ CTA ═══════ -->
+    <section class="section final-cta" id="contact">
+      <div class="container">
+        <div class="cta-inner reveal-up">
+          <div class="section-label" style="text-align:center;display:block">Ready to start?</div>
+          <h2 class="cta-title reveal-up" data-delay="0.1">Let us build something<br><em>worth being proud of.</em></h2>
+          <div class="cta-row reveal-up" data-delay="0.2">
+            <a class="btn primary large" href="index.html#contact">Start a Conversation</a>
+            <a class="btn ghost large" href="index.html">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">ANALYTIC INSIDER</div>
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="#services-carousel">Services</a>
+          <a href="index.html#work">Work</a>
+          <a href="index.html#about">About</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 Analytic Insider. All rights reserved.</span>
+        <span>Software &middot; AI &middot; Design &middot; Marketing</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./services.js"></script>
+</body>
+</html>
+
+
