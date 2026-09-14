@@ -1,3 +1,7 @@
+/* =============================================
+   SERVICES PAGE — services.js (complete rewrite)
+   Fixed click · Videos in cards · Desc update
+   ============================================= */
 (function () {
   'use strict';
 
@@ -153,14 +157,11 @@
   const total  = cards.length;
   const stage  = qs('#coverflowStage');
 
-  /* Mobile devices choke when several videos decode at once —
-     this is what caused the stutter/jerk-back-and-forth playback
-     on phones. Desktop stays exactly as before (all cards loop). */
-  const isMobile = () => window.innerWidth <= 768;
-
   /* Render positions */
+  const isMobileCoverflow = () => window.matchMedia('(max-width: 768px)').matches;
+
   function render() {
-    const mobile = isMobile();
+    const mobile = isMobileCoverflow();
     cards.forEach((card, i) => {
       let offset = i - current;
       if (offset >  total / 2) offset -= total;
@@ -175,25 +176,18 @@
           video.currentTime = 0;
           video.play().catch(() => {});
         } else if (mobile) {
-          /* On mobile: pause side-card videos so only one video decodes
-             at a time — fixes the stutter. Desktop keeps them looping. */
+          /* Mobile: side cards stay paused — only the front/center card plays */
           video.pause();
+        } else {
+          /* Desktop side cards: play + loop so they are never blank */
+          video.play().catch(() => {});
         }
-        /* Desktop side cards: keep looping — do NOT pause */
       }
     });
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
     updateDesc(current);
     updateDetail(current);
   }
-
-  /* Re-apply play/pause state if the viewport crosses the mobile
-     breakpoint (e.g. phone rotation, resizing a browser window). */
-  let resizeT;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeT);
-    resizeT = setTimeout(render, 200);
-  }, { passive: true });
 
   function goTo(index) {
     current = ((index % total) + total) % total;
@@ -246,6 +240,13 @@
 
   /* Auto-advance removed — user controls navigation only */
 
+  /* ─── Re-render on resize (mobile ↔ desktop breakpoint change) ─── */
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(render, 200);
+  }, { passive: true });
+
   /* ═══════════════════════════════
      DESC UPDATE (hero section)
   ═══════════════════════════════ */
@@ -283,6 +284,43 @@
   }
 
   /* ═══════════════════════════════
+     RAPID NUMBER COUNT-UP ANIMATION
+  ═══════════════════════════════ */
+  function countUpStat(el, finalStr, duration = 600) {
+    if (!el) return;
+    const match = String(finalStr).match(/^([^\d.]*)(\d+(?:\.\d+)?)(.*)$/);
+    if (!match) {
+      el.textContent = finalStr;
+      return;
+    }
+    const prefix = match[1] || '';
+    const targetNum = parseFloat(match[2]);
+    const suffix = match[3] || '';
+    const isDecimal = match[2].includes('.');
+
+    const startTime = performance.now();
+    if (el._animId) cancelAnimationFrame(el._animId);
+
+    function step(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Sleek easeOutCubic curve
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const currentVal = targetNum * ease;
+
+      el.textContent = prefix + (isDecimal ? currentVal.toFixed(1) : Math.round(currentVal)) + suffix;
+
+      if (progress < 1) {
+        el._animId = requestAnimationFrame(step);
+      } else {
+        el.textContent = finalStr;
+        el._animId = null;
+      }
+    }
+    el._animId = requestAnimationFrame(step);
+  }
+
+  /* ═══════════════════════════════
      DETAIL SECTION UPDATE
   ═══════════════════════════════ */
   function updateDetail(index) {
@@ -293,6 +331,8 @@
 
     set('sdd-num',   s.num);
     set('sdd-title', s.title);
+    const sddCounter = qs('#sddCounter');
+    if (sddCounter) sddCounter.textContent = `0${index + 1} / 06`;
 
     const body = qs('#sdd-body');
     if (body) body.innerHTML = s.body.map(p => `<p>${p}</p>`).join('');
@@ -300,8 +340,12 @@
     const list = qs('#sdd-list');
     if (list) list.innerHTML = s.list.map(item => `<li>${item}</li>`).join('');
 
+    // Rapid count-up animation for stats
     s.stats.forEach((st, i) => {
-      set('stat-' + (i + 1),          st.n);
+      const numEl = qs('#stat-' + (i + 1));
+      if (numEl) {
+        countUpStat(numEl, st.n, 600);
+      }
       set('stat-' + (i + 1) + '-label', st.l);
     });
   }
@@ -331,4 +375,65 @@
     });
   });
 
-})();                   
+
+  /* ═══════════════════════════════
+     SERVICE DETAIL 3D NAVIGATION (< >)
+  ═══════════════════════════════ */
+  const sddPrev = qs('#sddPrev');
+  const sddNext = qs('#sddNext');
+  const sddCounter = qs('#sddCounter');
+  const sddStage = qs('#sddStage');
+
+  function animateDetail3D(direction) {
+    if (!sddStage) return;
+    sddStage.classList.remove('sdd-flip-next', 'sdd-flip-prev');
+    void sddStage.offsetWidth; // trigger reflow
+    if (direction === 'prev') {
+      sddStage.classList.add('sdd-flip-prev');
+    } else {
+      sddStage.classList.add('sdd-flip-next');
+    }
+  }
+
+  if (sddPrev && sddNext) {
+    sddPrev.addEventListener('click', () => {
+      animateDetail3D('prev');
+      prev();
+      if (sddCounter) sddCounter.textContent = `0${current + 1} / 0${total}`;
+    });
+
+    sddNext.addEventListener('click', () => {
+      animateDetail3D('next');
+      next();
+      if (sddCounter) sddCounter.textContent = `0${current + 1} / 0${total}`;
+    });
+  }
+
+  /* ═════════════════════════════════════════════
+     SECTION BACKGROUND VIDEO SCROLL OBSERVER
+     ═════════════════════════════════════════════ */
+  if ('IntersectionObserver' in window) {
+    const sectionVideoWraps = document.querySelectorAll('.section-bg-video-wrap');
+    sectionVideoWraps.forEach(wrap => {
+      const video = wrap.querySelector('video');
+      const parent = wrap.closest('section') || wrap.parentElement;
+      if (!video || !parent) return;
+
+      video.muted = true;
+      video.setAttribute('playsinline', '');
+      video.setAttribute('muted', '');
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.05 });
+      obs.observe(parent);
+    });
+  }
+
+})();

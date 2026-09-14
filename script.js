@@ -241,3 +241,62 @@
   }
 
 })();
+
+
+  
+
+/* ═════════════════════════════════════════════
+   GUARANTEED SCROLL PLAYBACK FOR SECTION VIDEOS
+   ═════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  const sectionVideoWraps = document.querySelectorAll('.section-bg-video-wrap');
+
+  sectionVideoWraps.forEach(wrap => {
+    const video = wrap.querySelector('video');
+    const parentSection = wrap.closest('section') || wrap.parentElement;
+    if (!video || !parentSection) return;
+
+    // Must be muted for mobile and browser autoplay
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('loop', '');
+
+    function tryPlay() {
+      video.muted = true;
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(err => {
+          // Retry once on user interaction
+          const resume = () => {
+            video.muted = true;
+            video.play().catch(() => {});
+            window.removeEventListener('scroll', resume);
+            window.removeEventListener('click', resume);
+          };
+          window.addEventListener('scroll', resume, { passive: true });
+          window.addEventListener('click', resume, { passive: true });
+        });
+      }
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tryPlay();
+          } else {
+            if (!video.paused) {
+              video.pause();
+            }
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '50px 0px 50px 0px' });
+
+      observer.observe(parentSection);
+    } else {
+      tryPlay();
+    }
+  });
+});
