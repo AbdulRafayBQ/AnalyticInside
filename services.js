@@ -176,8 +176,18 @@
           video.currentTime = 0;
           video.play().catch(() => {});
         } else if (mobile) {
-          /* Mobile: side cards stay paused — only the front/center card plays */
-          video.pause();
+          /* Mobile: side cards show a paused frame (not blank) — they only
+             start actually playing once they become the front/center card. */
+          if (!video.dataset.frameReady) {
+            video.dataset.frameReady = '1';
+            video.play().then(() => { video.pause(); }).catch(() => {
+              /* Autoplay blocked — at least fetch enough to render a frame */
+              video.preload = 'auto';
+              video.load();
+            });
+          } else {
+            video.pause();
+          }
         } else {
           /* Desktop side cards: play + loop so they are never blank */
           video.play().catch(() => {});
