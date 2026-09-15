@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — ANALYTIC INSIDER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./portfolio.css">
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="logo" href="index.html">ANALYTIC INSIDER</a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li><a href="index.html#hero" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn-nav-cta" href="./contact.html">Start a Project</a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="pf-hero" id="pf-hero">
+      <div class="pf-spotlight" id="pfSpotlight" aria-hidden="true"></div>
+      <div class="container pf-hero-inner">
+        <div class="section-label reveal-up">SELECTED WORK</div>
+        <h1 class="display pf-title reveal-up" data-delay="0.1">Our <em>Work.</em></h1>
+        <p class="pf-sub reveal-up" data-delay="0.18">
+          A selection of platforms, apps and products we've shipped — real problems, real users, real code.
+        </p>
+      </div>
+    </section>
+
+    <section class="pf-grid-section" id="portfolio">
+      <div class="pf-grain" aria-hidden="true"></div>
+      <div class="container pf-grid-container">
+        <div class="pf-grid" id="pfGrid" aria-label="Project grid"></div>
+        <div class="pf-explore-wrap">
+          <button class="pf-explore-btn" id="pfExploreMore" type="button">
+            <span class="pf-explore-text">Explore More</span>
+            <span class="pf-explore-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid-upgraded">
+        <div class="footer-col-brand">
+          <a class="footer-brand" href="index.html">ANALYTIC INSIDER</a>
+          <p class="footer-tagline">
+            Architecture, artificial intelligence, and digital experiences crafted for companies building the future.
+          </p>
+          <div class="footer-meta-pill">
+            <span class="meta-dot"></span>
+            <span>Karachi, Pakistan &mdash; working worldwide</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-heading">Navigation</span>
+          <ul class="footer-links-list">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./portfolio.html">Portfolio</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-heading">Direct Inquiries</span>
+          <div class="footer-contact-details">
+            <a href="mailto:analyticinsider@gmail.com.pk" class="footer-link-highlight">analyticinsider@gmail.com.pk</a>
+            <a href="https://wa.me/923001234567" target="_blank" class="footer-link-highlight">+92 300 123 4567</a>
+            <span class="footer-reply-badge">Average reply time: under 24 hours</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Analytic Insider. All rights reserved.</span>
+        <span>Software &middot; Digital Products &middot; AI &middot; Design</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="pf-overlay" id="pfOverlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="pf-overlay-bg" id="pfOverlayBg"></div>
+    <button class="pf-close" id="pfClose" aria-label="Close project">
+      <svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
+    </button>
+    <div class="pf-detail" id="pfDetail"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="./script.js"></script>
+  <script src="./portfolio.js"></script>
+</body>
+</html>

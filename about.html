@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — ANALYTIC INSIDER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./about.css">
+</head>
+<body class="about-page">
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="logo" href="index.html">ANALYTIC INSIDER</a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link active">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn-nav-cta" href="./contact.html">Start a Project</a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══════════ HERO ══════════ -->
+    <section class="ab-hero" id="abHero">
+      <video class="ab-hero-video" autoplay muted loop playsinline>
+        <source src="videos/hero-section-background.mp4" type="video/mp4">
+      </video>
+      <div class="ab-hero-overlay"></div>
+
+      <!-- floating 3D rings -->
+      <div class="ab-orbit" aria-hidden="true">
+        <span class="orb-ring r1"></span>
+        <span class="orb-ring r2"></span>
+        <span class="orb-ring r3"></span>
+      </div>
+
+      <div class="ab-hero-inner" id="abHeroInner">
+        <p class="ab-hero-eyebrow">About the studio</p>
+        <h1 class="ab-hero-title" data-split>
+          <span class="l"><span class="li">We build digital</span></span>
+          <span class="l"><span class="li">products that</span></span>
+          <span class="l"><span class="li"><em>outlive trends.</em></span></span>
+        </h1>
+        <p class="ab-hero-sub">A Karachi-based product studio of engineers, designers and strategists
+          building software, AI systems and brands for companies worldwide.</p>
+
+        <div class="ab-hero-strip">
+          <div class="hs-item"><strong class="ab-num" data-count="120">0</strong><span>Projects delivered</span></div>
+          <div class="hs-item"><strong class="ab-num" data-count="8">0</strong><span>Years of experience</span></div>
+          <div class="hs-item"><strong class="ab-num" data-count="14">0</strong><span>Countries served</span></div>
+          <div class="hs-item"><strong class="ab-num" data-count="26">0</strong><span>People on the team</span></div>
+        </div>
+      </div>
+
+      <div class="ab-scroll-hint"><span class="sh-line"></span><span>scroll</span></div>
+    </section>
+
+    <!-- ══════════ MARQUEE ══════════ -->
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>Our Story</span><span class="mx">—</span>
+        <span>Our Work</span><span class="mx">—</span>
+        <span>Our People</span><span class="mx">—</span>
+        <span>Our Process</span><span class="mx">—</span>
+        <span>Our Story</span><span class="mx">—</span>
+        <span>Our Work</span><span class="mx">—</span>
+        <span>Our People</span><span class="mx">—</span>
+        <span>Our Process</span><span class="mx">—</span>
+        <span>Our Story</span><span class="mx">—</span>
+        <span>Our Work</span><span class="mx">—</span>
+        <span>Our People</span><span class="mx">—</span>
+        <span>Our Process</span><span class="mx">—</span>
+      </div>
+    </div>
+
+    <!-- ══════════ OUR STORY ══════════ -->
+    <section class="section ab-story" id="story">
+      <div class="section-bg-video-wrap" aria-hidden="true">
+        <video class="section-bg-video" autoplay muted loop playsinline preload="none">
+          <source src="videos/section-videos/8e55d5eee5eec6d5b68cac04485fec4c.mp4" type="video/mp4">
+        </video>
+        <div class="section-bg-video-overlay"></div>
+      </div>
+
+      <div class="container story-layout">
+        <div class="story-left">
+          <div class="section-label reveal-up">OUR STORY</div>
+          <h2 class="section-title reveal-up" data-delay="0.1">It started with one<br><em>stubborn question.</em></h2>
+          <p class="story-p reveal-up" data-delay="0.18">
+            Why does so much software look impressive in a demo and fall apart in real use?
+            In 2018 a small team of engineers and designers started answering that question
+            for a handful of local businesses — no office, no pitch deck, just working builds.
+          </p>
+          <p class="story-p reveal-up" data-delay="0.24">
+            Those builds turned into products, those products turned into partnerships, and
+            the partnerships turned into a studio. Today we ship platforms, mobile apps and AI
+            systems for founders, clinics, fintechs and enterprises across four continents —
+            but the standard hasn't moved: if it doesn't work in someone's hands, it isn't done.
+          </p>
+          <a class="btn ghost reveal-up" data-delay="0.3" href="portfolio.html">See the work</a>
+        </div>
+
+        <!-- 3D rotating cube -->
+        <div class="story-right reveal-up" data-delay="0.15">
+          <div class="cube-stage" id="cubeStage">
+            <div class="cube">
+              <div class="face front"><span>08</span><small>years building</small></div>
+              <div class="face back"><span>120+</span><small>products shipped</small></div>
+              <div class="face right"><span>26</span><small>specialists</small></div>
+              <div class="face left"><span>14</span><small>countries</small></div>
+              <div class="face top"><span>98%</span><small>client retention</small></div>
+              <div class="face bottom"><span>24h</span><small>reply time</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- timeline -->
+      <div class="container timeline-wrap">
+        <div class="timeline">
+          <div class="tl-line"><span class="tl-progress" id="tlProgress"></span></div>
+          <div class="tl-item reveal-up"><span class="tl-year">2018</span>
+            <h3>The first build</h3>
+            <p>Four people, one shared laptop table, and a booking system for a local clinic that still runs today.</p>
+          </div>
+          <div class="tl-item reveal-up" data-delay="0.06"><span class="tl-year">2020</span>
+            <h3>From freelance to studio</h3>
+            <p>Formal design and engineering teams, first international client, first end-to-end product ownership.</p>
+          </div>
+          <div class="tl-item reveal-up" data-delay="0.12"><span class="tl-year">2022</span>
+            <h3>Product & platform era</h3>
+            <p>Fintech dashboards, healthcare platforms and mobile apps scaling to thousands of daily users.</p>
+          </div>
+          <div class="tl-item reveal-up" data-delay="0.18"><span class="tl-year">2024</span>
+            <h3>AI, built usefully</h3>
+            <p>Automation, assistants and intelligent workflows added to the stack — only where they earn their place.</p>
+          </div>
+          <div class="tl-item reveal-up" data-delay="0.24"><span class="tl-year">2026</span>
+            <h3>Analytic Insider today</h3>
+            <p>A full product studio: strategy, design, engineering, AI and brand under one roof in Karachi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ PROJECTS DONE ══════════ -->
+    <section class="section ab-projects" id="projects">
+      <div class="section-bg-video-wrap" aria-hidden="true">
+        <video class="section-bg-video" autoplay muted loop playsinline preload="none">
+          <source src="videos/section-videos/5a4377be90bedf6dcbaf902e19e8ad3c.mp4" type="video/mp4">
+        </video>
+        <div class="section-bg-video-overlay"></div>
+      </div>
+
+      <div class="container">
+        <div class="section-label reveal-up">PROJECTS DONE</div>
+        <h2 class="section-title reveal-up" data-delay="0.1">Work we can<br><em>point to.</em></h2>
+        <p class="section-sub reveal-up" data-delay="0.18">A selection of platforms, apps and systems shipped over the last few years.</p>
+
+        <div class="pj-nav reveal-up" data-delay="0.24">
+          <button type="button" class="pj-arrow" id="pjPrev" aria-label="Previous project">
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path d="M11 3L5 9l6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button type="button" class="pj-arrow" id="pjNext" aria-label="Next project">
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path d="M7 3l6 6-6 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3D depth gallery -->
+      <div class="pj-stage" id="pjStage">
+        <div class="pj-track" id="pjTrack">
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/Carry Capital/Screenshot 2026-09-15 010416.png" alt="Carry Capital"></div>
+            <div class="pj-meta"><strong>Carry Capital</strong><span>Fintech platform</span></div>
+          </a>
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/Rich AI/Screenshot 2026-09-15 010929.png" alt="Rich AI"></div>
+            <div class="pj-meta"><strong>Rich AI</strong><span>AI product</span></div>
+          </a>
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/Dr. Asgar Rheumatology Consultation  Mobile App + Dashboard Web App/Screenshot 2026-09-15 010134.png" alt="Dr. Asgar"></div>
+            <div class="pj-meta"><strong>Dr. Asgar Consultation</strong><span>Mobile app + dashboard</span></div>
+          </a>
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/Morinaga Calories Counter Mobile App (Android + iOS) &amp; Web Dashboard/Screenshot 2026-09-15 010551.png" alt="Morinaga"></div>
+            <div class="pj-meta"><strong>Morinaga Counter</strong><span>iOS · Android · Web</span></div>
+          </a>
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/invest power labs/Screenshot 2026-09-15 011505.png" alt="Invest Power Labs"></div>
+            <div class="pj-meta"><strong>Invest Power Labs</strong><span>Investment dashboard</span></div>
+          </a>
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/pulse genesis/Screenshot 2026-09-15 011156.png" alt="Pulse Genesis"></div>
+            <div class="pj-meta"><strong>Pulse Genesis</strong><span>Health platform</span></div>
+          </a>
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/Telecard/Screenshot 2026-09-15 013340.png" alt="Telecard"></div>
+            <div class="pj-meta"><strong>Telecard</strong><span>Enterprise system</span></div>
+          </a>
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/Assist event manager/Screenshot 2026-09-15 011812.png" alt="Assist Event Manager"></div>
+            <div class="pj-meta"><strong>Assist Event Manager</strong><span>Web platform</span></div>
+          </a>
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/Zylmi/Screenshot 2026-09-15 013809.png" alt="Zylmi"></div>
+            <div class="pj-meta"><strong>Zylmi</strong><span>Brand &amp; product</span></div>
+          </a>
+          <a class="pj-card" href="portfolio.html">
+            <div class="pj-shot"><img loading="lazy" src="images/portfolio images/tiny kiwi/Screenshot 2026-09-15 012118.png" alt="Tiny Kiwi"></div>
+            <div class="pj-meta"><strong>Tiny Kiwi</strong><span>Digital experience</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="container pj-foot">
+        <a class="btn primary reveal-up" href="portfolio.html">View full portfolio</a>
+      </div>
+    </section>
+
+    <!-- ══════════ HOW WE WORK ══════════ -->
+    <section class="section ab-how" id="how">
+      <div class="section-bg-video-wrap" aria-hidden="true">
+        <video class="section-bg-video" autoplay muted loop playsinline preload="none">
+          <source src="videos/section-videos/4bbc7505d82010f8a472348eddf11705.mp4" type="video/mp4">
+        </video>
+        <div class="section-bg-video-overlay"></div>
+      </div>
+
+      <div class="container">
+        <div class="section-label reveal-up">HOW WE WORK</div>
+        <h2 class="section-title reveal-up" data-delay="0.1">Six steps. No<br><em>black boxes.</em></h2>
+        <p class="section-sub reveal-up" data-delay="0.18">You always know what stage the work is in, what is coming next, and why.</p>
+
+        <div class="how-stack" id="howStack">
+          <article class="how-card"><span class="hc-num">01</span>
+            <div><h3>Discover</h3><p>Sessions with your team to understand the business, the users and the constraints before a single screen is drawn.</p></div>
+            <span class="hc-tag">Week 1</span>
+          </article>
+          <article class="how-card"><span class="hc-num">02</span>
+            <div><h3>Define</h3><p>Scope, architecture and priorities written down — what we are building, what we are not, and in what order.</p></div>
+            <span class="hc-tag">Week 2</span>
+          </article>
+          <article class="how-card"><span class="hc-num">03</span>
+            <div><h3>Design</h3><p>Flows, wireframes and a full interface system you can click through before engineering starts.</p></div>
+            <span class="hc-tag">Week 3–4</span>
+          </article>
+          <article class="how-card"><span class="hc-num">04</span>
+            <div><h3>Build</h3><p>Two-week sprints with a working demo at the end of each one. No six-week silences.</p></div>
+            <span class="hc-tag">Sprint cycle</span>
+          </article>
+          <article class="how-card"><span class="hc-num">05</span>
+            <div><h3>Refine</h3><p>QA, performance passes, real-device testing and the small details that decide whether people trust the product.</p></div>
+            <span class="hc-tag">Pre-launch</span>
+          </article>
+          <article class="how-card"><span class="hc-num">06</span>
+            <div><h3>Launch &amp; support</h3><p>Deployment, handover documentation and an ongoing support window — we stay after go-live.</p></div>
+            <span class="hc-tag">Go-live +</span>
+          </article>
+        </div>
+
+        <div class="how-values">
+          <div class="hv reveal-up"><strong>One team, one thread</strong><span>Direct access to the people building your product — no account-manager relay.</span></div>
+          <div class="hv reveal-up" data-delay="0.08"><strong>Fixed scope, honest scope</strong><span>If something will take longer, you hear it the same week, not at the deadline.</span></div>
+          <div class="hv reveal-up" data-delay="0.16"><strong>You own everything</strong><span>Code, designs, accounts and documentation are yours from day one.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ CTA ══════════ -->
+    <section class="section final-cta" id="contact">
+      <div class="section-bg-video-wrap" aria-hidden="true">
+        <video class="section-bg-video" autoplay muted loop playsinline preload="none">
+          <source src="videos/section-videos/4bbc7505d82010f8a472348eddf11705.mp4" type="video/mp4">
+        </video>
+        <div class="section-bg-video-overlay"></div>
+      </div>
+      <div class="container cta-inner">
+        <div class="section-label reveal-up">Have Something In Mind?</div>
+        <h2 class="cta-title reveal-up" data-delay="0.1">Let&rsquo;s build something<br><em>worth experiencing.</em></h2>
+        <div class="cta-row reveal-up" data-delay="0.2">
+          <a class="btn primary large" href="contact.html">Start a Conversation</a>
+          <a class="btn ghost large" href="services.html">View Services</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid-upgraded">
+        <div class="footer-col-brand">
+          <a class="footer-brand" href="index.html">ANALYTIC INSIDER</a>
+          <p class="footer-tagline">
+            Architecture, artificial intelligence, and digital experiences crafted for companies building the future.
+          </p>
+          <div class="footer-meta-pill">
+            <span class="meta-dot"></span>
+            <span>Karachi, Pakistan &mdash; working worldwide</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <span class="footer-heading">Navigation</span>
+          <ul class="footer-links-list">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-heading">Direct Inquiries</span>
+          <div class="footer-contact-details">
+            <a href="mailto:analyticinsider@gmail.com.pk" class="footer-link-highlight">analyticinsider@gmail.com.pk</a>
+            <a href="https://wa.me/923001234567" target="_blank" class="footer-link-highlight">+92 300 123 4567</a>
+            <span class="footer-reply-badge">Average reply time: under 24 hours</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Analytic Insider. All rights reserved.</span>
+        <span>Software &middot; Digital Products &middot; AI &middot; Design</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+  <script src="./about.js"></script>
+</body>
+</html>

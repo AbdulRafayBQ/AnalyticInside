@@ -1,0 +1,403 @@
+/* =============================================
+   ANALYTIC INSIDER — PORTFOLIO
+   3-col scatter grid · dev-process overlay · Explore More btn
+   ============================================= */
+
+/* ─── Hero ─── */
+.pf-hero {
+  position: relative;
+  padding: 160px 0 40px;
+  overflow: hidden;
+}
+.pf-spotlight {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(480px circle at var(--sx, 50%) var(--sy, 20%),
+    rgba(255,255,255,0.06), transparent 70%);
+  z-index: 0;
+}
+.pf-hero-inner { position: relative; z-index: 1; padding: 0; }
+.pf-title { font-size: clamp(42px, 7vw, 84px); line-height: 1; margin-top: 10px; }
+.pf-sub  { color: var(--grey-1); font-size: 15px; margin-top: 18px; max-width: 480px; }
+
+/* ─── Grid section ─── */
+.pf-grid-section { position: relative; padding-bottom: 60px; }
+.pf-grain {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 5; opacity: 0.035; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grainShift 8s steps(8) infinite;
+}
+@keyframes grainShift {
+  0%   { transform: translate(0,0); }
+  25%  { transform: translate(-2%,1%); }
+  50%  { transform: translate(1%,-2%); }
+  75%  { transform: translate(-1%,-1%); }
+  100% { transform: translate(0,0); }
+}
+
+.pf-grid-container { padding: 24px 0 60px; position: relative; z-index: 1; }
+
+/* ─── Zigzag project rows ─── */
+.pf-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+}
+
+.pf-card {
+  position: relative;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(.16,.84,.44,1), transform 0.8s cubic-bezier(.16,.84,.44,1);
+}
+.pf-card.pf-card-visible { opacity: 1; transform: none; }
+.pf-row-imgR .pf-card-media { order: 2; }
+.pf-row-imgR .pf-card-body  { order: 1; }
+.pf-row-imgL .pf-card-media { order: 1; }
+.pf-row-imgL .pf-card-body  { order: 2; }
+
+.pf-card-num {
+  position: absolute; top: 14px; left: 14px; z-index: 2;
+  font-family: 'Outfit', sans-serif; font-weight: 700;
+  font-size: 11px; letter-spacing: 0.06em; color: var(--white);
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 4px 9px; border-radius: 20px;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+
+/* ─── Card media ─── */
+.pf-card-media {
+  position: relative; width: 100%;
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); background: var(--grey-4);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+}
+.pf-card-media img {
+  width: 100%; display: block; object-fit: cover;
+}
+.pf-card.pf-morphing .pf-card-media img { visibility: hidden; }
+
+/* ─── Card body (title / desc / tags) ─── */
+.pf-card-body { display: flex; flex-direction: column; align-items: flex-start; }
+.pf-card-sub { font-size: 12px; color: var(--grey-2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+.pf-card-title {
+  font-family: 'Outfit', sans-serif; font-weight: 800;
+  font-size: clamp(24px, 2.6vw, 34px); color: var(--white); margin-bottom: 14px;
+}
+.pf-card-tagline { font-size: 15px; color: var(--grey-1); line-height: 1.7; margin-bottom: 20px; max-width: 460px; }
+.pf-card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.pf-tag {
+  font-size: 12px; letter-spacing: 0.03em;
+  padding: 6px 13px; border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface); color: var(--grey-1);
+}
+.pf-card-cta {
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.04em; color: var(--white);
+  border: 1px solid var(--border);
+  padding: 12px 24px; border-radius: 40px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.pf-card:hover .pf-card-cta { border-color: var(--border-hover); background: rgba(255,255,255,0.06); }
+
+/* ─── Variant 3: tall media, roomy body ─── */
+/* ─── Explore More button ─── */
+
+.pf-explore-wrap {
+  display: flex; justify-content: center;
+  padding: 40px 0 0;
+}
+.pf-explore-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--white);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 14px 32px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.pf-explore-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 140%, rgba(255,255,255,0.06) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.pf-explore-btn:hover {
+  border-color: var(--border-hover);
+  background: rgba(255,255,255,0.07);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+.pf-explore-btn:hover::before { opacity: 1; }
+.pf-explore-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  transition: transform 0.4s ease;
+}
+.pf-explore-btn:hover .pf-explore-icon { transform: translateY(3px); }
+
+/* ─── Overlay ─── */
+.pf-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  visibility: hidden; pointer-events: none;
+}
+.pf-overlay.pf-open { visibility: visible; pointer-events: auto; }
+
+.pf-overlay-bg {
+  position: absolute; inset: 0;
+  background: rgba(6,6,6,0.92);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  opacity: 0; transition: opacity 0.5s ease;
+}
+.pf-overlay.pf-open .pf-overlay-bg { opacity: 1; }
+
+.pf-close {
+  position: fixed; top: 24px; right: 24px; z-index: 210;
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+.pf-overlay.pf-open .pf-close { opacity: 1; transform: scale(1); }
+.pf-close:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.1); }
+
+.pf-detail {
+  position: relative; z-index: 205;
+  height: 100%; overflow-y: auto; overflow-x: hidden;
+  padding: 80px 0 120px;
+  scroll-behavior: smooth;
+}
+
+/* ─── Detail inner ─── */
+.pf-detail-inner {
+  width: min(1100px, 90%);
+  margin: 0 auto;
+}
+
+/* ─── Hero split ─── */
+.pf-detail-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+  min-height: 75vh;
+  padding: 0 0 80px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.16,.84,.44,1);
+}
+.pf-detail-hero.pf-reveal-visible {
+  opacity: 1; transform: none;
+}
+
+.pf-detail-hero-media { position: relative; perspective: 1400px; }
+.pf-float-wrap {
+  position: relative;
+  animation: pfFloat 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+.pf-float-wrap img {
+  width: 100%; display: block;
+  border-radius: var(--radius); border: 1px solid var(--border);
+  box-shadow: 0 40px 90px rgba(0,0,0,0.65); background: var(--grey-4);
+}
+.pf-float-shadow {
+  position: absolute; left: 8%; right: 8%; bottom: -28px;
+  height: 36px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.55), transparent 70%);
+  filter: blur(4px);
+  animation: pfShadow 4s ease-in-out infinite;
+}
+@keyframes pfFloat {
+  0%, 100% { transform: translateY(0) rotateY(-4deg) rotateX(1deg); }
+  50%       { transform: translateY(-16px) rotateY(4deg) rotateX(-1deg); }
+}
+@keyframes pfShadow {
+  0%, 100% { transform: scale(1);    opacity: 0.55; }
+  50%       { transform: scale(0.85); opacity: 0.3; }
+}
+
+.pf-detail-title {
+  font-family: 'Outfit', sans-serif; font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 44px);
+  letter-spacing: -0.02em; margin: 14px 0 16px;
+}
+.pf-detail-desc {
+  color: var(--grey-1); font-size: 15px; line-height: 1.75;
+  margin-bottom: 24px; max-width: 480px;
+}
+.pf-pair-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.pf-pill {
+  font-size: 12px; padding: 6px 14px; border-radius: 20px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--grey-1);
+}
+
+/* ─── Section blocks (process, features, gallery) ─── */
+.pf-section-block {
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.16,.84,.44,1);
+}
+.pf-section-block.pf-reveal-visible { opacity: 1; transform: none; }
+
+.pf-section-label-row {
+  display: flex; align-items: center; gap: 20px; margin-bottom: 40px;
+}
+.pf-label-line {
+  flex: 1; height: 1px; background: var(--border);
+}
+
+/* ─── Development process (image beside each step, zigzag) ─── */
+.pf-proc-row.pf-zig-row { align-items: flex-start; }
+.pf-proc-plain { grid-template-columns: 1fr; }
+.pf-zig-wrap--plain { gap: 0; }
+.pf-zig-wrap--plain .pf-proc-row {
+  padding: 22px 0; border-bottom: 1px solid var(--border);
+}
+.pf-zig-wrap--plain .pf-proc-row:last-child { border-bottom: none; }
+
+.pf-step-icon {
+  font-family: 'Outfit', sans-serif; font-weight: 700;
+  font-size: 13px; line-height: 1; letter-spacing: 0.02em;
+  color: var(--grey-1);
+  width: 38px; height: 38px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  margin-bottom: 4px;
+}
+.pf-step-phase {
+  font-family: 'Outfit', sans-serif; font-weight: 700;
+  font-size: 17px; color: var(--white);
+}
+.pf-step-detail {
+  font-size: 14px; color: var(--grey-1); line-height: 1.7; max-width: 420px;
+}
+
+/* ─── Key features grid ─── */
+.pf-features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px 24px; list-style: none;
+}
+.pf-feature-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--grey-1); line-height: 1.5;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.pf-feature-tick {
+  color: var(--white); font-size: 13px; flex-shrink: 0;
+  width: 20px; height: 20px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+
+/* ─── Visual walkthrough (zigzag image / content rows) ─── */
+.pf-zig-wrap { display: flex; flex-direction: column; gap: 70px; }
+
+.pf-zig-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+  opacity: 0; transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.16,.84,.44,1);
+}
+.pf-zig-row.pf-reveal-visible { opacity: 1; transform: none; }
+
+/* image right / content left */
+.pf-zig-imgR .pf-zig-media { order: 2; }
+.pf-zig-imgR .pf-zig-text  { order: 1; }
+/* image left / content right */
+.pf-zig-imgL .pf-zig-media { order: 1; }
+.pf-zig-imgL .pf-zig-text  { order: 2; }
+
+.pf-zig-media {
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--grey-4);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+}
+.pf-zig-media img { width: 100%; display: block; object-fit: cover; }
+
+.pf-zig-text { display: flex; flex-direction: column; gap: 14px; }
+.pf-zig-index {
+  font-family: 'Outfit', sans-serif; font-weight: 700;
+  font-size: 13px; letter-spacing: 0.08em; color: var(--grey-2);
+}
+.pf-zig-text p { font-size: 15px; line-height: 1.75; color: var(--grey-1); max-width: 420px; }
+
+/* ─── Detail footer ─── */
+.pf-detail-footer {
+  padding: 60px 0 20px; border-top: 1px solid var(--border);
+  display: flex; justify-content: flex-start;
+}
+
+/* ─── Flying morph tile ─── */
+.pf-flying {
+  position: fixed; z-index: 300;
+  border-radius: var(--radius); overflow: hidden;
+  pointer-events: none; box-shadow: 0 40px 90px rgba(0,0,0,0.6);
+}
+.pf-flying img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .pf-card { transition: none; }
+  .pf-float-wrap, .pf-float-shadow { animation: none; }
+  .pf-section-block, .pf-detail-hero, .pf-zig-row { transition: opacity 0.3s ease; transform: none; }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .pf-features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .pf-card { grid-template-columns: 1fr; gap: 24px; }
+  .pf-row-imgR .pf-card-media, .pf-row-imgL .pf-card-media { order: 1; }
+  .pf-row-imgR .pf-card-body,  .pf-row-imgL .pf-card-body  { order: 2; }
+  .pf-detail-hero { grid-template-columns: 1fr; gap: 36px; min-height: auto; }
+  .pf-zig-row { grid-template-columns: 1fr; gap: 24px; }
+  .pf-zig-imgR .pf-zig-media, .pf-zig-imgL .pf-zig-media { order: 1; }
+  .pf-zig-imgR .pf-zig-text,  .pf-zig-imgL .pf-zig-text  { order: 2; }
+}
+
+@media (max-width: 600px) {
+  .pf-grid { gap: 50px; }
+  .pf-features-grid { grid-template-columns: 1fr; }
+
+}
+
+/* ─── Scroll performance ───
+   The full-screen grain overlay keeps animating behind the modal and,
+   combined with the backdrop blur, is the main cause of scroll jank while
+   a project is open — pause/hide it for the duration of the modal. */
+body.pf-modal-open .pf-grain { display: none; }
+
+.pf-detail {
+  contain: content;
+  transform: translateZ(0);
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+}
+.pf-float-wrap { will-change: transform; }
