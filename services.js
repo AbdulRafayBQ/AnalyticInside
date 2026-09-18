@@ -8,12 +8,30 @@
   const qs  = (s, c = document) => c.querySelector(s);
   const qsa = (s, c = document) => [...c.querySelectorAll(s)];
 
-  /* ─── Navbar scroll blur ─── */
+  /* ─── Navbar scroll blur + hide-on-scroll-down / reveal-on-scroll-up ─── */
   const header = qs('#siteHeader');
-  window.addEventListener('scroll', () => {
-    if (header) header.classList.toggle('scrolled', window.scrollY > 50);
-  }, { passive: true });
-  if (header) header.classList.toggle('scrolled', window.scrollY > 50);
+  let lastScrollY = window.scrollY;
+  const HIDE_AFTER = 120;
+  const UP_TOLERANCE = 4;
+
+  function updateNav() {
+    if (!header) return;
+    const currentY = window.scrollY;
+
+    header.classList.toggle('scrolled', currentY > 50);
+
+    if (currentY <= HIDE_AFTER) {
+      header.classList.remove('nav-hidden');
+    } else if (currentY > lastScrollY) {
+      header.classList.add('nav-hidden');
+    } else if (lastScrollY - currentY > UP_TOLERANCE) {
+      header.classList.remove('nav-hidden');
+    }
+
+    lastScrollY = currentY;
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
 
   /* ─── Mobile menu ─── */
   const menuBtn = qs('#menuToggle');

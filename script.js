@@ -22,10 +22,29 @@
      NAVBAR — transparent → blur on scroll
   ═══════════════════════════════ */
   const header = qs('#siteHeader');
+  let lastScrollY = window.scrollY;
+  const HIDE_AFTER = 120;   // don't hide until scrolled this far down
+  const UP_TOLERANCE = 4;   // ignore tiny scroll-up jitters
+
   function updateNav() {
     if (!header) return;
-    if (window.scrollY > 50) header.classList.add('scrolled');
-    else                     header.classList.remove('scrolled');
+    const currentY = window.scrollY;
+
+    if (currentY > 50) header.classList.add('scrolled');
+    else                header.classList.remove('scrolled');
+
+    if (currentY <= HIDE_AFTER) {
+      /* Always visible near the top */
+      header.classList.remove('nav-hidden');
+    } else if (currentY > lastScrollY) {
+      /* Scrolling down → hide */
+      header.classList.add('nav-hidden');
+    } else if (lastScrollY - currentY > UP_TOLERANCE) {
+      /* Scrolling up → reveal */
+      header.classList.remove('nav-hidden');
+    }
+
+    lastScrollY = currentY;
   }
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
@@ -47,8 +66,8 @@
   /* ═══════════════════════════════
      MOBILE MENU
   ═══════════════════════════════ */
-  const menuBtn = qs('#menuToggle');
-  const nav     = qs('#mainNav');
+  const menuBtn = qs('#menuToggle') || qs('#hamburgerBtn');
+  const nav     = qs('#mobileMenu') || qs('#mainNav');
   if (menuBtn && nav) {
     menuBtn.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
