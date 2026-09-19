@@ -64,7 +64,7 @@
   letter-spacing: .22em;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   margin-bottom: 24px !important;
   text-transform: uppercase;
   color: rgba(26,20,14,.52) !important;
@@ -75,7 +75,7 @@
 }
 .hero-eyebrow-cycle {
   display: inline-block;
-  min-width: 158px;
+  min-width: 0;
   white-space: nowrap;
   color: #17130E;
   font-weight: 800;
@@ -92,7 +92,7 @@
 }
 .hero-eyebrow-location {
   display: inline-block;
-  color: #C99B5C;
+  color: rgba(23,19,14,0.55);
   font-weight: 800;
   white-space: nowrap;
   opacity: 1;
@@ -555,53 +555,71 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   HOME SERVICES — long editorial scroll section
-   Dark landing-style band, vertical progress rail on the left,
-   full-width rows (not cards), staggered reveal on scroll
+   HOME SERVICES — ONE unified box that "rises" on scroll
+   (soft dark dome grows out of the white page, then a soft
+   white dome rises back over it on the way out — same feel as
+   the Cubix reference). Oval image stage on desktop, swipe
+   card-carousel with oval images on mobile.
+   --p = enter progress (0→1), --q = exit progress (0→1),
+   both written by JS on scroll. No JS = fully visible box.
 ════════════════════════════════════════════════════════ */
 .svc-section {
   position: relative;
-  background:
-    radial-gradient(ellipse 65% 55% at 12% 0%, rgba(245,239,224,0.22) 0%, transparent 62%),
-    radial-gradient(ellipse 55% 50% at 100% 100%, rgba(201,155,92,0.20) 0%, transparent 65%),
-    linear-gradient(180deg, #3F3122 0%, #2E2216 45%, #261B10 100%);
+  background: #FFFFFF;
   color: #F5EFE0;
+  padding: 0;
+}
+.svc-box {
+  --p: 1;
+  --q: 0;
+  position: relative;
+  isolation: isolate;
+  padding: 150px 0 210px;
+}
+
+/* One merged background: gradient + highlights, revealed through a soft elliptical mask */
+.svc-box-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   overflow: hidden;
-  padding: 150px 0 130px;
-}
-.svc-glow-1 {
-  position: absolute;
-  width: 520px; height: 520px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,155,92,0.18) 0%, transparent 70%);
-  filter: blur(90px);
-  top: -120px; right: -80px;
   pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 34% at 12% 6%, rgba(245,239,224,0.20) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 30% at 96% 94%, rgba(201,155,92,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 20% at 50% 42%, rgba(245,239,224,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 34% 16% at 88% 14%, rgba(201,155,92,0.14) 0%, transparent 70%),
+    linear-gradient(180deg, #3F3122 0%, #2E2216 45%, #261B10 100%);
+  --rx: calc(46vw + 118vw * var(--p));
+  --ry: calc(22% + 110% * var(--p));
+  /* soft elliptical dome  ∩  soft top fade (so the top edge never shows a hard line) */
+  -webkit-mask-image:
+    radial-gradient(ellipse var(--rx) var(--ry) at 50% calc(var(--ry) * (1 - 0.55 * var(--p))), #000 62%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 calc(80px + 260px * (1 - var(--p))));
+  -webkit-mask-composite: source-in;
+          mask-image:
+    radial-gradient(ellipse var(--rx) var(--ry) at 50% calc(var(--ry) * (1 - 0.55 * var(--p))), #000 62%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 calc(80px + 260px * (1 - var(--p))));
+          mask-composite: intersect;
 }
-.svc-glow-2 {
+/* Bottom edge: always melts into the page, and a bigger white dome rises over it while leaving */
+.svc-exit-dome {
   position: absolute;
-  width: 420px; height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245,239,224,0.10) 0%, transparent 70%);
-  filter: blur(90px);
-  bottom: -100px; left: -60px;
+  left: 0; right: 0; bottom: 0;
+  height: 62vh;
+  z-index: 1;
   pointer-events: none;
+  background:
+    radial-gradient(ellipse calc(34vw + 100vw * var(--q)) calc(2px + 46vh * var(--q)) at 50% 100%, #FFFFFF 50%, rgba(255,255,255,0) 100%),
+    linear-gradient(to top, #FFFFFF 0, rgba(255,255,255,0) 150px);
 }
-.svc-glow-3 {
-  position: absolute;
-  width: 620px; height: 380px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(245,239,224,0.12) 0%, transparent 68%);
-  filter: blur(100px);
-  top: 30%; left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
+
 .svc-inner {
   position: relative;
   z-index: 2;
   width: min(1180px, 90%);
   margin: 0 auto;
+  opacity: calc((var(--p) - 0.28) * 3);
 }
 
 /* ── Header ── */
@@ -613,110 +631,130 @@
   transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
   will-change: opacity, transform;
 }
-.svc-header.svc-in {
-  opacity: 1;
-  transform: translateY(0);
-}
+.svc-header.svc-in { opacity: 1; transform: translateY(0); }
 .svc-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Inter', sans-serif;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: .26em;
-  text-transform: uppercase;
-  color: #C99B5C;
-  margin-bottom: 24px;
-  background: rgba(201,155,92,0.10);
-  padding: 8px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(201,155,92,0.25);
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700;
+  letter-spacing: .26em; text-transform: uppercase; color: #C99B5C;
+  margin-bottom: 24px; background: rgba(201,155,92,0.10);
+  padding: 8px 18px; border-radius: 999px; border: 1px solid rgba(201,155,92,0.25);
 }
 .svc-title {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  font-size: clamp(36px, 4.6vw, 60px);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  color: #FBF7EE;
-  margin-bottom: 22px;
+  font-family: 'Outfit', sans-serif; font-weight: 800;
+  font-size: clamp(36px, 4.6vw, 60px); line-height: 1.08; letter-spacing: -0.03em;
+  color: #FBF7EE; margin-bottom: 22px;
 }
 .svc-title em { font-style: italic; color: #C99B5C; }
 .svc-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  line-height: 1.75;
-  color: rgba(245,239,224,.55);
-  max-width: 520px;
+  font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.75;
+  color: rgba(245,239,224,.55); max-width: 520px;
 }
 
-/* ── Body: sticky phone preview + tabbed accordion list ── */
+/* ── Body: sticky oval stage + accordion list ── */
 .svc-body-tabs {
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 64px;
+  grid-template-columns: minmax(300px, 400px) 1fr;
+  gap: 76px;
   align-items: start;
 }
 
-/* Sticky visual */
+/* Sticky oval visual */
 .svc-visual {
   position: sticky;
-  top: 110px;
+  top: 96px;
   display: flex;
   justify-content: center;
-  padding: 30px 0;
+  padding: 24px 0;
   opacity: 0;
   transform: translateY(32px) scale(0.97);
   transition: opacity .85s cubic-bezier(.16, 1, .3, 1) .1s, transform .85s cubic-bezier(.16, 1, .3, 1) .1s;
   will-change: opacity, transform;
 }
-.svc-visual.svc-in {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+.svc-visual.svc-in { opacity: 1; transform: translateY(0) scale(1); }
+
+.svc-oval-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 4 / 5;
 }
-.svc-visual-glow {
-  position: absolute;
-  width: 340px; height: 340px;
+.svc-oval-glow {
+  position: absolute; inset: -14%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,155,92,.30) 0%, transparent 70%);
-  filter: blur(60px);
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,155,92,.34) 0%, transparent 68%);
+  filter: blur(44px);
   z-index: 0;
 }
-.svc-phone {
-  position: relative;
-  z-index: 1;
-  width: 260px;
-  aspect-ratio: 480 / 854;
-  background: #0b0b0b;
-  border-radius: 42px;
-  padding: 12px;
-  box-shadow: 0 40px 80px -20px rgba(0,0,0,.55), inset 0 0 0 2px rgba(255,255,255,.05);
-}
-.svc-phone-notch {
+.svc-oval-ring {
   position: absolute;
-  top: 12px; left: 50%;
-  transform: translateX(-50%);
-  width: 84px; height: 20px;
-  background: #0b0b0b;
-  border-radius: 0 0 14px 14px;
-  z-index: 2;
+  border-radius: 50%;
+  border: 1px solid rgba(245,239,224,.16);
+  pointer-events: none;
+  z-index: 0;
 }
-.svc-phone-screen {
-  width: 100%; height: 100%;
-  border-radius: 30px;
+.svc-oval-ring.ring-a { inset: -6%; }
+.svc-oval-ring.ring-b { inset: -13%; border-style: dashed; border-color: rgba(201,155,92,.22); animation: svcRingSpin 60s linear infinite; }
+@keyframes svcRingSpin { to { transform: rotate(360deg); } }
+.svc-oval-wrap.pulse .ring-a { animation: svcRingPulse .9s cubic-bezier(.22,1,.36,1); }
+@keyframes svcRingPulse {
+  0%   { transform: scale(.94); border-color: rgba(201,155,92,.7); }
+  100% { transform: scale(1);   border-color: rgba(245,239,224,.16); }
+}
+
+.svc-oval {
+  position: absolute; inset: 0;
+  z-index: 1;
+  border-radius: 50%;
   overflow: hidden;
-  background: #000;
-  position: relative;
+  background: #241a10;
+  box-shadow: 0 40px 90px -24px rgba(0,0,0,.65), 0 0 0 1px rgba(245,239,224,.12);
 }
-.svc-phone-screen video {
+.svc-oval-img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 1;
-  transition: opacity .3s ease;
+  opacity: 0;
+  visibility: hidden;
+  clip-path: ellipse(50% 50% at 50% 50%);
 }
-.svc-phone-screen video.is-switching { opacity: 0; }
+.svc-oval-img.is-current { opacity: 1; visibility: visible; z-index: 2; }
+.svc-oval-img.is-leaving { opacity: 1; visibility: visible; z-index: 1; animation: svcOvalOut .95s cubic-bezier(.22,1,.36,1) forwards; }
+.svc-oval-img.is-entering { z-index: 3; animation: svcOvalIn .95s cubic-bezier(.22,1,.36,1) both; }
+/* the new image opens as a fresh oval from the centre, over the old one */
+@keyframes svcOvalIn {
+  from { clip-path: ellipse(0% 0% at 50% 50%);   transform: scale(1.25); }
+  to   { clip-path: ellipse(50% 50% at 50% 50%); transform: scale(1); }
+}
+@keyframes svcOvalOut {
+  from { transform: scale(1);   filter: brightness(1); }
+  to   { transform: scale(.9);  filter: brightness(.65); }
+}
+
+.svc-oval-tag {
+  position: absolute;
+  left: 50%; bottom: -4%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: inline-flex; align-items: center; gap: 10px;
+  white-space: nowrap;
+  padding: 10px 18px 10px 12px;
+  border-radius: 999px;
+  background: rgba(20,14,8,.72);
+  border: 1px solid rgba(245,239,224,.16);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 14px 34px rgba(0,0,0,.35);
+  font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 700;
+  color: #FBF7EE;
+  transition: opacity .25s ease;
+}
+.svc-oval-tag.is-swapping { opacity: 0; }
+.svc-oval-tag b {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 26px; height: 26px; padding: 0 6px; border-radius: 999px;
+  background: #C99B5C; color: #17130E;
+  font-family: 'Outfit', sans-serif; font-size: 11.5px; font-weight: 800;
+}
 
 /* Accordion list */
 .svc-list { display: flex; flex-direction: column; }
@@ -728,231 +766,213 @@
   will-change: opacity, transform;
 }
 .svc-item:first-child { border-top: 1px solid rgba(245,239,224,.09); }
-.svc-item.svc-in {
-  opacity: 1;
-  transform: translateY(0);
-}
+.svc-item.svc-in { opacity: 1; transform: translateY(0); }
 
 .svc-item-head {
   width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 24px;
+  display: flex; align-items: center; gap: 24px;
   padding: 30px 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  font: inherit;
-  color: inherit;
-  outline: none;
+  background: none; border: none; cursor: pointer;
+  text-align: left; font: inherit; color: inherit; outline: none;
 }
 .svc-num {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  font-size: clamp(20px, 2vw, 26px);
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1.2px rgba(245,239,224,.25);
+  font-family: 'Outfit', sans-serif; font-weight: 800;
+  font-size: clamp(20px, 2vw, 26px); line-height: 1;
+  color: transparent; -webkit-text-stroke: 1.2px rgba(245,239,224,.25);
   transition: -webkit-text-stroke-color .35s ease, color .35s ease;
-  flex-shrink: 0;
-  width: 34px;
+  flex-shrink: 0; width: 34px;
 }
-.svc-item.is-active .svc-num {
-  -webkit-text-stroke-color: rgba(201,155,92,.85);
-  color: rgba(201,155,92,.12);
-}
-
+.svc-item.is-active .svc-num { -webkit-text-stroke-color: rgba(201,155,92,.85); color: rgba(201,155,92,.12); }
 .svc-item-title {
-  flex: 1;
-  min-width: 0;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 700;
-  font-size: clamp(19px, 2vw, 25px);
-  letter-spacing: -0.02em;
+  flex: 1; min-width: 0;
+  font-family: 'Outfit', sans-serif; font-weight: 700;
+  font-size: clamp(19px, 2vw, 25px); letter-spacing: -0.02em;
   color: rgba(245,239,224,.42);
   transition: color .35s cubic-bezier(.16, 1, .3, 1), transform .35s cubic-bezier(.16, 1, .3, 1);
 }
-.svc-item.is-active .svc-item-title {
-  color: #FBF7EE;
-  transform: translateX(3px);
-}
-.svc-item-head:hover .svc-item-title {
-  color: #E6C48B;
-}
+.svc-item.is-active .svc-item-title { color: #FBF7EE; transform: translateX(3px); }
+.svc-item-head:hover .svc-item-title { color: #E6C48B; }
 
 .svc-item-plus {
-  position: relative;
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+  position: relative; flex-shrink: 0;
+  width: 34px; height: 34px; border-radius: 50%;
   border: 1px solid rgba(245,239,224,.18);
   background: rgba(245,239,224,.03);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   color: rgba(245,239,224,.75);
-  transition: border-color .35s cubic-bezier(.16,1,.3,1),
-              background .35s cubic-bezier(.16,1,.3,1),
-              box-shadow .35s cubic-bezier(.16,1,.3,1),
-              color .35s cubic-bezier(.16,1,.3,1);
+  transition: border-color .35s cubic-bezier(.16,1,.3,1), background .35s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1), color .35s cubic-bezier(.16,1,.3,1);
 }
-.svc-chevron-icon {
-  width: 14px;
-  height: 14px;
-  stroke: currentColor;
-  transition: transform .45s cubic-bezier(.16, 1, .3, 1), stroke .3s ease;
-  transform-origin: center;
-}
-.svc-item-head:hover .svc-item-plus {
-  border-color: rgba(201,155,92,.45);
-  background: rgba(201,155,92,.08);
-  color: #F5EFE0;
-}
-.svc-item.is-active .svc-item-plus {
-  border-color: #C99B5C;
-  background: rgba(201,155,92,.18);
-  color: #C99B5C;
-  box-shadow: 0 0 16px rgba(201,155,92,.18);
-}
-.svc-item.is-active .svc-chevron-icon {
-  transform: rotate(180deg);
-}
+.svc-chevron-icon { width: 14px; height: 14px; stroke: currentColor; transition: transform .45s cubic-bezier(.16, 1, .3, 1), stroke .3s ease; transform-origin: center; }
+.svc-item-head:hover .svc-item-plus { border-color: rgba(201,155,92,.45); background: rgba(201,155,92,.08); color: #F5EFE0; }
+.svc-item.is-active .svc-item-plus { border-color: #C99B5C; background: rgba(201,155,92,.18); color: #C99B5C; box-shadow: 0 0 16px rgba(201,155,92,.18); }
+.svc-item.is-active .svc-chevron-icon { transform: rotate(180deg); }
 
 .svc-item-panel {
-  display: grid;
-  grid-template-rows: 0fr;
+  display: grid; grid-template-rows: 0fr;
   transition: grid-template-rows .5s cubic-bezier(.16, 1, .3, 1);
   will-change: grid-template-rows;
 }
-.svc-item.is-active .svc-item-panel {
-  grid-template-rows: 1fr;
-}
-.svc-item-panel-inner {
-  overflow: hidden;
-  min-height: 0;
-}
-.svc-item-panel-inner > * {
-  padding-bottom: 30px;
-}
+.svc-item.is-active .svc-item-panel { grid-template-rows: 1fr; }
+.svc-item-panel-inner { overflow: hidden; min-height: 0; }
+.svc-item-panel-inner > * { padding-bottom: 30px; }
 
-/* Cubix-Style Staggered Reveal of panel contents */
-.svc-tags,
-.svc-item-desc,
-.svc-learn-more,
-.svc-item-video-slot {
-  opacity: 0;
-  transform: translateY(12px);
+.svc-tags, .svc-item-desc, .svc-learn-more {
+  opacity: 0; transform: translateY(12px);
   transition: opacity .2s ease, transform .22s ease;
   will-change: opacity, transform;
 }
-
-.svc-item.is-active .svc-tags {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .08s, transform .45s cubic-bezier(.16, 1, .3, 1) .08s;
-}
-
-.svc-item.is-active .svc-item-desc {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .15s, transform .48s cubic-bezier(.16, 1, .3, 1) .15s;
-}
-
-.svc-item.is-active .svc-learn-more {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .22s, transform .48s cubic-bezier(.16, 1, .3, 1) .22s;
-}
-
-.svc-item.is-active .svc-item-video-slot {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .26s, transform .48s cubic-bezier(.16, 1, .3, 1) .26s;
-}
+.svc-item.is-active .svc-tags { opacity: 1; transform: translateY(0); transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .08s, transform .45s cubic-bezier(.16, 1, .3, 1) .08s; }
+.svc-item.is-active .svc-item-desc { opacity: 1; transform: translateY(0); transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .15s, transform .48s cubic-bezier(.16, 1, .3, 1) .15s; }
+.svc-item.is-active .svc-learn-more { opacity: 1; transform: translateY(0); transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .22s, transform .48s cubic-bezier(.16, 1, .3, 1) .22s; }
 
 .svc-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
 .svc-tag {
-  font-family: 'Inter', sans-serif;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  color: #C99B5C;
-  background: rgba(201,155,92,.10);
-  border: 1px solid rgba(201,155,92,.25);
-  padding: 5px 12px;
-  border-radius: 999px;
+  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase; color: #C99B5C;
+  background: rgba(201,155,92,.10); border: 1px solid rgba(201,155,92,.25);
+  padding: 5px 12px; border-radius: 999px;
 }
 .svc-item-desc {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  line-height: 1.75;
-  color: rgba(245,239,224,.6);
-  max-width: 560px;
-  margin: 14px 0 16px;
+  font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.75;
+  color: rgba(245,239,224,.6); max-width: 560px; margin: 14px 0 16px;
 }
 .svc-learn-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 13.5px;
-  color: #C99B5C;
-  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13.5px;
+  color: #C99B5C; text-decoration: none;
 }
 .svc-learn-more svg { width: 15px; height: 15px; transition: transform .25s ease; }
 .svc-learn-more:hover svg { transform: translateX(4px); }
 
-/* Inline video slot — only used on mobile, where svc-visual isn't sticky */
-.svc-item-video-slot { display: none; }
-.svc-item-video-slot video { width: 100%; height: 220px; object-fit: cover; border-radius: 16px; display: block; }
+/* per-card oval — mobile only */
+.svc-item-oval { display: none; }
 
-@media (max-width: 900px) {
-  .svc-section { padding: 100px 0 90px; }
-  .svc-header { margin-bottom: 60px; }
-  .svc-body-tabs { grid-template-columns: 1fr; gap: 0; }
-  .svc-visual { display: none; }
-  .svc-item-video-slot { display: block; margin-top: 4px; }
-  .svc-item-head { padding: 26px 0; gap: 16px; }
-  .svc-footer-cta { flex-direction: column; align-items: flex-start; }
-}
+/* mobile prev / dots / next — mobile only */
+.svc-mob-nav { display: none; }
+
 .svc-footer-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 22px;
-  margin-top: 70px;
-  padding-top: 44px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 22px;
+  margin-top: 70px; padding-top: 44px;
   border-top: 1px solid rgba(245,239,224,.09);
 }
-.svc-footer-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  color: rgba(245,239,224,.55);
-  max-width: 420px;
-}
+.svc-footer-text { font-family: 'Inter', sans-serif; font-size: 15px; color: rgba(245,239,224,.55); max-width: 420px; }
 .svc-footer-text strong { color: #FBF7EE; font-weight: 700; }
 .svc-view-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #17130E;
-  background: #C99B5C;
-  padding: 15px 28px;
-  border-radius: 999px;
-  text-decoration: none;
-  white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px;
+  color: #17130E; background: #C99B5C;
+  padding: 15px 28px; border-radius: 999px; text-decoration: none; white-space: nowrap;
   transition: background .3s ease, transform .3s ease;
 }
 .svc-view-all:hover { background: #E6C48B; transform: translateX(3px); }
 .svc-view-all svg { width: 15px; height: 15px; }
+
+/* ══ SERVICES — MOBILE SYSTEM (≤ 900px) ══
+   Swipeable snap-carousel. Each service is its own card with its own
+   oval image on top; the centred card is "active" (oval re-opens),
+   prev/next + dots underneath, wraps around like the reviews. */
+@media (max-width: 900px) {
+  .svc-box { padding: 100px 0 150px; }
+  .svc-header { margin-bottom: 44px; }
+  .svc-body-tabs { display: block; }
+  .svc-visual { display: none; }
+
+  .svc-list {
+    position: relative;
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    margin: 0 -5vw;
+    padding: 10px 5vw 28px;
+    scroll-padding-inline: 5vw;
+    scrollbar-width: none;
+  }
+  .svc-list::-webkit-scrollbar { display: none; }
+
+  .svc-list .svc-item {
+    flex: 0 0 82%;
+    max-width: 380px;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 26px 22px 28px;
+    border: 1px solid rgba(245,239,224,.10);
+    border-radius: 30px;
+    background: linear-gradient(160deg, rgba(245,239,224,.09), rgba(245,239,224,.03));
+    opacity: .55;
+    transform: scale(.94);
+    transition: opacity .45s ease, transform .55s cubic-bezier(.16,1,.3,1), border-color .35s ease, background .35s ease;
+    will-change: auto;
+  }
+  .svc-list .svc-item:first-child { border-top: 1px solid rgba(245,239,224,.10); }
+  .svc-list .svc-item.is-active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: rgba(201,155,92,.38);
+    background: linear-gradient(160deg, rgba(201,155,92,.16), rgba(245,239,224,.04));
+  }
+
+  .svc-item-oval {
+    order: -1;
+    display: block;
+    position: relative;
+    width: 72%;
+    aspect-ratio: 4 / 5;
+    margin: 4px auto 26px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #241a10;
+    box-shadow: 0 26px 50px -18px rgba(0,0,0,.6), 0 0 0 1px rgba(245,239,224,.12), 0 0 0 7px rgba(245,239,224,.04);
+  }
+  .svc-item-oval img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .svc-item.is-active .svc-item-oval img { animation: svcOvalIn .95s cubic-bezier(.22,1,.36,1) both; }
+
+  .svc-item-head { padding: 0 0 14px; gap: 14px; cursor: default; }
+  .svc-item-plus { display: none; }
+  .svc-item-title { font-size: 21px; color: #FBF7EE; transform: none !important; }
+  .svc-num { -webkit-text-stroke-color: rgba(201,155,92,.85); color: rgba(201,155,92,.12); }
+
+  .svc-item-panel { grid-template-rows: 1fr; }
+  .svc-item-panel-inner > * { padding-bottom: 0; }
+  .svc-tags, .svc-item-desc, .svc-learn-more { opacity: 1 !important; transform: none !important; }
+  .svc-tags { margin-bottom: 0; }
+  .svc-item-desc { font-size: 14.5px; margin: 14px 0 18px; }
+
+  .svc-mob-nav {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    margin-top: 2px;
+  }
+  .svc-mob-arrow {
+    width: 46px; height: 46px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(245,239,224,.06);
+    border: 1.5px solid rgba(201,155,92,.45);
+    color: #F5EFE0; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .25s ease, transform .2s ease, border-color .25s ease;
+  }
+  .svc-mob-arrow:active { transform: scale(.92); background: rgba(201,155,92,.22); border-color: #C99B5C; }
+  .svc-mob-arrow svg { width: 20px; height: 20px; }
+  .svc-mob-dots { display: flex; align-items: center; gap: 8px; }
+  .svc-mob-dot {
+    width: 8px; height: 8px; border-radius: 999px; border: none; padding: 0;
+    background: rgba(245,239,224,.24); cursor: pointer;
+    transition: width .3s cubic-bezier(.16,1,.3,1), background .3s ease;
+  }
+  .svc-mob-dot.active { width: 26px; background: #C99B5C; }
+
+  .svc-footer-cta { flex-direction: column; align-items: flex-start; margin-top: 44px; padding-top: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-oval-ring.ring-b { animation: none; }
+  .svc-oval-img.is-entering, .svc-item.is-active .svc-item-oval img { animation-duration: .01s; }
+}
 
 /* ══════════════════════════════════════════════════════
    HOME PORTFOLIO TEASER — light creamy theme, image cards
@@ -1362,7 +1382,7 @@
 .wcu-item-desc {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 800;
   line-height: 1.78;
   color: rgba(26,21,16,.48);
 }
@@ -1471,8 +1491,19 @@
 
 /* ══ EYEBROW CYCLE — FLIP-UP STYLE ══ */
 .hero-eyebrow-cycle {
+  display: inline-flex !important;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 9px;
+  row-gap: 2px;
+  white-space: normal !important;
+}
+.hero-eyebrow-cycle .hec-label { display: inline-block; white-space: nowrap; color: #17130E; font-weight: 800; }
+.hero-eyebrow-cycle .hero-eyebrow-location { color: #8a8479; font-weight: 800; white-space: nowrap; }
+
+.hero-eyebrow-cycle {
   display: inline-block;
-  min-width: 158px;
+  min-width: 0;
   white-space: nowrap;
   font-weight: 800;
   letter-spacing: 0.01em;
@@ -2797,7 +2828,7 @@
 
         <!-- LEFT: Text -->
         <div class="hero-left">
-          <p class="hero-eyebrow"><span class="hero-eyebrow-cycle" id="eyebrowCycle">Digital Agency</span><span class="hero-eyebrow-location">Karachi, Pakistan</span></p>
+          <p class="hero-eyebrow"><span class="hero-eyebrow-cycle" id="eyebrowCycle"><span class="hec-label" id="eyebrowLabel">Digital Agency</span><span class="hero-eyebrow-location">Karachi, Pakistan</span></span></p>
 
           <h1 class="hero-headline">
             <span class="line-wrap"><span class="line-inner">From Idea To</span></span>
@@ -3029,202 +3060,184 @@
       </div>
     </section>
 
-    <!-- ══ SERVICES — long editorial scroll section ══ -->
+        <!-- ══ SERVICES — ONE merged box: soft dome rises on scroll, oval image stage, swipe cards on mobile ══ -->
     <section class="svc-section" id="services">
-      <div class="svc-glow-1" aria-hidden="true"></div>
-      <div class="svc-glow-2" aria-hidden="true"></div>
-      <div class="svc-glow-3" aria-hidden="true"></div>
+      <div class="svc-box" id="svcBox">
+        <div class="svc-box-bg" aria-hidden="true"></div>
+        <div class="svc-exit-dome" aria-hidden="true"></div>
 
-      <div class="svc-inner">
+        <div class="svc-inner">
 
-        <div class="svc-header">
-          <p class="svc-eyebrow">What We Do</p>
-          <h2 class="svc-title">Six disciplines.<br>One <em>accountable</em> team.</h2>
-          <p class="svc-subtitle">Every project moves through the same hands — no hand-offs, no guesswork. Here's what we build, end to end.</p>
-        </div>
-
-        <div class="svc-body svc-body-tabs">
-
-          <!-- Sticky visual preview — desktop; becomes a static block above the accordion on mobile -->
-          <div class="svc-visual" id="svcVisual">
-            <div class="svc-visual-glow" aria-hidden="true"></div>
-            <div class="svc-phone">
-              <div class="svc-phone-notch"></div>
-              <div class="svc-phone-screen">
-                <video id="svcVideo" muted loop playsinline autoplay
-                       src="videos/services/service-software.mp4"></video>
-              </div>
-            </div>
+          <div class="svc-header">
+            <p class="svc-eyebrow">What We Do</p>
+            <h2 class="svc-title">Six disciplines.<br>One <em>accountable</em> team.</h2>
+            <p class="svc-subtitle">Every project moves through the same hands — no hand-offs, no guesswork. Here's what we build, end to end.</p>
           </div>
 
-          <div class="svc-list" id="svcList">
+          <div class="svc-body svc-body-tabs">
 
-            <div class="svc-item is-active" data-index="0"
-                 data-video="videos/services/service-software.mp4"
-                 data-video-mobile="videos/services%20mobile/service-software_compressed.mp4">
+            <!-- Sticky OVAL image stage (desktop). Clicking a service opens its image as a fresh oval. -->
+            <div class="svc-visual" id="svcVisual">
+              <div class="svc-oval-wrap" id="svcOvalWrap">
+                <div class="svc-oval-glow" aria-hidden="true"></div>
+                <div class="svc-oval-ring ring-b" aria-hidden="true"></div>
+                <div class="svc-oval-ring ring-a" aria-hidden="true"></div>
+                <div class="svc-oval" id="svcOval">
+              <img class="svc-oval-img is-current" src="images/services/service-software.webp" alt="Software Development illustration" data-i="0" decoding="async">
+              <img class="svc-oval-img" src="images/services/service-website.webp" alt="Website Development illustration" data-i="1" loading="lazy" decoding="async">
+              <img class="svc-oval-img" src="images/services/service-mobile.webp" alt="Mobile App Development illustration" data-i="2" loading="lazy" decoding="async">
+              <img class="svc-oval-img" src="images/services/service-ai.webp" alt="AI Development illustration" data-i="3" loading="lazy" decoding="async">
+              <img class="svc-oval-img" src="images/services/service-design.webp" alt="Product Design illustration" data-i="4" loading="lazy" decoding="async">
+              <img class="svc-oval-img" src="images/services/service-marketing.webp" alt="Marketing and Branding illustration" data-i="5" loading="lazy" decoding="async">
+                </div>
+                <div class="svc-oval-tag" id="svcOvalTag"><b id="svcOvalNum">01</b><span id="svcOvalName">Software Development</span></div>
+              </div>
+            </div>
+
+            <div class="svc-list" id="svcList">
+
+            <div class="svc-item is-active" data-index="0" data-name="Software Development">
+              <div class="svc-item-oval"><img src="images/services/service-software.webp" alt="Software Development illustration" loading="lazy" decoding="async"></div>
               <button class="svc-item-head" type="button" aria-expanded="true">
                 <span class="svc-num">01</span>
                 <h3 class="svc-item-title">Software Development</h3>
-                <span class="svc-item-plus" aria-hidden="true">
-                  <svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
+                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
               </button>
               <div class="svc-item-panel">
                 <div class="svc-item-panel-inner">
-                  <div class="svc-tags">
-                    <span class="svc-tag">Node.js</span><span class="svc-tag">Python</span><span class="svc-tag">React</span><span class="svc-tag">AWS</span>
-                  </div>
+                  <div class="svc-tags"><span class="svc-tag">Node.js</span><span class="svc-tag">Python</span><span class="svc-tag">React</span><span class="svc-tag">AWS</span></div>
                   <p class="svc-item-desc">Custom systems, APIs and scalable backends engineered to hold up under real, everyday load.</p>
                   <a class="svc-learn-more" href="services.html">
                     Learn more
                     <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
-                  <div class="svc-item-video-slot"></div>
                 </div>
               </div>
             </div>
 
-            <div class="svc-item" data-index="1"
-                 data-video="videos/services/service-website.mp4"
-                 data-video-mobile="videos/services%20mobile/service-website_compressed.mp4">
+            <div class="svc-item" data-index="1" data-name="Website Development">
+              <div class="svc-item-oval"><img src="images/services/service-website.webp" alt="Website Development illustration" loading="lazy" decoding="async"></div>
               <button class="svc-item-head" type="button" aria-expanded="false">
                 <span class="svc-num">02</span>
                 <h3 class="svc-item-title">Website Development</h3>
-                <span class="svc-item-plus" aria-hidden="true">
-                  <svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
+                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
               </button>
               <div class="svc-item-panel">
                 <div class="svc-item-panel-inner">
-                  <div class="svc-tags">
-                    <span class="svc-tag">React</span><span class="svc-tag">Next.js</span><span class="svc-tag">TypeScript</span>
-                  </div>
+                  <div class="svc-tags"><span class="svc-tag">React</span><span class="svc-tag">Next.js</span><span class="svc-tag">TypeScript</span></div>
                   <p class="svc-item-desc">Fast, responsive websites and web platforms built to convert visitors into customers.</p>
                   <a class="svc-learn-more" href="services.html">
                     Learn more
                     <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
-                  <div class="svc-item-video-slot"></div>
                 </div>
               </div>
             </div>
 
-            <div class="svc-item" data-index="2"
-                 data-video="videos/services/service-mobile.mp4"
-                 data-video-mobile="videos/services%20mobile/service-mobile_compressed.mp4">
+            <div class="svc-item" data-index="2" data-name="Mobile App Development">
+              <div class="svc-item-oval"><img src="images/services/service-mobile.webp" alt="Mobile App Development illustration" loading="lazy" decoding="async"></div>
               <button class="svc-item-head" type="button" aria-expanded="false">
                 <span class="svc-num">03</span>
                 <h3 class="svc-item-title">Mobile App Development</h3>
-                <span class="svc-item-plus" aria-hidden="true">
-                  <svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
+                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
               </button>
               <div class="svc-item-panel">
                 <div class="svc-item-panel-inner">
-                  <div class="svc-tags">
-                    <span class="svc-tag">Swift</span><span class="svc-tag">Kotlin</span><span class="svc-tag">Flutter</span>
-                  </div>
+                  <div class="svc-tags"><span class="svc-tag">Swift</span><span class="svc-tag">Kotlin</span><span class="svc-tag">Flutter</span></div>
                   <p class="svc-item-desc">Native and cross-platform apps for iOS and Android, designed for speed and daily use.</p>
                   <a class="svc-learn-more" href="services.html">
                     Learn more
                     <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
-                  <div class="svc-item-video-slot"></div>
                 </div>
               </div>
             </div>
 
-            <div class="svc-item" data-index="3"
-                 data-video="videos/services/service-ai.mp4"
-                 data-video-mobile="videos/services%20mobile/service-ai%20-%20COMPRESS%20(1).mp4">
+            <div class="svc-item" data-index="3" data-name="AI Development">
+              <div class="svc-item-oval"><img src="images/services/service-ai.webp" alt="AI Development illustration" loading="lazy" decoding="async"></div>
               <button class="svc-item-head" type="button" aria-expanded="false">
                 <span class="svc-num">04</span>
                 <h3 class="svc-item-title">AI Development</h3>
-                <span class="svc-item-plus" aria-hidden="true">
-                  <svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
+                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
               </button>
               <div class="svc-item-panel">
                 <div class="svc-item-panel-inner">
-                  <div class="svc-tags">
-                    <span class="svc-tag">Python</span><span class="svc-tag">TensorFlow</span><span class="svc-tag">LLMs</span>
-                  </div>
+                  <div class="svc-tags"><span class="svc-tag">Python</span><span class="svc-tag">TensorFlow</span><span class="svc-tag">LLMs</span></div>
                   <p class="svc-item-desc">Intelligent automation and AI features built into your product from day one, not bolted on later.</p>
                   <a class="svc-learn-more" href="services.html">
                     Learn more
                     <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
-                  <div class="svc-item-video-slot"></div>
                 </div>
               </div>
             </div>
 
-            <div class="svc-item" data-index="4"
-                 data-video="videos/services/service-design.mp4"
-                 data-video-mobile="videos/services%20mobile/service-design_compressed.mp4">
+            <div class="svc-item" data-index="4" data-name="Product Design">
+              <div class="svc-item-oval"><img src="images/services/service-design.webp" alt="Product Design illustration" loading="lazy" decoding="async"></div>
               <button class="svc-item-head" type="button" aria-expanded="false">
                 <span class="svc-num">05</span>
                 <h3 class="svc-item-title">Product Design</h3>
-                <span class="svc-item-plus" aria-hidden="true">
-                  <svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
+                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
               </button>
               <div class="svc-item-panel">
                 <div class="svc-item-panel-inner">
-                  <div class="svc-tags">
-                    <span class="svc-tag">Figma</span><span class="svc-tag">UX Research</span><span class="svc-tag">Prototyping</span>
-                  </div>
+                  <div class="svc-tags"><span class="svc-tag">Figma</span><span class="svc-tag">UX Research</span><span class="svc-tag">Prototyping</span></div>
                   <p class="svc-item-desc">Interfaces people actually enjoy using — researched, wireframed, and polished to detail.</p>
                   <a class="svc-learn-more" href="services.html">
                     Learn more
                     <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
-                  <div class="svc-item-video-slot"></div>
                 </div>
               </div>
             </div>
 
-            <div class="svc-item" data-index="5"
-                 data-video="videos/services/service-marketing.mp4"
-                 data-video-mobile="videos/services%20mobile/service-marketing%20-%20COMPRESS.mp4">
+            <div class="svc-item" data-index="5" data-name="Marketing &amp; Branding">
+              <div class="svc-item-oval"><img src="images/services/service-marketing.webp" alt="Marketing and Branding illustration" loading="lazy" decoding="async"></div>
               <button class="svc-item-head" type="button" aria-expanded="false">
                 <span class="svc-num">06</span>
                 <h3 class="svc-item-title">Marketing &amp; Branding</h3>
-                <span class="svc-item-plus" aria-hidden="true">
-                  <svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
+                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
               </button>
               <div class="svc-item-panel">
                 <div class="svc-item-panel-inner">
-                  <div class="svc-tags">
-                    <span class="svc-tag">Brand Identity</span><span class="svc-tag">Social</span><span class="svc-tag">Growth</span>
-                  </div>
+                  <div class="svc-tags"><span class="svc-tag">Brand Identity</span><span class="svc-tag">Social</span><span class="svc-tag">Growth</span></div>
                   <p class="svc-item-desc">Brand identity and growth marketing that gets a product noticed — and remembered.</p>
                   <a class="svc-learn-more" href="services.html">
                     Learn more
                     <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
-                  <div class="svc-item-video-slot"></div>
                 </div>
               </div>
             </div>
 
-          </div><!-- /svc-list -->
-        </div><!-- /svc-body -->
+            </div><!-- /svc-list -->
+          </div><!-- /svc-body -->
 
-        <div class="svc-footer-cta">
-          <p class="svc-footer-text"><strong>6 core service lines.</strong> One accountable team, from strategy to launch.</p>
-          <a class="svc-view-all" href="services.html">
-            View All Services
-            <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <!-- Mobile controls -->
+          <div class="svc-mob-nav" id="svcMobNav">
+            <button class="svc-mob-arrow" id="svcMobPrev" type="button" aria-label="Previous service">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="svc-mob-dots" id="svcMobDots"><button class="svc-mob-dot active" type="button" data-index="0" aria-label="Service 1: Software Development"></button><button class="svc-mob-dot" type="button" data-index="1" aria-label="Service 2: Website Development"></button><button class="svc-mob-dot" type="button" data-index="2" aria-label="Service 3: Mobile App Development"></button><button class="svc-mob-dot" type="button" data-index="3" aria-label="Service 4: AI Development"></button><button class="svc-mob-dot" type="button" data-index="4" aria-label="Service 5: Product Design"></button><button class="svc-mob-dot" type="button" data-index="5" aria-label="Service 6: Marketing and Branding"></button></div>
+            <button class="svc-mob-arrow" id="svcMobNext" type="button" aria-label="Next service">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
+          <div class="svc-footer-cta">
+            <p class="svc-footer-text"><strong>6 core service lines.</strong> One accountable team, from strategy to launch.</p>
+            <a class="svc-view-all" href="services.html">
+              View All Services
+              <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
         </div>
-
       </div>
     </section>
 
 
-    <!-- ══ PORTFOLIO — home teaser, light creamy theme ══ -->
+<!-- ══ PORTFOLIO — home teaser, light creamy theme ══ -->
     <section class="pfh-section" id="portfolio">
       <div class="pfh-blob" aria-hidden="true"></div>
       <div class="pfh-inner">
@@ -3255,7 +3268,7 @@
 
           <a class="pfh-card" href="portfolio.html" data-index="1">
             <div class="pfh-card-media">
-              <img src="images/portfolio images/Dr. Asgar Rheumatology Consultation  Mobile App + Dashboard Web App/Screenshot 2026-09-15 010134.png" alt="Dr. Asgar Rheumatology app" loading="lazy">
+              <img src="images/portfolio images/Dr. Asgar Rheumatology Consultation - Mobile App and Dashboard Web App/Screenshot 2026-09-15 010134.png" alt="Dr. Asgar Rheumatology app" loading="lazy">
               <span class="pfh-card-view" aria-hidden="true">
                 <svg viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H7M16 4V13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
@@ -4132,9 +4145,6 @@
                     Verified Client
                   </span>
                   </div>
-                  <div class="tst-index-badge">
-                  <span class="tst-current-num">01</span><span class="tst-total-num"> / 08</span>
-                </div>
                 </div>
                 <div class="tst-quote-col">
                   <div class="tst-card-tags">
@@ -4175,9 +4185,6 @@
                     Verified Client
                   </span>
                   </div>
-                  <div class="tst-index-badge">
-                  <span class="tst-current-num">02</span><span class="tst-total-num"> / 08</span>
-                </div>
                 </div>
                 <div class="tst-quote-col">
                   <div class="tst-card-tags">
@@ -4218,9 +4225,6 @@
                     Verified Client
                   </span>
                   </div>
-                  <div class="tst-index-badge">
-                  <span class="tst-current-num">03</span><span class="tst-total-num"> / 08</span>
-                </div>
                 </div>
                 <div class="tst-quote-col">
                   <div class="tst-card-tags">
@@ -4261,9 +4265,6 @@
                     Verified Client
                   </span>
                   </div>
-                  <div class="tst-index-badge">
-                  <span class="tst-current-num">04</span><span class="tst-total-num"> / 08</span>
-                </div>
                 </div>
                 <div class="tst-quote-col">
                   <div class="tst-card-tags">
@@ -4304,9 +4305,6 @@
                     Verified Client
                   </span>
                   </div>
-                  <div class="tst-index-badge">
-                  <span class="tst-current-num">05</span><span class="tst-total-num"> / 08</span>
-                </div>
                 </div>
                 <div class="tst-quote-col">
                   <div class="tst-card-tags">
@@ -4347,9 +4345,6 @@
                     Verified Client
                   </span>
                   </div>
-                  <div class="tst-index-badge">
-                  <span class="tst-current-num">06</span><span class="tst-total-num"> / 08</span>
-                </div>
                 </div>
                 <div class="tst-quote-col">
                   <div class="tst-card-tags">
@@ -4390,9 +4385,6 @@
                     Verified Client
                   </span>
                   </div>
-                  <div class="tst-index-badge">
-                  <span class="tst-current-num">07</span><span class="tst-total-num"> / 08</span>
-                </div>
                 </div>
                 <div class="tst-quote-col">
                   <div class="tst-card-tags">
@@ -4433,9 +4425,6 @@
                     Verified Client
                   </span>
                   </div>
-                  <div class="tst-index-badge">
-                  <span class="tst-current-num">08</span><span class="tst-total-num"> / 08</span>
-                </div>
                 </div>
                 <div class="tst-quote-col">
                   <div class="tst-card-tags">
@@ -4456,17 +4445,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             <span>Previous</span>
           </button>
-
-          <div class="tst-dots" id="tstDots" role="tablist" aria-label="Review pagination">
-            <button class="tst-dot active" data-index="0" aria-label="Go to review 1"></button>
-            <button class="tst-dot" data-index="1" aria-label="Go to review 2"></button>
-            <button class="tst-dot" data-index="2" aria-label="Go to review 3"></button>
-            <button class="tst-dot" data-index="3" aria-label="Go to review 4"></button>
-            <button class="tst-dot" data-index="4" aria-label="Go to review 5"></button>
-            <button class="tst-dot" data-index="5" aria-label="Go to review 6"></button>
-            <button class="tst-dot" data-index="6" aria-label="Go to review 7"></button>
-            <button class="tst-dot" data-index="7" aria-label="Go to review 8"></button>
-          </div>
 
           <button class="tst-nav-btn tst-nav-next" id="tstNext" aria-label="Next review">
             <span>Next</span>
@@ -4504,33 +4482,6 @@
   <footer class="site-footer" id="siteFooter">
     <div class="footer-ambient-glow" aria-hidden="true"></div>
     <div class="footer-inner">
-
-      <!-- ══ TOP CTA BANNER ══ -->
-      <div class="footer-cta-banner">
-        <div class="footer-cta-content">
-          <div class="footer-cta-pill">
-            <span class="cta-pulse-dot"></span>
-            <span>Let's Build Something Exceptional</span>
-          </div>
-          <h2 class="footer-cta-title">
-            Have an ambitious project in mind?<br>
-            <em>Let's engineer it together.</em>
-          </h2>
-          <p class="footer-cta-desc">
-            From high-conversion web platforms and cross-platform mobile apps to production-grade AI systems, we turn complex challenges into digital results.
-          </p>
-          <div class="footer-cta-actions">
-            <a href="contact.html" class="footer-btn-primary">
-              <span>Start Your Project</span>
-              <svg viewBox="0 0 20 20" fill="none" width="16" height="16"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="mailto:analyticinsider@gmail.com.pk" class="footer-btn-secondary">
-              <svg viewBox="0 0 24 24" fill="none" width="17" height="17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
-              <span>analyticinsider@gmail.com.pk</span>
-            </a>
-          </div>
-        </div>
-      </div>
 
       <!-- ══ MAIN 5-COLUMN FOOTER GRID ══ -->
       <div class="footer-grid-grand">
@@ -4657,143 +4608,192 @@
 
 <script src="./script.js"></script>
 <script>
-/* ══ SERVICES SECTION — tabbed accordion + dynamic video preview + scroll entrance ══ */
+/* ══ SERVICES SECTION
+   1) scroll-driven "box rises" effect (--p enter / --q exit)
+   2) desktop: accordion + oval image stage (new image opens as a fresh oval)
+   3) mobile: swipe snap-carousel with per-card ovals, prev/next (wraps) + dots
+══ */
 (function () {
   const svcSection = document.querySelector('.svc-section');
+  const box        = document.getElementById('svcBox');
   const svcList    = document.getElementById('svcList');
   const svcVisual  = document.getElementById('svcVisual');
-  const video      = document.getElementById('svcVideo');
-  if (!svcSection || !svcList || !video) return;
+  if (!svcSection || !box || !svcList) return;
 
-  const items = Array.from(svcList.querySelectorAll('.svc-item'));
-  const phoneScreen = svcVisual ? svcVisual.querySelector('.svc-phone-screen') : null;
-  const mq = window.matchMedia('(max-width: 900px)');
+  const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
+  const ease  = t => t * t * (3 - 2 * t);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── 1. Scroll-Triggered Entrance Animation ── */
-  if ('IntersectionObserver' in window) {
-    const sObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          svcSection.classList.add('svc-in');
-          sObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    sObs.observe(svcSection);
-
-    const svcHeader = svcSection.querySelector('.svc-header');
-    if (svcHeader) {
-      const hObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            svcHeader.classList.add('svc-in');
-            hObs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-      hObs.observe(svcHeader);
-    }
-
-    if (svcVisual) {
-      const vObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            svcVisual.classList.add('svc-in');
-            vObs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      vObs.observe(svcVisual);
-    }
-
-    items.forEach((item, idx) => {
-      item.style.transitionDelay = `${idx * 0.08}s`;
-      const iObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            item.classList.add('svc-in');
-            iObs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-      iObs.observe(item);
-    });
+  /* ── 1. Box rise / melt-out on scroll ── */
+  if (reduceMotion) {
+    box.style.setProperty('--p', 1);
+    box.style.setProperty('--q', 0);
   } else {
-    // Fallback if IntersectionObserver is not supported
-    svcSection.classList.add('svc-in');
-    const svcHeader = svcSection.querySelector('.svc-header');
-    if (svcHeader) svcHeader.classList.add('svc-in');
-    if (svcVisual) svcVisual.classList.add('svc-in');
-    items.forEach(item => item.classList.add('svc-in'));
+    let ticking = false;
+    const paint = () => {
+      ticking = false;
+      const r  = box.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p  = ease(clamp((vh - r.top) / (vh * 0.95), 0, 1));
+      const q  = ease(clamp((vh * 1.2 - r.bottom) / (vh * 1.1), 0, 1));
+      box.style.setProperty('--p', p.toFixed(4));
+      box.style.setProperty('--q', q.toFixed(4));
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(paint); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    paint();
   }
 
-  /* ── 2. Video Placement & Source ── */
-  function videoSrcFor(item) {
-    return (mq.matches && item.dataset.videoMobile) ? item.dataset.videoMobile : item.dataset.video;
+  /* ── 2. Entrance reveals ── */
+  const items  = Array.from(svcList.querySelectorAll('.svc-item'));
+  const header = svcSection.querySelector('.svc-header');
+  const revealOnce = (el, threshold, margin, delay) => {
+    if (!el) return;
+    if (delay) el.style.transitionDelay = delay;
+    if (!('IntersectionObserver' in window)) { el.classList.add('svc-in'); return; }
+    const o = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { el.classList.add('svc-in'); o.unobserve(el); }
+    }), { threshold, rootMargin: margin });
+    o.observe(el);
+  };
+  revealOnce(header, 0.15, '0px 0px -40px 0px');
+  revealOnce(svcVisual, 0.12, '0px 0px -40px 0px');
+  items.forEach((it, i) => revealOnce(it, 0.1, '0px 0px -30px 0px', `${i * 0.08}s`));
+
+  /* Preload the oval images shortly before the section arrives (desktop only),
+     so the first "new oval opens" transition never waits on a download */
+  if ('IntersectionObserver' in window) {
+    const pre = new IntersectionObserver(es => {
+      if (!es[0].isIntersecting) return;
+      pre.disconnect();
+      if (window.matchMedia('(max-width: 900px)').matches) return;
+      document.querySelectorAll('.svc-oval-img').forEach(img => {
+        const src = img.getAttribute('src');
+        const tmp = new Image();
+        tmp.src = src;
+        img.loading = 'eager';
+      });
+    }, { rootMargin: '900px 0px' });
+    pre.observe(svcSection);
   }
 
-  /* On desktop the single <video> element lives in the sticky phone frame.
-     On mobile it gets relocated into the currently open accordion panel,
-     so nothing plays off-screen and only one file loads at a time. */
-  function placeVideo(item) {
-    const target = mq.matches
-      ? item.querySelector('.svc-item-video-slot')
-      : phoneScreen;
-    if (target && video.parentElement !== target) target.appendChild(video);
-  }
+  /* ── 3. Shared state ── */
+  const mq = window.matchMedia('(max-width: 900px)');
+  const stageImgs = Array.from(document.querySelectorAll('.svc-oval-img'));
+  const ovalWrap  = document.getElementById('svcOvalWrap');
+  const ovalTag   = document.getElementById('svcOvalTag');
+  const tagNum    = document.getElementById('svcOvalNum');
+  const tagName   = document.getElementById('svcOvalName');
+  const mobDots   = Array.from(document.querySelectorAll('.svc-mob-dot'));
+  const mobPrev   = document.getElementById('svcMobPrev');
+  const mobNext   = document.getElementById('svcMobNext');
 
-  /* ── 3. Cubix-Style Single-Active Accordion Behavior ── */
-  function activate(item) {
-    // Auto-collapse previously active accordion: strictly one item remains open
-    items.forEach(i => {
-      const isActive = (i === item);
-      i.classList.toggle('is-active', isActive);
-      const head = i.querySelector('.svc-item-head');
-      if (head) head.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-    });
+  let current = 0;
+  let swapTimer = null, tagTimer = null;
 
-    placeVideo(item);
+  /* Desktop oval stage: old image scales back, new one opens as an oval from the centre */
+  function showStageImage(idx, animate) {
+    const next = stageImgs[idx];
+    if (!next) return;
+    const cur = stageImgs.find(i => i.classList.contains('is-current'));
+    if (cur === next) return;
+    stageImgs.forEach(i => i.classList.remove('is-leaving', 'is-entering'));
+    if (cur) { cur.classList.remove('is-current'); if (animate) cur.classList.add('is-leaving'); }
+    next.classList.add('is-current');
+    if (animate) next.classList.add('is-entering');
+    clearTimeout(swapTimer);
+    swapTimer = setTimeout(() => stageImgs.forEach(i => i.classList.remove('is-leaving', 'is-entering')), 1000);
 
-    const src = videoSrcFor(item);
-    if (video.getAttribute('data-current-src') !== src) {
-      video.classList.add('is-switching');
-      setTimeout(() => {
-        video.setAttribute('data-current-src', src);
-        video.src = src;
-        video.load();
-        video.play().catch(() => {});
-        video.classList.remove('is-switching');
-      }, 160);
+    if (animate && ovalWrap) {
+      ovalWrap.classList.remove('pulse'); void ovalWrap.offsetWidth; ovalWrap.classList.add('pulse');
+    }
+    if (ovalTag) {
+      ovalTag.classList.add('is-swapping');
+      clearTimeout(tagTimer);
+      tagTimer = setTimeout(() => {
+        if (tagNum)  tagNum.textContent  = String(idx + 1).padStart(2, '0');
+        if (tagName) tagName.textContent = items[idx].dataset.name.replace(/&amp;/g, '&');
+        ovalTag.classList.remove('is-swapping');
+      }, 200);
     }
   }
 
-  function collapse(item) {
-    item.classList.remove('is-active');
-    const head = item.querySelector('.svc-item-head');
-    if (head) head.setAttribute('aria-expanded', 'false');
+  function markActive(idx) {
+    current = idx;
+    items.forEach((it, i) => {
+      const on = i === idx;
+      it.classList.toggle('is-active', on);
+      const h = it.querySelector('.svc-item-head');
+      if (h) h.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+    mobDots.forEach((d, i) => d.classList.toggle('active', i === idx));
   }
 
-  items.forEach(item => {
+  /* ── Desktop: single-open accordion + oval swap ── */
+  items.forEach((item, idx) => {
     const head = item.querySelector('.svc-item-head');
     if (!head) return;
     head.addEventListener('click', () => {
-      const alreadyOpen = item.classList.contains('is-active');
-      if (alreadyOpen) {
-        collapse(item);
+      if (mq.matches) { scrollToCard(idx); return; }
+      if (item.classList.contains('is-active')) {          // click open one → collapse it
+        item.classList.remove('is-active');
+        head.setAttribute('aria-expanded', 'false');
         return;
       }
-      activate(item);
+      markActive(idx);
+      showStageImage(idx, true);
     });
   });
 
-  mq.addEventListener('change', () => {
-    const active = items.find(i => i.classList.contains('is-active')) || items[0];
-    if (!active.classList.contains('is-active')) activate(active);
-    else placeVideo(active);
-  });
+  /* ── Mobile: snap carousel ── */
+  function scrollToCard(idx) {
+    const it = items[idx];
+    if (!it) return;
+    const left = it.offsetLeft - (svcList.clientWidth - it.offsetWidth) / 2;
+    svcList.scrollTo({ left, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
 
-  // Activate first item by default
-  activate(items[0]);
+  let scrollTick = false;
+  function syncFromScroll() {
+    scrollTick = false;
+    if (!mq.matches) return;
+    const lr = svcList.getBoundingClientRect();
+    const cx = lr.left + lr.width / 2;
+    let best = 0, bestD = Infinity;
+    items.forEach((it, i) => {
+      const r = it.getBoundingClientRect();
+      const d = Math.abs(r.left + r.width / 2 - cx);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    if (best !== current) { markActive(best); showStageImage(best, false); }
+  }
+  svcList.addEventListener('scroll', () => {
+    if (!scrollTick) { scrollTick = true; requestAnimationFrame(syncFromScroll); }
+  }, { passive: true });
+
+  if (mobPrev) mobPrev.addEventListener('click', () => scrollToCard((current - 1 + items.length) % items.length));
+  if (mobNext) mobNext.addEventListener('click', () => scrollToCard((current + 1) % items.length));
+  mobDots.forEach((d, i) => d.addEventListener('click', () => scrollToCard(i)));
+
+  /* Keep desktop / mobile in sync when the viewport crosses the breakpoint */
+  function onBreakpoint() {
+    if (mq.matches) {
+      markActive(current);
+      requestAnimationFrame(() => {
+        const it = items[current];
+        svcList.scrollLeft = it.offsetLeft - (svcList.clientWidth - it.offsetWidth) / 2;
+      });
+    } else {
+      svcList.scrollLeft = 0;
+      markActive(current);
+      showStageImage(current, false);
+    }
+  }
+  if (mq.addEventListener) mq.addEventListener('change', onBreakpoint); else mq.addListener(onBreakpoint);
+
+  markActive(0);
+  if (mq.matches) onBreakpoint();
 })();
 </script>
 
@@ -5183,46 +5183,34 @@
   }
 })();
 
-/* ── HERO EYEBROW LABEL CYCLER — CLIP REVEAL + COLOR SHIFT ── */
+/* ── HERO EYEBROW CYCLER — "Digital Agency · Karachi, Pakistan" flips as ONE unit ── */
 (function(){
-  const el = document.getElementById('eyebrowCycle');
-  if(!el) return;
+  const el  = document.getElementById('eyebrowCycle');   // wrapper = label + location
+  const lab = document.getElementById('eyebrowLabel');   // only the changing words
+  if(!el || !lab) return;
 
-  // All labels share the site's theme accent color (bold, on-brand)
-  const items = [
-    { text: 'Digital Agency',    color: '#C99B5C' },
-    { text: 'Software Studio',   color: '#C99B5C' },
-    { text: 'Creative Company',  color: '#C99B5C' },
-    { text: 'Growth Partner',    color: '#C99B5C' },
-    { text: 'Tech Agency',       color: '#C99B5C' },
-  ];
+  const items = ['Digital Agency','Software Studio','Creative Company','Growth Partner','Tech Agency'];
   let i = 0;
 
-  /* ── FLIP-UP REVEAL animation (new) ── */
-  el.style.display     = 'inline-block';
-  el.style.overflow    = 'visible';
-  el.style.color       = items[0].color;
-  el.textContent       = items[0].text;
-  el.style.opacity     = '1';
-  el.style.transform   = 'translateY(0) rotateX(0deg)';
+  el.style.overflow        = 'visible';
+  el.style.opacity         = '1';
+  el.style.transform       = 'translateY(0) rotateX(0deg)';
   el.style.transformOrigin = 'center bottom';
 
   function showNext(){
-    // EXIT: flip up & fade out
+    // EXIT: whole unit flips up & fades out
     el.style.transition = 'opacity 0.3s ease, transform 0.35s cubic-bezier(.55,0,1,.45)';
     el.style.opacity    = '0';
     el.style.transform  = 'translateY(-12px) rotateX(30deg)';
 
     setTimeout(() => {
       i = (i + 1) % items.length;
-      el.textContent = items[i].text;
-      el.style.color  = items[i].color;
-      // Position below, ready to flip in
+      lab.textContent = items[i];
       el.style.transition = 'none';
       el.style.opacity    = '0';
       el.style.transform  = 'translateY(14px) rotateX(-28deg)';
-      void el.offsetWidth; // force reflow
-      // ENTER: flip into place
+      void el.offsetWidth;
+      // ENTER: label + "Karachi, Pakistan" flip into place together
       el.style.transition = 'opacity 0.42s ease, transform 0.48s cubic-bezier(.22,1,.36,1)';
       el.style.opacity    = '1';
       el.style.transform  = 'translateY(0) rotateX(0deg)';
@@ -5718,42 +5706,41 @@
   const footer = document.querySelector('.site-footer');
   if (!footer) return;
 
-  const ctaBanner = footer.querySelector('.footer-cta-banner');
   const footerGrid = footer.querySelector('.footer-grid-grand');
 
   let ticking = false;
 
   function updateFooterOverlap() {
-    const rect = footer.getBoundingClientRect();
+    // IMPORTANT: don't use getBoundingClientRect() here — it reports the
+    // element's CURRENT on-screen position, which already includes the
+    // translateY this same function applies. Reading that back in and
+    // using it to compute the next translateY creates a feedback loop
+    // (each frame's offset gets baked into the next frame's "top"), which
+    // drifts out of sync on short viewports and shows up as a gap/seam of
+    // page background behind the footer — most visible on mobile where
+    // the viewport height is small relative to the drift. Instead we use
+    // the footer's static layout position (offsetTop), which CSS
+    // transforms never affect, so the calculation always starts from the
+    // real, untransformed position.
+    const staticTop = footer.offsetTop - window.scrollY;
     const winH = window.innerHeight;
 
     // Trigger zone: footer top between winH (just entering) and winH - 450 (unfolded)
-    if (rect.top <= winH) {
-      const scrollDistance = winH - rect.top;
+    if (staticTop <= winH) {
+      const scrollDistance = winH - staticTop;
       const progress = Math.min(1, Math.max(0, scrollDistance / Math.min(winH * 0.7, 450)));
       
       // Dramatic sheet overlap lift: translateY 140px -> 0px
       const translateY = (1 - progress) * 140;
       footer.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
 
-      if (ctaBanner) {
-        const ctaY = (1 - progress) * 40;
-        const ctaOpacity = 0.35 + (progress * 0.65);
-        ctaBanner.style.transform = `translate3d(0, ${ctaY.toFixed(1)}px, 0)`;
-        ctaBanner.style.opacity = ctaOpacity.toFixed(2);
-      }
-
       if (footerGrid) {
         const gridY = (1 - progress) * 25;
         footerGrid.style.transform = `translate3d(0, ${gridY.toFixed(1)}px, 0)`;
       }
     } else {
-      // Below viewport: rest state
+      // Not yet in the trigger zone: rest state
       footer.style.transform = 'translate3d(0, 140px, 0)';
-      if (ctaBanner) {
-        ctaBanner.style.transform = 'translate3d(0, 40px, 0)';
-        ctaBanner.style.opacity = '0.35';
-      }
       if (footerGrid) {
         footerGrid.style.transform = 'translate3d(0, 25px, 0)';
       }

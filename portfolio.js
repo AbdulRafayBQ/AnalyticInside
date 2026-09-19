@@ -34,7 +34,7 @@
     {
       title: 'Dr. Asgar Rheumatology',
       sub: 'Mobile App + Dashboard',
-      folder: 'Dr. Asgar Rheumatology Consultation  Mobile App + Dashboard Web App',
+      folder: 'Dr. Asgar Rheumatology Consultation - Mobile App and Dashboard Web App',
       images: ['Screenshot 2026-09-15 010134.png', 'Screenshot 2026-09-15 010234.png', 'Screenshot 2026-09-15 010255.png', 'Screenshot 2026-09-15 010308.png'],
       tags: ['React Native', 'Next.js', 'NestJS', 'PostgreSQL', 'Tailwind CSS'],
       tagline: 'Cross-platform care app paired with a secure clinic dashboard.',
