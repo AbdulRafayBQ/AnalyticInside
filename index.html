@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -554,462 +554,290 @@
   transition-delay: 0s !important;
 }
 
-/* ══════════════════════════════════════════════════════
-   HOME SERVICES — ONE unified box that "rises" on scroll
-   (soft dark dome grows out of the white page, then a soft
-   white dome rises back over it on the way out — same feel as
-   the Cubix reference). Oval image stage on desktop, swipe
-   card-carousel with oval images on mobile.
-   --p = enter progress (0→1), --q = exit progress (0→1),
-   both written by JS on scroll. No JS = fully visible box.
-════════════════════════════════════════════════════════ */
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   SERVICES â€” Horizontal Carousel, Light Theme, Big Cards
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .svc-section {
   position: relative;
-  background: #FFFFFF;
-  color: #F5EFE0;
-  padding: 0;
-}
-.svc-box {
-  --p: 1;
-  --q: 0;
-  position: relative;
-  isolation: isolate;
-  padding: 150px 0 210px;
-}
-
-/* One merged background: gradient + highlights, revealed through a soft elliptical mask
-   (lightened a touch from the original so the section doesn't read too dark) */
-.svc-box-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  background: #FAFAF8;
   overflow: hidden;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 65% 34% at 12% 6%, rgba(245,239,224,0.22) 0%, transparent 62%),
-    radial-gradient(ellipse 50% 30% at 96% 94%, rgba(201,155,92,0.26) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 20% at 50% 42%, rgba(245,239,224,0.10) 0%, transparent 70%),
-    radial-gradient(ellipse 34% 16% at 88% 14%, rgba(201,155,92,0.16) 0%, transparent 70%),
-    linear-gradient(180deg, #4A3826 0%, #392B1B 45%, #302213 100%);
-  --rx: calc(46vw + 118vw * var(--p));
-  --ry: calc(22% + 110% * var(--p));
-  /* soft elliptical dome  ∩  soft top fade (so the top edge never shows a hard line) */
-  -webkit-mask-image:
-    radial-gradient(ellipse var(--rx) var(--ry) at 50% calc(var(--ry) * (1 - 0.55 * var(--p))), #000 62%, transparent 100%),
-    linear-gradient(to bottom, transparent 0, #000 calc(80px + 260px * (1 - var(--p))));
-  -webkit-mask-composite: source-in;
-          mask-image:
-    radial-gradient(ellipse var(--rx) var(--ry) at 50% calc(var(--ry) * (1 - 0.55 * var(--p))), #000 62%, transparent 100%),
-    linear-gradient(to bottom, transparent 0, #000 calc(80px + 260px * (1 - var(--p))));
-          mask-composite: intersect;
+  padding: 110px 0 90px;
 }
-/* Bottom edge: always melts into the page, and a bigger white dome rises over it while leaving */
-.svc-exit-dome {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 62vh;
-  z-index: 1;
-  pointer-events: none;
+.svc-section::before {
+  content: "";
+  position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse calc(34vw + 100vw * var(--q)) calc(2px + 46vh * var(--q)) at 50% 100%, #FFFFFF 50%, rgba(255,255,255,0) 100%),
-    linear-gradient(to top, #FFFFFF 0, rgba(255,255,255,0) 150px);
+    radial-gradient(ellipse 60% 50% at 15% 0%, rgba(201,155,92,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 85% 95%, rgba(201,155,92,.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+.svc-wrap {
+  position: relative; z-index: 1;
+  width: min(1360px, 94%); margin: 0 auto;
 }
 
-.svc-inner {
-  position: relative;
-  z-index: 2;
-  width: min(1180px, 90%);
-  margin: 0 auto;
-  opacity: calc((var(--p) - 0.28) * 3);
-}
-
-/* ── Header ── */
+/* Header */
 .svc-header {
-  max-width: 640px;
-  margin-bottom: 96px;
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity .8s cubic-bezier(.16, 1, .3, 1), transform .8s cubic-bezier(.16, 1, .3, 1);
-  will-change: opacity, transform;
+  max-width: 680px; margin-bottom: 56px;
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
 }
 .svc-header.svc-in { opacity: 1; transform: translateY(0); }
 .svc-eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
-  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700;
-  letter-spacing: .26em; text-transform: uppercase; color: #C99B5C;
-  margin-bottom: 24px; background: rgba(201,155,92,0.10);
-  padding: 8px 18px; border-radius: 999px; border: 1px solid rgba(201,155,92,0.25);
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800;
+  letter-spacing: .22em; text-transform: uppercase; color: #C99B5C;
+  margin-bottom: 20px;
+}
+.svc-eyebrow::before {
+  content: ""; width: 28px; height: 2px;
+  background: #C99B5C; border-radius: 2px;
 }
 .svc-title {
-  font-family: 'Outfit', sans-serif; font-weight: 800;
-  font-size: clamp(36px, 4.6vw, 60px); line-height: 1.08; letter-spacing: -0.03em;
-  color: #FBF7EE; margin-bottom: 22px;
+  font-family: 'Outfit', sans-serif; font-weight: 900;
+  font-size: clamp(38px, 4.6vw, 62px); line-height: 1.05;
+  letter-spacing: -0.036em; color: #17130E; margin-bottom: 18px;
 }
 .svc-title em { font-style: italic; color: #C99B5C; }
 .svc-subtitle {
-  font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.75;
-  color: rgba(245,239,224,.55); max-width: 520px;
+  font-family: 'Inter', sans-serif; font-size: 16.5px; font-weight: 500;
+  line-height: 1.7; color: rgba(23,19,14,.48); max-width: 480px;
 }
 
-/* ── Body: sticky oval stage + accordion list ── */
-.svc-body-tabs {
-  display: grid;
-  grid-template-columns: minmax(300px, 400px) 1fr;
-  gap: 76px;
-  align-items: start;
+/* Carousel track */
+.svc-track-outer { overflow: hidden; }
+.svc-track {
+  display: flex; gap: 24px;
+  transition: transform .65s cubic-bezier(.25,.9,.3,1);
+  will-change: transform;
 }
 
-/* Sticky oval visual */
-.svc-visual {
-  position: sticky;
-  top: 96px;
-  display: flex;
-  justify-content: center;
-  padding: 24px 0;
-  opacity: 0;
-  transform: translateY(32px) scale(0.97);
-  transition: opacity .85s cubic-bezier(.16, 1, .3, 1) .1s, transform .85s cubic-bezier(.16, 1, .3, 1) .1s;
-  will-change: opacity, transform;
-}
-.svc-visual.svc-in { opacity: 1; transform: translateY(0) scale(1); }
-
-.svc-oval-wrap {
+/* Card */
+.svc-card {
+  flex: 0 0 calc(50% - 12px);
+  min-height: 540px;
   position: relative;
-  width: 100%;
-  max-width: 400px;
-  aspect-ratio: 4 / 5;
-  perspective: 1300px;
-}
-.svc-oval-glow {
-  position: absolute; inset: -14%;
-  border-radius: 36px;
-  background: radial-gradient(ellipse at 50% 50%, rgba(201,155,92,.34) 0%, transparent 68%);
-  filter: blur(44px);
-  z-index: 0;
-}
-.svc-oval-ring {
-  position: absolute;
-  border-radius: 32px;
-  border: 1px solid rgba(245,239,224,.16);
-  pointer-events: none;
-  z-index: 0;
-}
-.svc-oval-ring.ring-a { inset: -6%; }
-.svc-oval-ring.ring-b { inset: -13%; border-style: dashed; border-color: rgba(201,155,92,.22); animation: svcRingSpin 60s linear infinite; }
-@keyframes svcRingSpin { to { transform: rotate(360deg); } }
-.svc-oval-wrap.pulse .ring-a { animation: svcRingPulse .9s cubic-bezier(.22,1,.36,1); }
-@keyframes svcRingPulse {
-  0%   { transform: scale(.94); border-color: rgba(201,155,92,.7); }
-  100% { transform: scale(1);   border-color: rgba(245,239,224,.16); }
-}
-
-/* Grounded "floor" shadow beneath the card — deepens on hover for a real 3D lift */
-.svc-oval-wrap::after {
-  content: "";
-  position: absolute;
-  left: 8%; right: 8%; bottom: -7%;
-  height: 24%;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,.45) 0%, transparent 72%);
-  filter: blur(14px);
-  z-index: 0;
-  transition: opacity .5s ease, transform .5s ease;
-  opacity: .7;
-}
-.svc-oval-wrap:hover::after { opacity: 1; transform: scale(1.08) translateY(4px); }
-
-/* Card-style stage — rounded rectangle (no oval/circle), real 3D tilt with layered shadow depth */
-.svc-oval {
-  position: absolute; inset: 0;
-  z-index: 1;
   border-radius: 28px;
   overflow: hidden;
-  background: #241a10;
-  transform-style: preserve-3d;
-  box-shadow:
-    0 50px 90px -30px rgba(0,0,0,.7),
-    0 18px 40px -18px rgba(0,0,0,.5),
-    0 0 0 1px rgba(245,239,224,.12),
-    0 1px 0 rgba(255,255,255,.06) inset;
-  transition: transform .6s cubic-bezier(.22,1,.36,1), box-shadow .6s cubic-bezier(.22,1,.36,1);
+  display: flex; flex-direction: column;
+  border: 1.5px solid rgba(23,19,14,.06);
+  box-shadow: 0 2px 20px rgba(23,19,14,.05);
+  transition: box-shadow .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1);
+  cursor: default;
 }
-.svc-oval-wrap:hover .svc-oval {
-  transform: rotateX(5deg) rotateY(-9deg) scale(1.025) translateZ(10px);
-  box-shadow:
-    0 60px 110px -30px rgba(0,0,0,.75),
-    0 24px 50px -16px rgba(0,0,0,.55),
-    0 0 0 1px rgba(201,155,92,.28),
-    0 1px 0 rgba(255,255,255,.08) inset;
-}
-.svc-oval-img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  opacity: 0;
-  visibility: hidden;
-  clip-path: inset(0% round 28px);
-  backface-visibility: hidden;
-}
-.svc-oval-img.is-current { opacity: 1; visibility: visible; z-index: 2; }
-.svc-oval-img.is-leaving { opacity: 1; visibility: visible; z-index: 1; animation: svcOvalOut .9s cubic-bezier(.22,1,.36,1) forwards; }
-.svc-oval-img.is-entering { z-index: 3; animation: svcOvalIn .9s cubic-bezier(.22,1,.36,1) both; }
-/* the new image swings in with real 3D depth — rounded rectangle, no oval */
-@keyframes svcOvalIn {
-  0%   { transform: perspective(1100px) rotateY(48deg) scale(.86); filter: brightness(.55); }
-  100% { transform: perspective(1100px) rotateY(0deg)  scale(1);   filter: brightness(1); }
-}
-@keyframes svcOvalOut {
-  0%   { transform: perspective(1100px) rotateY(0deg)   scale(1);   filter: brightness(1); }
-  100% { transform: perspective(1100px) rotateY(-48deg) scale(.86); filter: brightness(.5); }
+.svc-card:hover {
+  box-shadow: 0 28px 70px rgba(23,19,14,.13), 0 6px 20px rgba(23,19,14,.07);
+  transform: translateY(-6px);
 }
 
-.svc-oval-tag {
-  position: absolute;
-  left: 50%; bottom: -4%;
-  transform: translateX(-50%);
-  z-index: 5;
-  display: inline-flex; align-items: center; gap: 10px;
-  white-space: nowrap;
-  padding: 10px 18px 10px 12px;
-  border-radius: 999px;
-  background: rgba(20,14,8,.72);
-  border: 1px solid rgba(245,239,224,.16);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 14px 34px rgba(0,0,0,.35);
-  font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 700;
-  color: #FBF7EE;
-  transition: opacity .25s ease;
-}
-.svc-oval-tag.is-swapping { opacity: 0; }
-.svc-oval-tag b {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 26px; height: 26px; padding: 0 6px; border-radius: 999px;
-  background: #C99B5C; color: #17130E;
-  font-family: 'Outfit', sans-serif; font-size: 11.5px; font-weight: 800;
+/* Visual top area */
+.svc-card-visual {
+  position: relative;
+  height: 280px; min-height: 280px;
+  background: var(--card-bg, #FDF5E8);
+  display: flex; align-items: flex-start; justify-content: flex-start;
+  padding: 32px; overflow: hidden;
 }
 
+/* BG motion shapes */
+.svc-card-shape {
+  position: absolute; border-radius: 50%;
+  pointer-events: none;
+  animation: svcShapeFloat 8s ease-in-out infinite alternate;
+}
+.svc-card-shape.s1 {
+  width: 220px; height: 220px; right: -50px; bottom: -40px;
+  background: var(--card-accent,#C99B5C); opacity: .10;
+}
+.svc-card-shape.s2 {
+  width: 110px; height: 110px; right: 28%; top: -24px;
+  background: var(--card-accent,#C99B5C); opacity: .07;
+  animation-delay: -3.5s; animation-duration: 11s;
+}
+.svc-card-shape.s3 {
+  width: 66px; height: 66px; left: 42%; bottom: 18px;
+  background: var(--card-accent,#C99B5C); opacity: .05;
+  animation-delay: -6s; animation-duration: 13s;
+}
+@keyframes svcShapeFloat {
+  0%   { transform: translate(0,0) scale(1) rotate(0deg); }
+  100% { transform: translate(14px,-12px) scale(1.10) rotate(8deg); }
+}
 
-/* Accordion list */
-.svc-list { display: flex; flex-direction: column; }
-.svc-item {
-  border-bottom: 1px solid rgba(245,239,224,.09);
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .65s cubic-bezier(.16, 1, .3, 1), transform .65s cubic-bezier(.16, 1, .3, 1), border-color .3s ease;
-  will-change: opacity, transform;
-}
-.svc-item:first-child { border-top: 1px solid rgba(245,239,224,.09); }
-.svc-item.svc-in { opacity: 1; transform: translateY(0); }
-
-.svc-item-head {
-  width: 100%;
-  display: flex; align-items: center; gap: 24px;
-  padding: 30px 0;
-  background: none; border: none; cursor: pointer;
-  text-align: left; font: inherit; color: inherit; outline: none;
-}
-.svc-num {
-  font-family: 'Outfit', sans-serif; font-weight: 800;
-  font-size: clamp(20px, 2vw, 26px); line-height: 1;
-  color: transparent; -webkit-text-stroke: 1.2px rgba(245,239,224,.25);
-  transition: -webkit-text-stroke-color .35s ease, color .35s ease;
-  flex-shrink: 0; width: 34px;
-}
-.svc-item.is-active .svc-num { -webkit-text-stroke-color: rgba(201,155,92,.85); color: rgba(201,155,92,.12); }
-.svc-item-title {
-  flex: 1; min-width: 0;
-  font-family: 'Outfit', sans-serif; font-weight: 700;
-  font-size: clamp(19px, 2vw, 25px); letter-spacing: -0.02em;
-  color: rgba(245,239,224,.42);
-  transition: color .35s cubic-bezier(.16, 1, .3, 1), transform .35s cubic-bezier(.16, 1, .3, 1);
-}
-.svc-item.is-active .svc-item-title { color: #FBF7EE; transform: translateX(3px); }
-.svc-item-head:hover .svc-item-title { color: #E6C48B; }
-
-.svc-item-plus {
-  position: relative; flex-shrink: 0;
-  width: 34px; height: 34px; border-radius: 50%;
-  border: 1px solid rgba(245,239,224,.18);
-  background: rgba(245,239,224,.03);
+/* Service icon badge */
+.svc-card-icon {
+  width: 64px; height: 64px; border-radius: 20px;
+  background: rgba(255,255,255,.88);
   display: flex; align-items: center; justify-content: center;
-  color: rgba(245,239,224,.75);
-  transition: border-color .35s cubic-bezier(.16,1,.3,1), background .35s cubic-bezier(.16,1,.3,1), box-shadow .35s cubic-bezier(.16,1,.3,1), color .35s cubic-bezier(.16,1,.3,1);
+  color: var(--card-accent,#C99B5C);
+  box-shadow: 0 4px 18px rgba(0,0,0,.07);
+  position: relative; z-index: 2;
+  transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
+  flex-shrink: 0;
 }
-.svc-chevron-icon { width: 14px; height: 14px; stroke: currentColor; transition: transform .45s cubic-bezier(.16, 1, .3, 1), stroke .3s ease; transform-origin: center; }
-.svc-item-head:hover .svc-item-plus { border-color: rgba(201,155,92,.45); background: rgba(201,155,92,.08); color: #F5EFE0; }
-.svc-item.is-active .svc-item-plus { border-color: #C99B5C; background: rgba(201,155,92,.18); color: #C99B5C; box-shadow: 0 0 16px rgba(201,155,92,.18); }
-.svc-item.is-active .svc-chevron-icon { transform: rotate(180deg); }
-
-.svc-item-panel {
-  display: grid; grid-template-rows: 0fr;
-  transition: grid-template-rows .5s cubic-bezier(.16, 1, .3, 1);
-  will-change: grid-template-rows;
+.svc-card:hover .svc-card-icon {
+  transform: scale(1.12) rotate(-6deg);
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
 }
-.svc-item.is-active .svc-item-panel { grid-template-rows: 1fr; }
-.svc-item-panel-inner { overflow: hidden; min-height: 0; }
-.svc-item-panel-inner > * { padding-bottom: 30px; }
 
-.svc-tags, .svc-item-desc, .svc-learn-more {
-  opacity: 0; transform: translateY(12px);
-  transition: opacity .2s ease, transform .22s ease;
-  will-change: opacity, transform;
+/* Arrow link */
+.svc-card-arrow {
+  position: absolute; top: 28px; right: 28px;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,.75);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2; text-decoration: none; color: #17130E;
+  border: 1.5px solid rgba(23,19,14,.10);
+  transition: background .3s ease, color .3s ease, transform .3s ease, border-color .3s ease;
 }
-.svc-item.is-active .svc-tags { opacity: 1; transform: translateY(0); transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .08s, transform .45s cubic-bezier(.16, 1, .3, 1) .08s; }
-.svc-item.is-active .svc-item-desc { opacity: 1; transform: translateY(0); transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .15s, transform .48s cubic-bezier(.16, 1, .3, 1) .15s; }
-.svc-item.is-active .svc-learn-more { opacity: 1; transform: translateY(0); transition: opacity .42s cubic-bezier(.16, 1, .3, 1) .22s, transform .48s cubic-bezier(.16, 1, .3, 1) .22s; }
+.svc-card:hover .svc-card-arrow {
+  background: #17130E; color: #fff; border-color: #17130E;
+  transform: translate(3px,-3px);
+}
+.svc-card-arrow svg { width: 17px; height: 17px; }
 
-.svc-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
-.svc-tag {
+/* Watermark number */
+.svc-card-watermark {
+  position: absolute; bottom: -16px; right: 18px;
+  font-family: 'Outfit', sans-serif; font-weight: 900;
+  font-size: 170px; line-height: 1; letter-spacing: -0.04em;
+  color: var(--card-accent,#C99B5C); opacity: .09;
+  pointer-events: none; z-index: 1;
+  transition: opacity .4s ease;
+}
+.svc-card:hover .svc-card-watermark { opacity: .16; }
+
+/* Card body */
+.svc-card-body {
+  flex: 1; padding: 30px 34px 34px;
+  display: flex; flex-direction: column;
+  background: #fff;
+}
+.svc-card-counter {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800;
+  color: var(--card-accent,#C99B5C); margin-bottom: 10px; letter-spacing: .04em;
+}
+.svc-card-title {
+  font-family: 'Outfit', sans-serif; font-weight: 900;
+  font-size: clamp(22px,2.2vw,30px); line-height: 1.18;
+  letter-spacing: -0.028em; color: #17130E; margin-bottom: 14px;
+}
+.svc-card-desc {
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
+  line-height: 1.68; color: rgba(23,19,14,.50);
+}
+
+/* Hover reveal */
+.svc-card-reveal {
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .55s cubic-bezier(.16,1,.3,1), opacity .38s ease .08s;
+}
+.svc-card:hover .svc-card-reveal { max-height: 420px; opacity: 1; }
+.svc-reveal-divider {
+  height: 1px; border: none;
+  background: rgba(23,19,14,.08); margin: 20px 0 16px;
+}
+.svc-reveal-label {
+  font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 800;
+  letter-spacing: .20em; text-transform: uppercase;
+  color: rgba(23,19,14,.30); margin-bottom: 10px;
+}
+.svc-reveal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.svc-reveal-tag {
   font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700;
-  letter-spacing: .05em; text-transform: uppercase; color: #C99B5C;
-  background: rgba(201,155,92,.10); border: 1px solid rgba(201,155,92,.25);
-  padding: 5px 12px; border-radius: 999px;
+  color: rgba(23,19,14,.62);
+  background: rgba(23,19,14,.04); border: 1.2px solid rgba(23,19,14,.09);
+  padding: 5px 13px; border-radius: 999px;
 }
-.svc-item-desc {
-  font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.75;
-  color: rgba(245,239,224,.6); max-width: 560px; margin: 14px 0 16px;
+.svc-reveal-pf { display: flex; flex-wrap: wrap; gap: 6px; }
+.svc-reveal-pf-item {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600;
+  color: rgba(23,19,14,.55);
 }
-.svc-learn-more {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13.5px;
-  color: #C99B5C; text-decoration: none;
+.svc-reveal-pf-item::before {
+  content: ""; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--card-accent,#C99B5C); flex-shrink: 0;
 }
-.svc-learn-more svg { width: 15px; height: 15px; transition: transform .25s ease; }
-.svc-learn-more:hover svg { transform: translateX(4px); }
 
-/* per-card oval — mobile only */
-.svc-item-oval { display: none; }
+/* Nav bar */
+.svc-nav-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 40px; padding-top: 28px;
+  border-top: 1.5px solid rgba(23,19,14,.07);
+}
+.svc-nav-left { display: flex; align-items: center; gap: 18px; }
+.svc-progress { display: flex; align-items: center; gap: 6px; }
+.svc-dot {
+  height: 4px; width: 18px; border-radius: 4px;
+  background: rgba(23,19,14,.12); border: none; padding: 0;
+  cursor: pointer;
+  transition: width .4s cubic-bezier(.16,1,.3,1), background .3s ease;
+}
+.svc-dot.is-active { width: 38px; background: #C99B5C; }
+.svc-slide-counter {
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
+  color: rgba(23,19,14,.32); letter-spacing: .02em;
+}
+.svc-slide-counter b { color: #17130E; font-weight: 900; }
+.svc-nav-arrows { display: flex; align-items: center; gap: 10px; }
+.svc-arrow {
+  width: 50px; height: 50px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid rgba(23,19,14,.12); background: #fff; color: #17130E;
+  cursor: pointer;
+  transition: background .25s ease, border-color .25s ease, transform .25s ease, color .25s ease;
+}
+.svc-arrow:hover { background: #17130E; border-color: #17130E; color: #fff; transform: scale(1.07); }
+.svc-arrow:active { transform: scale(.93); }
+.svc-arrow svg { width: 18px; height: 18px; }
 
-/* mobile prev / dots / next — mobile only */
-.svc-mob-nav { display: none; }
-
+/* Footer CTA */
 .svc-footer-cta {
   display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 22px;
-  margin-top: 70px; padding-top: 44px;
-  border-top: 1px solid rgba(245,239,224,.09);
+  flex-wrap: wrap; gap: 20px;
+  margin-top: 50px; padding-top: 34px;
+  border-top: 1.5px solid rgba(23,19,14,.07);
 }
-.svc-footer-text { font-family: 'Inter', sans-serif; font-size: 15px; color: rgba(245,239,224,.55); max-width: 420px; }
-.svc-footer-text strong { color: #FBF7EE; font-weight: 700; }
+.svc-footer-text {
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
+  color: rgba(23,19,14,.40);
+}
+.svc-footer-text strong { color: #17130E; font-weight: 900; }
 .svc-view-all {
   display: inline-flex; align-items: center; gap: 10px;
-  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px;
-  color: #17130E; background: #C99B5C;
-  padding: 15px 28px; border-radius: 999px; text-decoration: none; white-space: nowrap;
-  transition: background .3s ease, transform .3s ease;
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 14px;
+  color: #F5EFE0; background: #17130E;
+  padding: 15px 30px; border-radius: 999px; text-decoration: none;
+  box-shadow: 0 6px 24px rgba(23,19,14,.18);
+  transition: background .3s ease, transform .3s ease, box-shadow .3s ease;
 }
-.svc-view-all:hover { background: #E6C48B; transform: translateX(3px); }
+.svc-view-all:hover {
+  background: #C99B5C; color: #17130E;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(201,155,92,.28);
+}
 .svc-view-all svg { width: 15px; height: 15px; }
 
-/* ══ SERVICES — MOBILE SYSTEM (≤ 900px) ══
-   Swipeable snap-carousel. Each service is its own card with its own
-   oval image on top; the centred card is "active" (oval re-opens),
-   prev/next + dots underneath, wraps around like the reviews. */
 @media (max-width: 900px) {
-  .svc-box { padding: 100px 0 150px; }
-  .svc-header { margin-bottom: 44px; }
-  .svc-body-tabs { display: block; }
-  .svc-visual { display: none; }
-
-  .svc-list {
-    position: relative;
-    flex-direction: row;
-    gap: 16px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    margin: 0 -5vw;
-    padding: 10px 5vw 28px;
-    scroll-padding-inline: 5vw;
-    scrollbar-width: none;
-  }
-  .svc-list::-webkit-scrollbar { display: none; }
-
-  .svc-list .svc-item {
-    flex: 0 0 82%;
-    max-width: 380px;
-    scroll-snap-align: center;
-    display: flex;
-    flex-direction: column;
-    padding: 26px 22px 28px;
-    border: 1px solid rgba(245,239,224,.10);
-    border-radius: 30px;
-    background: linear-gradient(160deg, rgba(245,239,224,.09), rgba(245,239,224,.03));
-    opacity: .55;
-    transform: scale(.94);
-    transition: opacity .45s ease, transform .55s cubic-bezier(.16,1,.3,1), border-color .35s ease, background .35s ease;
-    will-change: auto;
-  }
-  .svc-list .svc-item:first-child { border-top: 1px solid rgba(245,239,224,.10); }
-  .svc-list .svc-item.is-active {
-    opacity: 1;
-    transform: scale(1);
-    border-color: rgba(201,155,92,.38);
-    background: linear-gradient(160deg, rgba(201,155,92,.16), rgba(245,239,224,.04));
-  }
-
-  /* Card frame — rounded rectangle (no oval/circle), with real depth via layered shadow */
-  .svc-item-oval {
-    order: -1;
-    display: block;
-    position: relative;
-    width: 72%;
-    aspect-ratio: 4 / 5;
-    margin: 4px auto 26px;
-    border-radius: 26px;
-    overflow: hidden;
-    background: #241a10;
-    box-shadow: 0 26px 50px -18px rgba(0,0,0,.6), 0 0 0 1px rgba(245,239,224,.12), 0 0 0 7px rgba(245,239,224,.04);
-  }
-  .svc-item-oval img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; clip-path: inset(0% round 26px); }
-  .svc-item.is-active .svc-item-oval img { animation: svcOvalIn .9s cubic-bezier(.22,1,.36,1) both; }
-
-  .svc-item-head { padding: 0 0 14px; gap: 14px; cursor: default; }
-  .svc-item-plus { display: none; }
-  .svc-item-title { font-size: 21px; color: #FBF7EE; transform: none !important; }
-  .svc-num { -webkit-text-stroke-color: rgba(201,155,92,.85); color: rgba(201,155,92,.12); }
-
-  .svc-item-panel { grid-template-rows: 1fr; }
-  .svc-item-panel-inner > * { padding-bottom: 0; }
-  .svc-tags, .svc-item-desc, .svc-learn-more { opacity: 1 !important; transform: none !important; }
-  .svc-tags { margin-bottom: 0; }
-  .svc-item-desc { font-size: 14.5px; margin: 14px 0 18px; }
-
-  .svc-mob-nav {
-    display: flex; align-items: center; justify-content: center; gap: 16px;
-    margin-top: 2px;
-  }
-  .svc-mob-arrow {
-    width: 46px; height: 46px; border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center;
-    background: rgba(245,239,224,.06);
-    border: 1.5px solid rgba(201,155,92,.45);
-    color: #F5EFE0; cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    transition: background .25s ease, transform .2s ease, border-color .25s ease;
-  }
-  .svc-mob-arrow:active { transform: scale(.92); background: rgba(201,155,92,.22); border-color: #C99B5C; }
-  .svc-mob-arrow svg { width: 20px; height: 20px; }
-  .svc-mob-dots { display: flex; align-items: center; gap: 8px; }
-  .svc-mob-dot {
-    width: 8px; height: 8px; border-radius: 999px; border: none; padding: 0;
-    background: rgba(245,239,224,.24); cursor: pointer;
-    transition: width .3s cubic-bezier(.16,1,.3,1), background .3s ease;
-  }
-  .svc-mob-dot.active { width: 26px; background: #C99B5C; }
-
-  .svc-footer-cta { flex-direction: column; align-items: flex-start; margin-top: 44px; padding-top: 34px; }
+  .svc-section { padding: 80px 0 70px; }
+  .svc-header { margin-bottom: 40px; }
+  .svc-card { flex: 0 0 88%; min-height: 460px; }
+  .svc-card-visual { height: 220px; min-height: 220px; padding: 26px; }
+  .svc-card-watermark { font-size: 120px; }
+  .svc-card-reveal { max-height: 420px; opacity: 1; }
+  .svc-track { gap: 16px; }
+  .svc-footer-cta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 520px) {
+  .svc-card { flex: 0 0 94%; min-height: 420px; }
+  .svc-card-visual { height: 190px; min-height: 190px; padding: 22px; }
+  .svc-card-body { padding: 22px 24px 26px; }
+  .svc-card-icon { width: 52px; height: 52px; border-radius: 16px; }
+  .svc-card-title { font-size: 20px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .svc-oval-ring.ring-b { animation: none; }
-  .svc-oval-img.is-entering, .svc-item.is-active .svc-item-oval img { animation-duration: .01s; }
-}
-
-/* ══════════════════════════════════════════════════════
    HOME PORTFOLIO TEASER — light creamy theme, image cards
 ════════════════════════════════════════════════════════ */
 .pfh-section {
@@ -3156,11 +2984,11 @@
       </nav>
       <!-- Phone + CTA grouped -->
       <div class="nav-right-group">
-        <a class="nav-phone" href="tel:+923001234567">
+        <a class="nav-phone" href="tel:+13136551635">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
             <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          +92 300 123 4567
+          +1 (313) 655-1635
         </a>
         <button class="btn-nav-cta" id="navCtaBtn" style="cursor:pointer;border:none;font-family:'Inter',sans-serif;">
           Start a Project
@@ -3424,179 +3252,277 @@
     </section>
 
         <!-- ══ SERVICES — ONE merged box: soft dome rises on scroll, oval image stage, swipe cards on mobile ══ -->
+    <!-- SERVICES SECTION -->
     <section class="svc-section" id="services">
-      <div class="svc-box" id="svcBox">
-        <div class="svc-box-bg" aria-hidden="true"></div>
-        <div class="svc-exit-dome" aria-hidden="true"></div>
+      <div class="svc-wrap">
 
-        <div class="svc-inner">
-
-          <div class="svc-header">
-            <p class="svc-eyebrow">What We Do</p>
-            <h2 class="svc-title">Six disciplines.<br>One <em>accountable</em> team.</h2>
-            <p class="svc-subtitle">Every project moves through the same hands — no hand-offs, no guesswork. Here's what we build, end to end.</p>
-          </div>
-
-          <div class="svc-body svc-body-tabs">
-
-            <!-- Sticky OVAL image stage (desktop). Clicking a service opens its image as a fresh oval. -->
-            <div class="svc-visual" id="svcVisual">
-              <div class="svc-oval-wrap" id="svcOvalWrap">
-                <div class="svc-oval-glow" aria-hidden="true"></div>
-                <div class="svc-oval-ring ring-b" aria-hidden="true"></div>
-                <div class="svc-oval-ring ring-a" aria-hidden="true"></div>
-                <div class="svc-oval" id="svcOval">
-              <img class="svc-oval-img is-current" src="images/services/service-software.webp" alt="Software Development illustration" data-i="0" decoding="async">
-              <img class="svc-oval-img" src="images/services/service-website.webp" alt="Website Development illustration" data-i="1" loading="lazy" decoding="async">
-              <img class="svc-oval-img" src="images/services/service-mobile.webp" alt="Mobile App Development illustration" data-i="2" loading="lazy" decoding="async">
-              <img class="svc-oval-img" src="images/services/service-ai.webp" alt="AI Development illustration" data-i="3" loading="lazy" decoding="async">
-              <img class="svc-oval-img" src="images/services/service-design.webp" alt="Product Design illustration" data-i="4" loading="lazy" decoding="async">
-              <img class="svc-oval-img" src="images/services/service-marketing.webp" alt="Marketing and Branding illustration" data-i="5" loading="lazy" decoding="async">
-                </div>
-                <div class="svc-oval-tag" id="svcOvalTag"><b id="svcOvalNum">01</b><span id="svcOvalName">Software Development</span></div>
-              </div>
-            </div>
-
-            <div class="svc-list" id="svcList">
-
-            <div class="svc-item is-active" data-index="0" data-name="Software Development">
-              <div class="svc-item-oval"><img src="images/services/service-software.webp" alt="Software Development illustration" loading="lazy" decoding="async"></div>
-              <button class="svc-item-head" type="button" aria-expanded="true">
-                <span class="svc-num">01</span>
-                <h3 class="svc-item-title">Software Development</h3>
-                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-              </button>
-              <div class="svc-item-panel">
-                <div class="svc-item-panel-inner">
-                  <div class="svc-tags"><span class="svc-tag">Node.js</span><span class="svc-tag">Python</span><span class="svc-tag">React</span><span class="svc-tag">AWS</span></div>
-                  <p class="svc-item-desc">Custom systems, APIs and scalable backends engineered to hold up under real, everyday load.</p>
-                  <a class="svc-learn-more" href="services.html">
-                    Learn more
-                    <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-item" data-index="1" data-name="Website Development">
-              <div class="svc-item-oval"><img src="images/services/service-website.webp" alt="Website Development illustration" loading="lazy" decoding="async"></div>
-              <button class="svc-item-head" type="button" aria-expanded="false">
-                <span class="svc-num">02</span>
-                <h3 class="svc-item-title">Website Development</h3>
-                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-              </button>
-              <div class="svc-item-panel">
-                <div class="svc-item-panel-inner">
-                  <div class="svc-tags"><span class="svc-tag">React</span><span class="svc-tag">Next.js</span><span class="svc-tag">TypeScript</span></div>
-                  <p class="svc-item-desc">Fast, responsive websites and web platforms built to convert visitors into customers.</p>
-                  <a class="svc-learn-more" href="services.html">
-                    Learn more
-                    <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-item" data-index="2" data-name="Mobile App Development">
-              <div class="svc-item-oval"><img src="images/services/service-mobile.webp" alt="Mobile App Development illustration" loading="lazy" decoding="async"></div>
-              <button class="svc-item-head" type="button" aria-expanded="false">
-                <span class="svc-num">03</span>
-                <h3 class="svc-item-title">Mobile App Development</h3>
-                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-              </button>
-              <div class="svc-item-panel">
-                <div class="svc-item-panel-inner">
-                  <div class="svc-tags"><span class="svc-tag">Swift</span><span class="svc-tag">Kotlin</span><span class="svc-tag">Flutter</span></div>
-                  <p class="svc-item-desc">Native and cross-platform apps for iOS and Android, designed for speed and daily use.</p>
-                  <a class="svc-learn-more" href="services.html">
-                    Learn more
-                    <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-item" data-index="3" data-name="AI Development">
-              <div class="svc-item-oval"><img src="images/services/service-ai.webp" alt="AI Development illustration" loading="lazy" decoding="async"></div>
-              <button class="svc-item-head" type="button" aria-expanded="false">
-                <span class="svc-num">04</span>
-                <h3 class="svc-item-title">AI Development</h3>
-                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-              </button>
-              <div class="svc-item-panel">
-                <div class="svc-item-panel-inner">
-                  <div class="svc-tags"><span class="svc-tag">Python</span><span class="svc-tag">TensorFlow</span><span class="svc-tag">LLMs</span></div>
-                  <p class="svc-item-desc">Intelligent automation and AI features built into your product from day one, not bolted on later.</p>
-                  <a class="svc-learn-more" href="services.html">
-                    Learn more
-                    <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-item" data-index="4" data-name="Product Design">
-              <div class="svc-item-oval"><img src="images/services/service-design.webp" alt="Product Design illustration" loading="lazy" decoding="async"></div>
-              <button class="svc-item-head" type="button" aria-expanded="false">
-                <span class="svc-num">05</span>
-                <h3 class="svc-item-title">Product Design</h3>
-                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-              </button>
-              <div class="svc-item-panel">
-                <div class="svc-item-panel-inner">
-                  <div class="svc-tags"><span class="svc-tag">Figma</span><span class="svc-tag">UX Research</span><span class="svc-tag">Prototyping</span></div>
-                  <p class="svc-item-desc">Interfaces people actually enjoy using — researched, wireframed, and polished to detail.</p>
-                  <a class="svc-learn-more" href="services.html">
-                    Learn more
-                    <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-item" data-index="5" data-name="Marketing &amp; Branding">
-              <div class="svc-item-oval"><img src="images/services/service-marketing.webp" alt="Marketing and Branding illustration" loading="lazy" decoding="async"></div>
-              <button class="svc-item-head" type="button" aria-expanded="false">
-                <span class="svc-num">06</span>
-                <h3 class="svc-item-title">Marketing &amp; Branding</h3>
-                <span class="svc-item-plus" aria-hidden="true"><svg class="svc-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-              </button>
-              <div class="svc-item-panel">
-                <div class="svc-item-panel-inner">
-                  <div class="svc-tags"><span class="svc-tag">Brand Identity</span><span class="svc-tag">Social</span><span class="svc-tag">Growth</span></div>
-                  <p class="svc-item-desc">Brand identity and growth marketing that gets a product noticed — and remembered.</p>
-                  <a class="svc-learn-more" href="services.html">
-                    Learn more
-                    <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            </div><!-- /svc-list -->
-          </div><!-- /svc-body -->
-
-          <!-- Mobile controls -->
-          <div class="svc-mob-nav" id="svcMobNav">
-            <button class="svc-mob-arrow" id="svcMobPrev" type="button" aria-label="Previous service">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            <div class="svc-mob-dots" id="svcMobDots"><button class="svc-mob-dot active" type="button" data-index="0" aria-label="Service 1: Software Development"></button><button class="svc-mob-dot" type="button" data-index="1" aria-label="Service 2: Website Development"></button><button class="svc-mob-dot" type="button" data-index="2" aria-label="Service 3: Mobile App Development"></button><button class="svc-mob-dot" type="button" data-index="3" aria-label="Service 4: AI Development"></button><button class="svc-mob-dot" type="button" data-index="4" aria-label="Service 5: Product Design"></button><button class="svc-mob-dot" type="button" data-index="5" aria-label="Service 6: Marketing and Branding"></button></div>
-            <button class="svc-mob-arrow" id="svcMobNext" type="button" aria-label="Next service">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-          </div>
-
-          <div class="svc-footer-cta">
-            <p class="svc-footer-text"><strong>6 core service lines.</strong> One accountable team, from strategy to launch.</p>
-            <a class="svc-view-all" href="services.html">
-              View All Services
-              <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-
+        <div class="svc-header">
+          <p class="svc-eyebrow">Our Services</p>
+          <h2 class="svc-title">What we bring<br>to the <em>table.</em></h2>
+          <p class="svc-subtitle">Ten service lines. One team that owns the outcome from the first conversation to long after launch day.</p>
         </div>
+
+        <div class="svc-track-outer">
+          <div class="svc-track" id="svcTrack">
+
+            <div class="svc-card" style="--card-bg:#FDF5E8;--card-accent:#D4A24E;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">01</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">01 / 10</p>
+                <h3 class="svc-card-title">Custom Software Development</h3>
+                <p class="svc-card-desc">We build software that fits the way your business actually works. SaaS platforms, complex APIs and cloud applications designed around your goals.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">Node.js</span><span class="svc-reveal-tag">Python</span><span class="svc-reveal-tag">React.js</span><span class="svc-reveal-tag">Next.js</span><span class="svc-reveal-tag">TypeScript</span><span class="svc-reveal-tag">REST APIs</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">SaaS Platforms</span><span class="svc-reveal-pf-item">Enterprise Software</span><span class="svc-reveal-pf-item">Internal Business Systems</span><span class="svc-reveal-pf-item">API Development</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#EEF6FB;--card-accent:#4A9FD4;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">02</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">02 / 10</p>
+                <h3 class="svc-card-title">Website Development</h3>
+                <p class="svc-card-desc">Your website is the first impression that either earns trust or loses it. Fast loading, SEO friendly and premium across every screen size.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">React.js</span><span class="svc-reveal-tag">Next.js</span><span class="svc-reveal-tag">TypeScript</span><span class="svc-reveal-tag">JavaScript</span><span class="svc-reveal-tag">HTML5</span><span class="svc-reveal-tag">CSS3</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Corporate Websites</span><span class="svc-reveal-pf-item">SaaS Websites</span><span class="svc-reveal-pf-item">Business Portals</span><span class="svc-reveal-pf-item">Landing Pages</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#F0FAF4;--card-accent:#3DA06A;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">03</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">03 / 10</p>
+                <h3 class="svc-card-title">Mobile App Development</h3>
+                <p class="svc-card-desc">People use apps that feel effortless. High performance iOS and Android apps with smooth intuitive experiences that keep users coming back.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">React Native</span><span class="svc-reveal-tag">Flutter</span><span class="svc-reveal-tag">Swift</span><span class="svc-reveal-tag">Kotlin</span><span class="svc-reveal-tag">Java</span><span class="svc-reveal-tag">Firebase</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">iOS Apps</span><span class="svc-reveal-pf-item">Android Apps</span><span class="svc-reveal-pf-item">Cross Platform Apps</span><span class="svc-reveal-pf-item">Startup MVPs</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#F3EEFB;--card-accent:#7C5CC4;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">04</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">04 / 10</p>
+                <h3 class="svc-card-title">AI Development and Intelligent Automation</h3>
+                <p class="svc-card-desc">Manual repetitive work costs businesses more than they realise. AI agents and generative AI solutions that free your team for higher value work.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">Generative AI</span><span class="svc-reveal-tag">Agentic AI</span><span class="svc-reveal-tag">Large Language Models</span><span class="svc-reveal-tag">Machine Learning</span><span class="svc-reveal-tag">Deep Learning</span><span class="svc-reveal-tag">NLP</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">AI Assistants</span><span class="svc-reveal-pf-item">AI Agents</span><span class="svc-reveal-pf-item">Process Automation</span><span class="svc-reveal-pf-item">Document Processing</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#FFF3F0;--card-accent:#D46B5C;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="8" cy="8" r="2"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">05</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">05 / 10</p>
+                <h3 class="svc-card-title">Product Design and Development</h3>
+                <p class="svc-card-desc">A great idea deserves a great product. We design and build digital experiences that balance business goals with genuine usability from concept to launch.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">UI/UX Design</span><span class="svc-reveal-tag">User Research</span><span class="svc-reveal-tag">Wireframing</span><span class="svc-reveal-tag">Prototyping</span><span class="svc-reveal-tag">Design Systems</span><span class="svc-reveal-tag">MVP Development</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Startup MVPs</span><span class="svc-reveal-pf-item">SaaS Products</span><span class="svc-reveal-pf-item">Web Applications</span><span class="svc-reveal-pf-item">Mobile Products</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#FDF0F6;--card-accent:#C95C8E;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">06</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">06 / 10</p>
+                <h3 class="svc-card-title">Digital Marketing and Branding</h3>
+                <p class="svc-card-desc">Visibility without trust does not convert. Marketing and branding strategies that grow your audience, earn credibility and drive real measurable results.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">SEO</span><span class="svc-reveal-tag">Search Engine Marketing</span><span class="svc-reveal-tag">Content Marketing</span><span class="svc-reveal-tag">Social Media Marketing</span><span class="svc-reveal-tag">PPC Advertising</span><span class="svc-reveal-tag">Email Marketing</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">SEO Growth</span><span class="svc-reveal-pf-item">Social Campaigns</span><span class="svc-reveal-pf-item">Brand Launches</span><span class="svc-reveal-pf-item">Lead Generation</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#EFF4FB;--card-accent:#4A72C9;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">07</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">07 / 10</p>
+                <h3 class="svc-card-title">Data and Analytics Consultancy</h3>
+                <p class="svc-card-desc">Most businesses sit on data they do not fully understand. Dashboards and predictive analytics that turn raw numbers into clear confident decisions.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">Data Analytics</span><span class="svc-reveal-tag">ETL Pipelines</span><span class="svc-reveal-tag">Data Warehousing</span><span class="svc-reveal-tag">Business Intelligence</span><span class="svc-reveal-tag">Power BI</span><span class="svc-reveal-tag">Tableau</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Executive Dashboards</span><span class="svc-reveal-pf-item">Business Intelligence</span><span class="svc-reveal-pf-item">Automated Reporting</span><span class="svc-reveal-pf-item">Sales Analytics</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#F0F5EF;--card-accent:#5A8C4A;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">08</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">08 / 10</p>
+                <h3 class="svc-card-title">Data Management and Database Solutions</h3>
+                <p class="svc-card-desc">Poorly structured data quietly holds businesses back. We design optimise and govern database systems that stay secure organised and ready to scale.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">PostgreSQL</span><span class="svc-reveal-tag">MongoDB</span><span class="svc-reveal-tag">MySQL</span><span class="svc-reveal-tag">Oracle</span><span class="svc-reveal-tag">Redis</span><span class="svc-reveal-tag">Snowflake</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Database Optimization</span><span class="svc-reveal-pf-item">Cloud Migration</span><span class="svc-reveal-pf-item">Data Architecture</span><span class="svc-reveal-pf-item">High Volume Applications</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#F5F0FB;--card-accent:#8B5CC9;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">09</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">09 / 10</p>
+                <h3 class="svc-card-title">AI Consultancy and Automation Strategy</h3>
+                <p class="svc-card-desc">AI is moving fast but adopting it without a clear plan wastes resources. We identify where AI genuinely adds value and build a practical roadmap forward.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">AI Strategy</span><span class="svc-reveal-tag">AI Readiness Assessment</span><span class="svc-reveal-tag">AI Roadmaps</span><span class="svc-reveal-tag">Generative AI</span><span class="svc-reveal-tag">Agentic AI</span><span class="svc-reveal-tag">AI Agents</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">AI Transformation</span><span class="svc-reveal-pf-item">AI Adoption Roadmaps</span><span class="svc-reveal-pf-item">Automation Consulting</span><span class="svc-reveal-pf-item">AI Proof of Concepts</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#FFF7ED;--card-accent:#C98B3E;">
+              <div class="svc-card-visual">
+                <div class="svc-card-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">10</span>
+                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">10 / 10</p>
+                <h3 class="svc-card-title">Vibe Code to Production and Scale</h3>
+                <p class="svc-card-desc">You moved fast and built something real. Now it needs to hold up. We take your prototype or MVP and transform it into a secure production ready product.</p>
+                <div class="svc-card-reveal">
+                  <hr class="svc-reveal-divider">
+                  <p class="svc-reveal-label">Technologies</p>
+                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">Code Audit</span><span class="svc-reveal-tag">Architecture Review</span><span class="svc-reveal-tag">Refactoring</span><span class="svc-reveal-tag">Security Hardening</span><span class="svc-reveal-tag">Automated Testing</span><span class="svc-reveal-tag">CI/CD</span></div>
+                  <p class="svc-reveal-label">Perfect For</p>
+                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">AI Generated MVPs</span><span class="svc-reveal-pf-item">Founder Prototypes</span><span class="svc-reveal-pf-item">Rapid Internal Tools</span><span class="svc-reveal-pf-item">Demo Apps</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="svc-nav-bar">
+          <div class="svc-nav-left">
+            <div class="svc-progress" id="svcProgress"></div>
+            <span class="svc-slide-counter"><b id="svcCurrent">01</b> / 10</span>
+          </div>
+          <div class="svc-nav-arrows">
+            <button class="svc-arrow" id="svcPrev" type="button" aria-label="Previous service">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="svc-arrow" id="svcNext" type="button" aria-label="Next service">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="svc-footer-cta">
+          <p class="svc-footer-text"><strong>10 core service lines.</strong> One accountable team, from strategy to launch.</p>
+          <a class="svc-view-all" href="services.html">
+            View All Services
+            <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
       </div>
+    </section>
     </section>
 
 
@@ -5414,13 +5340,17 @@
         <div class="footer-col footer-col-contact">
           <h3 class="footer-heading">Direct Inquiries</h3>
           <div class="footer-contact-details">
-            <a href="mailto:analyticinsider@gmail.com.pk" class="footer-link-highlight">
+            <a href="mailto:info@analyticinsider.com" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>analyticinsider@gmail.com.pk</span>
+              <span>info@analyticinsider.com</span>
             </a>
-            <a href="tel:+923001234567" class="footer-link-highlight">
+            <a href="tel:+13136551635" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+92 300 123 4567</span>
+              <span>+1 (313) 655-1635</span>
+            </a>
+            <a href="tel:+923332159764" class="footer-link-highlight">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+92 333 2159764</span>
             </a>
             <div class="footer-reply-badge">
               <span class="reply-clock-icon"></span>
@@ -5455,192 +5385,85 @@
 
 <script src="./script.js"></script>
 <script>
-/* ══ SERVICES SECTION
-   1) scroll-driven "box rises" effect (--p enter / --q exit)
-   2) desktop: accordion + oval image stage (new image opens as a fresh oval)
-   3) mobile: swipe snap-carousel with per-card ovals, prev/next (wraps) + dots
-══ */
+/* SERVICES carousel â€” arrow nav, dots, swipe, keyboard */
 (function () {
-  const svcSection = document.querySelector('.svc-section');
-  const box        = document.getElementById('svcBox');
-  const svcList    = document.getElementById('svcList');
-  const svcVisual  = document.getElementById('svcVisual');
-  if (!svcSection || !box || !svcList) return;
+  const section = document.querySelector('.svc-section');
+  if (!section) return;
+  const track    = document.getElementById('svcTrack');
+  const cards    = Array.from(track ? track.querySelectorAll('.svc-card') : []);
+  const prevBtn  = document.getElementById('svcPrev');
+  const nextBtn  = document.getElementById('svcNext');
+  const ctr      = document.getElementById('svcCurrent');
+  const progWrap = document.getElementById('svcProgress');
+  if (!track || !cards.length) return;
 
-  const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
-  const ease  = t => t * t * (3 - 2 * t);
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const TOTAL = cards.length;
+  let cur = 0, perView = 2;
+  const GAP = 24;
 
-  /* ── 1. Box rise / melt-out on scroll ── */
-  if (reduceMotion) {
-    box.style.setProperty('--p', 1);
-    box.style.setProperty('--q', 0);
-  } else {
-    let ticking = false;
-    const paint = () => {
-      ticking = false;
-      const r  = box.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const p  = ease(clamp((vh - r.top) / (vh * 0.95), 0, 1));
-      const q  = ease(clamp((vh * 1.2 - r.bottom) / (vh * 1.1), 0, 1));
-      box.style.setProperty('--p', p.toFixed(4));
-      box.style.setProperty('--q', q.toFixed(4));
-    };
-    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(paint); } };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    paint();
-  }
-
-  /* ── 2. Entrance reveals ── */
-  const items  = Array.from(svcList.querySelectorAll('.svc-item'));
-  const header = svcSection.querySelector('.svc-header');
-  const revealOnce = (el, threshold, margin, delay) => {
-    if (!el) return;
-    if (delay) el.style.transitionDelay = delay;
-    if (!('IntersectionObserver' in window)) { el.classList.add('svc-in'); return; }
-    const o = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { el.classList.add('svc-in'); o.unobserve(el); }
-    }), { threshold, rootMargin: margin });
-    o.observe(el);
-  };
-  revealOnce(header, 0.15, '0px 0px -40px 0px');
-  revealOnce(svcVisual, 0.12, '0px 0px -40px 0px');
-  items.forEach((it, i) => revealOnce(it, 0.1, '0px 0px -30px 0px', `${i * 0.08}s`));
-
-  /* Preload the oval images shortly before the section arrives (desktop only),
-     so the first "new oval opens" transition never waits on a download */
-  if ('IntersectionObserver' in window) {
-    const pre = new IntersectionObserver(es => {
-      if (!es[0].isIntersecting) return;
-      pre.disconnect();
-      if (window.matchMedia('(max-width: 900px)').matches) return;
-      document.querySelectorAll('.svc-oval-img').forEach(img => {
-        const src = img.getAttribute('src');
-        const tmp = new Image();
-        tmp.src = src;
-        img.loading = 'eager';
-      });
-    }, { rootMargin: '900px 0px' });
-    pre.observe(svcSection);
-  }
-
-  /* ── 3. Shared state ── */
-  const mq = window.matchMedia('(max-width: 900px)');
-  const stageImgs = Array.from(document.querySelectorAll('.svc-oval-img'));
-  const ovalWrap  = document.getElementById('svcOvalWrap');
-  const ovalTag   = document.getElementById('svcOvalTag');
-  const tagNum    = document.getElementById('svcOvalNum');
-  const tagName   = document.getElementById('svcOvalName');
-  const mobDots   = Array.from(document.querySelectorAll('.svc-mob-dot'));
-  const mobPrev   = document.getElementById('svcMobPrev');
-  const mobNext   = document.getElementById('svcMobNext');
-
-  let current = 0;
-  let swapTimer = null, tagTimer = null;
-
-  /* Desktop oval stage: old image scales back, new one opens as an oval from the centre */
-  function showStageImage(idx, animate) {
-    const next = stageImgs[idx];
-    if (!next) return;
-    const cur = stageImgs.find(i => i.classList.contains('is-current'));
-    if (cur === next) return;
-    stageImgs.forEach(i => i.classList.remove('is-leaving', 'is-entering'));
-    if (cur) { cur.classList.remove('is-current'); if (animate) cur.classList.add('is-leaving'); }
-    next.classList.add('is-current');
-    if (animate) next.classList.add('is-entering');
-    clearTimeout(swapTimer);
-    swapTimer = setTimeout(() => stageImgs.forEach(i => i.classList.remove('is-leaving', 'is-entering')), 1000);
-
-    if (animate && ovalWrap) {
-      ovalWrap.classList.remove('pulse'); void ovalWrap.offsetWidth; ovalWrap.classList.add('pulse');
-    }
-    if (ovalTag) {
-      ovalTag.classList.add('is-swapping');
-      clearTimeout(tagTimer);
-      tagTimer = setTimeout(() => {
-        if (tagNum)  tagNum.textContent  = String(idx + 1).padStart(2, '0');
-        if (tagName) tagName.textContent = items[idx].dataset.name.replace(/&amp;/g, '&');
-        ovalTag.classList.remove('is-swapping');
-      }, 200);
+  function buildDots() {
+    if (!progWrap) return;
+    progWrap.innerHTML = '';
+    const pages = Math.ceil(TOTAL / perView);
+    for (let i = 0; i < pages; i++) {
+      const d = document.createElement('button');
+      d.className = 'svc-dot' + (i === 0 ? ' is-active' : '');
+      d.type = 'button';
+      d.addEventListener('click', () => go(i * perView));
+      progWrap.appendChild(d);
     }
   }
 
-  function markActive(idx) {
-    current = idx;
-    items.forEach((it, i) => {
-      const on = i === idx;
-      it.classList.toggle('is-active', on);
-      const h = it.querySelector('.svc-item-head');
-      if (h) h.setAttribute('aria-expanded', on ? 'true' : 'false');
-    });
-    mobDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  function render() {
+    const cardW = (cards[0] ? cards[0].offsetWidth : 0) + GAP;
+    const max   = Math.max(0, TOTAL - perView);
+    if (cur > max) cur = max;
+    if (cur < 0)   cur = 0;
+    track.style.transform = 'translateX(' + (-cur * cardW) + 'px)';
+    if (ctr) ctr.textContent = String(Math.min(cur + 1, TOTAL)).padStart(2, '0');
+    const dots = progWrap ? progWrap.querySelectorAll('.svc-dot') : [];
+    const page = Math.floor(cur / perView);
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === page));
   }
 
-  /* ── Desktop: single-open accordion + oval swap ── */
-  items.forEach((item, idx) => {
-    const head = item.querySelector('.svc-item-head');
-    if (!head) return;
-    head.addEventListener('click', () => {
-      if (mq.matches) { scrollToCard(idx); return; }
-      if (item.classList.contains('is-active')) {          // click open one → collapse it
-        item.classList.remove('is-active');
-        head.setAttribute('aria-expanded', 'false');
-        return;
-      }
-      markActive(idx);
-      showStageImage(idx, true);
-    });
-  });
+  function go(idx) { cur = idx; render(); }
 
-  /* ── Mobile: snap carousel ── */
-  function scrollToCard(idx) {
-    const it = items[idx];
-    if (!it) return;
-    const left = it.offsetLeft - (svcList.clientWidth - it.offsetWidth) / 2;
-    svcList.scrollTo({ left, behavior: reduceMotion ? 'auto' : 'smooth' });
+  function recalc() {
+    perView = window.innerWidth <= 900 ? 1 : 2;
+    buildDots(); render();
   }
 
-  let scrollTick = false;
-  function syncFromScroll() {
-    scrollTick = false;
-    if (!mq.matches) return;
-    const lr = svcList.getBoundingClientRect();
-    const cx = lr.left + lr.width / 2;
-    let best = 0, bestD = Infinity;
-    items.forEach((it, i) => {
-      const r = it.getBoundingClientRect();
-      const d = Math.abs(r.left + r.width / 2 - cx);
-      if (d < bestD) { bestD = d; best = i; }
-    });
-    if (best !== current) { markActive(best); showStageImage(best, false); }
-  }
-  svcList.addEventListener('scroll', () => {
-    if (!scrollTick) { scrollTick = true; requestAnimationFrame(syncFromScroll); }
+  if (prevBtn) prevBtn.addEventListener('click', () => { cur = Math.max(0, cur - 1); render(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { cur = Math.min(TOTAL - perView, cur + 1); render(); });
+
+  let touchX = 0;
+  track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 45) {
+      cur += diff > 0 ? 1 : -1;
+      cur = Math.max(0, Math.min(TOTAL - perView, cur));
+      render();
+    }
   }, { passive: true });
 
-  if (mobPrev) mobPrev.addEventListener('click', () => scrollToCard((current - 1 + items.length) % items.length));
-  if (mobNext) mobNext.addEventListener('click', () => scrollToCard((current + 1) % items.length));
-  mobDots.forEach((d, i) => d.addEventListener('click', () => scrollToCard(i)));
+  document.addEventListener('keydown', e => {
+    const r = section.getBoundingClientRect();
+    if (r.top > window.innerHeight || r.bottom < 0) return;
+    if (e.key === 'ArrowRight') { cur = Math.min(TOTAL - perView, cur + 1); render(); }
+    if (e.key === 'ArrowLeft')  { cur = Math.max(0, cur - 1); render(); }
+  });
 
-  /* Keep desktop / mobile in sync when the viewport crosses the breakpoint */
-  function onBreakpoint() {
-    if (mq.matches) {
-      markActive(current);
-      requestAnimationFrame(() => {
-        const it = items[current];
-        svcList.scrollLeft = it.offsetLeft - (svcList.clientWidth - it.offsetWidth) / 2;
-      });
-    } else {
-      svcList.scrollLeft = 0;
-      markActive(current);
-      showStageImage(current, false);
-    }
+  window.addEventListener('resize', recalc);
+  recalc();
+
+  /* Scroll reveal header */
+  const hdr = section.querySelector('.svc-header');
+  if (hdr) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(es => { if (es[0].isIntersecting) { hdr.classList.add('svc-in'); } }, { threshold: 0.15 }).observe(hdr);
+    } else { hdr.classList.add('svc-in'); }
   }
-  if (mq.addEventListener) mq.addEventListener('change', onBreakpoint); else mq.addListener(onBreakpoint);
-
-  markActive(0);
-  if (mq.matches) onBreakpoint();
 })();
 </script>
 
@@ -6281,7 +6104,7 @@
   measure();
   window.addEventListener('resize', measure);
 
-  let currentX = 0, startPointerX = 0, dragging = false, wasDragged = false, completed = false;
+  let currentX = 0, startPointerX = 0, dragging = false, wasDragged = false, completed = false, autoSwiping = false;
 
   function paint(x){
     currentX = Math.max(0, Math.min(maxX, x));
@@ -6298,7 +6121,7 @@
   }
 
   function onDown(e){
-    if(completed) return;
+    if(completed || autoSwiping) return;
     dragging = true; wasDragged = false;
     startPointerX = pointerX(e) - currentX;
     handle.classList.add('dragging');
@@ -6326,7 +6149,17 @@
     document.removeEventListener('touchend', onUp);
 
     if(currentX >= maxX * COMPLETE_RATIO){ complete(); }
+    else if(!wasDragged){ autoSwipe(); }
     else { snapBack(); }
+  }
+
+  function autoSwipe(){
+    // A simple tap/touch (no real drag) — finish the slide on the user's
+    // behalf using the handle's existing CSS transition, then complete.
+    if(completed || autoSwiping) return;
+    autoSwiping = true;
+    paint(maxX);
+    window.setTimeout(() => { autoSwiping = false; complete(); }, 460);
   }
 
   function complete(){
@@ -6350,9 +6183,14 @@
   handle.addEventListener('mousedown', onDown);
   handle.addEventListener('touchstart', onDown, { passive:true });
 
-  // NOTE: intentionally no plain click/tap handler here — the drawer should
-  // only open when the handle is actually swiped/dragged past the threshold,
-  // not on a simple click.
+  // Make the whole pill touchable/clickable, not just the small handle:
+  // tapping anywhere on the button (without dragging) auto-completes the
+  // slide itself via autoSwipe(). A real drag on the handle is still
+  // handled above and takes priority (guarded by dragging/autoSwiping/completed).
+  cta.addEventListener('click', () => {
+    if(completed || dragging || autoSwiping) return;
+    autoSwipe();
+  });
 })();
 
 /* ── FORM DRAWER ── */
