@@ -555,8 +555,9 @@
 }
 
 
+
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   SERVICES â€” Horizontal Carousel, Light Theme, Big Cards
+   SERVICES â€” Scroll-locked Carousel, Premium Light Theme
 â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .svc-section {
   position: relative;
@@ -568,8 +569,8 @@
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 15% 0%, rgba(201,155,92,.07) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 40% at 85% 95%, rgba(201,155,92,.05) 0%, transparent 50%);
+    radial-gradient(ellipse 60% 50% at 10% 0%, rgba(201,155,92,.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 90% 100%, rgba(201,155,92,.04) 0%, transparent 50%);
   pointer-events: none;
 }
 .svc-wrap {
@@ -577,33 +578,44 @@
   width: min(1360px, 94%); margin: 0 auto;
 }
 
-/* Header */
+/* Header â€” animates in on scroll */
 .svc-header {
-  max-width: 680px; margin-bottom: 56px;
-  opacity: 0; transform: translateY(28px);
-  transition: opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);
+  max-width: 680px; margin-bottom: 52px;
+  opacity: 0; transform: translateY(36px);
+  transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
 }
-.svc-header.svc-in { opacity: 1; transform: translateY(0); }
+.svc-header.svc-in  { opacity: 1; transform: translateY(0); }
+.svc-header.svc-out { opacity: 0; transform: translateY(-28px); transition: opacity .5s ease, transform .5s ease; }
+
 .svc-eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800;
   letter-spacing: .22em; text-transform: uppercase; color: #C99B5C;
   margin-bottom: 20px;
 }
-.svc-eyebrow::before {
-  content: ""; width: 28px; height: 2px;
-  background: #C99B5C; border-radius: 2px;
-}
+.svc-eyebrow::before { content: ""; width: 28px; height: 2px; background: #C99B5C; border-radius: 2px; }
+
 .svc-title {
   font-family: 'Outfit', sans-serif; font-weight: 900;
   font-size: clamp(38px, 4.6vw, 62px); line-height: 1.05;
   letter-spacing: -0.036em; color: #17130E; margin-bottom: 18px;
 }
 .svc-title em { font-style: italic; color: #C99B5C; }
+
 .svc-subtitle {
-  font-family: 'Inter', sans-serif; font-size: 16.5px; font-weight: 500;
+  font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500;
   line-height: 1.7; color: rgba(23,19,14,.48); max-width: 480px;
 }
+
+/* Track header row (arrows + counter above track) */
+.svc-track-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px;
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .7s cubic-bezier(.16,1,.3,1) .15s, transform .7s cubic-bezier(.16,1,.3,1) .15s;
+}
+.svc-track-header.svc-in  { opacity: 1; transform: translateY(0); }
+.svc-track-header.svc-out { opacity: 0; transform: translateY(-14px); transition: opacity .4s ease, transform .4s ease; }
 
 /* Carousel track */
 .svc-track-outer { overflow: hidden; }
@@ -616,144 +628,164 @@
 /* Card */
 .svc-card {
   flex: 0 0 calc(50% - 12px);
-  min-height: 540px;
+  min-height: 560px;
   position: relative;
   border-radius: 28px;
   overflow: hidden;
   display: flex; flex-direction: column;
-  border: 1.5px solid rgba(23,19,14,.06);
+  border: 1.5px solid rgba(23,19,14,.07);
   box-shadow: 0 2px 20px rgba(23,19,14,.05);
-  transition: box-shadow .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1);
   cursor: default;
+  opacity: 0; transform: translateX(70px);
+  transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1),
+              box-shadow .4s ease, border-color .4s ease;
 }
-.svc-card:hover {
-  box-shadow: 0 28px 70px rgba(23,19,14,.13), 0 6px 20px rgba(23,19,14,.07);
+.svc-card.svc-in {
+  opacity: 1; transform: translateX(0);
+}
+.svc-card.svc-out-left  { opacity: 0; transform: translateX(-60px); transition: opacity .5s ease, transform .5s ease; }
+.svc-card.svc-out-right { opacity: 0; transform: translateX(60px);  transition: opacity .5s ease, transform .5s ease; }
+.svc-card.svc-in:hover {
+  box-shadow: 0 32px 80px rgba(23,19,14,.13), 0 8px 24px rgba(23,19,14,.07);
+  border-color: rgba(23,19,14,.14);
   transform: translateY(-6px);
 }
 
-/* Visual top area */
+/* Card visual top area */
 .svc-card-visual {
   position: relative;
-  height: 280px; min-height: 280px;
+  height: 260px; min-height: 260px;
   background: var(--card-bg, #FDF5E8);
-  display: flex; align-items: flex-start; justify-content: flex-start;
-  padding: 32px; overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: flex-start;
+  padding: 24px 30px 26px; overflow: hidden;
 }
 
-/* BG motion shapes */
-.svc-card-shape {
-  position: absolute; border-radius: 50%;
-  pointer-events: none;
-  animation: svcShapeFloat 8s ease-in-out infinite alternate;
+/* BG motion icon â€” DIFFERENT from card icon, top-left, large and faded */
+
+.svc-bg-motion {
+  position: absolute;
+  top: 14px; left: 14px;
+  width: 80px; height: 80px;
+  color: var(--card-accent, #C99B5C);
+  opacity: 0.055; pointer-events: none; z-index: 1;
+  animation: svcBgFloat 9s ease-in-out infinite alternate;
+  transition: opacity .5s ease;
 }
-.svc-card-shape.s1 {
-  width: 220px; height: 220px; right: -50px; bottom: -40px;
-  background: var(--card-accent,#C99B5C); opacity: .10;
+.svc-bg-motion svg { width: 100%; height: 100%; }
+.svc-card:hover .svc-bg-motion { opacity: 0.10; }
+
+.svc-bg-motion-2 {
+  position: absolute;
+  bottom: -15px; right: -12px;
+  width: 160px; height: 160px;
+  color: var(--card-accent, #C99B5C);
+  opacity: 0.05; pointer-events: none; z-index: 1;
+  animation: svcBgFloat 12s ease-in-out infinite alternate-reverse;
 }
-.svc-card-shape.s2 {
-  width: 110px; height: 110px; right: 28%; top: -24px;
-  background: var(--card-accent,#C99B5C); opacity: .07;
-  animation-delay: -3.5s; animation-duration: 11s;
-}
-.svc-card-shape.s3 {
-  width: 66px; height: 66px; left: 42%; bottom: 18px;
-  background: var(--card-accent,#C99B5C); opacity: .05;
-  animation-delay: -6s; animation-duration: 13s;
-}
-@keyframes svcShapeFloat {
-  0%   { transform: translate(0,0) scale(1) rotate(0deg); }
-  100% { transform: translate(14px,-12px) scale(1.10) rotate(8deg); }
+
+@keyframes svcBgFloat {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33%  { transform: translate(-8px, 10px) rotate(4deg) scale(1.06); }
+  66%  { transform: translate(10px, -6px) rotate(-3deg) scale(0.96); }
+  100% { transform: translate(-4px, 14px) rotate(6deg) scale(1.04); }
 }
 
 /* Service icon badge */
+/* Service icon badge — sits lower in visual, above bg icons */
 .svc-card-icon {
-  width: 64px; height: 64px; border-radius: 20px;
-  background: rgba(255,255,255,.88);
+  width: 60px; height: 60px; border-radius: 18px;
+  background: rgba(255,255,255,.92);
   display: flex; align-items: center; justify-content: center;
   color: var(--card-accent,#C99B5C);
-  box-shadow: 0 4px 18px rgba(0,0,0,.07);
-  position: relative; z-index: 2;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+  position: relative; z-index: 3;
   transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
   flex-shrink: 0;
 }
-.svc-card:hover .svc-card-icon {
-  transform: scale(1.12) rotate(-6deg);
-  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+.svc-card.svc-in:hover .svc-card-icon {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 10px 30px rgba(0,0,0,.11);
 }
 
-/* Arrow link */
+/* Arrow link badge */
 .svc-card-arrow {
-  position: absolute; top: 28px; right: 28px;
-  width: 42px; height: 42px; border-radius: 50%;
+  position: absolute; top: 26px; right: 26px;
+  width: 40px; height: 40px; border-radius: 50%;
   background: rgba(255,255,255,.75);
   display: flex; align-items: center; justify-content: center;
-  z-index: 2; text-decoration: none; color: #17130E;
+  z-index: 4; text-decoration: none; color: #17130E;
   border: 1.5px solid rgba(23,19,14,.10);
-  transition: background .3s ease, color .3s ease, transform .3s ease, border-color .3s ease;
+  transition: background .3s ease, color .3s ease, transform .3s ease;
 }
-.svc-card:hover .svc-card-arrow {
+.svc-card.svc-in:hover .svc-card-arrow {
   background: #17130E; color: #fff; border-color: #17130E;
   transform: translate(3px,-3px);
 }
-.svc-card-arrow svg { width: 17px; height: 17px; }
+.svc-card-arrow svg { width: 16px; height: 16px; }
 
 /* Watermark number */
 .svc-card-watermark {
-  position: absolute; bottom: -16px; right: 18px;
+  position: absolute; bottom: -18px; right: 16px;
   font-family: 'Outfit', sans-serif; font-weight: 900;
-  font-size: 170px; line-height: 1; letter-spacing: -0.04em;
+  font-size: 160px; line-height: 1; letter-spacing: -0.04em;
   color: var(--card-accent,#C99B5C); opacity: .09;
-  pointer-events: none; z-index: 1;
+  pointer-events: none; z-index: 2;
   transition: opacity .4s ease;
 }
-.svc-card:hover .svc-card-watermark { opacity: .16; }
+.svc-card.svc-in:hover .svc-card-watermark { opacity: .18; }
 
 /* Card body */
 .svc-card-body {
-  flex: 1; padding: 30px 34px 34px;
+  flex: 1; padding: 28px 32px 32px;
   display: flex; flex-direction: column;
   background: #fff;
 }
 .svc-card-counter {
-  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800;
-  color: var(--card-accent,#C99B5C); margin-bottom: 10px; letter-spacing: .04em;
+  font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800;
+  color: var(--card-accent,#C99B5C); margin-bottom: 9px; letter-spacing: .05em;
 }
 .svc-card-title {
   font-family: 'Outfit', sans-serif; font-weight: 900;
-  font-size: clamp(22px,2.2vw,30px); line-height: 1.18;
-  letter-spacing: -0.028em; color: #17130E; margin-bottom: 14px;
+  font-size: clamp(21px, 2.2vw, 28px); line-height: 1.18;
+  letter-spacing: -0.028em; color: #17130E; margin-bottom: 12px;
 }
 .svc-card-desc {
-  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
+  font-family: 'Inter', sans-serif; font-size: 14.5px; font-weight: 500;
   line-height: 1.68; color: rgba(23,19,14,.50);
+  margin-bottom: 20px;
 }
 
-/* Hover reveal */
-.svc-card-reveal {
-  max-height: 0; overflow: hidden; opacity: 0;
-  transition: max-height .55s cubic-bezier(.16,1,.3,1), opacity .38s ease .08s;
-}
-.svc-card:hover .svc-card-reveal { max-height: 420px; opacity: 1; }
+/* Tech + Perfect For â€” permanently visible */
 .svc-reveal-divider {
   height: 1px; border: none;
-  background: rgba(23,19,14,.08); margin: 20px 0 16px;
+  background: rgba(23,19,14,.07);
+  margin: 0 0 16px;
 }
 .svc-reveal-label {
-  font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 800;
-  letter-spacing: .20em; text-transform: uppercase;
-  color: rgba(23,19,14,.30); margin-bottom: 10px;
+  font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 800;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(23,19,14,.28); margin-bottom: 8px;
 }
-.svc-reveal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.svc-reveal-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 14px;
+}
 .svc-reveal-tag {
   font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700;
-  color: rgba(23,19,14,.62);
+  color: rgba(23,19,14,.65);
   background: rgba(23,19,14,.04); border: 1.2px solid rgba(23,19,14,.09);
-  padding: 5px 13px; border-radius: 999px;
+  padding: 4px 12px; border-radius: 999px;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+.svc-card.svc-in:hover .svc-reveal-tag {
+  background: rgba(var(--card-accent-rgb, 201,155,92),.08);
+  border-color: rgba(var(--card-accent-rgb, 201,155,92),.3);
+  color: var(--card-accent, #C99B5C);
 }
 .svc-reveal-pf { display: flex; flex-wrap: wrap; gap: 6px; }
 .svc-reveal-pf-item {
   display: inline-flex; align-items: center; gap: 5px;
-  font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
   color: rgba(23,19,14,.55);
 }
 .svc-reveal-pf-item::before {
@@ -761,13 +793,26 @@
   background: var(--card-accent,#C99B5C); flex-shrink: 0;
 }
 
-/* Nav bar */
-.svc-nav-bar {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: 40px; padding-top: 28px;
-  border-top: 1.5px solid rgba(23,19,14,.07);
+/* Arrow nav */
+.svc-arrow {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid rgba(23,19,14,.12); background: #fff; color: #17130E;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(23,19,14,.06);
+  transition: background .25s ease, border-color .25s ease, transform .25s ease,
+              color .25s ease, box-shadow .25s ease;
 }
-.svc-nav-left { display: flex; align-items: center; gap: 18px; }
+.svc-arrow:hover {
+  background: #17130E; border-color: #17130E; color: #fff;
+  transform: scale(1.08); box-shadow: 0 6px 20px rgba(23,19,14,.18);
+}
+.svc-arrow:active { transform: scale(.92); }
+.svc-arrow svg { width: 18px; height: 18px; }
+.svc-nav-arrows { display: flex; align-items: center; gap: 10px; }
+
+/* Dots + counter */
+.svc-nav-left { display: flex; align-items: center; gap: 16px; }
 .svc-progress { display: flex; align-items: center; gap: 6px; }
 .svc-dot {
   height: 4px; width: 18px; border-radius: 4px;
@@ -775,31 +820,35 @@
   cursor: pointer;
   transition: width .4s cubic-bezier(.16,1,.3,1), background .3s ease;
 }
-.svc-dot.is-active { width: 38px; background: #C99B5C; }
+.svc-dot.is-active { width: 36px; background: #C99B5C; }
 .svc-slide-counter {
   font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
-  color: rgba(23,19,14,.32); letter-spacing: .02em;
+  color: rgba(23,19,14,.30); letter-spacing: .02em;
 }
 .svc-slide-counter b { color: #17130E; font-weight: 900; }
-.svc-nav-arrows { display: flex; align-items: center; gap: 10px; }
-.svc-arrow {
-  width: 50px; height: 50px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  border: 1.5px solid rgba(23,19,14,.12); background: #fff; color: #17130E;
-  cursor: pointer;
-  transition: background .25s ease, border-color .25s ease, transform .25s ease, color .25s ease;
+
+/* Nav bar (just left side dots) */
+.svc-nav-bar {
+  display: flex; align-items: center; margin-top: 32px;
+  padding-top: 24px; border-top: 1.5px solid rgba(23,19,14,.07);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .7s cubic-bezier(.16,1,.3,1) .2s, transform .7s cubic-bezier(.16,1,.3,1) .2s;
 }
-.svc-arrow:hover { background: #17130E; border-color: #17130E; color: #fff; transform: scale(1.07); }
-.svc-arrow:active { transform: scale(.93); }
-.svc-arrow svg { width: 18px; height: 18px; }
+.svc-nav-bar.svc-in  { opacity: 1; transform: translateY(0); }
+.svc-nav-bar.svc-out { opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
 
 /* Footer CTA */
 .svc-footer-cta {
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 20px;
-  margin-top: 50px; padding-top: 34px;
+  margin-top: 48px; padding-top: 32px;
   border-top: 1.5px solid rgba(23,19,14,.07);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .7s cubic-bezier(.16,1,.3,1) .28s, transform .7s cubic-bezier(.16,1,.3,1) .28s;
 }
+.svc-footer-cta.svc-in  { opacity: 1; transform: translateY(0); }
+.svc-footer-cta.svc-out { opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
+
 .svc-footer-text {
   font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
   color: rgba(23,19,14,.40);
@@ -815,26 +864,24 @@
 }
 .svc-view-all:hover {
   background: #C99B5C; color: #17130E;
-  transform: translateY(-2px);
-  box-shadow: 0 14px 36px rgba(201,155,92,.28);
+  transform: translateY(-2px); box-shadow: 0 14px 36px rgba(201,155,92,.28);
 }
 .svc-view-all svg { width: 15px; height: 15px; }
 
+/* Responsive */
 @media (max-width: 900px) {
   .svc-section { padding: 80px 0 70px; }
-  .svc-header { margin-bottom: 40px; }
-  .svc-card { flex: 0 0 88%; min-height: 460px; }
-  .svc-card-visual { height: 220px; min-height: 220px; padding: 26px; }
-  .svc-card-watermark { font-size: 120px; }
-  .svc-card-reveal { max-height: 420px; opacity: 1; }
+  .svc-header { margin-bottom: 36px; }
+  .svc-card { flex: 0 0 88%; min-height: 480px; }
+  .svc-card-visual { height: 210px; min-height: 210px; padding: 24px; }
   .svc-track { gap: 16px; }
   .svc-footer-cta { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 520px) {
-  .svc-card { flex: 0 0 94%; min-height: 420px; }
-  .svc-card-visual { height: 190px; min-height: 190px; padding: 22px; }
-  .svc-card-body { padding: 22px 24px 26px; }
-  .svc-card-icon { width: 52px; height: 52px; border-radius: 16px; }
+  .svc-card { flex: 0 0 94%; min-height: 430px; }
+  .svc-card-visual { height: 180px; min-height: 180px; padding: 20px; }
+  .svc-card-body { padding: 20px 22px 24px; }
+  .svc-card-icon { width: 52px; height: 52px; border-radius: 15px; }
   .svc-card-title { font-size: 20px; }
 }
 
@@ -1154,7 +1201,7 @@
 .pfh-row-link:hover { color: #C99B5C; border-color: #C99B5C; gap: 13px; }
 .pfh-row-link:hover svg { transform: translateX(3px); }
 
-.pfh-cta-wrap { display: flex; justify-content: center; margin-top: 100px; }
+.pfh-cta-wrap { display: flex; justify-content: center; margin-top: 70px; padding-bottom: 70px; }
 .pfh-view-all {
   display: inline-flex;
   align-items: center;
@@ -3253,6 +3300,7 @@
 
         <!-- ══ SERVICES — ONE merged box: soft dome rises on scroll, oval image stage, swipe cards on mobile ══ -->
     <!-- SERVICES SECTION -->
+    <!-- SERVICES SECTION -->
     <section class="svc-section" id="services">
       <div class="svc-wrap">
 
@@ -3262,243 +3310,7 @@
           <p class="svc-subtitle">Ten service lines. One team that owns the outcome from the first conversation to long after launch day.</p>
         </div>
 
-        <div class="svc-track-outer">
-          <div class="svc-track" id="svcTrack">
-
-            <div class="svc-card" style="--card-bg:#FDF5E8;--card-accent:#D4A24E;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">01</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">01 / 10</p>
-                <h3 class="svc-card-title">Custom Software Development</h3>
-                <p class="svc-card-desc">We build software that fits the way your business actually works. SaaS platforms, complex APIs and cloud applications designed around your goals.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">Node.js</span><span class="svc-reveal-tag">Python</span><span class="svc-reveal-tag">React.js</span><span class="svc-reveal-tag">Next.js</span><span class="svc-reveal-tag">TypeScript</span><span class="svc-reveal-tag">REST APIs</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">SaaS Platforms</span><span class="svc-reveal-pf-item">Enterprise Software</span><span class="svc-reveal-pf-item">Internal Business Systems</span><span class="svc-reveal-pf-item">API Development</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card" style="--card-bg:#EEF6FB;--card-accent:#4A9FD4;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">02</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">02 / 10</p>
-                <h3 class="svc-card-title">Website Development</h3>
-                <p class="svc-card-desc">Your website is the first impression that either earns trust or loses it. Fast loading, SEO friendly and premium across every screen size.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">React.js</span><span class="svc-reveal-tag">Next.js</span><span class="svc-reveal-tag">TypeScript</span><span class="svc-reveal-tag">JavaScript</span><span class="svc-reveal-tag">HTML5</span><span class="svc-reveal-tag">CSS3</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Corporate Websites</span><span class="svc-reveal-pf-item">SaaS Websites</span><span class="svc-reveal-pf-item">Business Portals</span><span class="svc-reveal-pf-item">Landing Pages</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card" style="--card-bg:#F0FAF4;--card-accent:#3DA06A;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">03</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">03 / 10</p>
-                <h3 class="svc-card-title">Mobile App Development</h3>
-                <p class="svc-card-desc">People use apps that feel effortless. High performance iOS and Android apps with smooth intuitive experiences that keep users coming back.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">React Native</span><span class="svc-reveal-tag">Flutter</span><span class="svc-reveal-tag">Swift</span><span class="svc-reveal-tag">Kotlin</span><span class="svc-reveal-tag">Java</span><span class="svc-reveal-tag">Firebase</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">iOS Apps</span><span class="svc-reveal-pf-item">Android Apps</span><span class="svc-reveal-pf-item">Cross Platform Apps</span><span class="svc-reveal-pf-item">Startup MVPs</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card" style="--card-bg:#F3EEFB;--card-accent:#7C5CC4;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">04</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">04 / 10</p>
-                <h3 class="svc-card-title">AI Development and Intelligent Automation</h3>
-                <p class="svc-card-desc">Manual repetitive work costs businesses more than they realise. AI agents and generative AI solutions that free your team for higher value work.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">Generative AI</span><span class="svc-reveal-tag">Agentic AI</span><span class="svc-reveal-tag">Large Language Models</span><span class="svc-reveal-tag">Machine Learning</span><span class="svc-reveal-tag">Deep Learning</span><span class="svc-reveal-tag">NLP</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">AI Assistants</span><span class="svc-reveal-pf-item">AI Agents</span><span class="svc-reveal-pf-item">Process Automation</span><span class="svc-reveal-pf-item">Document Processing</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card" style="--card-bg:#FFF3F0;--card-accent:#D46B5C;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="8" cy="8" r="2"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">05</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">05 / 10</p>
-                <h3 class="svc-card-title">Product Design and Development</h3>
-                <p class="svc-card-desc">A great idea deserves a great product. We design and build digital experiences that balance business goals with genuine usability from concept to launch.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">UI/UX Design</span><span class="svc-reveal-tag">User Research</span><span class="svc-reveal-tag">Wireframing</span><span class="svc-reveal-tag">Prototyping</span><span class="svc-reveal-tag">Design Systems</span><span class="svc-reveal-tag">MVP Development</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Startup MVPs</span><span class="svc-reveal-pf-item">SaaS Products</span><span class="svc-reveal-pf-item">Web Applications</span><span class="svc-reveal-pf-item">Mobile Products</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card" style="--card-bg:#FDF0F6;--card-accent:#C95C8E;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">06</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">06 / 10</p>
-                <h3 class="svc-card-title">Digital Marketing and Branding</h3>
-                <p class="svc-card-desc">Visibility without trust does not convert. Marketing and branding strategies that grow your audience, earn credibility and drive real measurable results.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">SEO</span><span class="svc-reveal-tag">Search Engine Marketing</span><span class="svc-reveal-tag">Content Marketing</span><span class="svc-reveal-tag">Social Media Marketing</span><span class="svc-reveal-tag">PPC Advertising</span><span class="svc-reveal-tag">Email Marketing</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">SEO Growth</span><span class="svc-reveal-pf-item">Social Campaigns</span><span class="svc-reveal-pf-item">Brand Launches</span><span class="svc-reveal-pf-item">Lead Generation</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card" style="--card-bg:#EFF4FB;--card-accent:#4A72C9;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">07</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">07 / 10</p>
-                <h3 class="svc-card-title">Data and Analytics Consultancy</h3>
-                <p class="svc-card-desc">Most businesses sit on data they do not fully understand. Dashboards and predictive analytics that turn raw numbers into clear confident decisions.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">Data Analytics</span><span class="svc-reveal-tag">ETL Pipelines</span><span class="svc-reveal-tag">Data Warehousing</span><span class="svc-reveal-tag">Business Intelligence</span><span class="svc-reveal-tag">Power BI</span><span class="svc-reveal-tag">Tableau</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Executive Dashboards</span><span class="svc-reveal-pf-item">Business Intelligence</span><span class="svc-reveal-pf-item">Automated Reporting</span><span class="svc-reveal-pf-item">Sales Analytics</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card" style="--card-bg:#F0F5EF;--card-accent:#5A8C4A;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">08</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">08 / 10</p>
-                <h3 class="svc-card-title">Data Management and Database Solutions</h3>
-                <p class="svc-card-desc">Poorly structured data quietly holds businesses back. We design optimise and govern database systems that stay secure organised and ready to scale.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">PostgreSQL</span><span class="svc-reveal-tag">MongoDB</span><span class="svc-reveal-tag">MySQL</span><span class="svc-reveal-tag">Oracle</span><span class="svc-reveal-tag">Redis</span><span class="svc-reveal-tag">Snowflake</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Database Optimization</span><span class="svc-reveal-pf-item">Cloud Migration</span><span class="svc-reveal-pf-item">Data Architecture</span><span class="svc-reveal-pf-item">High Volume Applications</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card" style="--card-bg:#F5F0FB;--card-accent:#8B5CC9;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">09</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">09 / 10</p>
-                <h3 class="svc-card-title">AI Consultancy and Automation Strategy</h3>
-                <p class="svc-card-desc">AI is moving fast but adopting it without a clear plan wastes resources. We identify where AI genuinely adds value and build a practical roadmap forward.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">AI Strategy</span><span class="svc-reveal-tag">AI Readiness Assessment</span><span class="svc-reveal-tag">AI Roadmaps</span><span class="svc-reveal-tag">Generative AI</span><span class="svc-reveal-tag">Agentic AI</span><span class="svc-reveal-tag">AI Agents</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">AI Transformation</span><span class="svc-reveal-pf-item">AI Adoption Roadmaps</span><span class="svc-reveal-pf-item">Automation Consulting</span><span class="svc-reveal-pf-item">AI Proof of Concepts</span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="svc-card" style="--card-bg:#FFF7ED;--card-accent:#C98B3E;">
-              <div class="svc-card-visual">
-                <div class="svc-card-icon">
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                </div>
-                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
-                <span class="svc-card-watermark">10</span>
-                <span class="svc-card-shape s1"></span><span class="svc-card-shape s2"></span><span class="svc-card-shape s3"></span>
-              </div>
-              <div class="svc-card-body">
-                <p class="svc-card-counter">10 / 10</p>
-                <h3 class="svc-card-title">Vibe Code to Production and Scale</h3>
-                <p class="svc-card-desc">You moved fast and built something real. Now it needs to hold up. We take your prototype or MVP and transform it into a secure production ready product.</p>
-                <div class="svc-card-reveal">
-                  <hr class="svc-reveal-divider">
-                  <p class="svc-reveal-label">Technologies</p>
-                  <div class="svc-reveal-tags"><span class="svc-reveal-tag">Code Audit</span><span class="svc-reveal-tag">Architecture Review</span><span class="svc-reveal-tag">Refactoring</span><span class="svc-reveal-tag">Security Hardening</span><span class="svc-reveal-tag">Automated Testing</span><span class="svc-reveal-tag">CI/CD</span></div>
-                  <p class="svc-reveal-label">Perfect For</p>
-                  <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">AI Generated MVPs</span><span class="svc-reveal-pf-item">Founder Prototypes</span><span class="svc-reveal-pf-item">Rapid Internal Tools</span><span class="svc-reveal-pf-item">Demo Apps</span></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="svc-nav-bar">
+        <div class="svc-track-header">
           <div class="svc-nav-left">
             <div class="svc-progress" id="svcProgress"></div>
             <span class="svc-slide-counter"><b id="svcCurrent">01</b> / 10</span>
@@ -3513,6 +3325,215 @@
           </div>
         </div>
 
+        <div class="svc-track-outer" id="svcTrackOuter">
+          <div class="svc-track" id="svcTrack">
+
+            <div class="svc-card" style="--card-bg:#FDF5E8;--card-accent:#D4A24E;--card-accent-rgb:212,162,78;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">01</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">01 / 10</p>
+                <h3 class="svc-card-title">Custom Software Development</h3>
+                <p class="svc-card-desc">We build software that fits the way your business actually works. SaaS platforms, complex APIs and cloud applications designed around your goals.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">Node.js</span><span class="svc-reveal-tag">Python</span><span class="svc-reveal-tag">React.js</span><span class="svc-reveal-tag">Next.js</span><span class="svc-reveal-tag">TypeScript</span><span class="svc-reveal-tag">REST APIs</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">SaaS Platforms</span><span class="svc-reveal-pf-item">Enterprise Software</span><span class="svc-reveal-pf-item">Internal Business Systems</span><span class="svc-reveal-pf-item">API Development</span></div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#EEF6FB;--card-accent:#4A9FD4;--card-accent-rgb:74,159,212;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">02</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">02 / 10</p>
+                <h3 class="svc-card-title">Website Development</h3>
+                <p class="svc-card-desc">Your website is the first impression that either earns trust or loses it. Fast loading, SEO friendly and premium across every screen size.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">React.js</span><span class="svc-reveal-tag">Next.js</span><span class="svc-reveal-tag">TypeScript</span><span class="svc-reveal-tag">JavaScript</span><span class="svc-reveal-tag">HTML5</span><span class="svc-reveal-tag">CSS3</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Corporate Websites</span><span class="svc-reveal-pf-item">SaaS Websites</span><span class="svc-reveal-pf-item">Business Portals</span><span class="svc-reveal-pf-item">Landing Pages</span></div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#F0FAF4;--card-accent:#3DA06A;--card-accent-rgb:61,160,106;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">03</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">03 / 10</p>
+                <h3 class="svc-card-title">Mobile App Development</h3>
+                <p class="svc-card-desc">People use apps that feel effortless. High performance iOS and Android apps with smooth intuitive experiences that keep users coming back.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">React Native</span><span class="svc-reveal-tag">Flutter</span><span class="svc-reveal-tag">Swift</span><span class="svc-reveal-tag">Kotlin</span><span class="svc-reveal-tag">Java</span><span class="svc-reveal-tag">Firebase</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">iOS Apps</span><span class="svc-reveal-pf-item">Android Apps</span><span class="svc-reveal-pf-item">Cross Platform Apps</span><span class="svc-reveal-pf-item">Startup MVPs</span></div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#F3EEFB;--card-accent:#7C5CC4;--card-accent-rgb:124,92,196;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="2"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><path d="M6 6l4.5 4.5M13.5 13.5L18 18M6 18l4.5-4.5M13.5 10.5L18 6"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">04</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">04 / 10</p>
+                <h3 class="svc-card-title">AI Development and Intelligent Automation</h3>
+                <p class="svc-card-desc">Manual repetitive work costs businesses more than they realise. AI agents and generative AI solutions that free your team for higher value work.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">Generative AI</span><span class="svc-reveal-tag">Agentic AI</span><span class="svc-reveal-tag">Large Language Models</span><span class="svc-reveal-tag">Machine Learning</span><span class="svc-reveal-tag">Deep Learning</span><span class="svc-reveal-tag">NLP</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">AI Assistants</span><span class="svc-reveal-pf-item">AI Agents</span><span class="svc-reveal-pf-item">Process Automation</span><span class="svc-reveal-pf-item">Document Processing</span></div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#FFF3F0;--card-accent:#D46B5C;--card-accent-rgb:212,107,92;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="8" cy="8" r="2"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">05</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">05 / 10</p>
+                <h3 class="svc-card-title">Product Design and Development</h3>
+                <p class="svc-card-desc">A great idea deserves a great product. We design and build digital experiences that balance business goals with genuine usability from concept to launch.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">UI/UX Design</span><span class="svc-reveal-tag">User Research</span><span class="svc-reveal-tag">Wireframing</span><span class="svc-reveal-tag">Prototyping</span><span class="svc-reveal-tag">Design Systems</span><span class="svc-reveal-tag">MVP Development</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Startup MVPs</span><span class="svc-reveal-pf-item">SaaS Products</span><span class="svc-reveal-pf-item">Web Applications</span><span class="svc-reveal-pf-item">Mobile Products</span></div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#FDF0F6;--card-accent:#C95C8E;--card-accent-rgb:201,92,142;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">06</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">06 / 10</p>
+                <h3 class="svc-card-title">Digital Marketing and Branding</h3>
+                <p class="svc-card-desc">Visibility without trust does not convert. Marketing and branding strategies that grow your audience, earn credibility and drive real measurable results.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">SEO</span><span class="svc-reveal-tag">Search Engine Marketing</span><span class="svc-reveal-tag">Content Marketing</span><span class="svc-reveal-tag">Social Media Marketing</span><span class="svc-reveal-tag">PPC Advertising</span><span class="svc-reveal-tag">Email Marketing</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">SEO Growth</span><span class="svc-reveal-pf-item">Social Campaigns</span><span class="svc-reveal-pf-item">Brand Launches</span><span class="svc-reveal-pf-item">Lead Generation</span></div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#EFF4FB;--card-accent:#4A72C9;--card-accent-rgb:74,114,201;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M21.21 15.89A10 10 0 118 2.83"/><path d="M22 12A10 10 0 0012 2v10z"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">07</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">07 / 10</p>
+                <h3 class="svc-card-title">Data and Analytics Consultancy</h3>
+                <p class="svc-card-desc">Most businesses sit on data they do not fully understand. Dashboards and predictive analytics that turn raw numbers into clear confident decisions.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">Data Analytics</span><span class="svc-reveal-tag">ETL Pipelines</span><span class="svc-reveal-tag">Data Warehousing</span><span class="svc-reveal-tag">Business Intelligence</span><span class="svc-reveal-tag">Power BI</span><span class="svc-reveal-tag">Tableau</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Executive Dashboards</span><span class="svc-reveal-pf-item">Business Intelligence</span><span class="svc-reveal-pf-item">Automated Reporting</span><span class="svc-reveal-pf-item">Sales Analytics</span></div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#F0F5EF;--card-accent:#5A8C4A;--card-accent-rgb:90,140,74;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polyline points="22 12 16 12 14 15 10 9 8 12 2 12"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">08</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">08 / 10</p>
+                <h3 class="svc-card-title">Data Management and Database Solutions</h3>
+                <p class="svc-card-desc">Poorly structured data quietly holds businesses back. We design, optimise and govern database systems that stay secure, organised and ready to scale.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">PostgreSQL</span><span class="svc-reveal-tag">MongoDB</span><span class="svc-reveal-tag">MySQL</span><span class="svc-reveal-tag">Oracle</span><span class="svc-reveal-tag">Redis</span><span class="svc-reveal-tag">Snowflake</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">Database Optimization</span><span class="svc-reveal-pf-item">Cloud Migration</span><span class="svc-reveal-pf-item">Data Architecture</span><span class="svc-reveal-pf-item">High Volume Applications</span></div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#F5F0FB;--card-accent:#8B5CC9;--card-accent-rgb:139,92,201;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4zM8 2v16M16 6v16"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">09</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">09 / 10</p>
+                <h3 class="svc-card-title">AI Consultancy and Automation Strategy</h3>
+                <p class="svc-card-desc">AI is moving fast but adopting it without a clear plan wastes resources. We identify where AI genuinely adds value and build a practical roadmap forward.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">AI Strategy</span><span class="svc-reveal-tag">AI Readiness Assessment</span><span class="svc-reveal-tag">AI Roadmaps</span><span class="svc-reveal-tag">Generative AI</span><span class="svc-reveal-tag">Agentic AI</span><span class="svc-reveal-tag">AI Agents</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">AI Transformation</span><span class="svc-reveal-pf-item">AI Adoption Roadmaps</span><span class="svc-reveal-pf-item">Automation Consulting</span><span class="svc-reveal-pf-item">AI Proof of Concepts</span></div>
+              </div>
+            </div>
+
+            <div class="svc-card" style="--card-bg:#FFF7ED;--card-accent:#C98B3E;--card-accent-rgb:201,139,62;">
+              <div class="svc-card-visual">
+                <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg></div>
+                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
+                <span class="svc-card-watermark">10</span>
+              </div>
+              <div class="svc-card-body">
+                <p class="svc-card-counter">10 / 10</p>
+                <h3 class="svc-card-title">Vibe Code to Production and Scale</h3>
+                <p class="svc-card-desc">You moved fast and built something real. Now it needs to hold up. We take your prototype or MVP and transform it into a secure production ready product.</p>
+                <hr class="svc-reveal-divider">
+                <p class="svc-reveal-label">Technologies</p>
+                <div class="svc-reveal-tags"><span class="svc-reveal-tag">Code Audit</span><span class="svc-reveal-tag">Architecture Review</span><span class="svc-reveal-tag">Refactoring</span><span class="svc-reveal-tag">Security Hardening</span><span class="svc-reveal-tag">Automated Testing</span><span class="svc-reveal-tag">CI/CD</span></div>
+                <p class="svc-reveal-label">Perfect For</p>
+                <div class="svc-reveal-pf"><span class="svc-reveal-pf-item">AI Generated MVPs</span><span class="svc-reveal-pf-item">Founder Prototypes</span><span class="svc-reveal-pf-item">Rapid Internal Tools</span><span class="svc-reveal-pf-item">Demo Apps</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /svc-track-outer -->
+
+        <div class="svc-nav-bar">
+        </div>
+
         <div class="svc-footer-cta">
           <p class="svc-footer-text"><strong>10 core service lines.</strong> One accountable team, from strategy to launch.</p>
           <a class="svc-view-all" href="services.html">
@@ -3522,7 +3543,6 @@
         </div>
 
       </div>
-    </section>
     </section>
 
 
@@ -4745,7 +4765,7 @@
                   </div>
                   <div class="dproc-3d-titlewrap">
                     <h3 class="dproc-3d-title">Discovery &amp; Strategy</h3>
-                    <span class="dproc-3d-dur">Week 1–2</span>
+                    <span class="dproc-3d-dur">Clarity First</span>
                   </div>
                 </div>
                 <p class="dproc-3d-desc">Deep dive into your business goals, target users, and competitive landscape — then distill everything into a concrete product roadmap before a single pixel is touched.</p>
@@ -4765,7 +4785,7 @@
                   </div>
                   <div class="dproc-3d-titlewrap">
                     <h3 class="dproc-3d-title">UI/UX Design</h3>
-                    <span class="dproc-3d-dur">Week 2–4</span>
+                    <span class="dproc-3d-dur">Design Right</span>
                   </div>
                 </div>
                 <p class="dproc-3d-desc">From low-fidelity wireframes to high-fidelity interactive prototypes — every screen designed around real user behaviour and brand identity. You approve before we build.</p>
@@ -4785,7 +4805,7 @@
                   </div>
                   <div class="dproc-3d-titlewrap">
                     <h3 class="dproc-3d-title">Development</h3>
-                    <span class="dproc-3d-dur">Week 4–9</span>
+                    <span class="dproc-3d-dur">Build Smart</span>
                   </div>
                 </div>
                 <p class="dproc-3d-desc">Engineered on clean, modular architecture using industry-proven stacks. Two-week agile sprints with live demos keep you in the loop at every step.</p>
@@ -4805,7 +4825,7 @@
                   </div>
                   <div class="dproc-3d-titlewrap">
                     <h3 class="dproc-3d-title">Testing &amp; QA</h3>
-                    <span class="dproc-3d-dur">Week 9–11</span>
+                    <span class="dproc-3d-dur">Zero Defects</span>
                   </div>
                 </div>
                 <p class="dproc-3d-desc">Multi-device, multi-browser stress testing — functional, performance and security audits across every edge case until the product is airtight.</p>
@@ -4825,7 +4845,7 @@
                   </div>
                   <div class="dproc-3d-titlewrap">
                     <h3 class="dproc-3d-title">Launch &amp; Growth</h3>
-                    <span class="dproc-3d-dur">Week 11+</span>
+                    <span class="dproc-3d-dur">Ship and Grow</span>
                   </div>
                 </div>
                 <p class="dproc-3d-desc">Precision zero-downtime deployment with real-time monitoring and proactive post-launch support — a team that stays on to help it grow.</p>
@@ -5385,85 +5405,158 @@
 
 <script src="./script.js"></script>
 <script>
-/* SERVICES carousel â€” arrow nav, dots, swipe, keyboard */
+/* SERVICES â€” scroll-lock carousel, bi-directional scroll animations */
 (function () {
-  const section = document.querySelector('.svc-section');
+  var section = document.querySelector('.svc-section');
   if (!section) return;
-  const track    = document.getElementById('svcTrack');
-  const cards    = Array.from(track ? track.querySelectorAll('.svc-card') : []);
-  const prevBtn  = document.getElementById('svcPrev');
-  const nextBtn  = document.getElementById('svcNext');
-  const ctr      = document.getElementById('svcCurrent');
-  const progWrap = document.getElementById('svcProgress');
+
+  var track     = document.getElementById('svcTrack');
+  var outer     = document.getElementById('svcTrackOuter');
+  var cards     = Array.prototype.slice.call(track ? track.querySelectorAll('.svc-card') : []);
+  var prevBtn   = document.getElementById('svcPrev');
+  var nextBtn   = document.getElementById('svcNext');
+  var ctr       = document.getElementById('svcCurrent');
+  var progWrap  = document.getElementById('svcProgress');
+  var header    = section.querySelector('.svc-header');
+  var trackHdr  = section.querySelector('.svc-track-header');
+  var navBar    = section.querySelector('.svc-nav-bar');
+  var footerCta = section.querySelector('.svc-footer-cta');
   if (!track || !cards.length) return;
 
-  const TOTAL = cards.length;
-  let cur = 0, perView = 2;
-  const GAP = 24;
+  var TOTAL = cards.length;
+  var cur = 0;
+  var perView = window.innerWidth <= 900 ? 1 : 2;
+  var GAP = window.innerWidth <= 900 ? 16 : 24;
+  var scrollLocked = false;
 
+  /* â”€â”€ Build progress dots â”€â”€ */
   function buildDots() {
     if (!progWrap) return;
     progWrap.innerHTML = '';
-    const pages = Math.ceil(TOTAL / perView);
-    for (let i = 0; i < pages; i++) {
-      const d = document.createElement('button');
+    var pages = Math.ceil(TOTAL / perView);
+    for (var i = 0; i < pages; i++) {
+      var d = document.createElement('button');
       d.className = 'svc-dot' + (i === 0 ? ' is-active' : '');
       d.type = 'button';
-      d.addEventListener('click', () => go(i * perView));
+      (function(idx){ d.addEventListener('click', function(){ go(idx * perView, 1); }); })(i);
       progWrap.appendChild(d);
     }
   }
 
+  /* â”€â”€ Render carousel position â”€â”€ */
   function render() {
-    const cardW = (cards[0] ? cards[0].offsetWidth : 0) + GAP;
-    const max   = Math.max(0, TOTAL - perView);
+    var cardW = (cards[0] ? cards[0].offsetWidth : 0) + GAP;
+    var max = Math.max(0, TOTAL - perView);
     if (cur > max) cur = max;
-    if (cur < 0)   cur = 0;
+    if (cur < 0) cur = 0;
     track.style.transform = 'translateX(' + (-cur * cardW) + 'px)';
     if (ctr) ctr.textContent = String(Math.min(cur + 1, TOTAL)).padStart(2, '0');
-    const dots = progWrap ? progWrap.querySelectorAll('.svc-dot') : [];
-    const page = Math.floor(cur / perView);
-    dots.forEach((d, i) => d.classList.toggle('is-active', i === page));
-  }
-
-  function go(idx) { cur = idx; render(); }
-
-  function recalc() {
-    perView = window.innerWidth <= 900 ? 1 : 2;
-    buildDots(); render();
-  }
-
-  if (prevBtn) prevBtn.addEventListener('click', () => { cur = Math.max(0, cur - 1); render(); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { cur = Math.min(TOTAL - perView, cur + 1); render(); });
-
-  let touchX = 0;
-  track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const diff = touchX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 45) {
-      cur += diff > 0 ? 1 : -1;
-      cur = Math.max(0, Math.min(TOTAL - perView, cur));
-      render();
+    var dots = progWrap ? progWrap.querySelectorAll('.svc-dot') : [];
+    var page = Math.floor(cur / perView);
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('is-active', i === page);
     }
+  }
+
+  function go(idx, dir) {
+    cur = Math.max(0, Math.min(idx, TOTAL - perView));
+    render();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function() { go(cur - 1, -1); });
+  if (nextBtn) nextBtn.addEventListener('click', function() { go(cur + 1, 1); });
+
+  /* â”€â”€ Touch swipe â”€â”€ */
+  var tX = 0;
+  track.addEventListener('touchstart', function(e){ tX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', function(e){
+    var diff = tX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 45) { go(cur + (diff > 0 ? 1 : -1), diff > 0 ? 1 : -1); }
   }, { passive: true });
 
-  document.addEventListener('keydown', e => {
-    const r = section.getBoundingClientRect();
+  /* â”€â”€ Mouse-wheel scroll lock â”€â”€ */
+  var wheelBuffer = 0;
+  var wheelTick = false;
+  outer.addEventListener('wheel', function(e) {
+    var sRect = section.getBoundingClientRect();
+    if (sRect.top > 0 || sRect.bottom < window.innerHeight) return;
+    var atStart = cur <= 0;
+    var atEnd   = cur >= TOTAL - perView;
+    if ((e.deltaY < 0 && atStart) || (e.deltaY > 0 && atEnd)) return;
+    e.preventDefault();
+    wheelBuffer += e.deltaY;
+    if (!wheelTick) {
+      wheelTick = true;
+      setTimeout(function() {
+        if (wheelBuffer > 60)       { go(cur + 1, 1); }
+        else if (wheelBuffer < -60) { go(cur - 1, -1); }
+        wheelBuffer = 0; wheelTick = false;
+      }, 80);
+    }
+  }, { passive: false });
+
+  /* â”€â”€ Keyboard â”€â”€ */
+  document.addEventListener('keydown', function(e) {
+    var r = section.getBoundingClientRect();
     if (r.top > window.innerHeight || r.bottom < 0) return;
-    if (e.key === 'ArrowRight') { cur = Math.min(TOTAL - perView, cur + 1); render(); }
-    if (e.key === 'ArrowLeft')  { cur = Math.max(0, cur - 1); render(); }
+    if (e.key === 'ArrowRight') go(cur + 1, 1);
+    if (e.key === 'ArrowLeft')  go(cur - 1, -1);
   });
 
-  window.addEventListener('resize', recalc);
-  recalc();
+  /* â”€â”€ Resize â”€â”€ */
+  window.addEventListener('resize', function() {
+    perView = window.innerWidth <= 900 ? 1 : 2;
+    GAP     = window.innerWidth <= 900 ? 16 : 24;
+    buildDots(); render();
+  });
 
-  /* Scroll reveal header */
-  const hdr = section.querySelector('.svc-header');
-  if (hdr) {
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(es => { if (es[0].isIntersecting) { hdr.classList.add('svc-in'); } }, { threshold: 0.15 }).observe(hdr);
-    } else { hdr.classList.add('svc-in'); }
+  buildDots(); render();
+
+  /* â”€â”€ Scroll-based section + card animations â”€â”€ */
+  if (!('IntersectionObserver' in window)) {
+    [header, trackHdr, navBar, footerCta].forEach(function(el){ if(el) el.classList.add('svc-in'); });
+    cards.forEach(function(c){ c.classList.add('svc-in'); });
+    return;
   }
+
+  var lastScrollY = window.scrollY;
+  window.addEventListener('scroll', function(){ lastScrollY = window.scrollY; }, { passive: true });
+
+  /* Section elements (header, track-header, nav-bar, footer) */
+  var sectionEls = [header, trackHdr, navBar, footerCta].filter(Boolean);
+  var sectionVisible = false;
+
+  var sectionObs = new IntersectionObserver(function(entries) {
+    var e = entries[0];
+    if (e.isIntersecting && !sectionVisible) {
+      sectionVisible = true;
+      sectionEls.forEach(function(el) { el.classList.remove('svc-out'); el.classList.add('svc-in'); });
+    } else if (!e.isIntersecting && sectionVisible) {
+      sectionVisible = false;
+      sectionEls.forEach(function(el) { el.classList.remove('svc-in'); el.classList.add('svc-out'); });
+    }
+  }, { threshold: 0.08 });
+  sectionObs.observe(section);
+
+  /* Cards â€” animate in from right (scroll down) or left (scroll up) */
+  var cardObs = new IntersectionObserver(function(entries) {
+    var scrollingDown = window.scrollY >= lastScrollY;
+    entries.forEach(function(e) {
+      var card = e.target;
+      var idx  = cards.indexOf(card);
+      var delay = (idx % perView) * 100;
+      if (e.isIntersecting) {
+        card.classList.remove('svc-out-left', 'svc-out-right');
+        setTimeout(function() { card.classList.add('svc-in'); }, delay);
+      } else {
+        card.classList.remove('svc-in');
+        card.classList.add(scrollingDown ? 'svc-out-left' : 'svc-out-right');
+        setTimeout(function() { card.classList.remove('svc-out-left', 'svc-out-right'); }, 550);
+      }
+    });
+  }, { threshold: 0.10 });
+
+  cards.forEach(function(c) { cardObs.observe(c); });
 })();
 </script>
 
@@ -6663,3 +6756,5 @@
 </script>
 </body>
 </html>
+
+
