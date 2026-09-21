@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./mobile-fix.css">
 
   <style>
 /* ══ NAVBAR ══ */
@@ -158,6 +159,7 @@
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 8px 30px rgba(23,19,14,.08);
 }
+/* ══ NAVBAR MOBILE — handled by mobile-fix.css (oval pill style) ══ */
 .logo { color: #17130E !important; }
 .nav-link { color: rgba(23,19,14,.55) !important; position: relative; }
 .nav-link:hover { color: #17130E !important; background: rgba(23,19,14,.06) !important; }
@@ -563,7 +565,7 @@
   position: relative;
   background: #FAFAF8;
   overflow: hidden;
-  padding: 110px 0 90px;
+  padding: 150px 0 90px;
 }
 .svc-section::before {
   content: "";
@@ -576,6 +578,11 @@
 .svc-wrap {
   position: relative; z-index: 1;
   width: min(1360px, 94%); margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+@media (max-width: 480px) {
+  .svc-wrap { width: 100%; padding-left: 16px; padding-right: 16px; }
 }
 
 /* Header â€” animates in on scroll */
@@ -656,8 +663,7 @@
   position: relative;
   height: 260px; min-height: 260px;
   background: var(--card-bg, #FDF5E8);
-  display: flex; align-items: flex-end; justify-content: flex-start;
-  padding: 24px 30px 26px; overflow: hidden;
+  overflow: hidden;
 }
 
 /* BG motion icon â€” DIFFERENT from card icon, top-left, large and faded */
@@ -675,12 +681,7 @@
 .svc-card:hover .svc-bg-motion { opacity: 0.10; }
 
 .svc-bg-motion-2 {
-  position: absolute;
-  bottom: -15px; right: -12px;
-  width: 160px; height: 160px;
-  color: var(--card-accent, #C99B5C);
-  opacity: 0.05; pointer-events: none; z-index: 1;
-  animation: svcBgFloat 12s ease-in-out infinite alternate-reverse;
+  display: none;
 }
 
 @keyframes svcBgFloat {
@@ -690,18 +691,18 @@
   100% { transform: translate(-4px, 14px) rotate(6deg) scale(1.04); }
 }
 
-/* Service icon badge */
-/* Service icon badge — sits lower in visual, above bg icons */
+/* Service icon badge — original solid style, bottom-left, clear of the bottom-right watermark number */
 .svc-card-icon {
+  position: absolute; bottom: 26px; left: 30px; z-index: 3;
   width: 60px; height: 60px; border-radius: 18px;
   background: rgba(255,255,255,.92);
   display: flex; align-items: center; justify-content: center;
   color: var(--card-accent,#C99B5C);
   box-shadow: 0 4px 18px rgba(0,0,0,.08);
-  position: relative; z-index: 3;
   transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
   flex-shrink: 0;
 }
+.svc-card-icon svg { width: 30px; height: 30px; }
 .svc-card.svc-in:hover .svc-card-icon {
   transform: scale(1.1) rotate(-5deg);
   box-shadow: 0 10px 30px rgba(0,0,0,.11);
@@ -874,6 +875,7 @@
   .svc-header { margin-bottom: 36px; }
   .svc-card { flex: 0 0 88%; min-height: 480px; }
   .svc-card-visual { height: 210px; min-height: 210px; padding: 24px; }
+  .svc-card-watermark { font-size: 110px; bottom: -12px; }
   .svc-track { gap: 16px; }
   .svc-footer-cta { flex-direction: column; align-items: flex-start; }
 }
@@ -881,8 +883,121 @@
   .svc-card { flex: 0 0 94%; min-height: 430px; }
   .svc-card-visual { height: 180px; min-height: 180px; padding: 20px; }
   .svc-card-body { padding: 20px 22px 24px; }
-  .svc-card-icon { width: 52px; height: 52px; border-radius: 15px; }
+  .svc-card-icon { width: 52px; height: 52px; border-radius: 15px; bottom: 20px; left: 20px; }
+  .svc-card-watermark { font-size: 90px; }
   .svc-card-title { font-size: 20px; }
+}
+
+/* Mobile Navigation & Carousel Controls for Services section — same pattern as Technology Stack section */
+.svc-mobile-nav,
+.svc-mob-dots {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .svc-track-header {
+    display: none !important;
+  }
+
+  .svc-mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    padding: 0 4px;
+  }
+
+  .svc-mob-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(201, 155, 92, 0.35);
+    color: #17130E;
+    box-shadow: 0 6px 18px rgba(23, 19, 14, 0.08);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .svc-mob-arrow:active {
+    transform: scale(0.92);
+    background: #FAF8F5;
+    border-color: #C99B5C;
+  }
+
+  .svc-mob-category-card {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(201, 155, 92, 0.35);
+    border-radius: 999px;
+    padding: 11px 18px;
+    box-shadow: 0 6px 20px rgba(23, 19, 14, 0.06);
+    text-align: center;
+    min-width: 0;
+  }
+
+  .svc-mob-category-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #17130E;
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .svc-mob-counter {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #C99B5C;
+    background: rgba(201, 155, 92, 0.12);
+    border: 1px solid rgba(201, 155, 92, 0.22);
+    padding: 3px 9px;
+    border-radius: 999px;
+    display: inline-block;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+
+  .svc-mob-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .svc-mob-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(23, 19, 14, 0.18);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .svc-mob-dot.active {
+    width: 24px;
+    background: #C99B5C;
+  }
 }
 
    HOME PORTFOLIO TEASER — light creamy theme, image cards
@@ -891,7 +1006,7 @@
   position: relative;
   background: linear-gradient(180deg, #FFFFFF 0%, #FBF7EE 55%, #F5EFE0 100%);
   color: #17130E;
-  padding: 130px 0 120px;
+  padding: 190px 0 120px;
   overflow: hidden;
 }
 .pfh-blob {
@@ -1233,7 +1348,7 @@
   .pfh-idx { font-size: 64px; }
 }
 @media (max-width: 640px) {
-  .pfh-section { padding: 90px 0 90px; }
+  .pfh-section { padding: 150px 0 90px; }
   .pfh-header { margin-bottom: 46px; }
   .pfh-zigzag { gap: 70px; }
   .pfh-cta-wrap { margin-top: 70px; }
@@ -1636,12 +1751,7 @@
   .nav-phone { display: none !important; }
   .nav-right-group { gap: 4px; }
 
-  /* WCU mobile */
-  .wcu-grid { grid-template-columns: 1fr; gap: 14px; }
-  .wcu-bottom-bar { flex-direction: column; gap: 14px; align-items: flex-start; }
-  .wcu-inner { padding: 80px 0 70px; }
-  .wcu-header { text-align: left; }
-  .wcu-subtitle { margin: 0; }
+  /* WCU mobile — handled by mobile-fix.css */
 }
 @media (max-width: 940px) {
   .logo { font-size: 12px !important; letter-spacing: .06em !important; white-space: nowrap; }
@@ -2956,6 +3066,309 @@
     font-size: 12px !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   CLIENTS REAL WORK — dark 3D showcase, reviews + mockups
+   ══════════════════════════════════════════════════════════════ */
+.crw-section {
+  position: relative;
+  background: #0A0908;
+  overflow: hidden;
+  padding: 130px 0 120px;
+  perspective: 1600px;
+}
+.crw-grid-overlay {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(245,239,224,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,239,224,.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 0%, transparent 75%);
+  pointer-events: none;
+}
+.crw-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  opacity: .5;
+  animation: crwOrbFloat 14s ease-in-out infinite alternate;
+}
+.crw-orb-1 {
+  width: 480px; height: 480px;
+  top: -140px; left: -120px;
+  background: radial-gradient(circle, rgba(201,155,92,.35) 0%, transparent 70%);
+}
+.crw-orb-2 {
+  width: 420px; height: 420px;
+  bottom: -160px; right: -100px;
+  background: radial-gradient(circle, rgba(138,107,201,.28) 0%, transparent 70%);
+  animation-delay: -6s;
+}
+@keyframes crwOrbFloat {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  50%  { transform: translate3d(30px,-24px,40px) scale(1.08); }
+  100% { transform: translate3d(-24px,20px,0) scale(0.96); }
+}
+
+.crw-inner {
+  position: relative; z-index: 2;
+  width: min(1360px, 94%); margin: 0 auto;
+}
+
+.crw-header {
+  max-width: 680px; margin: 0 auto 60px; text-align: center;
+  opacity: 0; transform: translateY(30px);
+  transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+}
+.crw-header.crw-in { opacity: 1; transform: translateY(0); }
+.crw-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800;
+  letter-spacing: .22em; text-transform: uppercase; color: #C99B5C;
+  margin: 0 auto 20px;
+}
+.crw-eyebrow::before, .crw-eyebrow::after { content: ""; width: 22px; height: 2px; background: #C99B5C; border-radius: 2px; }
+.crw-title {
+  font-family: 'Outfit', sans-serif; font-weight: 900;
+  font-size: clamp(34px, 4.4vw, 58px); line-height: 1.08;
+  letter-spacing: -0.032em; color: #F5EFE0; margin-bottom: 18px;
+}
+.crw-title em { font-style: italic; color: #C99B5C; }
+.crw-subtitle {
+  font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500;
+  line-height: 1.7; color: rgba(245,239,224,.55);
+}
+
+.crw-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.crw-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4px minmax(0,1fr) minmax(260px,400px);
+  align-items: stretch;
+  gap: 38px;
+  border-radius: 26px;
+  background: linear-gradient(165deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+  border: 1.5px solid rgba(245,239,224,.09);
+  padding: 34px 36px;
+  transition: border-color .4s ease, box-shadow .4s ease, opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+  opacity: 0; transform: translateY(40px);
+}
+.crw-card.crw-in {
+  opacity: 1; transform: translateY(0);
+}
+.crw-card:hover {
+  border-color: rgba(201,155,92,.35);
+  box-shadow: 0 30px 70px rgba(0,0,0,.45);
+}
+
+/* Scroll-progress fill line — sits before the review, fills going down, unfills going up */
+.crw-line-track {
+  position: relative;
+  align-self: stretch;
+  width: 4px;
+  border-radius: 4px;
+  background: rgba(245,239,224,.09);
+  overflow: hidden;
+}
+.crw-line-fill {
+  position: absolute;
+  left: 0; top: 0; width: 100%;
+  height: calc(var(--fill, 0) * 100%);
+  background: linear-gradient(180deg, #E6C48B, #C99B5C);
+  border-radius: 4px;
+}
+
+/* Mockup "screenshot" frame — built purely from CSS, no image files needed */
+.crw-mock-wrap {
+  perspective: 1200px;
+}
+.crw-mock {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #14110D;
+  border: 1px solid rgba(245,239,224,.08);
+  transform-style: preserve-3d;
+  transform: rotateY(-10deg) rotateX(4deg);
+  transition: transform .12s ease-out;
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
+}
+.crw-mock-bar {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 14px;
+  background: #1B1710;
+  border-bottom: 1px solid rgba(245,239,224,.06);
+}
+.crw-mock-bar span {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(245,239,224,.18);
+}
+.crw-mock-bar span:nth-child(1) { background: #E8998A; }
+.crw-mock-bar span:nth-child(2) { background: #E8D9A0; }
+.crw-mock-bar span:nth-child(3) { background: #A8D8B9; }
+.crw-mock-url {
+  margin-left: 10px;
+  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600;
+  color: rgba(245,239,224,.35);
+  background: rgba(245,239,224,.05);
+  padding: 3px 10px; border-radius: 999px;
+}
+.crw-mock-body {
+  display: flex; gap: 10px; padding: 14px;
+  min-height: 148px;
+}
+.crw-mock-side {
+  flex: 0 0 44px; border-radius: 10px;
+  background: linear-gradient(165deg, rgba(201,155,92,.22), rgba(201,155,92,.06));
+}
+.crw-mock-main { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.crw-mock-row { display: flex; gap: 8px; }
+.crw-mock-stat {
+  flex: 1; height: 38px; border-radius: 8px;
+  background: rgba(245,239,224,.06);
+}
+.crw-mock-stat.crw-mock-accent { background: rgba(201,155,92,.28); }
+.crw-mock-chart {
+  flex: 1; border-radius: 8px;
+  background:
+    linear-gradient(to top, rgba(201,155,92,.30) 0 38%, transparent 38%) 0 100%/12% 100% no-repeat,
+    linear-gradient(to top, rgba(245,239,224,.10) 0 55%, transparent 55%) 16% 100%/12% 100% no-repeat,
+    linear-gradient(to top, rgba(245,239,224,.10) 0 30%, transparent 30%) 32% 100%/12% 100% no-repeat,
+    linear-gradient(to top, rgba(201,155,92,.30) 0 68%, transparent 68%) 48% 100%/12% 100% no-repeat,
+    linear-gradient(to top, rgba(245,239,224,.10) 0 44%, transparent 44%) 64% 100%/12% 100% no-repeat,
+    linear-gradient(to top, rgba(245,239,224,.10) 0 60%, transparent 60%) 80% 100%/12% 100% no-repeat,
+    rgba(245,239,224,.035);
+}
+
+.crw-quote-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.crw-stars { color: #C99B5C; font-size: 13px; letter-spacing: 3px; margin-bottom: 14px; }
+.crw-quote {
+  font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500;
+  line-height: 1.7; color: rgba(245,239,224,.8);
+  margin-bottom: 22px;
+}
+.crw-author { display: flex; align-items: center; gap: 12px; }
+.crw-avatar {
+  width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 14px;
+  color: #17130E;
+  background: linear-gradient(150deg, #E6C48B, #C99B5C);
+}
+.crw-name { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 14.5px; color: #F5EFE0; }
+.crw-role { font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; color: rgba(245,239,224,.45); }
+
+@media (max-width: 900px) {
+  .crw-section { padding: 90px 0 90px; }
+  .crw-header { margin-bottom: 42px; }
+  .crw-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 26px 24px;
+  }
+  .crw-line-track { width: 100%; height: 4px; }
+  .crw-line-fill { height: 100%; width: calc(var(--fill, 0) * 100%); }
+  .crw-mock-wrap { order: 3; }
+  .crw-quote-block { order: 2; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   START A PROJECT — CTA section, dark brown, before footer
+   ══════════════════════════════════════════════════════════════ */
+.sap-section {
+  position: relative;
+  overflow: hidden;
+  background: #0A0908;
+  padding: 90px 0 96px;
+}
+.sap-glow-1 {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 640px; height: 340px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(201,155,92,.18) 0%, transparent 72%);
+  filter: blur(30px); pointer-events: none;
+}
+.sap-pattern { display: none; }
+
+.sap-inner {
+  position: relative; z-index: 2;
+  width: min(880px, 92%); margin: 0 auto;
+  text-align: center;
+  border-radius: 46px;
+  padding: 58px 48px;
+  background: linear-gradient(155deg, #2A1A0B 0%, #1B120A 55%, #140D08 100%);
+  border: 1.5px solid rgba(230,196,139,.16);
+  box-shadow: 0 40px 90px rgba(0,0,0,.5), inset 0 1px 0 rgba(245,239,224,.05);
+  opacity: 0; transform: translateY(34px);
+  transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+}
+.sap-inner.sap-in { opacity: 1; transform: translateY(0); }
+.sap-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800;
+  letter-spacing: .22em; text-transform: uppercase; color: #C99B5C;
+  margin-bottom: 16px;
+}
+.sap-eyebrow::before, .sap-eyebrow::after { content: ""; width: 18px; height: 2px; background: #C99B5C; border-radius: 2px; }
+.sap-title {
+  font-family: 'Outfit', sans-serif; font-weight: 900;
+  font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12;
+  letter-spacing: -0.03em; color: #F9F4E8; margin-bottom: 14px;
+}
+.sap-title em { font-style: italic; color: #C99B5C; }
+.sap-subtitle {
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
+  line-height: 1.7; color: rgba(249,244,232,.55);
+  max-width: 460px; margin: 0 auto 30px;
+}
+.sap-cta-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; flex-wrap: wrap; margin-bottom: 30px;
+}
+.sap-btn-primary {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 14px;
+  color: #17130E; background: linear-gradient(150deg, #E6C48B, #C99B5C);
+  padding: 15px 30px; border-radius: 999px; text-decoration: none;
+  box-shadow: 0 12px 32px rgba(201,155,92,.28);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.sap-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(201,155,92,.4); }
+.sap-btn-primary svg { width: 15px; height: 15px; }
+.sap-btn-secondary {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px;
+  color: #F9F4E8; background: transparent;
+  padding: 15px 26px; border-radius: 999px; text-decoration: none;
+  border: 1.5px solid rgba(249,244,232,.2);
+  transition: border-color .3s ease, background .3s ease, transform .3s ease;
+}
+.sap-btn-secondary:hover { border-color: rgba(249,244,232,.5); background: rgba(249,244,232,.05); transform: translateY(-3px); }
+.sap-meta-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 22px 26px; flex-wrap: wrap;
+  padding-top: 24px; border-top: 1px solid rgba(249,244,232,.09);
+}
+.sap-meta-item {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600;
+  color: rgba(249,244,232,.5);
+}
+.sap-meta-item svg { width: 15px; height: 15px; color: #C99B5C; flex-shrink: 0; }
+
+@media (max-width: 700px) {
+  .sap-section { padding: 70px 0 76px; }
+  .sap-inner { border-radius: 32px; padding: 40px 26px; }
+  .sap-meta-row { gap: 14px 20px; }
+}
 </style>
 </head>
 <body>
@@ -3071,7 +3484,7 @@
             <span class="glitch-word" id="glitchWord" data-text="Impact"></span><span class="glitch-cursor"></span>
           </div>
 
-          <p class="hero-sub">Your trusted development partner — from idea to a product with a lasting, profitable impact.</p>
+          <p class="hero-sub">Your trusted development partner, from idea to a product with a lasting, profitable impact.</p>
 
           <!-- CTA row: swipe button + secondary link -->
           <div class="hero-orbit-cta">
@@ -3164,39 +3577,39 @@
       <div class="hero-cap-strip" aria-label="What we build">
         <div class="hero-cap-track">
           <div class="cap-item"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M9 1.5v2M9 14.5v2M1.5 9h2M14.5 9h2M3.8 3.8l1.4 1.4M12.8 12.8l1.4 1.4M14.2 3.8l-1.4 1.4M5.2 12.8l-1.4 1.4"/></svg></span><span>AI Systems</span></div>
-          <span class="cap-dash">—</span>
+          <span class="cap-dash">•</span>
           <div class="cap-item"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="14" height="9.5" rx="1.5"/><path d="M6.5 16h5M9 12.5V16"/></svg></span><span>Digital Products</span></div>
-          <span class="cap-dash">—</span>
+          <span class="cap-dash">•</span>
           <div class="cap-item"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="1.5" width="8" height="15" rx="2"/><path d="M8.2 14.2h1.6"/></svg></span><span>Mobile Apps</span></div>
-          <span class="cap-dash">—</span>
+          <span class="cap-dash">•</span>
           <div class="cap-item"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.6l6.2 3.5v7.8L9 16.4l-6.2-3.5V5.1z"/><circle cx="9" cy="9" r="2.3"/></svg></span><span>Brand Identity</span></div>
-          <span class="cap-dash">—</span>
+          <span class="cap-dash">•</span>
           <div class="cap-item"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1-4L13 2l3 3-9 9-4 1z"/><path d="M10.5 4.5l3 3"/></svg></span><span>UX Design</span></div>
-          <span class="cap-dash">—</span>
+          <span class="cap-dash">•</span>
           <div class="cap-item"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="2.4"/><path d="M9 2.2v2M9 13.8v2M15.8 9h-2M4.2 9h-2M13.6 4.4l-1.4 1.4M5.8 12.2l-1.4 1.4M13.6 13.6l-1.4-1.4M5.8 5.8L4.4 4.4"/></svg></span><span>Automation</span></div>
-          <span class="cap-dash">—</span>
+          <span class="cap-dash">•</span>
           <div class="cap-item"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><path d="M2 9h14M9 2c2 2 2.6 4.5 2.6 7S11 14 9 16c-2-2-2.6-4.5-2.6-7S7 4 9 2z"/></svg></span><span>Web Platforms</span></div>
-          <span class="cap-dash">—</span>
+          <span class="cap-dash">•</span>
           <div class="cap-item"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4.5L2 9l4.5 4.5M11.5 4.5L16 9l-4.5 4.5"/></svg></span><span>Software Development</span></div>
-          <span class="cap-dash">—</span>
+          <span class="cap-dash">•</span>
 
           <!-- duplicate set for a seamless loop -->
           <div class="cap-item" aria-hidden="true"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M9 1.5v2M9 14.5v2M1.5 9h2M14.5 9h2M3.8 3.8l1.4 1.4M12.8 12.8l1.4 1.4M14.2 3.8l-1.4 1.4M5.2 12.8l-1.4 1.4"/></svg></span><span>AI Systems</span></div>
-          <span class="cap-dash" aria-hidden="true">—</span>
+          <span class="cap-dash" aria-hidden="true">•</span>
           <div class="cap-item" aria-hidden="true"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="14" height="9.5" rx="1.5"/><path d="M6.5 16h5M9 12.5V16"/></svg></span><span>Digital Products</span></div>
-          <span class="cap-dash" aria-hidden="true">—</span>
+          <span class="cap-dash" aria-hidden="true">•</span>
           <div class="cap-item" aria-hidden="true"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="1.5" width="8" height="15" rx="2"/><path d="M8.2 14.2h1.6"/></svg></span><span>Mobile Apps</span></div>
-          <span class="cap-dash" aria-hidden="true">—</span>
+          <span class="cap-dash" aria-hidden="true">•</span>
           <div class="cap-item" aria-hidden="true"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1.6l6.2 3.5v7.8L9 16.4l-6.2-3.5V5.1z"/><circle cx="9" cy="9" r="2.3"/></svg></span><span>Brand Identity</span></div>
-          <span class="cap-dash" aria-hidden="true">—</span>
+          <span class="cap-dash" aria-hidden="true">•</span>
           <div class="cap-item" aria-hidden="true"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1-4L13 2l3 3-9 9-4 1z"/><path d="M10.5 4.5l3 3"/></svg></span><span>UX Design</span></div>
-          <span class="cap-dash" aria-hidden="true">—</span>
+          <span class="cap-dash" aria-hidden="true">•</span>
           <div class="cap-item" aria-hidden="true"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="2.4"/><path d="M9 2.2v2M9 13.8v2M15.8 9h-2M4.2 9h-2M13.6 4.4l-1.4 1.4M5.8 12.2l-1.4 1.4M13.6 13.6l-1.4-1.4M5.8 5.8L4.4 4.4"/></svg></span><span>Automation</span></div>
-          <span class="cap-dash" aria-hidden="true">—</span>
+          <span class="cap-dash" aria-hidden="true">•</span>
           <div class="cap-item" aria-hidden="true"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><path d="M2 9h14M9 2c2 2 2.6 4.5 2.6 7S11 14 9 16c-2-2-2.6-4.5-2.6-7S7 4 9 2z"/></svg></span><span>Web Platforms</span></div>
-          <span class="cap-dash" aria-hidden="true">—</span>
+          <span class="cap-dash" aria-hidden="true">•</span>
           <div class="cap-item" aria-hidden="true"><span class="cap-icon"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4.5L2 9l4.5 4.5M11.5 4.5L16 9l-4.5 4.5"/></svg></span><span>Software Development</span></div>
-          <span class="cap-dash" aria-hidden="true">—</span>
+          <span class="cap-dash" aria-hidden="true">•</span>
         </div>
       </div>
     </section>
@@ -3213,7 +3626,7 @@
         <div class="wcu-header">
           <p class="wcu-eyebrow">Why Choose Us</p>
           <h2 class="wcu-title">We build things<br>that <em>actually work.</em></h2>
-          <p class="wcu-subtitle">Strategy, design, and engineering in one team — so your product doesn't just launch, it grows, converts, and scales.</p>
+          <p class="wcu-subtitle">Strategy, design, and engineering in one team, so your product doesn't just launch, it grows, converts, and scales.</p>
         </div>
 
         <div class="wcu-grid">
@@ -3224,8 +3637,10 @@
             <div class="wcu-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
-            <h3 class="wcu-item-title">Full-Stack Expertise</h3>
-            <p class="wcu-item-desc">From pixel-perfect UI to robust backend architecture — we handle every layer of your digital product with senior-level precision.</p>
+            <div class="wcu-text-group">
+              <h3 class="wcu-item-title">Full-Stack Expertise</h3>
+              <p class="wcu-item-desc">From pixel-perfect UI to robust backend architecture, we handle every layer of your digital product with senior-level precision.</p>
+            </div>
             <span class="wcu-item-line"></span>
           </div>
 
@@ -3235,8 +3650,10 @@
             <div class="wcu-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
             </div>
-            <h3 class="wcu-item-title">AI-First Thinking</h3>
-            <p class="wcu-item-desc">We integrate intelligent automation and AI capabilities into products from day one — not as an afterthought, but as a core foundation.</p>
+            <div class="wcu-text-group">
+              <h3 class="wcu-item-title">AI-First Thinking</h3>
+              <p class="wcu-item-desc">We integrate intelligent automation and AI capabilities into products from day one, not as an afterthought but as a core foundation.</p>
+            </div>
             <span class="wcu-item-line"></span>
           </div>
 
@@ -3246,8 +3663,10 @@
             <div class="wcu-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
-            <h3 class="wcu-item-title">Rapid Delivery</h3>
-            <p class="wcu-item-desc">We move fast without cutting corners. Sprint-based delivery means you see real progress every week — not just promises.</p>
+            <div class="wcu-text-group">
+              <h3 class="wcu-item-title">Rapid Delivery</h3>
+              <p class="wcu-item-desc">We move fast without cutting corners. Sprint-based delivery means you see real progress every week, not just promises.</p>
+            </div>
             <span class="wcu-item-line"></span>
           </div>
 
@@ -3257,8 +3676,10 @@
             <div class="wcu-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <h3 class="wcu-item-title">Dedicated Team</h3>
-            <p class="wcu-item-desc">You get a committed team, not a ticket queue. Direct lines, transparent timelines, and real ownership of your project from day one.</p>
+            <div class="wcu-text-group">
+              <h3 class="wcu-item-title">Dedicated Team</h3>
+              <p class="wcu-item-desc">You get a committed team, not a ticket queue. Direct lines, transparent timelines, and real ownership of your project from day one.</p>
+            </div>
             <span class="wcu-item-line"></span>
           </div>
 
@@ -3268,8 +3689,10 @@
             <div class="wcu-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             </div>
-            <h3 class="wcu-item-title">Performance Obsessed</h3>
-            <p class="wcu-item-desc">Every product we ship is optimised for speed, conversion, and long-term scale. We measure what matters and improve relentlessly.</p>
+            <div class="wcu-text-group">
+              <h3 class="wcu-item-title">Performance Obsessed</h3>
+              <p class="wcu-item-desc">Every product we ship is optimised for speed, conversion, and long-term scale. We measure what matters and improve relentlessly.</p>
+            </div>
             <span class="wcu-item-line"></span>
           </div>
 
@@ -3279,8 +3702,10 @@
             <div class="wcu-icon-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
-            <h3 class="wcu-item-title">Trusted &amp; Reliable</h3>
-            <p class="wcu-item-desc">100% on-time delivery record with clients across the US, UK, and Middle East. Your timeline and trust are always non-negotiable.</p>
+            <div class="wcu-text-group">
+              <h3 class="wcu-item-title">Trusted &amp; Reliable</h3>
+              <p class="wcu-item-desc">100% on-time delivery record with clients across the US, UK, and Middle East. Your timeline and trust are always non-negotiable.</p>
+            </div>
             <span class="wcu-item-line"></span>
           </div>
 
@@ -3325,6 +3750,23 @@
           </div>
         </div>
 
+        <!-- Mobile Service Carousel Navigation Bar (Active on Mobile <= 768px), same pattern as Technology Stack section -->
+        <div class="svc-mobile-nav" aria-label="Service navigator">
+          <button class="svc-mob-arrow svc-mob-prev" id="svcMobPrev" type="button" aria-label="Previous service">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="svc-mob-category-card">
+            <span class="svc-mob-category-title" id="svcMobTitle">Custom Software Development</span>
+            <span class="svc-mob-counter" id="svcMobCounter">1 / 10</span>
+          </div>
+          <button class="svc-mob-arrow svc-mob-next" id="svcMobNext" type="button" aria-label="Next service">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <!-- Mobile Dots Indicator -->
+        <div class="svc-mob-dots" id="svcMobDots" role="tablist" aria-label="Service indicator"></div>
+
         <div class="svc-track-outer" id="svcTrackOuter">
           <div class="svc-track" id="svcTrack">
 
@@ -3332,7 +3774,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">01</span>
               </div>
@@ -3352,7 +3794,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">02</span>
               </div>
@@ -3372,7 +3814,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="18" r="1"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">03</span>
               </div>
@@ -3392,7 +3834,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="2"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><path d="M6 6l4.5 4.5M13.5 13.5L18 18M6 18l4.5-4.5M13.5 10.5L18 6"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">04</span>
               </div>
@@ -3412,7 +3854,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="8" cy="8" r="2"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="8" cy="8" r="2"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">05</span>
               </div>
@@ -3432,7 +3874,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">06</span>
               </div>
@@ -3452,7 +3894,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M21.21 15.89A10 10 0 118 2.83"/><path d="M22 12A10 10 0 0012 2v10z"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">07</span>
               </div>
@@ -3472,7 +3914,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polyline points="22 12 16 12 14 15 10 9 8 12 2 12"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">08</span>
               </div>
@@ -3492,7 +3934,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4zM8 2v16M16 6v16"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">09</span>
               </div>
@@ -3512,7 +3954,7 @@
               <div class="svc-card-visual">
                 <div class="svc-bg-motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
                 <div class="svc-bg-motion-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg></div>
-                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                                <div class="svc-card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
                 <a class="svc-card-arrow" href="services.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg></a>
                 <span class="svc-card-watermark">10</span>
               </div>
@@ -3542,6 +3984,163 @@
           </a>
         </div>
 
+      </div>
+    </section>
+
+
+<!-- ══ CLIENTS REAL WORK — dark 3D showcase, reviews + project mockups ══ -->
+    <section class="crw-section" id="clientsWork">
+      <div class="crw-grid-overlay" aria-hidden="true"></div>
+      <div class="crw-orb crw-orb-1" aria-hidden="true"></div>
+      <div class="crw-orb crw-orb-2" aria-hidden="true"></div>
+
+      <div class="crw-inner">
+
+        <div class="crw-header" id="crwHeader">
+          <p class="crw-eyebrow">Clients Real Work</p>
+          <h2 class="crw-title">Trusted by teams who <em>shipped with us.</em></h2>
+          <p class="crw-subtitle">Real screens from real products, paired with honest words from the founders and teams we built them for.</p>
+        </div>
+
+        <div class="crw-cards" id="crwCards">
+
+          <article class="crw-card">
+            <div class="crw-line-track" aria-hidden="true"><div class="crw-line-fill"></div></div>
+            <div class="crw-quote-block">
+              <div class="crw-stars">★★★★★</div>
+              <p class="crw-quote">Finding a team who genuinely understood our compliance needs was hard until we partnered with them. They redesigned our event platform end to end, and both our vendors and guests love how fast it feels now.</p>
+              <div class="crw-author">
+                <div class="crw-avatar">BA</div>
+                <div>
+                  <p class="crw-name">Bilal Ahmed</p>
+                  <p class="crw-role">Co Founder, HealthCare Pakistan</p>
+                </div>
+              </div>
+            </div>
+            <div class="crw-mock-wrap" data-crw-tilt>
+              <div class="crw-mock">
+                <div class="crw-mock-bar">
+                  <span></span><span></span><span></span>
+                  <div class="crw-mock-url">assistevent.app/dashboard</div>
+                </div>
+                <div class="crw-mock-body">
+                  <div class="crw-mock-side"></div>
+                  <div class="crw-mock-main">
+                    <div class="crw-mock-row">
+                      <div class="crw-mock-stat crw-mock-accent"></div>
+                      <div class="crw-mock-stat"></div>
+                      <div class="crw-mock-stat"></div>
+                    </div>
+                    <div class="crw-mock-chart"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="crw-card">
+            <div class="crw-line-track" aria-hidden="true"><div class="crw-line-fill"></div></div>
+            <div class="crw-quote-block">
+              <div class="crw-stars">★★★★★</div>
+              <p class="crw-quote">They took our complex requirements and delivered an incredibly clean SaaS dashboard in under two months. Communication was prompt, and we had zero critical bugs during launch.</p>
+              <div class="crw-author">
+                <div class="crw-avatar">JW</div>
+                <div>
+                  <p class="crw-name">James Wilson</p>
+                  <p class="crw-role">Head of Product, CloudScale, London</p>
+                </div>
+              </div>
+            </div>
+            <div class="crw-mock-wrap" data-crw-tilt>
+              <div class="crw-mock">
+                <div class="crw-mock-bar">
+                  <span></span><span></span><span></span>
+                  <div class="crw-mock-url">cloudscale.io/app</div>
+                </div>
+                <div class="crw-mock-body">
+                  <div class="crw-mock-side"></div>
+                  <div class="crw-mock-main">
+                    <div class="crw-mock-row">
+                      <div class="crw-mock-stat"></div>
+                      <div class="crw-mock-stat crw-mock-accent"></div>
+                      <div class="crw-mock-stat"></div>
+                    </div>
+                    <div class="crw-mock-chart"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="crw-card">
+            <div class="crw-line-track" aria-hidden="true"><div class="crw-line-fill"></div></div>
+            <div class="crw-quote-block">
+              <div class="crw-stars">★★★★★</div>
+              <p class="crw-quote">The new web application transformed our day to day inventory tracking. The speed and responsiveness are remarkable, and our staff adapted to it immediately with no special training.</p>
+              <div class="crw-author">
+                <div class="crw-avatar">ZM</div>
+                <div>
+                  <p class="crw-name">Zainab Malik</p>
+                  <p class="crw-role">Operations Director, Apex Retail, Lahore</p>
+                </div>
+              </div>
+            </div>
+            <div class="crw-mock-wrap" data-crw-tilt>
+              <div class="crw-mock">
+                <div class="crw-mock-bar">
+                  <span></span><span></span><span></span>
+                  <div class="crw-mock-url">apexretail.app/inventory</div>
+                </div>
+                <div class="crw-mock-body">
+                  <div class="crw-mock-side"></div>
+                  <div class="crw-mock-main">
+                    <div class="crw-mock-row">
+                      <div class="crw-mock-stat"></div>
+                      <div class="crw-mock-stat"></div>
+                      <div class="crw-mock-stat crw-mock-accent"></div>
+                    </div>
+                    <div class="crw-mock-chart"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="crw-card">
+            <div class="crw-line-track" aria-hidden="true"><div class="crw-line-fill"></div></div>
+            <div class="crw-quote-block">
+              <div class="crw-stars">★★★★★</div>
+              <p class="crw-quote">Sharp engineers who understand production AI systems, not just prototypes. They shipped our model pipeline on schedule and it has run reliably since day one.</p>
+              <div class="crw-author">
+                <div class="crw-avatar">MV</div>
+                <div>
+                  <p class="crw-name">Michael Vance</p>
+                  <p class="crw-role">CTO, HyperTrend AI, San Francisco</p>
+                </div>
+              </div>
+            </div>
+            <div class="crw-mock-wrap" data-crw-tilt>
+              <div class="crw-mock">
+                <div class="crw-mock-bar">
+                  <span></span><span></span><span></span>
+                  <div class="crw-mock-url">hypertrend.ai/console</div>
+                </div>
+                <div class="crw-mock-body">
+                  <div class="crw-mock-side"></div>
+                  <div class="crw-mock-main">
+                    <div class="crw-mock-row">
+                      <div class="crw-mock-stat crw-mock-accent"></div>
+                      <div class="crw-mock-stat"></div>
+                      <div class="crw-mock-stat"></div>
+                    </div>
+                    <div class="crw-mock-chart"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
       </div>
     </section>
 
@@ -3657,7 +4256,7 @@
               <span class="pfh-idx" aria-hidden="true">01</span>
               <p class="pfh-card-sub">Event Management Platform</p>
               <h3 class="pfh-row-title">Assist Event</h3>
-              <p class="pfh-row-desc">An end-to-end platform for organisers to plan, ticket and run events — from vendor booking to real-time check-ins on the day.</p>
+              <p class="pfh-row-desc">An end-to-end platform for organisers to plan, ticket and run events, from vendor booking to real-time check-ins on the day.</p>
               <div class="pfh-card-tags"><span class="pfh-tag">React Native</span><span class="pfh-tag">Next.js</span><span class="pfh-tag">Node.js</span></div>
               <a class="pfh-row-link" href="portfolio.html">
                 View Case Study
@@ -3768,7 +4367,7 @@
               <span class="pfh-idx" aria-hidden="true">02</span>
               <p class="pfh-card-sub">Mobile App + Dashboard</p>
               <h3 class="pfh-row-title">Dr. Asgar Rheumatology</h3>
-              <p class="pfh-row-desc">A patient-facing consultation app paired with a clinician web dashboard — booking, records and follow-ups in one connected flow.</p>
+              <p class="pfh-row-desc">A patient-facing consultation app paired with a clinician web dashboard, covering booking, records and follow-ups in one connected flow.</p>
               <div class="pfh-card-tags"><span class="pfh-tag">React Native</span><span class="pfh-tag">NestJS</span><span class="pfh-tag">PostgreSQL</span></div>
               <a class="pfh-row-link" href="portfolio.html">
                 View Case Study
@@ -4747,7 +5346,7 @@
         <div class="dproc-header" id="dprocHeader">
           <p class="dproc-eyebrow">How We Work</p>
           <h2 class="dproc-title">Our Development <em>Process</em></h2>
-          <p class="dproc-subtitle">A transparent, sprint-driven roadmap — from your first idea to a product that's live, battle-tested, and ready to scale.</p>
+          <p class="dproc-subtitle">A transparent, sprint-driven roadmap, from your first idea to a product that's live, battle-tested, and ready to scale.</p>
         </div>
 
         <!-- ════ 3D SCROLL-DRIVEN MARQUEE (loops forever, no autoplay) ════ -->
@@ -4768,7 +5367,7 @@
                     <span class="dproc-3d-dur">Clarity First</span>
                   </div>
                 </div>
-                <p class="dproc-3d-desc">Deep dive into your business goals, target users, and competitive landscape — then distill everything into a concrete product roadmap before a single pixel is touched.</p>
+                <p class="dproc-3d-desc">Deep dive into your business goals, target users, and competitive landscape, then distill everything into a concrete product roadmap before a single pixel is touched.</p>
                 <div class="dproc-3d-tags">
                   <span class="dproc-3d-tag">Stakeholder Interviews</span>
                   <span class="dproc-3d-tag">Market Research</span>
@@ -4788,7 +5387,7 @@
                     <span class="dproc-3d-dur">Design Right</span>
                   </div>
                 </div>
-                <p class="dproc-3d-desc">From low-fidelity wireframes to high-fidelity interactive prototypes — every screen designed around real user behaviour and brand identity. You approve before we build.</p>
+                <p class="dproc-3d-desc">From low-fidelity wireframes to high-fidelity interactive prototypes, every screen designed around real user behaviour and brand identity. You approve before we build.</p>
                 <div class="dproc-3d-tags">
                   <span class="dproc-3d-tag">Wireframing</span>
                   <span class="dproc-3d-tag">Figma Prototypes</span>
@@ -4828,7 +5427,7 @@
                     <span class="dproc-3d-dur">Zero Defects</span>
                   </div>
                 </div>
-                <p class="dproc-3d-desc">Multi-device, multi-browser stress testing — functional, performance and security audits across every edge case until the product is airtight.</p>
+                <p class="dproc-3d-desc">Multi-device, multi-browser stress testing covers functional, performance and security audits across every edge case until the product is airtight.</p>
                 <div class="dproc-3d-tags">
                   <span class="dproc-3d-tag">Functional Testing</span>
                   <span class="dproc-3d-tag">Performance Audits</span>
@@ -4848,7 +5447,7 @@
                     <span class="dproc-3d-dur">Ship and Grow</span>
                   </div>
                 </div>
-                <p class="dproc-3d-desc">Precision zero-downtime deployment with real-time monitoring and proactive post-launch support — a team that stays on to help it grow.</p>
+                <p class="dproc-3d-desc">Precision zero-downtime deployment with real-time monitoring and proactive post-launch support, plus a team that stays on to help it grow.</p>
                 <div class="dproc-3d-tags">
                   <span class="dproc-3d-tag">Zero-downtime Deploy</span>
                   <span class="dproc-3d-tag">Live Monitoring</span>
@@ -4876,13 +5475,13 @@
             </button>
           </div>
 
-          <p class="dproc-3d-hint">Hover the cards and scroll — or swipe on mobile — to move through the stages</p>
+          <p class="dproc-3d-hint">Hover the cards and scroll, or swipe on mobile, to move through the stages</p>
 
         </div><!-- /dproc-3d-wrap -->
 
         <!-- Footer CTA -->
         <div class="dproc-footer-cta" id="dprocFooterCta">
-          <p class="dproc-footer-text"><strong>5 transparent stages.</strong> Full visibility from kickoff to launch — no surprises, no handoffs, no excuses.</p>
+          <p class="dproc-footer-text"><strong>5 transparent stages.</strong> Full visibility from kickoff to launch, no surprises, no handoffs, no excuses.</p>
           <button class="dproc-cta-btn" id="dprocCtaBtn" type="button">
             Start a Project
             <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4893,380 +5492,40 @@
     </section>
 
   <!-- ══ TESTIMONIALS / SOCIAL PROOF ══ -->
-    <section class="tst-section" id="testimonials">
-      <div class="tst-blob-1" aria-hidden="true"></div>
-      <div class="tst-blob-2" aria-hidden="true"></div>
+    <!-- ══ START A PROJECT — CTA before footer, dark brown ══ -->
+    <section class="sap-section" id="startProject">
+      <div class="sap-glow-1" aria-hidden="true"></div>
+      <div class="sap-pattern" aria-hidden="true"></div>
 
-      <div class="tst-inner">
+      <div class="sap-inner" id="sapInner">
+        <p class="sap-eyebrow">Start a Project</p>
+        <h2 class="sap-title">Got an idea? Let's build <em>something real.</em></h2>
+        <p class="sap-subtitle">Tell us what you are trying to build and we will reply within a day with next steps, timeline and a clear estimate.</p>
 
-        <div class="tst-header" id="tstHeader">
-          <p class="tst-eyebrow">Client Love</p>
-          <h2 class="tst-title">Don't just take <em>our word</em> for it.</h2>
-          <p class="tst-subtitle">Real feedback from founders and engineering teams we have shipped products with, built for scale and delivered on time.</p>
+        <div class="sap-cta-row">
+          <a class="sap-btn-primary" href="contact.html">
+            Start a Project
+            <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="sap-btn-secondary" href="mailto:info@analyticinsider.com">
+            Email Us Directly
+          </a>
         </div>
 
-        <div class="tst-showcase" id="tstShowcase">
-          <div class="tst-aura" aria-hidden="true"></div>
-          <div class="tst-deck" id="tstDeck">
-
-            <!-- Card 1 (Active by default) -->
-            <article class="tst-card tst-card-active" data-index="0">
-              <div class="tst-card-watermark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <div class="tst-card-layout">
-                <div class="tst-author-col">
-                  <div class="tst-avatar-wrap">
-                    <div class="tst-avatar">BA</div>
-                    <div class="tst-author-meta">
-                      <h4 class="tst-author-name">Bilal Ahmed</h4>
-                      <p class="tst-author-role">Co-Founder at HealthCare Pakistan, Karachi</p>
-                    </div>
-                  </div>
-                  <div class="tst-author-badges">
-                    <div class="tst-stars" aria-label="5 out of 5 stars">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                  </div>
-                    <span class="tst-verified-pill">
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
-                    Verified Client
-                  </span>
-                  </div>
-                </div>
-                <div class="tst-quote-col">
-                  <div class="tst-card-tags">
-                    <span class="tst-tag-badge">Healthcare Platform</span>
-                    <span class="tst-date-badge">August 2026</span>
-                  </div>
-                  <blockquote class="tst-quote">"Finding developers who genuinely understand medical compliance in Pakistan was difficult until we partnered with them. They redesigned our patient portal and mobile booking system flawlessly. Both our doctors and patients love how simple and fast it is now."</blockquote>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="tst-card" data-index="1">
-              <div class="tst-card-watermark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <div class="tst-card-layout">
-                <div class="tst-author-col">
-                  <div class="tst-avatar-wrap">
-                    <div class="tst-avatar">JW</div>
-                    <div class="tst-author-meta">
-                      <h4 class="tst-author-name">James Wilson</h4>
-                      <p class="tst-author-role">Head of Product at CloudScale, London</p>
-                    </div>
-                  </div>
-                  <div class="tst-author-badges">
-                    <div class="tst-stars" aria-label="5 out of 5 stars">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                  </div>
-                    <span class="tst-verified-pill">
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
-                    Verified Client
-                  </span>
-                  </div>
-                </div>
-                <div class="tst-quote-col">
-                  <div class="tst-card-tags">
-                    <span class="tst-tag-badge">Cloud SaaS</span>
-                    <span class="tst-date-badge">July 2026</span>
-                  </div>
-                  <blockquote class="tst-quote">"They took our complex requirements and delivered an incredibly clean SaaS dashboard in less than two months. The communication was prompt and we had zero critical bugs during launch."</blockquote>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="tst-card" data-index="2">
-              <div class="tst-card-watermark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <div class="tst-card-layout">
-                <div class="tst-author-col">
-                  <div class="tst-avatar-wrap">
-                    <div class="tst-avatar">ZM</div>
-                    <div class="tst-author-meta">
-                      <h4 class="tst-author-name">Zainab Malik</h4>
-                      <p class="tst-author-role">Operations Director at Apex Retail, Lahore</p>
-                    </div>
-                  </div>
-                  <div class="tst-author-badges">
-                    <div class="tst-stars" aria-label="5 out of 5 stars">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                  </div>
-                    <span class="tst-verified-pill">
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
-                    Verified Client
-                  </span>
-                  </div>
-                </div>
-                <div class="tst-quote-col">
-                  <div class="tst-card-tags">
-                    <span class="tst-tag-badge">Retail &amp; Inventory</span>
-                    <span class="tst-date-badge">July 2026</span>
-                  </div>
-                  <blockquote class="tst-quote">"The new web application transformed our day to day inventory tracking. The speed and responsiveness are remarkable, and our staff adapted to it immediately without any special training."</blockquote>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 4 -->
-            <article class="tst-card" data-index="3">
-              <div class="tst-card-watermark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <div class="tst-card-layout">
-                <div class="tst-author-col">
-                  <div class="tst-avatar-wrap">
-                    <div class="tst-avatar">MV</div>
-                    <div class="tst-author-meta">
-                      <h4 class="tst-author-name">Michael Vance</h4>
-                      <p class="tst-author-role">CTO at HyperTrend AI, San Francisco</p>
-                    </div>
-                  </div>
-                  <div class="tst-author-badges">
-                    <div class="tst-stars" aria-label="5 out of 5 stars">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                  </div>
-                    <span class="tst-verified-pill">
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
-                    Verified Client
-                  </span>
-                  </div>
-                </div>
-                <div class="tst-quote-col">
-                  <div class="tst-card-tags">
-                    <span class="tst-tag-badge">AI Platform</span>
-                    <span class="tst-date-badge">June 2026</span>
-                  </div>
-                  <blockquote class="tst-quote">"Their frontend engineering standards are top level. They integrated our machine learning backend into a sleek web interface that feels completely seamless and fast. Definitely looking forward to our next project together."</blockquote>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 5 -->
-            <article class="tst-card" data-index="4">
-              <div class="tst-card-watermark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <div class="tst-card-layout">
-                <div class="tst-author-col">
-                  <div class="tst-avatar-wrap">
-                    <div class="tst-avatar">HF</div>
-                    <div class="tst-author-meta">
-                      <h4 class="tst-author-name">Hamza Farooq</h4>
-                      <p class="tst-author-role">Managing Director at NextGen Logistics, Islamabad</p>
-                    </div>
-                  </div>
-                  <div class="tst-author-badges">
-                    <div class="tst-stars" aria-label="5 out of 5 stars">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                  </div>
-                    <span class="tst-verified-pill">
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
-                    Verified Client
-                  </span>
-                  </div>
-                </div>
-                <div class="tst-quote-col">
-                  <div class="tst-card-tags">
-                    <span class="tst-tag-badge">Logistics Dashboard</span>
-                    <span class="tst-date-badge">May 2026</span>
-                  </div>
-                  <blockquote class="tst-quote">"Our dispatch dashboard used to crash during peak hours. Their team rebuilt the real-time tracking architecture from the ground up, and everything runs smoothly now even with high traffic."</blockquote>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 6 -->
-            <article class="tst-card" data-index="5">
-              <div class="tst-card-watermark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <div class="tst-card-layout">
-                <div class="tst-author-col">
-                  <div class="tst-avatar-wrap">
-                    <div class="tst-avatar">SA</div>
-                    <div class="tst-author-meta">
-                      <h4 class="tst-author-name">Sophie Anderson</h4>
-                      <p class="tst-author-role">Founder at BrightPath Studio, Toronto</p>
-                    </div>
-                  </div>
-                  <div class="tst-author-badges">
-                    <div class="tst-stars" aria-label="5 out of 5 stars">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                  </div>
-                    <span class="tst-verified-pill">
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
-                    Verified Client
-                  </span>
-                  </div>
-                </div>
-                <div class="tst-quote-col">
-                  <div class="tst-card-tags">
-                    <span class="tst-tag-badge">Web Design</span>
-                    <span class="tst-date-badge">April 2026</span>
-                  </div>
-                  <blockquote class="tst-quote">"We had very high standards for our brand identity and interactive web experience. They exceeded our expectations in every milestone, delivering clean code and beautiful animations right on schedule."</blockquote>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 7 -->
-            <article class="tst-card" data-index="6">
-              <div class="tst-card-watermark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <div class="tst-card-layout">
-                <div class="tst-author-col">
-                  <div class="tst-avatar-wrap">
-                    <div class="tst-avatar">UG</div>
-                    <div class="tst-author-meta">
-                      <h4 class="tst-author-name">Usman Ghani</h4>
-                      <p class="tst-author-role">Product Manager at Telecard Solutions, Karachi</p>
-                    </div>
-                  </div>
-                  <div class="tst-author-badges">
-                    <div class="tst-stars" aria-label="5 out of 5 stars">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                  </div>
-                    <span class="tst-verified-pill">
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
-                    Verified Client
-                  </span>
-                  </div>
-                </div>
-                <div class="tst-quote-col">
-                  <div class="tst-card-tags">
-                    <span class="tst-tag-badge">Telecom Portal</span>
-                    <span class="tst-date-badge">March 2026</span>
-                  </div>
-                  <blockquote class="tst-quote">"Working with this team felt like having our own in-house engineering squad. They delivered our portal ahead of the deadline and were always available whenever we needed quick updates."</blockquote>
-                </div>
-              </div>
-            </article>
-
-            <!-- Card 8 -->
-            <article class="tst-card" data-index="7">
-              <div class="tst-card-watermark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                </svg>
-              </div>
-              <div class="tst-card-layout">
-                <div class="tst-author-col">
-                  <div class="tst-avatar-wrap">
-                    <div class="tst-avatar">OB</div>
-                    <div class="tst-author-meta">
-                      <h4 class="tst-author-name">Oliver Bennett</h4>
-                      <p class="tst-author-role">VP of Engineering at Crestline Media, Sydney</p>
-                    </div>
-                  </div>
-                  <div class="tst-author-badges">
-                    <div class="tst-stars" aria-label="5 out of 5 stars">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.6.99-5.79-4.21-4.1 5.82-.85L10 1.5z"/></svg>
-                  </div>
-                    <span class="tst-verified-pill">
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
-                    Verified Client
-                  </span>
-                  </div>
-                </div>
-                <div class="tst-quote-col">
-                  <div class="tst-card-tags">
-                    <span class="tst-tag-badge">Media Platform</span>
-                    <span class="tst-date-badge">February 2026</span>
-                  </div>
-                  <blockquote class="tst-quote">"Great technical depth and very transparent progress updates. They caught architectural edge cases early before they could cause delays. One of the best software teams we have collaborated with."</blockquote>
-                </div>
-              </div>
-            </article>
-
-          </div><!-- /tstDeck -->
-        </div><!-- /tstShowcase -->
-
-        <!-- Controls Bar -->
-        <div class="tst-controls-bar">
-          <button class="tst-nav-btn tst-nav-prev" id="tstPrev" aria-label="Previous review">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-            <span>Previous</span>
-          </button>
-
-          <button class="tst-nav-btn tst-nav-next" id="tstNext" aria-label="Next review">
-            <span>Next</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
-
-        <div class="tst-trustbar" id="tstTrustbar">
-          <div class="tst-trust-item">
-            <span class="tst-trust-value"><span class="tst-count" data-target="4.8" data-decimals="1">0</span><span class="tst-trust-star">★</span></span>
-            <span class="tst-trust-label">Average Rating</span>
+        <div class="sap-meta-row">
+          <div class="sap-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Average reply under 24 hours</span>
           </div>
-          <span class="tst-trust-sep" aria-hidden="true"></span>
-          <div class="tst-trust-item">
-            <span class="tst-trust-value"><span class="tst-count" data-target="500">0</span>+</span>
-            <span class="tst-trust-label">Client Reviews</span>
+          <div class="sap-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+            <span>Accepting new clients</span>
           </div>
-          <span class="tst-trust-sep" aria-hidden="true"></span>
-          <div class="tst-trust-item">
-            <span class="tst-trust-value"><span class="tst-count" data-target="120">0</span>+</span>
-            <span class="tst-trust-label">Projects Delivered</span>
-          </div>
-          <span class="tst-trust-sep" aria-hidden="true"></span>
-          <div class="tst-trust-item">
-            <span class="tst-trust-value"><span class="tst-count" data-target="98">0</span>%</span>
-            <span class="tst-trust-label">On-Time Delivery</span>
+          <div class="sap-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>Karachi, Pakistan, working worldwide</span>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -5290,7 +5549,7 @@
           </p>
           <div class="footer-status-badge">
             <span class="status-live-dot"></span>
-            <span>Karachi, Pakistan &mdash; working worldwide</span>
+            <span>Karachi, Pakistan, working worldwide</span>
           </div>
 
           <!-- Social Media Links -->
@@ -5351,7 +5610,7 @@
             <li><a href="services.html">All Services</a></li>
             <li><a href="#portfolio">Featured Work</a></li>
             <li><a href="#process">Engineering Process</a></li>
-            <li><a href="#testimonials">Client Feedback</a></li>
+            <li><a href="#clientsWork">Client Reviews</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
@@ -5417,6 +5676,11 @@
   var nextBtn   = document.getElementById('svcNext');
   var ctr       = document.getElementById('svcCurrent');
   var progWrap  = document.getElementById('svcProgress');
+  var mobPrevBtn  = document.getElementById('svcMobPrev');
+  var mobNextBtn  = document.getElementById('svcMobNext');
+  var mobTitle    = document.getElementById('svcMobTitle');
+  var mobCounter  = document.getElementById('svcMobCounter');
+  var mobDotsWrap = document.getElementById('svcMobDots');
   var header    = section.querySelector('.svc-header');
   var trackHdr  = section.querySelector('.svc-track-header');
   var navBar    = section.querySelector('.svc-nav-bar');
@@ -5443,6 +5707,20 @@
     }
   }
 
+  /* ── Build mobile dots (one per card) ── */
+  function buildMobDots() {
+    if (!mobDotsWrap) return;
+    mobDotsWrap.innerHTML = '';
+    for (var i = 0; i < TOTAL; i++) {
+      var d = document.createElement('button');
+      d.className = 'svc-mob-dot' + (i === 0 ? ' active' : '');
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Service ' + (i + 1));
+      (function(idx){ d.addEventListener('click', function(){ go(idx, 1); }); })(i);
+      mobDotsWrap.appendChild(d);
+    }
+  }
+
   /* â”€â”€ Render carousel position â”€â”€ */
   function render() {
     var cardW = (cards[0] ? cards[0].offsetWidth : 0) + GAP;
@@ -5456,6 +5734,20 @@
     for (var i = 0; i < dots.length; i++) {
       dots[i].classList.toggle('is-active', i === page);
     }
+
+    /* Mobile nav pill + dots */
+    var activeCard = cards[cur];
+    if (mobTitle && activeCard) {
+      var titleEl = activeCard.querySelector('.svc-card-title');
+      mobTitle.textContent = titleEl ? titleEl.textContent : '';
+    }
+    if (mobCounter) mobCounter.textContent = (cur + 1) + ' / ' + TOTAL;
+    if (mobDotsWrap) {
+      var mobDots = mobDotsWrap.querySelectorAll('.svc-mob-dot');
+      for (var j = 0; j < mobDots.length; j++) {
+        mobDots[j].classList.toggle('active', j === cur);
+      }
+    }
   }
 
   function go(idx, dir) {
@@ -5465,6 +5757,8 @@
 
   if (prevBtn) prevBtn.addEventListener('click', function() { go(cur - 1, -1); });
   if (nextBtn) nextBtn.addEventListener('click', function() { go(cur + 1, 1); });
+  if (mobPrevBtn) mobPrevBtn.addEventListener('click', function() { go(cur - 1, -1); });
+  if (mobNextBtn) mobNextBtn.addEventListener('click', function() { go(cur + 1, 1); });
 
   /* â”€â”€ Touch swipe â”€â”€ */
   var tX = 0;
@@ -5510,7 +5804,7 @@
     buildDots(); render();
   });
 
-  buildDots(); render();
+  buildDots(); buildMobDots(); render();
 
   /* â”€â”€ Scroll-based section + card animations â”€â”€ */
   if (!('IntersectionObserver' in window)) {
@@ -5855,6 +6149,98 @@
   });
 })();
 
+/* ══ CLIENTS REAL WORK — reversible scroll reveal + scroll-progress line + pointer 3D tilt on screenshots ══ */
+(function () {
+  const crwSection = document.querySelector('.crw-section');
+  if (!crwSection) return;
+
+  const crwHeader = document.getElementById('crwHeader');
+  const crwCards  = Array.from(document.querySelectorAll('.crw-card'));
+
+  /* Entrance animation: plays going down, reverses going back up (no unobserve) */
+  const crwObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle('crw-in', entry.isIntersecting);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  if (crwHeader) crwObserver.observe(crwHeader);
+  crwCards.forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.06) + 's';
+    crwObserver.observe(card);
+  });
+
+  /* Scroll-progress fill line: fills as each card scrolls down through the
+     viewport, unfills automatically when scrolling back up (pure function
+     of scroll position, so it is naturally bidirectional). */
+  const lineFills = crwCards
+    .map((card) => card.querySelector('.crw-line-fill'))
+    .filter(Boolean);
+
+  let crwTicking = false;
+  function updateCrwLines() {
+    const vh = window.innerHeight;
+    const start = vh * 0.9;
+    const end = vh * 0.25;
+    crwCards.forEach((card, i) => {
+      const fill = lineFills[i];
+      if (!fill) return;
+      const rect = card.getBoundingClientRect();
+      let progress = (start - rect.top) / (start - end);
+      progress = Math.max(0, Math.min(1, progress));
+      fill.style.setProperty('--fill', progress.toFixed(3));
+    });
+    crwTicking = false;
+  }
+  function onCrwScroll() {
+    if (!crwTicking) {
+      window.requestAnimationFrame(updateCrwLines);
+      crwTicking = true;
+    }
+  }
+  window.addEventListener('scroll', onCrwScroll, { passive: true });
+  window.addEventListener('resize', updateCrwLines);
+  updateCrwLines();
+
+  /* Pointer 3D tilt on the screenshot mockups */
+  const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+  if (isFinePointer) {
+    document.querySelectorAll('.crw-mock-wrap[data-crw-tilt]').forEach((wrap) => {
+      const mock = wrap.querySelector('.crw-mock');
+      if (!mock) return;
+      wrap.addEventListener('pointermove', (e) => {
+        const b = wrap.getBoundingClientRect();
+        const px = ((e.clientX - b.left) / b.width) * 2 - 1;
+        const py = ((e.clientY - b.top) / b.height) * 2 - 1;
+        mock.style.transform = `rotateX(${(4 - py * 9).toFixed(2)}deg) rotateY(${(-10 + px * 12).toFixed(2)}deg)`;
+      });
+      wrap.addEventListener('pointerleave', () => {
+        mock.style.transform = '';
+      });
+    });
+  }
+})();
+
+/* ══ START A PROJECT — reveal on scroll ══ */
+(function () {
+  const sapSection = document.querySelector('.sap-section');
+  if (!sapSection) return;
+
+  const sapInner = document.getElementById('sapInner');
+  if (!sapInner) return;
+
+  const sapObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('sap-in');
+        sapObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+  sapObserver.observe(sapInner);
+})();
+
 /* ══ TESTIMONIALS — Grand Showcase with slow-motion pop up transitions ══ */
 (function () {
   const tstSection  = document.querySelector('.tst-section');
@@ -6067,7 +6453,7 @@
   const lab = document.getElementById('eyebrowLabel');   // only the changing words
   if(!el || !lab) return;
 
-  const items = ['Digital Agency','Software Studio','Creative Company','Growth Partner','Tech Agency'];
+  const items = ['Digital Agency','Software Company','Creative Company','Growth Partner','Tech Agency'];
   let i = 0;
 
   el.style.overflow        = 'visible';
@@ -6756,5 +7142,3 @@
 </script>
 </body>
 </html>
-
-

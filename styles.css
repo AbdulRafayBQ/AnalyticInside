@@ -26,13 +26,23 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+
+/* Slim, on-brand scrollbar (Chrome/Edge/Safari default scrollbars can render very wide,
+   especially in DevTools device emulation, making pages look broken on narrow viewports) */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(23,19,14,.20); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(23,19,14,.35); }
+html { scrollbar-width: thin; scrollbar-color: rgba(23,19,14,.25) transparent; }
 
 body {
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   background: var(--bg);
   color: var(--dark);
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -49,6 +59,14 @@ em { font-style: italic; color: var(--accent); }
   width: min(1160px, 90%);
   margin: 0 auto;
   padding: 96px 0;
+  box-sizing: border-box;
+}
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 /* ═══════════════════════════════
@@ -801,21 +819,9 @@ em { font-style: italic; color: var(--accent); }
 }
 
 @media (max-width: 768px) {
+  /* Mobile nav fully handled by mobile-fix.css */
   .btn-nav-cta { display: none; }
   .menu-toggle { display: block; }
-  .nav {
-    position: fixed; top: 64px; right: 0; left: 0;
-    background: rgba(255,255,255,0.97);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 0;
-    opacity: 0; visibility: hidden;
-    transform: translateY(-8px);
-    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-  }
-  .nav.open { opacity: 1; visibility: visible; transform: none; }
-  .nav ul { flex-direction: column; gap: 0; }
-  .nav-link { padding: 14px 24px; border-radius: 0; border-bottom: 1px solid var(--border); }
   .service-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: repeat(2,1fr); }
   .work-grid { grid-template-columns: 1fr; }
@@ -1433,3 +1439,5 @@ em { font-style: italic; color: var(--accent); }
     gap: 14px;
   }
 }
+
+/* Mobile responsive handled by mobile-fix.css */
