@@ -563,7 +563,7 @@
 â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .svc-section {
   position: relative;
-  background: #FAFAF8;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFAF8 100%);
   overflow: hidden;
   padding: 150px 0 90px;
 }
@@ -1004,9 +1004,9 @@
 ════════════════════════════════════════════════════════ */
 .pfh-section {
   position: relative;
-  background: linear-gradient(180deg, #FFFFFF 0%, #FBF7EE 55%, #F5EFE0 100%);
+  background: linear-gradient(180deg, #FAFAF8 0%, #FBF7EE 55%, #F5EFE0 100%);
   color: #17130E;
-  padding: 190px 0 120px;
+  padding: 260px 0 90px;
   overflow: hidden;
 }
 .pfh-blob {
@@ -1348,7 +1348,7 @@
   .pfh-idx { font-size: 64px; }
 }
 @media (max-width: 640px) {
-  .pfh-section { padding: 150px 0 90px; }
+  .pfh-section { padding: 210px 0 90px; }
   .pfh-header { margin-bottom: 46px; }
   .pfh-zigzag { gap: 70px; }
   .pfh-cta-wrap { margin-top: 70px; }
@@ -1397,7 +1397,7 @@
 /* ─── WCU SECTION ─── */
 .wcu-section {
   position: relative;
-  background: #FFFFFF;
+  background: linear-gradient(180deg, #F6F2EA 0%, #FFFFFF 100%);
   color: #1a1510;
   overflow: hidden;
   padding: 0;
@@ -1805,9 +1805,9 @@
 /* ── Section shell ── */
 .dproc-section {
   position: relative;
-  background: linear-gradient(175deg, #F5EFE0 0%, #FBF8F3 30%, #FFFFFF 100%);
+  background: linear-gradient(175deg, #F5ECE0 0%, #FBF8F3 30%, #FFFFFF 100%);
   color: #17130E;
-  padding: 130px 0 150px;
+  padding: 90px 0 150px;
   overflow: hidden;
 }
 
@@ -2626,12 +2626,12 @@
    ══════════════════════════════════════════════════════════════════ */
 .tech-section {
   position: relative;
-  background: linear-gradient(180deg, #F5ECE0 0%, #FAF7F2 45%, #FFFFFF 100%);
+  background: linear-gradient(180deg, #F5EFE0 0%, #FAF7F2 45%, #FFFFFF 100%);
   color: #17130E;
-  padding: 130px 0 140px;
+  padding: 90px 0 140px;
   overflow: hidden;
 }
-.mkt-section { padding-top: 0; background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F2 55%, #F5ECE0 100%); }
+.mkt-section { padding-top: 0; padding-bottom: 90px; background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F2 55%, #F5ECE0 100%); }
 .tech-ambient-glow {
   position: absolute;
   width: 700px;
@@ -3282,35 +3282,66 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   START A PROJECT — CTA section, dark brown, before footer
+   START A PROJECT — CTA section, light/cream theme, before footer
    ══════════════════════════════════════════════════════════════ */
 .sap-section {
   position: relative;
   overflow: hidden;
-  background: #0A0908;
-  padding: 90px 0 96px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBF7EE 45%, #F5EFE0 100%);
+  padding: 100px 0 110px;
 }
 .sap-glow-1 {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  width: 640px; height: 340px; border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(201,155,92,.18) 0%, transparent 72%);
-  filter: blur(30px); pointer-events: none;
+  position: absolute; top: 42%; left: 50%; transform: translate(-50%,-50%);
+  width: 720px; height: 420px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(201,155,92,.14) 0%, transparent 72%);
+  filter: blur(40px); pointer-events: none;
 }
-.sap-pattern { display: none; }
+.sap-pattern {
+  display: block;
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(23,19,14,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23,19,14,.04) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 40%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 60% 55% at 50% 40%, #000 0%, transparent 75%);
+  pointer-events: none;
+}
 
 .sap-inner {
   position: relative; z-index: 2;
-  width: min(880px, 92%); margin: 0 auto;
+  width: min(920px, 92%); margin: 0 auto;
   text-align: center;
-  border-radius: 46px;
-  padding: 58px 48px;
-  background: linear-gradient(155deg, #2A1A0B 0%, #1B120A 55%, #140D08 100%);
-  border: 1.5px solid rgba(230,196,139,.16);
-  box-shadow: 0 40px 90px rgba(0,0,0,.5), inset 0 1px 0 rgba(245,239,224,.05);
+  border-radius: 32px;
+  padding: 64px 56px;
+  background: linear-gradient(155deg, #FFFFFF 0%, #FBF7EE 100%);
+  border: 1.5px solid rgba(23,19,14,.08);
+  box-shadow: 0 40px 90px rgba(60,45,20,.1), inset 0 1px 0 rgba(255,255,255,.6);
   opacity: 0; transform: translateY(34px);
   transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
 }
 .sap-inner.sap-in { opacity: 1; transform: translateY(0); }
+
+.sap-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .04em; color: #17130E;
+  background: rgba(23,19,14,.04);
+  border: 1px solid rgba(23,19,14,.1);
+  padding: 7px 16px 7px 12px; border-radius: 999px;
+  margin-bottom: 26px;
+}
+.sap-badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #6FCF97; flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(111,207,151,.18);
+  animation: sapPulse 2s ease-in-out infinite;
+}
+@keyframes sapPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(111,207,151,.18); }
+  50% { box-shadow: 0 0 0 6px rgba(111,207,151,.1); }
+}
+
 .sap-eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800;
@@ -3320,54 +3351,77 @@
 .sap-eyebrow::before, .sap-eyebrow::after { content: ""; width: 18px; height: 2px; background: #C99B5C; border-radius: 2px; }
 .sap-title {
   font-family: 'Outfit', sans-serif; font-weight: 900;
-  font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12;
-  letter-spacing: -0.03em; color: #F9F4E8; margin-bottom: 14px;
+  font-size: clamp(30px, 4vw, 48px); line-height: 1.1;
+  letter-spacing: -0.03em; color: #17130E; margin-bottom: 16px;
 }
 .sap-title em { font-style: italic; color: #C99B5C; }
 .sap-subtitle {
-  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500;
-  line-height: 1.7; color: rgba(249,244,232,.55);
-  max-width: 460px; margin: 0 auto 30px;
+  font-family: 'Inter', sans-serif; font-size: 15.5px; font-weight: 500;
+  line-height: 1.7; color: rgba(23,19,14,.6);
+  max-width: 480px; margin: 0 auto 34px;
 }
 .sap-cta-row {
   display: flex; align-items: center; justify-content: center;
-  gap: 14px; flex-wrap: wrap; margin-bottom: 30px;
+  gap: 14px; flex-wrap: wrap; margin-bottom: 38px;
 }
 .sap-btn-primary {
   display: inline-flex; align-items: center; gap: 9px;
-  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 14px;
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 14.5px;
   color: #17130E; background: linear-gradient(150deg, #E6C48B, #C99B5C);
-  padding: 15px 30px; border-radius: 999px; text-decoration: none;
-  box-shadow: 0 12px 32px rgba(201,155,92,.28);
+  padding: 16px 32px; border-radius: 999px; text-decoration: none;
+  box-shadow: 0 14px 36px rgba(201,155,92,.28);
   transition: transform .3s ease, box-shadow .3s ease;
 }
-.sap-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(201,155,92,.4); }
-.sap-btn-primary svg { width: 15px; height: 15px; }
+.sap-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(201,155,92,.4); }
+.sap-btn-primary svg { width: 15px; height: 15px; transition: transform .3s ease; }
+.sap-btn-primary:hover svg { transform: translateX(3px); }
 .sap-btn-secondary {
   display: inline-flex; align-items: center; gap: 9px;
-  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px;
-  color: #F9F4E8; background: transparent;
-  padding: 15px 26px; border-radius: 999px; text-decoration: none;
-  border: 1.5px solid rgba(249,244,232,.2);
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14.5px;
+  color: #17130E; background: rgba(23,19,14,.03);
+  padding: 16px 28px; border-radius: 999px; text-decoration: none;
+  border: 1.5px solid rgba(23,19,14,.14);
   transition: border-color .3s ease, background .3s ease, transform .3s ease;
 }
-.sap-btn-secondary:hover { border-color: rgba(249,244,232,.5); background: rgba(249,244,232,.05); transform: translateY(-3px); }
+.sap-btn-secondary:hover { border-color: rgba(23,19,14,.3); background: rgba(23,19,14,.06); transform: translateY(-3px); }
+
 .sap-meta-row {
-  display: flex; align-items: center; justify-content: center;
-  gap: 22px 26px; flex-wrap: wrap;
-  padding-top: 24px; border-top: 1px solid rgba(249,244,232,.09);
+  display: flex; align-items: stretch; justify-content: center;
+  gap: 0; flex-wrap: wrap;
+  padding-top: 30px; border-top: 1px solid rgba(23,19,14,.08);
 }
 .sap-meta-item {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
   font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600;
-  color: rgba(249,244,232,.5);
+  color: rgba(23,19,14,.5);
+  padding: 0 24px;
+  position: relative;
+  flex: 1 1 0;
+  min-width: 140px;
 }
-.sap-meta-item svg { width: 15px; height: 15px; color: #C99B5C; flex-shrink: 0; }
+.sap-meta-item:not(:last-child)::after {
+  content: "";
+  position: absolute; right: 0; top: 4px; bottom: 4px;
+  width: 1px; background: rgba(23,19,14,.08);
+}
+.sap-meta-icon {
+  width: 38px; height: 38px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(201,155,92,.12);
+  border: 1px solid rgba(201,155,92,.28);
+  flex-shrink: 0;
+}
+.sap-meta-icon svg { width: 17px; height: 17px; color: #C99B5C; }
+.sap-meta-item span:last-child { color: rgba(23,19,14,.72); font-weight: 600; line-height: 1.4; }
 
 @media (max-width: 700px) {
-  .sap-section { padding: 70px 0 76px; }
-  .sap-inner { border-radius: 32px; padding: 40px 26px; }
-  .sap-meta-row { gap: 14px 20px; }
+  .sap-section { padding: 76px 0 84px; }
+  .sap-inner { border-radius: 26px; padding: 44px 26px; }
+  .sap-meta-row { flex-direction: column; gap: 22px; padding-top: 26px; }
+  .sap-meta-item { padding: 0; flex-direction: row; text-align: left; }
+  .sap-meta-item:not(:last-child)::after { display: none; }
+  .sap-cta-row { flex-direction: column; width: 100%; }
+  .sap-btn-primary, .sap-btn-secondary { width: 100%; justify-content: center; }
 }
 </style>
 </head>
@@ -3473,7 +3527,7 @@
 
         <!-- LEFT: Text -->
         <div class="hero-left">
-          <p class="hero-eyebrow"><span class="hero-eyebrow-cycle" id="eyebrowCycle"><span class="hec-label" id="eyebrowLabel">Digital Agency</span><span class="hero-eyebrow-location">Karachi, Pakistan</span></span></p>
+          <p class="hero-eyebrow"><span class="hero-eyebrow-cycle" id="eyebrowCycle"><span class="hec-label" id="eyebrowLabel">Digital Agency</span><span class="hero-eyebrow-location">Dearborn, MI</span></span></p>
 
           <h1 class="hero-headline">
             <span class="line-wrap"><span class="line-inner">From Idea To</span></span>
@@ -3558,7 +3612,7 @@
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M10 2.5l2.3 4.8 5.2.7-3.8 3.7.9 5.3L10 14.5l-4.6 2.5.9-5.3-3.8-3.7 5.2-.7z"/></svg>
           </span>
           <span class="hw-pill-label">Experience</span>
-          <span class="hw-pill-val">5 Yrs</span>
+          <span class="hw-pill-val">8 Yrs</span>
         </div>
 
         <!-- animated orbit dots -->
@@ -3987,163 +4041,99 @@
       </div>
     </section>
 
+<!-- ══ CLIENTS / TRUSTED BY SECTION — redesigned 3-row shape-grouped marquee ══ -->
+<section class="clients-section" id="clients" aria-label="Clients we've worked with">
 
-<!-- ══ CLIENTS REAL WORK — dark 3D showcase, reviews + project mockups ══ -->
-    <section class="crw-section" id="clientsWork">
-      <div class="crw-grid-overlay" aria-hidden="true"></div>
-      <div class="crw-orb crw-orb-1" aria-hidden="true"></div>
-      <div class="crw-orb crw-orb-2" aria-hidden="true"></div>
+  <!-- decorative ambient backdrop -->
+  <div class="cl-bg" aria-hidden="true">
+    <svg class="cl-bg-blob cl-bg-blob--1" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="clBlobGrad1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C99B5C" stop-opacity="0.16"/>
+          <stop offset="100%" stop-color="#C99B5C" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="300" cy="300" r="300" fill="url(#clBlobGrad1)"/>
+    </svg>
+    <svg class="cl-bg-blob cl-bg-blob--2" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="clBlobGrad2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C99B5C" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#C99B5C" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="300" cy="300" r="300" fill="url(#clBlobGrad2)"/>
+    </svg>
+    <svg class="cl-bg-dots" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="clDotGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+          <circle cx="1.4" cy="1.4" r="1.4" fill="rgba(23,19,14,0.10)"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#clDotGrid)"/>
+    </svg>
+  </div>
 
-      <div class="crw-inner">
+  <div class="clients-inner">
 
-        <div class="crw-header" id="crwHeader">
-          <p class="crw-eyebrow">Clients Real Work</p>
-          <h2 class="crw-title">Trusted by teams who <em>shipped with us.</em></h2>
-          <p class="crw-subtitle">Real screens from real products, paired with honest words from the founders and teams we built them for.</p>
-        </div>
+    <div class="clients-header">
+      <span class="clients-eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L14.6 9.2L22 12L14.6 14.8L12 22L9.4 14.8L2 12L9.4 9.2L12 2Z" fill="#C99B5C"/></svg>
+        Trusted By
+      </span>
+      <h2 class="clients-heading">Brands We've <em>Built For</em></h2>
+      <p class="clients-subtext">From startups to established names — we've had the privilege of designing and developing for these brands.</p>
+    </div>
 
-        <div class="crw-cards" id="crwCards">
-
-          <article class="crw-card">
-            <div class="crw-line-track" aria-hidden="true"><div class="crw-line-fill"></div></div>
-            <div class="crw-quote-block">
-              <div class="crw-stars">★★★★★</div>
-              <p class="crw-quote">Finding a team who genuinely understood our compliance needs was hard until we partnered with them. They redesigned our event platform end to end, and both our vendors and guests love how fast it feels now.</p>
-              <div class="crw-author">
-                <div class="crw-avatar">BA</div>
-                <div>
-                  <p class="crw-name">Bilal Ahmed</p>
-                  <p class="crw-role">Co Founder, HealthCare Pakistan</p>
-                </div>
-              </div>
-            </div>
-            <div class="crw-mock-wrap" data-crw-tilt>
-              <div class="crw-mock">
-                <div class="crw-mock-bar">
-                  <span></span><span></span><span></span>
-                  <div class="crw-mock-url">assistevent.app/dashboard</div>
-                </div>
-                <div class="crw-mock-body">
-                  <div class="crw-mock-side"></div>
-                  <div class="crw-mock-main">
-                    <div class="crw-mock-row">
-                      <div class="crw-mock-stat crw-mock-accent"></div>
-                      <div class="crw-mock-stat"></div>
-                      <div class="crw-mock-stat"></div>
-                    </div>
-                    <div class="crw-mock-chart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="crw-card">
-            <div class="crw-line-track" aria-hidden="true"><div class="crw-line-fill"></div></div>
-            <div class="crw-quote-block">
-              <div class="crw-stars">★★★★★</div>
-              <p class="crw-quote">They took our complex requirements and delivered an incredibly clean SaaS dashboard in under two months. Communication was prompt, and we had zero critical bugs during launch.</p>
-              <div class="crw-author">
-                <div class="crw-avatar">JW</div>
-                <div>
-                  <p class="crw-name">James Wilson</p>
-                  <p class="crw-role">Head of Product, CloudScale, London</p>
-                </div>
-              </div>
-            </div>
-            <div class="crw-mock-wrap" data-crw-tilt>
-              <div class="crw-mock">
-                <div class="crw-mock-bar">
-                  <span></span><span></span><span></span>
-                  <div class="crw-mock-url">cloudscale.io/app</div>
-                </div>
-                <div class="crw-mock-body">
-                  <div class="crw-mock-side"></div>
-                  <div class="crw-mock-main">
-                    <div class="crw-mock-row">
-                      <div class="crw-mock-stat"></div>
-                      <div class="crw-mock-stat crw-mock-accent"></div>
-                      <div class="crw-mock-stat"></div>
-                    </div>
-                    <div class="crw-mock-chart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="crw-card">
-            <div class="crw-line-track" aria-hidden="true"><div class="crw-line-fill"></div></div>
-            <div class="crw-quote-block">
-              <div class="crw-stars">★★★★★</div>
-              <p class="crw-quote">The new web application transformed our day to day inventory tracking. The speed and responsiveness are remarkable, and our staff adapted to it immediately with no special training.</p>
-              <div class="crw-author">
-                <div class="crw-avatar">ZM</div>
-                <div>
-                  <p class="crw-name">Zainab Malik</p>
-                  <p class="crw-role">Operations Director, Apex Retail, Lahore</p>
-                </div>
-              </div>
-            </div>
-            <div class="crw-mock-wrap" data-crw-tilt>
-              <div class="crw-mock">
-                <div class="crw-mock-bar">
-                  <span></span><span></span><span></span>
-                  <div class="crw-mock-url">apexretail.app/inventory</div>
-                </div>
-                <div class="crw-mock-body">
-                  <div class="crw-mock-side"></div>
-                  <div class="crw-mock-main">
-                    <div class="crw-mock-row">
-                      <div class="crw-mock-stat"></div>
-                      <div class="crw-mock-stat"></div>
-                      <div class="crw-mock-stat crw-mock-accent"></div>
-                    </div>
-                    <div class="crw-mock-chart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="crw-card">
-            <div class="crw-line-track" aria-hidden="true"><div class="crw-line-fill"></div></div>
-            <div class="crw-quote-block">
-              <div class="crw-stars">★★★★★</div>
-              <p class="crw-quote">Sharp engineers who understand production AI systems, not just prototypes. They shipped our model pipeline on schedule and it has run reliably since day one.</p>
-              <div class="crw-author">
-                <div class="crw-avatar">MV</div>
-                <div>
-                  <p class="crw-name">Michael Vance</p>
-                  <p class="crw-role">CTO, HyperTrend AI, San Francisco</p>
-                </div>
-              </div>
-            </div>
-            <div class="crw-mock-wrap" data-crw-tilt>
-              <div class="crw-mock">
-                <div class="crw-mock-bar">
-                  <span></span><span></span><span></span>
-                  <div class="crw-mock-url">hypertrend.ai/console</div>
-                </div>
-                <div class="crw-mock-body">
-                  <div class="crw-mock-side"></div>
-                  <div class="crw-mock-main">
-                    <div class="crw-mock-row">
-                      <div class="crw-mock-stat crw-mock-accent"></div>
-                      <div class="crw-mock-stat"></div>
-                      <div class="crw-mock-stat"></div>
-                    </div>
-                    <div class="crw-mock-chart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-        </div>
+    <!-- Stats strip — real, grounded numbers instead of generic marketing figures -->
+    <div class="cl-stats">
+      <div class="cl-stat">
+        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="60">0</span>+</span>
+        <span class="cl-stat-label">Projects Delivered</span>
       </div>
-    </section>
+      <span class="cl-stat-div" aria-hidden="true"></span>
+      <div class="cl-stat">
+        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="10">0</span>+</span>
+        <span class="cl-stat-label">Industries Served</span>
+      </div>
+      <span class="cl-stat-div" aria-hidden="true"></span>
+      <div class="cl-stat">
+        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="98">0</span>%</span>
+        <span class="cl-stat-label">Client Retention</span>
+      </div>
+    </div>
 
+    <!-- Logo wall — reveals on scroll, no marquee scrolling -->
+    <div class="cl-wall" id="clWall">
+      <div class="cl-logo-card"><img src="Projects Logos/ChatGPT Image Sep 22, 2026, 07_25_32 PM.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/ChatGPT Image Sep 22, 2026, 07_49_35 PM.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Rheumatology Consultation.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 190514.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 190730.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191134.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191200.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191239.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191416.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191507.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191543.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191625.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191708.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191737.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192021.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192710.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192728.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192744.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192803.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192825.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192906.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192933.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192950.png" alt="Client logo" loading="lazy"></div>
+      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 193012.png" alt="Client logo" loading="lazy"></div>
+    </div>
+
+  </div>
+</section>
+<!-- ══ /CLIENTS SECTION ══ -->
 
 <!-- ══ PORTFOLIO — home teaser: 3 zig-zag rows, self-made layered 3D thumbnails ══ -->
     <section class="pfh-section" id="portfolio">
@@ -4565,7 +4555,7 @@
           <div class="tech-panels">
 
             <!-- 1. Mobile Apps Panel (Active default) -->
-            <div class="tech-panel active" id="tab-mobile" role="tabpanel">
+            <div class="tech-panel active" id="tab-mobile" data-tab-panel="mobile" role="tabpanel">
               <!-- iOS Group -->
               <div class="tech-group">
                 <h3 class="tech-group-heading">iOS</h3>
@@ -4728,7 +4718,7 @@
             </div>
 
             <!-- 2. Web Platforms Panel -->
-            <div class="tech-panel" id="tab-web" role="tabpanel">
+            <div class="tech-panel" id="tab-web" data-tab-panel="web" role="tabpanel">
               <div class="tech-group">
                 <h3 class="tech-group-heading">Web Technologies</h3>
                 <div class="tech-pills">
@@ -4814,7 +4804,7 @@
             </div>
 
             <!-- 3. Cross Platforms Panel -->
-            <div class="tech-panel" id="tab-cross" role="tabpanel">
+            <div class="tech-panel" id="tab-cross" data-tab-panel="cross" role="tabpanel">
               <div class="tech-group">
                 <h3 class="tech-group-heading">Cross-Platform Frameworks</h3>
                 <div class="tech-pills">
@@ -4878,7 +4868,7 @@
             </div>
 
             <!-- 4. AI & Machine Learning Panel -->
-            <div class="tech-panel" id="tab-ai" role="tabpanel">
+            <div class="tech-panel" id="tab-ai" data-tab-panel="ai" role="tabpanel">
               <div class="tech-group">
                 <h3 class="tech-group-heading">Artificial Intelligence &amp; ML</h3>
                 <div class="tech-pills">
@@ -4981,7 +4971,7 @@
             </div>
 
             <!-- 5. Database Panel -->
-            <div class="tech-panel" id="tab-database" role="tabpanel">
+            <div class="tech-panel" id="tab-database" data-tab-panel="database" role="tabpanel">
               <div class="tech-group">
                 <h3 class="tech-group-heading">Databases &amp; ORMs</h3>
                 <div class="tech-pills">
@@ -5052,7 +5042,7 @@
             </div>
 
             <!-- 6. Cloud & DevOps Panel -->
-            <div class="tech-panel" id="tab-cloud" role="tabpanel">
+            <div class="tech-panel" id="tab-cloud" data-tab-panel="cloud" role="tabpanel">
               <div class="tech-group">
                 <h3 class="tech-group-heading">Cloud &amp; Infrastructure</h3>
                 <div class="tech-pills">
@@ -5155,8 +5145,43 @@
         <div class="tech-container" id="mktContainer">
           <div class="tech-texture" aria-hidden="true"></div>
 
+          <!-- Tabs Pill Bar -->
+          <div class="tech-tabs-wrap">
+            <div class="tech-tabs" role="tablist">
+              <button class="tech-tab-btn active" data-tab="ads" role="tab" aria-selected="true">Ad Platforms</button>
+              <button class="tech-tab-btn" data-tab="video" role="tab" aria-selected="false">Video Editing</button>
+              <button class="tech-tab-btn" data-tab="design" role="tab" aria-selected="false">Graphic Design</button>
+              <button class="tech-tab-btn" data-tab="uiux" role="tab" aria-selected="false">UI/UX Design</button>
+            </div>
+          </div>
+
+          <!-- Mobile Category Carousel Navigation Bar (Active on Mobile <= 768px) -->
+          <div class="tech-mobile-nav" aria-label="Marketing category navigator">
+            <button class="tech-mob-arrow tech-mob-prev" type="button" aria-label="Previous Category">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="tech-mob-category-card">
+              <span class="tech-mob-category-title">Ad Platforms</span>
+              <span class="tech-mob-counter">1 / 4</span>
+            </div>
+            <button class="tech-mob-arrow tech-mob-next" type="button" aria-label="Next Category">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
+          <!-- Mobile Dots Indicator -->
+          <div class="tech-mob-dots" role="tablist" aria-label="Mobile category indicator">
+            <button class="tech-mob-dot active" data-index="0" aria-label="Category 1: Ad Platforms"></button>
+            <button class="tech-mob-dot" data-index="1" aria-label="Category 2: Video Editing"></button>
+            <button class="tech-mob-dot" data-index="2" aria-label="Category 3: Graphic Design"></button>
+            <button class="tech-mob-dot" data-index="3" aria-label="Category 4: UI/UX Design"></button>
+          </div>
+
+          <!-- Panels Container -->
           <div class="tech-panels">
-            <div class="tech-panel active" id="mktPanel" role="region" aria-label="Marketing and Branding tools">
+
+            <!-- 1. Ad Platforms Panel (Active default) -->
+            <div class="tech-panel active" id="mkt-tab-ads" data-tab-panel="ads" role="tabpanel">
               <!-- Ad Platforms Group -->
               <div class="tech-group">
                 <h3 class="tech-group-heading">Ad Platforms</h3>
@@ -5213,7 +5238,10 @@
                   </div>
                 </div>
               </div>
+            </div>
 
+            <!-- 2. Video Editing Panel -->
+            <div class="tech-panel" id="mkt-tab-video" data-tab-panel="video" role="tabpanel">
               <!-- Video Editing Group -->
               <div class="tech-group">
                 <h3 class="tech-group-heading">Video Editing</h3>
@@ -5262,7 +5290,10 @@
                   </div>
                 </div>
               </div>
+            </div>
 
+            <!-- 3. Graphic Design Panel -->
+            <div class="tech-panel" id="mkt-tab-design" data-tab-panel="design" role="tabpanel">
               <!-- Graphic Design & Animation Group -->
               <div class="tech-group">
                 <h3 class="tech-group-heading">Graphic Design &amp; Animation</h3>
@@ -5297,6 +5328,16 @@
                     </span>
                     <span class="tech-name">After Effects</span>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. UI/UX Design Panel -->
+            <div class="tech-panel" id="mkt-tab-uiux" data-tab-panel="uiux" role="tabpanel">
+              <!-- UI/UX Design Group -->
+              <div class="tech-group">
+                <h3 class="tech-group-heading">UI/UX Design</h3>
+                <div class="tech-pills">
                   <!-- Figma -->
                   <div class="tech-pill">
                     <span class="tech-icon">
@@ -5310,22 +5351,15 @@
                     </span>
                     <span class="tech-name">Figma</span>
                   </div>
-                  <!-- Canva -->
+                  <!-- Adobe XD -->
                   <div class="tech-pill">
                     <span class="tech-icon">
                       <svg viewBox="0 0 24 24" fill="none">
-                        <defs>
-                          <linearGradient id="cg" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                            <stop offset="0" stop-color="#00C4CC"/>
-                            <stop offset=".5" stop-color="#7D2AE8"/>
-                            <stop offset="1" stop-color="#FF6F61"/>
-                          </linearGradient>
-                        </defs>
-                        <circle cx="12" cy="12" r="10" fill="url(#cg)"/>
-                        <path d="M8 13.5c0 1.9 1.4 3 3 3 1.1 0 2-.4 2.6-1.1M8 13.5c0-1.9 1.4-3.4 3.2-3.4.9 0 1.6.3 2.1.8M8 13.5H6.5" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round"/>
+                        <rect x="2" y="4" width="20" height="16" rx="3" fill="#1E0C33"/>
+                        <text x="12" y="15.5" font-family="'Outfit', sans-serif" font-size="9" font-weight="900" fill="#FF61F6" text-anchor="middle">Xd</text>
                       </svg>
                     </span>
-                    <span class="tech-name">Canva</span>
+                    <span class="tech-name">Adobe XD</span>
                   </div>
                 </div>
               </div>
@@ -5390,7 +5424,7 @@
                 <p class="dproc-3d-desc">From low-fidelity wireframes to high-fidelity interactive prototypes, every screen designed around real user behaviour and brand identity. You approve before we build.</p>
                 <div class="dproc-3d-tags">
                   <span class="dproc-3d-tag">Wireframing</span>
-                  <span class="dproc-3d-tag">Figma Prototypes</span>
+                  <span class="dproc-3d-tag">Interactive Prototypes</span>
                   <span class="dproc-3d-tag">Design System</span>
                 </div>
               </div>
@@ -5498,6 +5532,10 @@
       <div class="sap-pattern" aria-hidden="true"></div>
 
       <div class="sap-inner" id="sapInner">
+        <div class="sap-badge">
+          <span class="sap-badge-dot"></span>
+          <span>Currently accepting new projects</span>
+        </div>
         <p class="sap-eyebrow">Start a Project</p>
         <h2 class="sap-title">Got an idea? Let's build <em>something real.</em></h2>
         <p class="sap-subtitle">Tell us what you are trying to build and we will reply within a day with next steps, timeline and a clear estimate.</p>
@@ -5514,16 +5552,22 @@
 
         <div class="sap-meta-row">
           <div class="sap-meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div class="sap-meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
             <span>Average reply under 24 hours</span>
           </div>
           <div class="sap-meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+            <div class="sap-meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+            </div>
             <span>Accepting new clients</span>
           </div>
           <div class="sap-meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            <span>Karachi, Pakistan, working worldwide</span>
+            <div class="sap-meta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <span>Dearborn, MI — working worldwide</span>
           </div>
         </div>
       </div>
@@ -5547,9 +5591,15 @@
           <p class="footer-brand-tagline">
             Architecture, artificial intelligence, and bespoke digital experiences crafted for companies building the future.
           </p>
+
+          <a class="footer-location-row" href="https://maps.google.com/?q=Dearborn,+MI+48128,+USA" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Dearborn, MI 48128, USA — working worldwide</span>
+          </a>
+
           <div class="footer-status-badge">
             <span class="status-live-dot"></span>
-            <span>Karachi, Pakistan, working worldwide</span>
+            <span>Accepting new clients</span>
           </div>
 
           <!-- Social Media Links -->
@@ -5610,7 +5660,6 @@
             <li><a href="services.html">All Services</a></li>
             <li><a href="#portfolio">Featured Work</a></li>
             <li><a href="#process">Engineering Process</a></li>
-            <li><a href="#clientsWork">Client Reviews</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
@@ -6447,7 +6496,7 @@
   }
 })();
 
-/* ── HERO EYEBROW CYCLER — "Digital Agency · Karachi, Pakistan" flips as ONE unit ── */
+/* ── HERO EYEBROW CYCLER — "Digital Agency · Dearborn, MI 48128, USA" flips as ONE unit ── */
 (function(){
   const el  = document.getElementById('eyebrowCycle');   // wrapper = label + location
   const lab = document.getElementById('eyebrowLabel');   // only the changing words
@@ -6474,7 +6523,7 @@
       el.style.opacity    = '0';
       el.style.transform  = 'translateY(14px) rotateX(-28deg)';
       void el.offsetWidth;
-      // ENTER: label + "Karachi, Pakistan" flip into place together
+      // ENTER: label + "Dearborn, MI 48128, USA" flip into place together
       el.style.transition = 'opacity 0.42s ease, transform 0.48s cubic-bezier(.22,1,.36,1)';
       el.style.opacity    = '1';
       el.style.transform  = 'translateY(0) rotateX(0deg)';
@@ -6845,206 +6894,153 @@
   }
 })();
 
-/* ══ TECHNOLOGY SECTION — Desktop Tabs & Mobile Carousel Navigation ══ */
+/* ══ TECHNOLOGY & MARKETING TABS — Desktop Tabs & Mobile Carousel Navigation
+   (shared logic, fully scoped per-container so switching tabs in one
+   section can never hide/show panels belonging to the other section) ══ */
 (function() {
-  const container = document.getElementById('techContainer');
-  const tabs = Array.from(document.querySelectorAll('.tech-tab-btn'));
-  const panels = Array.from(document.querySelectorAll('.tech-panel'));
-  const mobPrev = document.getElementById('techMobPrev');
-  const mobNext = document.getElementById('techMobNext');
-  const mobTitle = document.getElementById('techMobCategoryTitle');
-  const mobCounter = document.getElementById('techMobCounter');
-  const mobDots = Array.from(document.querySelectorAll('.tech-mob-dot'));
-  const panelsWrap = document.querySelector('.tech-panels');
+  function initTabsSection(container) {
+    if (!container) return;
 
-  if (!container || !tabs.length) return;
+    const tabs = Array.from(container.querySelectorAll('.tech-tab-btn'));
+    if (!tabs.length) return;
 
-  let currentIndex = 0;
+    const panels     = Array.from(container.querySelectorAll('.tech-panel'));
+    const mobPrev    = container.querySelector('.tech-mob-prev');
+    const mobNext    = container.querySelector('.tech-mob-next');
+    const mobTitle   = container.querySelector('.tech-mob-category-title');
+    const mobCounter = container.querySelector('.tech-mob-counter');
+    const mobDots    = Array.from(container.querySelectorAll('.tech-mob-dot'));
+    const panelsWrap = container.querySelector('.tech-panels');
 
-  // Entry fade-in and scale-up scroll animation (materializing smoothly)
-  const techObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        container.classList.add('tech-in');
-      }
-    });
-  }, { threshold: 0.15 });
+    let currentIndex = 0;
 
-  techObserver.observe(container);
-
-  // Marketing & Branding standalone card — same materialize-in entrance
-  const mktContainer = document.getElementById('mktContainer');
-  if (mktContainer) {
-    const mktObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) mktContainer.classList.add('tech-in'); });
+    // Entry fade-in and scale-up scroll animation (materializing smoothly)
+    const techObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          container.classList.add('tech-in');
+        }
+      });
     }, { threshold: 0.15 });
-    mktObserver.observe(mktContainer);
-  }
+    techObserver.observe(container);
 
-  function setActiveTab(index) {
-    if (index < 0) index = tabs.length - 1;
-    if (index >= tabs.length) index = 0;
-    currentIndex = index;
+    function setActiveTab(index) {
+      if (index < 0) index = tabs.length - 1;
+      if (index >= tabs.length) index = 0;
+      currentIndex = index;
 
-    const currentTab = tabs[currentIndex];
-    const targetTab = currentTab.dataset.tab;
+      const currentTab = tabs[currentIndex];
+      const targetTab = currentTab.dataset.tab;
 
-    // Update desktop tabs
-    tabs.forEach((t, i) => {
-      const isActive = i === currentIndex;
-      t.classList.toggle('active', isActive);
-      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
-    });
+      // Update desktop tabs
+      tabs.forEach((t, i) => {
+        const isActive = i === currentIndex;
+        t.classList.toggle('active', isActive);
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
 
-    // Update mobile indicator card and dots
-    if (mobTitle) {
-      mobTitle.textContent = currentTab.textContent.trim();
-    }
-    if (mobCounter) {
-      mobCounter.textContent = (currentIndex + 1) + ' / ' + tabs.length;
-    }
-    mobDots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentIndex);
-      dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
-    });
-
-    // Update active panel and trigger staggered slide-in animation
-    panels.forEach(panel => {
-      const isMatch = panel.id === 'tab-' + targetTab;
-      if (isMatch) {
-        panel.classList.add('active');
-        // Re-trigger CSS animation for pills
-        const pills = panel.querySelectorAll('.tech-pill');
-        pills.forEach((p, idx) => {
-          p.style.animation = 'none';
-          void p.offsetWidth; // force reflow
-          p.style.animation = 'techPillSlideIn 0.44s cubic-bezier(0.16, 1, 0.3, 1) ' + (0.03 * (idx + 1)) + 's both';
-        });
-      } else {
-        panel.classList.remove('active');
+      // Update mobile indicator card and dots
+      if (mobTitle) {
+        mobTitle.textContent = currentTab.textContent.trim();
       }
-    });
-  }
+      if (mobCounter) {
+        mobCounter.textContent = (currentIndex + 1) + ' / ' + tabs.length;
+      }
+      mobDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+        dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+      });
 
-  // Desktop tab clicks
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => {
-      setActiveTab(index);
-    });
-  });
-
-  // Mobile arrow buttons
-  if (mobPrev) {
-    mobPrev.addEventListener('click', () => {
-      setActiveTab(currentIndex - 1);
-    });
-  }
-  if (mobNext) {
-    mobNext.addEventListener('click', () => {
-      setActiveTab(currentIndex + 1);
-    });
-  }
-
-  // Mobile dots
-  mobDots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-      setActiveTab(idx);
-    });
-  });
-
-  // Mobile touch swipe gestures on panels container
-  if (panelsWrap) {
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchEndX = 0;
-    let touchEndY = 0;
-
-    panelsWrap.addEventListener('touchstart', (e) => {
-      if (!e.changedTouches || !e.changedTouches[0]) return;
-      touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    panelsWrap.addEventListener('touchend', (e) => {
-      if (!e.changedTouches || !e.changedTouches[0]) return;
-      touchEndX = e.changedTouches[0].screenX;
-      touchEndY = e.changedTouches[0].screenY;
-      handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-      const diffX = touchEndX - touchStartX;
-      const diffY = touchEndY - touchStartY;
-      // Only treat as horizontal swipe if horizontal distance is dominant and > 40px
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
-        if (diffX < 0) {
-          // Swiped left -> Next category
-          setActiveTab(currentIndex + 1);
+      // Update active panel (scoped to this container only) and
+      // trigger staggered slide-in animation
+      panels.forEach(panel => {
+        const isMatch = panel.dataset.tabPanel === targetTab;
+        if (isMatch) {
+          panel.classList.add('active');
+          // Re-trigger CSS animation for pills
+          const pills = panel.querySelectorAll('.tech-pill');
+          pills.forEach((p, idx) => {
+            p.style.animation = 'none';
+            void p.offsetWidth; // force reflow
+            p.style.animation = 'techPillSlideIn 0.44s cubic-bezier(0.16, 1, 0.3, 1) ' + (0.03 * (idx + 1)) + 's both';
+          });
         } else {
-          // Swiped right -> Prev category
-          setActiveTab(currentIndex - 1);
+          panel.classList.remove('active');
+        }
+      });
+    }
+
+    // Desktop tab clicks
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        setActiveTab(index);
+      });
+    });
+
+    // Mobile arrow buttons
+    if (mobPrev) {
+      mobPrev.addEventListener('click', () => {
+        setActiveTab(currentIndex - 1);
+      });
+    }
+    if (mobNext) {
+      mobNext.addEventListener('click', () => {
+        setActiveTab(currentIndex + 1);
+      });
+    }
+
+    // Mobile dots
+    mobDots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        setActiveTab(idx);
+      });
+    });
+
+    // Mobile touch swipe gestures on panels container
+    if (panelsWrap) {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchEndX = 0;
+      let touchEndY = 0;
+
+      panelsWrap.addEventListener('touchstart', (e) => {
+        if (!e.changedTouches || !e.changedTouches[0]) return;
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      panelsWrap.addEventListener('touchend', (e) => {
+        if (!e.changedTouches || !e.changedTouches[0]) return;
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        // Only treat as horizontal swipe if horizontal distance is dominant and > 40px
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+          if (diffX < 0) {
+            // Swiped left -> Next category
+            setActiveTab(currentIndex + 1);
+          } else {
+            // Swiped right -> Prev category
+            setActiveTab(currentIndex - 1);
+          }
         }
       }
     }
   }
+
+  initTabsSection(document.getElementById('techContainer'));
+  initTabsSection(document.getElementById('mktContainer'));
 })();
 
-/* ══ FOOTER DRAMATIC OVERLAP PARALLAX SCROLL INTERACTION ══ */
+/* ══ FOOTER — back to top only (overlap/parallax animation removed) ══ */
 (function() {
   const footer = document.querySelector('.site-footer');
   if (!footer) return;
-
-  const footerGrid = footer.querySelector('.footer-grid-grand');
-
-  let ticking = false;
-
-  function updateFooterOverlap() {
-    // IMPORTANT: don't use getBoundingClientRect() here — it reports the
-    // element's CURRENT on-screen position, which already includes the
-    // translateY this same function applies. Reading that back in and
-    // using it to compute the next translateY creates a feedback loop
-    // (each frame's offset gets baked into the next frame's "top"), which
-    // drifts out of sync on short viewports and shows up as a gap/seam of
-    // page background behind the footer — most visible on mobile where
-    // the viewport height is small relative to the drift. Instead we use
-    // the footer's static layout position (offsetTop), which CSS
-    // transforms never affect, so the calculation always starts from the
-    // real, untransformed position.
-    const staticTop = footer.offsetTop - window.scrollY;
-    const winH = window.innerHeight;
-
-    // Trigger zone: footer top between winH (just entering) and winH - 450 (unfolded)
-    if (staticTop <= winH) {
-      const scrollDistance = winH - staticTop;
-      const progress = Math.min(1, Math.max(0, scrollDistance / Math.min(winH * 0.7, 450)));
-      
-      // Dramatic sheet overlap lift: translateY 140px -> 0px
-      const translateY = (1 - progress) * 140;
-      footer.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
-
-      if (footerGrid) {
-        const gridY = (1 - progress) * 25;
-        footerGrid.style.transform = `translate3d(0, ${gridY.toFixed(1)}px, 0)`;
-      }
-    } else {
-      // Not yet in the trigger zone: rest state
-      footer.style.transform = 'translate3d(0, 140px, 0)';
-      if (footerGrid) {
-        footerGrid.style.transform = 'translate3d(0, 25px, 0)';
-      }
-    }
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateFooterOverlap);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  window.addEventListener('resize', updateFooterOverlap);
-  updateFooterOverlap();
 
   const backToTop = document.getElementById('footerBackToTop');
   if (backToTop) {

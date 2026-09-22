@@ -196,11 +196,28 @@
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       const el = e.target;
+      // no unobserve: re-counts every time it re-enters view (scroll down or up)
       countUp(el, parseInt(el.dataset.count, 10) || 0);
-      cntObs.unobserve(el);
     });
   }, { threshold: 0.7 });
   qsa('.ab-num[data-count]').forEach(el => cntObs.observe(el));
+
+  /* ═══════════════════════════════
+     CLIENTS LOGO WALL — wave-in reveal
+  ═══════════════════════════════ */
+  const clWall = qs('#clWall');
+  if (clWall && 'IntersectionObserver' in window) {
+    const wallObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        // toggle (not one-shot) so the wave-in animation replays every time
+        // the wall re-enters the viewport, whether scrolling down or back up
+        clWall.classList.toggle('in-view', e.isIntersecting);
+      });
+    }, { threshold: 0.15 });
+    wallObs.observe(clWall);
+  } else if (clWall) {
+    clWall.classList.add('in-view');
+  }
 
   /* ═══════════════════════════════
      MARQUEE — pause on hover
