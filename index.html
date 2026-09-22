@@ -6,8 +6,8 @@
   <title>ANALYTIC INSIDER</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="./mobile-fix.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/mobile-fix.css">
 
   <style>
 /* ══ NAVBAR ══ */
@@ -159,7 +159,7 @@
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 8px 30px rgba(23,19,14,.08);
 }
-/* ══ NAVBAR MOBILE — handled by mobile-fix.css (oval pill style) ══ */
+/* ══ NAVBAR MOBILE — handled by css/mobile-fix.css (oval pill style) ══ */
 .logo { color: #17130E !important; }
 .nav-link { color: rgba(23,19,14,.55) !important; position: relative; }
 .nav-link:hover { color: #17130E !important; background: rgba(23,19,14,.06) !important; }
@@ -639,23 +639,25 @@
   position: relative;
   border-radius: 28px;
   overflow: hidden;
+  isolation: isolate;
+  backface-visibility: hidden;
   display: flex; flex-direction: column;
   border: 1.5px solid rgba(23,19,14,.07);
   box-shadow: 0 2px 20px rgba(23,19,14,.05);
   cursor: default;
-  opacity: 0; transform: translateX(70px);
+  opacity: 0; transform: translateX(70px) translateZ(0);
   transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1),
               box-shadow .4s ease, border-color .4s ease;
 }
 .svc-card.svc-in {
-  opacity: 1; transform: translateX(0);
+  opacity: 1; transform: translateX(0) translateZ(0);
 }
-.svc-card.svc-out-left  { opacity: 0; transform: translateX(-60px); transition: opacity .5s ease, transform .5s ease; }
-.svc-card.svc-out-right { opacity: 0; transform: translateX(60px);  transition: opacity .5s ease, transform .5s ease; }
+.svc-card.svc-out-left  { opacity: 0; transform: translateX(-60px) translateZ(0); transition: opacity .5s ease, transform .5s ease; }
+.svc-card.svc-out-right { opacity: 0; transform: translateX(60px) translateZ(0);  transition: opacity .5s ease, transform .5s ease; }
 .svc-card.svc-in:hover {
   box-shadow: 0 32px 80px rgba(23,19,14,.13), 0 8px 24px rgba(23,19,14,.07);
   border-color: rgba(23,19,14,.14);
-  transform: translateY(-6px);
+  transform: translateY(-6px) translateZ(0);
 }
 
 /* Card visual top area */
@@ -664,6 +666,7 @@
   height: 260px; min-height: 260px;
   background: var(--card-bg, #FDF5E8);
   overflow: hidden;
+  border-radius: 28px 28px 0 0;
 }
 
 /* BG motion icon â€” DIFFERENT from card icon, top-left, large and faded */
@@ -695,17 +698,16 @@
 .svc-card-icon {
   position: absolute; bottom: 26px; left: 30px; z-index: 3;
   width: 60px; height: 60px; border-radius: 18px;
-  background: rgba(255,255,255,.92);
+  background: transparent;
   display: flex; align-items: center; justify-content: center;
   color: var(--card-accent,#C99B5C);
-  box-shadow: 0 4px 18px rgba(0,0,0,.08);
-  transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease;
+  box-shadow: none;
+  transition: transform .4s cubic-bezier(.16,1,.3,1);
   flex-shrink: 0;
 }
 .svc-card-icon svg { width: 30px; height: 30px; }
 .svc-card.svc-in:hover .svc-card-icon {
   transform: scale(1.1) rotate(-5deg);
-  box-shadow: 0 10px 30px rgba(0,0,0,.11);
 }
 
 /* Arrow link badge */
@@ -740,6 +742,7 @@
   flex: 1; padding: 28px 32px 32px;
   display: flex; flex-direction: column;
   background: #fff;
+  border-radius: 0 0 28px 28px;
 }
 .svc-card-counter {
   font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 800;
@@ -763,17 +766,17 @@
   margin: 0 0 16px;
 }
 .svc-reveal-label {
-  font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 800;
+  font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 900;
   letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(23,19,14,.28); margin-bottom: 8px;
+  color: rgba(23,19,14,.55); margin-bottom: 8px;
 }
 .svc-reveal-tags {
   display: flex; flex-wrap: wrap; gap: 6px;
   margin-bottom: 14px;
 }
 .svc-reveal-tag {
-  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700;
-  color: rgba(23,19,14,.65);
+  font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 800;
+  color: rgba(23,19,14,.85);
   background: rgba(23,19,14,.04); border: 1.2px solid rgba(23,19,14,.09);
   padding: 4px 12px; border-radius: 999px;
   transition: background .25s ease, border-color .25s ease, color .25s ease;
@@ -786,8 +789,8 @@
 .svc-reveal-pf { display: flex; flex-wrap: wrap; gap: 6px; }
 .svc-reveal-pf-item {
   display: inline-flex; align-items: center; gap: 5px;
-  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
-  color: rgba(23,19,14,.55);
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800;
+  color: rgba(23,19,14,.78);
 }
 .svc-reveal-pf-item::before {
   content: ""; width: 5px; height: 5px; border-radius: 50%;
@@ -1004,7 +1007,7 @@
 ════════════════════════════════════════════════════════ */
 .pfh-section {
   position: relative;
-  background: linear-gradient(180deg, #FAFAF8 0%, #FBF7EE 55%, #F5EFE0 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #FBF7EE 60%, #F5EFE0 100%);
   color: #17130E;
   padding: 260px 0 90px;
   overflow: hidden;
@@ -1751,7 +1754,7 @@
   .nav-phone { display: none !important; }
   .nav-right-group { gap: 4px; }
 
-  /* WCU mobile — handled by mobile-fix.css */
+  /* WCU mobile — handled by css/mobile-fix.css */
 }
 @media (max-width: 940px) {
   .logo { font-size: 12px !important; letter-spacing: .06em !important; white-space: nowrap; }
@@ -4103,32 +4106,183 @@
       </div>
     </div>
 
-    <!-- Logo wall — reveals on scroll, no marquee scrolling -->
-    <div class="cl-wall" id="clWall">
-      <div class="cl-logo-card"><img src="Projects Logos/ChatGPT Image Sep 22, 2026, 07_25_32 PM.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/ChatGPT Image Sep 22, 2026, 07_49_35 PM.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Rheumatology Consultation.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 190514.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 190730.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191134.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191200.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191239.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191416.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191507.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191543.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191625.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191708.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 191737.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192021.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192710.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192728.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192744.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192803.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192825.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192906.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192933.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 192950.png" alt="Client logo" loading="lazy"></div>
-      <div class="cl-logo-card"><img src="Projects Logos/Screenshot 2026-09-22 193012.png" alt="Client logo" loading="lazy"></div>
+    <!-- Logo marquee — two rows, opposite directions, infinite seamless loop -->
+    <div class="cl-marquee" id="clWall">
+      <div class="cl-marquee-row cl-marquee-row--left">
+        <div class="cl-marquee-track">
+          <div class="cl-logo-card"><img src="images/logos/telecard-cropped.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card"><img src="images/logos/ChatGPT Image Sep 22, 2026, 07_49_35 PM.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#000000"><img src="images/logos/Rheumatology Consultation.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card"><img src="images/logos/Screenshot 2026-09-22 190514.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#df7758"><img src="images/logos/Screenshot 2026-09-22 190730.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#131219"><img src="images/logos/Screenshot 2026-09-22 191134.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#1e1e1e"><img src="images/logos/Screenshot 2026-09-22 191200.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#121212"><img src="images/logos/Screenshot 2026-09-22 191239.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#024c5b"><img src="images/logos/Screenshot 2026-09-22 191416.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card"><img src="images/logos/Screenshot 2026-09-22 191507.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card"><img src="images/logos/Screenshot 2026-09-22 191543.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#0077d1"><img src="images/logos/Screenshot 2026-09-22 191625.png" alt="Client logo" loading="lazy"></div>
+          <!-- duplicate set — makes the loop seamless -->
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/telecard-cropped.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/ChatGPT Image Sep 22, 2026, 07_49_35 PM.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#000000"><img src="images/logos/Rheumatology Consultation.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 190514.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#df7758"><img src="images/logos/Screenshot 2026-09-22 190730.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#131219"><img src="images/logos/Screenshot 2026-09-22 191134.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#1e1e1e"><img src="images/logos/Screenshot 2026-09-22 191200.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#121212"><img src="images/logos/Screenshot 2026-09-22 191239.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#024c5b"><img src="images/logos/Screenshot 2026-09-22 191416.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 191507.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 191543.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#0077d1"><img src="images/logos/Screenshot 2026-09-22 191625.png" alt="" loading="lazy"></div>
+        </div>
+      </div>
+      <div class="cl-marquee-row cl-marquee-row--right">
+        <div class="cl-marquee-track">
+          <div class="cl-logo-card"><img src="images/logos/Screenshot 2026-09-22 191708.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#43334c"><img src="images/logos/Screenshot 2026-09-22 191737.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card"><img src="images/logos/Screenshot 2026-09-22 192021.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#170f28"><img src="images/logos/Screenshot 2026-09-22 192710.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card cl-logo-card--zoom"><img src="images/logos/Screenshot 2026-09-22 192728.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card cl-logo-card--zoom"><img src="images/logos/Screenshot 2026-09-22 192744.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card"><img src="images/logos/Screenshot 2026-09-22 192803.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card"><img src="images/logos/Screenshot 2026-09-22 192825.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card"><img src="images/logos/Screenshot 2026-09-22 192906.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#140c26"><img src="images/logos/Screenshot 2026-09-22 192933.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#140c26"><img src="images/logos/Screenshot 2026-09-22 192950.png" alt="Client logo" loading="lazy"></div>
+          <div class="cl-logo-card" style="--cbg:#2b2523"><img src="images/logos/Screenshot 2026-09-22 193012.png" alt="Client logo" loading="lazy"></div>
+          <!-- duplicate set — makes the loop seamless -->
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 191708.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#43334c"><img src="images/logos/Screenshot 2026-09-22 191737.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 192021.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#170f28"><img src="images/logos/Screenshot 2026-09-22 192710.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card cl-logo-card--zoom" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 192728.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card cl-logo-card--zoom" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 192744.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 192803.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 192825.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true"><img src="images/logos/Screenshot 2026-09-22 192906.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#140c26"><img src="images/logos/Screenshot 2026-09-22 192933.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#140c26"><img src="images/logos/Screenshot 2026-09-22 192950.png" alt="" loading="lazy"></div>
+          <div class="cl-logo-card" aria-hidden="true" style="--cbg:#2b2523"><img src="images/logos/Screenshot 2026-09-22 193012.png" alt="" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client testimonials — horizontal auto-sliding carousel, tied to the brands above -->
+    <div class="clt-wrap" id="cltWrap">
+      <div class="clt-header">
+        <span class="clt-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L14.6 9.2L22 12L14.6 14.8L12 22L9.4 14.8L2 12L9.4 9.2L12 2Z" fill="#C99B5C"/></svg>
+          Client Voices
+        </span>
+        <h3 class="clt-heading">What They <em>Say</em></h3>
+      </div>
+
+      <div class="clt-viewport" id="cltViewport">
+        <div class="clt-track" id="cltTrack">
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">We came to Analytic Insider with a messy billing flow and a lot of frustrated customers. They rebuilt the recharge and bill pay experience from the ground up and were upfront every time something needed more time. Our support tickets dropped within the first month of launch.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#4A72C9">AR</div>
+              <div class="clt-person">
+                <span class="clt-project">Telecard &middot; Recharge &amp; Bill Pay App</span>
+                <span class="clt-name">Ahsan Raza, Product Lead at Telecard</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">I had tried two other agencies before this one and neither actually listened to what our shoppers needed. The Analytic Insider team sat with us for hours understanding our catalog before writing a single line of code, and it shows in how smooth checkout feels now.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#C95C8E">SK</div>
+              <div class="clt-person">
+                <span class="clt-project">Zylmi &middot; E-commerce Platform</span>
+                <span class="clt-name">Sara Khalid, Founder at Zylmi</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">We needed an AI assistant that could actually reason about trades instead of just spitting out canned responses. What we got was faster and far more reliable than anything our in house team had managed in six months of trying on their own.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#3DA06A">DC</div>
+              <div class="clt-person">
+                <span class="clt-project">Rich AI &middot; Trading Assistant</span>
+                <span class="clt-name">Daniel Cole, CEO at Rich AI</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">Our old dashboard was a spreadsheet dressed up as software. Now our coaches pull up a client's progress in seconds and actually trust the numbers they are looking at. It changed how our whole team runs its day.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#D46B5C">MG</div>
+              <div class="clt-person">
+                <span class="clt-project">Pulse Genesis &middot; Fitness Dashboard</span>
+                <span class="clt-name">Maria Gonzalez, Operations Manager at Pulse Genesis</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">Launching in two markets at once meant our calorie tracker had to work perfectly the first time, no room for a slow beta. The team tested edge cases we had not even thought of and caught them before our users ever saw a glitch.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#4A9FD4">KS</div>
+              <div class="clt-person">
+                <span class="clt-project">Morinaga &middot; Calorie Tracker App</span>
+                <span class="clt-name">Kenji Sato, Product Manager at Morinaga</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">Our investors expect a portfolio tool that feels institutional, not like a hobby project. What they delivered handles the numbers beautifully and still looks like something we are proud to open in front of a client.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#D4A24E">JW</div>
+              <div class="clt-person">
+                <span class="clt-project">Invest Power Labs &middot; Portfolio Tool</span>
+                <span class="clt-name">James Whitfield, Managing Director at Invest Power Labs</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="clt-nav">
+        <button class="clt-arrow clt-prev" id="cltPrev" type="button" aria-label="Previous testimonial">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="clt-dots" id="cltDots"></div>
+        <button class="clt-arrow clt-next" id="cltNext" type="button" aria-label="Next testimonial">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
     </div>
 
   </div>
@@ -5711,7 +5865,7 @@
     </div><!-- /footer-inner -->
   </footer>
 
-<script src="./script.js"></script>
+<script src="js/script.js"></script>
 <script>
 /* SERVICES â€” scroll-lock carousel, bi-directional scroll animations */
 (function () {
@@ -5772,7 +5926,20 @@
 
   /* â”€â”€ Render carousel position â”€â”€ */
   function render() {
-    var cardW = (cards[0] ? cards[0].offsetWidth : 0) + GAP;
+    var cardW;
+    if (perView === 1) {
+      // On mobile, use the actual card width (offsetWidth) + gap for accurate translation
+      // The card is sized via CSS calc(100vw - padding), so its offsetWidth is correct
+      var firstCard = cards[0];
+      if (firstCard) {
+        var cardStyle = window.getComputedStyle(firstCard);
+        cardW = firstCard.offsetWidth + (parseFloat(cardStyle.marginRight) || GAP);
+      } else {
+        cardW = outer ? outer.offsetWidth : 0;
+      }
+    } else {
+      cardW = (cards[0] ? cards[0].offsetWidth : 0) + GAP;
+    }
     var max = Math.max(0, TOTAL - perView);
     if (cur > max) cur = max;
     if (cur < 0) cur = 0;
@@ -7134,6 +7301,195 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   window.addEventListener('load', onScroll);
+})();
+</script>
+
+<script>
+/* ── Marquee pixel-precision fix ──
+   CSS -50% on width:max-content does not include the trailing margin-right
+   of the last card, so the loop snaps. This replaces the CSS animation with
+   a JS-driven requestAnimationFrame loop that resets at the EXACT pixel
+   boundary — making the loop completely invisible. */
+(function() {
+  function initMarqueeRow(row, speed, goRight) {
+    var track = row.querySelector('.cl-marquee-track');
+    if (!track) return;
+    var allCards = track.querySelectorAll('.cl-logo-card');
+    if (!allCards.length) return;
+    var origCount = Math.floor(allCards.length / 2);
+
+    // Pause CSS animation — we take over with JS
+    track.style.animation = 'none';
+
+    function getHalfWidth() {
+      var w = 0;
+      for (var i = 0; i < origCount; i++) {
+        var c = allCards[i];
+        var mr = parseFloat(window.getComputedStyle(c).marginRight) || 0;
+        w += c.offsetWidth + mr;
+      }
+      return w;
+    }
+
+    var halfW = 0;
+    var pos = 0;
+    var lastT = null;
+    var paused = false;
+    var rafId = null;
+
+    function step(ts) {
+      if (!lastT) lastT = ts;
+      var dt = ts - lastT;
+      lastT = ts;
+
+      if (!paused) {
+        if (goRight) {
+          pos += speed * dt / 1000;
+          if (pos >= 0) pos -= halfW;
+        } else {
+          pos -= speed * dt / 1000;
+          if (pos <= -halfW) pos += halfW;
+        }
+        track.style.transform = 'translateX(' + pos + 'px)';
+      }
+      rafId = requestAnimationFrame(step);
+    }
+
+    function start() {
+      halfW = getHalfWidth();
+      // For right-going row, start at -halfW (shows second half first for seamless feel)
+      if (goRight) pos = -halfW;
+      else pos = 0;
+      if (rafId) cancelAnimationFrame(rafId);
+      lastT = null;
+      rafId = requestAnimationFrame(step);
+    }
+
+    // Pause on reduced-motion
+    var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq && mq.matches) {
+      track.style.transform = 'translateX(0)';
+      return;
+    }
+
+    // Recalculate on resize
+    window.addEventListener('resize', function() {
+      halfW = getHalfWidth();
+    });
+
+    // Wait for images then start
+    function tryStart() {
+      halfW = getHalfWidth();
+      if (halfW > 0) {
+        start();
+      } else {
+        setTimeout(tryStart, 100);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      tryStart();
+    } else {
+      window.addEventListener('load', tryStart);
+      setTimeout(tryStart, 200);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var rows = document.querySelectorAll('.cl-marquee-row');
+    if (rows.length >= 1) initMarqueeRow(rows[0], 80, false); // left row: scrolls left
+    if (rows.length >= 2) initMarqueeRow(rows[1], 66, true);  // right row: scrolls right
+  });
+})();
+</script>
+
+<!-- ══ Client testimonials carousel — autoplay + arrows + dots ══ -->
+<script>
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var wrap = document.getElementById('cltWrap');
+    if (!wrap) return;
+
+    var viewport = document.getElementById('cltViewport');
+    var track   = document.getElementById('cltTrack');
+    var cards   = Array.prototype.slice.call(track.querySelectorAll('.clt-card'));
+    var dotsBox = document.getElementById('cltDots');
+    var prevBtn = document.getElementById('cltPrev');
+    var nextBtn = document.getElementById('cltNext');
+    if (!cards.length) return;
+
+    var index = 0;
+    var total = cards.length;
+    var AUTOPLAY_MS = 5200;
+    var timer = null;
+
+    // Build dot indicators
+    cards.forEach(function(_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'clt-dot' + (i === 0 ? ' is-active' : '');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+      dot.addEventListener('click', function() { goTo(i); restart(); });
+      dotsBox.appendChild(dot);
+    });
+    var dots = Array.prototype.slice.call(dotsBox.querySelectorAll('.clt-dot'));
+
+    function render() {
+      // Pixel-based shift (rather than a % of the track, which includes
+      // every overflowing slide) so the active slide always lines up
+      // exactly with the viewport, however wide it is.
+      var w = viewport.clientWidth;
+      track.style.transform = 'translateX(-' + (index * w) + 'px)';
+      cards.forEach(function(card, i) {
+        card.classList.toggle('is-active', i === index);
+      });
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('is-active', i === index);
+      });
+    }
+    window.addEventListener('resize', render);
+
+    function goTo(i) {
+      index = (i + total) % total;
+      // re-trigger the pop-in animation on the newly active card
+      var active = cards[index];
+      active.classList.remove('is-active');
+      void active.offsetWidth; // force reflow so the animation restarts
+      render();
+    }
+
+    function next() { goTo(index + 1); }
+    function prev() { goTo(index - 1); }
+
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(next, AUTOPLAY_MS);
+    }
+
+    nextBtn.addEventListener('click', function() { next(); restart(); });
+    prevBtn.addEventListener('click', function() { prev(); restart(); });
+
+    // pause on hover / focus, resume on leave
+    wrap.addEventListener('mouseenter', function() { clearInterval(timer); });
+    wrap.addEventListener('mouseleave', restart);
+    wrap.addEventListener('focusin', function() { clearInterval(timer); });
+    wrap.addEventListener('focusout', restart);
+
+    // basic swipe support on mobile
+    var startX = null;
+    track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; clearInterval(timer); }, { passive: true });
+    track.addEventListener('touchend', function(e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (dx > 40) prev();
+      else if (dx < -40) next();
+      startX = null;
+      restart();
+    }, { passive: true });
+
+    render();
+    restart();
+  });
 })();
 </script>
 </body>

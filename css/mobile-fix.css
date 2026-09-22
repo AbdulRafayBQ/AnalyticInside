@@ -399,11 +399,25 @@ img, video, svg, canvas, iframe {
     box-sizing: border-box !important;
   }
 
-  /* Card takes up nearly full width */
+  /* Card fills the track width exactly — the side gutters already come
+     from .svc-wrap's own padding, so this keeps it centered instead of
+     hugging the left edge. Shadow is softened + hover-lift disabled so it
+     doesn't look like it's floating on tap (mobile has no real :hover). */
+  .svc-track {
+    justify-content: flex-start !important;
+  }
   .svc-card {
-    flex: 0 0 calc(100% - 32px) !important;
+    flex: 0 0 calc(100vw - 40px) !important;
+    width: calc(100vw - 40px) !important;
+    min-width: 0 !important;
     min-height: 400px !important;
     border-radius: 20px !important;
+    box-shadow: 0 6px 18px rgba(23,19,14,.07) !important;
+  }
+  .svc-card.svc-in:hover,
+  .svc-card:hover {
+    box-shadow: 0 6px 18px rgba(23,19,14,.07) !important;
+    transform: none !important;
   }
 
   .svc-header {
@@ -428,7 +442,7 @@ img, video, svg, canvas, iframe {
 
 @media (max-width: 480px) {
   .svc-wrap { padding: 0 16px !important; }
-  .svc-card { flex: 0 0 calc(100% - 32px) !important; min-height: 360px !important; }
+  .svc-card { flex: 0 0 calc(100vw - 32px) !important; width: calc(100vw - 32px) !important; min-width: 0 !important; min-height: 360px !important; }
   .svc-card-body { padding: 18px 18px 22px !important; }
   .svc-card-title { font-size: 19px !important; }
 }
