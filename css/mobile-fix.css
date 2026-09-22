@@ -120,9 +120,9 @@ img, video, svg, canvas, iframe {
     margin: 2.5px 0 !important;
     transition: transform 0.25s, opacity 0.25s !important;
   }
-  .menu-toggle.open span:nth-child(1) { transform: translateY(4px) rotate(45deg) !important; }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg) !important; }
   .menu-toggle.open span:nth-child(2) { opacity: 0 !important; }
-  .menu-toggle.open span:nth-child(3) { transform: translateY(-4px) rotate(-45deg) !important; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg) !important; }
 
   /* Fullscreen dropdown nav when hamburger opened */
   .nav.open {
