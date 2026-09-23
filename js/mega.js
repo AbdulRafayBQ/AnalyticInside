@@ -7,6 +7,8 @@
 const SERVICES = [
   {
     slug: "custom-software-development",
+    processStyle: "timeline",
+    capStyle: "grid",
     menu: "Custom Software Development",
     title: "Custom Software Development",
     tag: "Software Built Around Your Business, Never the Other Way Around",
@@ -69,12 +71,14 @@ const SERVICES = [
 
   {
     slug: "website-development",
+    processStyle: "rail",
+    capStyle: "rows",
     menu: "Website Development",
     title: "Website Development",
     tag: "High Performance Websites Engineered to Convert Visitors into Clients",
     h: 212,
-    cardBg: "#EEF6FB",
-    cardAccent: "#4A9FD4",
+    cardBg: "#FCEEE9",
+    cardAccent: "#C96A45",
     stats: { built: "80+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "96%" },
     overview: [
       "Your website is the foundational touchpoint of your brand. Within two seconds of arrival, visitors decide whether your organization is legitimate, modern, and worthy of their business. A slow loading, cluttered, or difficult to navigate site silently turns away qualified leads before you ever have the chance to speak with them.",
@@ -131,12 +135,14 @@ const SERVICES = [
 
   {
     slug: "mobile-app-development",
+    processStyle: "grid",
+    capStyle: "tiles",
     menu: "Mobile App Development",
     title: "Mobile App Development",
     tag: "Native and Cross Platform Mobile Apps Built to Delight Users and Scale",
     h: 152,
-    cardBg: "#F0FAF4",
-    cardAccent: "#3DA06A",
+    cardBg: "#FDEEF2",
+    cardAccent: "#C15B85",
     stats: { built: "40+", experience: "8 Years", rating: "4.8 / 5", onTime: "97%", retention: "92%" },
     overview: [
       "Mobile users have exceptionally high expectations. If an application stutters, consumes too much battery, or confuses users during checkout, it gets uninstalled within minutes. Creating an application that earns a permanent spot on someone's home screen requires flawless performance, thoughtful touch ergonomics, and meaningful utility.",
@@ -193,6 +199,8 @@ const SERVICES = [
 
   {
     slug: "ai-development",
+    processStyle: "orbit",
+    capStyle: "rows",
     menu: "AI Development & Automation",
     title: "AI Development & Intelligent Automation",
     tag: "Practical Artificial Intelligence That Removes Real Work from Your Schedule",
@@ -255,6 +263,8 @@ const SERVICES = [
 
   {
     slug: "product-design-development",
+    processStyle: "cascade",
+    capStyle: "tiles",
     menu: "Product Design & Development",
     title: "Product Design & Development",
     tag: "From an Unformed Idea to a Scalable Digital Product People Love Using",
@@ -317,6 +327,8 @@ const SERVICES = [
 
   {
     slug: "digital-marketing-branding",
+    processStyle: "stack",
+    capStyle: "grid",
     menu: "Digital Marketing & Branding",
     title: "Digital Marketing & Branding",
     tag: "Build a Memorable Brand Identity and a Scalable Customer Acquisition Engine",
@@ -379,12 +391,14 @@ const SERVICES = [
 
   {
     slug: "data-analytics-consultancy",
+    processStyle: "chevron",
+    capStyle: "tiles",
     menu: "Data & Analytics Consultancy",
     title: "Data & Analytics Consultancy",
     tag: "Transform Fragmented Data into Clear Executive Dashboards and Confident Decisions",
     h: 172,
-    cardBg: "#EFF4FB",
-    cardAccent: "#4A72C9",
+    cardBg: "#F8EEF3",
+    cardAccent: "#8B5C8B",
     stats: { built: "30+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "95%" },
     overview: [
       "Modern businesses are inundated with numbers, but starved for actual insight. Sales numbers sit in your CRM, operational logistics are buried in ERP software, marketing spend lives in ad accounts, and inventory records exist in spreadsheets. When leadership asks a straightforward question about profitability or churn, it takes three people three days to compile an answer.",
@@ -441,12 +455,14 @@ const SERVICES = [
 
   {
     slug: "data-management-database-solutions",
+    processStyle: "staircase",
+    capStyle: "grid",
     menu: "Data Management & Databases",
     title: "Data Management & Database Solutions",
     tag: "High Concurrency Database Architectures Engineered for Speed, Integrity, and Scale",
     h: 190,
-    cardBg: "#F0F5EF",
-    cardAccent: "#5A8C4A",
+    cardBg: "#FBF1E7",
+    cardAccent: "#A4703A",
     stats: { built: "45+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "94%" },
     overview: [
       "Poorly architected databases are a silent tax on growing companies. In the early days, simple queries run fast enough. But as customer transactions increase, queries that once took milliseconds begin locking tables, page loads crawl to a halt, server bills spike, and reporting queries cause application crashes during peak business hours.",
@@ -503,6 +519,8 @@ const SERVICES = [
 
   {
     slug: "ai-consultancy-automation-strategy",
+    processStyle: "hex",
+    capStyle: "rows",
     menu: "AI Consultancy & Strategy",
     title: "AI Consultancy & Automation Strategy",
     tag: "Find Exactly Where AI Creates High Value and Build a Practical Adoption Roadmap",
@@ -565,6 +583,8 @@ const SERVICES = [
 
   {
     slug: "vibe-code-to-production",
+    processStyle: "compact",
+    capStyle: "grid",
     menu: "Vibe Code to Production",
     title: "Vibe Code to Production & Scale",
     tag: "You Built the Prototype Fast. We Rebuild It to Handle Real Users, Security, and Scale",
@@ -634,7 +654,7 @@ const REVIEWS = [
     role: "Product Lead",
     company: "Telecard",
     init: "AR",
-    color: "#4A72C9"
+    color: "#8B6BB0"
   },
   {
     text: "I had tried two other agencies before this one and neither actually listened to what our shoppers needed. The Analytic Insider team sat with us for hours understanding our catalog before writing a single line of code, and it shows in how smooth checkout feels now.",
@@ -650,7 +670,7 @@ const REVIEWS = [
     role: "CEO",
     company: "Rich AI",
     init: "DC",
-    color: "#3DA06A"
+    color: "#B8894A"
   },
   {
     text: "Our old dashboard was a spreadsheet dressed up as software. Now our coaches pull up a client's progress in seconds and actually trust the numbers they are looking at. It changed how our whole team runs its day.",
@@ -666,7 +686,7 @@ const REVIEWS = [
     role: "Product Manager",
     company: "Morinaga",
     init: "KS",
-    color: "#4A9FD4"
+    color: "#A85C9E"
   },
   {
     text: "Our investors expect a portfolio tool that feels institutional, not like a hobby project. What they delivered handles the numbers beautifully and still looks like something we are proud to open in front of a client.",
@@ -694,17 +714,33 @@ const pad = n => String(n + 1).padStart(2, '0');
 
   const a = li.querySelector('a');
 
+  // Detect which service the user is currently viewing (service.html?s=slug)
+  // so the mega menu opens already highlighting the correct entry, and the
+  // nav button itself shows the current service name instead of "Services".
+  const currentSlug = /service\.html/i.test(location.pathname)
+    ? new URLSearchParams(location.search).get('s')
+    : null;
+  let activeIdx = SERVICES.findIndex(sv => sv.slug === currentSlug);
+  if (activeIdx < 0) activeIdx = 0;
+
+  const onValidServicePage = !!currentSlug && SERVICES.some(sv => sv.slug === currentSlug);
+  if (onValidServicePage) {
+    const svc = SERVICES[activeIdx];
+    a.href = `service.html?s=${svc.slug}`;
+    a.textContent = svc.menu;
+  }
+
   // Build mega menu container
   const m = document.createElement('div');
   m.className = 'mega';
   m.innerHTML = `
     <div class="mega-in">
       <div class="mg-l">
-        ${SERVICES.map((s, i) => `<a class="ml${i ? '' : ' on'}" data-i="${i}" href="service.html?s=${s.slug}">${s.menu}</a>`).join('')}
+        ${SERVICES.map((s, i) => `<a class="ml${i === activeIdx ? ' on' : ''}" data-i="${i}" href="service.html?s=${s.slug}">${s.menu}</a>`).join('')}
       </div>
       <div class="mg-stack">
         ${SERVICES.map((s, i) => `
-          <div class="mg-p${i ? '' : ' on'}" data-i="${i}" style="--h:${s.h}">
+          <div class="mg-p${i === activeIdx ? ' on' : ''}" data-i="${i}" style="--h:${s.h}">
             <div class="mg-m">
               ${s.capabilities.slice(0, 6).map((c, j) => `
                 <a href="service.html?s=${s.slug}#capabilities" style="--j:${j}">
@@ -716,7 +752,7 @@ const pad = n => String(n + 1).padStart(2, '0');
             <div class="mg-r">
               <small>Technologies</small>
               <ul>
-                ${s.tech.slice(0, 8).map(t => `<li>${t}</li>`).join('')}
+                ${s.tech.map(t => `<li>${t}</li>`).join('')}
               </ul>
             </div>
           </div>
@@ -809,25 +845,238 @@ const pad = n => String(n + 1).padStart(2, '0');
   root.style.setProperty('--card-bg', s.cardBg);
   root.style.setProperty('--card-accent', s.cardAccent);
 
-  /* Capabilities grid HTML */
-  const capabilitiesHTML = s.capabilities.map((c, i) => `
-    <div class="sv-card-item rv-fade" style="--di:${i * 60}ms">
-      <div class="sv-card-badge">${pad(i)}</div>
-      <h3 class="sv-card-heading">${c.title}</h3>
-      <p class="sv-card-copy">${c.desc}</p>
-    </div>
-  `).join('');
-
-  /* Process steps HTML */
-  const processHTML = s.process.map((step, i) => `
-    <div class="sv-proc-step rv-fade" style="--di:${i * 70}ms">
-      <div class="sv-proc-number">${step.step}</div>
-      <div class="sv-proc-content">
-        <h4 class="sv-proc-title">${step.title}</h4>
-        <p class="sv-proc-desc">${step.desc}</p>
+  /* Capabilities HTML — three distinct visual treatments (grid / rows / tiles)
+     chosen via s.capStyle so pages don't all repeat the same card layout */
+  function buildCapabilitiesGrid(sv) {
+    return `<div class="sv-cards-grid">${sv.capabilities.map((c, i) => `
+      <div class="sv-card-item rv-fade" style="--di:${i * 60}ms">
+        <div class="sv-card-badge">${pad(i)}</div>
+        <h3 class="sv-card-heading">${c.title}</h3>
+        <p class="sv-card-copy">${c.desc}</p>
       </div>
-    </div>
-  `).join('');
+    `).join('')}</div>`;
+  }
+  function buildCapabilitiesRows(sv) {
+    return `<div class="sv-cap-rows">${sv.capabilities.map((c, i) => `
+      <div class="sv-cap-row" style="--di:${i * 65}ms">
+        <span class="sv-cap-row-num">${pad(i)}</span>
+        <div class="sv-cap-row-body">
+          <h3 class="sv-card-heading">${c.title}</h3>
+          <p class="sv-card-copy">${c.desc}</p>
+        </div>
+      </div>
+    `).join('')}</div>`;
+  }
+  function buildCapabilitiesTiles(sv) {
+    return `<div class="sv-cap-tiles">${sv.capabilities.map((c, i) => `
+      <div class="sv-cap-tile ${i % 3 === 0 ? 'is-wide' : ''} rv-fade" style="--di:${i * 60}ms">
+        <div class="sv-card-badge">${pad(i)}</div>
+        <h3 class="sv-card-heading">${c.title}</h3>
+        <p class="sv-card-copy">${c.desc}</p>
+      </div>
+    `).join('')}</div>`;
+  }
+  const CAP_BUILDERS = { grid: buildCapabilitiesGrid, rows: buildCapabilitiesRows, tiles: buildCapabilitiesTiles };
+  const capabilitiesHTML = (CAP_BUILDERS[s.capStyle] || buildCapabilitiesGrid)(s);
+
+  /* Process steps HTML — three distinct visual treatments so every
+     service page does not look identical, chosen via s.processStyle */
+  function buildProcessGrid(sv) {
+    return `
+      <div class="sv-proc-grid">
+        ${sv.process.map((step, i) => `
+          <div class="sv-proc-step rv-fade" style="--di:${i * 70}ms">
+            <div class="sv-proc-number">${step.step}</div>
+            <div class="sv-proc-content">
+              <h4 class="sv-proc-title">${step.title}</h4>
+              <p class="sv-proc-desc">${step.desc}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function buildProcessTimeline(sv) {
+    return `
+      <div class="sv-proc-timelinev">
+        <div class="sv-proc-v-line"><span class="sv-proc-v-line-fill"></span></div>
+        ${sv.process.map((step, i) => `
+          <div class="sv-proc-v-item" style="--di:${i * 90}ms">
+            <div class="sv-proc-v-dot">${step.step}</div>
+            <div class="sv-proc-v-card">
+              <h4 class="sv-proc-title">${step.title}</h4>
+              <p class="sv-proc-desc">${step.desc}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function buildProcessRail(sv) {
+    return `
+      <div class="sv-proc-rows">
+        ${sv.process.map((step, i) => `
+          <div class="sv-proc-row" style="--di:${i * 80}ms">
+            <span class="sv-proc-row-num">${step.step}</span>
+            <div class="sv-proc-row-content">
+              <h4 class="sv-proc-title">${step.title}</h4>
+              <p class="sv-proc-desc">${step.desc}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  /* Process variant: ORBIT — steps arranged as nodes around a central hub */
+  function buildProcessOrbit(sv) {
+    const n = sv.process.length;
+    return `
+      <div class="sv-proc-orbit">
+        <div class="sv-proc-orbit-hub">
+          <span class="sv-proc-orbit-hub-label">Process</span>
+          <strong class="sv-proc-orbit-hub-title">${sv.title.split(' ').slice(0, 2).join(' ')}</strong>
+        </div>
+        <div class="sv-proc-orbit-ring" aria-hidden="true"></div>
+        ${sv.process.map((step, i) => {
+          const angle = (360 / n) * i - 90;
+          const rad = angle * Math.PI / 180;
+          const dx = Math.round(Math.cos(rad) * 240);
+          const dy = Math.round(Math.sin(rad) * 240);
+          return `
+          <div class="sv-proc-orbit-node" style="--dx:${dx}px; --dy:${dy}px; --di:${i * 90}ms">
+            <div class="sv-proc-orbit-card">
+              <span class="sv-proc-orbit-num">${step.step}</span>
+              <h4 class="sv-proc-title">${step.title}</h4>
+              <p class="sv-proc-desc">${step.desc}</p>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    `;
+  }
+
+  /* Process variant: CASCADE — diagonal alternating waterfall of cards */
+  function buildProcessCascade(sv) {
+    return `
+      <div class="sv-proc-cascade">
+        <div class="sv-proc-cascade-spine" aria-hidden="true"></div>
+        ${sv.process.map((step, i) => `
+          <div class="sv-proc-cascade-item ${i % 2 === 0 ? 'is-left' : 'is-right'}" style="--di:${i * 100}ms">
+            <div class="sv-proc-cascade-card">
+              <span class="sv-proc-cascade-num">${step.step}</span>
+              <h4 class="sv-proc-title">${step.title}</h4>
+              <p class="sv-proc-desc">${step.desc}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  /* Process variant: STACK — a fanned deck of cards that straightens on scroll */
+  function buildProcessStack(sv) {
+    const n = sv.process.length;
+    return `
+      <div class="sv-proc-stack">
+        ${sv.process.map((step, i) => `
+          <div class="sv-proc-stack-card" style="--di:${i * 80}ms; --rot:${(i - (n - 1) / 2) * 3.2}deg; --ofs:${(i - (n - 1) / 2) * 14}px">
+            <span class="sv-proc-stack-num">${step.step}</span>
+            <div class="sv-proc-stack-body">
+              <h4 class="sv-proc-title">${step.title}</h4>
+              <p class="sv-proc-desc">${step.desc}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  /* Process variant: CHEVRON — arrow-shaped steps flowing left to right */
+  function buildProcessChevron(sv) {
+    return `
+      <div class="sv-proc-chevron">
+        ${sv.process.map((step, i) => `
+          <div class="sv-proc-chevron-item" style="--di:${i * 90}ms">
+            <div class="sv-proc-chevron-shape">
+              <span class="sv-proc-chevron-num">${step.step}</span>
+            </div>
+            <h4 class="sv-proc-title">${step.title}</h4>
+            <p class="sv-proc-desc">${step.desc}</p>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  /* Process variant: STAIRCASE — ascending steps climbing left to right */
+  function buildProcessStaircase(sv) {
+    return `
+      <div class="sv-proc-stair">
+        ${sv.process.map((step, i) => `
+          <div class="sv-proc-stair-item" style="--di:${i * 90}ms; --lvl:${i}">
+            <div class="sv-proc-stair-card">
+              <span class="sv-proc-stair-num">${step.step}</span>
+              <h4 class="sv-proc-title">${step.title}</h4>
+              <p class="sv-proc-desc">${step.desc}</p>
+            </div>
+            <div class="sv-proc-stair-block" aria-hidden="true"></div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  /* Process variant: HEX — honeycomb cluster of hexagonal step tiles */
+  function buildProcessHex(sv) {
+    return `
+      <div class="sv-proc-hex">
+        ${sv.process.map((step, i) => `
+          <div class="sv-proc-hex-item ${i % 2 === 1 ? 'is-offset' : ''}" style="--di:${i * 85}ms">
+            <div class="sv-proc-hex-shape">
+              <span class="sv-proc-hex-num">${step.step}</span>
+            </div>
+            <h4 class="sv-proc-title">${step.title}</h4>
+            <p class="sv-proc-desc">${step.desc}</p>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  /* Process variant: COMPACT — perforated ticket stub cards in a tight grid */
+  function buildProcessCompact(sv) {
+    return `
+      <div class="sv-proc-compact">
+        ${sv.process.map((step, i) => `
+          <div class="sv-proc-compact-card" style="--di:${i * 70}ms">
+            <div class="sv-proc-compact-num">${step.step}</div>
+            <div class="sv-proc-compact-perf" aria-hidden="true"></div>
+            <div class="sv-proc-compact-body">
+              <h4 class="sv-proc-title">${step.title}</h4>
+              <p class="sv-proc-desc">${step.desc}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  const PROCESS_BUILDERS = {
+    timeline: buildProcessTimeline,
+    rail: buildProcessRail,
+    grid: buildProcessGrid,
+    orbit: buildProcessOrbit,
+    cascade: buildProcessCascade,
+    stack: buildProcessStack,
+    chevron: buildProcessChevron,
+    staircase: buildProcessStaircase,
+    hex: buildProcessHex,
+    compact: buildProcessCompact
+  };
+  const processHTML = (PROCESS_BUILDERS[s.processStyle] || buildProcessGrid)(s);
 
   /* Business impact HTML */
   const impactHTML = s.impact.map((imp, i) => `
@@ -1114,14 +1363,12 @@ const pad = n => String(n + 1).padStart(2, '0');
           <h2 class="sv-section-title">What We Build Under This Service</h2>
           <p class="sv-section-sub">Comprehensive digital solutions engineered to eliminate operational bottlenecks, capture new market share, and deliver scalable value.</p>
         </div>
-        <div class="sv-cards-grid">
-          ${capabilitiesHTML}
-        </div>
+        ${capabilitiesHTML}
       </div>
     </section>
 
     <!-- 5. ENGINEERING PROCESS (Section 03) -->
-    <section class="sv-section sv-process-wrap sv-scroll-sect" id="process">
+    <section class="sv-section sv-process-wrap sv-scroll-sect sv-process-style-${s.processStyle}" id="process">
       <div class="sv-inner">
         <div class="sv-section-header">
           <div class="sv-sec-badge">
@@ -1130,7 +1377,7 @@ const pad = n => String(n + 1).padStart(2, '0');
           <h2 class="sv-section-title">Our Structured Six Stage Delivery Roadmap</h2>
           <p class="sv-section-sub">Every engagement follows a rigorous technical process ensuring complete transparency, locked milestones, and working software at every stage.</p>
         </div>
-        <div class="sv-process-timeline">
+        <div class="sv-process-body">
           ${processHTML}
         </div>
       </div>
@@ -1240,7 +1487,7 @@ const pad = n => String(n + 1).padStart(2, '0');
       <div class="sap-glow-1" aria-hidden="true"></div>
       <div class="sap-pattern" aria-hidden="true"></div>
 
-      <div class="sap-inner sap-in" id="sapInner">
+      <div class="sap-inner" id="sapInner">
         <div class="sap-badge">
           <span class="sap-badge-dot"></span>
           <span>Currently accepting new projects</span>
@@ -1306,6 +1553,23 @@ const pad = n => String(n + 1).padStart(2, '0');
   window.addEventListener('scroll', evalScrollAnimations, { passive: true });
   window.addEventListener('resize', evalScrollAnimations);
   requestAnimationFrame(evalScrollAnimations);
+
+  // 1b. Start-a-Project CTA — animate in only once it actually scrolls
+  // into view (matches homepage behaviour), instead of being pre-visible.
+  const sapInner = root.querySelector('#sapInner');
+  if (sapInner && 'IntersectionObserver' in window) {
+    const sapObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('sap-in');
+          sapObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    sapObserver.observe(sapInner);
+  } else if (sapInner) {
+    sapInner.classList.add('sap-in');
+  }
 
   // 2. Interactive Accordion for FAQs
   root.querySelectorAll('.sv-faq-item').forEach(item => {
