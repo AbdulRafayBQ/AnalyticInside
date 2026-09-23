@@ -8,6 +8,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/mega.css">
+  <script>
+    // Redirect old services page directly to modern service landing page
+    window.location.replace("service.html?s=custom-software-development");
+  </script>
 </head>
 <body class="services-page">
 
@@ -52,111 +57,105 @@
         </h1>
       </div>
 
-      <!-- 3D COVERFLOW with videos inside cards -->
+      <!-- 3D COVERFLOW — gradient visual cards (no video) -->
       <div class="coverflow-outer" id="services-carousel">
         <div class="coverflow-stage" id="coverflowStage">
 
           <!-- 01 Software -->
           <div class="cf-card" data-index="0">
-            <video class="cf-video" muted loop playsinline preload="none">
-              <source src="videos/services-mobile/service-software_compressed.mp4" type="video/mp4" media="(max-width: 768px)">
-              <source src="videos/services/service-software.mp4" type="video/mp4">
-            </video>
+            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#0f172a 0%,#0e7490 60%,#22d3ee 100%)">
+              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><polyline points="20 44 8 32 20 20" stroke="rgba(255,255,255,0.18)" stroke-width="3" stroke-linecap="round"/><polyline points="44 20 56 32 44 44" stroke="rgba(255,255,255,0.18)" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="16" x2="26" y2="48" stroke="rgba(255,255,255,0.12)" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </div>
             <div class="cf-inner">
               <span class="cf-num">01</span>
               <h3 class="cf-title">Software Development</h3>
               <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.08)">Node.js</span>
-                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.08)">Python</span>
-                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.08)">React</span>
-                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.08)">AWS</span>
+                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.12)">Node.js</span>
+                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.12)">Python</span>
+                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.12)">React</span>
+                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.12)">AWS</span>
               </div>
             </div>
           </div>
 
           <!-- 02 Website -->
           <div class="cf-card" data-index="1">
-            <video class="cf-video" muted loop playsinline preload="none">
-              <source src="videos/services-mobile/service-website_compressed.mp4" type="video/mp4" media="(max-width: 768px)">
-              <source src="videos/services/service-website.mp4" type="video/mp4">
-            </video>
+            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#0a1628 0%,#1d4ed8 60%,#60a5fa 100%)">
+              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><rect x="6" y="10" width="52" height="36" rx="5" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/><path d="M20 46v8M44 46v8M14 54h36" stroke="rgba(255,255,255,0.18)" stroke-width="2.5" stroke-linecap="round"/><path d="M6 20h52" stroke="rgba(255,255,255,0.12)" stroke-width="2"/><circle cx="12" cy="15" r="2" fill="rgba(255,255,255,0.25)"/><circle cx="19" cy="15" r="2" fill="rgba(255,255,255,0.15)"/></svg>
+            </div>
             <div class="cf-inner">
               <span class="cf-num">02</span>
               <h3 class="cf-title">Website Development</h3>
               <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.08)">React</span>
-                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.08)">Next.js</span>
-                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.08)">TypeScript</span>
-                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.08)">AWS</span>
+                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.12)">React</span>
+                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.12)">Next.js</span>
+                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.12)">TypeScript</span>
+                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.12)">AWS</span>
               </div>
             </div>
           </div>
 
           <!-- 03 Mobile -->
           <div class="cf-card" data-index="2">
-            <video class="cf-video" muted loop playsinline preload="none">
-              <source src="videos/services-mobile/service-mobile_compressed.mp4" type="video/mp4" media="(max-width: 768px)">
-              <source src="videos/services/service-mobile.mp4" type="video/mp4">
-            </video>
+            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#052e16 0%,#15803d 60%,#34d399 100%)">
+              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><rect x="18" y="4" width="28" height="56" rx="6" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/><circle cx="32" cy="52" r="2.5" fill="rgba(255,255,255,0.25)"/><line x1="24" y1="12" x2="40" y2="12" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
             <div class="cf-inner">
               <span class="cf-num">03</span>
               <h3 class="cf-title">Mobile App Development</h3>
               <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.08)">Swift</span>
-                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.08)">Kotlin</span>
-                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.08)">Flutter</span>
-                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.08)">Firebase</span>
+                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.12)">Swift</span>
+                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.12)">Kotlin</span>
+                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.12)">Flutter</span>
+                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.12)">Firebase</span>
               </div>
             </div>
           </div>
 
           <!-- 04 AI -->
           <div class="cf-card" data-index="3">
-            <video class="cf-video" muted loop playsinline preload="none">
-              <source src="videos/services-mobile/service-ai - COMPRESS (1).mp4" type="video/mp4" media="(max-width: 768px)">
-              <source src="videos/services/service-ai.mp4" type="video/mp4">
-            </video>
+            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#1e1b4b 0%,#6d28d9 60%,#a78bfa 100%)">
+              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="14" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/><path d="M32 8v8M32 48v8M8 32h8M48 32h8M15 15l5.7 5.7M43.3 43.3l5.7 5.7M49 15l-5.7 5.7M20.7 43.3L15 49" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
             <div class="cf-inner">
               <span class="cf-num">04</span>
               <h3 class="cf-title">AI Development</h3>
               <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08)">Python</span>
-                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08)">TensorFlow</span>
-                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08)">LLMs</span>
-                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.08)">MongoDB</span>
+                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.12)">Python</span>
+                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.12)">TensorFlow</span>
+                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.12)">LLMs</span>
+                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.12)">MongoDB</span>
               </div>
             </div>
           </div>
 
           <!-- 05 Design -->
           <div class="cf-card" data-index="4">
-            <video class="cf-video" muted loop playsinline preload="none">
-              <source src="videos/services-mobile/service-design_compressed.mp4" type="video/mp4" media="(max-width: 768px)">
-              <source src="videos/services/service-design.mp4" type="video/mp4">
-            </video>
+            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#1c0a00 0%,#c2410c 60%,#fb923c 100%)">
+              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><path d="M12 52l8-8 28-28 8 8-28 28-8 8z" stroke="rgba(255,255,255,0.18)" stroke-width="2.5" stroke-linejoin="round"/><path d="M40 16l8 8" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" stroke-linecap="round"/><circle cx="14" cy="50" r="3" fill="rgba(255,255,255,0.2)"/></svg>
+            </div>
             <div class="cf-inner">
               <span class="cf-num">05</span>
               <h3 class="cf-title">Product Design</h3>
               <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.08)">Figma</span>
-                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.08)">React</span>
-                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.08)">TypeScript</span>
-                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.08)">GraphQL</span>
+                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.12)">Figma</span>
+                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.12)">React</span>
+                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.12)">TypeScript</span>
+                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.12)">GraphQL</span>
               </div>
             </div>
           </div>
 
           <!-- 06 Marketing -->
           <div class="cf-card" data-index="5">
-            <video class="cf-video" muted loop playsinline preload="none">
-              <source src="videos/services-mobile/service-marketing - COMPRESS.mp4" type="video/mp4" media="(max-width: 768px)">
-              <source src="videos/services/service-marketing.mp4" type="video/mp4">
-            </video>
+            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#1a0010 0%,#9d174d 60%,#f472b6 100%)">
+              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><path d="M8 40V28l24-16 24 16v12" stroke="rgba(255,255,255,0.18)" stroke-width="2.5" stroke-linejoin="round"/><path d="M20 40V28l12-8 12 8v12" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="20" r="4" fill="rgba(255,255,255,0.18)"/></svg>
+            </div>
             <div class="cf-inner">
               <span class="cf-num">06</span>
               <h3 class="cf-title">Marketing &amp; Branding</h3>
               <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">Figma</span>
+                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.12)">Figma</span>
                 <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">Adobe CC</span>
                 <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">AI Tools</span>
                 <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">Social</span>
@@ -353,5 +352,6 @@
   </footer>
 
   <script src="js/services.js"></script>
+  <script src="js/mega.js"></script>
 </body>
 </html>

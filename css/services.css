@@ -150,14 +150,27 @@
   pointer-events: auto;
 }
 
-/* Video fills card */
-.cf-video {
+/* Gradient background fills card */
+.cf-grad-bg {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover;
-  filter: brightness(0.55);
+  display: flex; align-items: center; justify-content: center;
   transition: filter 0.5s ease;
 }
+.cf-card[data-pos="0"] .cf-grad-bg { filter: brightness(1); }
+.cf-grad-bg { filter: brightness(0.7); }
+
+/* Big decorative icon inside gradient card */
+.cf-bg-icon {
+  position: absolute;
+  width: 160px; height: 160px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.cf-card[data-pos="0"] .cf-bg-icon { opacity: 0.7; }
+
 
 /* Card content overlay */
 .cf-inner {
