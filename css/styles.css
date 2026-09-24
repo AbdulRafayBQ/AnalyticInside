@@ -350,7 +350,7 @@ body {
   gap: 14px;
   white-space: nowrap;
   padding-left: 28px;
-  animation: heroCapSlide 32s linear infinite;
+  animation: heroCapSlide 45s linear infinite;
 }
 .hero-cap-strip:hover .hero-cap-track { animation-play-state: paused; }
 @keyframes heroCapSlide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -5306,3 +5306,5 @@ em { font-style: italic; color: var(--accent); }
 }
 
 /* Mobile responsive handled by mobile-fix.css */
+/* Hero strip: black line icons */
+.cap-icon svg { stroke: #111; }

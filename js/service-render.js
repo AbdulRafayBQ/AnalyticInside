@@ -132,80 +132,19 @@
 
   const topFormHTML = `
     <div class="sv-top-form-wrap" id="topServiceForm" ${fx('flipr', 3)}>
-      <div class="sv-top-form-card" data-tilt data-tilt-max="4">
-        <div class="stf-glow" aria-hidden="true"></div>
-        <div class="stf-head">
-          <span class="stf-live-pill"><span class="stf-pulse-dot"></span>Direct Lead · 24h Response</span>
-          <h2 class="stf-title">Get a Custom Quote for ${s.title}</h2>
-          <p class="stf-sub">Tell us about your project requirements. A senior software engineer specialized in ${s.title} will review your brief and send an itemized scope &amp; milestone estimate within 24 hours.</p>
-        </div>
-
+      <div class="sv-top-form-card">
+        <h2 class="stf-title">Let's start a<br>${short(s.title)} Project</h2>
         <form class="stf-form-el" id="stfFormEl" onsubmit="return false;">
-          <span class="stf-scope-label">Select Needed Deliverables:</span>
-          <div class="stf-chips">
-            ${serviceScopeItems}
-          </div>
-
-          <div class="stf-row">
-            <div class="stf-field">
-              <label for="stfName">Your Name *</label>
-              <input type="text" id="stfName" placeholder="e.g. Ali Ahmed" required />
-            </div>
-            <div class="stf-field">
-              <label for="stfEmail">Work Email *</label>
-              <input type="email" id="stfEmail" placeholder="you@company.com" required />
-            </div>
-          </div>
-
-          <div class="stf-row">
-            <div class="stf-field">
-              <label for="stfPhone">Phone / WhatsApp</label>
-              <input type="tel" id="stfPhone" placeholder="+1 (313) 000-0000" />
-            </div>
-            <div class="stf-field">
-              <label for="stfTimeline">Target Timeline</label>
-              <select id="stfTimeline">
-                <option value="Urgent (< 2 weeks)">Urgent (&lt; 2 weeks)</option>
-                <option value="1 - 2 Months" selected>1 – 2 Months</option>
-                <option value="3 - 6 Months">3 – 6 Months</option>
-                <option value="Flexible">Flexible Roadmap</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="stf-budget-wrap">
-            <span class="stf-scope-label">Estimated Budget (USD):</span>
-            <div class="stf-budget-pills">
-              <label class="stf-bp"><input type="radio" name="stfBudget" value="< $5k"/><span>&lt; $5k</span></label>
-              <label class="stf-bp active"><input type="radio" name="stfBudget" value="$5k - $15k" checked/><span>$5k – $15k</span></label>
-              <label class="stf-bp"><input type="radio" name="stfBudget" value="$15k - $35k"/><span>$15k – $35k</span></label>
-              <label class="stf-bp"><input type="radio" name="stfBudget" value="$35k+"/><span>$35k+</span></label>
-            </div>
-          </div>
-
-          <div class="stf-field">
-            <label for="stfBrief">Project Brief / Scope Details</label>
-            <textarea id="stfBrief" rows="3" placeholder="Describe your ${s.title} goals, features needed, or current technical challenges…"></textarea>
-          </div>
-
-          <button type="submit" class="stf-submit-btn" id="stfSubmitBtn">
-            Request ${s.title} Estimate
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-
-          <div class="stf-trust-bar">
-            <span class="stf-trust-item"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> NDA Protected</span>
-            <span class="stf-trust-item"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 24h Architecture Review</span>
-            <span class="stf-trust-item"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Direct Technical Lead</span>
-          </div>
+          <div class="stf-field"><input type="text" id="stfName" placeholder="Name*" required /></div>
+          <div class="stf-field"><input type="email" id="stfEmail" placeholder="Email*" required /></div>
+          <div class="stf-field"><input type="tel" id="stfPhone" placeholder="Phone" /></div>
+          <div class="stf-field"><textarea id="stfBrief" rows="4" placeholder="Briefly describe your idea, platform, timeline..."></textarea></div>
+          <button type="submit" class="stf-submit-btn" id="stfSubmitBtn">Get Free Consultation</button>
         </form>
-
         <div class="stf-success" id="stfSuccessBox">
           <div class="stf-success-icon">✓</div>
-          <h3>${s.title} Brief Received!</h3>
-          <p>Thank you for reaching out. A senior software engineer specialized in <strong>${s.title}</strong> will review your specifications and contact you with a milestone roadmap within 24 hours.</p>
+          <h3>Brief Received!</h3>
+          <p>Thanks for reaching out. Our ${s.title} team will contact you within 24 hours.</p>
         </div>
       </div>
     </div>`;
@@ -507,24 +446,55 @@
       </div>
     </section>`;
 
-  /* ═══════════ TECH ═══════════ */
+  /* ═══════════ TECH (cubix-style, different layout per service) ═══════════ */
+  const TECH_FEATURE = [
+    [['React.js', 'Fast, component-based interfaces for complex business dashboards, portals and SaaS products that stay easy to maintain as they grow.', 'react'], ['Node.js', 'Event-driven backends and APIs that handle thousands of concurrent users with clean, scalable service architecture.', 'node'], ['Python', 'Reliable business logic, automation and data-heavy services built quickly and with strong long-term maintainability.', 'python'], ['AWS', 'Secure, auto-scaling cloud infrastructure with monitoring, backups and zero-downtime deployments.', 'aws']],
+    [['Next.js', 'Server-rendered React sites with blazing load speeds, clean URLs and built-in SEO advantages.', 'next'], ['React.js', 'Interactive, reusable UI components that make every page fast, consistent and easy to extend.', 'react'], ['Tailwind CSS', 'Pixel-perfect, responsive designs shipped quickly with a lightweight and consistent styling system.', 'tailwind'], ['Sanity CMS', 'Flexible headless content management so your team can update pages without touching code.', 'sanity']],
+    [['React Native', 'One codebase for iOS and Android with near-native performance and faster time to market.', 'react'], ['Flutter', 'Beautiful, high-fps cross-platform apps with custom animations and a single shared codebase.', 'flutter'], ['Swift', 'Fully native iOS apps that use the latest Apple features with maximum speed and polish.', 'swift'], ['Kotlin', 'Modern native Android development built for performance, stability and Play Store readiness.', 'kotlin']],
+    [['OpenAI APIs', 'Powerful language and vision models integrated into your product, support and internal workflows.', 'openai'], ['LangChain', 'Agent and RAG pipelines that connect LLMs with your own documents, tools and business data.', 'langchain'], ['PyTorch', 'Custom model training and fine-tuning when off-the-shelf AI is not accurate enough for your use case.', 'pytorch'], ['HuggingFace', 'Open-source models and datasets that let us build accurate, cost-efficient AI you fully control.', 'huggingface']],
+    [['Figma', 'Collaborative design, prototypes and developer-ready handoff in a single shared workspace.', 'figma'], ['Framer', 'Realistic interactive prototypes and motion you can test with users before a single line of code is written.', 'framer'], ['Storybook', 'A living component library that keeps every screen consistent and fast to build.', 'storybook'], ['Adobe XD', 'Rapid wireframing and clickable flows to validate ideas and remove friction before launch.', 'xd']],
+    [['Google Ads', 'Search and performance campaigns tuned for qualified leads at a lower cost per acquisition.', 'googleads'], ['Meta Ads Manager', 'Creative-led social campaigns with precise audience targeting and clear ROI tracking.', 'meta'], ['Semrush', 'Technical SEO, keyword and competitor research that helps you rank and stay ranked.', 'semrush'], ['Email Automation', 'Lifecycle and nurture sequences that turn new leads into repeat customers automatically.', 'mailchimp']],
+    [['Tableau', 'Interactive executive dashboards that turn raw numbers into clear, actionable decisions.', 'tableau'], ['Snowflake', 'A modern cloud data warehouse that scales instantly for fast analytics on all your data.', 'snowflake'], ['dbt', 'Version-controlled, tested data transformations your whole team can trust.', 'dbt'], ['Apache Airflow', 'Reliable scheduled data pipelines with monitoring, retries and full visibility.', 'airflow']],
+    [['PostgreSQL', 'A rock-solid relational database for transactions, complex queries and strict data integrity.', 'postgres'], ['MongoDB', 'Flexible document storage for fast-changing data models and high-volume applications.', 'mongodb'], ['Redis', 'In-memory caching and queues that cut response times from seconds to milliseconds.', 'redis'], ['Elasticsearch', 'Lightning-fast full-text search and log analytics across very large datasets.', 'elastic']],
+    [['OpenAI APIs', 'Choosing and benchmarking the right GPT models for your cost, accuracy and privacy needs.', 'openai'], ['Anthropic Claude', 'Long-context reasoning models we evaluate for safe, reliable enterprise workflows.', 'anthropic'], ['Google Gemini', 'Multimodal models assessed for vision, document and search-heavy use cases.', 'gemini'], ['HuggingFace', 'Open-source model options that keep your data private and your costs predictable.', 'huggingface']],
+    [['GitHub Actions', 'Automated tests and deployments so every release is fast, safe and repeatable.', 'ghactions'], ['Docker', 'Consistent containers that make your app run the same in development, staging and production.', 'docker'], ['AWS', 'Autoscaling cloud infrastructure that keeps your product online as traffic grows.', 'aws'], ['Sentry', 'Real-time error monitoring so bugs are caught and fixed before your users notice.', 'sentry']]
+  ];
+  const TECH_LAYOUT = [['alt', 'dark'], ['tabs', 'dark'], ['grid', 'light'], ['panels', 'dark'], ['list', 'light'], ['alt', 'light'], ['grid', 'dark'], ['tabs', 'light'], ['panels', 'light'], ['list', 'dark']];
+  const [TL, TT] = TECH_LAYOUT[k] || TECH_LAYOUT[0];
+  const TF = TECH_FEATURE[k] || TECH_FEATURE[0];
+  const tvis = (name, i, icon) => {
+    const badge = `<circle cx="306" cy="214" r="48" fill="#fff" stroke="currentColor" stroke-opacity=".18" stroke-width="2"/><image href="images/tech/${icon}.svg" x="276" y="184" width="60" height="60" preserveAspectRatio="xMidYMid meet"/>`;
+    const v = i % 3;
+    const body = v === 0
+      ? `<g fill="none" stroke="currentColor" stroke-opacity=".2"><rect x="36" y="46" width="240" height="160" rx="14"/><path d="M36 76H276"/></g><g fill="currentColor" fill-opacity=".35"><circle cx="54" cy="61" r="4"/><circle cx="68" cy="61" r="4"/><circle cx="82" cy="61" r="4"/></g><rect x="56" y="98" width="110" height="46" rx="8" fill="var(--acc)"/><g fill="currentColor" fill-opacity=".22"><rect x="180" y="100" width="76" height="8" rx="4"/><rect x="180" y="118" width="56" height="8" rx="4"/><rect x="56" y="158" width="60" height="30" rx="6"/><rect x="126" y="158" width="60" height="30" rx="6"/><rect x="196" y="158" width="60" height="30" rx="6"/></g>`
+      : v === 1
+      ? `<g fill="none" stroke="currentColor" stroke-opacity=".2"><rect x="36" y="46" width="240" height="160" rx="14"/></g><g fill="currentColor" fill-opacity=".22"><rect x="60" y="150" width="28" height="36" rx="5"/><rect x="100" y="120" width="28" height="66" rx="5"/><rect x="180" y="100" width="28" height="86" rx="5"/></g><rect x="140" y="80" width="28" height="106" rx="5" fill="var(--acc)"/><rect x="220" y="130" width="28" height="56" rx="5" fill="currentColor" fill-opacity=".22"/><path d="M56 110L120 96L188 76L250 90" fill="none" stroke="var(--acc)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 6"/>`
+      : `<g stroke="currentColor" stroke-opacity=".25" stroke-width="1.5" stroke-dasharray="4 5" fill="none"><path d="M70 90L170 70L250 130L130 170Z"/><path d="M170 70L130 170"/></g><g fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-opacity=".3"><circle cx="70" cy="90" r="16"/><circle cx="250" cy="130" r="16"/><circle cx="130" cy="170" r="16"/></g><circle cx="170" cy="70" r="20" fill="var(--acc)"/>`;
+    return `<svg viewBox="0 0 400 300" role="img" aria-label="${name}">${body}${badge}</svg>`;
+  };
+  const tBtn = n => `<button class="tx-btn" type="button" onclick="document.dispatchEvent(new CustomEvent('analytic:open-drawer',{detail:{tech:'${n}'}}))">Let's Talk</button>`;
+  const tTxt = (f, i) => `<div class="tx-txt"><h3>${f[0]}</h3><p>${f[1]}</p>${tBtn(f[0])}</div>`;
   let techInner;
-  if (R.tech === 'chips') {
-    techInner = `<div class="tech-chips">${s.tech.map((t, i) => `<div class="tech-w" ${fx('pop', i % 8)}><span class="tech-pill"><i></i>${t}</span></div>`).join('')}</div>`;
-  } else if (R.tech === 'tiles') {
-    techInner = `<div class="tech-tiles">${s.tech.map((t, i) => `<div class="tech-tw" ${fx(['flipl', 'rise', 'flipr'][i % 3], i % 6)}><div class="tech-tile"><b>${t.replace(/[^A-Za-z0-9]/g, '').slice(0, 2)}</b><span>${t}</span></div></div>`).join('')}</div>`;
+  if (TL === 'alt') {
+    techInner = `<div class="tx tx-alt">${TF.map((f, i) => `<article class="tx-row" ${fx(i % 2 ? 'flipr' : 'flipl', i)}>${tTxt(f, i)}<div class="tx-vis">${tvis(f[0], i, f[2])}</div></article>`).join('')}</div>`;
+  } else if (TL === 'tabs') {
+    techInner = `<div class="tx tx-tabs"><div class="tx-tablist">${TF.map((f, i) => `<button type="button" class="tx-tab${i === 0 ? ' on' : ''}" data-i="${i}"><em>0${i + 1}</em>${f[0]}</button>`).join('')}</div><div class="tx-panels" ${fx('rise', 1)}>${TF.map((f, i) => `<div class="tx-panel${i === 0 ? ' on' : ''}" data-i="${i}"><div class="tx-vis">${tvis(f[0], i, f[2])}</div>${tTxt(f, i)}</div>`).join('')}</div></div>`;
+  } else if (TL === 'grid') {
+    techInner = `<div class="tx tx-grid">${TF.map((f, i) => `<article class="tx-card" ${fx('rise', i)}><div class="tx-vis">${tvis(f[0], i, f[2])}</div>${tTxt(f, i)}</article>`).join('')}</div>`;
+  } else if (TL === 'panels') {
+    techInner = `<div class="tx tx-acc" ${fx('zoom', 1)}>${TF.map((f, i) => `<article class="tx-pn${i === 0 ? ' on' : ''}"><div class="tx-vis">${tvis(f[0], i, f[2])}</div><span class="tx-side">${f[0]}</span>${tTxt(f, i)}</article>`).join('')}</div>`;
   } else {
-    const row = arr => arr.map(t => `<span class="tech-mq-pill"><i></i>${t}</span>`).join('');
-    const half = Math.ceil(s.tech.length / 2), a = s.tech.slice(0, half), z = s.tech.slice(half);
-    techInner = `<div class="tech-mq" ${fx('zoom', 1)}>
-      <div class="tech-mq-row"><div class="tech-mq-track">${row(a)}${row(a)}${row(a)}${row(a)}</div></div>
-      <div class="tech-mq-row rev"><div class="tech-mq-track">${row(z)}${row(z)}${row(z)}${row(z)}</div></div></div>`;
+    techInner = `<div class="tx tx-list">${TF.map((f, i) => `<article class="tx-li" ${fx('rise', i)}><span class="tx-num">0${i + 1}</span><div class="tx-txt"><h3>${f[0]}</h3><p>${f[1]}</p></div><div class="tx-vis">${tvis(f[0], i, f[2])}</div></article>`).join('')}</div>`;
   }
+  const featNames = TF.map(f => f[0]);
+  const moreTech = s.tech.filter(t => !featNames.includes(t));
   const techHTML = `
-    <section class="sv-sec sv-tech sv-tech--${R.tech}" id="techStack" data-sec><div class="sv-inner">
-      ${head('Architecture & Tools', 'Battle Tested Technology Stack', 'We deliberately select modern, production proven frameworks that maximize runtime performance, reduce maintenance costs, and scale gracefully.', R.tech === 'tiles' ? 'left' : 'center')}
+    <section class="sv-sec sv-tech tx--${TT} tx-l-${TL}" id="techStack" data-sec><div class="sv-inner">
+      ${head('Our Technology Stack', `${s.title}<br>technologies we use`, `The tools behind your ${s.title.toLowerCase()} project are chosen for performance, scalability and long-term success, so every solution is secure, reliable and built to evolve with your business.`, 'left', TT === 'dark')}
       ${techInner}
+      ${moreTech.length ? `<div class="tx-more" ${fx('rise', 2)}><span>Also in our toolkit</span>${moreTech.map(t => `<b class="tx-chip">${t}</b>`).join('')}</div>` : ''}
     </div></section>`;
+
 
   /* ═══════════ IMPACT ═══════════ */
   const I = s.impact;
@@ -677,14 +647,9 @@
 
         <!-- Col 3: Technologies -->
         <div class="footer-col">
-          <h3 class="footer-heading">Technologies</h3>
+          <h3 class="footer-heading">${short(s.title)} Technologies</h3>
           <ul class="footer-links-list">
-            <li><a href="#techStack">React & Next.js</a></li>
-            <li><a href="#techStack">Python & PyTorch</a></li>
-            <li><a href="#techStack">Node.js & TypeScript</a></li>
-            <li><a href="#techStack">Flutter & Swift</a></li>
-            <li><a href="#techStack">AWS & Azure Cloud</a></li>
-            <li><a href="#techStack">PostgreSQL & MongoDB</a></li>
+            ${s.tech.slice(0, 8).map(x => `<li><a href="#techStack">${x}</a></li>`).join('')}
           </ul>
         </div>
 
@@ -787,6 +752,46 @@
       fEl.style.display = 'none';
       if (successBox) successBox.classList.add('on');
     });
+  })();
+
+  /* ═══════════ CONTACT DRAWER (all "Let's Talk" / "Start a Project" buttons) ═══════════ */
+  (function initDrawer() {
+    const ov = document.getElementById('formOverlay'), dr = document.getElementById('formDrawer');
+    if (!ov || !dr) return;
+    const form = document.getElementById('fdFormEl'), ok = document.getElementById('fdSuccess');
+    const sel = document.getElementById('fd-service'), msg = document.getElementById('fd-message');
+    const nm = document.getElementById('fd-name'), em = document.getElementById('fd-email');
+    const norm = x => x.toLowerCase().replace(/&amp;/g, '&').trim();
+    const open = detail => {
+      form.style.display = ''; ok.classList.remove('show');
+      const opt = Array.from(sel.options).find(o => o.value && (norm(o.text) === norm(s.title) || norm(s.title).startsWith(norm(o.text).slice(0, 14))));
+      if (opt) sel.value = opt.value || opt.text;
+      if (detail && detail.tech) msg.value = `I'd like to talk about using ${detail.tech} for my ${s.title} project.`;
+      ov.classList.add('open'); dr.classList.add('open'); document.body.style.overflow = 'hidden';
+      setTimeout(() => nm && nm.focus(), 350);
+    };
+    const close = () => { ov.classList.remove('open'); dr.classList.remove('open'); document.body.style.overflow = ''; };
+    document.addEventListener('analytic:open-drawer', e => open(e.detail));
+    const nav = document.getElementById('navCtaBtn'); if (nav) nav.addEventListener('click', () => open());
+    document.getElementById('formClose')?.addEventListener('click', close);
+    ov.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    document.getElementById('fdSubmit')?.addEventListener('click', () => {
+      const bad = [nm, em].filter(f => !f.value.trim());
+      [nm, em].forEach(f => { f.style.borderColor = f.value.trim() ? '' : '#ff6b6b'; });
+      if (bad.length) { bad[0].focus(); return; }
+      form.style.display = 'none'; ok.classList.add('show');
+    });
+  })();
+
+  (function initTech() {
+    root.querySelectorAll('.tx-tab').forEach(tb => tb.addEventListener('click', () => {
+      const i = tb.dataset.i;
+      root.querySelectorAll('.tx-tab').forEach(x => x.classList.toggle('on', x === tb));
+      root.querySelectorAll('.tx-panel').forEach(x => x.classList.toggle('on', x.dataset.i === i));
+    }));
+    const pns = root.querySelectorAll('.tx-pn');
+    pns.forEach(pn => ['mouseenter', 'click'].forEach(ev => pn.addEventListener(ev, () => pns.forEach(x => x.classList.toggle('on', x === pn)))));
   })();
 
   const footer = $('#siteFooter', root);
