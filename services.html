@@ -3,18 +3,75 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Services — Analytic Insider</title>
+  <title>Our Services | Analytic Insider</title>
+  <meta name="description" content="Software, websites, mobile apps, AI, design and marketing from one team. See what we do, how long it takes and what you get."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/mobile-fix.css">
   <link rel="stylesheet" href="css/mega.css">
-  <script>
-    // Redirect old services page directly to modern service landing page
-    window.location.replace("service.html?s=custom-software-development");
-  </script>
+  <link rel="stylesheet" href="css/services-hub.css">
 </head>
-<body class="services-page">
+<body>
+
+  <!-- ══ FORM DRAWER ══ -->
+  <div class="form-drawer-overlay" id="formOverlay"></div>
+  <div class="form-drawer" id="formDrawer">
+    <button class="fd-close" id="formClose" aria-label="Close">&times;</button>
+    <div class="fd-eyebrow">Start a Project</div>
+    <h2 class="fd-title">Let's build something<br>extraordinary.</h2>
+    <p class="fd-sub">Tell us about your idea. We'll get back to you within 24 hours.</p>
+
+    <div class="fd-form" id="fdFormEl">
+      <div class="fd-row">
+        <div class="fd-field">
+          <label for="fd-name">Your Name</label>
+          <input id="fd-name" type="text" placeholder="Ali Ahmed" />
+        </div>
+        <div class="fd-field">
+          <label for="fd-email">Email Address</label>
+          <input id="fd-email" type="email" placeholder="you@company.com" />
+        </div>
+      </div>
+      <div class="fd-field">
+        <label for="fd-company">Company / Brand</label>
+        <input id="fd-company" type="text" placeholder="Your company name" />
+      </div>
+      <div class="fd-field">
+        <label for="fd-service">Service Needed</label>
+        <select id="fd-service">
+          <option value="" disabled selected>Select a service…</option>
+          <option>Custom Software Development</option>
+          <option>Website Development</option>
+          <option>Mobile App Development</option>
+          <option>AI Development &amp; Automation</option>
+          <option>Product Design &amp; Development</option>
+          <option>Digital Marketing &amp; Branding</option>
+          <option>Data &amp; Analytics Consultancy</option>
+          <option>Data Management &amp; Database Solutions</option>
+          <option>AI Consultancy &amp; Strategy</option>
+          <option>Vibe Code to Production &amp; Scale</option>
+        </select>
+      </div>
+      <div class="fd-field">
+        <label for="fd-message">Project Brief</label>
+        <textarea id="fd-message" rows="4" placeholder="Describe your idea, goals, or challenges…"></textarea>
+      </div>
+      <button class="fd-submit" id="fdSubmit">
+        Send Project Brief
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="fd-note">No commitment. We'll respond with a plan within 24 hours.</p>
+    </div>
+
+    <div class="fd-success" id="fdSuccess">
+      <div class="fd-success-icon">✓</div>
+      <h3>Message Sent!</h3>
+      <p>Thanks for reaching out. We'll review your brief and be in touch within 24 hours.</p>
+    </div>
+  </div>
 
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
@@ -28,330 +85,226 @@
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </nav>
-      <a class="btn-nav-cta" href="contact.html">Start Project</a>
+      <div class="nav-right-group">
+        <a class="nav-phone" href="tel:+13136551635">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          +1 (313) 655-1635
+        </a>
+        <button class="btn-nav-cta" id="navCtaBtn" style="cursor:pointer;border:none;font-family:'Inter',sans-serif;">
+          Start a Project
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M3 10H17M17 10L12 5M17 10L12 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
       <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" id="menuToggle">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <main>
-
-    <!-- ═══════ HERO + CAROUSEL (merged) ═══════ -->
-    <section class="shc-section" id="services-carousel">
-
-      <!-- Background image -->
-      <img class="shc-bg-img" src="images/services/services-bg.jpg" alt="Services background" id="shcBgImg"/>
-
-      <!-- Gradient overlays -->
-      <div class="shc-overlay"></div>
-
-      
-
-      <!-- Page heading -->
-      <div class="shc-head" id="shcHead">
-        <p class="shc-eyebrow">What We Do</p>
-        <h1 class="shc-title">
-          <span class="lw"><span class="li">We build things</span></span>
-          <span class="lw"><span class="li italic">people actually use.</span></span>
-        </h1>
-      </div>
-
-      <!-- 3D COVERFLOW — gradient visual cards (no video) -->
-      <div class="coverflow-outer" id="services-carousel">
-        <div class="coverflow-stage" id="coverflowStage">
-
-          <!-- 01 Software -->
-          <div class="cf-card" data-index="0">
-            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#0f172a 0%,#0e7490 60%,#22d3ee 100%)">
-              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><polyline points="20 44 8 32 20 20" stroke="rgba(255,255,255,0.18)" stroke-width="3" stroke-linecap="round"/><polyline points="44 20 56 32 44 44" stroke="rgba(255,255,255,0.18)" stroke-width="3" stroke-linecap="round"/><line x1="38" y1="16" x2="26" y2="48" stroke="rgba(255,255,255,0.12)" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="cf-inner">
-              <span class="cf-num">01</span>
-              <h3 class="cf-title">Software Development</h3>
-              <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.12)">Node.js</span>
-                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.12)">Python</span>
-                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.12)">React</span>
-                <span class="cf-tag" style="color:#22d3ee;border-color:rgba(34,211,238,0.35);background:rgba(34,211,238,0.12)">AWS</span>
-              </div>
+    <main id="hub">
+    <section class="hb-hero">
+      <div class="hb-in">
+        <div class="hb-hero-grid">
+          <div>
+            <span class="hb-eyebrow rv">Our Services</span>
+            <h1 class="hb-h1 rv" style="--d:1">Software, AI and design from <em>one team.</em></h1>
+            <p class="hb-lead rv" style="--d:2">We help businesses plan, build and grow digital products. Pick a service below to see what we do, how long it takes and what you get at the end.</p>
+            <div class="hb-actions rv" style="--d:3">
+              <a class="hb-btn" href="#all-services">See all services &darr;</a>
+              <button class="hb-btn ghost" type="button" data-open-drawer>Talk to our team</button>
             </div>
           </div>
-
-          <!-- 02 Website -->
-          <div class="cf-card" data-index="1">
-            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#0a1628 0%,#1d4ed8 60%,#60a5fa 100%)">
-              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><rect x="6" y="10" width="52" height="36" rx="5" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/><path d="M20 46v8M44 46v8M14 54h36" stroke="rgba(255,255,255,0.18)" stroke-width="2.5" stroke-linecap="round"/><path d="M6 20h52" stroke="rgba(255,255,255,0.12)" stroke-width="2"/><circle cx="12" cy="15" r="2" fill="rgba(255,255,255,0.25)"/><circle cx="19" cy="15" r="2" fill="rgba(255,255,255,0.15)"/></svg>
-            </div>
-            <div class="cf-inner">
-              <span class="cf-num">02</span>
-              <h3 class="cf-title">Website Development</h3>
-              <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.12)">React</span>
-                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.12)">Next.js</span>
-                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.12)">TypeScript</span>
-                <span class="cf-tag" style="color:#60a5fa;border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.12)">AWS</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 03 Mobile -->
-          <div class="cf-card" data-index="2">
-            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#052e16 0%,#15803d 60%,#34d399 100%)">
-              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><rect x="18" y="4" width="28" height="56" rx="6" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/><circle cx="32" cy="52" r="2.5" fill="rgba(255,255,255,0.25)"/><line x1="24" y1="12" x2="40" y2="12" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <div class="cf-inner">
-              <span class="cf-num">03</span>
-              <h3 class="cf-title">Mobile App Development</h3>
-              <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.12)">Swift</span>
-                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.12)">Kotlin</span>
-                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.12)">Flutter</span>
-                <span class="cf-tag" style="color:#34d399;border-color:rgba(52,211,153,0.35);background:rgba(52,211,153,0.12)">Firebase</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 04 AI -->
-          <div class="cf-card" data-index="3">
-            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#1e1b4b 0%,#6d28d9 60%,#a78bfa 100%)">
-              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="14" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/><path d="M32 8v8M32 48v8M8 32h8M48 32h8M15 15l5.7 5.7M43.3 43.3l5.7 5.7M49 15l-5.7 5.7M20.7 43.3L15 49" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <div class="cf-inner">
-              <span class="cf-num">04</span>
-              <h3 class="cf-title">AI Development</h3>
-              <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.12)">Python</span>
-                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.12)">TensorFlow</span>
-                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.12)">LLMs</span>
-                <span class="cf-tag" style="color:#a78bfa;border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.12)">MongoDB</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 05 Design -->
-          <div class="cf-card" data-index="4">
-            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#1c0a00 0%,#c2410c 60%,#fb923c 100%)">
-              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><path d="M12 52l8-8 28-28 8 8-28 28-8 8z" stroke="rgba(255,255,255,0.18)" stroke-width="2.5" stroke-linejoin="round"/><path d="M40 16l8 8" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" stroke-linecap="round"/><circle cx="14" cy="50" r="3" fill="rgba(255,255,255,0.2)"/></svg>
-            </div>
-            <div class="cf-inner">
-              <span class="cf-num">05</span>
-              <h3 class="cf-title">Product Design</h3>
-              <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.12)">Figma</span>
-                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.12)">React</span>
-                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.12)">TypeScript</span>
-                <span class="cf-tag" style="color:#fb923c;border-color:rgba(251,146,60,0.35);background:rgba(251,146,60,0.12)">GraphQL</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 06 Marketing -->
-          <div class="cf-card" data-index="5">
-            <div class="cf-grad-bg" style="background:linear-gradient(145deg,#1a0010 0%,#9d174d 60%,#f472b6 100%)">
-              <svg class="cf-bg-icon" viewBox="0 0 64 64" fill="none"><path d="M8 40V28l24-16 24 16v12" stroke="rgba(255,255,255,0.18)" stroke-width="2.5" stroke-linejoin="round"/><path d="M20 40V28l12-8 12 8v12" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="20" r="4" fill="rgba(255,255,255,0.18)"/></svg>
-            </div>
-            <div class="cf-inner">
-              <span class="cf-num">06</span>
-              <h3 class="cf-title">Marketing &amp; Branding</h3>
-              <div class="cf-tech-row">
-                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.12)">Figma</span>
-                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">Adobe CC</span>
-                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">AI Tools</span>
-                <span class="cf-tag" style="color:#f472b6;border-color:rgba(244,114,182,0.35);background:rgba(244,114,182,0.08)">Social</span>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /stage -->
-
-        <!-- Mobile arrows -->
-        <button class="cf-arrow cf-prev" id="cfPrev" aria-label="Previous">
-          <svg width="18" height="18" viewBox="0 0 18 18"><path d="M11 4L5 9L11 14" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-        </button>
-        <button class="cf-arrow cf-next" id="cfNext" aria-label="Next">
-          <svg width="18" height="18" viewBox="0 0 18 18"><path d="M7 4L13 9L7 14" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-        </button>
-      </div>
-
-      <!-- Active service description (updates dynamically) -->
-      <div class="shc-desc" id="shcDesc">
-        <div class="shc-desc-inner">
-          <p class="shc-desc-label" id="shcNum">Service 01</p>
-          <h2 class="shc-desc-title" id="shcDescTitle">Software Development</h2>
-          <p class="shc-desc-text" id="shcDescText">Custom systems, APIs and scalable backends built to hold up under real load.</p>
-          <div class="shc-tech-tags" id="shcTechTags"></div>
-          <a class="shc-learn" href="#srv-detail">Explore service <svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+          <div class="hb-tiles rv" style="--d:2" id="hbTiles"></div>
         </div>
-      </div>
-
-      <!-- Dots -->
-      <div class="cf-dots" id="cfDots">
-        <button class="cf-dot active" data-target="0"></button>
-        <button class="cf-dot" data-target="1"></button>
-        <button class="cf-dot" data-target="2"></button>
-        <button class="cf-dot" data-target="3"></button>
-        <button class="cf-dot" data-target="4"></button>
-        <button class="cf-dot" data-target="5"></button>
-      </div>
-
-      <!-- Scroll hint -->
-      <div class="shc-scroll">
-        <span class="scroll-line"></span>
-        <span>scroll</span>
-      </div>
-
-    </section><!-- /shc-section -->
-
-    <!-- ═══════ SERVICE DETAIL WITH 3D NAVIGATION ═══════ -->
-    <section class="section srv-detail-section" id="srv-detail">
-      <!-- Section Background Video (Geometric dimmed) -->
-      <div class="section-bg-video-wrap" aria-hidden="true">
-        <video class="section-bg-video geo-video" autoplay muted loop playsinline preload="none">
-          <source src="videos/section/8e55d5eee5eec6d5b68cac04485fec4c.mp4" type="video/mp4">
-        </video>
-        <div class="section-bg-video-overlay"></div>
-      </div>
-
-      
-
-      <div class="container srv-detail-container">
-        
-        <!-- Centered Responsive Navigation Bar -->
-        <div class="sdd-nav-header reveal-up">
-          <div class="sdd-nav-bar">
-            <button class="sdd-arrow sdd-prev" id="sddPrev" aria-label="Previous Service">
-              <svg width="18" height="18" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="sdd-counter-pill">
-              <span class="sdd-counter-label">Service</span>
-              <span class="sdd-counter" id="sddCounter">01 / 06</span>
-            </div>
-            <button class="sdd-arrow sdd-next" id="sddNext" aria-label="Next Service">
-              <svg width="18" height="18" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- 3D Animated Content Stage -->
-        <div class="sdd-3d-stage" id="sddStage">
-          <div class="sdd-left">
-            <p class="section-label" id="sdd-num">Service 01</p>
-            <h2 class="section-title" id="sdd-title">Software Development</h2>
-            <div class="sdd-body" id="sdd-body">
-              <p>We write code the way most people write &mdash; clearly, with intent, and in a way someone else can understand six months later. Every system we build is made to hold up, scale when it needs to, and not require constant firefighting just to stay alive.</p>
-              <p>Whether it is a backend API, a data pipeline, or a full platform from scratch, we treat architecture decisions seriously from day one. Because changing them later costs far more than getting them right to begin with.</p>
-            </div>
-            <ul class="sdd-list" id="sdd-list">
-              <li>Custom web applications &amp; APIs</li>
-              <li>Cloud-native architecture</li>
-              <li>Database design &amp; optimization</li>
-              <li>System integrations &amp; microservices</li>
-            </ul>
-            <a href="contact.html" class="btn primary">Work With Us</a>
-          </div>
-          <div class="sdd-right">
-            <div class="sdd-stats">
-              <div class="sdd-stat"><span class="sdd-stat-num" id="stat-1">120+</span><p id="stat-1-label">Projects delivered</p></div>
-              <div class="sdd-stat"><span class="sdd-stat-num" id="stat-2">98%</span><p id="stat-2-label">On-time delivery rate</p></div>
-              <div class="sdd-stat"><span class="sdd-stat-num" id="stat-3">5★</span><p id="stat-3-label">Average client rating</p></div>
-            </div>
-          </div>
-        </div>
-
+        <div class="hb-stats rv" id="hbStats"></div>
       </div>
     </section>
 
-    <!-- WHY US SECTION REMOVED -->
-
-    <!-- ═══════ CTA ═══════ -->
-    <section class="section final-cta" id="contact">
-      <!-- Section Background Video (Floating Bokeh) -->
-      <div class="section-bg-video-wrap" aria-hidden="true">
-        <video class="section-bg-video bokeh-video" autoplay muted loop playsinline preload="none">
-          <source src="videos/section/4bbc7505d82010f8a472348eddf11705.mp4" type="video/mp4">
-        </video>
-        <div class="section-bg-video-overlay"></div>
+    <section class="hb-sec" id="all-services">
+      <div class="hb-in">
+        <div class="hb-head c"><span class="hb-eyebrow rv">What we do</span><h2 class="hb-title rv" style="--d:1">Ten services, one simple way of working</h2><p class="hb-sub rv" style="--d:2">Use them on their own or together. Choose what you need right now and add more when you are ready.</p></div>
+        <div class="hb-filter rv">
+          <button class="hb-chip on" data-f="all" type="button">All services</button>
+          <button class="hb-chip" data-f="build" type="button">Build a product</button>
+          <button class="hb-chip" data-f="ai" type="button">AI and data</button>
+          <button class="hb-chip" data-f="design" type="button">Design and growth</button>
+        </div>
+        <div class="hb-grid" id="hbGrid"></div>
       </div>
+    </section>
 
-      <div class="container">
-        <div class="cta-inner reveal-up">
-          <div class="section-label" style="text-align:center;display:block">Ready to start?</div>
-          <h2 class="cta-title reveal-up" data-delay="0.1">Let us build something<br><em>worth being proud of.</em></h2>
-          <div class="cta-row reveal-up" data-delay="0.2">
-            <a class="btn primary large" href="index.html#contact">Start a Conversation</a>
-            <a class="btn ghost large" href="index.html">Back to Home</a>
+    <section class="hb-sec hb-sand" id="process">
+      <div class="hb-in">
+        <div class="hb-head c"><span class="hb-eyebrow rv">How we work</span><h2 class="hb-title rv" style="--d:1">From first call to launch day</h2><p class="hb-sub rv" style="--d:2">Every project follows the same four steps, so you always know what comes next.</p></div>
+        <div class="hb-steps"><div class="hb-step rv" style="--d:0"><i>1</i><h3>We listen first</h3><p>A short call to understand your business, your users and what success looks like for you.</p></div><div class="hb-step rv" style="--d:1"><i>2</i><h3>We make a plan</h3><p>You get a simple scope, a timeline and a fixed price before any work starts.</p></div><div class="hb-step rv" style="--d:2"><i>3</i><h3>We build in small steps</h3><p>Every two weeks you see real progress and can change direction if you need to.</p></div><div class="hb-step rv" style="--d:3"><i>4</i><h3>We launch and stay</h3><p>We go live together, then keep helping with fixes, updates and new ideas.</p></div></div>
+      </div>
+    </section>
+
+    <section class="hb-sec hb-dark">
+      <div class="hb-in">
+        <div class="hb-head c"><span class="hb-eyebrow rv">Why Analytic Insider</span><h2 class="hb-title rv" style="--d:1">What working with us feels like</h2><p class="hb-sub rv" style="--d:2">We are a small, focused team that cares about the result as much as you do.</p></div>
+        <div class="hb-why"><div class="rv" style="--d:0"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.6-4 4-6 8-6s7.4 2 8 6"/></svg><b>Senior people on your project</b><p>You talk to the engineers doing the work, not a sales team.</p></div><div class="rv" style="--d:1"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 9.5h7M8.5 12.5h4"/></svg><b>Plain language</b><p>No jargon. We explain every decision so you can say yes with confidence.</p></div><div class="rv" style="--d:2"><svg viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h12l-2 4 2 4H5"/></svg><b>Fixed milestones</b><p>You know what you are paying for and when each part will be ready.</p></div><div class="rv" style="--d:3"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg><b>Support after launch</b><p>Thirty days of free fixes after go live, and ongoing help if you want it.</p></div></div>
+      </div>
+    </section>
+
+    <section class="hb-sec">
+      <div class="hb-in">
+        <div class="hb-head c"><span class="hb-eyebrow rv">Industries</span><h2 class="hb-title rv" style="--d:1">Teams we build for</h2><p class="hb-sub rv" style="--d:2">Our clients come from many fields, and we take the time to learn how yours works.</p></div>
+        <div class="hb-inds"><span class="hb-ind rv" style="--d:0">Healthcare</span><span class="hb-ind rv" style="--d:1">Fintech</span><span class="hb-ind rv" style="--d:2">E commerce</span><span class="hb-ind rv" style="--d:3">Logistics</span><span class="hb-ind rv" style="--d:0">AI startups</span><span class="hb-ind rv" style="--d:1">SaaS companies</span><span class="hb-ind rv" style="--d:2">Education</span><span class="hb-ind rv" style="--d:3">Real estate</span></div>
+      </div>
+    </section>
+
+    <section class="hb-sec hb-sand">
+      <div class="hb-in">
+        <div class="hb-head c"><span class="hb-eyebrow rv">Questions</span><h2 class="hb-title rv" style="--d:1">Things people ask us</h2></div>
+        <div class="hb-faq"><details class="rv" style="--d:0"><summary>How much does a project cost?</summary><p>It depends on what you need. After a free call we send a written quote with clear milestones, so you know the price before we start.</p></details><details class="rv" style="--d:1"><summary>How long will it take?</summary><p>A website usually takes a few weeks. Apps and custom software usually take two to five months. Each service above shows a typical range.</p></details><details class="rv" style="--d:2"><summary>Can I use more than one service?</summary><p>Yes, and many clients do. For example, design first, then development, then marketing. One team means nothing gets lost between steps.</p></details><details class="rv" style="--d:0"><summary>Will I own the code and the designs?</summary><p>Yes. Once the project is paid for, the code and designs belong to you, and we hand over clear documentation.</p></details><details class="rv" style="--d:1"><summary>Do you work with clients in other countries?</summary><p>Yes. We work with clients around the world and plan our meetings around your time zone.</p></details><details class="rv" style="--d:2"><summary>What happens after launch?</summary><p>We stay on for thirty days to fix any issues at no cost. After that you can pick a support plan or come back whenever you need something new.</p></details></div>
+      </div>
+    </section>
+
+    <section class="hb-sec">
+      <div class="hb-in">
+        <div class="hb-cta rv">
+          <h2 class="hb-title">Not sure which service you need?</h2>
+          <p class="hb-sub">Tell us what you are trying to do and we will point you the right way, even if that means we are not the right fit.</p>
+          <div class="hb-actions">
+            <button class="hb-btn acc" type="button" data-open-drawer>Book a free call</button>
+            <a class="hb-btn ghost" href="tel:+13136551635">Call +1 (313) 655-1635</a>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
-      <footer class="site-footer">
-    <svg class="footer-geo-bg" viewBox="0 0 1200 500" preserveAspectRatio="none" aria-hidden="true">
-      <polygon points="0,500 260,180 480,500" />
-      <polygon points="420,500 760,60 1050,500" />
-      <circle cx="1080" cy="120" r="90" />
-      <line x1="0" y1="90" x2="1200" y2="90" />
-      <line x1="150" y1="0" x2="150" y2="500" />
-      <line x1="0" y1="0" x2="1200" y2="500" />
-      <line x1="1200" y1="0" x2="700" y2="500" />
-    </svg>
+
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-ambient-glow" aria-hidden="true"></div>
     <div class="footer-inner">
-      <div class="footer-grid-upgraded">
-        <div class="footer-col-brand">
-          <a class="footer-brand" href="index.html">ANALYTIC INSIDER</a>
-          <p class="footer-tagline">
-            Architecture, artificial intelligence, and digital experiences crafted for companies building the future.
+      <div class="footer-grid-grand">
+
+        <!-- Col 1: Brand & Identity -->
+        <div class="footer-col footer-col-brand">
+          <a class="footer-brand" href="index.html">
+            <span class="footer-brand-title">ANALYTIC INSIDER</span>
+            <span class="footer-brand-dot"></span>
+          </a>
+          <p class="footer-brand-tagline">
+            We build software, websites, apps and AI tools for businesses that want to grow, and we keep things simple along the way.
           </p>
-          <div class="footer-meta-pill">
-            <span class="meta-dot"></span>
-            <span>Dearborn, MI 48128, USA &mdash; working worldwide</span>
+          <a class="footer-location-row" href="https://maps.google.com/?q=Dearborn,+MI+48128,+USA" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Dearborn, MI 48128, USA, working worldwide</span>
+          </a>
+          <div class="footer-status-badge">
+            <span class="status-live-dot"></span>
+            <span>Accepting new clients</span>
           </div>
-          <div class="footer-social-row">
-            <a class="footer-social-icon" href="https://instagram.com/analyticinsider" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.6" stroke="currentColor" stroke-width="1.6"/><circle cx="17.65" cy="6.35" r="1.15" fill="currentColor"/></svg>
-            </a>
-            <a class="footer-social-icon" href="https://facebook.com/analyticinsider" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M14.5 21v-7.2h2.4l.36-2.8h-2.76V9.2c0-.81.22-1.36 1.39-1.36h1.48V5.34c-.26-.03-1.14-.11-2.17-.11-2.15 0-3.62 1.31-3.62 3.72v2.07H9.2v2.8h2.38V21h2.92Z" fill="currentColor"/></svg>
-            </a>
-            <a class="footer-social-icon" href="https://linkedin.com/company/analyticinsider" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="3.5" stroke="currentColor" stroke-width="1.6"/><rect x="6.6" y="10" width="2.3" height="8" fill="currentColor"/><circle cx="7.75" cy="6.9" r="1.35" fill="currentColor"/><path d="M11.6 18v-8h2.2v1.2c.5-.85 1.4-1.4 2.6-1.4 2 0 3.1 1.3 3.1 3.7V18h-2.3v-4.1c0-1.1-.4-1.85-1.4-1.85-.77 0-1.23.52-1.43 1.02-.07.18-.09.43-.09.68V18h-2.68Z" fill="currentColor"/></svg>
-            </a>
-            <a class="footer-social-icon" href="https://wa.me/923332159764" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M12.02 2.5c-5.26 0-9.52 4.26-9.52 9.52 0 1.68.44 3.26 1.2 4.63L2.5 21.5l4.98-1.16a9.48 9.48 0 0 0 4.54 1.16h.01c5.26 0 9.52-4.26 9.52-9.52 0-5.26-4.26-9.48-9.53-9.48Zm0 17.38h-.01a7.86 7.86 0 0 1-4-1.09l-.29-.17-2.96.69.7-2.88-.19-.3a7.9 7.9 0 0 1-1.2-4.2c0-4.36 3.55-7.9 7.91-7.9 2.11 0 4.09.82 5.58 2.32a7.85 7.85 0 0 1 2.31 5.59c0 4.36-3.55 7.94-7.85 7.94Zm4.32-5.93c-.24-.12-1.4-.69-1.62-.77-.22-.08-.37-.12-.53.12-.16.24-.6.77-.74.93-.14.16-.27.18-.5.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.4-1.31-1.63-.14-.24-.01-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.53-1.28-.73-1.75-.19-.46-.39-.4-.53-.4-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.59 4.11 3.64.57.25 1.02.4 1.37.51.58.18 1.1.16 1.51.1.46-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28Z" fill="currentColor"/></svg>
-            </a>
+          <div class="footer-social-wrapper">
+            <span class="footer-social-label">Connect with us</span>
+            <div class="footer-social-links">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.25c-.91 0-1.64.73-1.64 1.64s.73 1.64 1.64 1.64 1.64-.73 1.64-1.64-.73-1.64-1.64-1.64Z"/></svg>
+              </a>
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+            </div>
           </div>
         </div>
 
+        <!-- Col 2: Services -->
         <div class="footer-col">
-          <span class="footer-heading">Navigation</span>
+          <h3 class="footer-heading">Services</h3>
           <ul class="footer-links-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="service.html?s=custom-software-development">Custom Software Development</a></li>
+            <li><a href="service.html?s=website-development">Website Development</a></li>
+            <li><a href="service.html?s=mobile-app-development">Mobile App Development</a></li>
+            <li><a href="service.html?s=ai-development">AI & Machine Learning</a></li>
+            <li><a href="service.html?s=product-design-development">Product & UI UX Design</a></li>
+            <li><a href="service.html?s=digital-marketing-branding">Marketing & Branding</a></li>
           </ul>
         </div>
 
+        <!-- Col 3: Technologies -->
         <div class="footer-col">
-          <span class="footer-heading">Direct Inquiries</span>
+          <h3 class="footer-heading">Technologies</h3>
+          <ul class="footer-links-list">
+            <li><a href="service.html?s=website-development">React and Next.js</a></li>
+            <li><a href="service.html?s=custom-software-development">Angular and .NET</a></li>
+            <li><a href="service.html?s=ai-development">Python and PyTorch</a></li>
+            <li><a href="service.html?s=mobile-app-development">Flutter and Swift</a></li>
+            <li><a href="service.html?s=data-management-database-solutions">PostgreSQL and MongoDB</a></li>
+            <li><a href="service.html?s=vibe-code-to-production">AWS and Docker</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Company -->
+        <div class="footer-col">
+          <h3 class="footer-heading">Company</h3>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Studio</a></li>
+            <li><a href="portfolio.html">Featured Work</a></li>
+            <li><a href="services.html#process">How We Work</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Direct Contact -->
+        <div class="footer-col footer-col-contact">
+          <h3 class="footer-heading">Direct Inquiries</h3>
           <div class="footer-contact-details">
-            <a href="mailto:info@analyticinsider.com" class="footer-link-highlight">info@analyticinsider.com</a>
-            <a href="tel:+13136551635" class="footer-link-highlight">+1 (313) 655-1635</a>
-            <a href="https://wa.me/923332159764" target="_blank" class="footer-link-highlight">+92 333 2159764</a>
+            <a href="mailto:info@analyticinsider.com" class="footer-link-highlight">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>info@analyticinsider.com</span>
+            </a>
+            <a href="tel:+13136551635" class="footer-link-highlight">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+1 (313) 655-1635</span>
+            </a>
+            <a href="tel:+923332159764" class="footer-link-highlight">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+92 333 2159764</span>
+            </a>
+            <div class="footer-reply-badge">
+              <span class="reply-clock-icon"></span>
+              <span>Average response: under 24 hours</span>
+            </div>
+            <div class="footer-avail-pill">
+              <span class="avail-dot"></span>
+              <span>Accepting New Clients</span>
+            </div>
           </div>
         </div>
+
       </div>
 
-      <div class="footer-bottom">
-        <span>&copy; 2026 Analytic Insider. All rights reserved.</span>
-        <span>Software &middot; Digital Products &middot; AI &middot; Design</span>
+      <!-- Footer Bottom -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-left">
+          <span>&copy; 2026 Analytic Insider. All rights reserved.</span>
+          <span class="footer-bottom-sep">&bull;</span>
+          <span>Software &middot; Web &middot; AI &middot; Mobile</span>
+        </div>
+        <div class="footer-bottom-right">
+          <button class="footer-back-to-top" id="svBackToTop" type="button" aria-label="Back to top">
+            <span>Back to top</span>
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          </button>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="js/services.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/mega.js"></script>
+  <script src="js/services-hub.js"></script>
 </body>
 </html>

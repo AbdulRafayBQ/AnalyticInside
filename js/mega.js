@@ -15,11 +15,11 @@ const SERVICES = [
     cardAccent: "#C99B5C",
     stats: { built: "120+", experience: "8 Years", rating: "4.9 / 5", onTime: "98%", retention: "94%" },
     overview: [
-      "Every company operates with its own rhythm, internal bottlenecks, and distinct competitive advantages. Off the shelf software forces your team to bend their workflows around rigid templates, which creates hidden friction, slows execution, and causes spreadsheet clutter that gets worse as you expand.",
-      "We design and engineer bespoke software systems from the ground up. Whether you need a multi tenant SaaS platform, a resilient internal operations engine, complex data pipelines, or high performance REST and GraphQL APIs, we build architecture that holds up effortlessly under heavy real world load.",
-      "Architecture choices are treated with immense discipline on day one. We write clean, thoroughly documented code so that your future engineering team can step in without friction, and your infrastructure can scale tenfold without requiring an emergency overhaul."
+      "Every business works a little differently. Off the shelf software doesn't know that, so it forces your team to change how they work just to fit the tool. That usually means workarounds, extra spreadsheets, and small daily frustrations that pile up as you grow.",
+      "We build software made just for you, from the ground up. That could be a subscription platform for your customers, an internal tool that keeps your team organised, or an API that connects your other systems together. Whatever it is, we build it to handle real, everyday use without breaking.",
+      "We take the technical decisions seriously from day one. The code is clean and easy to follow, so if you bring in your own developers later, they can pick it up without confusion. And if your business grows fast, the software grows with it instead of needing a rebuild."
     ],
-    tech: ["Node.js", "Python", "React.js", "Next.js", "TypeScript", "REST APIs", "GraphQL", "AWS", "Microsoft Azure", "Docker", "CI/CD", "PostgreSQL", "MongoDB", "Redis"],
+    tech: ["React.js", "Angular", ".NET", "Node.js", "Python", "Next.js", "AWS", "TypeScript", "C#", "Java", "Spring Boot", "REST APIs", "GraphQL", "Microsoft Azure", "Docker", "Kubernetes", "CI/CD", "PostgreSQL", "MongoDB", "Redis"],
     capabilities: [
       { title: "SaaS Platforms", desc: "Multi tenant cloud products architected for high concurrency, automated subscription billing, and seamless team onboarding." },
       { title: "Enterprise Operations Portals", desc: "Custom internal dashboards that replace messy spreadsheets and connect disparate departments into one single source of truth." },
@@ -43,12 +43,12 @@ const SERVICES = [
       { metric: "100%", title: "Intellectual Property Ownership", desc: "All source code, design assets, and cloud configurations belong entirely to you with zero licensing lock in." }
     ],
     whyUs: [
-      "We design for scale from day one so you never outgrow your own technical foundation",
-      "Every single sprint delivers functional, testable software directly to your staging environment",
-      "Our team is staffed exclusively by senior engineers with eight or more years in production",
-      "We write readable, well documented code that any future in house engineer can understand",
-      "You receive complete intellectual property ownership with no vendor restrictions whatsoever",
-      "Direct communication with technical leads instead of layers of non technical account managers"
+      "We plan for growth from day one, so your software won't need a rebuild as you scale",
+      "You see working software every two weeks, not just status updates",
+      "Our team is made up of senior engineers, not juniors learning on your project",
+      "We write clean code that's easy for any developer to pick up later",
+      "You own everything we build, no licences or hidden strings attached",
+      "You talk directly to the people building your software, not an account manager relaying messages"
     ],
     deliverables: [
       "Clean, audited production code repository with git history",
@@ -77,11 +77,11 @@ const SERVICES = [
     cardAccent: "#B87A4B",
     stats: { built: "80+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "96%" },
     overview: [
-      "Your website is the foundational touchpoint of your brand. Within two seconds of arrival, visitors decide whether your organization is legitimate, modern, and worthy of their business. A slow loading, cluttered, or difficult to navigate site silently turns away qualified leads before you ever have the chance to speak with them.",
-      "We engineer lightning fast, responsive, conversion focused web platforms and corporate portals. Every layout is built using modern frameworks like React, Next.js, and TypeScript, guaranteeing seamless rendering on smartphones, tablets, high resolution displays, and office laptops alike.",
-      "We optimize deeply for Core Web Vitals, organic search engine visibility, accessibility, and intuitive information hierarchy. The result is a web presence that loads in under two seconds, tells your story with clarity, and turns casual browsers into high value clients."
+      "Your website is often the first thing people see. In just a couple of seconds, visitors decide whether your business looks trustworthy and current. If the site loads slowly or is confusing to use, you lose that visitor before you even get the chance to talk to them.",
+      "We build fast, clean websites that work properly on every screen, from phones to laptops. Built using modern tools like React and Next.js, your site will look sharp and load quickly no matter what device someone is using.",
+      "We also make sure your site is easy for Google to find, easy for visitors to use, and quick to load, usually under two seconds. The goal is simple: a site that explains what you do clearly and turns visitors into customers."
     ],
-    tech: ["React.js", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Node.js", "PostgreSQL", "WordPress Headless", "Sanity CMS", "Vercel", "AWS CloudFront"],
+    tech: ["Next.js", "React.js", "Angular", ".NET", "Tailwind CSS", "Sanity CMS", "Vue.js", "Nuxt.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Node.js", "PHP", "Laravel", "PostgreSQL", "WordPress Headless", "Shopify", "Vercel", "AWS CloudFront"],
     capabilities: [
       { title: "Corporate Web Platforms", desc: "Authoritative digital flagships that establish instant market leadership and communicate complex value propositions with elegance." },
       { title: "High Conversion Landing Pages", desc: "Laser focused campaign experiences engineered specifically to turn paid ad clicks and social traffic into verified booked inquiries." },
@@ -105,12 +105,12 @@ const SERVICES = [
       { metric: "100%", title: "Responsive Fidelity", desc: "Thoroughly tested across dozens of real physical devices to guarantee perfection everywhere." }
     ],
     whyUs: [
-      "We build with pure code and modern headless stacks, avoiding bloated drag and drop page builders",
-      "Mobile first design is our default standard because more than half your traffic browses via phones",
-      "Technical SEO is baked into the foundation so your business can rank effectively on Google",
-      "Every single asset and font file is optimized for instantaneous loading across weak networks",
-      "You receive a user friendly management dashboard with zero ongoing licensing fees",
-      "Our designers and developers collaborate under one roof, ensuring what was designed is what ships"
+      "We build with clean code, not clunky drag and drop builders that slow your site down",
+      "Every design starts mobile first, since most of your visitors are on their phones",
+      "SEO basics are built in from the start, giving you a real chance of ranking on Google",
+      "Every image and file is optimised so your site stays fast, even on slower connections",
+      "You get an easy content dashboard to edit your own site, with no ongoing licence fees",
+      "Our designers and developers work closely together, so the final site matches the design"
     ],
     deliverables: [
       "Fully responsive production ready web build hosted on high speed global content delivery networks",
@@ -139,9 +139,9 @@ const SERVICES = [
     cardAccent: "#C4735F",
     stats: { built: "40+", experience: "8 Years", rating: "4.8 / 5", onTime: "97%", retention: "92%" },
     overview: [
-      "Mobile users have exceptionally high expectations. If an application stutters, consumes too much battery, or confuses users during checkout, it gets uninstalled within minutes. Creating an application that earns a permanent spot on someone's home screen requires flawless performance, thoughtful touch ergonomics, and meaningful utility.",
-      "We design and build iOS and Android mobile applications that combine native responsiveness with visually memorable interfaces. Whether your business benefits from a cross platform build using Flutter and React Native or fully native Swift and Kotlin engineering, we pick the exact technology path that delivers maximum return on investment.",
-      "From initial user flow wireframes through backend API connections, offline data synchronization, biometric authentication, and successful submission to the Apple App Store and Google Play Store, we take full responsibility for the entire journey."
+      "People expect a lot from mobile apps. If one is slow, drains the battery, or is confusing at checkout, it gets deleted within minutes. Earning a spot on someone's home screen takes an app that works smoothly and is genuinely useful.",
+      "We design and build iPhone and Android apps that feel fast and look great. Depending on your goals, that might mean one shared app built with Flutter or React Native, or two separate apps built natively with Swift and Kotlin. We help you choose whichever gives you the best result for your budget.",
+      "From the first sketches of how the app should work, through connecting it to your backend, working offline, adding secure login, and getting it approved on the App Store and Google Play, we handle the whole process for you."
     ],
     tech: ["React Native", "Flutter", "Swift", "Kotlin", "Java", "Firebase", "GraphQL", "REST APIs", "AWS Amplify", "SQLite", "Push Notifications", "Fastlane"],
     capabilities: [
@@ -167,12 +167,12 @@ const SERVICES = [
       { metric: "60%", title: "Development Savings", desc: "When opting for cross platform Flutter or React Native architecture where appropriate." }
     ],
     whyUs: [
-      "We test on real physical hardware in our testing lab rather than relying solely on simulators",
-      "Offline first architecture ensures your app remains responsive even during spotty connectivity",
-      "We manage the entire submission and review process with Apple and Google from start to finish",
-      "Push notification systems are tailored to maximize engagement without annoying your audience",
-      "Biometric security with Face ID and fingerprint verification built in natively for complete peace of mind",
-      "Full source code ownership transferred to your organization with complete deployment scripts"
+      "We test on real phones in our own testing lab, not just on screen simulators",
+      "Apps are built to keep working smoothly even with a weak or no internet connection",
+      "We handle the entire App Store and Google Play submission process for you",
+      "Notifications are set up carefully so they help, not annoy, your users",
+      "Face ID and fingerprint login are built in for extra security and convenience",
+      "You get the full source code when we're done, no strings attached"
     ],
     deliverables: [
       "Production ready iOS and Android builds ready for deployment to the App Store and Google Play",
@@ -201,9 +201,9 @@ const SERVICES = [
     cardAccent: "#A9714F",
     stats: { built: "25+", experience: "8 Years", rating: "4.9 / 5", onTime: "96%", retention: "90%" },
     overview: [
-      "Artificial intelligence is currently surrounded by tremendous marketing noise. Far too many businesses are sold novelty demos that sound impressive during a presentation but fail completely when confronted with dirty real world data, strict privacy constraints, and complex corporate rules. That is not what we build.",
-      "We design and deploy practical, high value artificial intelligence solutions that eliminate manual friction, reduce human operating overhead, and make your digital systems genuinely smarter. From autonomous workflow agents and document extraction engines to domain trained customer copilots and predictive analytics, our work is strictly measured by business outcomes.",
-      "Every project begins with a clear business bottleneck. If artificial intelligence does not measurably reduce costs, speed up operations, or unlock new revenue, it does not belong in the build. We prioritize explainability, privacy, accuracy, and seamless integration with your existing software stack."
+      "AI is surrounded by a lot of hype right now. Plenty of businesses get sold flashy demos that look great in a meeting but fall apart with real data, real privacy rules, and real business complexity. That's not what we do.",
+      "We build AI that actually saves your team time and cuts down manual work. That could be an assistant that answers questions from your own documents, an automation that reads and sorts incoming files, or a tool that predicts what's likely to happen next in your business. Every project is judged by the results it delivers.",
+      "We only build AI where it genuinely helps, whether that's cutting costs, speeding things up, or opening a new source of revenue. If it doesn't clearly do one of those things, we won't recommend it. We also care a lot about keeping things accurate, private, and easy to plug into the tools you already use."
     ],
     tech: ["Python", "TensorFlow", "PyTorch", "OpenAI APIs", "Anthropic Claude", "LangChain", "LlamaIndex", "HuggingFace", "Vector Databases", "Pinecone", "ChromaDB", "FastAPI", "Docker", "AWS SageMaker"],
     capabilities: [
@@ -229,12 +229,12 @@ const SERVICES = [
       { metric: "100%", title: "Data Privacy Protection", desc: "Private VPC deployments ensure your proprietary commercial data is never used to train public models." }
     ],
     whyUs: [
-      "We focus on tangible business outcomes and cost reduction rather than chasing superficial tech trends",
-      "Strict data privacy protocols ensure your private records remain secure in your private cloud",
-      "We design custom evaluation benchmarks to measure accuracy quantitatively before launch",
-      "RAG architectures eliminate hallucinations by anchoring responses directly to your verified documents",
-      "We integrate directly into your current business software rather than asking you to adopt new tools",
-      "Hybrid architectures ensure human staff always remain in the loop for sensitive high risk decisions"
+      "We focus on real results and cost savings, not chasing the latest AI trend",
+      "Your data stays private and secure, hosted in your own private cloud if you need that",
+      "We test accuracy properly before launch, using checks built around your actual data",
+      "Our AI answers only from your verified documents, so it doesn't make things up",
+      "We connect AI into the tools you already use, instead of asking you to switch systems",
+      "A real person stays in the loop for anything sensitive or high stakes"
     ],
     deliverables: [
       "Production ready AI solution integrated into your current web app, API, or internal portal",
@@ -263,9 +263,9 @@ const SERVICES = [
     cardAccent: "#B8697A",
     stats: { built: "60+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "93%" },
     overview: [
-      "Building a software product is an expensive gamble if you start coding before validating the core problem. Far too many startups and enterprise innovation labs rush into full scale engineering with unvalidated assumptions, only to realize months later that the product solves the wrong challenge or is too confusing for customers to navigate.",
-      "We unify digital product strategy, comprehensive user research, intuitive interface design, rapid interactive prototyping, and full stack engineering into one disciplined workflow. We help founders turn napkin concepts into battle ready minimum viable products, and we help established organizations redesign legacy platforms that have become painful to use.",
-      "Our work focuses relentlessly on clarity, usability, and business viability. We build products that explain themselves intuitively, require minimal user onboarding, and create immediate value from the very first session."
+      "Building software before you've properly tested the idea is a costly gamble. A lot of teams jump straight into full development, only to realise months later that they built the wrong thing, or something too confusing for people to actually use.",
+      "We bring together strategy, real user research, design, clickable prototypes, and development into one clear process. That means helping founders turn a rough idea into a working first version, and helping bigger companies fix products that have become clunky over time.",
+      "Everything we design is built to be clear and easy to use from the first time someone opens it. We keep onboarding simple and make sure people understand the value straight away."
     ],
     tech: ["Figma", "Design Systems", "User Research", "Wireframing", "Clickable Prototypes", "React.js", "Next.js", "TypeScript", "Tailwind CSS", "Motion Design", "Usability Testing"],
     capabilities: [
@@ -291,12 +291,12 @@ const SERVICES = [
       { metric: "100%", title: "Design System Delivery", desc: "Complete reusable component libraries that make future feature additions effortless." }
     ],
     whyUs: [
-      "Our designers think like product managers and engineers, considering technical feasibility at every step",
-      "We design complete states including loading animations, empty views, error alerts, and edge cases",
-      "Figma files are organized with atomic naming conventions and auto layout so developers never get confused",
-      "Accessibility is baked into the foundation with WCAG contrast compliance and clear typography",
-      "We help you prioritize what belongs in your MVP and what should wait for version two",
-      "Full design asset and component library ownership delivered with zero recurring subscription locks"
+      "Our designers think about what's realistic to build, not just what looks nice",
+      "We design for every scenario, including loading states, empty screens, and errors, not just the ideal case",
+      "Our design files are organised clearly so developers never have to guess what we meant",
+      "Accessibility is built in from the start, not added as an afterthought",
+      "We help you decide what really belongs in version one, and what can wait",
+      "You keep full ownership of every design file and asset we create"
     ],
     deliverables: [
       "Complete high fidelity Figma project file organized with components, auto layout, and responsive variants",
@@ -325,9 +325,9 @@ const SERVICES = [
     cardAccent: "#D08A3C",
     stats: { built: "35+", experience: "8 Years", rating: "4.8 / 5", onTime: "98%", retention: "91%" },
     overview: [
-      "In crowded markets, having a functional product is not enough. If your company lacks a clear brand identity, customers view you as a disposable commodity and negotiate solely on price. Chasing viral social media vanity metrics or boosting random posts without a cohesive strategy burns marketing budget with nothing to show for it.",
-      "We build brands that people remember, trust, and choose over competitors. We unify brand strategy, distinctive visual identity design, persuasive copywriting, search engine optimization, and high return paid advertising into one systematic customer acquisition engine.",
-      "We treat marketing as a measurable revenue driver rather than an artistic expense. Every rupee and dollar spent is tracked against tangible key performance indicators including cost per lead, customer acquisition cost, conversion rate, and pipeline value."
+      "In a crowded market, having a good product isn't enough. Without a clear brand, people see you as just another option and compare you purely on price. And chasing likes or boosting random posts without a real plan just burns through your budget.",
+      "We help build brands that people actually remember and trust. That means bringing brand strategy, design, writing, SEO, and paid ads together into one plan that consistently brings in new customers.",
+      "We treat marketing as something that should pay for itself, not just look nice. Every dollar you spend is tracked against real numbers, like cost per lead and how many leads actually turn into customers."
     ],
     tech: ["Brand Positioning", "Visual Identity", "Figma", "Adobe Creative Suite", "Technical SEO", "Google Ads", "Meta Ads Manager", "LinkedIn Ads", "Content Strategy", "Email Automation", "AI Video Production"],
     capabilities: [
@@ -353,12 +353,12 @@ const SERVICES = [
       { metric: "100%", title: "Transparent Attribution", desc: "Every lead and dollar tracked to its origin so you know exactly which campaigns drive real revenue." }
     ],
     whyUs: [
-      "We align marketing efforts with real commercial sales numbers rather than vanity likes and impressions",
-      "Our creative team produces all visual assets and copy in house without subcontracting to freelancers",
-      "Technical tracking and conversion attribution are configured with precision before any ad spend goes live",
-      "We utilize artificial intelligence tools to produce commercial video assets rapidly without massive studio markups",
-      "You receive direct access to your media buyer and strategist without account manager gatekeepers",
-      "Complete ownership of all ad accounts, creative files, and customer lists remains in your hands"
+      "We track marketing against real sales numbers, not just likes and impressions",
+      "All the design and writing is done in house by our own team, not outsourced to freelancers",
+      "Tracking is set up properly before we spend a single dollar on ads",
+      "We use AI tools to produce quality video content without the usual studio price tag",
+      "You talk directly with the person managing your campaigns, not an account manager",
+      "You keep full ownership of your ad accounts, creative files, and customer lists"
     ],
     deliverables: [
       "Complete vector brand identity package including primary logos, secondary marks, and typography guidelines",
@@ -387,9 +387,9 @@ const SERVICES = [
     cardAccent: "#9C7A54",
     stats: { built: "30+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "95%" },
     overview: [
-      "Modern businesses are inundated with numbers, but starved for actual insight. Sales numbers sit in your CRM, operational logistics are buried in ERP software, marketing spend lives in ad accounts, and inventory records exist in spreadsheets. When leadership asks a straightforward question about profitability or churn, it takes three people three days to compile an answer.",
-      "We help organizations turn fragmented, messy information into automated, reliable business intelligence systems. We build modern data pipelines that pull information automatically from all your operational tools into a single trusted data warehouse, paired with intuitive visual dashboards updated in real time.",
-      "Instead of wasting hours preparing static reports for weekly meetings, executives and managers can open clean dashboards on their laptops or phones, spot anomalies immediately, and make informed choices backed by verified empirical facts."
+      "Most businesses have plenty of numbers but very little clarity. Sales data sits in one tool, operations in another, and marketing spend somewhere else. When someone asks a simple question about profit or customer churn, it takes days to get a straight answer.",
+      "We help turn scattered, messy data into one clear, reliable system. We connect your different tools automatically into a single place, then build dashboards that update in real time so you always know where things stand.",
+      "Instead of spending hours building reports for a Monday meeting, your team can open a clean dashboard on a laptop or phone, spot problems early, and make decisions based on real, up to date numbers."
     ],
     tech: ["Power BI", "Tableau", "Snowflake", "Google BigQuery", "AWS Redshift", "PostgreSQL", "dbt", "Apache Airflow", "Python", "SQL", "ETL Pipelines", "Looker Studio"],
     capabilities: [
@@ -415,12 +415,12 @@ const SERVICES = [
       { metric: "Single", title: "Unified Source of Truth", desc: "Zero debate over whose spreadsheet has the correct figure when metrics are defined centrally." }
     ],
     whyUs: [
-      "We design dashboards for commercial business leaders, not for academic data scientists",
-      "Our automated data pipelines run reliably with automatic error alerting and self healing retries",
-      "We rigorously validate numbers against your verified financial records to guarantee total accuracy",
-      "Role based permissions ensure staff members only see metrics appropriate to their clearance",
-      "We work across all primary BI platforms including Power BI, Tableau, Looker, and custom React views",
-      "Full documentation and handover training ensure your internal staff can manage the system long term"
+      "We build dashboards for business owners and managers, not data scientists",
+      "Our pipelines run reliably and alert us automatically if anything goes wrong",
+      "We double check every number against your real financial records before it goes live",
+      "Access controls mean staff only see the numbers relevant to their role",
+      "We work with all the major dashboard tools, including Power BI, Tableau, and Looker",
+      "We document everything and train your team, so you're never stuck relying on us"
     ],
     deliverables: [
       "Fully configured central cloud data warehouse with structured reporting schemas",
@@ -449,9 +449,9 @@ const SERVICES = [
     cardAccent: "#B5895A",
     stats: { built: "45+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "94%" },
     overview: [
-      "Poorly architected databases are a silent tax on growing companies. In the early days, simple queries run fast enough. But as customer transactions increase, queries that once took milliseconds begin locking tables, page loads crawl to a halt, server bills spike, and reporting queries cause application crashes during peak business hours.",
-      "We design, optimize, migrate, and secure enterprise database environments. Whether you need a high throughput PostgreSQL or MySQL relational cluster, a distributed MongoDB document store, an in memory Redis caching layer, or an zero downtime migration from legacy servers to modern cloud infrastructure, we build databases that never choke.",
-      "We treat database integrity, ACID compliance, data encryption, and automated disaster recovery as non negotiable fundamentals. Our solutions ensure your applications remain blazingly fast and your customer records remain completely secure under all conditions."
+      "A poorly built database quietly slows a growing business down. Things run fine at first, but as your customers and data grow, simple actions start taking longer, pages slow to a crawl, server costs creep up, and reports start crashing your app during busy hours.",
+      "We design, clean up, move, and secure databases so this doesn't happen. Whether that's a fast relational database, a flexible document store, a caching layer to speed things up, or moving your data to the cloud without any downtime, we make sure it holds up under pressure.",
+      "We treat data accuracy, security, and backups as essentials, not extras. That means your apps stay fast and your customers' information stays safe, no matter what."
     ],
     tech: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Oracle", "Snowflake", "Elasticsearch", "AWS RDS", "Amazon Aurora", "Database Sharding", "Replication", "Prisma", "Flyway"],
     capabilities: [
@@ -477,12 +477,12 @@ const SERVICES = [
       { metric: "45%", title: "Infrastructure Cost Savings", desc: "Achieved by eliminating CPU over provisioning through query efficiency." }
     ],
     whyUs: [
-      "We tune databases at the engine level rather than simply asking you to pay for bigger cloud servers",
-      "Zero downtime migration strategies ensure your business keeps transacting without customer interruption",
-      "Point in time recovery testing ensures your disaster backup plans are verified in practice, not just theory",
-      "We design schemas around your real world access patterns rather than generic textbook models",
-      "Encryption and access security protocols comply with HIPAA, SOC2, and international privacy standards",
-      "Full documentation provided detailing every index decision, maintenance routine, and schema diagram"
+      "We fix the real performance problem instead of just telling you to buy a bigger server",
+      "We move your data to the cloud with zero downtime for your customers",
+      "We actually test our backups by restoring them, so you know they'll work when needed",
+      "Databases are designed around how your business actually uses data, not generic templates",
+      "Our security setup follows recognised standards like HIPAA and SOC2",
+      "You get full documentation explaining every decision we made"
     ],
     deliverables: [
       "Fully optimized production database cluster with multi availability zone failover configurations",
@@ -511,9 +511,9 @@ const SERVICES = [
     cardAccent: "#A8665A",
     stats: { built: "20+", experience: "8 Years", rating: "5.0 / 5", onTime: "100%", retention: "96%" },
     overview: [
-      "Almost every leadership team understands that artificial intelligence will reshape their industry over the next five years. Yet most organizations feel paralyzed about where to begin. Buying random SaaS AI tools without a strategy creates vendor sprawl, employee resistance, and security risks, while doing nothing risks falling behind aggressive competitors.",
-      "We guide executive teams through a structured, pragmatic AI readiness and adoption methodology. We map your current business operations, evaluate your internal data assets, identify the highest value automation opportunities, and construct a phased implementation roadmap tied directly to return on investment.",
-      "We provide independent, vendor neutral guidance. If a proposed AI use case is too speculative, overly expensive, or better solved with simple software automation, we will candidly tell you so. We help you invest with complete clarity and confidence."
+      "Most leadership teams know AI is going to change their industry, but many feel stuck on where to actually start. Buying random AI tools without a plan creates confusion and risk, but doing nothing risks falling behind competitors who move first.",
+      "We help leadership teams figure out, step by step, where AI can genuinely help. We look at how your business runs today, what data you have, where the biggest opportunities are, and build a clear plan tied to real return on investment.",
+      "Our advice is independent, we don't sell software. If an AI idea is too risky, too expensive, or better solved a simpler way, we'll tell you honestly. Our goal is to help you invest with confidence, not hype."
     ],
     tech: ["AI Strategy", "Readiness Audits", "Workflow Analysis", "Vendor Evaluation", "LLM Architecture", "Enterprise Security", "Data Governance", "Proof of Concept", "Change Management", "ROI Modeling"],
     capabilities: [
@@ -539,12 +539,12 @@ const SERVICES = [
       { metric: "5.0 ★", title: "Executive Satisfaction Score", desc: "Delivering actionable, clear plans that leadership teams can immediately execute." }
     ],
     whyUs: [
-      "We give honest recommendations even when that means telling you AI is not the right answer for a problem",
-      "Our consultants are experienced engineers who have built AI in production, not theoretical management analysts",
-      "Every recommended initiative includes a realistic economic cost and projected commercial return model",
-      "We structure roadmaps into small, self funding phases so early wins pay for subsequent developments",
-      "Security and data sovereignty are prioritized so your company avoids public data privacy leaks",
-      "We stay involved through technical implementation to ensure the strategy is executed faithfully"
+      "We'll tell you honestly when AI isn't the right answer for a problem",
+      "Our consultants have actually built AI in production, they aren't just theorists",
+      "Every idea we suggest comes with a realistic cost and expected return",
+      "We break the plan into small phases, so early wins help pay for what comes next",
+      "Security and privacy are a priority, so your data never ends up somewhere it shouldn't",
+      "We stay involved through the build, so the plan is actually carried out properly"
     ],
     deliverables: [
       "Comprehensive AI Readiness and Workflow Assessment Document suitable for executive review",
@@ -573,9 +573,9 @@ const SERVICES = [
     cardAccent: "#C28A2E",
     stats: { built: "30+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "90%" },
     overview: [
-      "Modern AI coding tools and rapid prototyping platforms have made it easier than ever to bring a software idea to life over a weekend. You prompted, tweaked, and built something that actually works on your local machine. But what happens when real users sign up, enter credit card details, and expect the platform to stay online around the clock?",
-      "Prototype code is rarely production code. Rapidly built codebases almost always contain critical security vulnerabilities, unindexed database queries, zero automated testing, hardcoded secrets, brittle API connections, and messy architectures that collapse under the first traffic surge.",
-      "We take your prototype, minimum viable product, or AI generated code and transform it into secure, maintainable, scalable production software. We audit every line, harden security, rewrite unstable modules, establish automated testing, configure CI CD pipelines, and deploy to robust cloud infrastructure so your experiment becomes a thriving business."
+      "AI coding tools have made it much easier to build a working idea in a weekend. You've prompted, tweaked, and got something running on your laptop. But what happens once real users sign up, enter their card details, and expect it to stay online all the time?",
+      "Code built quickly is rarely ready for real users. Fast built projects usually have security gaps, slow database queries, no automated tests, and a structure that struggles the moment traffic picks up.",
+      "We take your prototype or AI generated app and turn it into something solid and secure. We go through it carefully, fix the weak spots, add proper testing, set up automatic deployment, and move it to reliable hosting, so your idea can grow into a real business."
     ],
     tech: ["Code Audit", "Architecture Refactoring", "Security Hardening", "Automated Testing", "CI/CD Pipelines", "Docker", "AWS", "TypeScript", "PostgreSQL", "OWASP Security", "Rate Limiting", "Error Monitoring"],
     capabilities: [
@@ -601,12 +601,12 @@ const SERVICES = [
       { metric: "Zero", title: "Manual Deployment Stress", desc: "Automated CI CD pipelines build, test, and deploy every update reliably in minutes." }
     ],
     whyUs: [
-      "We respect what you built and preserve your working product logic rather than insisting on starting from scratch",
-      "Security is treated as a non negotiable prerequisite rather than an afterthought",
-      "We add comprehensive automated tests so future development can move fast without breaking current features",
-      "Our infrastructure setups include instant automated rollbacks in the event of an unexpected release bug",
-      "We provide clean, documented code that any future senior engineer can immediately comprehend",
-      "Fixed timeline and fixed price audit phase so you know the exact technical reality before spending"
+      "We respect what you've already built and keep it working, instead of starting over",
+      "Security gets fixed properly, not patched as an afterthought",
+      "We add proper tests so future updates don't quietly break things",
+      "Our setup can roll back automatically if something goes wrong after a release",
+      "The code we hand back is clean and easy for any developer to understand",
+      "We give you a fixed price and timeline for the review, so you know what to expect upfront"
     ],
     deliverables: [
       "Hardened, refactored production codebase repository with clean git commits and documentation",
@@ -701,9 +701,16 @@ const pad = n => String(n + 1).padStart(2, '0');
     ? new URLSearchParams(location.search).get('s')
     : null;
   let activeIdx = SERVICES.findIndex(sv => sv.slug === currentSlug);
-  if (activeIdx < 0) activeIdx = 0;
-
-  const onValidServicePage = !!currentSlug && SERVICES.some(sv => sv.slug === currentSlug);
+  const onValidServicePage = activeIdx >= 0;
+  // Which entry looks "selected" (bold) in the left list before any hover.
+  // Only mark one when we're actually on that service's page — never
+  // default to the first service just because the menu opened.
+  const mlDefaultIdx = onValidServicePage ? activeIdx : -1;
+  // Which panel is shown on the right before any hover. We still need
+  // something visible here (an empty right side looks broken), so this
+  // falls back to the first service's panel, but that panel's own list
+  // entry is NOT marked as selected unless onValidServicePage is true.
+  const panelDefaultIdx = onValidServicePage ? activeIdx : 0;
   if (onValidServicePage) {
     const svc = SERVICES[activeIdx];
     a.href = `service.html?s=${svc.slug}`;
@@ -728,7 +735,7 @@ const pad = n => String(n + 1).padStart(2, '0');
           <span class="nms-title">${sv.menu}</span>
         </a>
       `).join('')}
-      <a class="nms-item nms-all" href="service.html?s=custom-software-development">
+      <a class="nms-item nms-all" href="services.html">
         <span>Explore All 10 Services &rarr;</span>
       </a>
     </div>
@@ -754,11 +761,12 @@ const pad = n => String(n + 1).padStart(2, '0');
   m.innerHTML = `
     <div class="mega-in">
       <div class="mg-l">
-        ${SERVICES.map((s, i) => `<a class="ml${i === activeIdx ? ' on' : ''}" data-i="${i}" href="service.html?s=${s.slug}">${s.menu}</a>`).join('')}
+        ${SERVICES.map((s, i) => `<a class="ml${i === mlDefaultIdx ? ' on' : ''}" data-i="${i}" href="service.html?s=${s.slug}">${s.menu}</a>`).join('')}
+        <a class="mg-all" href="services.html">View all services &rarr;</a>
       </div>
       <div class="mg-stack">
         ${SERVICES.map((s, i) => `
-          <div class="mg-p${i === activeIdx ? ' on' : ''}" data-i="${i}" style="--h:${s.h}">
+          <div class="mg-p${i === panelDefaultIdx ? ' on' : ''}" data-i="${i}" style="--h:${s.h}">
             <div class="mg-m">
               ${s.capabilities.slice(0, 6).map((c, j) => `
                 <a href="service.html?s=${s.slug}#capabilities" style="--j:${j}">
@@ -819,6 +827,7 @@ const pad = n => String(n + 1).padStart(2, '0');
         const willOpen = !li.classList.contains('nms-open');
         li.classList.toggle('nms-open', willOpen);
       } else {
+        if (!onValidServicePage) { window.location.href = 'services.html'; return; }
         if (m.classList.contains('open')) {
           immediateClose();
         } else {
