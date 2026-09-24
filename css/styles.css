@@ -357,20 +357,30 @@ body {
 .cap-item {
   display: flex; align-items: center; gap: 10px;
   color: #17130E;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px; font-weight: 700;
-  letter-spacing: .015em;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 13.5px; font-weight: 700;
+  letter-spacing: .01em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(23,19,14,.03);
+  border: 1px solid rgba(23,19,14,.06);
+  transition: transform .2s ease, background .2s ease;
+}
+.cap-item:hover {
+  transform: translateY(-2px);
+  background: rgba(23,19,14,.07);
 }
 .cap-icon {
   width: 28px; height: 28px;
-  border-radius: 50%;
+  border-radius: 7px;
   flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(23,19,14,.10);
-  color: #17130E;
+  background: #ffffff;
+  border: 1px solid rgba(23,19,14,.10);
+  box-shadow: 0 1px 3px rgba(23,19,14,.06);
 }
-.cap-icon svg { width: 14px; height: 14px; }
-.cap-dash { color: rgba(23,19,14,.4); font-size: 13px; font-weight: 700; }
+.cap-icon svg { width: 17px; height: 17px; display: block; }
+.cap-dash { color: #C99B5C; font-size: 14px; font-weight: 700; opacity: .7; }
 
 /* Floating stat pills — positioned to match the reference exactly */
 .hw-pill {
@@ -4744,10 +4754,11 @@ em { font-style: italic; color: var(--accent); }
   width: max-content;
   will-change: transform;
   --clm-gap: 32px; /* must equal .cl-logo-card's margin-right below */
-  animation: cl-marquee-left 15s linear infinite;
+  animation: cl-marquee-left 32s linear infinite;
 }
-.cl-marquee-row--left  .cl-marquee-track { animation-name: cl-marquee-left; }
-.cl-marquee-row--right .cl-marquee-track { animation-name: cl-marquee-right; animation-duration: 18s; }
+.cl-marquee-row--left  .cl-marquee-track { animation-name: cl-marquee-left; animation-duration: 32s; }
+.cl-marquee-row--right .cl-marquee-track { animation-name: cl-marquee-right; animation-duration: 36s; }
+.cl-marquee-track:hover { animation-play-state: paused; }
 
 /* NOTE: a flex track sized with width:max-content does NOT count the very
    last child's trailing margin in its own width. Since spacing between

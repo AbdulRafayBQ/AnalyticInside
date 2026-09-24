@@ -106,7 +106,7 @@
   const SERVICES = [
     {
       num: 'Service 01', title: 'Software Development',
-      color: '#E3A63E',
+      color: '#22d3ee',
       desc: 'Custom software built around how your business actually runs, not a generic template forced to fit.',
       body: ['Every business has its own workflow, its own bottlenecks and its own way of doing things and off the shelf software rarely respects that. We build custom solutions from the ground up starting with real development work then moving into API integrations so your tools actually talk to each other instead of working in isolation.',
              'Before anything goes live we put it through proper testing so problems get caught early instead of after launch. Once everything is solid we handle deployment so the whole process feels handled from start to finish rather than something you have to manage yourself.'],
@@ -116,7 +116,7 @@
     },
     {
       num: 'Service 02', title: 'Website Development',
-      color: '#E2665A',
+      color: '#60a5fa',
       desc: 'Websites built to actually work well, not just look good in a screenshot.',
       body: ['A website is often the first real interaction someone has with a business and that first impression matters more than most people think. We build modern responsive sites that adjust properly across phones tablets and desktops so nobody gets a broken or awkward experience depending on what device they are using.',
              'Performance and usability guide every decision we make. Pages load quickly navigation makes sense and nothing feels like it was bolted on as an afterthought. The result is a site that holds up whether ten people visit it or ten thousand.'],
@@ -126,7 +126,7 @@
     },
     {
       num: 'Service 03', title: 'Mobile App Development',
-      color: '#D6558F',
+      color: '#34d399',
       desc: 'Mobile apps built for the platform they actually run on, not a one size fits all approach.',
       body: ['Some products need the speed and polish of a fully native app while others are better served by a cross platform build that reaches iOS and Android from a single codebase. We work in both directions along with hybrid and progressive web app setups depending on what actually makes sense for your product and your budget.',
              'The goal is always an app that feels natural to use on the device it is running on. Not something that feels like a website wrapped in an app shell but something that behaves the way people expect their phone to behave.'],
@@ -297,7 +297,7 @@
       /* Render tech tags with per-service color */
       const tagsEl = qs('#shcTechTags');
       if (tagsEl && s.tech) {
-        const c = s.color || '#E3A63E';
+        const c = s.color || '#22d3ee';
         // Convert hex to RGB for rgba() background
         const r = parseInt(c.slice(1,3),16);
         const g = parseInt(c.slice(3,5),16);

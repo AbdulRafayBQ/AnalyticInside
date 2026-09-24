@@ -7,14 +7,12 @@
 const SERVICES = [
   {
     slug: "custom-software-development",
-    processStyle: "timeline",
-    capStyle: "grid",
     menu: "Custom Software Development",
     title: "Custom Software Development",
     tag: "Software Built Around Your Business, Never the Other Way Around",
-    h: 28,
-    cardBg: "#FDF5E8",
-    cardAccent: "#D4A24E",
+    h: 30,
+    cardBg: "#FBF5E9",
+    cardAccent: "#C99B5C",
     stats: { built: "120+", experience: "8 Years", rating: "4.9 / 5", onTime: "98%", retention: "94%" },
     overview: [
       "Every company operates with its own rhythm, internal bottlenecks, and distinct competitive advantages. Off the shelf software forces your team to bend their workflows around rigid templates, which creates hidden friction, slows execution, and causes spreadsheet clutter that gets worse as you expand.",
@@ -71,14 +69,12 @@ const SERVICES = [
 
   {
     slug: "website-development",
-    processStyle: "rail",
-    capStyle: "rows",
     menu: "Website Development",
     title: "Website Development",
     tag: "High Performance Websites Engineered to Convert Visitors into Clients",
-    h: 212,
-    cardBg: "#FCEEE9",
-    cardAccent: "#C96A45",
+    h: 26,
+    cardBg: "#FAF3EA",
+    cardAccent: "#B87A4B",
     stats: { built: "80+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "96%" },
     overview: [
       "Your website is the foundational touchpoint of your brand. Within two seconds of arrival, visitors decide whether your organization is legitimate, modern, and worthy of their business. A slow loading, cluttered, or difficult to navigate site silently turns away qualified leads before you ever have the chance to speak with them.",
@@ -135,14 +131,12 @@ const SERVICES = [
 
   {
     slug: "mobile-app-development",
-    processStyle: "grid",
-    capStyle: "tiles",
     menu: "Mobile App Development",
     title: "Mobile App Development",
     tag: "Native and Cross Platform Mobile Apps Built to Delight Users and Scale",
-    h: 152,
-    cardBg: "#FDEEF2",
-    cardAccent: "#C15B85",
+    h: 14,
+    cardBg: "#FBF1EC",
+    cardAccent: "#C4735F",
     stats: { built: "40+", experience: "8 Years", rating: "4.8 / 5", onTime: "97%", retention: "92%" },
     overview: [
       "Mobile users have exceptionally high expectations. If an application stutters, consumes too much battery, or confuses users during checkout, it gets uninstalled within minutes. Creating an application that earns a permanent spot on someone's home screen requires flawless performance, thoughtful touch ergonomics, and meaningful utility.",
@@ -199,14 +193,12 @@ const SERVICES = [
 
   {
     slug: "ai-development",
-    processStyle: "orbit",
-    capStyle: "rows",
     menu: "AI Development & Automation",
     title: "AI Development & Intelligent Automation",
     tag: "Practical Artificial Intelligence That Removes Real Work from Your Schedule",
-    h: 262,
-    cardBg: "#F3EEFB",
-    cardAccent: "#7C5CC4",
+    h: 22,
+    cardBg: "#F9F2EA",
+    cardAccent: "#A9714F",
     stats: { built: "25+", experience: "8 Years", rating: "4.9 / 5", onTime: "96%", retention: "90%" },
     overview: [
       "Artificial intelligence is currently surrounded by tremendous marketing noise. Far too many businesses are sold novelty demos that sound impressive during a presentation but fail completely when confronted with dirty real world data, strict privacy constraints, and complex corporate rules. That is not what we build.",
@@ -263,14 +255,12 @@ const SERVICES = [
 
   {
     slug: "product-design-development",
-    processStyle: "cascade",
-    capStyle: "tiles",
     menu: "Product Design & Development",
     title: "Product Design & Development",
     tag: "From an Unformed Idea to a Scalable Digital Product People Love Using",
-    h: 22,
-    cardBg: "#FFF3F0",
-    cardAccent: "#D46B5C",
+    h: 350,
+    cardBg: "#FBF0F0",
+    cardAccent: "#B8697A",
     stats: { built: "60+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "93%" },
     overview: [
       "Building a software product is an expensive gamble if you start coding before validating the core problem. Far too many startups and enterprise innovation labs rush into full scale engineering with unvalidated assumptions, only to realize months later that the product solves the wrong challenge or is too confusing for customers to navigate.",
@@ -327,14 +317,12 @@ const SERVICES = [
 
   {
     slug: "digital-marketing-branding",
-    processStyle: "stack",
-    capStyle: "grid",
     menu: "Digital Marketing & Branding",
     title: "Digital Marketing & Branding",
     tag: "Build a Memorable Brand Identity and a Scalable Customer Acquisition Engine",
-    h: 330,
-    cardBg: "#FDF0F6",
-    cardAccent: "#C95C8E",
+    h: 34,
+    cardBg: "#FCF5E6",
+    cardAccent: "#D08A3C",
     stats: { built: "35+", experience: "8 Years", rating: "4.8 / 5", onTime: "98%", retention: "91%" },
     overview: [
       "In crowded markets, having a functional product is not enough. If your company lacks a clear brand identity, customers view you as a disposable commodity and negotiate solely on price. Chasing viral social media vanity metrics or boosting random posts without a cohesive strategy burns marketing budget with nothing to show for it.",
@@ -391,14 +379,12 @@ const SERVICES = [
 
   {
     slug: "data-analytics-consultancy",
-    processStyle: "chevron",
-    capStyle: "tiles",
     menu: "Data & Analytics Consultancy",
     title: "Data & Analytics Consultancy",
     tag: "Transform Fragmented Data into Clear Executive Dashboards and Confident Decisions",
-    h: 172,
-    cardBg: "#F8EEF3",
-    cardAccent: "#8B5C8B",
+    h: 32,
+    cardBg: "#F8F3EA",
+    cardAccent: "#9C7A54",
     stats: { built: "30+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "95%" },
     overview: [
       "Modern businesses are inundated with numbers, but starved for actual insight. Sales numbers sit in your CRM, operational logistics are buried in ERP software, marketing spend lives in ad accounts, and inventory records exist in spreadsheets. When leadership asks a straightforward question about profitability or churn, it takes three people three days to compile an answer.",
@@ -455,14 +441,12 @@ const SERVICES = [
 
   {
     slug: "data-management-database-solutions",
-    processStyle: "staircase",
-    capStyle: "grid",
     menu: "Data Management & Databases",
     title: "Data Management & Database Solutions",
     tag: "High Concurrency Database Architectures Engineered for Speed, Integrity, and Scale",
-    h: 190,
-    cardBg: "#FBF1E7",
-    cardAccent: "#A4703A",
+    h: 33,
+    cardBg: "#FAF4EA",
+    cardAccent: "#B5895A",
     stats: { built: "45+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "94%" },
     overview: [
       "Poorly architected databases are a silent tax on growing companies. In the early days, simple queries run fast enough. But as customer transactions increase, queries that once took milliseconds begin locking tables, page loads crawl to a halt, server bills spike, and reporting queries cause application crashes during peak business hours.",
@@ -519,14 +503,12 @@ const SERVICES = [
 
   {
     slug: "ai-consultancy-automation-strategy",
-    processStyle: "hex",
-    capStyle: "rows",
     menu: "AI Consultancy & Strategy",
     title: "AI Consultancy & Automation Strategy",
     tag: "Find Exactly Where AI Creates High Value and Build a Practical Adoption Roadmap",
-    h: 300,
-    cardBg: "#F5F0FB",
-    cardAccent: "#8B5CC9",
+    h: 10,
+    cardBg: "#FAF0EC",
+    cardAccent: "#A8665A",
     stats: { built: "20+", experience: "8 Years", rating: "5.0 / 5", onTime: "100%", retention: "96%" },
     overview: [
       "Almost every leadership team understands that artificial intelligence will reshape their industry over the next five years. Yet most organizations feel paralyzed about where to begin. Buying random SaaS AI tools without a strategy creates vendor sprawl, employee resistance, and security risks, while doing nothing risks falling behind aggressive competitors.",
@@ -583,14 +565,12 @@ const SERVICES = [
 
   {
     slug: "vibe-code-to-production",
-    processStyle: "compact",
-    capStyle: "grid",
     menu: "Vibe Code to Production",
     title: "Vibe Code to Production & Scale",
     tag: "You Built the Prototype Fast. We Rebuild It to Handle Real Users, Security, and Scale",
-    h: 165,
-    cardBg: "#FFF7ED",
-    cardAccent: "#C98B3E",
+    h: 38,
+    cardBg: "#FBF4E3",
+    cardAccent: "#C28A2E",
     stats: { built: "30+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "90%" },
     overview: [
       "Modern AI coding tools and rapid prototyping platforms have made it easier than ever to bring a software idea to life over a weekend. You prompted, tweaked, and built something that actually works on your local machine. But what happens when real users sign up, enter credit card details, and expect the platform to stay online around the clock?",
@@ -654,7 +634,7 @@ const REVIEWS = [
     role: "Product Lead",
     company: "Telecard",
     init: "AR",
-    color: "#8B6BB0"
+    color: "#4A72C9"
   },
   {
     text: "I had tried two other agencies before this one and neither actually listened to what our shoppers needed. The Analytic Insider team sat with us for hours understanding our catalog before writing a single line of code, and it shows in how smooth checkout feels now.",
@@ -670,7 +650,7 @@ const REVIEWS = [
     role: "CEO",
     company: "Rich AI",
     init: "DC",
-    color: "#B8894A"
+    color: "#3DA06A"
   },
   {
     text: "Our old dashboard was a spreadsheet dressed up as software. Now our coaches pull up a client's progress in seconds and actually trust the numbers they are looking at. It changed how our whole team runs its day.",
@@ -686,7 +666,7 @@ const REVIEWS = [
     role: "Product Manager",
     company: "Morinaga",
     init: "KS",
-    color: "#A85C9E"
+    color: "#4A9FD4"
   },
   {
     text: "Our investors expect a portfolio tool that feels institutional, not like a hobby project. What they delivered handles the numbers beautifully and still looks like something we are proud to open in front of a client.",
@@ -730,6 +710,44 @@ const pad = n => String(n + 1).padStart(2, '0');
     a.textContent = svc.menu;
   }
 
+  // Mark toggle for mobile menu exclusion and add smooth chevron
+  a.classList.add('nav-services-toggle');
+  const chevron = document.createElement('span');
+  chevron.className = 'nav-services-chevron';
+  chevron.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+  a.appendChild(chevron);
+
+  // Build dedicated mobile services accordion inside li for seamless touch interaction
+  const mobSub = document.createElement('div');
+  mobSub.className = 'nav-mobile-services';
+  mobSub.innerHTML = `
+    <div class="nms-list">
+      ${SERVICES.map((sv, i) => `
+        <a class="nms-item${sv.slug === currentSlug ? ' on' : ''}" href="service.html?s=${sv.slug}">
+          <span class="nms-dot"></span>
+          <span class="nms-title">${sv.menu}</span>
+        </a>
+      `).join('')}
+      <a class="nms-item nms-all" href="service.html?s=custom-software-development">
+        <span>Explore All 10 Services &rarr;</span>
+      </a>
+    </div>
+  `;
+  li.appendChild(mobSub);
+
+  // Close mobile nav when clicking any service in the accordion
+  mobSub.querySelectorAll('a').forEach(subA => {
+    subA.addEventListener('click', () => {
+      const mn = $('#mainNav');
+      const mt = $('#menuToggle') || $('#hamburgerBtn');
+      if (mn) mn.classList.remove('open');
+      if (mt) {
+        mt.classList.remove('open');
+        mt.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
   // Build mega menu container
   const m = document.createElement('div');
   m.className = 'mega';
@@ -764,6 +782,7 @@ const pad = n => String(n + 1).padStart(2, '0');
 
   let timer;
   const open = () => {
+    if (window.innerWidth <= 960) return;
     clearTimeout(timer);
     m.classList.add('open');
     hd.classList.add('mega-open');
@@ -780,21 +799,31 @@ const pad = n => String(n + 1).padStart(2, '0');
     hd.classList.remove('mega-open');
   };
 
-  // 1. OPEN ON HOVER (cursor lejakr)
+  // 1. OPEN ON HOVER (desktop only)
   [li, m].forEach(el => {
-    el.addEventListener('mouseenter', open);
-    el.addEventListener('mouseleave', close);
+    el.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 960) open();
+    });
+    el.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 960) close();
+    });
   });
 
-  // 2. TOGGLE ON CLICK (click pr bhi khule aur video page pr na jaye)
+  // 2. TOGGLE ON CLICK: Mobile expands accordion; Desktop toggles mega dropdown
   if (a) {
     a.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      if (m.classList.contains('open')) {
-        immediateClose();
+      const isMobile = window.innerWidth <= 960;
+      if (isMobile) {
+        const willOpen = !li.classList.contains('nms-open');
+        li.classList.toggle('nms-open', willOpen);
       } else {
-        open();
+        if (m.classList.contains('open')) {
+          immediateClose();
+        } else {
+          open();
+        }
       }
     });
   }
@@ -803,6 +832,7 @@ const pad = n => String(n + 1).padStart(2, '0');
   document.addEventListener('click', (e) => {
     if (!li.contains(e.target) && !m.contains(e.target)) {
       immediateClose();
+      li.classList.remove('nms-open');
     }
   });
 
@@ -825,874 +855,3 @@ const pad = n => String(n + 1).padStart(2, '0');
   });
 })();
 
-/* ══════════════════════════════════════════════════════════
-   EXPANDED SERVICE LANDING PAGE RENDERER
-   Renders 15 high impact sections inside #svc
-══════════════════════════════════════════════════════════ */
-(function renderServicePage() {
-  const root = $('#svc');
-  if (!root) return;
-
-  const urlParam = new URLSearchParams(location.search).get('s');
-  const matchedIdx = SERVICES.findIndex(s => s.slug === urlParam);
-  const k = matchedIdx >= 0 ? matchedIdx : 0;
-  const s = SERVICES[k];
-  const nx = SERVICES[(k + 1) % SERVICES.length];
-  const pv = SERVICES[(k + SERVICES.length - 1) % SERVICES.length];
-
-  document.title = `${s.title} — Analytic Insider`;
-  root.style.setProperty('--h', s.h);
-  root.style.setProperty('--card-bg', s.cardBg);
-  root.style.setProperty('--card-accent', s.cardAccent);
-
-  /* Capabilities HTML — three distinct visual treatments (grid / rows / tiles)
-     chosen via s.capStyle so pages don't all repeat the same card layout */
-  function buildCapabilitiesGrid(sv) {
-    return `<div class="sv-cards-grid">${sv.capabilities.map((c, i) => `
-      <div class="sv-card-item rv-fade" style="--di:${i * 60}ms">
-        <div class="sv-card-badge">${pad(i)}</div>
-        <h3 class="sv-card-heading">${c.title}</h3>
-        <p class="sv-card-copy">${c.desc}</p>
-      </div>
-    `).join('')}</div>`;
-  }
-  function buildCapabilitiesRows(sv) {
-    return `<div class="sv-cap-rows">${sv.capabilities.map((c, i) => `
-      <div class="sv-cap-row" style="--di:${i * 65}ms">
-        <span class="sv-cap-row-num">${pad(i)}</span>
-        <div class="sv-cap-row-body">
-          <h3 class="sv-card-heading">${c.title}</h3>
-          <p class="sv-card-copy">${c.desc}</p>
-        </div>
-      </div>
-    `).join('')}</div>`;
-  }
-  function buildCapabilitiesTiles(sv) {
-    return `<div class="sv-cap-tiles">${sv.capabilities.map((c, i) => `
-      <div class="sv-cap-tile ${i % 3 === 0 ? 'is-wide' : ''} rv-fade" style="--di:${i * 60}ms">
-        <div class="sv-card-badge">${pad(i)}</div>
-        <h3 class="sv-card-heading">${c.title}</h3>
-        <p class="sv-card-copy">${c.desc}</p>
-      </div>
-    `).join('')}</div>`;
-  }
-  const CAP_BUILDERS = { grid: buildCapabilitiesGrid, rows: buildCapabilitiesRows, tiles: buildCapabilitiesTiles };
-  const capabilitiesHTML = (CAP_BUILDERS[s.capStyle] || buildCapabilitiesGrid)(s);
-
-  /* Process steps HTML — three distinct visual treatments so every
-     service page does not look identical, chosen via s.processStyle */
-  function buildProcessGrid(sv) {
-    return `
-      <div class="sv-proc-grid">
-        ${sv.process.map((step, i) => `
-          <div class="sv-proc-step rv-fade" style="--di:${i * 70}ms">
-            <div class="sv-proc-number">${step.step}</div>
-            <div class="sv-proc-content">
-              <h4 class="sv-proc-title">${step.title}</h4>
-              <p class="sv-proc-desc">${step.desc}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  function buildProcessTimeline(sv) {
-    return `
-      <div class="sv-proc-timelinev">
-        <div class="sv-proc-v-line"><span class="sv-proc-v-line-fill"></span></div>
-        ${sv.process.map((step, i) => `
-          <div class="sv-proc-v-item" style="--di:${i * 90}ms">
-            <div class="sv-proc-v-dot">${step.step}</div>
-            <div class="sv-proc-v-card">
-              <h4 class="sv-proc-title">${step.title}</h4>
-              <p class="sv-proc-desc">${step.desc}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  function buildProcessRail(sv) {
-    return `
-      <div class="sv-proc-rows">
-        ${sv.process.map((step, i) => `
-          <div class="sv-proc-row" style="--di:${i * 80}ms">
-            <span class="sv-proc-row-num">${step.step}</span>
-            <div class="sv-proc-row-content">
-              <h4 class="sv-proc-title">${step.title}</h4>
-              <p class="sv-proc-desc">${step.desc}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  /* Process variant: ORBIT — steps arranged as nodes around a central hub */
-  function buildProcessOrbit(sv) {
-    const n = sv.process.length;
-    return `
-      <div class="sv-proc-orbit">
-        <div class="sv-proc-orbit-hub">
-          <span class="sv-proc-orbit-hub-label">Process</span>
-          <strong class="sv-proc-orbit-hub-title">${sv.title.split(' ').slice(0, 2).join(' ')}</strong>
-        </div>
-        <div class="sv-proc-orbit-ring" aria-hidden="true"></div>
-        ${sv.process.map((step, i) => {
-          const angle = (360 / n) * i - 90;
-          const rad = angle * Math.PI / 180;
-          const dx = Math.round(Math.cos(rad) * 240);
-          const dy = Math.round(Math.sin(rad) * 240);
-          return `
-          <div class="sv-proc-orbit-node" style="--dx:${dx}px; --dy:${dy}px; --di:${i * 90}ms">
-            <div class="sv-proc-orbit-card">
-              <span class="sv-proc-orbit-num">${step.step}</span>
-              <h4 class="sv-proc-title">${step.title}</h4>
-              <p class="sv-proc-desc">${step.desc}</p>
-            </div>
-          </div>`;
-        }).join('')}
-      </div>
-    `;
-  }
-
-  /* Process variant: CASCADE — diagonal alternating waterfall of cards */
-  function buildProcessCascade(sv) {
-    return `
-      <div class="sv-proc-cascade">
-        <div class="sv-proc-cascade-spine" aria-hidden="true"></div>
-        ${sv.process.map((step, i) => `
-          <div class="sv-proc-cascade-item ${i % 2 === 0 ? 'is-left' : 'is-right'}" style="--di:${i * 100}ms">
-            <div class="sv-proc-cascade-card">
-              <span class="sv-proc-cascade-num">${step.step}</span>
-              <h4 class="sv-proc-title">${step.title}</h4>
-              <p class="sv-proc-desc">${step.desc}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  /* Process variant: STACK — a fanned deck of cards that straightens on scroll */
-  function buildProcessStack(sv) {
-    const n = sv.process.length;
-    return `
-      <div class="sv-proc-stack">
-        ${sv.process.map((step, i) => `
-          <div class="sv-proc-stack-card" style="--di:${i * 80}ms; --rot:${(i - (n - 1) / 2) * 3.2}deg; --ofs:${(i - (n - 1) / 2) * 14}px">
-            <span class="sv-proc-stack-num">${step.step}</span>
-            <div class="sv-proc-stack-body">
-              <h4 class="sv-proc-title">${step.title}</h4>
-              <p class="sv-proc-desc">${step.desc}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  /* Process variant: CHEVRON — arrow-shaped steps flowing left to right */
-  function buildProcessChevron(sv) {
-    return `
-      <div class="sv-proc-chevron">
-        ${sv.process.map((step, i) => `
-          <div class="sv-proc-chevron-item" style="--di:${i * 90}ms">
-            <div class="sv-proc-chevron-shape">
-              <span class="sv-proc-chevron-num">${step.step}</span>
-            </div>
-            <h4 class="sv-proc-title">${step.title}</h4>
-            <p class="sv-proc-desc">${step.desc}</p>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  /* Process variant: STAIRCASE — ascending steps climbing left to right */
-  function buildProcessStaircase(sv) {
-    return `
-      <div class="sv-proc-stair">
-        ${sv.process.map((step, i) => `
-          <div class="sv-proc-stair-item" style="--di:${i * 90}ms; --lvl:${i}">
-            <div class="sv-proc-stair-card">
-              <span class="sv-proc-stair-num">${step.step}</span>
-              <h4 class="sv-proc-title">${step.title}</h4>
-              <p class="sv-proc-desc">${step.desc}</p>
-            </div>
-            <div class="sv-proc-stair-block" aria-hidden="true"></div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  /* Process variant: HEX — honeycomb cluster of hexagonal step tiles */
-  function buildProcessHex(sv) {
-    return `
-      <div class="sv-proc-hex">
-        ${sv.process.map((step, i) => `
-          <div class="sv-proc-hex-item ${i % 2 === 1 ? 'is-offset' : ''}" style="--di:${i * 85}ms">
-            <div class="sv-proc-hex-shape">
-              <span class="sv-proc-hex-num">${step.step}</span>
-            </div>
-            <h4 class="sv-proc-title">${step.title}</h4>
-            <p class="sv-proc-desc">${step.desc}</p>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  /* Process variant: COMPACT — perforated ticket stub cards in a tight grid */
-  function buildProcessCompact(sv) {
-    return `
-      <div class="sv-proc-compact">
-        ${sv.process.map((step, i) => `
-          <div class="sv-proc-compact-card" style="--di:${i * 70}ms">
-            <div class="sv-proc-compact-num">${step.step}</div>
-            <div class="sv-proc-compact-perf" aria-hidden="true"></div>
-            <div class="sv-proc-compact-body">
-              <h4 class="sv-proc-title">${step.title}</h4>
-              <p class="sv-proc-desc">${step.desc}</p>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  const PROCESS_BUILDERS = {
-    timeline: buildProcessTimeline,
-    rail: buildProcessRail,
-    grid: buildProcessGrid,
-    orbit: buildProcessOrbit,
-    cascade: buildProcessCascade,
-    stack: buildProcessStack,
-    chevron: buildProcessChevron,
-    staircase: buildProcessStaircase,
-    hex: buildProcessHex,
-    compact: buildProcessCompact
-  };
-  const processHTML = (PROCESS_BUILDERS[s.processStyle] || buildProcessGrid)(s);
-
-  /* Business impact HTML */
-  const impactHTML = s.impact.map((imp, i) => `
-    <div class="sv-impact-card rv-fade" style="--di:${i * 70}ms">
-      <div class="sv-impact-num">${imp.metric}</div>
-      <h4 class="sv-impact-title">${imp.title}</h4>
-      <p class="sv-impact-desc">${imp.desc}</p>
-    </div>
-  `).join('');
-
-  /* Why choose us HTML */
-  const whyUsHTML = s.whyUs.map((reason, i) => `
-    <div class="sv-why-row rv-fade" style="--di:${i * 60}ms">
-      <div class="sv-why-icon-box">
-        <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
-          <path d="M4 10.5L8 14.5L16 5.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <p class="sv-why-text">${reason}</p>
-    </div>
-  `).join('');
-
-  /* Deliverables checklist HTML */
-  const deliverablesHTML = s.deliverables.map((item, i) => `
-    <div class="sv-deliv-item rv-fade" style="--di:${i * 60}ms">
-      <div class="sv-deliv-dot"></div>
-      <span class="sv-deliv-text">${item}</span>
-    </div>
-  `).join('');
-
-  /* FAQs HTML */
-  const faqsHTML = s.faqs.map((faq, i) => `
-    <div class="sv-faq-item" data-open="false">
-      <button class="sv-faq-btn" type="button" aria-expanded="false">
-        <span class="sv-faq-question">${faq.q}</span>
-        <svg class="sv-faq-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
-      <div class="sv-faq-answer">
-        <p>${faq.a}</p>
-      </div>
-    </div>
-  `).join('');
-
-  /* Testimonials HTML */
-  const reviewsHTML = REVIEWS.map(r => `
-    <div class="sv-testi-card">
-      <div class="sv-testi-stars">★★★★★</div>
-      <p class="sv-testi-quote">${r.text}</p>
-      <div class="sv-testi-author">
-        <div class="sv-testi-avatar" style="background:${r.color}20;color:${r.color}">${r.init}</div>
-        <div class="sv-testi-info">
-          <strong class="sv-testi-name">${r.name}</strong>
-          <span class="sv-testi-role">${r.role}, ${r.company}</span>
-        </div>
-      </div>
-    </div>
-  `).join('');
-
-  /* Homepage style 5 column grand footer HTML */
-  const grandFooterHTML = `
-  <footer class="site-footer" id="siteFooter">
-    <div class="footer-ambient-glow" aria-hidden="true"></div>
-    <div class="footer-inner">
-      <div class="footer-grid-grand">
-
-        <!-- Col 1: Brand & Identity -->
-        <div class="footer-col footer-col-brand">
-          <a class="footer-brand" href="index.html">
-            <span class="footer-brand-title">ANALYTIC INSIDER</span>
-            <span class="footer-brand-dot"></span>
-          </a>
-          <p class="footer-brand-tagline">
-            Architecture, artificial intelligence, and bespoke digital experiences crafted for companies building the future.
-          </p>
-          <a class="footer-location-row" href="https://maps.google.com/?q=Dearborn,+MI+48128,+USA" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Dearborn, MI 48128, USA — working worldwide</span>
-          </a>
-          <div class="footer-status-badge">
-            <span class="status-live-dot"></span>
-            <span>Accepting new clients</span>
-          </div>
-          <div class="footer-social-wrapper">
-            <span class="footer-social-label">Connect with us</span>
-            <div class="footer-social-links">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.25c-.91 0-1.64.73-1.64 1.64s.73 1.64 1.64 1.64 1.64-.73 1.64-1.64-.73-1.64-1.64-1.64Z"/></svg>
-              </a>
-              <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Twitter">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Col 2: Services -->
-        <div class="footer-col">
-          <h3 class="footer-heading">Services</h3>
-          <ul class="footer-links-list">
-            <li><a href="service.html?s=custom-software-development">Custom Software Development</a></li>
-            <li><a href="service.html?s=website-development">Website Development</a></li>
-            <li><a href="service.html?s=mobile-app-development">Mobile App Development</a></li>
-            <li><a href="service.html?s=ai-development">AI & Machine Learning</a></li>
-            <li><a href="service.html?s=product-design-development">Product & UI UX Design</a></li>
-            <li><a href="service.html?s=digital-marketing-branding">Marketing & Branding</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Technologies -->
-        <div class="footer-col">
-          <h3 class="footer-heading">Technologies</h3>
-          <ul class="footer-links-list">
-            <li><a href="#techStack">React & Next.js</a></li>
-            <li><a href="#techStack">Python & PyTorch</a></li>
-            <li><a href="#techStack">Node.js & TypeScript</a></li>
-            <li><a href="#techStack">Flutter & Swift</a></li>
-            <li><a href="#techStack">AWS & Azure Cloud</a></li>
-            <li><a href="#techStack">PostgreSQL & MongoDB</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 4: Company -->
-        <div class="footer-col">
-          <h3 class="footer-heading">Company</h3>
-          <ul class="footer-links-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Studio</a></li>
-            <li><a href="portfolio.html">Featured Work</a></li>
-            <li><a href="#process">Engineering Process</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 5: Direct Contact -->
-        <div class="footer-col footer-col-contact">
-          <h3 class="footer-heading">Direct Inquiries</h3>
-          <div class="footer-contact-details">
-            <a href="mailto:info@analyticinsider.com" class="footer-link-highlight">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>info@analyticinsider.com</span>
-            </a>
-            <a href="tel:+13136551635" class="footer-link-highlight">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+1 (313) 655-1635</span>
-            </a>
-            <a href="tel:+923332159764" class="footer-link-highlight">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+92 333 2159764</span>
-            </a>
-            <div class="footer-reply-badge">
-              <span class="reply-clock-icon"></span>
-              <span>Average response: under 24 hours</span>
-            </div>
-            <div class="footer-avail-pill">
-              <span class="avail-dot"></span>
-              <span>Accepting New Clients</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Footer Bottom -->
-      <div class="footer-bottom-bar">
-        <div class="footer-bottom-left">
-          <span>&copy; 2026 Analytic Insider. All rights reserved.</span>
-          <span class="footer-bottom-sep">&bull;</span>
-          <span>Software &middot; Web &middot; AI &middot; Mobile</span>
-        </div>
-        <div class="footer-bottom-right">
-          <button class="footer-back-to-top" id="svBackToTop" type="button" aria-label="Back to top">
-            <span>Back to top</span>
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </footer>
-  `;
-
-  // Render complete landing page
-  root.innerHTML = `
-    <!-- 1. HERO SECTION -->
-    <section class="sv-hero-wrap">
-      <div class="sv-hero-bg-glow" style="background:radial-gradient(ellipse 700px 420px at 50% 20%, ${s.cardAccent}14, transparent 75%)"></div>
-      <div class="sv-inner sv-hero-grid">
-        <div class="sv-hero-left">
-          <div class="sv-live-badge">
-            <span class="sv-live-pulse" style="background:${s.cardAccent}"></span>
-            <span>Enterprise Engineering &middot; Production Ready</span>
-          </div>
-          <h1 class="sv-hero-title">${s.title}</h1>
-          <p class="sv-hero-lead">${s.tag}</p>
-          <div class="sv-hero-actions">
-            <button class="sv-main-btn" type="button" onclick="document.dispatchEvent(new Event('analytic:open-drawer'))">
-              Start Your Project
-              <svg viewBox="0 0 20 20" width="16" height="16" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <a class="sv-ghost-btn" href="#capabilities">Explore Capabilities</a>
-          </div>
-        </div>
-        <div class="sv-hero-right">
-          <div class="sv-hero-card">
-            <span class="sv-card-tag" style="color:${s.cardAccent};border-color:${s.cardAccent}35">Featured Service</span>
-            <h3 class="sv-card-name">${s.title}</h3>
-            <p class="sv-card-summary">${s.overview[0]}</p>
-            <div class="sv-card-pills">
-              ${s.tech.slice(0, 6).map(t => `<span class="sv-card-pill" style="border-color:rgba(23,19,14,0.12);color:#17130E">${t}</span>`).join('')}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. METRICS BAR (Software Kitne Build Kre Abtk) -->
-    <section class="sv-metrics-strip">
-      <div class="sv-inner sv-metrics-grid">
-        <div class="sv-metric-item">
-          <span class="sv-metric-number" style="color:${s.cardAccent}">${s.stats.built}</span>
-          <span class="sv-metric-title">Projects Built & Deployed</span>
-        </div>
-        <div class="sv-metric-sep"></div>
-        <div class="sv-metric-item">
-          <span class="sv-metric-number">${s.stats.experience}</span>
-          <span class="sv-metric-title">Senior Engineering Tenure</span>
-        </div>
-        <div class="sv-metric-sep"></div>
-        <div class="sv-metric-item">
-          <span class="sv-metric-number">${s.stats.rating}</span>
-          <span class="sv-metric-title">Average Client Rating</span>
-        </div>
-        <div class="sv-metric-sep"></div>
-        <div class="sv-metric-item">
-          <span class="sv-metric-number">${s.stats.onTime}</span>
-          <span class="sv-metric-title">On Time Sprint Delivery</span>
-        </div>
-        <div class="sv-metric-sep"></div>
-        <div class="sv-metric-item">
-          <span class="sv-metric-number">${s.stats.retention}</span>
-          <span class="sv-metric-title">Client Retention Rate</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. STRATEGIC OVERVIEW (Section 01) -->
-    <section class="sv-section sv-overview-wrap sv-scroll-sect" id="overview">
-      <div class="sv-inner sv-overview-columns">
-        <div class="sv-overview-text">
-          <div class="sv-sec-badge">
-            <span class="sv-eyebrow" style="color:${s.cardAccent}">Strategic Overview</span>
-          </div>
-          <h2 class="sv-section-title">The Foundation Behind High Performance ${s.title}</h2>
-          ${s.overview.map(paragraph => `<p class="sv-body-p">${b(paragraph)}</p>`).join('')}
-        </div>
-        <div class="sv-overview-aside">
-          <div class="sv-deliverable-box">
-            <h4 class="sv-box-title" style="color:${s.cardAccent}">Production Standards</h4>
-            <div class="sv-deliverable-list">
-              ${deliverablesHTML}
-            </div>
-            <button class="sv-box-btn" type="button" onclick="document.dispatchEvent(new Event('analytic:open-drawer'))" style="background:#17130E;color:#ffffff">
-              Schedule Architecture Review
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. CAPABILITIES MATRIX (Section 02) -->
-    <section class="sv-section sv-capabilities-wrap sv-scroll-sect" id="capabilities">
-      <div class="sv-inner">
-        <div class="sv-section-header">
-          <div class="sv-sec-badge">
-            <span class="sv-eyebrow" style="color:${s.cardAccent}">Core Capabilities</span>
-          </div>
-          <h2 class="sv-section-title">What We Build Under This Service</h2>
-          <p class="sv-section-sub">Comprehensive digital solutions engineered to eliminate operational bottlenecks, capture new market share, and deliver scalable value.</p>
-        </div>
-        ${capabilitiesHTML}
-      </div>
-    </section>
-
-    <!-- 5. ENGINEERING PROCESS (Section 03) -->
-    <section class="sv-section sv-process-wrap sv-scroll-sect sv-process-style-${s.processStyle}" id="process">
-      <div class="sv-inner">
-        <div class="sv-section-header">
-          <div class="sv-sec-badge">
-            <span class="sv-eyebrow" style="color:#C99B5C">Engineering Methodology</span>
-          </div>
-          <h2 class="sv-section-title">Our Structured Six Stage Delivery Roadmap</h2>
-          <p class="sv-section-sub">Every engagement follows a rigorous technical process ensuring complete transparency, locked milestones, and working software at every stage.</p>
-        </div>
-        <div class="sv-process-body">
-          ${processHTML}
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. TECH STACK (Section 04 - Toned down light background) -->
-    <section class="sv-section sv-tech-wrap sv-scroll-sect" id="techStack">
-      <div class="sv-inner">
-        <div class="sv-section-header">
-          <div class="sv-sec-badge">
-            <span class="sv-eyebrow" style="color:${s.cardAccent}">Architecture & Tools</span>
-          </div>
-          <h2 class="sv-section-title">Battle Tested Technology Stack</h2>
-          <p class="sv-section-sub">We deliberately select modern, production proven frameworks that maximize runtime performance, reduce maintenance costs, and scale gracefully.</p>
-        </div>
-        <div class="sv-tech-chips-row">
-          ${s.tech.map((t, idx) => `
-            <div class="sv-tech-pill" style="--di:${idx * 35}ms">
-              <span class="sv-pill-dot" style="background:${s.cardAccent}"></span>
-              <span class="sv-pill-label">${t}</span>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. BUSINESS IMPACT & ROI (Section 05) -->
-    <section class="sv-section sv-impact-wrap sv-scroll-sect" id="impact">
-      <div class="sv-inner">
-        <div class="sv-section-header">
-          <div class="sv-sec-badge">
-            <span class="sv-eyebrow" style="color:${s.cardAccent}">Quantifiable Impact</span>
-          </div>
-          <h2 class="sv-section-title">Business Outcomes You Can Count On</h2>
-          <p class="sv-section-sub">We measure success in tangible economic returns, reduced labor overhead, elevated conversion rates, and rock solid uptime.</p>
-        </div>
-        <div class="sv-impact-grid">
-          ${impactHTML}
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. WHY CHOOSE ANALYTIC INSIDER (Section 06) -->
-    <section class="sv-section sv-why-wrap sv-scroll-sect" id="whyUs">
-      <div class="sv-inner sv-why-container">
-        <div class="sv-why-left">
-          <div class="sv-sec-badge">
-            <span class="sv-eyebrow" style="color:${s.cardAccent}">The Analytic Advantage</span>
-          </div>
-          <h2 class="sv-section-title">Why Industry Leaders Choose Us for ${s.title}</h2>
-          <p class="sv-body-p">We are not a bloated agency that sells a project and hands it to junior contractors. You partner with senior engineers who understand architecture, business strategy, and clean code.</p>
-          <div class="sv-why-trust-badge">
-            <strong>100% In House Senior Engineering</strong>
-            <span>Based in Dearborn, Michigan and collaborating with ambitious enterprises worldwide.</span>
-          </div>
-        </div>
-        <div class="sv-why-right">
-          ${whyUsHTML}
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. CLIENT REVIEWS CAROUSEL (Section 07) -->
-    <section class="sv-section sv-reviews-wrap sv-scroll-sect" id="reviews">
-      <div class="sv-inner">
-        <div class="sv-section-header">
-          <div class="sv-sec-badge">
-            <span class="sv-eyebrow" style="color:${s.cardAccent}">Client Voices</span>
-          </div>
-          <h2 class="sv-section-title">Feedback from Founders and Enterprise Leaders</h2>
-        </div>
-        <div class="sv-reviews-viewport" id="svReviewsViewport">
-          <div class="sv-reviews-track" id="svReviewsTrack">
-            ${reviewsHTML}
-          </div>
-        </div>
-        <div class="sv-reviews-controls">
-          <button class="sv-ctrl-arrow" id="svRevPrev" type="button" aria-label="Previous Testimonial">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          <div class="sv-ctrl-dots" id="svRevDots"></div>
-          <button class="sv-ctrl-arrow" id="svRevNext" type="button" aria-label="Next Testimonial">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 11. DETAILED FAQS -->
-    <section class="sv-section sv-faq-wrap sv-scroll-sect" id="faqs">
-      <div class="sv-inner">
-        <div class="sv-section-header">
-          <div class="sv-sec-badge">
-            <span class="sv-eyebrow" style="color:${s.cardAccent}">Clear Answers</span>
-          </div>
-          <h2 class="sv-section-title">Frequently Asked Questions</h2>
-          <p class="sv-section-sub">Straightforward answers regarding our engineering standards, timelines, commercial models, and code ownership.</p>
-        </div>
-        <div class="sv-faq-accordion">
-          ${faqsHTML}
-        </div>
-      </div>
-    </section>
-
-    <!-- 12. EXACT HOMEPAGE START A PROJECT CTA (sap-section) -->
-    <section class="sap-section" id="startProject">
-      <div class="sap-glow-1" aria-hidden="true"></div>
-      <div class="sap-pattern" aria-hidden="true"></div>
-
-      <div class="sap-inner" id="sapInner">
-        <div class="sap-badge">
-          <span class="sap-badge-dot"></span>
-          <span>Currently accepting new projects</span>
-        </div>
-        <p class="sap-eyebrow">Start a Project</p>
-        <h2 class="sap-title">Got an idea? Let's build <em>something real.</em></h2>
-        <p class="sap-subtitle">Tell us what you are trying to build and we will reply within a day with next steps, timeline and a clear estimate.</p>
-
-        <div class="sap-cta-row">
-          <button class="sap-btn-primary" type="button" onclick="document.dispatchEvent(new Event('analytic:open-drawer'))">
-            Start a Project
-            <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <a class="sap-btn-secondary" href="mailto:info@analyticinsider.com">
-            Email Us Directly
-          </a>
-        </div>
-
-        <div class="sap-meta-row">
-          <div class="sap-meta-item">
-            <div class="sap-meta-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <span>Average reply under 24 hours</span>
-          </div>
-          <div class="sap-meta-item">
-            <div class="sap-meta-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-            </div>
-            <span>Accepting new clients</span>
-          </div>
-          <div class="sap-meta-item">
-            <div class="sap-meta-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <span>Dearborn, MI — working worldwide</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 13. HOMEPAGE 5-COLUMN GRAND FOOTER -->
-    ${grandFooterHTML}
-  `;
-
-  /* ── Interactive Setup ── */
-
-  // 1. Bidirectional Scroll In / Scroll Out Animation Engine
-  const scrollSects = Array.from(root.querySelectorAll('.sv-scroll-sect'));
-  function evalScrollAnimations() {
-    const vh = window.innerHeight;
-    scrollSects.forEach(sect => {
-      const rect = sect.getBoundingClientRect();
-      if (rect.top < vh * 0.90 && rect.bottom > vh * 0.10) {
-        sect.setAttribute('data-scroll-state', 'in');
-      } else if (rect.top >= vh * 0.90) {
-        sect.setAttribute('data-scroll-state', 'below');
-      } else if (rect.bottom <= vh * 0.10) {
-        sect.setAttribute('data-scroll-state', 'above');
-      }
-    });
-  }
-  window.addEventListener('scroll', evalScrollAnimations, { passive: true });
-  window.addEventListener('resize', evalScrollAnimations);
-  requestAnimationFrame(evalScrollAnimations);
-
-  // 1b. Start-a-Project CTA — animate in only once it actually scrolls
-  // into view (matches homepage behaviour), instead of being pre-visible.
-  const sapInner = root.querySelector('#sapInner');
-  if (sapInner && 'IntersectionObserver' in window) {
-    const sapObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('sap-in');
-          sapObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    sapObserver.observe(sapInner);
-  } else if (sapInner) {
-    sapInner.classList.add('sap-in');
-  }
-
-  // 2. Interactive Accordion for FAQs
-  root.querySelectorAll('.sv-faq-item').forEach(item => {
-    const btn = item.querySelector('.sv-faq-btn');
-    btn.addEventListener('click', () => {
-      const isCurrentlyOpen = item.dataset.open === 'true';
-      root.querySelectorAll('.sv-faq-item').forEach(i => {
-        i.dataset.open = 'false';
-        i.querySelector('.sv-faq-btn')?.setAttribute('aria-expanded', 'false');
-      });
-      if (!isCurrentlyOpen) {
-        item.dataset.open = 'true';
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-
-  // 3. Testimonials Carousel
-  (function initReviewsCarousel() {
-    const track = document.getElementById('svReviewsTrack');
-    const viewport = document.getElementById('svReviewsViewport');
-    const dotsBox = document.getElementById('svRevDots');
-    const prevBtn = document.getElementById('svRevPrev');
-    const nextBtn = document.getElementById('svRevNext');
-    if (!track || !viewport || !dotsBox) return;
-
-    const cards = Array.from(track.querySelectorAll('.sv-testi-card'));
-    let activeIdx = 0;
-    let autoplayTimer = null;
-
-    cards.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'sv-ctrl-dot' + (i === 0 ? ' active' : '');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', `Testimonial ${i + 1}`);
-      dot.addEventListener('click', () => { goTo(i); restart(); });
-      dotsBox.appendChild(dot);
-    });
-    const dots = Array.from(dotsBox.querySelectorAll('.sv-ctrl-dot'));
-
-    function render() {
-      const card = cards[0];
-      if (!card) return;
-      const cardWidth = card.offsetWidth + 20; // width + gap
-      track.style.transform = `translateX(-${activeIdx * cardWidth}px)`;
-      cards.forEach((c, i) => c.classList.toggle('active', i === activeIdx));
-      dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
-    }
-
-    function goTo(idx) {
-      activeIdx = (idx + cards.length) % cards.length;
-      render();
-    }
-
-    function restart() {
-      clearInterval(autoplayTimer);
-      autoplayTimer = setInterval(() => goTo(activeIdx + 1), 4800);
-    }
-
-    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(activeIdx - 1); restart(); });
-    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(activeIdx + 1); restart(); });
-
-    window.addEventListener('resize', render);
-    restart();
-    render();
-  })();
-
-  // 4. Back to top button
-  const btt = document.getElementById('svBackToTop');
-  if (btt) {
-    btt.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // 5. Count-Up Animation for Stat Numbers (Metrics Strip + Impact Cards)
-  (function initCountUps() {
-    function animateCountUp(el) {
-      if (!el || el.dataset.counted === 'true') return;
-      const raw = el.textContent.trim();
-      // Split into leading text, a number (int or decimal), and trailing text.
-      // e.g. "120+" -> ["", "120", "+"], "4.9 / 5" -> ["", "4.9", " / 5"],
-      // "8 Years" -> ["", "8", " Years"]. Non-numeric values (e.g. "Zero")
-      // are left untouched — no count, just the pop-in via CSS.
-      const match = raw.match(/^([^\d]*)(\d+(?:\.\d+)?)(.*)$/);
-      if (!match) { el.classList.add('is-counted'); return; }
-      const [, prefix, numStr, suffix] = match;
-      const target = parseFloat(numStr);
-      const decimals = (numStr.split('.')[1] || '').length;
-      el.dataset.counted = 'true';
-      const duration = 1300;
-      const startTime = performance.now();
-      function tick(now) {
-        const p = Math.min((now - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
-        el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
-        if (p < 1) {
-          requestAnimationFrame(tick);
-        } else {
-          el.textContent = prefix + target.toFixed(decimals) + suffix;
-          el.classList.add('is-counted');
-          setTimeout(() => el.classList.remove('is-counted'), 320);
-        }
-      }
-      requestAnimationFrame(tick);
-    }
-
-    const targets = root.querySelectorAll('.sv-metric-number, .sv-impact-num');
-    if (!targets.length) return;
-
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCountUp(entry.target);
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.4 });
-      targets.forEach(el => io.observe(el));
-    } else {
-      targets.forEach(animateCountUp);
-    }
-  })();
-
-})();
