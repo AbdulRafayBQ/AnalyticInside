@@ -75,7 +75,10 @@
       menuBtn.setAttribute('aria-expanded', String(open));
     });
     nav.querySelectorAll('a').forEach(l => {
-      l.addEventListener('click', () => {
+      l.addEventListener('click', (e) => {
+        if (l.classList.contains('nav-services-toggle') || l.closest('.nav-mobile-services-toggle')) {
+          return;
+        }
         nav.classList.remove('open');
         menuBtn.classList.remove('open');
         menuBtn.setAttribute('aria-expanded', 'false');
