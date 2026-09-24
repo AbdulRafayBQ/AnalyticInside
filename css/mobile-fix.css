@@ -140,6 +140,9 @@ img, video, svg, canvas, iframe {
     border: 1px solid rgba(23, 19, 14, 0.08) !important;
     box-shadow: 0 20px 60px rgba(23, 19, 14, 0.15) !important;
     padding: 12px !important;
+    max-height: calc(100vh - 96px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
     z-index: 999 !important;
     opacity: 1 !important;
     visibility: visible !important;
