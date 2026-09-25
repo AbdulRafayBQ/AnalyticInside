@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPv4Mall UI Revamp and Accessibility Case Study | Analytic Insider</title>
+<meta name="description" content="How Analytic Insider partnered with Basit Hussain to redesign IPv4Mall, a global IPv4 address marketplace, making buyer and seller journeys clearer and improving accessibility across all five Regional Internet Registries.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Analytic Insider">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPv4Mall UI Revamp and Accessibility Case Study">
+<meta property="og:description" content="A complete frontend revamp of a global IPv4 brokerage, built around clarity, trust and accessibility.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IPv4Mall UI Revamp and Accessibility Case Study">
+<meta name="twitter:description" content="A complete frontend revamp of a global IPv4 brokerage, built around clarity, trust and accessibility.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "IPv4Mall UI Revamp and Accessibility Case Study",
+  "description": "How Analytic Insider partnered with Basit Hussain to redesign IPv4Mall, a global IPv4 address marketplace, improving accessibility, trust and buyer and seller journeys across all five Regional Internet Registries.",
+  "author": { "@type": "Organization", "name": "Analytic Insider" },
+  "about": "IPv4Mall marketplace frontend redesign"
+}
+</script>
+<style>
+/* ============================================================
+   ANALYTIC INSIDER — Case Study Template
+   Theme tokens match main site exactly:
+   Fonts  : Outfit (headings/display) + Inter (body)
+   Base   : #FAFAF8  Paper white
+   Ink    : #17130E  Near-black
+   Gold   : #C99B5C  Primary accent
+   Muted  : #646460  Body copy
+   Line   : rgba(23,19,14,.10)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.001ms!important; transition-duration:.001ms!important; }
+}
+
+:root {
+  --paper:      #FAFAF8;
+  --white:      #FFFFFF;
+  --ink:        #17130E;
+  --ink-2:      #2b2723;
+  --muted:      #646460;
+  --muted-2:    #8c887b;
+  --gold:       #C99B5C;
+  --gold-deep:  #9C7440;
+  --gold-pale:  rgba(201,155,92,.12);
+  --gold-pale2: rgba(201,155,92,.22);
+  --line:       rgba(23,19,14,.10);
+  --line-2:     rgba(23,19,14,.06);
+  --r-s:        10px;
+  --r-m:        16px;
+  --r-l:        24px;
+  --r-xl:       32px;
+  --ease:       cubic-bezier(.16,.84,.32,1);
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.container { width: min(1140px, calc(100% - 48px)); margin: auto; }
+h1,h2,h3,h4 { font-family: 'Outfit', sans-serif; margin: 0; color: var(--ink); }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+/* ── ICONS ── */
+.ico { width: 18px; height: 18px; fill: none; stroke: var(--gold-deep); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; display: block; }
+svg.draw path, svg.draw circle, svg.draw rect, svg.draw line { transition: stroke-dashoffset 1.1s var(--ease); }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .75s var(--ease),transform .75s var(--ease); }
+.reveal.in { opacity:1; transform:none; }
+.reveal-l { opacity:0; transform:translateX(-20px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal-l.in { opacity:1; transform:none; }
+.reveal-r { opacity:0; transform:translateX(20px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+.reveal-r.in { opacity:1; transform:none; }
+.stagger > * { opacity:0; transform:translateY(18px); transition:opacity .65s var(--ease),transform .65s var(--ease); }
+.stagger.in > * { opacity:1; transform:none; }
+.stagger.in > *:nth-child(1){transition-delay:.04s}
+.stagger.in > *:nth-child(2){transition-delay:.12s}
+.stagger.in > *:nth-child(3){transition-delay:.20s}
+.stagger.in > *:nth-child(4){transition-delay:.28s}
+.stagger.in > *:nth-child(5){transition-delay:.36s}
+.stagger.in > *:nth-child(6){transition-delay:.44s}
+
+/* ── NAV ── */
+header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250,250,248,.90);
+  backdrop-filter: blur(18px) saturate(150%);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  height: 72px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 15px;
+  letter-spacing: -.3px; color: var(--ink); display: flex; align-items: center; gap: 10px;
+}
+.nav-brand-mark {
+  width: 32px; height: 32px; border-radius: 8px; background: var(--ink);
+  display: grid; place-items: center;
+}
+.nav-brand-mark svg { width: 16px; height: 16px; fill: var(--gold); }
+.nav-sub { font-size: 9px; color: var(--gold-deep); font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; margin-top: 2px; }
+
+nav.links { display: flex; align-items: center; gap: 26px; }
+nav.links a { font-size: 12.5px; font-weight: 550; color: var(--muted); position: relative; padding: 3px 0; transition: color .25s; }
+nav.links a:not(.pill)::after { content:""; position:absolute; left:0; right:100%; bottom:-2px; height:1.5px; background:var(--gold); transition:right .3s var(--ease); }
+nav.links a:not(.pill):hover { color: var(--ink); }
+nav.links a:not(.pill):hover::after { right: 0; }
+.pill {
+  background: var(--ink); color: var(--paper) !important;
+  border-radius: 999px; padding: 9px 18px; font-size: 12px; font-weight: 650;
+  transition: background .25s, transform .25s;
+}
+.pill:hover { background: var(--gold); transform: translateY(-1px); }
+.pill::after { display: none !important; }
+
+/* ── HERO ── */
+.hero {
+  display: grid; grid-template-columns: 1fr 1.05fr; gap: 52px;
+  align-items: center; padding: 80px 0 88px; min-height: 90vh;
+  position: relative;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--line-2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-2) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 65% 80% at 65% 50%, black 15%, transparent 75%);
+}
+
+.hero-copy, .hero-visual { position: relative; z-index: 1; }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: 999px; padding: 7px 14px 7px 10px;
+  font-size: 10px; font-weight: 650; color: var(--gold-deep);
+  letter-spacing: 1.4px; text-transform: uppercase; font-family: ui-monospace, monospace;
+  margin-bottom: 26px;
+}
+.hero-tag .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-pale); animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 4px var(--gold-pale); }
+  50% { box-shadow: 0 0 0 8px rgba(201,155,92,.06); }
+}
+
+.hero h1 {
+  font-size: clamp(52px, 7vw, 96px); line-height: .88;
+  letter-spacing: -3.5px; font-weight: 800; color: var(--ink);
+  margin-bottom: 22px;
+}
+.hero h1 em { font-style: normal; color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
+
+.hero-lead { font-size: 17px; line-height: 1.72; color: var(--muted); max-width: 44ch; margin-bottom: 34px; }
+
+.hero-meta {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 1px solid var(--line); border-radius: var(--r-m);
+  overflow: hidden; background: var(--white); margin-bottom: 32px;
+}
+.meta-cell { padding: 14px 16px; border-left: 1px solid var(--line); }
+.meta-cell:first-child { border-left: none; }
+.meta-cell small { display:block; font-family:ui-monospace,monospace; font-size:8.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--gold-deep); font-weight:700; margin-bottom:5px; }
+.meta-cell strong { font-family:'Outfit',sans-serif; font-size:13px; font-weight:700; color:var(--ink); display:block; }
+.meta-cell span { font-size:10px; color:var(--muted-2); display:block; margin-top:2px; }
+
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-dark { background:var(--ink); color:var(--paper); border-radius:var(--r-s); padding:13px 22px; font-size:13px; font-weight:650; display:inline-block; transition:background .25s,transform .3s,box-shadow .3s; box-shadow:0 8px 24px rgba(23,19,14,.18); }
+.btn-dark:hover { background:var(--gold-deep); transform:translateY(-2px); box-shadow:0 14px 36px rgba(156,116,64,.3); }
+.btn-ghost { background:transparent; color:var(--ink); border:1px solid var(--line); border-radius:var(--r-s); padding:13px 22px; font-size:13px; font-weight:650; display:inline-block; transition:border-color .25s,transform .3s; }
+.btn-ghost:hover { border-color:var(--ink); transform:translateY(-2px); }
+
+/* Hero visual — browser frame */
+.hero-browser {
+  background: var(--ink); border-radius: 18px;
+  box-shadow: 0 2px 4px rgba(23,19,14,.06), 0 20px 60px rgba(23,19,14,.22), 0 40px 80px rgba(201,155,92,.06);
+  overflow: hidden;
+  transform: perspective(1100px) rotateY(-4deg) rotateX(2deg);
+  transition: transform .9s var(--ease);
+  animation: float 6s ease-in-out infinite;
+}
+.hero-browser:hover { transform:perspective(1100px) rotateY(0) rotateX(0); animation-play-state:paused; }
+@keyframes float {
+  0%,100% { transform: perspective(1100px) rotateY(-4deg) rotateX(2deg) translateY(0); }
+  50% { transform: perspective(1100px) rotateY(-4deg) rotateX(2deg) translateY(-8px); }
+}
+.b-chrome { background:#231C14; padding:10px 14px; display:flex; align-items:center; gap:10px; border-bottom:1px solid rgba(255,255,255,.06); }
+.b-dots { display:flex; gap:5px; }
+.b-dots span { width:10px; height:10px; border-radius:50%; }
+.b-dots span:nth-child(1){ background:#FC605C; }
+.b-dots span:nth-child(2){ background:#FDBC40; }
+.b-dots span:nth-child(3){ background:#34C749; }
+.b-url { flex:1; background:rgba(255,255,255,.07); border-radius:6px; padding:5px 12px; font-size:10px; color:rgba(250,250,248,.3); font-family:ui-monospace,monospace; }
+.b-body { overflow:hidden; background:linear-gradient(135deg,#1A1510,#231C14); }
+
+/* Hero network diagram (replaces screenshot placeholder) */
+.hero-net-svg { width:100%; aspect-ratio:16/10; display:block; }
+.hero-net-svg .flow-line { fill:none; stroke:var(--gold); stroke-width:1.5; opacity:.5; stroke-dasharray:6 5; animation:flowmove 2.6s linear infinite; }
+@keyframes flowmove { to { stroke-dashoffset:-22; } }
+.hero-net-svg .node-ring { fill:none; stroke:var(--gold); stroke-width:1.4; opacity:.4; animation:nodepulse 2.8s ease-in-out infinite; animation-delay:var(--d,0s); transform-origin:center; transform-box:fill-box; }
+@keyframes nodepulse { 0%,100% { opacity:.45; transform:scale(1); } 50% { opacity:0; transform:scale(1.9); } }
+.hero-net-svg .node-dot { fill:var(--gold); }
+.hero-net-svg .node-label { font-family:ui-monospace,monospace; font-size:10.5px; letter-spacing:1.2px; fill:rgba(250,250,248,.55); }
+.hero-net-svg .hub-outer { fill:rgba(201,155,92,.14); stroke:var(--gold); stroke-width:1.5; }
+.hero-net-svg .hub-title { font-family:'Outfit',sans-serif; font-size:13px; font-weight:700; fill:var(--paper); }
+.hero-net-svg .hub-sub { font-family:ui-monospace,monospace; font-size:7px; letter-spacing:1.6px; fill:rgba(201,155,92,.85); }
+
+/* Float badges */
+.hero-badge {
+  position:absolute; background:var(--white); border:1px solid var(--line);
+  border-radius:12px; padding:12px 16px;
+  box-shadow:0 14px 40px rgba(23,19,14,.12);
+}
+.hero-badge strong { display:block; font-family:'Outfit',sans-serif; font-size:14px; font-weight:700; color:var(--ink); }
+.hero-badge span { font-size:9px; color:var(--muted); display:block; margin-top:2px; }
+.badge-1 { bottom:-14px; left:-16px; }
+.badge-2 { top:-12px; right:-10px; }
+
+/* ── TICKER ── */
+.ticker { overflow:hidden; background:var(--ink); color:rgba(201,155,92,.5); padding:13px 0; font-family:ui-monospace,monospace; font-size:10px; font-weight:700; letter-spacing:1.5px; white-space:nowrap; }
+.ticker-track { width:max-content; animation:tick 30s linear infinite; }
+.ticker-sep { color:var(--gold); margin:0 18px; }
+@keyframes tick { to{ transform:translateX(-50%); } }
+
+/* ── STAT STRIP ── */
+.stat-strip { border-bottom:1px solid var(--line); background:var(--white); }
+.stat-grid { display:grid; grid-template-columns:repeat(3,1fr); }
+.stat-cell { padding:30px 20px; text-align:center; border-left:1px solid var(--line); }
+.stat-cell:first-child { border-left:none; }
+.stat-num { font-family:'Outfit',sans-serif; font-size:clamp(32px,4vw,46px); font-weight:800; color:var(--gold-deep); letter-spacing:-1px; line-height:1; }
+.stat-label { font-size:12.5px; color:var(--muted); margin-top:8px; line-height:1.5; }
+
+/* ── SECTION LABEL ── */
+.label {
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:ui-monospace,monospace; font-size:9.5px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase; color:var(--gold-deep);
+  margin-bottom:16px;
+}
+.label::before { content:""; display:inline-block; width:14px; height:1.5px; background:var(--gold-deep); }
+
+/* ── STORY ── */
+.story { padding:96px 0; }
+.story-grid { display:grid; grid-template-columns:260px 1fr; gap:80px; }
+.story-num { font-family:'Outfit',sans-serif; font-size:88px; font-weight:800; color:rgba(23,19,14,.06); line-height:1; letter-spacing:-3px; }
+.story-aside-note { font-size:12.5px; color:var(--muted); line-height:1.7; margin-top:14px; font-style:italic; }
+.story-body h2 { font-size:clamp(32px,4vw,50px); line-height:1.04; letter-spacing:-1.8px; font-weight:800; margin-bottom:22px; }
+.story-body p { font-size:16px; line-height:1.78; color:var(--muted); }
+.story-body p + p { margin-top:16px; }
+.story-body strong { color:var(--ink-2); font-weight:600; }
+.story-callout { margin-top:28px; padding:22px 24px; border-radius:var(--r-l); background:var(--gold-pale); border:1px solid rgba(201,155,92,.25); position:relative; overflow:hidden; }
+.story-callout::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--gold); border-radius:0 2px 2px 0; }
+.callout-label { font-family:ui-monospace,monospace; font-size:8.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-deep); font-weight:700; margin-bottom:8px; }
+.story-callout p { font-size:13.5px; line-height:1.7; color:var(--ink-2); }
+
+/* ── PILLARS ── */
+.pillars { padding:0 0 88px; }
+.pillars-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.pillar { background:var(--white); border:1px solid var(--line); border-radius:var(--r-xl); padding:32px 28px; min-height:210px; position:relative; overflow:hidden; transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease); }
+.pillar:hover { transform:translateY(-5px); box-shadow:0 24px 52px rgba(23,19,14,.08); border-color:rgba(201,155,92,.3); }
+.pillar-ico { width:72px; height:72px; position:absolute; right:16px; top:14px; opacity:1; }
+.pillar-ico svg { width:100%; height:100%; fill:none; stroke:rgba(23,19,14,.08); stroke-width:1.1; }
+.pillar strong { display:block; font-family:'Outfit',sans-serif; font-size:17px; font-weight:700; color:var(--ink); margin-bottom:10px; position:relative; z-index:1; max-width:70%; }
+.pillar p { font-size:13.5px; line-height:1.65; color:var(--muted); position:relative; z-index:1; max-width:85%; }
+
+/* ── PRODUCT HIGHLIGHTS (cards, no screenshots) ── */
+.cap-sec { background:var(--ink); padding:96px 0; }
+.cap-head { display:grid; grid-template-columns:1fr .58fr; gap:64px; align-items:end; margin-bottom:50px; }
+.cap-head h2 { font-size:clamp(32px,4.2vw,52px); line-height:1.04; letter-spacing:-1.8px; font-weight:800; color:var(--paper); margin-top:14px; }
+.cap-head p { font-size:15px; line-height:1.72; color:rgba(250,250,248,.45); }
+.cap-head .label { color:var(--gold); }
+.cap-head .label::before { background:var(--gold); }
+
+.cap-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.cap-card {
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:var(--r-xl);
+  padding:28px 24px; transition:border-color .4s,transform .1s linear,box-shadow .4s;
+  will-change:transform;
+}
+.cap-card:hover { border-color:rgba(201,155,92,.45); box-shadow:0 24px 50px rgba(0,0,0,.35); }
+.cap-icon { width:46px; height:46px; border-radius:12px; background:rgba(201,155,92,.12); display:flex; align-items:center; justify-content:center; margin-bottom:22px; }
+.cap-icon svg { width:22px; height:22px; fill:none; stroke:var(--gold); stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+.cap-card strong { display:block; font-family:'Outfit',sans-serif; font-size:15.5px; font-weight:700; color:var(--paper); margin-bottom:9px; }
+.cap-card p { font-size:13px; line-height:1.68; color:rgba(250,250,248,.5); }
+.cap-url { font-family:ui-monospace,monospace; font-size:9.5px; color:rgba(201,155,92,.55); letter-spacing:.4px; display:block; margin-top:14px; }
+
+/* ── FEATURES ── */
+.features { padding:96px 0; }
+.features-grid { display:grid; grid-template-columns:.38fr .62fr; gap:80px; }
+.features-copy h2 { font-size:clamp(30px,3.8vw,48px); line-height:1.06; letter-spacing:-1.6px; font-weight:800; margin:14px 0 18px; }
+.features-copy p { font-size:15px; line-height:1.74; color:var(--muted); }
+.features-list { border-top:1px solid var(--line); }
+.f-row { display:grid; grid-template-columns:40px 1fr; gap:20px; padding:22px 0; border-bottom:1px solid var(--line); transition:padding-left .3s var(--ease); align-items:start; }
+.f-row:hover { padding-left:8px; }
+.f-icon { width:36px; height:36px; border-radius:10px; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; }
+.f-icon svg { width:16px; height:16px; }
+.f-content strong { display:block; font-size:14.5px; font-weight:650; color:var(--ink); margin-bottom:5px; }
+.f-content p { font-size:13px; line-height:1.62; color:var(--muted); }
+
+/* ── TEAM ── */
+.team-sec { padding:96px 0; }
+.team-wrap { background:var(--white); border:1px solid var(--line); border-radius:var(--r-xl); padding:64px; }
+.team-head { max-width:560px; margin-bottom:48px; }
+.team-head h2 { font-size:clamp(30px,3.6vw,44px); letter-spacing:-1.4px; margin:12px 0 14px; }
+.team-head p { font-size:15.5px; line-height:1.7; color:var(--muted); }
+.team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.t-card { background:var(--paper); border:1px solid var(--line); border-radius:var(--r-m); padding:24px 20px; transition:transform .4s var(--ease),box-shadow .4s var(--ease); }
+.t-card:hover { transform:translateY(-5px); box-shadow:0 20px 44px rgba(23,19,14,.09); }
+.t-icon { width:40px; height:40px; border-radius:10px; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+.t-icon svg { width:18px; height:18px; stroke:var(--gold-deep); }
+.t-card strong { display:block; font-family:'Outfit',sans-serif; font-size:14px; font-weight:700; margin-bottom:8px; }
+.t-card p { font-size:12.5px; line-height:1.58; color:var(--muted); }
+
+/* ── BUILD / APPROACH ── */
+.approach { padding:0 0 96px; }
+.approach-box { background:linear-gradient(140deg,#17130E 0%,#1E1710 55%,#261A0C 100%); border-radius:var(--r-xl); padding:64px; display:grid; grid-template-columns:.9fr 1.1fr; gap:64px; }
+.approach-box .label { color:var(--gold); }
+.approach-box .label::before { background:var(--gold); }
+.approach-title h2 { font-size:clamp(28px,3.4vw,42px); letter-spacing:-1.2px; color:var(--paper); font-weight:800; margin-top:14px; line-height:1.1; }
+.approach-pts { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.a-pt strong { display:block; font-family:'Outfit',sans-serif; font-size:14px; font-weight:700; color:var(--paper); margin-bottom:7px; }
+.a-pt p { font-size:13px; line-height:1.65; color:rgba(250,250,248,.5); }
+
+/* ── CLOSING ── */
+.closing { padding:96px 0 108px; text-align:center; background:var(--gold-pale); border-top:1px solid rgba(201,155,92,.2); }
+.closing h2 { font-size:clamp(30px,4vw,52px); line-height:1.04; letter-spacing:-2px; font-weight:800; max-width:18ch; margin:16px auto 34px; }
+.closing-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+/* ── FOOTER ── */
+footer { background:var(--gold-pale2); border-top:1px solid var(--line); padding:40px 0; }
+.footer-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+.footer-brand { font-family:'Outfit',sans-serif; font-weight:800; font-size:15px; color:var(--ink); }
+.footer-sub { font-size:10px; color:var(--muted); margin-top:2px; }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { font-size:12px; font-weight:600; color:var(--muted); transition:color .25s; }
+.footer-links a:hover { color:var(--gold-deep); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  .hero { grid-template-columns:1fr; min-height:auto; padding:52px 0 60px; gap:48px; }
+  .hero-browser { transform:none!important; animation:none!important; }
+  .badge-1,.badge-2 { display:none; }
+  .story-grid { grid-template-columns:1fr; gap:32px; }
+  .cap-head { grid-template-columns:1fr; gap:20px; }
+  .cap-grid { grid-template-columns:1fr 1fr; }
+  .features-grid { grid-template-columns:1fr; gap:40px; }
+  .team-wrap { padding:40px; }
+  .team-grid { grid-template-columns:1fr 1fr; }
+  .approach-box { grid-template-columns:1fr; gap:36px; padding:40px; }
+  .pillars-grid { grid-template-columns:1fr; }
+  .hero-meta { grid-template-columns:1fr; }
+  .meta-cell { border-left:none; border-top:1px solid var(--line); }
+  .meta-cell:first-child { border-top:none; }
+  .stat-grid { grid-template-columns:1fr; }
+  .stat-cell { border-left:none; border-top:1px solid var(--line); }
+  .stat-cell:first-child { border-top:none; }
+}
+@media(max-width:640px){
+  .container { width:calc(100% - 32px); }
+  .hero h1 { font-size:52px; letter-spacing:-3px; }
+  .approach-pts { grid-template-columns:1fr; }
+  .team-grid { grid-template-columns:1fr; }
+  .cap-grid { grid-template-columns:1fr; }
+  .approach-box { padding:28px; border-radius:20px; }
+  .team-wrap { padding:28px; border-radius:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<header>
+  <div class="container nav-inner">
+    <div class="nav-brand">
+      <div class="nav-brand-mark">
+        <svg viewBox="0 0 20 20"><path d="M10 2L2 6l8 4 8-4-8-4zM2 14l8 4 8-4M2 10l8 4 8-4"/></svg>
+      </div>
+      <div>
+        <div>ANALYTIC INSIDER</div>
+        <div class="nav-sub">Case Study</div>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="#story">Story</a>
+      <a href="#product">Highlights</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#team">Team</a>
+      <a class="pill" href="/contact.html">Start a Project</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ─── HERO ─── -->
+<section class="hero container" id="top">
+  <div class="hero-copy reveal">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      IPv4 Marketplace &nbsp;·&nbsp; Brokerage &nbsp;·&nbsp; Accessibility
+    </div>
+    <h1>IP trading,<br><em>made clear.</em></h1>
+    <p class="hero-lead">A complete UI revamp of IPv4Mall, built to make buying, selling and leasing IPv4 address space simple to follow, while raising accessibility, trust and clarity across a technical global marketplace.</p>
+
+    <div class="hero-meta">
+      <div class="meta-cell">
+        <small>Engagement</small>
+        <strong>Complete frontend revamp</strong>
+        <span>Full ownership by Basit Hussain</span>
+      </div>
+      <div class="meta-cell">
+        <small>Team</small>
+        <strong>UX Designer + CTO</strong>
+        <span>Aligned collaboration throughout</span>
+      </div>
+      <div class="meta-cell">
+        <small>Status</small>
+        <strong>Live, in production</strong>
+        <span>ipv4mall.com/en</span>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#product" class="btn-dark">See the Highlights</a>
+      <a href="#story" class="btn-ghost">Read the Case Study</a>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal" style="position:relative;">
+    <div class="hero-browser">
+      <div class="b-chrome">
+        <div class="b-dots"><span></span><span></span><span></span></div>
+        <div class="b-url">ipv4mall.com/en</div>
+      </div>
+      <div class="b-body">
+        <svg class="hero-net-svg draw" viewBox="0 0 600 375" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing IPv4Mall connected to five global internet registries">
+          <g class="flow-lines">
+            <path class="flow-line" d="M300,190 L300,50"/>
+            <path class="flow-line" d="M300,190 L433,147"/>
+            <path class="flow-line" d="M300,190 L382,303"/>
+            <path class="flow-line" d="M300,190 L218,303"/>
+            <path class="flow-line" d="M300,190 L167,147"/>
+          </g>
+          <g class="nodes">
+            <g class="net-node">
+              <circle class="node-ring" cx="300" cy="50" r="9" style="--d:0s"/>
+              <circle class="node-dot" cx="300" cy="50" r="5"/>
+              <text class="node-label" x="300" y="34" text-anchor="middle">RIPE</text>
+            </g>
+            <g class="net-node">
+              <circle class="node-ring" cx="433" cy="147" r="9" style="--d:.4s"/>
+              <circle class="node-dot" cx="433" cy="147" r="5"/>
+              <text class="node-label" x="452" y="151">ARIN</text>
+            </g>
+            <g class="net-node">
+              <circle class="node-ring" cx="382" cy="303" r="9" style="--d:.8s"/>
+              <circle class="node-dot" cx="382" cy="303" r="5"/>
+              <text class="node-label" x="382" y="325" text-anchor="middle">APNIC</text>
+            </g>
+            <g class="net-node">
+              <circle class="node-ring" cx="218" cy="303" r="9" style="--d:1.2s"/>
+              <circle class="node-dot" cx="218" cy="303" r="5"/>
+              <text class="node-label" x="218" y="325" text-anchor="middle">AFRINIC</text>
+            </g>
+            <g class="net-node">
+              <circle class="node-ring" cx="167" cy="147" r="9" style="--d:1.6s"/>
+              <circle class="node-dot" cx="167" cy="147" r="5"/>
+              <text class="node-label" x="148" y="151" text-anchor="end">LACNIC</text>
+            </g>
+          </g>
+          <circle class="hub-outer" cx="300" cy="190" r="34"/>
+          <text class="hub-title" x="300" y="186" text-anchor="middle">IPv4</text>
+          <text class="hub-sub" x="300" y="200" text-anchor="middle">MARKETPLACE</text>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-badge badge-1">
+      <strong>5 Global RIRs</strong>
+      <span>RIPE · ARIN · APNIC · AFRINIC · LACNIC</span>
+    </div>
+    <div class="hero-badge badge-2">
+      <strong>WCAG Focused</strong>
+      <span>Accessible interaction and content hierarchy</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TICKER ─── -->
+<div class="ticker">
+  <div class="ticker-track">
+    BUY IPV4 <span class="ticker-sep">·</span> SELL IPV4 <span class="ticker-sep">·</span> LEASE IPV4 <span class="ticker-sep">·</span> ASN SPONSORSHIP <span class="ticker-sep">·</span> RIPE <span class="ticker-sep">·</span> ARIN <span class="ticker-sep">·</span> APNIC <span class="ticker-sep">·</span> AFRINIC <span class="ticker-sep">·</span> LACNIC <span class="ticker-sep">·</span> WCAG ACCESSIBILITY <span class="ticker-sep">·</span> ESCROW SUPPORT <span class="ticker-sep">·</span> FRONTEND ENGINEERING <span class="ticker-sep">·</span> BUY IPV4 <span class="ticker-sep">·</span> SELL IPV4 <span class="ticker-sep">·</span> LEASE IPV4 <span class="ticker-sep">·</span> ASN SPONSORSHIP <span class="ticker-sep">·</span> RIPE <span class="ticker-sep">·</span> ARIN <span class="ticker-sep">·</span> APNIC <span class="ticker-sep">·</span> AFRINIC <span class="ticker-sep">·</span> LACNIC <span class="ticker-sep">·</span> WCAG ACCESSIBILITY <span class="ticker-sep">·</span> ESCROW SUPPORT <span class="ticker-sep">·</span> FRONTEND ENGINEERING <span class="ticker-sep">·</span>
+  </div>
+</div>
+
+<!-- ─── STAT STRIP ─── -->
+<section class="stat-strip">
+  <div class="container stat-grid">
+    <div class="stat-cell"><div class="stat-num"><span data-count="5">0</span></div><div class="stat-label">Regional internet registries served</div></div>
+    <div class="stat-cell"><div class="stat-num"><span data-count="3">0</span></div><div class="stat-label">Core services: buy, sell and lease</div></div>
+    <div class="stat-cell"><div class="stat-num"><span data-count="100" data-suffix="%">0%</span></div><div class="stat-label">Of the interface rebuilt from the ground up</div></div>
+  </div>
+</section>
+
+<!-- ─── STORY ─── -->
+<section id="story" class="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="reveal-l">
+        <div class="story-num">01</div>
+        <p class="story-aside-note">A global IPv4 brokerage that needed its frontend rebuilt from the ground up around clarity and trust.</p>
+      </div>
+      <div class="story-body reveal-r">
+        <div class="label">The Brief</div>
+        <h2>Making IPv4 brokerage easier to understand and act on.</h2>
+        <p>I led the complete UI revamp of IPv4Mall, a global marketplace where organizations buy, sell and lease IPv4 address space. The platform serves customers across all five Regional Internet Registries and supports transaction journeys that involve technical verification, legal checks, escrow coordination and registry transfer.</p>
+        <p>The redesign focused on making those journeys legible. I worked closely with the <strong>UI/UX designer and CTO</strong> to improve information hierarchy, service discovery, trust messaging, calls to action, responsive behavior and overall frontend consistency across the product.</p>
+        <p>Accessibility was treated as a core part of the build from day one. I shaped the interface around <strong>WCAG standards</strong>, paying attention to readable content structure, contrast that stays legible, clear interaction states, smooth keyboard navigation and predictable responsive layouts.</p>
+        <div class="story-callout">
+          <div class="callout-label">Product Challenge</div>
+          <p>Turn a highly technical brokerage process that depends on trust into a clear, accessible experience for buyers, sellers and organizations operating across multiple global registries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PILLARS ─── -->
+<section class="pillars">
+  <div class="container">
+    <div class="pillars-grid stagger">
+      <div class="pillar">
+        <div class="pillar-ico"><svg class="draw" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg></div>
+        <strong>Complete UI revamp</strong>
+        <p>Reworked the site structure, product journeys, service presentation and visual hierarchy across the entire marketplace.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ico"><svg class="draw" viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <strong>Accessible frontend</strong>
+        <p>Raised accessibility and interaction clarity across desktop, tablet and mobile for a wider range of users.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ico"><svg class="draw" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M14.5 20c.3-2.8 2.2-5 4.9-5.6"/></svg></div>
+        <strong>Product collaboration</strong>
+        <p>Worked directly with the UI/UX designer and CTO to connect customer needs, design intent and technical implementation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCT HIGHLIGHTS ─── -->
+<section id="product" class="cap-sec">
+  <div class="container">
+    <div class="cap-head reveal">
+      <div>
+        <div class="label">The Product</div>
+        <h2>A marketplace operations teams navigate every day.</h2>
+      </div>
+      <p>Six pieces of the experience that show how service discovery, process education, registry coverage and trust come together.</p>
+    </div>
+
+    <div class="cap-grid stagger">
+      <div class="cap-card">
+        <div class="cap-icon"><svg class="draw"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 21v-6h6v6"/></svg></div>
+        <strong>Marketplace Homepage</strong>
+        <p>A service led homepage puts Buy, Sell and Lease clearly up front, with trust signals and registry context visible before a visitor has to search for them.</p>
+        <span class="cap-url">ipv4mall.com/en</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><svg class="draw"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></div>
+        <strong>Buy IPv4</strong>
+        <p>A guided acquisition flow for verified address space, with registry specific requirements explained in plain language at every step.</p>
+        <span class="cap-url">ipv4mall.com/en/buy</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><svg class="draw"><path d="M20.59 13.41L13.41 20.59a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+        <strong>Sell IPv4</strong>
+        <p>Sellers can list address space and understand valuation, verification and payout steps without needing outside guidance.</p>
+        <span class="cap-url">ipv4mall.com/en/sell</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><svg class="draw"><circle cx="7" cy="15" r="4"/><path d="M10.5 11.5 20 2M16 6l3 3M13 9l2 2"/></svg></div>
+        <strong>Lease and ASN Sponsorship</strong>
+        <p>Short term lease and sponsorship options sit alongside outright sale, so organizations can pick the structure that fits their need.</p>
+        <span class="cap-url">ipv4mall.com/en/lease</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><svg class="draw"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <strong>Transfer Process</strong>
+        <p>Verification, agreement, escrow and registry transfer are broken into a predictable sequence, so buyers and sellers always know the next step.</p>
+        <span class="cap-url">ipv4mall.com/en/process</span>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon"><svg class="draw"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.4 2.4 3.8 5.6 3.8 9s-1.4 6.6-3.8 9c-2.4-2.4-3.8-5.6-3.8-9s1.4-6.6 3.8-9z"/></svg></div>
+        <strong>Global Registry Coverage</strong>
+        <p>Dedicated journeys for RIPE, ARIN, APNIC, AFRINIC and LACNIC help customers find the right path without losing context of where they started.</p>
+        <span class="cap-url">ipv4mall.com/en/regions</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CAPABILITIES ─── -->
+<section id="capabilities" class="features">
+  <div class="container">
+    <div class="features-grid">
+      <div class="features-copy reveal-l">
+        <div class="label">What It Does</div>
+        <h2>Built for operational clarity at scale.</h2>
+        <p>Every screen balances data density with scanability, giving users fast access to the controls they need without the product becoming hard to read.</p>
+      </div>
+      <div class="features-list stagger">
+        <div class="f-row"><div class="f-icon"><svg class="ico draw" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 21v-6h6v6"/></svg></div><div class="f-content"><strong>Service led homepage</strong><p>Buy, Sell and Lease journeys surfaced clearly with trust signals and registry context up front.</p></div></div>
+        <div class="f-row"><div class="f-icon"><svg class="ico draw" viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="f-content"><strong>Accessible by design</strong><p>Focus states, content structure and form behavior follow WCAG guidance as part of implementation, not an afterthought.</p></div></div>
+        <div class="f-row"><div class="f-icon"><svg class="ico draw" viewBox="0 0 24 24"><path d="M9 4h6M9 4a2 2 0 0 0-2 2v14l5-3 5 3V6a2 2 0 0 0-2-2"/><path d="M9.5 11l1.7 1.7L14.5 9"/></svg></div><div class="f-content"><strong>Process made visible</strong><p>Verification, escrow and registry transfer steps organized into predictable sequences that reduce uncertainty.</p></div></div>
+        <div class="f-row"><div class="f-icon"><svg class="ico draw" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.4 2.4 3.8 5.6 3.8 9s-1.4 6.6-3.8 9c-2.4-2.4-3.8-5.6-3.8-9s1.4-6.6 3.8-9z"/></svg></div><div class="f-content"><strong>Registry specific journeys</strong><p>Dedicated paths for RIPE, ARIN, APNIC, AFRINIC and LACNIC so customers navigate regional availability without losing context.</p></div></div>
+        <div class="f-row"><div class="f-icon"><svg class="ico draw" viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6"/><rect x="18" y="9" width="4" height="8" rx="1"/></svg></div><div class="f-content"><strong>Consistent across devices</strong><p>Content rich pages adapt cleanly across desktop, tablet and mobile without losing content priority.</p></div></div>
+        <div class="f-row"><div class="f-icon"><svg class="ico draw" viewBox="0 0 24 24"><path d="M9 3h3a1 1 0 0 1 1 1v2.2a2 2 0 1 0 0 3.6V12a1 1 0 0 1-1 1H9"/><path d="M9 13H4a1 1 0 0 1-1-1V9.8a2 2 0 1 1 0-3.6V4a1 1 0 0 1 1-1h5"/></svg></div><div class="f-content"><strong>Reusable interface patterns</strong><p>Shared service, registry, trust and content patterns keep the product consistent without duplicating work.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEAM ─── -->
+<section id="team" class="team-sec">
+  <div class="container">
+    <div class="team-wrap reveal">
+      <div class="team-head">
+        <div class="label">The Team</div>
+        <h2>Three disciplines, one product.</h2>
+        <p>Shaped through close collaboration rather than a single handoff. Design, frontend and technical strategy stayed aligned throughout.</p>
+      </div>
+      <div class="team-grid">
+        <div class="t-card">
+          <div class="t-icon"><svg class="draw" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10"/><path d="M2 17h20l-1.5 3h-17z"/></svg></div>
+          <strong>Frontend Engineering</strong>
+          <p>Basit Hussain led the revamp from start to finish, building accessible, responsive UI with maintainable frontend patterns.</p>
+        </div>
+        <div class="t-card">
+          <div class="t-icon"><svg class="draw" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/></svg></div>
+          <strong>Product and UX Design</strong>
+          <p>Shaped information hierarchy, service flows, responsive behaviors and visual consistency across all service pages.</p>
+        </div>
+        <div class="t-card">
+          <div class="t-icon"><svg class="draw" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <strong>Quality and Delivery</strong>
+          <p>Owned edge cases, form validation and the everyday reliability a brokerage platform needs to earn trust.</p>
+        </div>
+        <div class="t-card">
+          <div class="t-icon"><svg class="draw" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+          <strong>Technical Direction</strong>
+          <p>The CTO aligned implementation decisions with platform goals, brokerage workflows and long term technical direction.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── APPROACH ─── -->
+<section class="approach">
+  <div class="container">
+    <div class="approach-box reveal">
+      <div class="approach-title">
+        <div class="label">How We Built It</div>
+        <h2>Product thinking, not just pixel delivery.</h2>
+      </div>
+      <div class="approach-pts">
+        <div class="a-pt"><strong>Accessibility first</strong><p>Guided by WCAG practices from the start, not added in at the end.</p></div>
+        <div class="a-pt"><strong>Consistency</strong><p>Shared building blocks cut cognitive load across every service page and registry flow.</p></div>
+        <div class="a-pt"><strong>Conversion clarity</strong><p>Primary contact and inquiry actions surfaced more clearly across every user journey.</p></div>
+        <div class="a-pt"><strong>Content scalability</strong><p>The layout system supports new services, registries and educational content without losing hierarchy.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── CLOSING ─── -->
+<section class="closing">
+  <div class="container">
+    <div class="label" style="justify-content:center;">IPv4 Marketplace Case Study</div>
+    <h2>Turning technical infrastructure transactions into a clearer digital experience.</h2>
+    <div class="closing-btns">
+      <a href="https://ipv4mall.com/en" target="_blank" rel="noopener" class="btn-dark">Visit Live Site ↗</a>
+      <a href="/portfolio.html" class="btn-ghost">More Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">ANALYTIC INSIDER</div>
+      <div class="footer-sub">Product Studio · Engineering &amp; Design</div>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/portfolio.html">Portfolio</a>
+      <a href="/contact.html">Start a Project</a>
+      <a href="mailto:info@analyticinsider.com">info@analyticinsider.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Prepare icon stroke-draw animation
+  function prepIcons(){
+    document.querySelectorAll("svg.draw path, svg.draw circle, svg.draw rect, svg.draw line").forEach(function(p){
+      try{
+        var len = p.getTotalLength ? p.getTotalLength() : 40;
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = reduced ? 0 : len;
+      }catch(e){}
+    });
+  }
+  prepIcons();
+
+  function drawIcons(scope){
+    scope.querySelectorAll("svg.draw path, svg.draw circle, svg.draw rect, svg.draw line").forEach(function(p){
+      p.style.strokeDashoffset = 0;
+    });
+  }
+
+  // Reveal on scroll
+  var els = document.querySelectorAll(".reveal,.reveal-l,.reveal-r,.stagger");
+  if(reduced||!("IntersectionObserver"in window)){
+    els.forEach(function(e){e.classList.add("in"); drawIcons(e);});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add("in");
+          drawIcons(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0.13,rootMargin:"0px 0px -36px 0px"});
+    els.forEach(function(e){io.observe(e);});
+  }
+
+  // Hero stagger + hero icon draw
+  requestAnimationFrame(function(){
+    document.querySelectorAll(".hero .reveal").forEach(function(el,i){
+      setTimeout(function(){el.classList.add("in"); drawIcons(el);},reduced?0:110*i);
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click",function(e){
+      var t=document.querySelector(a.getAttribute("href"));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:reduced?"auto":"smooth",block:"start"});}
+    });
+  });
+
+  // Count-up stats
+  var counters = document.querySelectorAll("[data-count]");
+  function animateCount(el){
+    var target = parseFloat(el.dataset.count);
+    var suffix = el.dataset.suffix || "";
+    var duration = 1200, startTime = null;
+    function step(ts){
+      if(!startTime) startTime = ts;
+      var progress = Math.min((ts-startTime)/duration,1);
+      var eased = 1 - Math.pow(1-progress,3);
+      el.textContent = Math.floor(eased*target) + suffix;
+      if(progress<1) requestAnimationFrame(step); else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  if(counters.length){
+    if(reduced||!("IntersectionObserver"in window)){
+      counters.forEach(function(c){ c.textContent = c.dataset.count + (c.dataset.suffix||""); });
+    } else {
+      var cio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); }
+        });
+      },{threshold:0.5});
+      counters.forEach(function(c){cio.observe(c);});
+    }
+  }
+
+  // Subtle tilt on capability cards
+  if(!reduced){
+    document.querySelectorAll(".cap-card").forEach(function(card){
+      card.addEventListener("mousemove",function(e){
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left)/r.width - 0.5;
+        var y = (e.clientY - r.top)/r.height - 0.5;
+        card.style.transform = "perspective(700px) rotateX("+(-y*7)+"deg) rotateY("+(x*7)+"deg) translateY(-4px)";
+      });
+      card.addEventListener("mouseleave",function(){ card.style.transform=""; });
+    });
+  }
+
+  // Mouse parallax on browser card (subtle)
+  if(!reduced){
+    var browser=document.querySelector(".hero-browser");
+    if(browser){
+      window.addEventListener("mousemove",function(ev){
+        var cx=window.innerWidth/2, cy=window.innerHeight/2;
+        var rx=((ev.clientY-cy)/cy)*2;
+        var ry=((ev.clientX-cx)/cx)*-3;
+        browser.style.transform="perspective(1100px) rotateX("+rx+"deg) rotateY("+(ry-4)+"deg)";
+      },{passive:true});
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -34,6 +34,23 @@
 
   const list = SERVICES.map((sv, i) => ({ sv, c: COPY[sv.slug] || { cat: 'build', name: sv.menu, line: sv.tag, gets: [], time: '' }, i }));
 
+  /* Original, hand drawn style illustrations for the zig-zag section.
+     These are brand new artwork made just for this section, not the
+     photos used on the hub cards or anywhere else on the site. */
+  const ART = {
+    'custom-software-development': `<svg viewBox="0 0 520 400"><rect x="40" y="40" width="440" height="320" rx="26" fill="var(--b)"/><rect x="74" y="80" width="372" height="244" rx="16" fill="#fff" stroke="var(--a)" stroke-width="2"/><circle cx="99" cy="102" r="5" fill="#ff6b6b"/><circle cx="116" cy="102" r="5" fill="#ffd166"/><circle cx="133" cy="102" r="5" fill="#06d6a0"/><rect x="94" y="128" width="120" height="10" rx="5" fill="var(--a)" opacity=".55"/><rect x="94" y="150" width="200" height="9" rx="4.5" fill="#ece5d6"/><rect x="94" y="169" width="160" height="9" rx="4.5" fill="#ece5d6"/><rect x="114" y="188" width="180" height="9" rx="4.5" fill="var(--a)" opacity=".7"/><rect x="94" y="207" width="140" height="9" rx="4.5" fill="#ece5d6"/><text x="330" y="270" font-family="'Outfit',sans-serif" font-weight="800" font-size="52" fill="var(--a)" opacity=".9">&lt;/&gt;</text><circle class="hb-float1" cx="452" cy="88" r="14" fill="var(--a)" opacity=".28"/><circle class="hb-float2" cx="58" cy="336" r="10" fill="var(--a)" opacity=".32"/></svg>`,
+    'website-development': `<svg viewBox="0 0 520 400"><rect x="34" y="54" width="452" height="296" rx="20" fill="#fff" stroke="var(--a)" stroke-width="2"/><path d="M34 74a20 20 0 0120-20h412a20 20 0 0120 20v26H34V74z" fill="var(--b)"/><circle cx="62" cy="74" r="5" fill="var(--a)"/><circle cx="80" cy="74" r="5" fill="var(--a)" opacity=".55"/><circle cx="98" cy="74" r="5" fill="var(--a)" opacity=".3"/><rect x="160" y="64" width="220" height="20" rx="10" fill="#fff"/><rect x="60" y="126" width="180" height="132" rx="14" fill="var(--b)"/><rect x="258" y="126" width="200" height="60" rx="10" fill="#efe8da"/><rect x="258" y="198" width="200" height="60" rx="10" fill="#efe8da"/><rect x="60" y="278" width="398" height="14" rx="7" fill="#efe8da"/><rect x="60" y="302" width="258" height="14" rx="7" fill="#efe8da"/><circle class="hb-float1" cx="452" cy="304" r="16" fill="var(--a)" opacity=".22"/></svg>`,
+    'mobile-app-development': `<svg viewBox="0 0 520 400"><rect x="188" y="26" width="150" height="348" rx="28" fill="#fff" stroke="var(--a)" stroke-width="3"/><rect x="203" y="52" width="120" height="228" rx="12" fill="var(--b)"/><rect x="215" y="66" width="96" height="16" rx="8" fill="#fff"/><circle cx="225" cy="128" r="17" fill="#fff"/><rect x="252" y="118" width="55" height="9" rx="4.5" fill="#fff"/><rect x="252" y="136" width="40" height="8" rx="4" fill="#fff" opacity=".65"/><circle cx="225" cy="178" r="17" fill="#fff"/><rect x="252" y="168" width="55" height="9" rx="4.5" fill="#fff"/><rect x="252" y="186" width="40" height="8" rx="4" fill="#fff" opacity=".65"/><circle cx="225" cy="228" r="17" fill="#fff"/><rect x="252" y="218" width="55" height="9" rx="4.5" fill="#fff"/><rect x="252" y="236" width="40" height="8" rx="4" fill="#fff" opacity=".65"/><rect x="215" y="300" width="96" height="34" rx="17" fill="var(--a)"/><circle cx="263" cy="356" r="5" fill="var(--a)" opacity=".5"/><circle class="hb-float1" cx="120" cy="90" r="20" fill="var(--a)" opacity=".18"/><circle class="hb-float2" cx="404" cy="300" r="16" fill="var(--a)" opacity=".22"/></svg>`,
+    'ai-development': `<svg viewBox="0 0 520 400"><rect x="180" y="120" width="160" height="160" rx="24" fill="#fff" stroke="var(--a)" stroke-width="2"/><circle cx="260" cy="200" r="46" fill="var(--b)"/><circle cx="260" cy="200" r="18" fill="var(--a)"/><g stroke="var(--a)" stroke-width="4" stroke-linecap="round"><line x1="180" y1="152" x2="132" y2="152"/><line x1="180" y1="200" x2="122" y2="200"/><line x1="180" y1="248" x2="132" y2="248"/><line x1="340" y1="152" x2="388" y2="152"/><line x1="340" y1="200" x2="398" y2="200"/><line x1="340" y1="248" x2="388" y2="248"/></g><circle class="hb-float1" cx="132" cy="152" r="8" fill="var(--a)"/><circle cx="122" cy="200" r="8" fill="var(--a)"/><circle cx="132" cy="248" r="8" fill="var(--a)"/><circle cx="388" cy="152" r="8" fill="var(--a)"/><circle class="hb-float2" cx="398" cy="200" r="8" fill="var(--a)"/><circle cx="388" cy="248" r="8" fill="var(--a)"/></svg>`,
+    'product-design-development': `<svg viewBox="0 0 520 400"><rect x="60" y="56" width="400" height="288" rx="22" fill="#fff" stroke="var(--a)" stroke-width="2"/><path d="M108 300 L108 258 L286 80 a20 20 0 0128 28 L146 286z" fill="var(--b)" stroke="var(--a)" stroke-width="2"/><circle cx="304" cy="104" r="9" fill="var(--a)"/><circle class="hb-float1" cx="372" cy="150" r="22" fill="var(--a)" opacity=".85"/><circle class="hb-float2" cx="412" cy="204" r="16" fill="var(--a)" opacity=".5"/><circle cx="392" cy="262" r="12" fill="var(--a)" opacity=".3"/></svg>`,
+    'digital-marketing-branding': `<svg viewBox="0 0 520 400"><path d="M110 208 L214 168 L214 256 L110 236Z" fill="var(--a)"/><rect x="214" y="180" width="62" height="64" rx="10" fill="var(--b)"/><path d="M276 200q42 -8 42 -62" stroke="var(--a)" stroke-width="6" fill="none" stroke-linecap="round"/><circle class="hb-float1" cx="330" cy="130" r="9" fill="var(--a)"/><polyline points="150,318 210,278 262,300 332,236 404,184" fill="none" stroke="var(--a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="hb-float2"/><circle cx="404" cy="184" r="9" fill="var(--a)"/></svg>`,
+    'data-analytics-consultancy': `<svg viewBox="0 0 520 400"><rect x="70" y="232" width="42" height="102" rx="8" fill="var(--b)"/><rect x="132" y="188" width="42" height="146" rx="8" fill="var(--a)" opacity=".8"/><rect x="194" y="146" width="42" height="188" rx="8" fill="var(--b)"/><rect x="256" y="210" width="42" height="124" rx="8" fill="var(--a)" opacity=".6"/><circle class="hb-float1" cx="384" cy="160" r="42" fill="none" stroke="var(--a)" stroke-width="8"/><line x1="416" y1="192" x2="454" y2="230" stroke="var(--a)" stroke-width="10" stroke-linecap="round"/></svg>`,
+    'data-management-database-solutions': `<svg viewBox="0 0 520 400"><ellipse cx="260" cy="118" rx="112" ry="30" fill="var(--b)" stroke="var(--a)" stroke-width="2"/><path d="M148 118v58c0 16 50 30 112 30s112-14 112-30v-58" fill="var(--b)" stroke="var(--a)" stroke-width="2"/><ellipse cx="260" cy="176" rx="112" ry="30" fill="none" stroke="var(--a)" stroke-width="2"/><path d="M148 176v58c0 16 50 30 112 30s112-14 112-30v-58" fill="var(--b)" stroke="var(--a)" stroke-width="2" opacity=".7"/><ellipse cx="260" cy="234" rx="112" ry="30" fill="none" stroke="var(--a)" stroke-width="2"/><path d="M336 88q32 20 0 42" stroke="var(--a)" stroke-width="5" fill="none" class="hb-float1"/></svg>`,
+    'ai-consultancy-automation-strategy': `<svg viewBox="0 0 520 400"><circle cx="188" cy="170" r="62" fill="var(--b)" stroke="var(--a)" stroke-width="2"/><rect x="164" y="228" width="48" height="24" rx="7" fill="var(--a)"/><path d="M166 158q22-32 44 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><circle class="hb-float1" cx="284" cy="104" r="8" fill="var(--a)"/><g fill="var(--a)"><rect x="270" y="270" width="40" height="22" rx="6" opacity=".5"/><rect x="326" y="248" width="40" height="44" rx="6" opacity=".7"/><rect x="382" y="216" width="40" height="76" rx="6"/></g></svg>`,
+    'vibe-code-to-production': `<svg viewBox="0 0 520 400"><rect x="58" y="76" width="404" height="248" rx="18" fill="#17130E"/><circle cx="88" cy="102" r="5" fill="#ff6b6b"/><circle cx="104" cy="102" r="5" fill="#ffd166"/><circle cx="120" cy="102" r="5" fill="#06d6a0"/><text x="80" y="150" font-family="monospace" font-size="17" fill="var(--a)">$ deploy --prod</text><text x="80" y="180" font-family="monospace" font-size="15" fill="#ffffff" opacity=".65">Running checks...</text><text x="80" y="206" font-family="monospace" font-size="15" fill="#06d6a0">&#10003; Passed, shipping build</text><path class="hb-float1" d="M380 268q10-62 40-92q30 30-10 92z" fill="var(--a)"/><circle cx="400" cy="238" r="8" fill="#fff"/></svg>`
+  };
+  const art = slug => ART[slug] || ART['custom-software-development'];
+
   /* hero tiles */
   const tiles = document.getElementById('hbTiles');
   if (tiles) tiles.innerHTML = list.slice(0, 6).map((x, n) => `<a class="hb-tile" style="--i:${n};--b:${x.sv.cardBg}" href="service.html?s=${x.sv.slug}"><span class="hb-ico">${ico(x.sv.slug)}</span><span>${x.c.name}</span></a>`).join('');
@@ -43,18 +60,23 @@
   const stats = document.getElementById('hbStats');
   if (stats) stats.innerHTML = [[st.built, 'Projects delivered'], [st.experience, 'In business'], [st.rating, 'Average client rating'], [st.onTime, 'Delivered on time']].map(s => `<div class="hb-stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');
 
-  /* service cards */
+  /* service rows — zig zag layout: image on one side, content on the other,
+     alternating every row, each ending in a Learn more link to that service page */
   const grid = document.getElementById('hbGrid');
   grid.innerHTML = list.map(({ sv, c, i }) => `
-    <article class="hb-card rv" data-cat="${c.cat}" style="--a:${sv.cardAccent};--b:${sv.cardBg};--d:${i % 3}">
-      <div class="hb-card-img"><img src="images/services-hub/${sv.slug}.jpg" alt="${sv.title}" loading="lazy" decoding="async" width="640" height="480"></div>
-      <div class="hb-card-top"><span class="hb-ico">${ico(sv.slug)}</span><span class="hb-num">${String(i + 1).padStart(2, '0')}</span></div>
-      <h3>${sv.title}</h3>
-      <p>${c.line}</p>
-      <ul class="hb-gets">${c.gets.map(g => `<li>${g}</li>`).join('')}</ul>
-      <div class="hb-foot">
-        <div class="hb-time"><b>${c.time}</b>usual timeline</div>
-        <a class="hb-go" href="service.html?s=${sv.slug}" aria-label="Explore ${sv.title}">Explore <i>&rarr;</i></a>
+    <article class="hb-zz-row" data-cat="${c.cat}" style="--a:${sv.cardAccent};--b:${sv.cardBg}">
+      <div class="hb-zz-media">
+        <div class="hb-zz-art">${art(sv.slug)}</div>
+      </div>
+      <div class="hb-zz-content">
+        <div class="hb-zz-top"><span class="hb-ico">${ico(sv.slug)}</span><span class="hb-zz-num">${String(i + 1).padStart(2, '0')} / ${String(list.length).padStart(2, '0')}</span></div>
+        <h3>${sv.title}</h3>
+        <p>${c.line}</p>
+        <ul class="hb-gets">${c.gets.map(g => `<li>${g}</li>`).join('')}</ul>
+        <div class="hb-foot">
+          <div class="hb-time"><b>${c.time}</b>usual timeline</div>
+          <a class="hb-go" href="service.html?s=${sv.slug}" aria-label="Learn more about ${sv.title}">Learn more <i>&rarr;</i></a>
+        </div>
       </div>
     </article>`).join('');
 
@@ -62,7 +84,7 @@
   document.querySelectorAll('.hb-chip').forEach(ch => ch.addEventListener('click', () => {
     document.querySelectorAll('.hb-chip').forEach(x => x.classList.toggle('on', x === ch));
     const f = ch.dataset.f;
-    grid.querySelectorAll('.hb-card').forEach(cd => {
+    grid.querySelectorAll('.hb-zz-row').forEach(cd => {
       const show = f === 'all' || cd.dataset.cat === f;
       cd.classList.toggle('is-hidden', !show);
       if (show) { cd.classList.remove('in'); void cd.offsetWidth; cd.classList.add('in'); }
@@ -72,6 +94,7 @@
   /* reveal on scroll */
   const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 }) : null;
   hub.querySelectorAll('.rv').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+  hub.querySelectorAll('.hb-zz-row').forEach(el => io ? io.observe(el) : el.classList.add('in'));
 
   /* contact drawer */
   const ov = document.getElementById('formOverlay'), dr = document.getElementById('formDrawer');

@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rheumatology Consultants App Case Study | Analytic Insider</title>
+  <meta name="description" content="How our team designed and built a cross-platform care app for a rheumatology clinic: React Native mobile app, Next.js dashboard, and a NestJS + PostgreSQL backend connecting appointments, health education and a healthcare shop." />
+  <link rel="canonical" href="https://www.analyticinsider.com/case-study-rheumatology.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Rheumatology Consultants App Case Study | Analytic Insider" />
+  <meta property="og:description" content="A cross-platform healthcare app connecting doctor appointments, health education and a healthcare shop, built by Analytic Insider." />
+  <meta property="og:image" content="https://www.analyticinsider.com/images/case-studies/rheumatology/support.webp" />
+  <meta property="og:url" content="https://www.analyticinsider.com/case-study-rheumatology.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rheumatology Consultants App Case Study | Analytic Insider" />
+  <meta name="twitter:description" content="A cross-platform healthcare app connecting doctor appointments, health education and a healthcare shop, built by Analytic Insider." />
+  <meta name="twitter:image" content="https://www.analyticinsider.com/images/case-studies/rheumatology/support.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/case-study.css" />
+  <link rel="stylesheet" href="css/mega.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Rheumatology Consultants — Mobile App & Clinic Dashboard",
+    "description": "A cross-platform healthcare app connecting doctor appointments, health education and a healthcare shop, with a Next.js clinic dashboard and NestJS + PostgreSQL backend.",
+    "creator": {
+      "@type": "Organization",
+      "name": "Analytic Insider",
+      "url": "https://www.analyticinsider.com"
+    },
+    "about": "Healthcare mobile app and clinic dashboard development",
+    "keywords": "React Native app, Next.js dashboard, NestJS backend, PostgreSQL, healthcare app development",
+    "image": "https://www.analyticinsider.com/images/case-studies/rheumatology/support.webp"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="logo" href="index.html">ANALYTIC INSIDER</a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li><a href="index.html#hero" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn-nav-cta" href="./contact.html">Start a Project</a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="csPage">
+
+    <nav class="cs-crumb" aria-label="Breadcrumb">
+      <div class="cs-in cs-crumb-row">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="portfolio.html">Portfolio</a><span>/</span>
+        <span class="cur">Rheumatology Consultants</span>
+      </div>
+    </nav>
+
+    <section class="cs-hero">
+      <div class="cs-in cs-hero-grid">
+        <div>
+          <span class="cs-eyebrow rv">Healthcare Technology · Case Study</span>
+          <h1 class="cs-h1 rv" style="--d:1">Care, guidance and <em>shopping</em>, in one app.</h1>
+          <p class="cs-lead rv" style="--d:2">Rheumatology Consultants came to us with a clinic that ran on phone calls and paper folders. We designed and built a single connected product where patients book appointments, learn from expert health content and order healthcare essentials, all from one app, backed by a secure clinic dashboard.</p>
+          <div class="cs-meta-row rv" style="--d:3">
+            <div><small>Mobile</small><strong>React Native</strong><span>iOS and Android</span></div>
+            <div><small>Web</small><strong>Next.js Dashboard</strong><span>Clinic operations</span></div>
+            <div><small>Backend</small><strong>NestJS + PostgreSQL</strong><span>Typed, structured APIs</span></div>
+          </div>
+          <div class="cs-actions rv" style="--d:4">
+            <a class="cs-btn" href="contact.html">Start a similar project</a>
+            <a class="cs-btn ghost" href="#stack">See the tech stack</a>
+          </div>
+        </div>
+        <div class="cs-visual rv" style="--d:2">
+          <div class="cs-orb cs-orb-a"></div><div class="cs-orb cs-orb-b"></div>
+          <div class="cs-phone main"><img src="images/case-studies/rheumatology/support.webp" alt="Rheumatology Consultants app home screen with quick actions" loading="eager"></div>
+          <div class="cs-phone side left"><img src="images/case-studies/rheumatology/product-detail.webp" alt="Healthcare product detail screen"></div>
+          <div class="cs-phone side right"><img src="images/case-studies/rheumatology/book-doctor.webp" alt="Doctor appointment booking screen"></div>
+          <div class="cs-note cs-note-a"><b>3 modules, 1 app</b><span>Appointments · Learning · Shop</span></div>
+          <div class="cs-note cs-note-b"><b>Full-stack delivery</b><span>Mobile, web and backend</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-stats-wrap">
+      <div class="cs-in">
+        <div class="cs-stats rv">
+          <div class="cs-stat"><b>2</b><span>Native platforms shipped</span></div>
+          <div class="cs-stat"><b>3</b><span>Connected product modules</span></div>
+          <div class="cs-stat"><b>200</b><span>Patients in the pilot group</span></div>
+          <div class="cs-stat"><b>90%+</b><span>Business logic shared across platforms</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-sec" id="overview">
+      <div class="cs-in cs-ov-grid">
+        <div>
+          <span class="cs-eyebrow rv">01 / The Challenge</span>
+          <h2 class="cs-title rv" style="--d:1">One clinic, three very different needs.</h2>
+          <div class="cs-ov-copy rv" style="--d:2">
+            <p>Rheumatology Consultants runs a busy practice, and their patients needed more than a booking form. They needed a way to reach a doctor, understand a long-term condition, and get the right supplements, without juggling three different apps or websites.</p>
+            <p>The brief was to combine <strong>appointment booking</strong>, <strong>video-based health education</strong> and a <strong>healthcare shop</strong> into one mobile experience that still felt calm and simple, while giving the clinic team a dashboard to run appointments, content and orders behind the scenes.</p>
+            <p>The hard part was keeping it simple on the surface. Three product domains can easily turn into three disconnected apps stitched together. Patients needed one home screen, one login and one place to pick up where they left off.</p>
+          </div>
+          <div class="cs-callout rv" style="--d:3">
+            <span>The core problem</span>
+            <p>Combine medical appointments, patient education and e-commerce in a single mobile app, without the experience feeling fragmented, while keeping the backend structured enough to grow with the clinic.</p>
+          </div>
+        </div>
+        <div class="cs-ov-side rv" style="--d:2">
+          <div class="cs-ov-card"><b>Who it's for</b><p>Rheumatology patients, many managing long-term conditions, along with the clinic's front-desk and medical staff.</p></div>
+          <div class="cs-ov-card"><b>Platforms</b><p>A native-feeling mobile app for iOS and Android, plus a web dashboard for the clinic team.</p></div>
+          <div class="cs-ov-card"><b>Timeline</b><p>Delivered in stages, from a working pilot with a small patient group through to full rollout.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-sand" id="approach">
+      <div class="cs-in">
+        <div class="cs-head c">
+          <span class="cs-eyebrow rv">02 / Our Approach</span>
+          <h2 class="cs-title rv" style="--d:1">How our team got there</h2>
+          <p class="cs-sub rv" style="--d:2">A healthcare product needs extra care around data privacy and real patient behaviour, so we built it in deliberate stages rather than all at once.</p>
+        </div>
+        <div class="cs-steps">
+          <div class="cs-step rv" style="--d:0"><i>1</i><h3>Research and data design</h3><p>We reviewed patient data privacy requirements first and shaped the database around field-level protection before any screen was designed.</p></div>
+          <div class="cs-step rv" style="--d:1"><i>2</i><h3>Design with real patients</h3><p>Several rounds of wireframes with the clinic showed us that older patients needed larger tap targets and plainer language, so we simplified every screen.</p></div>
+          <div class="cs-step rv" style="--d:2"><i>3</i><h3>Build in parallel</h3><p>The React Native app, the NestJS APIs and the Next.js dashboard were built side by side, sharing types and logic to keep everything in sync.</p></div>
+          <div class="cs-step rv" style="--d:3"><i>4</i><h3>Pilot, then roll out</h3><p>We launched to a small group of active patients first, gathered real feedback for a few months, then resolved the top issues before wider release.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-sec" id="experience">
+      <div class="cs-in">
+        <div class="cs-head">
+          <span class="cs-eyebrow rv">03 / Inside The Product</span>
+          <h2 class="cs-title rv" style="--d:1">Designed around three everyday actions</h2>
+          <p class="cs-sub rv" style="--d:2">Rather than a long menu of options, the home screen narrows healthcare down to a few clear choices: book a doctor, learn something, or shop for what's recommended.</p>
+        </div>
+
+        <div class="cs-feat">
+          <div class="cs-feat-row">
+            <div class="cs-feat-copy rv" style="--d:0">
+              <span class="tag">Appointments</span>
+              <h3>Booking a doctor takes seconds, not phone calls</h3>
+              <p>Appointment discovery and booking sit right on the home screen, so patients don't have to hunt through menus to reach the one action that matters most. Fewer taps between intent and a confirmed visit meant fewer missed bookings for the clinic.</p>
+            </div>
+            <div class="cs-feat-media rv" style="--d:1"><img src="images/case-studies/rheumatology/book-doctor.webp" alt="Screen for browsing and booking a doctor appointment" loading="lazy"></div>
+          </div>
+
+          <div class="cs-feat-row rev">
+            <div class="cs-feat-copy rv" style="--d:0">
+              <span class="tag">Health education</span>
+              <h3>Learning doesn't stop when the appointment ends</h3>
+              <p>Short, expert-led videos on rheumatology and related conditions give patients a way to keep learning between visits. Content is organised so a patient can find something relevant in a few taps, not a search bar full of unrelated results.</p>
+            </div>
+            <div class="cs-feat-media rv" style="--d:1"><img src="images/case-studies/rheumatology/health-videos.webp" alt="Health education video library screen" loading="lazy"></div>
+          </div>
+
+          <div class="cs-feat-row">
+            <div class="cs-feat-copy rv" style="--d:0">
+              <span class="tag">Healthcare shop</span>
+              <h3>Supplements and essentials, part of the same journey</h3>
+              <p>Recommended products sit inside the same app as appointments and education, instead of living on a separate storefront. That keeps the whole care journey, from diagnosis to daily supplements, in one place patients already trust.</p>
+            </div>
+            <div class="cs-feat-media rv" style="--d:1"><img src="images/case-studies/rheumatology/shop-products.webp" alt="Healthcare product shop screen" loading="lazy"></div>
+          </div>
+
+          <div class="cs-feat-row rev">
+            <div class="cs-feat-copy rv" style="--d:0">
+              <span class="tag">Product detail</span>
+              <h3>Enough information to buy with confidence</h3>
+              <p>Every product page combines clear photography, category labels, live stock counts, quantity controls and pricing in one mobile-first layout, so a patient can decide and check out without leaving the app or second-guessing the purchase.</p>
+            </div>
+            <div class="cs-feat-media rv" style="--d:1"><img src="images/case-studies/rheumatology/product-detail.webp" alt="Detailed product page with pricing and stock information" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-sand" id="stack">
+      <div class="cs-in">
+        <div class="cs-head c">
+          <span class="cs-eyebrow rv">04 / Engineering</span>
+          <h2 class="cs-title rv" style="--d:1">Full-stack foundations for a multi-domain product</h2>
+          <p class="cs-sub rv" style="--d:2">Every layer was chosen for the same reason: keep appointments, content and commerce working as connected domains instead of three separate apps stitched together.</p>
+        </div>
+        <div class="cs-stack-grid">
+          <div class="cs-stack-card rv" style="--d:0"><span class="cs-stack-ico"><img src="images/tech/react.svg" alt="React Native logo" loading="lazy"></span><b>React Native</b><p>One shared codebase for iOS and Android</p></div>
+          <div class="cs-stack-card rv" style="--d:1"><span class="cs-stack-ico"><img src="images/tech/next.svg" alt="Next.js logo" loading="lazy"></span><b>Next.js</b><p>Secure clinic dashboard for daily operations</p></div>
+          <div class="cs-stack-card rv" style="--d:2"><span class="cs-stack-ico"><img src="images/tech/nestjs.svg" alt="NestJS logo" loading="lazy"></span><b>NestJS</b><p>Typed backend APIs across every module</p></div>
+          <div class="cs-stack-card rv" style="--d:3"><span class="cs-stack-ico"><img src="images/tech/postgres.svg" alt="PostgreSQL logo" loading="lazy"></span><b>PostgreSQL</b><p>Structured, relational patient and order data</p></div>
+          <div class="cs-stack-card rv" style="--d:4"><span class="cs-stack-ico"><img src="images/tech/tailwind.svg" alt="Tailwind CSS logo" loading="lazy"></span><b>Tailwind CSS</b><p>Fast, consistent styling for the dashboard</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-dark">
+      <div class="cs-in">
+        <div class="cs-head c">
+          <span class="cs-eyebrow rv">05 / What Changed</span>
+          <h2 class="cs-title rv" style="--d:1">A calmer way to run the clinic</h2>
+          <p class="cs-sub rv" style="--d:2">Real numbers from the pilot and rollout, not projections.</p>
+        </div>
+        <div class="cs-results">
+          <div class="cs-result rv" style="--d:0"><b>200</b><p>Active patients in the closed pilot before wider rollout</p></div>
+          <div class="cs-result rv" style="--d:1"><b>3</b><p>Months of real patient feedback collected and reviewed</p></div>
+          <div class="cs-result rv" style="--d:2"><b>12</b><p>Top reported issues resolved before general release</p></div>
+          <div class="cs-result rv" style="--d:3"><b>1</b><p>Single app replacing phone bookings, guidance and a separate shop</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-sec">
+      <div class="cs-in cs-quote rv">
+        <p>"We treated appointments, education and commerce as one connected product from day one, not three features bolted together after the fact."</p>
+        <span>The Analytic Insider team</span>
+      </div>
+    </section>
+
+    <section class="cs-sec">
+      <div class="cs-in">
+        <div class="cs-cta rv">
+          <h2 class="cs-title">Building something similar?</h2>
+          <p class="cs-sub">If you're weighing up a mobile app, a clinic or admin dashboard, or a product that has to connect a few different journeys into one, we'd be glad to talk it through.</p>
+          <div class="cs-actions">
+            <a class="cs-btn acc" href="contact.html">Start a project</a>
+            <a class="cs-btn ghost" href="portfolio.html">See more work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid-upgraded">
+        <div class="footer-col-brand">
+          <a class="footer-brand" href="index.html">ANALYTIC INSIDER</a>
+          <p class="footer-tagline">
+            Architecture, artificial intelligence, and digital experiences crafted for companies building the future.
+          </p>
+          <div class="footer-meta-pill">
+            <span class="meta-dot"></span>
+            <span>Dearborn, MI 48128, USA &mdash; working worldwide</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-heading">Navigation</span>
+          <ul class="footer-links-list">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./portfolio.html">Portfolio</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-heading">Direct Inquiries</span>
+          <div class="footer-contact-details">
+            <a href="mailto:info@analyticinsider.com" class="footer-link-highlight">info@analyticinsider.com</a>
+            <a href="tel:+13136551635" class="footer-link-highlight">+1 (313) 655-1635</a>
+            <a href="https://wa.me/923332159764" target="_blank" class="footer-link-highlight">+92 333 2159764</a>
+            <span class="footer-reply-badge">Average reply time: under 24 hours</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Analytic Insider. All rights reserved.</span>
+        <span>Software &middot; Digital Products &middot; AI &middot; Design</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/case-study.js"></script>
+  <script src="js/mega.js"></script>
+</body>
+</html>

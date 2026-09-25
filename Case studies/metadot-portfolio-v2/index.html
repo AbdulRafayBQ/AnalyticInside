@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="METADOT — a multi-chain wallet browser extension. Case study by Analytic Insider.">
+<title>METADOT — Multi-Chain Wallet Case Study | Analytic Insider</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="scroll-progress"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="logo" href="#top">
+      <b>ANALYTIC INSIDER</b>
+      <span>Case Study</span>
+    </a>
+    <nav class="nav">
+      <a href="#overview">Overview</a>
+      <a href="#approach">Approach</a>
+      <a href="#team">Team</a>
+      <a href="#screens">Screens</a>
+      <a href="#results">Results</a>
+    </nav>
+    <div class="hdr-cta">
+      <a class="btn-cta" href="mailto:info@analyticinsider.com">
+        Start a Project
+        <svg width="13" height="13" viewBox="0 0 20 20" fill="none"><path d="M3 10H17M17 10L12 5M17 10L12 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 6H17M3 10H17M3 14H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#overview">Overview</a>
+    <a href="#approach">Approach</a>
+    <a href="#team">Team</a>
+    <a href="#screens">Screens</a>
+    <a href="#results">Results</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-orbs"><div class="orb orb-a"></div><div class="orb orb-b"></div></div>
+  <div class="container hero-grid">
+    <div class="hero-copy reveal-up">
+      <div class="hero-tagrow">
+        <span class="pill">Web3 · Digital Assets</span>
+        <span class="pill">Browser Extension</span>
+        <span class="pill">Product Design + Engineering</span>
+      </div>
+      <p class="eyebrow">Case Study</p>
+      <h1>META<em>DOT</em></h1>
+      <p class="hero-lead">A multi-chain wallet extension designed and built by Analytic Insider — turning fragmented blockchain interactions into one clear, confident interface.</p>
+      <div class="hero-meta">
+        <div><small>Client</small><strong>Web3 Fintech Startup</strong><span>Confidential, under NDA</span></div>
+        <div><small>Industry</small><strong>Digital Assets</strong><span>Multi-chain DeFi</span></div>
+        <div><small>Timeline</small><strong>10-Week Sprint</strong><span>Discovery to launch</span></div>
+        <div><small>Team</small><strong>5 Specialists</strong><span>Cross-functional pod</span></div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn gold" href="#screens">Explore the Product ↗</a>
+        <a class="btn ghost" href="#approach">See Our Approach</a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal-up" data-delay="0.15">
+      <div class="device-float">
+        <div class="ext-shell">
+          <div class="ext-head"><i></i><i></i><i></i><span>Extension</span></div>
+          <div class="ext-body">
+            <div class="ext-balance">
+              <small>Total Portfolio Value</small>
+              <h3>$18,420.55</h3>
+              <span class="up">▲ 2.4% today</span>
+            </div>
+            <div class="ext-actions">
+              <div><span class="ico">↑</span><span>Send</span></div>
+              <div><span class="ico">↓</span><span>Receive</span></div>
+              <div><span class="ico">⇄</span><span>Swap</span></div>
+              <div><span class="ico">◎</span><span>Networks</span></div>
+            </div>
+            <div class="ext-row"><div class="ext-coin"><span class="coin-dot" style="background:linear-gradient(135deg,#c99b5c,#e0b96e)"></span><div><b>Ethereum</b><span>ETH</span></div></div><div class="ext-val"><b>4.212</b><span>$9,340</span></div></div>
+            <div class="ext-row"><div class="ext-coin"><span class="coin-dot" style="background:linear-gradient(135deg,#10b981,#6ee7b7)"></span><div><b>Polygon</b><span>MATIC</span></div></div><div class="ext-val"><b>2,540</b><span>$1,980</span></div></div>
+            <div class="ext-row"><div class="ext-coin"><span class="coin-dot" style="background:linear-gradient(135deg,#7c8ba1,#c7cfda)"></span><div><b>USD Coin</b><span>USDC</span></div></div><div class="ext-val"><b>7,100</b><span>$7,100</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="device-shadow"></div>
+
+      <div class="mini-card mini-left">
+        <div class="m-lbl">Send Asset</div>
+        <div class="m-line" style="width:80%"></div>
+        <div class="m-line" style="width:55%"></div>
+        <div class="m-btn"></div>
+      </div>
+      <div class="mini-card mini-right">
+        <div class="m-lbl">Custom RPC</div>
+        <div class="m-line" style="width:70%"></div>
+        <div class="m-line" style="width:40%"></div>
+        <div class="m-line" style="width:60%"></div>
+      </div>
+
+      <div class="hero-chip chip-a"><b>6 Networks</b><span>Native multi-chain support</span></div>
+      <div class="hero-chip chip-b"><b>Web3 UX</b><span>Compact extension flows</span></div>
+
+      <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<section class="ticker">
+  <div class="ticker-track">
+    <span>MULTI-CHAIN WALLET</span><span>ONBOARDING</span><span>SEND & RECEIVE</span><span>NETWORK MANAGEMENT</span><span>CUSTOM RPC</span><span>CONTACTS</span><span>ACCOUNT SECURITY</span><span>WEB3 UX</span>
+    <span>MULTI-CHAIN WALLET</span><span>ONBOARDING</span><span>SEND & RECEIVE</span><span>NETWORK MANAGEMENT</span><span>CUSTOM RPC</span><span>CONTACTS</span><span>ACCOUNT SECURITY</span><span>WEB3 UX</span>
+  </div>
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview" class="section">
+  <div class="container story-grid">
+    <div class="section-no reveal-up">01 / OVERVIEW</div>
+    <div class="story-content reveal-up" data-delay="0.1">
+      <p class="eyebrow">From blockchain complexity to a product people trust</p>
+      <h2>A wallet experience engineered for absolute clarity.</h2>
+      <p>Analytic Insider was brought in to design and build <strong>METADOT</strong>, a browser-extension wallet meant to make everyday crypto actions feel as simple as online banking — without hiding the control that Web3 users expect.</p>
+      <p>Our scope covered the full product surface: onboarding, wallet creation and import, multi-chain balance visibility, send and receive flows, network switching, custom RPC configuration, contact management and every feedback state in between — all inside the tight footprint of a browser extension.</p>
+      <p>The real challenge wasn't shipping screens. It was designing behaviour that could make high-stakes, irreversible actions — addresses, gas fees, network selection, transaction confirmation — feel understandable at a glance, for both first-time and advanced users.</p>
+      <div class="story-note">
+        <b>A note on confidentiality</b>
+        <span>The product shown here uses illustrative interface data. Real client branding, user data and financial details are withheld under NDA — this case study exists to walk through our process and design thinking.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS / IMPACT ============ -->
+<section id="results" class="section" style="padding-top:0">
+  <div class="container">
+    <div class="impact">
+      <div class="impact-card reveal-up" data-tilt>
+        <div class="impact-num"><span data-count="38">0</span>%</div>
+        <p>Faster onboarding completion, measured across guided wallet-creation and import flows.</p>
+      </div>
+      <div class="impact-card reveal-up" data-delay="0.1" data-tilt>
+        <div class="impact-num"><span data-count="6">0</span></div>
+        <p>Blockchain networks supported natively, with custom RPC for anything beyond the defaults.</p>
+      </div>
+      <div class="impact-card reveal-up" data-delay="0.2" data-tilt>
+        <div class="impact-num"><span data-count="4.8" data-decimals="1">0</span>/5</div>
+        <p>Average usability score from moderated testing sessions ahead of launch.</p>
+      </div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted-2);margin-top:22px;max-width:560px">Metrics are illustrative, based on internal usability benchmarks used for this demonstration case study.</p>
+  </div>
+</section>
+
+<!-- ============ CHALLENGE ============ -->
+<section class="section" style="padding-top:60px">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-no reveal-up">02 / THE CHALLENGE</div>
+      <div class="reveal-up" data-delay="0.1">
+        <h2>Web3 is powerful. It rarely feels that way to use.</h2>
+        <p>Before any interface work began, we mapped exactly where crypto-native products lose people's trust and attention.</p>
+      </div>
+    </div>
+    <div class="challenge-grid">
+      <div class="challenge-item reveal-up">
+        <div class="ic"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M4 10a6 6 0 1012 0 6 6 0 00-12 0z" stroke="currentColor" stroke-width="1.5"/><path d="M10 4v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div><h4>Fragmented Multi-Chain Management</h4><p>Users needed separate mental models for every network, with no single, trustworthy view of what they actually owned.</p></div>
+      </div>
+      <div class="challenge-item reveal-up" data-delay="0.08">
+        <div class="ic"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 2l7.5 4v8L10 18l-7.5-4V6L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <div><h4>High-Stakes Actions, Low Confidence</h4><p>Sending funds is irreversible. Most wallet UIs offered little reassurance before an action could not be undone.</p></div>
+      </div>
+      <div class="challenge-item reveal-up" data-delay="0.16">
+        <div class="ic"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 8h14" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <div><h4>Cluttered Competitor Patterns</h4><p>Existing wallets buried core actions under dense settings and jargon, built for engineers rather than everyday users.</p></div>
+      </div>
+      <div class="challenge-item reveal-up" data-delay="0.24">
+        <div class="ic"><svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 2l6 3v5c0 4.4-2.6 7-6 8-3.4-1-6-3.6-6-8V5l6-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <div><h4>Security Without Simplicity Trade-offs</h4><p>Seed phrases, validation and network config needed to stay rigorous, without turning every screen into a warning label.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPROACH ============ -->
+<section id="approach" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-no reveal-up">03 / OUR APPROACH</div>
+      <div class="reveal-up" data-delay="0.1">
+        <h2>A process built to de-risk complex product decisions.</h2>
+        <p>Four structured phases, run by a small cross-functional pod, kept design, engineering and security decisions moving in the same direction.</p>
+      </div>
+    </div>
+
+    <div class="zig-wrap">
+      <div class="zig-row zig-imgR reveal-up">
+        <div class="zig-text">
+          <span class="zig-step">PHASE 01</span>
+          <h3>Discover &amp; Audit</h3>
+          <p>We audited existing wallet products, ran stakeholder interviews and mapped every blockchain action the extension would need to support — from balances to custom RPC.</p>
+        </div>
+        <div class="zig-media"><div class="approach-diagram">
+          <div class="approach-bar"><i style="width:88%"></i></div>
+          <div class="approach-bar"><i style="width:62%"></i></div>
+          <div class="approach-bar"><i style="width:74%"></i></div>
+          <div class="approach-dots"><span class="on"></span><span></span><span></span><span></span></div>
+        </div></div>
+      </div>
+
+      <div class="zig-row zig-imgL reveal-up">
+        <div class="zig-text">
+          <span class="zig-step">PHASE 02</span>
+          <h3>Architect the System</h3>
+          <p>Before any screen was drawn, we defined the component and state architecture: how balances, networks and transaction states would behave consistently across the entire extension.</p>
+        </div>
+        <div class="zig-media"><div class="approach-diagram">
+          <div class="approach-bar"><i style="width:70%"></i></div>
+          <div class="approach-bar"><i style="width:90%"></i></div>
+          <div class="approach-bar"><i style="width:55%"></i></div>
+          <div class="approach-dots"><span></span><span class="on"></span><span></span><span></span></div>
+        </div></div>
+      </div>
+
+      <div class="zig-row zig-imgR reveal-up">
+        <div class="zig-text">
+          <span class="zig-step">PHASE 03</span>
+          <h3>Design the Interface</h3>
+          <p>Every flow — onboarding, send, import, network switching — was prototyped, tested with real users and refined until the riskiest actions felt the clearest.</p>
+        </div>
+        <div class="zig-media"><div class="approach-diagram">
+          <div class="approach-bar"><i style="width:95%"></i></div>
+          <div class="approach-bar"><i style="width:80%"></i></div>
+          <div class="approach-bar"><i style="width:66%"></i></div>
+          <div class="approach-dots"><span></span><span></span><span class="on"></span><span></span></div>
+        </div></div>
+      </div>
+
+      <div class="zig-row zig-imgL reveal-up">
+        <div class="zig-text">
+          <span class="zig-step">PHASE 04</span>
+          <h3>Build, Test &amp; Ship</h3>
+          <p>Engineering built directly on the shared component system, with QA and security running validation on every state before the extension shipped to production.</p>
+        </div>
+        <div class="zig-media"><div class="approach-diagram">
+          <div class="approach-bar"><i style="width:100%"></i></div>
+          <div class="approach-bar"><i style="width:100%"></i></div>
+          <div class="approach-bar"><i style="width:92%"></i></div>
+          <div class="approach-dots"><span></span><span></span><span></span><span class="on"></span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section id="team" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-no reveal-up">04 / THE TEAM BEHIND IT</div>
+      <div class="reveal-up" data-delay="0.1">
+        <h2>A focused pod, not a single point of failure.</h2>
+        <p>METADOT was shaped by a small cross-functional team at Analytic Insider — strategy, design, engineering and security working in lockstep.</p>
+      </div>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal-up" data-tilt>
+        <div class="team-ic"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h4>Product Strategist</h4>
+        <p>Defined scope, success metrics and the roadmap linking user research to product decisions.</p>
+      </div>
+      <div class="team-card reveal-up" data-delay="0.06" data-tilt>
+        <div class="team-ic"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M4 15l1-4L14 2l3 3-9 9-4 1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h4>Lead Product Designer</h4>
+        <p>Owned the interface system — onboarding, wallet flows and the interaction language across every screen.</p>
+      </div>
+      <div class="team-card reveal-up" data-delay="0.12" data-tilt>
+        <div class="team-ic"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M7 5L2 10l5 5M13 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Frontend Engineer, Web3</h4>
+        <p>Built the extension's component architecture and connected every flow to on-chain state.</p>
+      </div>
+      <div class="team-card reveal-up" data-delay="0.18" data-tilt>
+        <div class="team-ic"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><rect x="3" y="8" width="5" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="3" width="5" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <h4>Blockchain Integration Engineer</h4>
+        <p>Handled network configuration, RPC connections and transaction logic across six chains.</p>
+      </div>
+      <div class="team-card reveal-up" data-delay="0.24" data-tilt>
+        <div class="team-ic"><svg width="19" height="19" viewBox="0 0 20 20" fill="none"><path d="M10 2l6 3v5c0 4.4-2.6 7-6 8-3.4-1-6-3.6-6-8V5l6-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h4>QA &amp; Security Analyst</h4>
+        <p>Stress-tested wallet flows, validation states and edge cases before every release.</p>
+      </div>
+    </div>
+
+    <div class="team-note">
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M10 2l6 3v5c0 4.4-2.6 7-6 8-3.4-1-6-3.6-6-8V5l6-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      Individual names are withheld per client confidentiality — roles are shown to represent how the work was actually delivered.
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREENS ============ -->
+<section id="screens" class="section screens-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-no reveal-up">05 / PRODUCT WALKTHROUGH</div>
+      <div class="reveal-up" data-delay="0.1">
+        <h2>Wallet flows that tell the full product story.</h2>
+        <p>Illustrative renders of the core screens — tap any card for a closer look.</p>
+      </div>
+    </div>
+
+    <div class="screens-grid">
+
+      <figure class="screen-card reveal-up" data-tilt>
+        <span class="sc-num">01</span>
+        <div class="screen-mock">
+          <div class="ui-row"><span class="ui-pill">Dashboard</span><span class="ui-pill">●●●</span></div>
+          <div class="ui-bar med" style="height:20px;border-radius:8px;margin:12px 0 8px"></div>
+          <div class="ui-row"><div style="display:flex;gap:8px;align-items:center"><span class="ui-dot" style="background:linear-gradient(135deg,#c99b5c,#e0b96e)"></span><span class="ui-bar short"></span></div><span class="ui-bar" style="width:20%"></span></div>
+          <div class="ui-row"><div style="display:flex;gap:8px;align-items:center"><span class="ui-dot" style="background:linear-gradient(135deg,#10b981,#6ee7b7)"></span><span class="ui-bar short"></span></div><span class="ui-bar" style="width:20%"></span></div>
+        </div>
+        <h3 class="sc-title">Account Dashboard</h3>
+        <p class="sc-desc">Portfolio balance, connection state, asset visibility and primary actions at a glance.</p>
+      </figure>
+
+      <figure class="screen-card reveal-up" data-delay="0.06" data-tilt>
+        <span class="sc-num">02</span>
+        <div class="screen-mock">
+          <div class="ui-row"><span class="ui-pill">Send</span><span class="ui-pill">Step 2/3</span></div>
+          <div class="ui-bar med" style="margin:12px 0"></div>
+          <div class="ui-bar short" style="margin:8px 0"></div>
+          <div class="ui-btn" style="margin-top:14px"></div>
+        </div>
+        <h3 class="sc-title">Send Flow</h3>
+        <p class="sc-desc">Clear progression for recipient, amount, network fee and final confirmation.</p>
+      </figure>
+
+      <figure class="screen-card reveal-up" data-delay="0.12" data-tilt>
+        <span class="sc-num">03</span>
+        <div class="screen-mock">
+          <div class="ui-row"><span class="ui-pill">History</span><span class="ui-pill">All chains</span></div>
+          <div class="ui-row"><span class="ui-bar short"></span><span class="ui-pill" style="color:var(--green);border-color:rgba(16,185,129,.4)">Confirmed</span></div>
+          <div class="ui-row"><span class="ui-bar short"></span><span class="ui-pill">Pending</span></div>
+          <div class="ui-row"><span class="ui-bar short"></span><span class="ui-pill" style="color:var(--green);border-color:rgba(16,185,129,.4)">Confirmed</span></div>
+        </div>
+        <h3 class="sc-title">Transaction History</h3>
+        <p class="sc-desc">Readable, cross-chain transaction activity inside a compact viewport.</p>
+      </figure>
+
+      <figure class="screen-card reveal-up" data-delay="0.18" data-tilt>
+        <span class="sc-num">04</span>
+        <div class="screen-mock">
+          <div class="ui-row"><span class="ui-pill">Import Wallet</span></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0">
+            <div class="ui-bar" style="height:22px;border-radius:6px"></div><div class="ui-bar" style="height:22px;border-radius:6px"></div>
+            <div class="ui-bar" style="height:22px;border-radius:6px"></div><div class="ui-bar" style="height:22px;border-radius:6px"></div>
+          </div>
+          <div class="ui-btn"></div>
+        </div>
+        <h3 class="sc-title">Wallet Import</h3>
+        <p class="sc-desc">Secure credential entry with real-time validation and guided onboarding.</p>
+      </figure>
+
+      <figure class="screen-card reveal-up" data-delay="0.24" data-tilt>
+        <span class="sc-num">05</span>
+        <div class="screen-mock">
+          <div class="ui-row"><span class="ui-pill">Networks</span><span class="ui-pill">+ Custom RPC</span></div>
+          <div class="ui-row"><div style="display:flex;gap:8px;align-items:center"><span class="ui-dot" style="background:linear-gradient(135deg,#c99b5c,#e0b96e)"></span><span class="ui-bar short"></span></div><span class="ui-pill">Active</span></div>
+          <div class="ui-row"><div style="display:flex;gap:8px;align-items:center"><span class="ui-dot" style="background:var(--surface);border:1px solid var(--border)"></span><span class="ui-bar short"></span></div><span class="ui-pill">Switch</span></div>
+        </div>
+        <h3 class="sc-title">Network Management</h3>
+        <p class="sc-desc">Switch between supported chains or configure a custom RPC endpoint in seconds.</p>
+      </figure>
+
+      <figure class="screen-card reveal-up" data-delay="0.3" data-tilt>
+        <span class="sc-num">06</span>
+        <div class="screen-mock">
+          <div class="ui-row"><span class="ui-pill">Contacts</span><span class="ui-pill">+ Add New</span></div>
+          <div class="ui-row"><div style="display:flex;gap:8px;align-items:center"><span class="ui-dot" style="background:var(--surface);border:1px solid var(--border)"></span><span class="ui-bar short"></span></div></div>
+          <div class="ui-row"><div style="display:flex;gap:8px;align-items:center"><span class="ui-dot" style="background:var(--surface);border:1px solid var(--border)"></span><span class="ui-bar short"></span></div></div>
+        </div>
+        <h3 class="sc-title">Contacts &amp; Address Book</h3>
+        <p class="sc-desc">Reusable saved addresses that reduce friction on repeat transactions.</p>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-no reveal-up">06 / CORE FUNCTIONALITY</div>
+      <div class="reveal-up" data-delay="0.1">
+        <h2>A complete wallet, designed as one connected product.</h2>
+        <p>Every capability shares the same interaction language, so nothing feels bolted on.</p>
+      </div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item reveal-up"><span class="feature-tick">✓</span><div><b>Multi-Chain Balance View</b><p>Unified portfolio value across every connected network.</p></div></div>
+      <div class="feature-item reveal-up" data-delay="0.04"><span class="feature-tick">✓</span><div><b>Guided Wallet Import</b><p>Step-by-step credential entry with inline validation.</p></div></div>
+      <div class="feature-item reveal-up" data-delay="0.08"><span class="feature-tick">✓</span><div><b>Send &amp; Receive Flows</b><p>Recipient, amount, fee and confirmation in one clear sequence.</p></div></div>
+      <div class="feature-item reveal-up" data-delay="0.12"><span class="feature-tick">✓</span><div><b>Custom RPC &amp; Networks</b><p>Advanced chain configuration without overwhelming new users.</p></div></div>
+      <div class="feature-item reveal-up" data-delay="0.16"><span class="feature-tick">✓</span><div><b>Reusable Contact Book</b><p>Saved addresses for safer, faster repeat transactions.</p></div></div>
+      <div class="feature-item reveal-up" data-delay="0.2"><span class="feature-tick">✓</span><div><b>Real-Time Feedback States</b><p>Success, pending and failure states designed as first-class moments.</p></div></div>
+    </div>
+
+    <div id="techWrap" class="tech-wrap">
+      <span class="pill">React</span><span class="pill">TypeScript</span><span class="pill">Ethers.js</span><span class="pill">Web3.js</span>
+      <span class="pill">Node.js</span><span class="pill">Redux Toolkit</span><span class="pill">Vite</span><span class="pill">Chrome Extension APIs</span>
+      <span class="pill">Figma</span><span class="pill">Ethereum</span><span class="pill">Polygon</span><span class="pill">Jest</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing container">
+  <p class="eyebrow reveal-scale">BUILT BY ANALYTIC INSIDER</p>
+  <h2 class="reveal-scale" data-delay="0.1">Turning complex blockchain systems into products people actually trust.</h2>
+  <div class="closing-actions reveal-scale" data-delay="0.2">
+    <a class="btn gold" href="mailto:info@analyticinsider.com">Start a Similar Project ↗</a>
+    <a class="btn ghost" href="https://wa.me/923332159764" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand"><b>ANALYTIC INSIDER</b><span>Product Design &amp; Engineering Studio</span></div>
+    <div class="footer-links">
+      <a href="mailto:info@analyticinsider.com">Email</a>
+      <a href="tel:+13136551635">+1 (313) 655-1635</a>
+      <a href="https://wa.me/923332159764" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" aria-label="Close">×</button>
+  <div class="lightbox-inner"></div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

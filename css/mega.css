@@ -185,10 +185,38 @@
 @media (max-width: 960px) {
   .mega { display: none !important; }
 
+  /* "Services" text and the little arrow now sit side by side: tapping the
+     word goes straight to the services page, tapping the arrow expands
+     the list in place. */
+  .nav li.nav-services-li {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+  }
+  .nav li.nav-services-li > a.nav-link {
+    flex: 1 1 auto !important;
+  }
+  .nav-mobile-services {
+    flex-basis: 100% !important;
+    width: 100% !important;
+  }
+
   .nav-services-chevron {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-left: 4px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(23, 19, 14, 0.05);
+    color: #17130E;
+    cursor: pointer;
+    flex: none;
+  }
+  .nav-services-chevron:active {
+    background: rgba(201, 155, 92, 0.18);
   }
   .nav li.nms-open .nav-services-chevron {
     transform: rotate(180deg);

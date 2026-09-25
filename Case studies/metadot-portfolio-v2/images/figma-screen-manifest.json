@@ -1,0 +1,10 @@
+{
+  "dashboard": "https://www.figma.com/api/mcp/asset/c8afb8ae-efaf-417f-a821-a2057fad2ed1.png",
+  "main-screen": "https://www.figma.com/api/mcp/asset/e7cffd1b-e49b-494d-a8d5-cb076cf7e9d0.png",
+  "send": "https://www.figma.com/api/mcp/asset/ea2c4f74-2868-42ea-ae2f-3b970252e433.png",
+  "transaction": "https://www.figma.com/api/mcp/asset/5a527545-c3db-4423-a8f4-929d39c99ce3.png",
+  "custom-rpc": "https://www.figma.com/api/mcp/asset/efba151f-f0d2-4b3f-989d-aaf27515c538.png",
+  "import-wallet": "https://www.figma.com/api/mcp/asset/a6178160-4ba2-4450-99e5-cdb0171d8a28.png",
+  "contacts": "https://www.figma.com/api/mcp/asset/0b739950-c045-45fe-9257-a2950f427f44.png",
+  "networks": "https://www.figma.com/api/mcp/asset/1c14a457-53ce-474e-9560-76205be0fb91.png"
+}

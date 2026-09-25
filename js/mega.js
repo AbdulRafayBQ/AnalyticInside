@@ -717,12 +717,18 @@ const pad = n => String(n + 1).padStart(2, '0');
     a.textContent = svc.menu;
   }
 
-  // Mark toggle for mobile menu exclusion and add smooth chevron
+  // Mark toggle for mobile menu exclusion. The chevron is a SEPARATE button,
+  // not part of the link: on mobile, tapping "Services" itself always goes
+  // to the main services page, while tapping this little arrow expands or
+  // collapses the list of services right under it, in place.
   a.classList.add('nav-services-toggle');
-  const chevron = document.createElement('span');
+  li.classList.add('nav-services-li');
+  const chevron = document.createElement('button');
+  chevron.type = 'button';
   chevron.className = 'nav-services-chevron';
+  chevron.setAttribute('aria-label', 'Show services list');
   chevron.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
-  a.appendChild(chevron);
+  li.insertBefore(chevron, a.nextSibling);
 
   // Build dedicated mobile services accordion inside li for seamless touch interaction
   const mobSub = document.createElement('div');
@@ -735,9 +741,7 @@ const pad = n => String(n + 1).padStart(2, '0');
           <span class="nms-title">${sv.menu}</span>
         </a>
       `).join('')}
-      <a class="nms-item nms-all" href="services.html">
-        <span>Explore All 10 Services &rarr;</span>
-      </a>
+      ${onValidServicePage ? `<a class="nms-item nms-all" href="services.html"><span>&larr; Back to All Services</span></a>` : ''}
     </div>
   `;
   li.appendChild(mobSub);
@@ -762,7 +766,7 @@ const pad = n => String(n + 1).padStart(2, '0');
     <div class="mega-in">
       <div class="mg-l">
         ${SERVICES.map((s, i) => `<a class="ml${i === mlDefaultIdx ? ' on' : ''}" data-i="${i}" href="service.html?s=${s.slug}">${s.menu}</a>`).join('')}
-        <a class="mg-all" href="services.html">View all services &rarr;</a>
+        ${onValidServicePage ? `<a class="mg-all" href="services.html">&larr; Back to All Services</a>` : ''}
       </div>
       <div class="mg-stack">
         ${SERVICES.map((s, i) => `
@@ -817,25 +821,38 @@ const pad = n => String(n + 1).padStart(2, '0');
     });
   });
 
-  // 2. TOGGLE ON CLICK: Mobile expands accordion; Desktop toggles mega dropdown
+  // 2. CLICK ON THE WORD "Services" (or the current service name):
+  //    - On mobile / small screens: just navigate, like any normal link.
+  //      It opens the main services page (or, if already reading one
+  //      service's page, that service's own page).
+  //    - On desktop: toggle the mega dropdown open/closed, same as before.
   if (a) {
     a.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
       const isMobile = window.innerWidth <= 960;
       if (isMobile) {
-        const willOpen = !li.classList.contains('nms-open');
-        li.classList.toggle('nms-open', willOpen);
+        // Let the browser follow the link normally — no dropdown here.
+        li.classList.remove('nms-open');
+        return;
+      }
+      e.preventDefault();
+      e.stopPropagation();
+      if (!onValidServicePage) { window.location.href = 'services.html'; return; }
+      if (m.classList.contains('open')) {
+        immediateClose();
       } else {
-        if (!onValidServicePage) { window.location.href = 'services.html'; return; }
-        if (m.classList.contains('open')) {
-          immediateClose();
-        } else {
-          open();
-        }
+        open();
       }
     });
   }
+
+  // 2b. CLICK ON THE SMALL ARROW next to "Services": mobile only, expands
+  //     or collapses the services list in place without leaving the page.
+  chevron.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const willOpen = !li.classList.contains('nms-open');
+    li.classList.toggle('nms-open', willOpen);
+  });
 
   // 3. CLOSE ON OUTSIDE CLICK
   document.addEventListener('click', (e) => {

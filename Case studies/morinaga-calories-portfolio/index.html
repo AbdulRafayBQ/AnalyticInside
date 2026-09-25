@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Morinaga Calories — Kids Health &amp; Attendance App Case Study | Analytic Insider</title>
+<meta name="description" content="How Analytic Insider built Morinaga Calories, a cross-platform React Native app for kids' health tracking and attendance, paired with a Next.js admin dashboard for real-time reporting.">
+<meta name="keywords" content="React Native app development, Next.js dashboard, health tracking app, kids profile app, mobile app case study, Analytic Insider portfolio">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://analyticinsider.com/portfolio/morinaga-calories">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Morinaga Calories — Kids Health &amp; Attendance App Case Study">
+<meta property="og:description" content="A cross-platform health and attendance app built with React Native and a Next.js dashboard, delivered by Analytic Insider.">
+<meta property="og:image" content="images/home.webp">
+<meta property="og:url" content="https://analyticinsider.com/portfolio/morinaga-calories">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Morinaga Calories — Kids Health & Attendance App",
+  "creator": { "@type": "Organization", "name": "Analytic Insider" },
+  "about": "Cross-platform mobile app and web dashboard for kids' health, BMI and attendance tracking",
+  "image": "images/home.webp"
+}
+</script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AI</span>
+      <span class="brand-txt">Analytic Insider</span>
+    </a>
+    <div class="crumb"><a href="portfolio.html">Portfolio</a><i>/</i><span>Morinaga Calories</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-btn" href="contact.html">Start a Project</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+<nav class="mnav" id="mnav">
+  <a href="index.html">Home</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contact.html">Contact</a>
+  <a class="nav-btn" href="contact.html">Start a Project</a>
+</nav>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero container">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">Case Study &middot; Health &amp; Nutrition App</p>
+      <h1>A kids health app that turns <span>daily care into a habit.</span></h1>
+      <p class="lead">Morinaga Calories is a cross-platform health and attendance product built for parents and caregivers. Our team paired a React Native mobile app with a scalable Next.js dashboard, so every check-in, profile and health record stays in sync in real time.</p>
+
+      <div class="hero-meta">
+        <div><small>Platform</small><strong>Android &amp; iOS</strong><span>One React Native codebase</span></div>
+        <div><small>Dashboard</small><strong>Next.js</strong><span>Material UI &middot; Tailwind CSS</span></div>
+        <div><small>Focus</small><strong>Health data workflows</strong><span>Profiles &middot; BMI &middot; Attendance</span></div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="#screens">View the Screens <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn secondary" href="#story">Read the Case Study</a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="orb orb-one" aria-hidden="true"></div>
+      <div class="orb orb-two" aria-hidden="true"></div>
+      <div class="hero-grid-deco" aria-hidden="true"></div>
+
+      <div class="phone main-phone" data-tilt>
+        <img src="images/home.webp" alt="Morinaga Calories home screen with quick actions for attendance and kids profiles" width="280" height="592" loading="eager">
+      </div>
+      <div class="phone small-phone phone-left" data-tilt>
+        <img src="images/kid-form.webp" alt="Morinaga Calories kids profile form with BMI and calorie tracking steps" width="280" height="592" loading="lazy">
+      </div>
+      <div class="phone small-phone phone-right" data-tilt>
+        <img src="images/kids-list.webp" alt="Morinaga Calories kids profile list with search, favorite and edit actions" width="280" height="592" loading="lazy">
+      </div>
+
+      <div class="hero-note note-a"><b>Cross-platform</b><span>Android + iOS from one codebase</span></div>
+      <div class="hero-note note-b"><b>Real-time sync</b><span>API-driven profile &amp; attendance data</span></div>
+    </div>
+  </section>
+
+  <section class="ticker" aria-hidden="true">
+    <div>KIDS PROFILES &nbsp;&bull;&nbsp; BMI TRACKING &nbsp;&bull;&nbsp; ATTENDANCE &nbsp;&bull;&nbsp; REAL-TIME APIs &nbsp;&bull;&nbsp; ANDROID &nbsp;&bull;&nbsp; iOS &nbsp;&bull;&nbsp; NEXT.JS DASHBOARD &nbsp;&bull;&nbsp; REPORTING &nbsp;&bull;&nbsp; RESPONSIVE UX &nbsp;&bull;&nbsp; KIDS PROFILES &nbsp;&bull;&nbsp; BMI TRACKING &nbsp;&bull;&nbsp; ATTENDANCE &nbsp;&bull;&nbsp; REAL-TIME APIs &nbsp;&bull;&nbsp; ANDROID &nbsp;&bull;&nbsp; iOS &nbsp;&bull;&nbsp; NEXT.JS DASHBOARD &nbsp;&bull;&nbsp; REPORTING &nbsp;&bull;&nbsp; RESPONSIVE UX &nbsp;&bull;&nbsp;</div>
+  </section>
+
+  <!-- ============ STORY ============ -->
+  <section id="story" class="section container story-grid">
+    <div class="section-no">01 / Story</div>
+    <div class="story-copy">
+      <p class="eyebrow reveal">One product across mobile and web</p>
+      <h2 class="reveal">A health platform built around fast, everyday data entry.</h2>
+
+      <p class="reveal">Our team designed and built <strong>Morinaga Calories</strong> as a cross-platform mobile app using React Native, giving parents and staff a consistent experience on both Android and iOS for everyday health and nutrition workflows.</p>
+
+      <p class="reveal">The app lets caregivers manage child profiles, track BMI and calorie related information, log attendance, update account settings and keep everything synchronized. We paired it with a scalable <strong>Next.js dashboard</strong> for reporting, administration and product monitoring.</p>
+
+      <p class="reveal">Throughout the build we focused on responsive UI, reusable components, dependable API communication and smooth interaction across device sizes, so profile and health data stays accurate wherever it's viewed.</p>
+
+      <div class="story-callout reveal">
+        <span>Product Challenge</span>
+        <p>Keep the mobile experience simple for busy parents and staff, while giving the product enough structure underneath to support a connected web dashboard and a growing backend.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact container">
+    <article class="reveal"><span>01</span><strong>One shared codebase</strong><p>React Native powers a single, consistent product experience across Android and iOS.</p></article>
+    <article class="reveal"><span>02</span><strong>Connected mobile + web</strong><p>A Next.js dashboard gives the team one place to visualize, manage and monitor the product.</p></article>
+    <article class="reveal"><span>03</span><strong>Real-time data sync</strong><p>Secure API integrations keep profile, attendance and health data aligned across the platform.</p></article>
+  </section>
+
+  <!-- ============ SCREENS ============ -->
+  <section id="screens" class="section screens-section">
+    <div class="container screens-head">
+      <div>
+        <p class="eyebrow reveal">02 / Mobile Experience</p>
+        <h2 class="reveal">Simple workflows, designed for daily use.</h2>
+      </div>
+      <p class="reveal">Large touch targets, focused navigation and minimal steps keep health-related actions fast and easy to understand for parents and staff alike.</p>
+    </div>
+
+    <div class="container screen-grid">
+      <figure class="screen-card hero-screen reveal" data-src="images/home.webp">
+        <div class="copy">
+          <span>01 / Home</span>
+          <h3>Core actions, front and center</h3>
+          <p>The home screen puts the two most common workflows within one tap: attendance check-in and kids profile management.</p>
+        </div>
+        <div class="device"><img src="images/home.webp" alt="Morinaga Calories home screen" width="280" height="592" loading="lazy"></div>
+      </figure>
+
+      <figure class="screen-card reveal" data-src="images/attendance.webp">
+        <div class="device"><img src="images/attendance.webp" alt="Morinaga Calories attendance check-in and checkout screen with a live timer" width="280" height="592" loading="lazy"></div>
+        <div class="copy"><span>02 / Attendance</span><h3>Check-in, checkout</h3><p>A minimal timer-based flow calculates working hours automatically the moment someone checks in or out.</p></div>
+      </figure>
+
+      <figure class="screen-card reveal" data-src="images/kid-form.webp">
+        <div class="device"><img src="images/kid-form.webp" alt="Morinaga Calories kids profile form with a Profile, BMI, Kcal, Results step tracker" width="280" height="592" loading="lazy"></div>
+        <div class="copy"><span>03 / Data Entry</span><h3>Kids profile, step by step</h3><p>A structured, progressive form for parent, location and child details, with a clear step tracker across Profile, BMI, Kcal and Results.</p></div>
+      </figure>
+
+      <figure class="screen-card dark reveal" data-src="images/kids-list.webp">
+        <div class="copy"><span>04 / Profile Management</span><h3>Manage every child profile</h3><p>Search, review, favorite, edit or remove child profiles from one compact, scrollable list.</p></div>
+        <div class="device"><img src="images/kids-list.webp" alt="Morinaga Calories kids profile list with search, favorite, delete and edit actions" width="280" height="592" loading="lazy"></div>
+      </figure>
+
+      <figure class="screen-card reveal" data-src="images/settings.webp">
+        <div class="device"><img src="images/settings.webp" alt="Morinaga Calories settings screen with notifications, announcements, FAQs and data sync" width="280" height="592" loading="lazy"></div>
+        <div class="copy"><span>05 / Settings</span><h3>Notifications &amp; sync</h3><p>Account-level controls for notifications, announcements, FAQs, data synchronization and logout, all from one screen.</p></div>
+      </figure>
+
+      <figure class="screen-card reveal" data-src="images/account.webp">
+        <div class="device"><img src="images/account.webp" alt="Morinaga Calories account screen with edit profile, change password and social links" width="280" height="592" loading="lazy"></div>
+        <div class="copy"><span>06 / Account</span><h3>Profile &amp; security</h3><p>Edit profile and password, review terms, product information and FAQs, or reach the brand's social channels, all in one place.</p></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section id="features" class="section container features">
+    <div class="features-intro">
+      <p class="eyebrow reveal">03 / Product Capabilities</p>
+      <h2 class="reveal">Health tracking, built as one connected system.</h2>
+      <p class="reveal">The product pairs mobile data capture with centralized web management, so information moves consistently between parents, staff and backend services.</p>
+    </div>
+
+    <div class="feature-list">
+      <div class="reveal"><span>01</span><b>Kids Profile Management</b><p>Create, search, edit and manage child profiles with structured demographic information.</p></div>
+      <div class="reveal"><span>02</span><b>BMI &amp; Calorie Tracking</b><p>Health-focused profile flows built for BMI, calorie and result-oriented tracking.</p></div>
+      <div class="reveal"><span>03</span><b>Attendance Tracking</b><p>Check-in and checkout workflows with automatic working-hour calculation.</p></div>
+      <div class="reveal"><span>04</span><b>Secure API Integration</b><p>Connected backend services support profile, health and reporting data across the app.</p></div>
+      <div class="reveal"><span>05</span><b>Data Synchronization</b><p>Sync actions keep locally shown information aligned with the latest backend state.</p></div>
+      <div class="reveal"><span>06</span><b>Web Administration</b><p>The Next.js dashboard handles visualization, monitoring and management outside the app.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ DASHBOARD ============ -->
+  <section class="section dashboard-section">
+    <div class="container dashboard-layout">
+      <div class="dashboard-copy">
+        <p class="eyebrow reveal">04 / Web Dashboard</p>
+        <h2 class="reveal">One backend view for the entire product.</h2>
+        <p class="reveal">Alongside the app, our team engineered a scalable Next.js dashboard for operational visibility, data management, reporting and performance monitoring across the whole product.</p>
+
+        <div class="dashboard-points reveal">
+          <span>Data visualization</span>
+          <span>User &amp; profile management</span>
+          <span>Reporting workflows</span>
+          <span>Operational monitoring</span>
+        </div>
+      </div>
+
+      <div class="dashboard-mock reveal" data-tilt data-tilt-max="4">
+        <div class="dash-nav">
+          <b>Morinaga Dashboard</b><span>Overview</span><span>Profiles</span><span>Reports</span><span>Settings</span>
+        </div>
+        <div class="dash-body">
+          <div class="stat-row">
+            <div><small>Active profiles</small><strong>1,248</strong><span>+8.4%</span></div>
+            <div><small>Check-ins today</small><strong>836</strong><span>Live</span></div>
+            <div><small>Avg. BMI records</small><strong>24.6</strong><span>Tracked</span></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title"><b>Profile activity</b><span>Last 7 days</span></div>
+            <div class="bars">
+              <i style="--h:38%"></i><i style="--h:52%"></i><i style="--h:70%"></i><i style="--h:61%"></i><i style="--h:84%"></i><i style="--h:76%"></i><i style="--h:92%"></i>
+            </div>
+          </div>
+          <div class="table-card">
+            <div><b>Recent profiles</b><span>Status</span></div>
+            <div><span>Kid Profile A</span><em>Synced</em></div>
+            <div><span>Kid Profile B</span><em>Synced</em></div>
+            <div><span>Kid Profile C</span><em class="pending">Pending</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENGINEERING ============ -->
+  <section id="engineering" class="section container">
+    <div class="engineering-panel">
+      <div>
+        <p class="eyebrow reveal">05 / Engineering Approach</p>
+        <h2 class="reveal">Built for reuse, responsiveness and shared data.</h2>
+      </div>
+
+      <div class="engineering-grid">
+        <article class="reveal"><b>React Native</b><p>One mobile codebase supporting Android and iOS while keeping platform-friendly interactions.</p></article>
+        <article class="reveal"><b>Next.js</b><p>A scalable dashboard foundation for management, reporting and product monitoring.</p></article>
+        <article class="reveal"><b>Material UI</b><p>Reusable dashboard components with consistent, enterprise-grade interaction patterns.</p></article>
+        <article class="reveal"><b>Tailwind CSS</b><p>Fast layout composition and responsive styling across the admin interface.</p></article>
+        <article class="reveal"><b>API Integration</b><p>Secure network communication and real-time data handling across app and dashboard.</p></article>
+        <article class="reveal"><b>Responsive UX</b><p>Mobile-first interaction design with dashboard layouts that adapt to every screen size.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAPABILITIES ============ -->
+  <section class="section container capabilities">
+    <div>
+      <p class="eyebrow reveal">Deliverables</p>
+      <h2 class="reveal">What the product brings together.</h2>
+    </div>
+    <div class="chips reveal">
+      <span>React Native App</span>
+      <span>Android</span>
+      <span>iOS</span>
+      <span>Next.js Dashboard</span>
+      <span>Material UI</span>
+      <span>Tailwind CSS</span>
+      <span>API Integration</span>
+      <span>Real-time Data</span>
+      <span>Kids Profiles</span>
+      <span>BMI Tracking</span>
+      <span>Attendance</span>
+      <span>Responsive UI</span>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="closing">
+    <div class="container">
+      <p class="eyebrow reveal">Mobile + Web Case Study</p>
+      <h2 class="reveal">Have a product like this in mind?</h2>
+      <p class="closing-lead reveal">This is the kind of connected, cross-platform build our team delivers end to end, from the first wireframe to a live dashboard.</p>
+      <a class="btn primary reveal" href="contact.html">Start Your Project <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand"><span class="brand-mark">AI</span><div><b>Analytic Insider</b><span>Product design &amp; engineering studio</span></div></div>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+      <a href="mailto:info@analyticinsider.com">info@analyticinsider.com</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lightbox" aria-hidden="true">
+  <button aria-label="Close">&times;</button>
+  <img alt="Expanded Morinaga Calories app screen">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
