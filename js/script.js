@@ -199,6 +199,11 @@
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       const el = e.target;
+      if (el.id === 'projectsCount') {
+        if (el.dataset.counted) return;
+        el.dataset.counted = 'true';
+        cntObs.unobserve(el);
+      }
       // no unobserve: re-counts every time it re-enters view (scroll down or up)
       countUp(el, parseInt(el.dataset.count, 10) || 0);
     });

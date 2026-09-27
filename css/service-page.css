@@ -1077,3 +1077,138 @@
   .tx-pn .tx-txt { position: relative; width: 100%; background: var(--tx-card); } .tx-pn .tx-txt h3 { color: var(--tx-fg); } .tx-pn .tx-txt p { color: var(--tx-mut); } .tx-pn .tx-vis::before { display: none; }
   .tx-li { grid-template-columns: 1fr; } .tx-li .tx-vis { height: auto; aspect-ratio: 4 / 3; }
 }
+
+/* ══════════ MATCHED CASE STUDY SECTION ══════════ */
+.sv-cs-sec { padding: 40px 0 80px; }
+.sv-cs-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 42px 46px;
+  box-shadow: 0 24px 60px -26px rgba(23,19,14,.22);
+  overflow: hidden;
+  transition: box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.sv-cs-card:hover {
+  border-color: rgba(201,155,92,.45);
+  box-shadow: 0 32px 70px -22px rgba(23,19,14,.28);
+}
+.sv-cs-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.sv-cs-badge-pill {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #8a6a3a;
+  background: rgba(201,155,92,.14);
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(201,155,92,.28);
+}
+.sv-cs-accent-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--acc, #C99B5C);
+  box-shadow: 0 0 12px var(--acc, #C99B5C);
+}
+.sv-cs-body-grid {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 48px;
+  align-items: center;
+}
+.sv-cs-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -.02em;
+}
+.sv-cs-tagline {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #8a6a3a;
+  margin: 0 0 16px;
+}
+.sv-cs-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--mut);
+  margin: 0 0 22px;
+}
+.sv-cs-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.sv-cs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+.sv-cs-metrics-box {
+  background: var(--sand, #F4EDDF);
+  border: 1px solid rgba(23,19,14,.08);
+  border-radius: 20px;
+  padding: 28px 24px;
+}
+.sv-cs-metrics-eyebrow {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(23,19,14,.5);
+  margin-bottom: 20px;
+}
+.sv-cs-metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sv-cs-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(23,19,14,.07);
+  padding-bottom: 12px;
+}
+.sv-cs-stat:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.sv-cs-stat-val {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -.02em;
+}
+.sv-cs-stat-lbl {
+  font-size: 12.5px;
+  color: var(--mut);
+  text-align: right;
+}
+
+/* Service hero last word styling */
+.sv-title-last, .sv-hero-title em {
+  font-style: italic !important;
+  color: #C99B5C !important;
+}
+
+@media (max-width: 860px) {
+  .sv-cs-card { padding: 30px 24px; }
+  .sv-cs-body-grid { grid-template-columns: 1fr; gap: 32px; }
+}

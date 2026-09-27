@@ -840,6 +840,58 @@ body {
   content: ""; width: 5px; height: 5px; border-radius: 50%;
   background: var(--card-accent,#C99B5C); flex-shrink: 0;
 }
+.svc-card-cs {
+  margin-top: 18px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(23, 19, 14, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.svc-card-cs:hover {
+  background: #ffffff;
+  border-color: rgba(201, 155, 92, 0.45);
+  box-shadow: 0 8px 20px -6px rgba(23, 19, 14, 0.12);
+  transform: translateY(-2px);
+}
+.svc-cs-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a6a3a;
+  background: rgba(201, 155, 92, 0.14);
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.svc-cs-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #17130e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.svc-cs-arrow {
+  color: #C99B5C;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.svc-card-cs:hover .svc-cs-arrow {
+  transform: translate(2px, -2px);
+}
 
 /* Arrow nav */
 .svc-arrow {
@@ -3414,12 +3466,13 @@ body {
 .sap-btn-primary {
   display: inline-flex; align-items: center; gap: 9px;
   font-family: 'Inter', sans-serif; font-weight: 800; font-size: 14.5px;
-  color: #17130E; background: linear-gradient(150deg, #E6C48B, #C99B5C);
+  color: #FFFFFF; background: #17130E;
+  border: 1.5px solid #17130E;
   padding: 16px 32px; border-radius: 999px; text-decoration: none;
-  box-shadow: 0 14px 36px rgba(201,155,92,.28);
+  box-shadow: none;
   transition: transform .3s ease, box-shadow .3s ease;
 }
-.sap-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 46px rgba(201,155,92,.4); }
+.sap-btn-primary:hover { background: #33291d; border-color: #33291d; transform: translateY(-3px); box-shadow: 0 12px 26px rgba(23,19,14,.18); }
 .sap-btn-primary svg { width: 15px; height: 15px; transition: transform .3s ease; }
 .sap-btn-primary:hover svg { transform: translateX(3px); }
 .sap-btn-secondary {
@@ -3427,7 +3480,7 @@ body {
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14.5px;
   color: #17130E; background: rgba(23,19,14,.03);
   padding: 16px 28px; border-radius: 999px; text-decoration: none;
-  border: 1.5px solid rgba(23,19,14,.14);
+  border: 1.5px solid rgba(23,19,14,.34);
   transition: border-color .3s ease, background .3s ease, transform .3s ease;
 }
 .sap-btn-secondary:hover { border-color: rgba(23,19,14,.3); background: rgba(23,19,14,.06); transform: translateY(-3px); }

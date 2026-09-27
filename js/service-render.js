@@ -97,7 +97,14 @@
   };
 
   /* ═══════════ HERO ═══════════ */
-  const titleWords = s.title.split(' ').map((w, i) => `<span class="w"><span data-fx="word" style="--i:${i + 2}">${w}</span></span>`).join(' ');
+  const titleWordsArr = s.title.split(' ');
+  const titleWords = titleWordsArr.map((w, i) => {
+    const isLast = i === titleWordsArr.length - 1;
+    const inner = isLast
+      ? `<em class="sv-title-last" style="font-style:italic;color:#C99B5C;">${w}</em>`
+      : w;
+    return `<span class="w"><span data-fx="word" style="--i:${i + 2}">${inner}</span></span>`;
+  }).join(' ');
   const pills = n => s.tech.slice(0, n).map(t => `<span class="sv-pill">${t}</span>`).join('');
 
   const decoHTML = {
@@ -717,8 +724,120 @@
   </footer>
   `;
 
+  /* ═══════════ SERVICE MATCHED CASE STUDY SECTION ═══════════ */
+  const SERVICE_CASE_STUDIES = {
+    'custom-software-development': {
+      type: 'project-story',
+      title: 'Salasa OMS',
+      tagline: 'A clear place to manage every order',
+      desc: 'Salasa brings order tracking, carrier selection and merchant pricing into one operations workspace. Teams can see the route for an order and understand why that carrier was selected.',
+      metrics: [['Orders', 'Track work from intake to delivery'], ['Carrier rules', 'Choose routes around service and capacity'], ['Decision history', 'Review why a carrier was selected']],
+      link: 'portfolio.html?project=salasaoms',
+      tags: ['React', 'Next.js', 'TypeScript', 'Node.js']
+    },
+    'website-development': {
+      type: 'project-story',
+      title: 'HostSailor Platform',
+      tagline: 'Hosting plans made easier to compare',
+      desc: 'HostSailor offers VPS, dedicated and shared hosting. The redesign gives customers a clearer way to understand each option and find the right next step.',
+      metrics: [['VPS hosting', 'Flexible virtual servers'], ['Dedicated servers', 'Full server control'], ['Plan comparison', 'Features in plain language']],
+      link: 'portfolio.html?project=hostsailor',
+      tags: ['Next.js', 'React', 'TypeScript', 'Accessible design']
+    },
+    'mobile-app-development': {
+      type: 'project-story',
+      title: 'Dr. Asgar Clinic',
+      tagline: 'Patient care and clinic tools in one flow',
+      desc: 'Patients can book a visit, keep track of symptoms and stay in touch with the clinic. Staff use a separate dashboard to manage appointments and records.',
+      metrics: [['Patient app', 'Appointments and follow up'], ['Clinic dashboard', 'Schedules and records'], ['Shared experience', 'Mobile and web tools']],
+      link: 'portfolio.html?project=drasgarrheumatology',
+      tags: ['React Native', 'NestJS', 'PostgreSQL', 'Healthcare']
+    },
+    'ai-development': {
+      type: 'project-story',
+      title: 'RichAI',
+      tagline: 'An image studio with a voice assistant',
+      desc: 'RichAI brings image creation, chat and voice into one simple workspace. The project focused on making each tool easy to find and keeping the response flowing while the system works.',
+      metrics: [['Image generation', 'Create artwork from a prompt'], ['Voice assistant', 'Speak with the product'], ['Talking avatar', 'See responses come to life']],
+      link: 'portfolio.html?project=richai',
+      tags: ['Stable Diffusion', 'Voice input', 'React', 'Node.js']
+    },
+    'product-design-development': {
+      type: 'project-story',
+      title: 'Zylmi',
+      tagline: 'A clear brand and a welcoming web experience',
+      desc: 'Zylmi needed a distinct identity and a website that felt like the same brand from the first visit to the final action. The work brought research, visual design and a responsive React build into one process.',
+      metrics: [['Brand identity', 'A consistent visual language'], ['Website design', 'A clear path through the content'], ['React build', 'Responsive pages and reusable parts']],
+      link: 'portfolio.html?project=zylmi',
+      tags: ['Brand identity', 'Product design', 'React', 'Tailwind CSS']
+    },
+    'data-analytics-consultancy': {
+      type: 'project-story',
+      title: 'Caary Capital',
+      tagline: 'Fintech operations data made easier to scan',
+      desc: 'Caary Capital needed internal teams to work with large amounts of account and transaction information. The dashboard puts important records, tables and decisions in a clearer view.',
+      metrics: [['Dashboards', 'Review accounts and activity'], ['Large tables', 'Find records without losing context'], ['Forms', 'Catch missing details before saving']],
+      link: 'portfolio.html?project=caarycapital',
+      tags: ['React', 'TypeScript', 'Redux Toolkit', 'Data tables']
+    },
+    'data-management-database-solutions': {
+      type: 'project-story',
+      title: 'IPv4 Mall',
+      tagline: 'Address listings and transfer steps in one place',
+      desc: 'IPv4 Mall helps people buy, sell and lease blocks of internet addresses. The marketplace brings listings, registry details and transfer progress into a clearer flow.',
+      metrics: [['Address blocks', 'Search across five registries'], ['Listings', 'Buy, sell and lease'], ['Transfer steps', 'See what needs attention next']],
+      link: 'portfolio.html?project=ipv4mall',
+      tags: ['PostgreSQL', 'Marketplace', 'Registry transfers', 'Node.js']
+    }
+  };
+
+  const matchedCS = SERVICE_CASE_STUDIES[s.slug];
+  let caseStudyHTML = '';
+  if (matchedCS) {
+    const isProjectStory = matchedCS.type === 'project-story';
+    const csTags = (matchedCS.tags || []).map(t => `<span class="sv-pill">${t}</span>`).join('');
+    const csMetrics = (matchedCS.metrics || []).map(m => `
+      <div class="sv-cs-stat">
+        <b class="sv-cs-stat-val">${m[0]}</b>
+        <span class="sv-cs-stat-lbl">${m[1]}</span>
+      </div>
+    `).join('');
+    caseStudyHTML = `
+      <section class="sv-sec sv-cs-sec" id="caseStudy" data-sec>
+        <div class="sv-inner">
+          <div class="sv-cs-card" ${fx('zoom', 1)}>
+            <div class="sv-cs-card-top">
+              <span class="sv-cs-badge-pill">${isProjectStory ? 'Related Project' : 'Featured Project Case Study'}</span>
+              <span class="sv-cs-accent-dot"></span>
+            </div>
+            <div class="sv-cs-body-grid">
+              <div class="sv-cs-info">
+                <h3 class="sv-cs-title">${matchedCS.title}</h3>
+                <p class="sv-cs-tagline">${matchedCS.tagline}</p>
+                <p class="sv-cs-desc">${matchedCS.desc}</p>
+                <div class="sv-cs-tags-row">${csTags}</div>
+                <div class="sv-cs-actions">
+                  <a class="sv-main-btn" href="${matchedCS.link}">
+                    View Project Details ${arrowSvg}
+                  </a>
+                  <a class="sv-ghost-btn" href="portfolio.html#portfolio">View All Work</a>
+                </div>
+              </div>
+              <div class="sv-cs-stats-col">
+                <div class="sv-cs-metrics-box">
+                  <span class="sv-cs-metrics-eyebrow">Inside the project</span>
+                  <div class="sv-cs-metrics-list">${csMetrics}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
   /* ═══════════ ASSEMBLE ═══════════ */
-  root.innerHTML = heroHTML + metricsHTML + svBrandMarqueeHTML + overviewHTML + quoteCTA1 + capsHTML + procHTML + quoteCTA2 + techHTML + impactHTML + whyHTML + revHTML + faqHTML + ctaHTML + grandFooterHTML;
+  root.innerHTML = heroHTML + metricsHTML + svBrandMarqueeHTML + overviewHTML + quoteCTA1 + capsHTML + procHTML + caseStudyHTML + quoteCTA2 + techHTML + impactHTML + whyHTML + revHTML + faqHTML + ctaHTML + grandFooterHTML;
 
   /* ═══════════ TOP SERVICE FORM ENGINE ═══════════ */
   (function initTopForm() {

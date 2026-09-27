@@ -58,12 +58,49 @@
   /* stats from the first service */
   const st = SERVICES[0].stats;
   const stats = document.getElementById('hbStats');
-  if (stats) stats.innerHTML = [[st.built, 'Projects delivered'], [st.experience, 'In business'], [st.rating, 'Average client rating'], [st.onTime, 'Delivered on time']].map(s => `<div class="hb-stat"><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');
+  if (stats) stats.innerHTML = [[st.built, 'Projects delivered'], [st.experience, 'In business'], [st.rating, 'Average client rating'], [st.onTime, 'Delivered on time']].map(s => `<div class="hb-stat"><b data-count="${s[0]}">${s[0]}</b><span>${s[1]}</span></div>`).join('');
+  if (stats && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const statObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const element = entry.target;
+      const finalValue = element.dataset.count;
+      const match = finalValue.match(/^(\d+(?:\.\d+)?)(.*)$/);
+      if (!match) return statObserver.unobserve(element);
+      const target = Number(match[1]);
+      const suffix = match[2];
+      const decimals = (match[1].split('.')[1] || '').length;
+      const start = performance.now();
+      const tick = now => {
+        const progress = Math.min((now - start) / 1200, 1);
+        const value = target * (1 - Math.pow(1 - progress, 3));
+        element.textContent = `${decimals ? value.toFixed(decimals) : Math.floor(value)}${suffix}`;
+        if (progress < 1) requestAnimationFrame(tick);
+        else element.textContent = finalValue;
+      };
+      element.textContent = `0${suffix}`;
+      requestAnimationFrame(tick);
+      statObserver.unobserve(element);
+    }), { threshold: 0.6 });
+    stats.querySelectorAll('.hb-stat b').forEach(element => statObserver.observe(element));
+  }
+
+  const CASE_STUDIES = {
+    'custom-software-development': { title: 'Salasa OMS', link: 'portfolio.html?project=salasaoms' },
+    'website-development': { title: 'HostSailor', link: 'portfolio.html?project=hostsailor' },
+    'mobile-app-development': { title: 'Dr. Asgar Rheumatology', link: 'portfolio.html?project=drasgarrheumatology' },
+    'ai-development': { title: 'RichAI', link: 'portfolio.html?project=richai' },
+    'product-design-development': { title: 'Zylmi', link: 'portfolio.html?project=zylmi' },
+    'data-analytics-consultancy': { title: 'Caary Capital', link: 'portfolio.html?project=caarycapital' },
+    'data-management-database-solutions': { title: 'IPv4 Mall', link: 'portfolio.html?project=ipv4mall' }
+  };
 
   /* service rows — zig zag layout: image on one side, content on the other,
      alternating every row, each ending in a Learn more link to that service page */
   const grid = document.getElementById('hbGrid');
-  grid.innerHTML = list.map(({ sv, c, i }) => `
+  grid.innerHTML = list.map(({ sv, c, i }) => {
+    const cs = CASE_STUDIES[sv.slug];
+    const csBtn = cs ? `<a class="hb-cs-btn" href="${cs.link}"><span>View ${cs.title} Project Details</span> <i>&nearr;</i></a>` : '';
+    return `
     <article class="hb-zz-row" data-cat="${c.cat}" style="--a:${sv.cardAccent};--b:${sv.cardBg}">
       <div class="hb-zz-media">
         <div class="hb-zz-art">${art(sv.slug)}</div>
@@ -75,10 +112,12 @@
         <ul class="hb-gets">${c.gets.map(g => `<li>${g}</li>`).join('')}</ul>
         <div class="hb-foot">
           <div class="hb-time"><b>${c.time}</b>usual timeline</div>
+          ${csBtn}
           <a class="hb-go" href="service.html?s=${sv.slug}" aria-label="Learn more about ${sv.title}">Learn more <i>&rarr;</i></a>
         </div>
       </div>
-    </article>`).join('');
+    </article>`;
+  }).join('');
 
   /* filters */
   document.querySelectorAll('.hb-chip').forEach(ch => ch.addEventListener('click', () => {
