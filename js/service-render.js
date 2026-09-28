@@ -500,13 +500,17 @@
   }
   const featNames = TF.map(f => f[0]);
   const moreTech = s.tech.filter(t => !featNames.includes(t));
-  const techHTML = `
+  const techHTMLDefault = `
     <section class="sv-sec sv-tech tx--${TT} tx-l-${TL}" id="techStack" data-sec><div class="sv-inner">
       ${head('Our Technology Stack', `${s.title}<br>technologies we use`, `The tools behind your ${s.title.toLowerCase()} project are chosen for performance, scalability and long-term success, so every solution is secure, reliable and built to evolve with your business.`, 'left', TT === 'dark')}
       ${techInner}
       ${moreTech.length ? `<div class="tx-more" ${fx('rise', 2)}><span>Also in our toolkit</span>${moreTech.map(t => `<b class="tx-chip">${t}</b>`).join('')}</div>` : ''}
     </div></section>`;
 
+
+  const techHTML = (s.slug === 'custom-software-development' && window.TECH_STACK) ? window.TECH_STACK.html()
+    : (s.slug === 'website-development' && window.TECH_WEB) ? window.TECH_WEB.html()
+    : (s.slug === 'mobile-app-development' && window.TECH_APP) ? window.TECH_APP.html() : techHTMLDefault;
 
   /* ═══════════ IMPACT ═══════════ */
   const I = s.impact;
@@ -791,44 +795,39 @@
     }
   };
 
+  const CS_IMG = {
+    'custom-software-development': 'Case studies/salasa-oms-portfolio/images/dashboard.png',
+    'mobile-app-development': 'Case studies/Rheumatology Consultants/images/case-studies/rheumatology/book-doctor.webp',
+    'data-analytics-consultancy': 'Case studies/caary-capital-portfolio/images/dashboard.png'
+  };
   const matchedCS = SERVICE_CASE_STUDIES[s.slug];
   let caseStudyHTML = '';
   if (matchedCS) {
-    const isProjectStory = matchedCS.type === 'project-story';
-    const csTags = (matchedCS.tags || []).map(t => `<span class="sv-pill">${t}</span>`).join('');
-    const csMetrics = (matchedCS.metrics || []).map(m => `
-      <div class="sv-cs-stat">
-        <b class="sv-cs-stat-val">${m[0]}</b>
-        <span class="sv-cs-stat-lbl">${m[1]}</span>
-      </div>
-    `).join('');
+    const CS_MOCK = { 'website-development': `<div class="cs2-shot"><div class="hs-mock"><div class="hs-plan"><em>VPS</em><b>$9<small>/mo</small></b><span></span><span></span><span></span><i></i></div><div class="hs-plan hot"><em>Dedicated</em><b>$79<small>/mo</small></b><span></span><span></span><span></span><i></i></div><div class="hs-plan"><em>Shared</em><b>$3<small>/mo</small></b><span></span><span></span><span></span><i></i></div></div></div>` };
+    const shot = CS_MOCK[s.slug] ? CS_MOCK[s.slug] : CS_IMG[s.slug]
+      ? `<div class="cs2-shot"><img src="${encodeURI(CS_IMG[s.slug])}" alt="${matchedCS.title} screenshot" loading="lazy"></div>`
+      : `<div class="cs2-shot"><div class="cs2-skel"><span></span><span></span><span></span><span></span></div></div>`;
     caseStudyHTML = `
-      <section class="sv-sec sv-cs-sec" id="caseStudy" data-sec>
+      <section class="sv-sec cs2" id="caseStudy" data-sec>
         <div class="sv-inner">
-          <div class="sv-cs-card" ${fx('zoom', 1)}>
-            <div class="sv-cs-card-top">
-              <span class="sv-cs-badge-pill">${isProjectStory ? 'Related Project' : 'Featured Project Case Study'}</span>
-              <span class="sv-cs-accent-dot"></span>
+          <div class="cs2-head"><span class="cs2-eye"><b></b>Related Project</span>
+            <h2 class="cs2-h">Where this service <em>shipped for real</em></h2></div>
+          <div class="cs2-card">
+            <span class="cs2-wm" aria-hidden="true">${matchedCS.title}</span>
+            <div class="cs2-info">
+              <span class="cs2-badge">${matchedCS.type === 'project-story' ? 'Featured Project' : 'Featured Case Study'}</span>
+              <h3 class="cs2-title">${matchedCS.title}</h3>
+              <p class="cs2-tag">${matchedCS.tagline}</p>
+              <p class="cs2-desc">${matchedCS.desc}</p>
+              <ul class="cs2-mets">${(matchedCS.metrics || []).map((m, i) => `<li><i>0${i + 1}</i><b>${m[0]}</b><span>${m[1]}</span></li>`).join('')}</ul>
+              <div class="cs2-act">
+                <a class="cs2-btn" href="${matchedCS.link}">View Project Details ${arrowSvg}</a>
+                <a class="cs2-btn gh" href="portfolio.html#portfolio">View All Work</a>
+              </div>
             </div>
-            <div class="sv-cs-body-grid">
-              <div class="sv-cs-info">
-                <h3 class="sv-cs-title">${matchedCS.title}</h3>
-                <p class="sv-cs-tagline">${matchedCS.tagline}</p>
-                <p class="sv-cs-desc">${matchedCS.desc}</p>
-                <div class="sv-cs-tags-row">${csTags}</div>
-                <div class="sv-cs-actions">
-                  <a class="sv-main-btn" href="${matchedCS.link}">
-                    View Project Details ${arrowSvg}
-                  </a>
-                  <a class="sv-ghost-btn" href="portfolio.html#portfolio">View All Work</a>
-                </div>
-              </div>
-              <div class="sv-cs-stats-col">
-                <div class="sv-cs-metrics-box">
-                  <span class="sv-cs-metrics-eyebrow">Inside the project</span>
-                  <div class="sv-cs-metrics-list">${csMetrics}</div>
-                </div>
-              </div>
+            <div class="cs2-vis" aria-hidden="true">
+              ${(matchedCS.tags || []).slice(0, 4).map(x => `<span class="cs2-chip">${x}</span>`).join('')}
+              <div class="cs2-browser"><div class="cs2-bar"><i></i><i></i><i></i><span>analyticinsider.com/${matchedCS.link.split('=')[1] || 'project'}</span></div>${shot}</div>
             </div>
           </div>
         </div>
@@ -917,6 +916,10 @@
     const pns = root.querySelectorAll('.tx-pn');
     pns.forEach(pn => ['mouseenter', 'click'].forEach(ev => pn.addEventListener(ev, () => pns.forEach(x => x.classList.toggle('on', x === pn)))));
   })();
+
+  if (window.TECH_STACK) window.TECH_STACK.init(root);
+  if (window.TECH_WEB) window.TECH_WEB.init(root);
+  if (window.TECH_APP) window.TECH_APP.init(root);
 
   const footer = $('#siteFooter', root);
   if (footer) {

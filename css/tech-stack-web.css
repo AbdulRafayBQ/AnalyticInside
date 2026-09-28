@@ -1,0 +1,59 @@
+/* ==========================================================================
+   WEBSITE DEVELOPMENT TECH STACK — rocket launch + business growth scene
+   (builds on the shared .ts / .ts-tab / .ts-card styles in tech-stack.css)
+   ========================================================================== */
+.tw { background: radial-gradient(1000px 560px at 90% 0%, rgba(92,225,180,.13), transparent 60%), radial-gradient(900px 600px at 0% 100%, rgba(201,155,92,.15), transparent 60%), #05070b; }
+.tw-top { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: center; margin-bottom: 72px; }
+.tw-scene { position: relative; border-radius: 26px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 50px 90px -34px #000, 0 0 80px -24px rgba(201,155,92,.45); aspect-ratio: 600/460; background: #05070b; }
+.tw-scene svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; max-width: none; }
+.tw-scene.shake svg { animation: twShake .09s linear infinite; }
+@keyframes twShake { 0% { transform: translate(1.5px, 1px); } 50% { transform: translate(-1.5px, -1px); } 100% { transform: translate(1px, -1.5px); } }
+.tw-star { fill: #fff; animation: twTw 3.4s ease-in-out infinite; } @keyframes twTw { 50% { opacity: .15; } }
+.tw-w { animation: twWin 2.6s steps(1) infinite; } @keyframes twWin { 0%, 100% { opacity: 1; } 35% { opacity: .35; } 70% { opacity: .85; } }
+.tw-lbl { font: 700 7.5px 'Inter', sans-serif; fill: rgba(255,255,255,.75); letter-spacing: .04em; text-transform: uppercase; }
+.tw-speed rect { fill: rgba(255,255,255,.55); opacity: 0; }
+.tw-scene.launching .tw-speed rect { animation: twSpd .55s linear infinite; animation-delay: var(--d); }
+@keyframes twSpd { 0% { transform: translateX(0); opacity: 0; } 20% { opacity: .5; } 100% { transform: translateX(-760px); opacity: 0; } }
+.tw-badge { transform-box: fill-box; transition: opacity .3s; opacity: 0; } .tw-badge.on { opacity: 1; animation: twPop .6s cubic-bezier(.3,1.6,.5,1); }
+.tw-badge rect { fill: rgba(9,12,18,.94); stroke: #C99B5C; stroke-width: 1.2; } .tw-badge text { font: 800 11px 'Outfit', sans-serif; fill: #fff; }
+@keyframes twPop { from { filter: drop-shadow(0 0 0 #C99B5C); } 40% { filter: drop-shadow(0 0 12px #C99B5C); } }
+.tw-puff { fill: rgba(220,226,240,.55); transform-box: fill-box; transform-origin: center; animation: twPuff .95s ease-out forwards; }
+.tw-puff.hot { fill: rgba(255,170,80,.7); }
+.tw-puff[r^="9"], .tw-puff[r^="1"] { animation-duration: 1.6s; }
+@keyframes twPuff { to { transform: scale(3.2); opacity: 0; } }
+#twFlame { transform-box: view-box; }
+.tw-fl { transform-box: fill-box; transform-origin: 50% 0; animation: twFl .12s ease-in-out infinite alternate; } @keyframes twFl { from { transform: scaleY(.88); } to { transform: scaleY(1.12); } }
+.tw-bob { animation: none; } .tw-scene.done .tw-bob { animation: twBob 2.8s ease-in-out infinite alternate; } @keyframes twBob { from { transform: translateY(3px); } to { transform: translateY(-5px); } }
+#twFlag { transition: opacity .6s; } #twGrowth { filter: drop-shadow(0 0 5px rgba(92,225,180,.6)); }
+.tw-conf { animation: twConf 1.6s cubic-bezier(.1,.8,.3,1) forwards; }
+@keyframes twConf { from { transform: translate(0, 0) scale(1); opacity: 1; } to { transform: translate(var(--dx), calc(var(--dy) + 30px)) scale(.2); opacity: 0; } }
+
+.tw-hud { position: absolute; left: 14px; top: 14px; z-index: 3; display: flex; gap: 8px; }
+.tw-hud div { min-width: 82px; padding: 8px 12px; border-radius: 12px; background: rgba(8,10,15,.78); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px); }
+.tw-hud span { display: block; font: 700 9.5px 'Inter', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.tw-hud b { font: 800 19px 'Outfit', sans-serif; color: #5CE1B4; font-variant-numeric: tabular-nums; } .tw-hud div:nth-child(2) b { color: #C99B5C; } .tw-hud div:nth-child(3) b { color: #fff; }
+.tw-grown { position: absolute; left: 14px; top: 76px; z-index: 3; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: linear-gradient(100deg, #C99B5C, #ffd27a); color: #0b0b0b; font: 800 14px 'Inter', sans-serif; letter-spacing: .1em; text-transform: uppercase; box-shadow: 0 20px 40px -12px rgba(201,155,92,.8); opacity: 0; transform: translateY(30px) scale(.8); transition: .6s cubic-bezier(.3,1.5,.5,1); white-space: nowrap; }
+.tw-grown.on { opacity: 1; transform: none; } .tw-grown i { width: 9px; height: 9px; border-radius: 50%; background: #0b6b4c; animation: tsPing 1.4s infinite; }
+
+.tw-rail { position: relative; height: 34px; margin: 0 22px 20px; }
+.tw-rail::before, .tw-rail s { content: ''; position: absolute; left: 0; top: 16px; height: 3px; border-radius: 3px; }
+.tw-rail::before { right: 0; background: rgba(255,255,255,.1); }
+.tw-rail s { width: 0; background: linear-gradient(90deg, #5CE1B4, #C99B5C); transition: width .8s cubic-bezier(.3,.8,.3,1); text-decoration: none; box-shadow: 0 0 16px rgba(201,155,92,.7); }
+.tw-rail u { position: absolute; top: 12px; width: 11px; height: 11px; margin-left: -5px; border-radius: 50%; background: #0b0d12; border: 2px solid rgba(255,255,255,.3); }
+.tw-rk { position: absolute; top: -2px; left: 0; width: 34px; height: 34px; margin-left: -17px; transform: rotate(90deg); transition: left .8s cubic-bezier(.3,.8,.3,1); filter: drop-shadow(0 0 10px rgba(255,180,80,.9)); }
+.tw-rk svg { width: 100%; height: 100%; display: block; max-width: none; }
+.tw .ts-grid { grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); min-height: 250px; }
+.ts-logo.multi { width: auto; min-width: 62px; align-self: flex-start; padding: 6px 9px; gap: 5px; display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; }
+.ts-logo.multi img { width: 27px; height: 27px; } .ts-logo.multi.m3 img { width: 25px; height: 25px; }
+
+@media (max-width: 960px) { .tw-top { grid-template-columns: 1fr; gap: 40px; margin-bottom: 52px; } .tw-hud div { min-width: 64px; padding: 6px 9px; } .tw-hud b { font-size: 15px; } .tw .ts-grid { grid-template-columns: repeat(2, 1fr); } .tw-rail { margin: 0 14px 18px; } }
+
+/* HostSailor plan-comparison mock (used in the Related Project card) */
+.hs-mock { height: 100%; padding: 22px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: linear-gradient(160deg, #0d1424, #0a0f1a); align-items: stretch; }
+.hs-plan { position: relative; border-radius: 12px; padding: 14px 12px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); display: flex; flex-direction: column; gap: 8px; }
+.hs-plan.hot { background: linear-gradient(170deg, rgba(201,155,92,.28), rgba(201,155,92,.06)); border-color: #C99B5C; transform: translateY(-6px); box-shadow: 0 16px 30px -12px rgba(201,155,92,.6); }
+.hs-plan em { font: 800 9px 'Inter', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.6); font-style: normal; }
+.hs-plan b { font: 800 22px 'Outfit', sans-serif; color: #fff; } .hs-plan b small { font-size: 10px; color: rgba(255,255,255,.5); font-weight: 600; }
+.hs-plan span { height: 6px; border-radius: 4px; background: rgba(255,255,255,.14); } .hs-plan span:nth-of-type(2) { width: 78%; } .hs-plan span:nth-of-type(3) { width: 58%; }
+.hs-plan i { margin-top: auto; height: 22px; border-radius: 99px; background: rgba(255,255,255,.14); } .hs-plan.hot i { background: #C99B5C; }
+.hs-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,.08); } .hs-bar::after { content: ''; display: block; height: 100%; width: 40%; background: #5CE1B4; animation: hsSlide 3s ease-in-out infinite alternate; } @keyframes hsSlide { to { margin-left: 60%; } }
