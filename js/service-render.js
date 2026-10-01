@@ -28,7 +28,7 @@
     { hero: 'mirror',  deco: 'floor',    metrics: 'tiles', overview: 'sticky', caps: 'rows',  impact: 'bars',  why: 'grid',  tech: 'marquee', faq: 'twocol',    rev: 'dark'  },
     { hero: 'center',  deco: 'planes',   metrics: 'strip', overview: 'stack',  caps: 'bento', impact: 'split', why: 'stack', tech: 'tiles',   faq: 'accordion', rev: 'light' },
     { hero: 'layers',  deco: 'rings',    metrics: 'tiles', overview: 'split',  caps: 'tabs',  impact: 'cards', why: 'grid',  tech: 'marquee', faq: 'twocol',    rev: 'dark'  },
-    { hero: 'marquee', deco: 'diamonds', metrics: 'strip', overview: 'sticky', caps: 'stair', impact: 'bars',  why: 'split', tech: 'chips',   faq: 'twocol',    rev: 'light' },
+    { hero: 'marquee', deco: 'canvas',   metrics: 'strip', overview: 'sticky', caps: 'stair', impact: 'bars',  why: 'split', tech: 'chips',   faq: 'twocol',    rev: 'light' },
     { hero: 'mirror',  deco: 'rings',    metrics: 'tiles', overview: 'stack',  caps: 'grid',  impact: 'split', why: 'grid',  tech: 'tiles',   faq: 'accordion', rev: 'dark'  },
     { hero: 'center',  deco: 'cubes',    metrics: 'strip', overview: 'sticky', caps: 'bento', impact: 'cards', why: 'stack', tech: 'marquee', faq: 'twocol',    rev: 'light' },
     { hero: 'split',   deco: 'planes',   metrics: 'tiles', overview: 'stack',  caps: 'rows',  impact: 'split', why: 'split', tech: 'tiles',   faq: 'accordion', rev: 'dark'  },
@@ -37,6 +37,7 @@
   ];
   const R = RECIPES[k] || RECIPES[0];
   root.dataset.hero = R.hero;
+  root.dataset.slug = s.slug;
 
   /* ── tiny helpers ── */
   const fx = (type, i = 0, extra = '') => `data-fx="${type}" style="--i:${i};${extra}"`;
@@ -112,7 +113,18 @@
     rings: `<div class="sv-deco sv-deco--rings" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><span class="ring-core"></span></div>`,
     planes: `<div class="sv-deco sv-deco--planes" aria-hidden="true"><div class="stackp">${[0, 1, 2, 3].map(n => `<span class="pl" style="--n:${n}"></span>`).join('')}</div></div>`,
     floor: `<div class="sv-deco sv-deco--floor" aria-hidden="true"><span class="fl-grid"></span><span class="orb o1"></span><span class="orb o2"></span></div>`,
-    diamonds: `<div class="sv-deco sv-deco--diamonds" aria-hidden="true">${[1, 2, 3, 4, 5].map(n => `<span class="dm d${n}"></span>`).join('')}</div>`
+    diamonds: `<div class="sv-deco sv-deco--diamonds" aria-hidden="true">${[1, 2, 3, 4, 5].map(n => `<span class="dm d${n}"></span>`).join('')}</div>`,
+    canvas: `<div class="sv-deco sv-deco--canvas" aria-hidden="true">
+      <span class="pd-grid"></span>
+      <span class="pd-frame f1"><i></i><i></i><i></i><i></i></span>
+      <span class="pd-frame f2"><i></i><i></i></span>
+      <span class="pd-frame f3"><i></i><i></i><i></i></span>
+      <svg class="pd-link" viewBox="0 0 600 420" aria-hidden="true"><path d="M150 120 C 240 150, 260 210, 340 230" /><path d="M340 260 C 400 280, 410 320, 470 330" /></svg>
+      <span class="pd-dot" style="--x:150px;--y:120px"></span><span class="pd-dot" style="--x:340px;--y:230px"></span><span class="pd-dot" style="--x:470px;--y:330px"></span>
+      <span class="pd-cursor"><svg viewBox="0 0 24 24"><path d="M4 2l14 8-6 2 4 8-3 1-4-8-4 5z" fill="#17130E" stroke="#fff" stroke-width="1"/></svg></span>
+      <span class="pd-swatch s1"></span><span class="pd-swatch s2"></span><span class="pd-swatch s3"></span>
+      <span class="pd-ruler rx"></span><span class="pd-ruler ry"></span>
+    </div>`
   }[R.deco];
 
   const heroLeft = `
@@ -510,7 +522,8 @@
 
   const techHTML = (s.slug === 'custom-software-development' && window.TECH_STACK) ? window.TECH_STACK.html()
     : (s.slug === 'website-development' && window.TECH_WEB) ? window.TECH_WEB.html()
-    : (s.slug === 'mobile-app-development' && window.TECH_APP) ? window.TECH_APP.html() : techHTMLDefault;
+    : (s.slug === 'mobile-app-development' && window.TECH_APP) ? window.TECH_APP.html()
+    : (s.slug === 'product-design-development' && window.PRODUCT_DESIGN) ? window.PRODUCT_DESIGN.html() : techHTMLDefault;
 
   /* ═══════════ IMPACT ═══════════ */
   const I = s.impact;
@@ -920,6 +933,7 @@
   if (window.TECH_STACK) window.TECH_STACK.init(root);
   if (window.TECH_WEB) window.TECH_WEB.init(root);
   if (window.TECH_APP) window.TECH_APP.init(root);
+  if (window.PRODUCT_DESIGN) window.PRODUCT_DESIGN.init(root);
 
   const footer = $('#siteFooter', root);
   if (footer) {
