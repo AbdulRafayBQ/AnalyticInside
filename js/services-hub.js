@@ -123,11 +123,24 @@
   document.querySelectorAll('.hb-chip').forEach(ch => ch.addEventListener('click', () => {
     document.querySelectorAll('.hb-chip').forEach(x => x.classList.toggle('on', x === ch));
     const f = ch.dataset.f;
+    const shown = [];
     grid.querySelectorAll('.hb-zz-row').forEach(cd => {
       const show = f === 'all' || cd.dataset.cat === f;
       cd.classList.toggle('is-hidden', !show);
-      if (show) { cd.classList.remove('in'); void cd.offsetWidth; cd.classList.add('in'); }
+      if (show) {
+        /* snap the row back to its hidden start state with transitions off,
+           so rows that were already on screen animate in again too */
+        cd.classList.add('no-t');
+        cd.classList.remove('in');
+        if (io) io.unobserve(cd);
+        shown.push(cd);
+      }
     });
+    void grid.offsetWidth; /* commit the reset */
+    shown.forEach(cd => cd.classList.remove('no-t'));
+    void grid.offsetWidth; /* commit transitions back on */
+    /* play the entrance: rows on screen animate now, the rest as they are scrolled to */
+    shown.forEach(cd => { if (io) io.observe(cd); else cd.classList.add('in'); });
   }));
 
   /* reveal on scroll */

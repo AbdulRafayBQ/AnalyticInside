@@ -603,7 +603,6 @@
     <section class="sap-section sv-sec sv-cta" id="startProject" data-sec>
       <div class="sap-glow-1" aria-hidden="true"></div><div class="sap-pattern" aria-hidden="true"></div>
       <div class="sap-inner" id="sapInner" ${fx('swing', 0)}>
-        <div class="sap-badge" ${fx('rise', 2)}><span class="sap-badge-dot"></span><span>Currently accepting new projects</span></div>
         <p class="sap-eyebrow" ${fx('rise', 3)}>Start a Project</p>
         <h2 class="sap-title" ${fx('rise', 4)}>Got an idea? Let's build <em>something real.</em></h2>
         <p class="sap-subtitle" ${fx('rise', 5)}>Tell us what you are trying to build and we will reply within a day with next steps, timeline and a clear estimate.</p>
@@ -612,8 +611,6 @@
           <a class="sap-btn-secondary" href="mailto:info@analyticinsider.com">Email Us Directly</a>
         </div>
         <div class="sap-meta-row" ${fx('rise', 7)}>
-          <div class="sap-meta-item"><div class="sap-meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><span>Average reply under 24 hours</span></div>
-          <div class="sap-meta-item"><div class="sap-meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div><span>Accepting new clients</span></div>
           <div class="sap-meta-item"><div class="sap-meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span>Dearborn, MI — working worldwide</span></div>
         </div>
       </div>
@@ -638,10 +635,6 @@
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span>Dearborn, MI 48128, USA — working worldwide</span>
           </a>
-          <div class="footer-status-badge">
-            <span class="status-live-dot"></span>
-            <span>Accepting new clients</span>
-          </div>
           <div class="footer-social-wrapper">
             <span class="footer-social-label">Connect with us</span>
             <div class="footer-social-links">
@@ -672,6 +665,7 @@
             <li><a href="service.html?s=product-design-development">Product & UI UX Design</a></li>
             <li><a href="service.html?s=digital-marketing-branding">Marketing & Branding</a></li>
           </ul>
+          <a class="footer-viewall" href="services.html">View all services <svg viewBox="0 0 20 20" width="13" height="13" fill="none" aria-hidden="true"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
 
         <!-- Col 3: Technologies -->
@@ -680,6 +674,7 @@
           <ul class="footer-links-list">
             ${s.tech.slice(0, 8).map(x => `<li><a href="#techStack">${x}</a></li>`).join('')}
           </ul>
+          <a class="footer-viewall" href="index.html#technology">View all technologies <svg viewBox="0 0 20 20" width="13" height="13" fill="none" aria-hidden="true"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
 
         <!-- Col 4: Company -->
@@ -710,14 +705,6 @@
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <span>+92 333 2159764</span>
             </a>
-            <div class="footer-reply-badge">
-              <span class="reply-clock-icon"></span>
-              <span>Average response: under 24 hours</span>
-            </div>
-            <div class="footer-avail-pill">
-              <span class="avail-dot"></span>
-              <span>Accepting New Clients</span>
-            </div>
           </div>
         </div>
 

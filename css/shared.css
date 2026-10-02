@@ -1,0 +1,88 @@
+/* =============================================================
+   SHARED — navbar + CTA ("Start a Project") used on every page
+   Lightweight: no infinite animations on the CTA, entrance and
+   hover transitions only, so scrolling stays smooth.
+   ============================================================= */
+
+/* ── NAVBAR: white pill shape, see-through frosted-glass background ── */
+.site-header,
+.site-header.scrolled {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+.site-header::after { content: none !important; }
+
+.header-inner {
+  background: rgba(255,255,255,.55) !important;
+  border: 1px solid rgba(255,255,255,.75) !important;
+  border-radius: 999px !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  box-shadow: 0 8px 28px rgba(23,19,14,.08), inset 0 1px 0 rgba(255,255,255,.85) !important;
+}
+.site-header.scrolled .header-inner {
+  background: rgba(255,255,255,.68) !important;
+  box-shadow: 0 10px 32px rgba(23,19,14,.11), inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+@media (max-width: 768px) {
+  .site-header.scrolled { background: transparent !important; }
+  .site-header.scrolled .header-inner {
+    background: rgba(255,255,255,.72) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+  }
+}
+
+/* ── CTA SECTION: static look, one-time staggered entrance, simple hovers ── */
+.sap-pattern, .sap-glow-1, .sap-badge-dot, .sap-title em,
+.sap-btn-primary, .sap-btn-primary svg { animation: none !important; }
+
+.sap-inner { isolation: isolate; }
+.sap-badge { display: flex; width: fit-content; margin-left: auto; margin-right: auto; }
+.sap-eyebrow { display: flex; justify-content: center; }
+
+.sap-inner:not([data-fx]) > * { opacity: 0; transform: translateY(22px); }
+.sap-inner.sap-in:not([data-fx]) > * {
+  opacity: 1; transform: none;
+  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+}
+.sap-inner.sap-in:not([data-fx]) > :nth-child(1) { transition-delay: .05s; }
+.sap-inner.sap-in:not([data-fx]) > :nth-child(2) { transition-delay: .12s; }
+.sap-inner.sap-in:not([data-fx]) > :nth-child(3) { transition-delay: .19s; }
+.sap-inner.sap-in:not([data-fx]) > :nth-child(4) { transition-delay: .26s; }
+.sap-inner.sap-in:not([data-fx]) > :nth-child(5) { transition-delay: .33s; }
+.sap-inner.sap-in:not([data-fx]) > :nth-child(6) { transition-delay: .40s; }
+
+.sap-title em { color: #C99B5C; }
+
+/* buttons: plain hover only (lift + colour), no shimmer / pulse / magnet */
+.sap-btn-primary, .dproc-cta-btn, .sap-btn-secondary {
+  transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.sap-btn-primary:hover { background: #C99B5C !important; border-color: #C99B5C !important; color: #17130E !important; transform: translateY(-3px); box-shadow: 0 12px 26px rgba(23,19,14,.16); }
+.sap-btn-secondary:hover { border-color: #C99B5C; background: rgba(201,155,92,.14); transform: translateY(-3px); }
+.dproc-cta-btn:hover { background: #C99B5C !important; color: #17130E !important; }
+
+/* ── FOOTER: "View all …" buttons under Services / Technologies ── */
+.footer-viewall {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 18px; padding: 9px 16px; white-space: nowrap; align-self: flex-start;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .02em;
+  color: #E6C48B !important; text-decoration: none;
+  background: rgba(201,155,92,.10); border: 1px solid rgba(201,155,92,.34);
+  border-radius: 999px;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+}
+.footer-viewall svg { flex-shrink: 0; transition: transform .25s ease; }
+.footer-viewall:hover { background: #C99B5C; border-color: #C99B5C; color: #17130E !important; transform: translateY(-2px); }
+.footer-viewall:hover svg { transform: translateX(3px); }
+#technology { scroll-margin-top: 20px; }
+
+/* ── Service names are links to their own service page ── */
+a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
+.svc-card-title .svc-title-link { color: inherit; text-decoration: none; }
+.svc-card-title .svc-title-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.footer-links-list a[href^="service.html"] { text-decoration: none; }

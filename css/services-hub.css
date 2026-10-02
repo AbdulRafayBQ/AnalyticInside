@@ -161,3 +161,6 @@
   .hb-cta { padding:48px 22px; border-radius:26px; } .hb-actions .hb-btn { width:100%; justify-content:center; }
 }
 @media (prefers-reduced-motion:reduce) { .hb-tile { animation:none; } .rv, .hb-zz-media, .hb-zz-content { transition:none; opacity:1; transform:none; } .hb-float1, .hb-float2 { animation:none; } }
+
+/* filter change: reset rows instantly before replaying the entrance animation */
+.hb-zz-row.no-t, .hb-zz-row.no-t .hb-zz-media, .hb-zz-row.no-t .hb-zz-content { transition: none !important; }
