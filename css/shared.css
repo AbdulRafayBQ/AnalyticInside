@@ -86,3 +86,19 @@ a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
 .svc-card-title .svc-title-link { color: inherit; text-decoration: none; }
 .svc-card-title .svc-title-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .footer-links-list a[href^="service.html"] { text-decoration: none; }
+
+
+/* ── NAVBAR: smaller gap from the top (desktop) ── */
+@media (min-width: 769px) {
+  .site-header { padding-top: 10px !important; }
+}
+
+/* ── NAVBAR: transparent glass background (all screen sizes, scrolled or not) ── */
+.site-header .header-inner,
+.site-header.scrolled .header-inner {
+  background: rgba(255,255,255,.14) !important;
+  border: 1px solid rgba(23,19,14,.09) !important;
+  backdrop-filter: blur(18px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+  box-shadow: 0 6px 22px rgba(23,19,14,.06) !important;
+}

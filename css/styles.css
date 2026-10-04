@@ -668,7 +668,7 @@ body {
 .svc-track-header.svc-out { opacity: 0; transform: translateY(-14px); transition: opacity .4s ease, transform .4s ease; }
 
 /* Carousel track */
-.svc-track-outer { overflow: hidden; }
+.svc-track-outer { overflow: hidden; padding: 6px 0 22px; margin: -6px 0 -22px; }
 .svc-track {
   display: flex; gap: 24px;
   transition: transform .65s cubic-bezier(.25,.9,.3,1);
@@ -699,9 +699,10 @@ body {
 .svc-card.svc-out-left  { opacity: 0; transform: translateX(-60px) translateZ(0); transition: opacity .5s ease, transform .5s ease; }
 .svc-card.svc-out-right { opacity: 0; transform: translateX(60px) translateZ(0);  transition: opacity .5s ease, transform .5s ease; }
 .svc-card.svc-in:hover {
-  box-shadow: 0 32px 80px rgba(23,19,14,.13), 0 8px 24px rgba(23,19,14,.07);
-  border-color: rgba(23,19,14,.14);
-  transform: translateY(-6px) translateZ(0);
+  /* subtle hover — no lift and a small shadow that stays inside the track,
+     so the carousel's clip edge never shows as hard corners */
+  box-shadow: 0 6px 18px rgba(23,19,14,.07);
+  border-color: rgba(23,19,14,.12);
 }
 
 /* Card visual top area */
@@ -3771,7 +3772,6 @@ em { font-style: italic; color: var(--accent); }
   font-size: 13px; font-weight: 500;
   text-decoration: none;
   padding: 13px 24px;
-  border-radius: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
 }
@@ -5361,3 +5361,139 @@ em { font-style: italic; color: var(--accent); }
 /* Mobile responsive handled by mobile-fix.css */
 /* Hero strip: black line icons */
 .cap-icon svg { stroke: #111; }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO BRAND STRIP — client logos, endless loop (never pauses)
+═══════════════════════════════════════════════════════════════ */
+.hero-cap-strip {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+}
+.hero-cap-track {
+  gap: 0;
+  padding-left: 0;
+  animation: heroCapSlide 50s linear infinite;
+  will-change: transform;
+}
+/* keep running on hover / touch — never pause */
+.hero-cap-strip:hover .hero-cap-track,
+.hero-cap-track:hover { animation-play-state: running !important; }
+.hc-logo {
+  flex: 0 0 auto;
+  display: flex; align-items: center;
+  padding: 0 30px;           /* padding (not gap) keeps the -50% loop seamless */
+}
+.hc-logo img {
+  display: block;
+  height: 38px; width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  pointer-events: none;
+}
+@media (max-width: 860px) {
+  .hero-cap-track { animation-duration: 36s; }
+  .hc-logo { padding: 0 20px; }
+  .hc-logo img { height: 28px; max-width: 110px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-cap-track { animation: none; }
+}
+
+/* Services cards — technologies always on ONE row */
+.svc-reveal-tags { flex-wrap: nowrap; overflow: hidden; }
+.svc-reveal-tag { flex: 0 0 auto; white-space: nowrap; }
+@media (max-width: 768px) {
+  .svc-reveal-tag:nth-child(n+4) { display: none; }
+}
+
+.svc-reveal-tag.svc-tag-hide { display: none; }
+
+/* ═══════════════════════════════════════════════════════════════
+   SERVICE CARDS — subtle service-themed activity in the card corners
+   (falling code columns + cursor-reactive floating icons).
+   Everything is very low opacity and kept away from the card centre.
+═══════════════════════════════════════════════════════════════ */
+.svc-fx {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 1;
+  overflow: hidden;
+  color: var(--card-accent, #C99B5C);
+}
+/* code columns — left & right edges, fading out towards the centre */
+.svc-fx-code {
+  position: absolute; top: 0; bottom: 92px; width: 24%;
+  overflow: hidden; opacity: .13;
+  font: 600 10px/2 ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  letter-spacing: .02em; white-space: nowrap;
+}
+.svc-fx-code--l {
+  left: 16px; text-align: left;
+  -webkit-mask-image: linear-gradient(90deg, #000 0, transparent 100%);
+          mask-image: linear-gradient(90deg, #000 0, transparent 100%);
+}
+.svc-fx-code--r {
+  right: 16px; text-align: right; top: 76px; bottom: 0;
+  -webkit-mask-image: linear-gradient(270deg, #000 0, transparent 100%);
+          mask-image: linear-gradient(270deg, #000 0, transparent 100%);
+}
+.svc-fx-code-in { display: block; animation: svcCodeScroll 26s linear infinite; will-change: transform; }
+.svc-fx-code--r .svc-fx-code-in { animation-duration: 32s; animation-direction: reverse; }
+.svc-fx-code-in span { display: block; }
+@keyframes svcCodeScroll { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+
+/* corner icons — outer span is moved by JS (cursor), inner svg floats via CSS */
+.svc-fx-ico {
+  position: absolute; width: 26px; height: 26px;
+  opacity: .16; will-change: transform;
+  transition: opacity .35s ease;
+}
+.svc-fx-ico svg {
+  display: block; width: 100%; height: 100%;
+  animation: svcIcoFloat 7s ease-in-out infinite alternate;
+}
+.svc-fx-ico:nth-of-type(2n) svg { animation-duration: 9s; animation-delay: -3s; }
+.svc-fx-ico:nth-of-type(3n) svg { animation-duration: 11s; animation-delay: -5s; }
+.svc-card:hover .svc-fx-ico { opacity: .24; }
+@keyframes svcIcoFloat {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(3px, -6px) rotate(6deg); }
+  100% { transform: translate(-3px, 4px) rotate(-5deg); }
+}
+/* corner slots only (never the middle band of the card) */
+.svc-fx-ico.p1 { left: 6%;  top: 44%; }
+.svc-fx-ico.p2 { left: 19%; top: 13%; width: 22px; height: 22px; }
+.svc-fx-ico.p3 { right: 20%; top: 15%; width: 22px; height: 22px; }
+.svc-fx-ico.p4 { right: 6%;  top: 47%; width: 30px; height: 30px; }
+.svc-fx-ico.p5 { right: 25%; bottom: 12%; width: 24px; height: 24px; }
+
+@media (max-width: 768px) {
+  .svc-fx-code { width: 30%; font-size: 9px; }
+  .svc-fx-ico { width: 20px; height: 20px; }
+  .svc-fx-ico.p4 { width: 24px; height: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-fx-code-in, .svc-fx-ico svg { animation: none; }
+}
+
+
+/* Tech icon in card background: static, no floating motion */
+.svc-bg-motion { animation: none !important; top: 22px; left: 22px; width: 64px; height: 64px; opacity: 0.16; }
+.svc-card:hover .svc-bg-motion { opacity: 0.26; }
+
+
+/* Card background: no animations, no decorative layers. Only the colour theme stays. */
+.svc-bg-motion, .svc-bg-motion-2, .svc-fx { display: none !important; }
+.svc-card *, .svc-card-visual * { animation: none !important; }
+
+/* Technology logos: small outline-only side actors in the top-left corner, in the card's accent colour */
+.svc-play { position: absolute; left: 14px; top: 14px; width: 76px; height: 92px; z-index: 1; }
+.svc-logo { position: absolute; left: 0; top: 0; display: block; cursor: grab; user-select: none; -webkit-user-select: none; touch-action: none; will-change: transform; filter: none; box-shadow: none; color: var(--card-accent, #C99B5C); }
+.svc-logo .svc-ol { width: 100%; height: 100%; display: block; overflow: visible; pointer-events: none; opacity: .32; transition: opacity .3s ease; }
+.svc-logo .svc-ol, .svc-logo .svc-ol * { fill: none !important; stroke: currentColor !important; stroke-width: 1.3px !important; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.svc-logo:hover .svc-ol, .svc-logo.is-drag .svc-ol { opacity: .55; }
+.svc-logo.is-drag { cursor: grabbing; }
+
+
+/* Reviews now sits in its own section (split from the brands marquee) */
+#reviews.clients-section { padding-top: 72px; }
+#reviews .clt-wrap { margin-top: 0 !important; }
