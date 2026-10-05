@@ -33,6 +33,12 @@
     if (currentY > 50) header.classList.add('scrolled');
     else                header.classList.remove('scrolled');
 
+    /* Layout-driven scroll (e.g. tech/marketing tab switch) must not toggle the navbar */
+    if (window.__navSuppressUntil && Date.now() < window.__navSuppressUntil) {
+      lastScrollY = currentY;
+      return;
+    }
+
     if (currentY <= HIDE_AFTER) {
       /* Always visible near the top */
       header.classList.remove('nav-hidden');
@@ -345,28 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
-/* Services cards — keep technologies on ONE row: hide any tag that would wrap/overflow */
-(function () {
-  function fitTags() {
-    document.querySelectorAll('.svc-reveal-tags').forEach(function (row) {
-      var tags = row.querySelectorAll('.svc-reveal-tag');
-      tags.forEach(function (t) { t.classList.remove('svc-tag-hide'); });
-      var limit = row.getBoundingClientRect().right;
-      if (!row.getBoundingClientRect().width) return;
-      for (var i = tags.length - 1; i >= 0; i--) {
-        if (tags[i].offsetParent === null) continue;
-        if (tags[i].getBoundingClientRect().right > limit + 0.5) tags[i].classList.add('svc-tag-hide');
-      }
-    });
-  }
-  var t;
-  function sched() { clearTimeout(t); t = setTimeout(fitTags, 60); }
-  window.addEventListener('resize', sched);
-  window.addEventListener('load', fitTags);
-  document.addEventListener('DOMContentLoaded', fitTags);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitTags);
-})();
 
 /* ═══════════════════════════════════════════════════════════════
    SERVICE CARDS — themed corner activity (code columns + icons that

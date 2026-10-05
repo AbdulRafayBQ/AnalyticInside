@@ -1,0 +1,19 @@
+/* Services section: clickable cards */
+.svc-card--clickable { cursor: pointer; }
+.svc-card--clickable:focus-visible { outline: 2px solid #C99B5C; outline-offset: 4px; }
+
+/* Service hover panel: light, translucent, glass-like background */
+.svc-card .svc-card-body {
+  background: rgba(255,255,255,.38);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+          backdrop-filter: blur(10px) saturate(1.1);
+  transition: background .4s ease;
+}
+.svc-card.svc-in:hover .svc-card-body { background: rgba(255,255,255,.58); }
+.svc-card .svc-reveal-tag,
+.svc-card .svc-reveal-pf-item {
+  background: rgba(255,255,255,.5) !important;
+  border-color: rgba(255,255,255,.7) !important;
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+}

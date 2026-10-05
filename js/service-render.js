@@ -836,7 +836,11 @@
   }
 
   /* ═══════════ ASSEMBLE ═══════════ */
-  root.innerHTML = heroHTML + metricsHTML + svBrandMarqueeHTML + overviewHTML + quoteCTA1 + capsHTML + procHTML + caseStudyHTML + quoteCTA2 + techHTML + impactHTML + whyHTML + revHTML + faqHTML + ctaHTML + grandFooterHTML;
+  const EP_HTML = window.EP ? window.EP.html(s) : '';
+  const SEC_ORDER = [['hero', heroHTML], ['metrics', metricsHTML], ['brand', svBrandMarqueeHTML], ['overview', overviewHTML], ['q1', quoteCTA1], ['caps', capsHTML], ['proc', procHTML], ['cs', caseStudyHTML], ['q2', quoteCTA2], ['tech', techHTML], ['impact', impactHTML], ['why', whyHTML], ['rev', revHTML], ['faq', faqHTML]];
+  const EP_AFTER = window.EP ? window.EP.plan(s).after : 'faq';
+  root.innerHTML = SEC_ORDER.map(x => x[1] + (x[0] === EP_AFTER ? EP_HTML : '')).join('') + ctaHTML + grandFooterHTML;
+  if (window.EP) window.EP.init(s);
 
   /* ═══════════ TOP SERVICE FORM ENGINE ═══════════ */
   (function initTopForm() {

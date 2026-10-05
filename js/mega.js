@@ -6,130 +6,6 @@
 
 const SERVICES = [
   {
-    slug: "custom-software-development",
-    menu: "Custom Software Development",
-    title: "Custom Software Development",
-    tag: "Software Built Around Your Business, Never the Other Way Around",
-    h: 30,
-    cardBg: "#FBF5E9",
-    cardAccent: "#C99B5C",
-    stats: { built: "120+", experience: "8 Years", rating: "4.9 / 5", onTime: "98%", retention: "94%" },
-    overview: [
-      "Every business works a little differently. Off the shelf software doesn't know that, so it forces your team to change how they work just to fit the tool. That usually means workarounds, extra spreadsheets, and small daily frustrations that pile up as you grow.",
-      "We build software made just for you, from the ground up. That could be a subscription platform for your customers, an internal tool that keeps your team organised, or an API that connects your other systems together. Whatever it is, we build it to handle real, everyday use without breaking.",
-      "We take the technical decisions seriously from day one. The code is clean and easy to follow, so if you bring in your own developers later, they can pick it up without confusion. And if your business grows fast, the software grows with it instead of needing a rebuild."
-    ],
-    tech: ["React.js", "Angular", ".NET", "Node.js", "Python", "Next.js", "AWS", "TypeScript", "C#", "Java", "Spring Boot", "REST APIs", "GraphQL", "Microsoft Azure", "Docker", "Kubernetes", "CI/CD", "PostgreSQL", "MongoDB", "Redis"],
-    capabilities: [
-      { title: "SaaS Platforms", desc: "Multi tenant cloud products architected for high concurrency, automated subscription billing, and seamless team onboarding." },
-      { title: "Enterprise Operations Portals", desc: "Custom internal dashboards that replace messy spreadsheets and connect disparate departments into one single source of truth." },
-      { title: "Custom API Architecture", desc: "Resilient REST and GraphQL microservices that allow your third party tools and proprietary systems to communicate smoothly." },
-      { title: "Cloud Native Applications", desc: "Distributed applications built on AWS and Microsoft Azure with auto scaling, automated backups, and fault tolerance." },
-      { title: "Legacy System Modernization", desc: "Safely upgrading outdated monoliths into modern, modular microservices without disrupting your day to day transactions." },
-      { title: "High Volume Data Pipelines", desc: "Automated ingestion, cleaning, and processing systems capable of moving millions of records with near zero latency." }
-    ],
-    process: [
-      { step: "01", title: "Discovery and Technical Blueprint", desc: "We sit down with your domain experts, map every core workflow, identify edge cases, and produce a comprehensive architecture specification before writing any code." },
-      { step: "02", title: "System Architecture and Data Modeling", desc: "Our senior architects design database schemas, API contracts, security layers, and cloud infrastructure diagrams to guarantee long term reliability." },
-      { step: "03", title: "Sprint Driven Engineering", desc: "Development takes place in focused two week sprints. Every sprint ends with an interactive demo so you can test working software rather than looking at status slides." },
-      { step: "04", title: "Automated Testing and Security Audits", desc: "We enforce strict unit, integration, and load testing alongside penetration reviews so that zero regressions reach your staging or live environments." },
-      { step: "05", title: "Cloud Deployment and CI CD Setup", desc: "We deploy to your private cloud with automated delivery pipelines, instant rollback safeguards, and real time monitoring dashboards." },
-      { step: "06", title: "Knowledge Transfer and Continued Growth", desc: "Full repository handover, clear documentation, team walkthroughs, and guaranteed technical support as your user base increases." }
-    ],
-    impact: [
-      { metric: "45%", title: "Operational Cost Reduction", desc: "By replacing disjointed subscriptions and manual paperwork with unified custom software." },
-      { metric: "99.98%", title: "Production Uptime", desc: "Guaranteed via resilient cloud architecture and automated health checks." },
-      { metric: "3x", title: "Faster Feature Releases", desc: "Modern modular codebases allow your business to roll out new offerings in days instead of quarters." },
-      { metric: "100%", title: "Intellectual Property Ownership", desc: "All source code, design assets, and cloud configurations belong entirely to you with zero licensing lock in." }
-    ],
-    whyUs: [
-      "We plan for growth from day one, so your software won't need a rebuild as you scale",
-      "You see working software every two weeks, not just status updates",
-      "Our team is made up of senior engineers, not juniors learning on your project",
-      "We write clean code that's easy for any developer to pick up later",
-      "You own everything we build, no licences or hidden strings attached",
-      "You talk directly to the people building your software, not an account manager relaying messages"
-    ],
-    deliverables: [
-      "Clean, audited production code repository with git history",
-      "Comprehensive API documentation and database architecture diagrams",
-      "Fully automated CI CD deployment pipelines configured in your cloud",
-      "Automated test suites covering all critical user pathways and edge cases",
-      "Thirty days of complimentary post launch technical monitoring and bug warranty"
-    ],
-    faqs: [
-      { q: "How long does custom software development take?", a: "Project durations depend on scope and integration requirements. A focused internal operational tool is typically ready within six to eight weeks. A full scale SaaS platform with multiple integrations and complex user roles usually spans twelve to twenty weeks. We provide a transparent, locked timeline during discovery." },
-      { q: "Do we retain complete ownership of the code?", a: "Yes, completely. From the day the first line is committed to repository handover, you own one hundred percent of the intellectual property, design assets, database schemas, and server configurations." },
-      { q: "Can you integrate the new software with our legacy systems?", a: "Yes. A substantial share of our work involves building modern web interfaces or APIs that securely interface with legacy databases, on premise ERPs, and specialized third party financial or operational systems." },
-      { q: "What security measures do you implement?", a: "We build following OWASP top ten security guidelines. That includes automated input sanitation, role based access control, encryption in transit and at rest, rate limiting, and full penetration checks prior to launch." },
-      { q: "How do you handle scope updates during development?", a: "Because we work in two week agile sprints, you have the flexibility to adjust feature priorities as real world feedback comes in. We simply swap tasks of equal complexity without penalty." },
-      { q: "What ongoing support options are available?", a: "We offer dedicated monthly maintenance retainers covering infrastructure monitoring, performance tuning, security patches, and feature additions, as well as smooth handoffs to your internal developers." }
-    ]
-  },
-
-  {
-    slug: "website-development",
-    menu: "Website Development",
-    title: "Website Development",
-    tag: "High Performance Websites Engineered to Convert Visitors into Clients",
-    h: 26,
-    cardBg: "#FAF3EA",
-    cardAccent: "#B87A4B",
-    stats: { built: "80+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "96%" },
-    overview: [
-      "Your website is often the first thing people see. In just a couple of seconds, visitors decide whether your business looks trustworthy and current. If the site loads slowly or is confusing to use, you lose that visitor before you even get the chance to talk to them.",
-      "We build fast, clean websites that work properly on every screen, from phones to laptops. Built using modern tools like React and Next.js, your site will look sharp and load quickly no matter what device someone is using.",
-      "We also make sure your site is easy for Google to find, easy for visitors to use, and quick to load, usually under two seconds. The goal is simple: a site that explains what you do clearly and turns visitors into customers."
-    ],
-    tech: ["Next.js", "React.js", "Angular", ".NET", "Tailwind CSS", "Sanity CMS", "Vue.js", "Nuxt.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Node.js", "PHP", "Laravel", "PostgreSQL", "WordPress Headless", "Shopify", "Vercel", "AWS CloudFront"],
-    capabilities: [
-      { title: "Corporate Web Platforms", desc: "Authoritative digital flagships that establish instant market leadership and communicate complex value propositions with elegance." },
-      { title: "High Conversion Landing Pages", desc: "Laser focused campaign experiences engineered specifically to turn paid ad clicks and social traffic into verified booked inquiries." },
-      { title: "SaaS Marketing Portals", desc: "Interactive marketing sites with interactive product demos, pricing calculators, feature comparisons, and self serve trial signups." },
-      { title: "Client Portals and Dashboards", desc: "Secure authenticated environments where your customers can log in, view account statements, manage bookings, and submit requests." },
-      { title: "Headless CMS Implementations", desc: "Custom editorial control that allows your marketing team to update copy, case studies, and articles instantly without risking broken code." },
-      { title: "E-Commerce Experiences", desc: "Fast storefronts featuring frictionless checkout funnels, instant inventory updates, and secure payment processor integrations." }
-    ],
-    process: [
-      { step: "01", title: "Audience and Conversion Strategy", desc: "We evaluate your customer journey, competitive differentiators, and sales funnel goals to structure the ideal site map and page flow." },
-      { step: "02", title: "Information Architecture and Wireframing", desc: "We establish a clear content hierarchy so visitors can immediately grasp what you offer, why you are different, and what action to take next." },
-      { step: "03", title: "High Fidelity UI Design", desc: "Tailored visual design reflecting your brand typography, tailored illustrations, color palette, and micro interactions." },
-      { step: "04", title: "Front End and CMS Engineering", desc: "Pixel perfect code written in modern frameworks with clean semantic markup, automated image compression, and blazing load times." },
-      { step: "05", title: "Technical SEO and Performance Audits", desc: "Comprehensive optimization for Core Web Vitals, schema markup, OpenGraph tags, sitemaps, and search engine crawlability." },
-      { step: "06", title: "Launch and Team CMS Training", desc: "Zero downtime domain cutover, analytics verification, and hands on training so your staff can update content with ease." }
-    ],
-    impact: [
-      { metric: "2.8x", title: "Average Conversion Boost", desc: "Achieved through clear visual hierarchy, fast load times, and persuasive call to action positioning." },
-      { metric: "< 1.4s", title: "Mobile Page Load Time", desc: "Engineered to pass all Google Core Web Vitals benchmarks with straight green scores." },
-      { metric: "65%", title: "Lower Bounce Rates", desc: "Visitors stay longer and explore more service pages when browsing is effortless." },
-      { metric: "100%", title: "Responsive Fidelity", desc: "Thoroughly tested across dozens of real physical devices to guarantee perfection everywhere." }
-    ],
-    whyUs: [
-      "We build with clean code, not clunky drag and drop builders that slow your site down",
-      "Every design starts mobile first, since most of your visitors are on their phones",
-      "SEO basics are built in from the start, giving you a real chance of ranking on Google",
-      "Every image and file is optimised so your site stays fast, even on slower connections",
-      "You get an easy content dashboard to edit your own site, with no ongoing licence fees",
-      "Our designers and developers work closely together, so the final site matches the design"
-    ],
-    deliverables: [
-      "Fully responsive production ready web build hosted on high speed global content delivery networks",
-      "Integrated Content Management System configured with custom intuitive editing fields",
-      "Complete technical SEO setup including XML sitemaps, robots configurations, and structured metadata",
-      "Configured Google Analytics and conversion tracking events for all key form submissions",
-      "Thirty days of full post launch warranty and complimentary editorial guidance"
-    ],
-    faqs: [
-      { q: "How long does it take to launch a new website?", a: "A custom five to ten page corporate website is typically designed, developed, and deployed within three to five weeks. More extensive portals with custom portals, user authentication, or e-commerce workflows generally require six to ten weeks." },
-      { q: "Will our new website rank prominently on Google?", a: "We implement rigorous technical SEO including semantic markup, schema tags, rapid load speeds, clean URL structures, and mobile accessibility. Combined with quality content, this gives your site the strongest possible organic ranking foundation." },
-      { q: "Can my team edit content without knowing code?", a: "Yes. We set up an intuitive visual CMS tailored precisely to your content model. Adding new blog posts, modifying team bios, changing copy, or uploading project photos is as easy as filling out a simple online form." },
-      { q: "Do you redesign existing websites or only build new ones?", a: "Both. We frequently redesign older, outdated websites to modernize their appearance, boost mobile responsiveness, and dramatically improve lead generation while carefully protecting existing search ranking equity." },
-      { q: "Where will our website be hosted?", a: "We typically configure hosting on enterprise grade global platforms like Vercel or AWS CloudFront. These platforms offer automatic SSL certificates, global edge distribution, and instantaneous scaling with zero maintenance overhead." },
-      { q: "Will the website work properly on older mobile phones?", a: "Yes. We rigorously test our code across multiple generations of iPhones, Android devices, and legacy browsers to ensure universal usability and flawless rendering." }
-    ]
-  },
-
-  {
     slug: "mobile-app-development",
     menu: "Mobile App Development",
     title: "Mobile App Development",
@@ -145,12 +21,12 @@ const SERVICES = [
     ],
     tech: ["React Native", "Flutter", "Swift", "Kotlin", "Java", "Firebase", "GraphQL", "REST APIs", "AWS Amplify", "SQLite", "Push Notifications", "Fastlane"],
     capabilities: [
-      { title: "Native iOS Applications", desc: "Swift and SwiftUI applications optimized specifically for Apple hardware, widgets, Apple Pay, and platform features." },
-      { title: "Native Android Applications", desc: "Kotlin powered Android apps designed to perform smoothly across the vast ecosystem of device manufacturers and screen sizes." },
-      { title: "Cross Platform Mobile Apps", desc: "Unified Flutter and React Native codebases that deliver near native speed while dramatically reducing maintenance expenses." },
-      { title: "Mobile E-Commerce and Booking", desc: "Frictionless shopping, appointment scheduling, and one touch payments with Apple Pay, Google Pay, and credit cards." },
-      { title: "Field Workforce Applications", desc: "Offline capable mobile apps for technicians, logistics personnel, and sales teams operating in low connectivity areas." },
-      { title: "Real Time Social and Community Apps", desc: "In app messaging, live activity feeds, audio streaming, and push notification architectures that keep communities active." }
+      { title: "Native iOS Applications", desc: "Smooth iOS apps built with Swift and SwiftUI, tuned for Apple devices, widgets and Apple Pay." },
+      { title: "Native Android Applications", desc: "Fast, reliable Android apps built with Kotlin that run well on every popular phone and screen size." },
+      { title: "Cross Platform Mobile Apps", desc: "One shared codebase with Flutter or React Native. Near native speed and lower build costs." },
+      { title: "Mobile E-Commerce and Booking", desc: "Easy shopping, bookings and one tap payments with Apple Pay, Google Pay and cards." },
+      { title: "Field Workforce Applications", desc: "Apps that keep working offline, so field teams can log work even with weak signal." },
+      { title: "Real Time Social and Community Apps", desc: "Chat, live feeds and push notifications that keep your community engaged." }
     ],
     process: [
       { step: "01", title: "Product Concept and User Mapping", desc: "We define core user personas, key functional journeys, and platform requirements to ensure the app solves real problems efficiently." },
@@ -190,7 +66,128 @@ const SERVICES = [
       { q: "Do you build the backend APIs as well?", a: "Yes. Our team provides complete full stack services, building resilient cloud backends, database layers, authentication systems, and administration portals alongside the mobile application." }
     ]
   },
-
+  {
+    slug: "website-development",
+    menu: "Website Development",
+    title: "Website Development",
+    tag: "High Performance Websites Engineered to Convert Visitors into Clients",
+    h: 26,
+    cardBg: "#FAF3EA",
+    cardAccent: "#B87A4B",
+    stats: { built: "80+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "96%" },
+    overview: [
+      "Your website is often the first thing people see. In just a couple of seconds, visitors decide whether your business looks trustworthy and current. If the site loads slowly or is confusing to use, you lose that visitor before you even get the chance to talk to them.",
+      "We build fast, clean websites that work properly on every screen, from phones to laptops. Built using modern tools like React and Next.js, your site will look sharp and load quickly no matter what device someone is using.",
+      "We also make sure your site is easy for Google to find, easy for visitors to use, and quick to load, usually under two seconds. The goal is simple: a site that explains what you do clearly and turns visitors into customers."
+    ],
+    tech: ["Next.js", "React.js", "Angular", ".NET", "Tailwind CSS", "Sanity CMS", "Vue.js", "Nuxt.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Node.js", "PHP", "Laravel", "PostgreSQL", "WordPress Headless", "Shopify", "Vercel", "AWS CloudFront"],
+    capabilities: [
+      { title: "Corporate Web Platforms", desc: "A strong main website that builds trust fast and explains your value in seconds." },
+      { title: "High Conversion Landing Pages", desc: "Landing pages designed to turn ad clicks into real enquiries." },
+      { title: "SaaS Marketing Portals", desc: "Interactive marketing sites with product demos, pricing tools and free trial sign ups." },
+      { title: "Client Portals and Dashboards", desc: "Secure customer areas where clients log in, check their account and send requests." },
+      { title: "Headless CMS Implementations", desc: "Easy content editing for your team, so you can publish updates without touching code." },
+      { title: "E-Commerce Experiences", desc: "Online stores with quick checkout, live stock updates and secure payments." }
+    ],
+    process: [
+      { step: "01", title: "Audience and Conversion Strategy", desc: "We evaluate your customer journey, competitive differentiators, and sales funnel goals to structure the ideal site map and page flow." },
+      { step: "02", title: "Information Architecture and Wireframing", desc: "We establish a clear content hierarchy so visitors can immediately grasp what you offer, why you are different, and what action to take next." },
+      { step: "03", title: "High Fidelity UI Design", desc: "Tailored visual design reflecting your brand typography, tailored illustrations, color palette, and micro interactions." },
+      { step: "04", title: "Front End and CMS Engineering", desc: "Pixel perfect code written in modern frameworks with clean semantic markup, automated image compression, and blazing load times." },
+      { step: "05", title: "Technical SEO and Performance Audits", desc: "Comprehensive optimization for Core Web Vitals, schema markup, OpenGraph tags, sitemaps, and search engine crawlability." },
+      { step: "06", title: "Launch and Team CMS Training", desc: "Zero downtime domain cutover, analytics verification, and hands on training so your staff can update content with ease." }
+    ],
+    impact: [
+      { metric: "2.8x", title: "Average Conversion Boost", desc: "Achieved through clear visual hierarchy, fast load times, and persuasive call to action positioning." },
+      { metric: "< 1.4s", title: "Mobile Page Load Time", desc: "Engineered to pass all Google Core Web Vitals benchmarks with straight green scores." },
+      { metric: "65%", title: "Lower Bounce Rates", desc: "Visitors stay longer and explore more service pages when browsing is effortless." },
+      { metric: "100%", title: "Responsive Fidelity", desc: "Thoroughly tested across dozens of real physical devices to guarantee perfection everywhere." }
+    ],
+    whyUs: [
+      "We build with clean code, not clunky drag and drop builders that slow your site down",
+      "Every design starts mobile first, since most of your visitors are on their phones",
+      "SEO basics are built in from the start, giving you a real chance of ranking on Google",
+      "Every image and file is optimised so your site stays fast, even on slower connections",
+      "You get an easy content dashboard to edit your own site, with no ongoing licence fees",
+      "Our designers and developers work closely together, so the final site matches the design"
+    ],
+    deliverables: [
+      "Fully responsive production ready web build hosted on high speed global content delivery networks",
+      "Integrated Content Management System configured with custom intuitive editing fields",
+      "Complete technical SEO setup including XML sitemaps, robots configurations, and structured metadata",
+      "Configured Google Analytics and conversion tracking events for all key form submissions",
+      "Thirty days of full post launch warranty and complimentary editorial guidance"
+    ],
+    faqs: [
+      { q: "How long does it take to launch a new website?", a: "A custom five to ten page corporate website is typically designed, developed, and deployed within three to five weeks. More extensive portals with custom portals, user authentication, or e-commerce workflows generally require six to ten weeks." },
+      { q: "Will our new website rank prominently on Google?", a: "We implement rigorous technical SEO including semantic markup, schema tags, rapid load speeds, clean URL structures, and mobile accessibility. Combined with quality content, this gives your site the strongest possible organic ranking foundation." },
+      { q: "Can my team edit content without knowing code?", a: "Yes. We set up an intuitive visual CMS tailored precisely to your content model. Adding new blog posts, modifying team bios, changing copy, or uploading project photos is as easy as filling out a simple online form." },
+      { q: "Do you redesign existing websites or only build new ones?", a: "Both. We frequently redesign older, outdated websites to modernize their appearance, boost mobile responsiveness, and dramatically improve lead generation while carefully protecting existing search ranking equity." },
+      { q: "Where will our website be hosted?", a: "We typically configure hosting on enterprise grade global platforms like Vercel or AWS CloudFront. These platforms offer automatic SSL certificates, global edge distribution, and instantaneous scaling with zero maintenance overhead." },
+      { q: "Will the website work properly on older mobile phones?", a: "Yes. We rigorously test our code across multiple generations of iPhones, Android devices, and legacy browsers to ensure universal usability and flawless rendering." }
+    ]
+  },
+  {
+    slug: "custom-software-development",
+    menu: "Custom Software Development",
+    title: "Custom Software Development",
+    tag: "Software Built Around Your Business, Never the Other Way Around",
+    h: 30,
+    cardBg: "#FBF5E9",
+    cardAccent: "#C99B5C",
+    stats: { built: "120+", experience: "8 Years", rating: "4.9 / 5", onTime: "98%", retention: "94%" },
+    overview: [
+      "Every business works a little differently. Off the shelf software doesn't know that, so it forces your team to change how they work just to fit the tool. That usually means workarounds, extra spreadsheets, and small daily frustrations that pile up as you grow.",
+      "We build software made just for you, from the ground up. That could be a subscription platform for your customers, an internal tool that keeps your team organised, or an API that connects your other systems together. Whatever it is, we build it to handle real, everyday use without breaking.",
+      "We take the technical decisions seriously from day one. The code is clean and easy to follow, so if you bring in your own developers later, they can pick it up without confusion. And if your business grows fast, the software grows with it instead of needing a rebuild."
+    ],
+    tech: ["React.js", "Angular", ".NET", "Node.js", "Python", "Next.js", "AWS", "TypeScript", "C#", "Java", "Spring Boot", "REST APIs", "GraphQL", "Microsoft Azure", "Docker", "Kubernetes", "CI/CD", "PostgreSQL", "MongoDB", "Redis"],
+    capabilities: [
+      { title: "SaaS Platforms", desc: "Multi tenant cloud products built to handle heavy traffic and simple team onboarding." },
+      { title: "Enterprise Operations Portals", desc: "Internal dashboards that replace messy spreadsheets and connect every department." },
+      { title: "Custom API Architecture", desc: "Clean APIs that let your tools and systems talk to each other smoothly." },
+      { title: "Cloud Native Applications", desc: "Cloud apps on AWS or Azure that scale automatically and recover from failures." },
+      { title: "Legacy System Modernization", desc: "Upgrade old systems step by step, without stopping your daily work." },
+      { title: "High Volume Data Pipelines", desc: "Pipelines that clean and process millions of records quickly and reliably." }
+    ],
+    process: [
+      { step: "01", title: "Discovery and Technical Blueprint", desc: "We sit down with your domain experts, map every core workflow, identify edge cases, and produce a comprehensive architecture specification before writing any code." },
+      { step: "02", title: "System Architecture and Data Modeling", desc: "Our senior architects design database schemas, API contracts, security layers, and cloud infrastructure diagrams to guarantee long term reliability." },
+      { step: "03", title: "Sprint Driven Engineering", desc: "Development takes place in focused two week sprints. Every sprint ends with an interactive demo so you can test working software rather than looking at status slides." },
+      { step: "04", title: "Automated Testing and Security Audits", desc: "We enforce strict unit, integration, and load testing alongside penetration reviews so that zero regressions reach your staging or live environments." },
+      { step: "05", title: "Cloud Deployment and CI CD Setup", desc: "We deploy to your private cloud with automated delivery pipelines, instant rollback safeguards, and real time monitoring dashboards." },
+      { step: "06", title: "Knowledge Transfer and Continued Growth", desc: "Full repository handover, clear documentation, team walkthroughs, and guaranteed technical support as your user base increases." }
+    ],
+    impact: [
+      { metric: "45%", title: "Operational Cost Reduction", desc: "By replacing disjointed subscriptions and manual paperwork with unified custom software." },
+      { metric: "99.98%", title: "Production Uptime", desc: "Guaranteed via resilient cloud architecture and automated health checks." },
+      { metric: "3x", title: "Faster Feature Releases", desc: "Modern modular codebases allow your business to roll out new offerings in days instead of quarters." },
+      { metric: "100%", title: "Intellectual Property Ownership", desc: "All source code, design assets, and cloud configurations belong entirely to you with zero licensing lock in." }
+    ],
+    whyUs: [
+      "We plan for growth from day one, so your software won't need a rebuild as you scale",
+      "You see working software every two weeks, not just status updates",
+      "Our team is made up of senior engineers, not juniors learning on your project",
+      "We write clean code that's easy for any developer to pick up later",
+      "You own everything we build, no licences or hidden strings attached",
+      "You talk directly to the people building your software, not an account manager relaying messages"
+    ],
+    deliverables: [
+      "Clean, audited production code repository with git history",
+      "Comprehensive API documentation and database architecture diagrams",
+      "Fully automated CI CD deployment pipelines configured in your cloud",
+      "Automated test suites covering all critical user pathways and edge cases",
+      "Thirty days of complimentary post launch technical monitoring and bug warranty"
+    ],
+    faqs: [
+      { q: "How long does custom software development take?", a: "Project durations depend on scope and integration requirements. A focused internal operational tool is typically ready within six to eight weeks. A full scale SaaS platform with multiple integrations and complex user roles usually spans twelve to twenty weeks. We provide a transparent, locked timeline during discovery." },
+      { q: "Do we retain complete ownership of the code?", a: "Yes, completely. From the day the first line is committed to repository handover, you own one hundred percent of the intellectual property, design assets, database schemas, and server configurations." },
+      { q: "Can you integrate the new software with our legacy systems?", a: "Yes. A substantial share of our work involves building modern web interfaces or APIs that securely interface with legacy databases, on premise ERPs, and specialized third party financial or operational systems." },
+      { q: "What security measures do you implement?", a: "We build following OWASP top ten security guidelines. That includes automated input sanitation, role based access control, encryption in transit and at rest, rate limiting, and full penetration checks prior to launch." },
+      { q: "How do you handle scope updates during development?", a: "Because we work in two week agile sprints, you have the flexibility to adjust feature priorities as real world feedback comes in. We simply swap tasks of equal complexity without penalty." },
+      { q: "What ongoing support options are available?", a: "We offer dedicated monthly maintenance retainers covering infrastructure monitoring, performance tuning, security patches, and feature additions, as well as smooth handoffs to your internal developers." }
+    ]
+  },
   {
     slug: "ai-development",
     menu: "AI Development & Automation",
@@ -207,12 +204,12 @@ const SERVICES = [
     ],
     tech: ["Python", "TensorFlow", "PyTorch", "OpenAI APIs", "Anthropic Claude", "LangChain", "LlamaIndex", "HuggingFace", "Vector Databases", "Pinecone", "ChromaDB", "FastAPI", "Docker", "AWS SageMaker"],
     capabilities: [
-      { title: "Domain Trained AI Assistants", desc: "Private conversational assistants trained exclusively on your internal knowledge base to answer client or employee questions accurately." },
-      { title: "Autonomous Workflow Agents", desc: "Multi step AI agents capable of reading emails, extracting key variables, checking database records, and executing actions automatically." },
-      { title: "Intelligent Document Processing", desc: "Automated extraction and validation of unstructured invoices, medical records, receipts, and contracts into structured database records." },
-      { title: "Retrieval Augmented Generation", desc: "RAG architectures that allow large language models to reference private documentation without hallucination or public data leakage." },
-      { title: "Predictive Analytics Models", desc: "Machine learning algorithms trained on historical business transactions to forecast customer churn, inventory demand, and sales anomalies." },
-      { title: "Customer Support Automation", desc: "Tier one customer support triage systems that resolve routine inquiries instantly while escalating complex tickets to your team." }
+      { title: "Domain Trained AI Assistants", desc: "AI assistants trained on your own documents and data, kept private and secure." },
+      { title: "Autonomous Workflow Agents", desc: "AI agents that read emails, pull out key details and complete routine tasks for you." },
+      { title: "Intelligent Document Processing", desc: "Read invoices, forms and contracts automatically and check them for errors." },
+      { title: "Retrieval Augmented Generation", desc: "Assistants that answer from your real knowledge base with accurate, sourced replies." },
+      { title: "Predictive Analytics Models", desc: "Machine learning models that forecast sales, demand and risks from your past data." },
+      { title: "Customer Support Automation", desc: "Support bots that solve common questions instantly and pass hard cases to your team." }
     ],
     process: [
       { step: "01", title: "Use Case Qualification and ROI Modeling", desc: "We evaluate your repetitive workflows to pinpoint exactly where AI generates undeniable economic value and clear time savings." },
@@ -252,7 +249,6 @@ const SERVICES = [
       { q: "Can the AI integrate with our existing CRM or ERP?", a: "Yes. We write custom API connectors for Salesforce, HubSpot, Zendesk, PostgreSQL, Slack, Microsoft Teams, and custom in house databases so the AI operates directly inside your current workplace." }
     ]
   },
-
   {
     slug: "product-design-development",
     menu: "Product Design & Development",
@@ -269,12 +265,12 @@ const SERVICES = [
     ],
     tech: ["Figma", "Design Systems", "User Research", "Wireframing", "Clickable Prototypes", "React.js", "Next.js", "TypeScript", "Tailwind CSS", "Motion Design", "Usability Testing"],
     capabilities: [
-      { title: "Minimum Viable Products", desc: "Lean, validated digital products designed, built, and launched rapidly to test core hypotheses and gather real market traction." },
-      { title: "SaaS UX and UI Redesigns", desc: "Revamping cluttered, dated web applications into modern, clean interfaces that reduce customer support tickets and churn." },
-      { title: "Enterprise Design Systems", desc: "Modular, accessible Figma component libraries paired with production React code tokens that allow engineering teams to build fast." },
-      { title: "Interactive Prototyping", desc: "High fidelity clickable prototypes that look and feel like completed software, ideal for securing investor funding or user validation." },
-      { title: "User Journey and Flow Mapping", desc: "Eliminating friction points across registration, onboarding, complex multi step forms, and account settings." },
-      { title: "Customer Research and Usability Testing", desc: "Moderated user interview sessions that uncover what potential buyers actually care about before building expensive features." }
+      { title: "Minimum Viable Products", desc: "Lean products designed, built and launched fast, so you can test your idea with real users." },
+      { title: "SaaS UX and UI Redesigns", desc: "Turn cluttered, outdated apps into clean, modern experiences people enjoy." },
+      { title: "Enterprise Design Systems", desc: "Reusable component libraries in Figma that keep every screen consistent." },
+      { title: "Interactive Prototyping", desc: "Clickable prototypes that feel like the real product, ready for demos and feedback." },
+      { title: "User Journey and Flow Mapping", desc: "Map every step users take and remove the points where they get stuck." },
+      { title: "Customer Research and Usability Testing", desc: "Real user interviews and tests that show what people need before we build." }
     ],
     process: [
       { step: "01", title: "Product Discovery and User Problem Framing", desc: "We interview stakeholders, study competitor landscapes, and define the core problem statement that will anchor every product decision." },
@@ -314,193 +310,6 @@ const SERVICES = [
       { q: "Will our developers be able to understand the Figma files?", a: "Yes. Our Figma files are famous among engineering teams for their organization. Every component uses auto layout, explicit responsive constraints, standard design tokens, and documented interaction states for hover, active, empty, and error." }
     ]
   },
-
-  {
-    slug: "digital-marketing-branding",
-    menu: "Digital Marketing & Branding",
-    title: "Digital Marketing & Branding",
-    tag: "Build a Memorable Brand Identity and a Scalable Customer Acquisition Engine",
-    h: 34,
-    cardBg: "#FCF5E6",
-    cardAccent: "#D08A3C",
-    stats: { built: "35+", experience: "8 Years", rating: "4.8 / 5", onTime: "98%", retention: "91%" },
-    overview: [
-      "In a crowded market, having a good product isn't enough. Without a clear brand, people see you as just another option and compare you purely on price. And chasing likes or boosting random posts without a real plan just burns through your budget.",
-      "We help build brands that people actually remember and trust. That means bringing brand strategy, design, writing, SEO, and paid ads together into one plan that consistently brings in new customers.",
-      "We treat marketing as something that should pay for itself, not just look nice. Every dollar you spend is tracked against real numbers, like cost per lead and how many leads actually turn into customers."
-    ],
-    tech: ["Brand Positioning", "Visual Identity", "Figma", "Adobe Creative Suite", "Technical SEO", "Google Ads", "Meta Ads Manager", "LinkedIn Ads", "Content Strategy", "Email Automation", "AI Video Production"],
-    capabilities: [
-      { title: "Brand Identity and Visual Systems", desc: "Comprehensive brand guidelines including logos, typography hierarchies, color palettes, and stationery that project authority." },
-      { title: "Performance Paid Advertising", desc: "Targeted campaigns on Google Search, LinkedIn, and Meta that deliver high intent business inquiries at an efficient acquisition cost." },
-      { title: "Search Engine Optimization", desc: "Technical on site optimization, content authority clustering, and backlink strategies that generate compounding organic visibility." },
-      { title: "B2B Content and Copywriting", desc: "Authoritative website messaging, technical whitepapers, case studies, and email nurture sequences that convert skeptics." },
-      { title: "AI Accelerated Video Production", desc: "High quality commercial video reels, product explainers, and social motion graphics produced at a fraction of traditional agency costs." },
-      { title: "Conversion Rate Optimization", desc: "Rigorous AB testing on landing pages and sales funnels to squeeze maximum revenue out of your existing web traffic." }
-    ],
-    process: [
-      { step: "01", title: "Brand Positioning and Audience Discovery", desc: "We interview leadership, study top competitors, and identify the exact positioning angle that will make your business stand out." },
-      { step: "02", title: "Visual Identity and Brand Book Creation", desc: "Designing your logo, typography system, digital palettes, iconography, and comprehensive usage rules for total brand consistency." },
-      { step: "03", title: "Conversion Funnel and Messaging Setup", desc: "Writing persuasive value propositions and designing high converting landing page experiences for each audience segment." },
-      { step: "04", title: "Targeted Campaign Launch and Setup", desc: "Configuring precise tracking pixels, audience targeting, search keywords, and compelling ad creative across selected channels." },
-      { step: "05", title: "Daily Optimization and Budget Tuning", desc: "Pruning underperforming keywords, reallocating ad spend to top converting creatives, and lowering your cost per acquisition." },
-      { step: "06", title: "Transparent Reporting and Growth Reviews", desc: "Clear weekly dashboards showing exact spend, lead counts, conversion rates, and strategic recommendations for next steps." }
-    ],
-    impact: [
-      { metric: "5.2x", title: "Average Return on Ad Spend", desc: "Generated across client paid campaigns through disciplined audience targeting and continuous creative testing." },
-      { metric: "35+", title: "Brands Built from Scratch", desc: "Empowering startups and established firms to command premium market pricing and respect." },
-      { metric: "140%", title: "Organic Traffic Growth", desc: "Achieved within six months through structured technical SEO and high authority content architecture." },
-      { metric: "100%", title: "Transparent Attribution", desc: "Every lead and dollar tracked to its origin so you know exactly which campaigns drive real revenue." }
-    ],
-    whyUs: [
-      "We track marketing against real sales numbers, not just likes and impressions",
-      "All the design and writing is done in house by our own team, not outsourced to freelancers",
-      "Tracking is set up properly before we spend a single dollar on ads",
-      "We use AI tools to produce quality video content without the usual studio price tag",
-      "You talk directly with the person managing your campaigns, not an account manager",
-      "You keep full ownership of your ad accounts, creative files, and customer lists"
-    ],
-    deliverables: [
-      "Complete vector brand identity package including primary logos, secondary marks, and typography guidelines",
-      "Production ready digital asset kit for web, social headers, slide decks, and digital advertising",
-      "Configured paid media campaigns on Google Ads, Meta, or LinkedIn with structured conversion tracking",
-      "High converting landing page copy and visual layout designed to maximize consultation bookings",
-      "Live interactive performance dashboard updating real time spend, inquiries, and cost per lead metrics"
-    ],
-    faqs: [
-      { q: "How quickly can we expect results from digital marketing?", a: "Paid advertising campaigns on Google and LinkedIn can start generating qualified inquiries within the very first week of going live. Search engine optimization and organic authority building require compounding effort and typically show substantial business impact within three to six months." },
-      { q: "What should our monthly advertising budget be?", a: "We tailor budgets to your target customer value. For localized or specialized B2B offerings, testing effectively can start around five hundred to fifteen hundred dollars per month. For broader national or regional growth, budgets typically range from three thousand to fifteen thousand dollars. We advise you conservatively so your spend remains profitable." },
-      { q: "Do we own the advertising accounts and creative assets?", a: "Yes, entirely. All campaigns are run directly inside your company ad accounts. If you ever decide to bring management in house, you retain all historical data, audience lists, and creative assets." },
-      { q: "Can you help reposition a brand that has been around for years?", a: "Yes. Brand modernization is a major area of our expertise. We preserve the trust and heritage your company has built while modernizing your visual identity, messaging, and digital channels to attract modern buyers." },
-      { q: "Do you write all the copy and create the videos?", a: "Yes. Our team produces compelling written copy, bespoke graphics, and engaging short form video assets tailored specifically to your target audience." },
-      { q: "How do we know which marketing channel is working best?", a: "We configure server side tracking and analytics dashboards that attribute every consultation form submission and phone call back to the specific campaign, ad, and keyword that generated it." }
-    ]
-  },
-
-  {
-    slug: "data-analytics-consultancy",
-    menu: "Data & Analytics Consultancy",
-    title: "Data & Analytics Consultancy",
-    tag: "Transform Fragmented Data into Clear Executive Dashboards and Confident Decisions",
-    h: 32,
-    cardBg: "#F8F3EA",
-    cardAccent: "#9C7A54",
-    stats: { built: "30+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "95%" },
-    overview: [
-      "Most businesses have plenty of numbers but very little clarity. Sales data sits in one tool, operations in another, and marketing spend somewhere else. When someone asks a simple question about profit or customer churn, it takes days to get a straight answer.",
-      "We help turn scattered, messy data into one clear, reliable system. We connect your different tools automatically into a single place, then build dashboards that update in real time so you always know where things stand.",
-      "Instead of spending hours building reports for a Monday meeting, your team can open a clean dashboard on a laptop or phone, spot problems early, and make decisions based on real, up to date numbers."
-    ],
-    tech: ["Power BI", "Tableau", "Snowflake", "Google BigQuery", "AWS Redshift", "PostgreSQL", "dbt", "Apache Airflow", "Python", "SQL", "ETL Pipelines", "Looker Studio"],
-    capabilities: [
-      { title: "Executive Decision Dashboards", desc: "High level visual summaries showing cash flow, gross margins, customer acquisition costs, and core growth metrics at a glance." },
-      { title: "Automated ETL Data Pipelines", desc: "Automated scripts that extract, clean, transform, and load information from all your commercial tools without human effort." },
-      { title: "Cloud Data Warehousing", desc: "Centralized, secure data architectures on Snowflake, BigQuery, or Redshift capable of executing complex queries in seconds." },
-      { title: "Customer Churn and Lifetime Value Models", desc: "Predictive algorithms that identify accounts showing early signs of cancellation so your team can intervene proactively." },
-      { title: "Supply Chain and Inventory Analytics", desc: "Real time tracking of stock levels, turnover velocity, supplier lead times, and fulfillment bottlenecks." },
-      { title: "Self Serve Business Intelligence", desc: "Configuring intuitive reporting portals so non technical team leaders can build their own custom reports safely." }
-    ],
-    process: [
-      { step: "01", title: "Data Architecture and Source Audit", desc: "We review every database, software tool, spreadsheet, and API your company uses, identifying data quality issues and discrepancies." },
-      { step: "02", title: "Metric Definition and KPI Modeling", desc: "We sit down with leadership to define exact formulas for key metrics, establishing one single source of truth across all teams." },
-      { step: "03", title: "Automated Data Pipeline Engineering", desc: "We build resilient scheduled pipelines that ingest, normalize, and reconcile data from all your endpoints automatically." },
-      { step: "04", title: "Centralized Data Warehouse Setup", desc: "Structuring optimized data models in Snowflake, BigQuery, or PostgreSQL designed for lightning fast reporting queries." },
-      { step: "05", title: "Interactive Dashboard Design", desc: "We craft clean, intuitive visualizations in Power BI, Tableau, or custom web portals tailored to the exact questions you need answered." },
-      { step: "06", title: "Validation and Team Enablement", desc: "We cross check every figure against raw accounting records, run validation tests, and train your staff on daily dashboard usage." }
-    ],
-    impact: [
-      { metric: "15 hrs", title: "Saved Per Week Per Manager", desc: "Eliminating manual spreadsheet collation, formula troubleshooting, and PowerPoint report preparation." },
-      { metric: "100%", title: "Automated Daily Updates", desc: "Dashboards update automatically overnight so morning meetings always begin with fresh numbers." },
-      { metric: "30+", title: "Enterprise BI Systems Shipped", desc: "Transforming decision making for logistics, manufacturing, retail, and financial service firms." },
-      { metric: "Single", title: "Unified Source of Truth", desc: "Zero debate over whose spreadsheet has the correct figure when metrics are defined centrally." }
-    ],
-    whyUs: [
-      "We build dashboards for business owners and managers, not data scientists",
-      "Our pipelines run reliably and alert us automatically if anything goes wrong",
-      "We double check every number against your real financial records before it goes live",
-      "Access controls mean staff only see the numbers relevant to their role",
-      "We work with all the major dashboard tools, including Power BI, Tableau, and Looker",
-      "We document everything and train your team, so you're never stuck relying on us"
-    ],
-    deliverables: [
-      "Fully configured central cloud data warehouse with structured reporting schemas",
-      "Automated extraction and transformation pipelines connecting all primary business tools",
-      "Interactive executive and operational dashboards published to your business intelligence environment",
-      "Comprehensive metric dictionary defining exact calculation logic for all organizational KPIs",
-      "Thirty days of post deployment data reconciliation, pipeline monitoring, and user training"
-    ],
-    faqs: [
-      { q: "We currently run our reports in Excel. Why should we switch?", a: "Spreadsheets require manual updating, break when formulas are accidentally edited, live in disconnected email attachments, and tell you only what happened in the past. An automated analytics system updates in real time, pulls directly from your source databases, cannot be accidentally corrupted, and allows anyone on your team to drill down into specifics instantly." },
-      { q: "How long does a data analytics implementation take?", a: "A targeted project connecting two or three key tools into an executive Power BI or Tableau dashboard typically takes four to six weeks. A complete enterprise data warehouse unifying multiple complex ERPs and legacy databases generally requires eight to twelve weeks." },
-      { q: "Can non technical staff members easily use the dashboards?", a: "Yes. We design with visual clarity as our first priority. Users do not need to know SQL or statistics. They simply click intuitive filters like date ranges, product lines, or sales reps to inspect performance." },
-      { q: "What data sources can you connect together?", a: "We can connect virtually any modern software that has an API or database access, including Salesforce, HubSpot, Stripe, QuickBooks, Shopify, SAP, Oracle, PostgreSQL, MySQL, and automated CSV feeds." },
-      { q: "How do you guarantee the numbers are accurate?", a: "During the reconciliation phase, we cross check every aggregated figure against source financial ledgers and raw database tables. The dashboards are only approved once our automated audit scripts show zero variance." },
-      { q: "Do we have to pay expensive ongoing software licenses?", a: "We architect solutions using the most cost effective tools for your scale. Many modern cloud warehouses like BigQuery charge only pennies per query, meaning infrastructure costs often amount to just a few dozen dollars per month." }
-    ]
-  },
-
-  {
-    slug: "data-management-database-solutions",
-    menu: "Data Management & Databases",
-    title: "Data Management & Database Solutions",
-    tag: "High Concurrency Database Architectures Engineered for Speed, Integrity, and Scale",
-    h: 33,
-    cardBg: "#FAF4EA",
-    cardAccent: "#B5895A",
-    stats: { built: "45+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "94%" },
-    overview: [
-      "A poorly built database quietly slows a growing business down. Things run fine at first, but as your customers and data grow, simple actions start taking longer, pages slow to a crawl, server costs creep up, and reports start crashing your app during busy hours.",
-      "We design, clean up, move, and secure databases so this doesn't happen. Whether that's a fast relational database, a flexible document store, a caching layer to speed things up, or moving your data to the cloud without any downtime, we make sure it holds up under pressure.",
-      "We treat data accuracy, security, and backups as essentials, not extras. That means your apps stay fast and your customers' information stays safe, no matter what."
-    ],
-    tech: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Oracle", "Snowflake", "Elasticsearch", "AWS RDS", "Amazon Aurora", "Database Sharding", "Replication", "Prisma", "Flyway"],
-    capabilities: [
-      { title: "Query Optimization and Index Tuning", desc: "Refactoring slow queries, designing composite indexes, and eliminating table locks to drop latency from seconds to milliseconds." },
-      { title: "Zero Downtime Cloud Migration", desc: "Migrating legacy on premise databases to managed cloud platforms like Amazon Aurora with continuous replication and zero service interruption." },
-      { title: "High Availability and Failover Clustering", desc: "Configuring multi region replication, automatic read write splits, and automated failover to survive server outages instantly." },
-      { title: "Enterprise Database Security and Encryption", desc: "Implementing encryption at rest with AES 256, TLS in transit, row level security, and rigorous role based database access." },
-      { title: "Automated Disaster Recovery and Backups", desc: "Automated point in time recovery configurations with automated restore validation drills so backups actually work when needed." },
-      { title: "Database Sharding and Horizontal Partitioning", desc: "Partitioning massive transactional datasets across distributed storage to maintain fast queries across tens of millions of records." }
-    ],
-    process: [
-      { step: "01", title: "Performance Profiling and Schema Audit", desc: "We run deep query profiling to identify slow joins, missing indexes, bloated tables, and connection pool exhaustion points." },
-      { step: "02", title: "Target Architecture and Schema Refinement", desc: "We design optimized relational or document schemas with proper normalization, foreign key constraints, and partition keys." },
-      { step: "03", title: "Indexing and In Memory Caching Setup", desc: "Implementing intelligent composite indexing and Redis caching layers to absorb ninety percent of read queries before they hit disk." },
-      { step: "04", title: "Staging Migration and Load Stress Testing", desc: "Simulating peak production traffic against staging replicas to verify that throughput targets and response benchmarks are exceeded." },
-      { step: "05", title: "Zero Downtime Cutover and Replication", desc: "Executing phased replication cutover during low traffic windows with continuous data validation checks and immediate fallback safeguards." },
-      { step: "06", title: "Monitoring and Automated Alerting", desc: "Setting up real time dashboards tracking CPU utilization, IOPS, slow query logs, connection spikes, and storage growth." }
-    ],
-    impact: [
-      { metric: "85%", title: "Drop in Average Query Latency", desc: "Achieved through proper index engineering, query refactoring, and intelligent caching." },
-      { metric: "10x", title: "Concurrent User Capacity", desc: "Enabling your applications to support massive traffic surges without slowdown or database crashes." },
-      { metric: "Zero", title: "Data Loss Migrations", desc: "Flawlessly maintained across dozens of mission critical enterprise database transfers." },
-      { metric: "45%", title: "Infrastructure Cost Savings", desc: "Achieved by eliminating CPU over provisioning through query efficiency." }
-    ],
-    whyUs: [
-      "We fix the real performance problem instead of just telling you to buy a bigger server",
-      "We move your data to the cloud with zero downtime for your customers",
-      "We actually test our backups by restoring them, so you know they'll work when needed",
-      "Databases are designed around how your business actually uses data, not generic templates",
-      "Our security setup follows recognised standards like HIPAA and SOC2",
-      "You get full documentation explaining every decision we made"
-    ],
-    deliverables: [
-      "Fully optimized production database cluster with multi availability zone failover configurations",
-      "Automated Redis caching layer integrated to offload repetitive read heavy transactional queries",
-      "Comprehensive automated backup and point in time disaster recovery automation scripts",
-      "Documented schema dictionary, indexing rationale, and developer query guidelines",
-      "Thirty days of post migration database telemetry monitoring and performance tuning"
-    ],
-    faqs: [
-      { q: "How do you migrate a live database without taking our application down?", a: "We set up continuous change data capture replication between your existing database and the new cloud cluster. Once both databases are perfectly synchronized in real time, we execute an instantaneous DNS cutover that takes less than one second, resulting in zero user facing downtime." },
-      { q: "Our database gets very slow during peak hours. Can this be fixed without a full rewrite?", a: "In almost all cases, yes. The vast majority of database bottlenecks stem from a handful of unindexed queries, inefficient table joins, or lack of a caching layer. By pinpointing and tuning these specific queries, we typically achieve eighty percent speed improvements without rewriting the underlying application." },
-      { q: "Should we use PostgreSQL or MongoDB?", a: "PostgreSQL is ideal when your data is relational, requires strict transactional integrity, or involves complex cross table queries. MongoDB shines for flexible document schemas, rapid prototyping, and high volume write operations. We evaluate your application structure and advise on the right engine." },
-      { q: "How do you protect our database against ransomware and catastrophic failure?", a: "We implement immutable backups stored in isolated, air gapped cloud storage buckets with multi factor delete protection. We also configure automated daily restore tests to verify that backup snapshots can be spun up into functional databases within minutes." },
-      { q: "Do you offer database administration and monitoring retainers?", a: "Yes. Many of our clients retain us for monthly database administration, including continuous query log analysis, index maintenance, vacuuming, OS patching, and proactive capacity planning." },
-      { q: "Can you optimize databases running on cloud providers like AWS or Azure?", a: "Yes. We work extensively with Amazon Aurora, AWS RDS, Azure Database for PostgreSQL, Google Cloud SQL, and self hosted Linux database servers." }
-    ]
-  },
-
   {
     slug: "ai-consultancy-automation-strategy",
     menu: "AI Consultancy & Strategy",
@@ -517,12 +326,12 @@ const SERVICES = [
     ],
     tech: ["AI Strategy", "Readiness Audits", "Workflow Analysis", "Vendor Evaluation", "LLM Architecture", "Enterprise Security", "Data Governance", "Proof of Concept", "Change Management", "ROI Modeling"],
     capabilities: [
-      { title: "Organizational AI Readiness Audits", desc: "Evaluating your technical infrastructure, data hygiene, security postures, and employee workflows for AI deployment." },
-      { title: "Prioritized Automation Roadmaps", desc: "A sequenced timeline of AI initiatives ranked by economic return on investment, technical feasibility, and business impact." },
-      { title: "Proof of Concept Architecture", desc: "Scoping and validating rapid, low risk experimental builds to prove tangible business value before major capital commitments." },
-      { title: "AI Vendor and Tool Evaluation", desc: "Independent objective assessments of third party enterprise AI platforms to save you from signing expensive, bloated contracts." },
-      { title: "Internal Data Governance Frameworks", desc: "Establishing strict data classification rules, access controls, and compliance guidelines for secure AI utilization." },
-      { title: "Executive Education and Workshops", desc: "Intensive briefing sessions for leadership and board members demystifying what AI can and cannot achieve today." }
+      { title: "Organizational AI Readiness Audits", desc: "A clear check of your systems, data and team to see how ready you are for AI." },
+      { title: "Prioritized Automation Roadmaps", desc: "A simple, ranked plan of AI projects with the best return first." },
+      { title: "Proof of Concept Architecture", desc: "Small, low risk test builds that prove an idea works before you spend big." },
+      { title: "AI Vendor and Tool Evaluation", desc: "Honest comparisons of AI tools and vendors, so you pick what fits your needs." },
+      { title: "Internal Data Governance Frameworks", desc: "Clear rules for who can access your data, how it is stored and how it is used." },
+      { title: "Executive Education and Workshops", desc: "Practical workshops for leaders so your team understands what AI can and cannot do." }
     ],
     process: [
       { step: "01", title: "Executive Alignment and Objectives Mapping", desc: "We interview leadership to understand core business goals, margin pressures, operational pain points, and strategic priorities." },
@@ -562,7 +371,6 @@ const SERVICES = [
       { q: "How do you help our employees accept new AI tools without fear?", a: "Successful AI adoption is fundamentally a change management process. We frame AI tools as digital assistants that eliminate drudgery and free employees for higher value work, and we provide structured training materials to foster internal adoption." }
     ]
   },
-
   {
     slug: "vibe-code-to-production",
     menu: "Vibe Code to Production",
@@ -579,12 +387,12 @@ const SERVICES = [
     ],
     tech: ["Code Audit", "Architecture Refactoring", "Security Hardening", "Automated Testing", "CI/CD Pipelines", "Docker", "AWS", "TypeScript", "PostgreSQL", "OWASP Security", "Rate Limiting", "Error Monitoring"],
     capabilities: [
-      { title: "Deep Codebase and Security Audits", desc: "Line by line code inspection identifying architectural flaws, SQL injection risks, leaked secrets, and scaling bottlenecks." },
-      { title: "Architecture Refactoring", desc: "Restructuring chaotic spaghetti code into clean, modular, maintainable patterns without breaking working product logic." },
-      { title: "Enterprise Security Hardening", desc: "Implementing strict authentication, authorization gates, input sanitization, rate limiting, and data encryption." },
-      { title: "Comprehensive Automated Testing", desc: "Writing end to end, integration, and unit tests so future code commits never break existing user functionality." },
-      { title: "CI CD Pipeline and Cloud Deployment", desc: "Automating zero downtime deployments to AWS, Google Cloud, or Azure with automatic rollback protection." },
-      { title: "Production Observability Setup", desc: "Real time telemetry tracking errors, slow queries, server health, and user anomalies so problems are fixed before users complain." }
+      { title: "Deep Codebase and Security Audits", desc: "A line by line review of your code that finds weak spots and security gaps." },
+      { title: "Architecture Refactoring", desc: "Clean up tangled code into a tidy structure that is easier to change and grow." },
+      { title: "Enterprise Security Hardening", desc: "Lock down logins, permissions and data access so your app is safe for real users." },
+      { title: "Comprehensive Automated Testing", desc: "Automated tests that catch problems early, so new features do not break old ones." },
+      { title: "CI CD Pipeline and Cloud Deployment", desc: "Safe, automatic releases to AWS or Google Cloud with no downtime." },
+      { title: "Production Observability Setup", desc: "Live monitoring that alerts you to errors and slow pages before customers notice." }
     ],
     process: [
       { step: "01", title: "Comprehensive Code and Vulnerability Audit", desc: "We review every single file in your repository, producing a clear report highlighting critical security flaws, performance traps, and technical debt." },
@@ -622,6 +430,189 @@ const SERVICES = [
       { q: "How do you verify that the application is truly ready for real users?", a: "We run rigorous simulated load stress tests, automated vulnerability scans, and end to end regression test suites. Production signoff is only granted when the application passes all security, performance, and stability criteria under heavy simulated load." },
       { q: "Can you help deploy to our existing AWS or cloud account?", a: "Yes. We deploy directly into your cloud accounts, setting up secure IAM roles, automated backups, and containerized Docker environments that you completely control." },
       { q: "What happens after the product is in production?", a: "Once the foundation is stabilized and live, we can continue as your ongoing engineering team building new features, or smoothly hand over the clean, documented codebase to an in house developer." }
+    ]
+  },
+  {
+    slug: "data-management-database-solutions",
+    menu: "Data Management & Databases",
+    title: "Data Management & Database Solutions",
+    tag: "High Concurrency Database Architectures Engineered for Speed, Integrity, and Scale",
+    h: 33,
+    cardBg: "#FAF4EA",
+    cardAccent: "#B5895A",
+    stats: { built: "45+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "94%" },
+    overview: [
+      "A poorly built database quietly slows a growing business down. Things run fine at first, but as your customers and data grow, simple actions start taking longer, pages slow to a crawl, server costs creep up, and reports start crashing your app during busy hours.",
+      "We design, clean up, move, and secure databases so this doesn't happen. Whether that's a fast relational database, a flexible document store, a caching layer to speed things up, or moving your data to the cloud without any downtime, we make sure it holds up under pressure.",
+      "We treat data accuracy, security, and backups as essentials, not extras. That means your apps stay fast and your customers' information stays safe, no matter what."
+    ],
+    tech: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Oracle", "Snowflake", "Elasticsearch", "AWS RDS", "Amazon Aurora", "Database Sharding", "Replication", "Prisma", "Flyway"],
+    capabilities: [
+      { title: "Query Optimization and Index Tuning", desc: "Speed up slow queries and smart indexes so your app responds in a blink." },
+      { title: "Zero Downtime Cloud Migration", desc: "Move your database from old servers to the cloud safely, with zero downtime." },
+      { title: "High Availability and Failover Clustering", desc: "Automatic failover and copies in more than one region, so your data stays online." },
+      { title: "Enterprise Database Security and Encryption", desc: "Strong encryption for stored and moving data, with strict access control." },
+      { title: "Automated Disaster Recovery and Backups", desc: "Regular backups with point in time recovery, so you can roll back any mistake." },
+      { title: "Database Sharding and Horizontal Partitioning", desc: "Split very large databases across servers so they stay fast as they grow." }
+    ],
+    process: [
+      { step: "01", title: "Performance Profiling and Schema Audit", desc: "We run deep query profiling to identify slow joins, missing indexes, bloated tables, and connection pool exhaustion points." },
+      { step: "02", title: "Target Architecture and Schema Refinement", desc: "We design optimized relational or document schemas with proper normalization, foreign key constraints, and partition keys." },
+      { step: "03", title: "Indexing and In Memory Caching Setup", desc: "Implementing intelligent composite indexing and Redis caching layers to absorb ninety percent of read queries before they hit disk." },
+      { step: "04", title: "Staging Migration and Load Stress Testing", desc: "Simulating peak production traffic against staging replicas to verify that throughput targets and response benchmarks are exceeded." },
+      { step: "05", title: "Zero Downtime Cutover and Replication", desc: "Executing phased replication cutover during low traffic windows with continuous data validation checks and immediate fallback safeguards." },
+      { step: "06", title: "Monitoring and Automated Alerting", desc: "Setting up real time dashboards tracking CPU utilization, IOPS, slow query logs, connection spikes, and storage growth." }
+    ],
+    impact: [
+      { metric: "85%", title: "Drop in Average Query Latency", desc: "Achieved through proper index engineering, query refactoring, and intelligent caching." },
+      { metric: "10x", title: "Concurrent User Capacity", desc: "Enabling your applications to support massive traffic surges without slowdown or database crashes." },
+      { metric: "Zero", title: "Data Loss Migrations", desc: "Flawlessly maintained across dozens of mission critical enterprise database transfers." },
+      { metric: "45%", title: "Infrastructure Cost Savings", desc: "Achieved by eliminating CPU over provisioning through query efficiency." }
+    ],
+    whyUs: [
+      "We fix the real performance problem instead of just telling you to buy a bigger server",
+      "We move your data to the cloud with zero downtime for your customers",
+      "We actually test our backups by restoring them, so you know they'll work when needed",
+      "Databases are designed around how your business actually uses data, not generic templates",
+      "Our security setup follows recognised standards like HIPAA and SOC2",
+      "You get full documentation explaining every decision we made"
+    ],
+    deliverables: [
+      "Fully optimized production database cluster with multi availability zone failover configurations",
+      "Automated Redis caching layer integrated to offload repetitive read heavy transactional queries",
+      "Comprehensive automated backup and point in time disaster recovery automation scripts",
+      "Documented schema dictionary, indexing rationale, and developer query guidelines",
+      "Thirty days of post migration database telemetry monitoring and performance tuning"
+    ],
+    faqs: [
+      { q: "How do you migrate a live database without taking our application down?", a: "We set up continuous change data capture replication between your existing database and the new cloud cluster. Once both databases are perfectly synchronized in real time, we execute an instantaneous DNS cutover that takes less than one second, resulting in zero user facing downtime." },
+      { q: "Our database gets very slow during peak hours. Can this be fixed without a full rewrite?", a: "In almost all cases, yes. The vast majority of database bottlenecks stem from a handful of unindexed queries, inefficient table joins, or lack of a caching layer. By pinpointing and tuning these specific queries, we typically achieve eighty percent speed improvements without rewriting the underlying application." },
+      { q: "Should we use PostgreSQL or MongoDB?", a: "PostgreSQL is ideal when your data is relational, requires strict transactional integrity, or involves complex cross table queries. MongoDB shines for flexible document schemas, rapid prototyping, and high volume write operations. We evaluate your application structure and advise on the right engine." },
+      { q: "How do you protect our database against ransomware and catastrophic failure?", a: "We implement immutable backups stored in isolated, air gapped cloud storage buckets with multi factor delete protection. We also configure automated daily restore tests to verify that backup snapshots can be spun up into functional databases within minutes." },
+      { q: "Do you offer database administration and monitoring retainers?", a: "Yes. Many of our clients retain us for monthly database administration, including continuous query log analysis, index maintenance, vacuuming, OS patching, and proactive capacity planning." },
+      { q: "Can you optimize databases running on cloud providers like AWS or Azure?", a: "Yes. We work extensively with Amazon Aurora, AWS RDS, Azure Database for PostgreSQL, Google Cloud SQL, and self hosted Linux database servers." }
+    ]
+  },
+  {
+    slug: "data-analytics-consultancy",
+    menu: "Data & Analytics Consultancy",
+    title: "Data & Analytics Consultancy",
+    tag: "Transform Fragmented Data into Clear Executive Dashboards and Confident Decisions",
+    h: 32,
+    cardBg: "#F8F3EA",
+    cardAccent: "#9C7A54",
+    stats: { built: "30+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "95%" },
+    overview: [
+      "Most businesses have plenty of numbers but very little clarity. Sales data sits in one tool, operations in another, and marketing spend somewhere else. When someone asks a simple question about profit or customer churn, it takes days to get a straight answer.",
+      "We help turn scattered, messy data into one clear, reliable system. We connect your different tools automatically into a single place, then build dashboards that update in real time so you always know where things stand.",
+      "Instead of spending hours building reports for a Monday meeting, your team can open a clean dashboard on a laptop or phone, spot problems early, and make decisions based on real, up to date numbers."
+    ],
+    tech: ["Power BI", "Tableau", "Snowflake", "Google BigQuery", "AWS Redshift", "PostgreSQL", "dbt", "Apache Airflow", "Python", "SQL", "ETL Pipelines", "Looker Studio"],
+    capabilities: [
+      { title: "Executive Decision Dashboards", desc: "Clear dashboards that show cash flow, margins and sales at a glance." },
+      { title: "Automated ETL Data Pipelines", desc: "Automatic pipelines that collect, clean and update your data every day." },
+      { title: "Cloud Data Warehousing", desc: "One secure data warehouse on Snowflake or BigQuery for all your sources." },
+      { title: "Customer Churn and Lifetime Value Models", desc: "Models that spot customers likely to leave and show who is most valuable." },
+      { title: "Supply Chain and Inventory Analytics", desc: "Live views of stock, turnover and supplier performance to avoid shortages and waste." },
+      { title: "Self Serve Business Intelligence", desc: "Easy reporting portals so anyone on your team can find answers without help." }
+    ],
+    process: [
+      { step: "01", title: "Data Architecture and Source Audit", desc: "We review every database, software tool, spreadsheet, and API your company uses, identifying data quality issues and discrepancies." },
+      { step: "02", title: "Metric Definition and KPI Modeling", desc: "We sit down with leadership to define exact formulas for key metrics, establishing one single source of truth across all teams." },
+      { step: "03", title: "Automated Data Pipeline Engineering", desc: "We build resilient scheduled pipelines that ingest, normalize, and reconcile data from all your endpoints automatically." },
+      { step: "04", title: "Centralized Data Warehouse Setup", desc: "Structuring optimized data models in Snowflake, BigQuery, or PostgreSQL designed for lightning fast reporting queries." },
+      { step: "05", title: "Interactive Dashboard Design", desc: "We craft clean, intuitive visualizations in Power BI, Tableau, or custom web portals tailored to the exact questions you need answered." },
+      { step: "06", title: "Validation and Team Enablement", desc: "We cross check every figure against raw accounting records, run validation tests, and train your staff on daily dashboard usage." }
+    ],
+    impact: [
+      { metric: "15 hrs", title: "Saved Per Week Per Manager", desc: "Eliminating manual spreadsheet collation, formula troubleshooting, and PowerPoint report preparation." },
+      { metric: "100%", title: "Automated Daily Updates", desc: "Dashboards update automatically overnight so morning meetings always begin with fresh numbers." },
+      { metric: "30+", title: "Enterprise BI Systems Shipped", desc: "Transforming decision making for logistics, manufacturing, retail, and financial service firms." },
+      { metric: "Single", title: "Unified Source of Truth", desc: "Zero debate over whose spreadsheet has the correct figure when metrics are defined centrally." }
+    ],
+    whyUs: [
+      "We build dashboards for business owners and managers, not data scientists",
+      "Our pipelines run reliably and alert us automatically if anything goes wrong",
+      "We double check every number against your real financial records before it goes live",
+      "Access controls mean staff only see the numbers relevant to their role",
+      "We work with all the major dashboard tools, including Power BI, Tableau, and Looker",
+      "We document everything and train your team, so you're never stuck relying on us"
+    ],
+    deliverables: [
+      "Fully configured central cloud data warehouse with structured reporting schemas",
+      "Automated extraction and transformation pipelines connecting all primary business tools",
+      "Interactive executive and operational dashboards published to your business intelligence environment",
+      "Comprehensive metric dictionary defining exact calculation logic for all organizational KPIs",
+      "Thirty days of post deployment data reconciliation, pipeline monitoring, and user training"
+    ],
+    faqs: [
+      { q: "We currently run our reports in Excel. Why should we switch?", a: "Spreadsheets require manual updating, break when formulas are accidentally edited, live in disconnected email attachments, and tell you only what happened in the past. An automated analytics system updates in real time, pulls directly from your source databases, cannot be accidentally corrupted, and allows anyone on your team to drill down into specifics instantly." },
+      { q: "How long does a data analytics implementation take?", a: "A targeted project connecting two or three key tools into an executive Power BI or Tableau dashboard typically takes four to six weeks. A complete enterprise data warehouse unifying multiple complex ERPs and legacy databases generally requires eight to twelve weeks." },
+      { q: "Can non technical staff members easily use the dashboards?", a: "Yes. We design with visual clarity as our first priority. Users do not need to know SQL or statistics. They simply click intuitive filters like date ranges, product lines, or sales reps to inspect performance." },
+      { q: "What data sources can you connect together?", a: "We can connect virtually any modern software that has an API or database access, including Salesforce, HubSpot, Stripe, QuickBooks, Shopify, SAP, Oracle, PostgreSQL, MySQL, and automated CSV feeds." },
+      { q: "How do you guarantee the numbers are accurate?", a: "During the reconciliation phase, we cross check every aggregated figure against source financial ledgers and raw database tables. The dashboards are only approved once our automated audit scripts show zero variance." },
+      { q: "Do we have to pay expensive ongoing software licenses?", a: "We architect solutions using the most cost effective tools for your scale. Many modern cloud warehouses like BigQuery charge only pennies per query, meaning infrastructure costs often amount to just a few dozen dollars per month." }
+    ]
+  },
+  {
+    slug: "digital-marketing-branding",
+    menu: "Digital Marketing & Branding",
+    title: "Digital Marketing & Branding",
+    tag: "Build a Memorable Brand Identity and a Scalable Customer Acquisition Engine",
+    h: 34,
+    cardBg: "#FCF5E6",
+    cardAccent: "#D08A3C",
+    stats: { built: "35+", experience: "8 Years", rating: "4.8 / 5", onTime: "98%", retention: "91%" },
+    overview: [
+      "In a crowded market, having a good product isn't enough. Without a clear brand, people see you as just another option and compare you purely on price. And chasing likes or boosting random posts without a real plan just burns through your budget.",
+      "We help build brands that people actually remember and trust. That means bringing brand strategy, design, writing, SEO, and paid ads together into one plan that consistently brings in new customers.",
+      "We treat marketing as something that should pay for itself, not just look nice. Every dollar you spend is tracked against real numbers, like cost per lead and how many leads actually turn into customers."
+    ],
+    tech: ["Brand Positioning", "Visual Identity", "Figma", "Adobe Creative Suite", "Technical SEO", "Google Ads", "Meta Ads Manager", "LinkedIn Ads", "Content Strategy", "Email Automation", "AI Video Production"],
+    capabilities: [
+      { title: "Brand Identity and Visual Systems", desc: "A complete brand kit with logo, colours, fonts and tone that stays consistent everywhere." },
+      { title: "Performance Paid Advertising", desc: "Targeted ads on Google, LinkedIn and Meta that bring qualified leads." },
+      { title: "Search Engine Optimization", desc: "Technical fixes and content plans that help your site rank higher on Google." },
+      { title: "B2B Content and Copywriting", desc: "Clear website copy, whitepapers and case studies that explain your value." },
+      { title: "AI Accelerated Video Production", desc: "High quality videos, product explainers and short ads made with AI tools." },
+      { title: "Conversion Rate Optimization", desc: "Constant testing of pages and forms to turn more visitors into customers." }
+    ],
+    process: [
+      { step: "01", title: "Brand Positioning and Audience Discovery", desc: "We interview leadership, study top competitors, and identify the exact positioning angle that will make your business stand out." },
+      { step: "02", title: "Visual Identity and Brand Book Creation", desc: "Designing your logo, typography system, digital palettes, iconography, and comprehensive usage rules for total brand consistency." },
+      { step: "03", title: "Conversion Funnel and Messaging Setup", desc: "Writing persuasive value propositions and designing high converting landing page experiences for each audience segment." },
+      { step: "04", title: "Targeted Campaign Launch and Setup", desc: "Configuring precise tracking pixels, audience targeting, search keywords, and compelling ad creative across selected channels." },
+      { step: "05", title: "Daily Optimization and Budget Tuning", desc: "Pruning underperforming keywords, reallocating ad spend to top converting creatives, and lowering your cost per acquisition." },
+      { step: "06", title: "Transparent Reporting and Growth Reviews", desc: "Clear weekly dashboards showing exact spend, lead counts, conversion rates, and strategic recommendations for next steps." }
+    ],
+    impact: [
+      { metric: "5.2x", title: "Average Return on Ad Spend", desc: "Generated across client paid campaigns through disciplined audience targeting and continuous creative testing." },
+      { metric: "35+", title: "Brands Built from Scratch", desc: "Empowering startups and established firms to command premium market pricing and respect." },
+      { metric: "140%", title: "Organic Traffic Growth", desc: "Achieved within six months through structured technical SEO and high authority content architecture." },
+      { metric: "100%", title: "Transparent Attribution", desc: "Every lead and dollar tracked to its origin so you know exactly which campaigns drive real revenue." }
+    ],
+    whyUs: [
+      "We track marketing against real sales numbers, not just likes and impressions",
+      "All the design and writing is done in house by our own team, not outsourced to freelancers",
+      "Tracking is set up properly before we spend a single dollar on ads",
+      "We use AI tools to produce quality video content without the usual studio price tag",
+      "You talk directly with the person managing your campaigns, not an account manager",
+      "You keep full ownership of your ad accounts, creative files, and customer lists"
+    ],
+    deliverables: [
+      "Complete vector brand identity package including primary logos, secondary marks, and typography guidelines",
+      "Production ready digital asset kit for web, social headers, slide decks, and digital advertising",
+      "Configured paid media campaigns on Google Ads, Meta, or LinkedIn with structured conversion tracking",
+      "High converting landing page copy and visual layout designed to maximize consultation bookings",
+      "Live interactive performance dashboard updating real time spend, inquiries, and cost per lead metrics"
+    ],
+    faqs: [
+      { q: "How quickly can we expect results from digital marketing?", a: "Paid advertising campaigns on Google and LinkedIn can start generating qualified inquiries within the very first week of going live. Search engine optimization and organic authority building require compounding effort and typically show substantial business impact within three to six months." },
+      { q: "What should our monthly advertising budget be?", a: "We tailor budgets to your target customer value. For localized or specialized B2B offerings, testing effectively can start around five hundred to fifteen hundred dollars per month. For broader national or regional growth, budgets typically range from three thousand to fifteen thousand dollars. We advise you conservatively so your spend remains profitable." },
+      { q: "Do we own the advertising accounts and creative assets?", a: "Yes, entirely. All campaigns are run directly inside your company ad accounts. If you ever decide to bring management in house, you retain all historical data, audience lists, and creative assets." },
+      { q: "Can you help reposition a brand that has been around for years?", a: "Yes. Brand modernization is a major area of our expertise. We preserve the trust and heritage your company has built while modernizing your visual identity, messaging, and digital channels to attract modern buyers." },
+      { q: "Do you write all the copy and create the videos?", a: "Yes. Our team produces compelling written copy, bespoke graphics, and engaging short form video assets tailored specifically to your target audience." },
+      { q: "How do we know which marketing channel is working best?", a: "We configure server side tracking and analytics dashboards that attribute every consultation form submission and phone call back to the specific campaign, ad, and keyword that generated it." }
     ]
   }
 ];

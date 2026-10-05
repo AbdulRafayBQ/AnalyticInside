@@ -2811,16 +2811,13 @@ body {
   padding: 30px 36px 44px;
   box-shadow: 0 25px 60px -15px rgba(23, 19, 14, 0.08), 0 0 0 1px rgba(201, 155, 92, 0.08);
   opacity: 0;
-  transform: scale(0.92) translateY(50px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: opacity 0.9s ease,
               box-shadow 0.9s ease;
   will-change: transform, opacity;
   overflow: hidden;
 }
 .tech-container.tech-in {
   opacity: 1;
-  transform: scale(1) translateY(0);
   box-shadow: 0 35px 80px -20px rgba(23, 19, 14, 0.12), 0 0 0 1px rgba(201, 155, 92, 0.20);
 }
 
@@ -5399,12 +5396,9 @@ em { font-style: italic; color: var(--accent); }
   .hero-cap-track { animation: none; }
 }
 
-/* Services cards — technologies always on ONE row */
-.svc-reveal-tags { flex-wrap: nowrap; overflow: hidden; }
+/* Services cards — technologies wrap onto multiple rows so every tag is visible */
+.svc-reveal-tags { flex-wrap: wrap; overflow: visible; }
 .svc-reveal-tag { flex: 0 0 auto; white-space: nowrap; }
-@media (max-width: 768px) {
-  .svc-reveal-tag:nth-child(n+4) { display: none; }
-}
 
 .svc-reveal-tag.svc-tag-hide { display: none; }
 

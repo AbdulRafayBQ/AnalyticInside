@@ -1,8 +1,7 @@
 /* =============================================
-   ANALYTIC INSIDER, ABOUT PAGE INTERACTIONS
-   Reveal, counters, side rail, story timeline,
-   service viewer, process deck, project viewer,
-   tech tabs and FAQ. One item on screen at a time.
+   ANALYTIC INSIDER, ABOUT PAGE INTERACTIONS v7
+   Fast reveal, snappy counters, quick timeline,
+   smooth service viewer, responsive deck & work.
    ============================================= */
 (function () {
   'use strict';
@@ -22,8 +21,6 @@
   /* ---------------- DATA ---------------- */
   var CATS = { build: 'Build a product', ai: 'AI and data', design: 'Design and growth' };
 
-
-  /* Simple line icons shown in the service card (replaces the old photos) */
   var SVC_ICONS = {
     'custom-software-development': '<path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/>',
     'website-development': '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/>',
@@ -68,22 +65,22 @@
     cloud: [['AWS', 'amazonwebservices'], ['Google Cloud', 'googlecloud'], ['Azure', 'azure'], ['Docker', 'docker'], ['Kubernetes', 'kubernetes'], ['GitHub Actions', 'githubactions'], ['Vercel', 'vercel'], ['Firebase', 'firebase'], ['Cloudflare', 'cloudflare'], ['Git', 'git'], ['Figma', 'figma'], ['Netlify', 'netlify']]
   };
 
-  /* ---------------- REVEAL ---------------- */
+  /* ============== FAST REVEAL ============== */
   var sections = $$('.ab-sec');
   if ('IntersectionObserver' in window) {
     var revealIO = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('ab-in'); revealIO.unobserve(e.target); }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.08 }); // lower threshold = triggers faster
     sections.forEach(function (s) { revealIO.observe(s); });
   } else {
     sections.forEach(function (s) { s.classList.add('ab-in'); });
   }
   var hero = $('#top');
-  if (hero) setTimeout(function () { hero.classList.add('ab-in'); }, 90);
+  if (hero) setTimeout(function () { hero.classList.add('ab-in'); }, 50); // faster hero reveal
 
-  /* ---------------- COUNTERS ---------------- */
+  /* ============== FAST COUNTERS ============== */
   var counted = false;
   function runCounters() {
     if (counted) return; counted = true;
@@ -91,20 +88,20 @@
       var target = parseInt(el.getAttribute('data-count'), 10) || 0;
       var suffix = el.getAttribute('data-suffix') || '';
       if (reduced) { el.textContent = target + suffix; return; }
-      var t0 = null, dur = 1500;
+      var t0 = null, dur = 800; // FAST: 800ms instead of 1500ms
       function step(ts) {
         if (t0 === null) t0 = ts;
         var p = Math.min((ts - t0) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
+        var eased = 1 - Math.pow(1 - p, 4); // steeper ease for snappier feel
         el.textContent = Math.round(target * eased) + suffix;
         if (p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     });
   }
-  setTimeout(runCounters, 600);
+  setTimeout(runCounters, 300); // trigger faster
 
-  /* ---------------- HERO PARALLAX ---------------- */
+  /* ============== HERO PARALLAX ============== */
   var stack = $('#abStack');
   if (stack && hero && finePointer && !reduced) {
     hero.addEventListener('mousemove', function (e) {
@@ -120,10 +117,8 @@
     });
   }
 
-  /* ---------------- PROGRESS, RAIL, TONE ---------------- */
+  /* ============== PROGRESS BAR ============== */
   var progress = $('#abProgress');
-  var rail = $('#abRail');
-  var dots = $$('.ab-dot');
   var footer = $('#siteFooter');
   var ticking = false;
 
@@ -133,20 +128,6 @@
     var max = doc.scrollHeight - window.innerHeight;
     var p = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
     if (progress) progress.style.setProperty('--p', p.toFixed(4));
-
-    var line = window.innerHeight * 0.4;
-    var current = sections[0];
-    sections.forEach(function (s) {
-      var r = s.getBoundingClientRect();
-      if (r.top <= line && r.bottom > line) current = s;
-    });
-    var inFooter = false;
-    if (footer) {
-      var fr = footer.getBoundingClientRect();
-      inFooter = fr.top < window.innerHeight * 0.5;
-    }
-    dots.forEach(function (d) { d.classList.toggle('on', !inFooter && d.getAttribute('data-target') === current.id); });
-    if (rail) rail.setAttribute('data-tone', inFooter ? 'light' : (current.getAttribute('data-tone') || 'light'));
   }
   window.addEventListener('scroll', function () {
     if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
@@ -158,12 +139,11 @@
     var el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
   }
-  dots.forEach(function (d) { d.addEventListener('click', function () { jump(d.getAttribute('data-target')); }); });
   $$('[data-jump]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); jump(a.getAttribute('data-jump')); });
   });
 
-  /* ---------------- STORY TIMELINE ---------------- */
+  /* ============== STORY TIMELINE — FAST AUTO-PLAY ============== */
   var eras = $$('.ab-era');
   var trackBtns = $$('#abTrack button');
   var trackFill = $('#abTrackFill');
@@ -190,16 +170,16 @@
   setEra(0);
   var storySec = $('#story');
   if (storySec && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { storyVisible = es[0].isIntersecting; }, { threshold: 0.45 }).observe(storySec);
+    new IntersectionObserver(function (es) { storyVisible = es[0].isIntersecting; }, { threshold: 0.35 }).observe(storySec);
   }
   if (!reduced) {
     eraTimer = setInterval(function () {
       if (eraUser || !storyVisible) return;
       setEra((eraNow + 1) % eras.length);
-    }, 5500);
+    }, 3500); // FAST: 3.5s instead of 5.5s
   }
 
-  /* ---------------- SERVICES VIEWER ---------------- */
+  /* ============== SERVICES VIEWER ============== */
   var svcList = $('#abSvcList');
   var svcCard = $('#abSvcCard');
   var svcBtns = [];
@@ -235,7 +215,7 @@
   }
   if (svcBtns.length) setSvc(0, false);
 
-  /* ---------------- PROCESS DECK ---------------- */
+  /* ============== PROCESS DECK — FASTER ============== */
   var cards = $$('.ab-pcard');
   var procNow = $('#abProcNow');
   var procI = 0;
@@ -256,14 +236,16 @@
     if (pn) pn.addEventListener('click', function () { setProc(procI + 1); });
     cards.forEach(function (c, k) { c.addEventListener('click', function () { setProc(k === procI ? procI + 1 : k); }); });
     var deck = $('#abDeck'), sx = 0;
-    deck.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
-    deck.addEventListener('touchend', function (e) {
-      var dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) setProc(procI + (dx < 0 ? 1 : -1));
-    }, { passive: true });
+    if (deck) {
+      deck.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+      deck.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - sx;
+        if (Math.abs(dx) > 40) setProc(procI + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+    }
   }
 
-  /* ---------------- PROJECT VIEWER ---------------- */
+  /* ============== PROJECT VIEWER — FASTER ============== */
   var thumbs = $('#abThumbs');
   var workImg = $('#abWorkImg');
   var workInfo = $('#abWorkInfo');
@@ -300,7 +282,7 @@
     if (!first && !reduced) { replay(workImg, 'swap'); replay(workInfo, 'swap'); }
   }
 
-  /* ---------------- TECH TABS ---------------- */
+  /* ============== TECH TABS ============== */
   var logos = $('#abLogos');
   var techTabs = $$('#abTechTabs button');
   function setTech(g) {
@@ -317,7 +299,7 @@
     setTech('web');
   }
 
-  /* ---------------- FAQ ---------------- */
+  /* ============== FAQ ============== */
   var qs = $$('#abAcc .ab-q');
   qs.forEach(function (q) {
     var btn = $('button', q);
