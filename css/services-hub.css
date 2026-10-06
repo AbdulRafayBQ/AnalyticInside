@@ -164,3 +164,131 @@
 
 /* filter change: reset rows instantly before replaying the entrance animation */
 .hb-zz-row.no-t, .hb-zz-row.no-t .hb-zz-media, .hb-zz-row.no-t .hb-zz-content { transition: none !important; }
+
+/* ==========================================================================
+   SERVICE PHOTO CARDS (images/main-services-images)
+   wipe reveal · slow zoom toward the picture's focus · scroll drift ·
+   cursor tilt + glare · floating chips that describe each picture
+   ========================================================================== */
+.hb-zz-art.hb-zz-photo {
+  --rx: 0deg; --ry: 0deg; --py: 0px; --gx: 50%; --gy: 40%;
+  padding: 10px;
+  border-radius: 32px;
+  transform: perspective(1300px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform .45s var(--ease), box-shadow .5s var(--ease);
+  box-shadow: 0 40px 70px -34px rgba(23,19,14,.42), 0 0 0 1px var(--line);
+}
+.hb-zz-art.hb-zz-photo::before {                    /* soft glow in the service colour, behind the card */
+  inset: -14%;
+  background: radial-gradient(closest-side, var(--a), transparent 72%);
+  opacity: .28;
+  filter: blur(30px);
+  animation: hbPhotoGlow 7s ease-in-out infinite;
+}
+@keyframes hbPhotoGlow { 0%,100% { transform: scale(.96); opacity: .22; } 50% { transform: scale(1.06); opacity: .38; } }
+.hb-zz-art.hb-zz-photo.is-dark { background: #17130E; }
+
+/* beat the old hover rotate rules, tilt now follows the cursor */
+.hb-zz-row:nth-child(odd):hover .hb-zz-art.hb-zz-photo,
+.hb-zz-row:nth-child(even):hover .hb-zz-art.hb-zz-photo {
+  transform: perspective(1300px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-6px);
+  box-shadow: 0 54px 84px -34px rgba(23,19,14,.5), 0 0 0 1px var(--a);
+}
+
+.hb-zz-frame {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 10 / 7;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--b);
+  /* wipe reveal: odd rows open from the left, even rows from the right */
+  clip-path: inset(0 100% 0 0 round 24px);
+  transition: clip-path 1.25s var(--ease) .1s;
+}
+.hb-zz-row:nth-child(even) .hb-zz-frame { clip-path: inset(0 0 0 100% round 24px); }
+.hb-zz-row.in .hb-zz-frame { clip-path: inset(0 0 0 0 round 24px); }
+
+.hb-zz-img {
+  position: absolute;
+  left: 0; top: -4%;
+  width: 100%; height: 108%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.2);
+  transform-origin: var(--fx, 50%) var(--fy, 50%);
+  translate: 0 var(--py);                            /* scroll drift (separate from the scale animation) */
+  will-change: transform;
+}
+.hb-zz-row.in .hb-zz-img {
+  animation: hbImgSettle 1.7s var(--ease) both, hbImgBreathe 16s ease-in-out 1.7s infinite alternate;
+}
+@keyframes hbImgSettle  { from { transform: scale(1.2); } to { transform: scale(1.02); } }
+@keyframes hbImgBreathe { from { transform: scale(1.02); } to { transform: scale(1.07); } }
+.hb-zz-photo:hover .hb-zz-img { animation-play-state: paused; transform: scale(1.1); transition: transform .9s var(--ease); }
+
+/* glare that follows the cursor */
+.hb-zz-glare {
+  position: absolute; inset: 10px; z-index: 2;
+  border-radius: 24px;
+  pointer-events: none;
+  background: radial-gradient(420px circle at var(--gx) var(--gy), rgba(255,255,255,.5), transparent 55%);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  transition: opacity .35s;
+}
+.hb-zz-photo:hover .hb-zz-glare { opacity: 1; }
+
+/* floating chips: pop in after the picture opens, then bob forever */
+.hb-chip-float {
+  position: absolute; z-index: 3;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 30px -14px rgba(23,19,14,.45);
+  font: 700 12.5px 'Inter', sans-serif;
+  color: var(--ink);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(16px) scale(.82);
+  transition: opacity .6s var(--ease), transform .8s var(--ease);
+  transition-delay: calc(.95s + var(--k) * .18s);
+  animation: hbChipBob 5s ease-in-out infinite;
+  animation-delay: calc(var(--k) * -1.4s);
+}
+.hb-chip-float i { width: 8px; height: 8px; border-radius: 50%; background: var(--a); box-shadow: 0 0 0 4px color-mix(in srgb, var(--a) 22%, transparent); }
+.hb-zz-row.in .hb-chip-float { opacity: 1; transform: none; }
+.hb-chip-float--1 { left: -14px;  top: 14%; }
+.hb-chip-float--2 { right: -14px; top: 46%; }
+.hb-chip-float--3 { left: 12%;    bottom: -14px; }
+.hb-zz-row:nth-child(even) .hb-chip-float--1 { left: auto; right: -14px; }
+.hb-zz-row:nth-child(even) .hb-chip-float--2 { right: auto; left: -14px; }
+.hb-zz-row:nth-child(even) .hb-chip-float--3 { left: auto; right: 12%; }
+@keyframes hbChipBob { 0%,100% { translate: 0 0; } 50% { translate: 0 -9px; } }
+.hb-zz-photo:hover .hb-chip-float { transform: translateZ(40px) scale(1.06); }
+
+@media (max-width: 640px) {
+  .hb-zz-art.hb-zz-photo { padding: 7px; border-radius: 24px; }
+  .hb-zz-frame, .hb-zz-glare { border-radius: 18px; }
+  .hb-zz-frame { clip-path: inset(0 100% 0 0 round 18px); }
+  .hb-zz-row:nth-child(even) .hb-zz-frame { clip-path: inset(0 0 0 100% round 18px); }
+  .hb-zz-row.in .hb-zz-frame { clip-path: inset(0 0 0 0 round 18px); }
+  .hb-chip-float { font-size: 11.5px; padding: 7px 12px; }
+  .hb-chip-float--1 { left: -6px; } .hb-chip-float--2 { right: -6px; }
+  .hb-zz-row:nth-child(even) .hb-chip-float--1 { right: -6px; }
+  .hb-zz-row:nth-child(even) .hb-chip-float--2 { left: -6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hb-zz-frame, .hb-zz-row:nth-child(even) .hb-zz-frame { clip-path: none; transition: none; }
+  .hb-zz-img, .hb-zz-row.in .hb-zz-img { animation: none; transform: none; }
+  .hb-zz-art.hb-zz-photo::before, .hb-chip-float { animation: none; }
+  .hb-chip-float { opacity: 1; transform: none; transition: none; }
+}
+
+/* photo cards have no intrinsic size (image is absolutely placed), so give them the full column width */
+.hb-zz-media { width: 100%; }
+.hb-zz-art.hb-zz-photo { width: 100%; }

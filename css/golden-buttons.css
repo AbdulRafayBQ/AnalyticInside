@@ -1,0 +1,21 @@
+/* ==========================================================================
+   FORM SUBMIT BUTTONS — gold theme (same as Mobile App "Get Free Consultation")
+   Applies on every service page: hero form, Start a Project drawer and
+   Existing Product request drawer.
+   ========================================================================== */
+#svc .sv-top-form-card .stf-submit-btn,
+#fdSubmit,
+.ep-submit {
+  background: #C99B5C;
+  color: #17130E;
+  border: 1px solid #C99B5C;
+  box-shadow: none;
+}
+#svc .sv-top-form-card .stf-submit-btn:hover,
+#fdSubmit:hover,
+.ep-submit:hover {
+  background: #E0B67C;
+  border-color: #E0B67C;
+  color: #17130E;
+  box-shadow: none;
+}

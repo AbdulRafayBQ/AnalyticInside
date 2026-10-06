@@ -1,0 +1,24 @@
+/* ==========================================================================
+   MOBILE APP DEVELOPMENT — gold accent theme (same gold as the "Development"
+   heading). Applies to every section of this page: Get a Quote banners,
+   rating stars, Engineering Methodology eyebrow, buttons and form buttons.
+   Scoped to the mobile-app-development page only.
+   ========================================================================== */
+#svc[data-slug="mobile-app-development"] {
+  --acc: #C99B5C !important;
+  --accd: color-mix(in srgb, #C99B5C 70%, #17130E);
+}
+#svc[data-slug="mobile-app-development"] .sv-top-form-card .stf-submit-btn,
+body.ep-green-page #fdSubmit,
+body.ep-green-page .ep-submit {
+  background: #C99B5C;
+  color: #17130E;
+  border: 1px solid #C99B5C;
+}
+#svc[data-slug="mobile-app-development"] .sv-top-form-card .stf-submit-btn:hover,
+body.ep-green-page #fdSubmit:hover,
+body.ep-green-page .ep-submit:hover {
+  background: #E0B67C;
+  border-color: #E0B67C;
+  color: #17130E;
+}

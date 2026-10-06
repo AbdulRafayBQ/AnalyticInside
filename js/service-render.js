@@ -72,8 +72,8 @@
       'Computer Vision', 'Model Fine-Tuning', 'AI API Integration'
     ],
     'product-design-development': [
-      'UI/UX Design System', 'Interactive Prototyping', 'User Research & Wireframes',
-      'Design Overhaul', 'Figma Assets Handover', 'MVP Specification'
+      'Idea to MVP', 'Full Stack Development', 'Product Design & UX',
+      'Interactive Prototyping', 'App or Web Launch', 'Post Launch Support'
     ],
     'digital-marketing-branding': [
       'Brand Identity & Guidelines', 'Technical SEO Growth', 'Performance Paid Ads (PPC)',
@@ -168,6 +168,11 @@
       </div>
     </div>`;
 
+  /* ═══════════ METRICS ═══════════ */
+  const metricList = [
+    [s.stats.built, 'Projects Built & Deployed'], [s.stats.experience, 'Senior Engineering Tenure'],
+    [s.stats.rating, 'Average Client Rating'], [s.stats.onTime, 'On Time Sprint Delivery'], [s.stats.retention, 'Client Retention Rate']
+  ];
   const heroHTML = `
     <section class="sv-sec sv-hero sv-hero--split" data-sec data-hero>
       <div class="sv-hero-glow"></div>
@@ -176,13 +181,11 @@
         ${heroLeft}
         ${topFormHTML}
       </div>
+      <div class="sv-inner sv-hero-stats" ${fx('flipr', 3)}>
+        ${metricList.map(m => `<div class="sv-hero-stat"><span class="sv-hero-stat-n">${m[0]}</span><span class="sv-hero-stat-t">${m[1]}</span></div>`).join('')}
+      </div>
     </section>`;
 
-  /* ═══════════ METRICS ═══════════ */
-  const metricList = [
-    [s.stats.built, 'Projects Built & Deployed'], [s.stats.experience, 'Senior Engineering Tenure'],
-    [s.stats.rating, 'Average Client Rating'], [s.stats.onTime, 'On Time Sprint Delivery'], [s.stats.retention, 'Client Retention Rate']
-  ];
   const metricsHTML = `
     <section class="sv-sec sv-metrics sv-metrics--${R.metrics}" data-sec>
       <div class="sv-inner sv-metrics-grid">
@@ -430,13 +433,15 @@
         <div class="pr10-prog"><span>prototype</span><i><b></b></i><span>production</span></div>
       </div></div>`
   ];
-  const procDark = [true, false, false, true, false, false, true, false, true, true][k];
-  const procHead = ['Engineering Methodology', 'Our Structured Six Stage Delivery Roadmap', 'Every engagement follows a rigorous technical process ensuring complete transparency, locked milestones, and working software at every stage.'];
+  /* Marketing uses the funnel layout (builder 6) on a light theme, not the vibe-code terminal */
+  const procIdx = s.slug === 'digital-marketing-branding' ? 5 : k;
+  const procDark = [true, false, false, true, false, false, true, false, true, true][procIdx];
+  const procHead = ['Engineering Methodology', 'Our Structured Six Stage <em style="font-style:italic;color:#C99B5C;">Delivery Roadmap</em>', 'Every engagement follows a rigorous technical process ensuring complete transparency, locked milestones, and working software at every stage.'];
   const procHTML = `
-    <section class="sv-sec sv-proc sv-proc--${k + 1} ${procDark ? 'is-dark' : 'is-light'}" id="process" data-sec ${k === 0 ? 'data-prog' : ''}>
+    <section class="sv-sec sv-proc sv-proc--${procIdx + 1} ${procDark ? 'is-dark' : 'is-light'}" id="process" data-sec ${procIdx === 0 ? 'data-prog' : ''}>
       <div class="sv-inner">
-        ${head(procHead[0], procHead[1], procHead[2], [ 'center', 'left', 'center', 'center', 'left', 'left', 'center', 'left', 'center', 'left' ][k], procDark)}
-        <div class="sv-proc-body">${procBuilders[k]()}</div>
+        ${head(procHead[0], procHead[1], procHead[2], [ 'center', 'left', 'center', 'center', 'left', 'left', 'center', 'left', 'center', 'left' ][procIdx], procDark)}
+        <div class="sv-proc-body">${procBuilders[procIdx]()}</div>
       </div></section>`;
 
   /* ═══════════ INTERSPERSED GET A QUOTE #2 ═══════════ */
@@ -662,7 +667,7 @@
             <li><a href="service.html?s=website-development">Website Development</a></li>
             <li><a href="service.html?s=mobile-app-development">Mobile App Development</a></li>
             <li><a href="service.html?s=ai-development">AI & Machine Learning</a></li>
-            <li><a href="service.html?s=product-design-development">Product & UI UX Design</a></li>
+            <li><a href="service.html?s=product-design-development">Product Development</a></li>
             <li><a href="service.html?s=digital-marketing-branding">Marketing & Branding</a></li>
           </ul>
           <a class="footer-viewall" href="services.html">View all services <svg viewBox="0 0 20 20" width="13" height="13" fill="none" aria-hidden="true"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -674,7 +679,7 @@
           <ul class="footer-links-list">
             ${s.tech.slice(0, 8).map(x => `<li><a href="#techStack">${x}</a></li>`).join('')}
           </ul>
-          <a class="footer-viewall" href="index.html#technology">View all technologies <svg viewBox="0 0 20 20" width="13" height="13" fill="none" aria-hidden="true"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="footer-viewall" href="#techStack" data-scroll-tech>View all technologies <svg viewBox="0 0 20 20" width="13" height="13" fill="none" aria-hidden="true"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
 
         <!-- Col 4: Company -->
@@ -837,7 +842,7 @@
 
   /* ═══════════ ASSEMBLE ═══════════ */
   const EP_HTML = window.EP ? window.EP.html(s) : '';
-  const SEC_ORDER = [['hero', heroHTML], ['metrics', metricsHTML], ['brand', svBrandMarqueeHTML], ['overview', overviewHTML], ['q1', quoteCTA1], ['caps', capsHTML], ['proc', procHTML], ['cs', caseStudyHTML], ['q2', quoteCTA2], ['tech', techHTML], ['impact', impactHTML], ['why', whyHTML], ['rev', revHTML], ['faq', faqHTML]];
+  const SEC_ORDER = [['hero', heroHTML], ['brand', svBrandMarqueeHTML], ['overview', overviewHTML], ['q1', quoteCTA1], ['caps', capsHTML], ['proc', procHTML], ['cs', caseStudyHTML], ['q2', quoteCTA2], ['tech', techHTML], ['impact', impactHTML], ['why', whyHTML], ['rev', revHTML], ['faq', faqHTML]];
   const EP_AFTER = window.EP ? window.EP.plan(s).after : 'faq';
   root.innerHTML = SEC_ORDER.map(x => x[1] + (x[0] === EP_AFTER ? EP_HTML : '')).join('') + ctaHTML + grandFooterHTML;
   if (window.EP) window.EP.init(s);
@@ -1060,6 +1065,18 @@
   })();
 
   const btt = $('#svBackToTop'); if (btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Footer "View all technologies" (and the tech names above it): scroll up to THIS service's
+     technology section instead of leaving for the homepage */
+  document.querySelectorAll('.site-footer a[href="#techStack"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const sec = document.getElementById('techStack');
+      if (!sec) return; // no tech section on this page: fall back to the normal link
+      e.preventDefault();
+      const top = sec.getBoundingClientRect().top + window.pageYOffset - 84;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    });
+  });
 
   /* ═══════════ COUNT UP ═══════════ */
   (function initCountUps() {

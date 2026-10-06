@@ -16,7 +16,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=4.1">
   <link rel="stylesheet" href="css/mobile-fix.css?v=3.0">
-  <link rel="stylesheet" href="css/portfolio.css?v=5.5">
+  <link rel="stylesheet" href="css/portfolio.css?v=6.0">
+  <link rel="stylesheet" href="css/portfolio-landing.css?v=2.0">
+  <link rel="stylesheet" href="css/site-redesign.css?v=3.0">
+  <link rel="stylesheet" href="css/portfolio-zigzag.css?v=3.0">
   <link rel="stylesheet" href="css/mega.css?v=3.0">
   <link rel="stylesheet" href="css/shared.css?v=1.1">
 </head>
@@ -56,53 +59,184 @@
   <main>
 
     <!-- ══ PORTFOLIO HERO ══ -->
-    <section class="pf-hero" id="pf-hero">
+    <section class="plh" id="pf-hero">
       <div class="pf-spotlight" id="pfSpotlight" aria-hidden="true"></div>
-      <div class="container pf-hero-inner">
-        <div class="pf-hero-left">
-          <div class="section-label reveal-up">Portfolio &nbsp;·&nbsp; 16 Projects</div>
-          <h1 class="pf-title reveal-up" data-delay="0.1">
-            Digital products,<br><em>built with purpose.</em>
-          </h1>
-          <p class="pf-sub reveal-up" data-delay="0.18">
-            A closer look at the platforms, apps and experiences our team has designed and built for ambitious businesses.
-          </p>
-          <div class="pf-filters reveal-up" data-delay="0.24">
-            <button class="pf-filter-pill active" data-filter="all">All Work</button>
-            <button class="pf-filter-pill" data-filter="mobile">Mobile Apps</button>
-            <button class="pf-filter-pill" data-filter="web">Web Platforms</button>
-            <button class="pf-filter-pill" data-filter="ai">Design / AI</button>
-            <button class="pf-filter-pill" data-filter="fintech">Fintech</button>
-          </div>
+      <div class="container plh-inner">
+        <p class="plh-eyebrow">Portfolio</p>
+        <h1 class="plh-title">
+          <span class="plh-line"><span>Digital products,</span></span>
+          <span class="plh-line"><span><em>built with purpose.</em></span></span>
+        </h1>
+        <div class="plh-foot">
+          <p class="plh-sub">A closer look at the platforms, apps and experiences our team has designed and built for ambitious businesses.</p>
+          <a class="plh-ring" href="#work" aria-label="Jump to selected work">
+            <svg class="plh-ring-text" viewBox="0 0 124 124" aria-hidden="true">
+              <defs>
+                <path id="plRingPath" d="M62,62 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/>
+              </defs>
+              <text>
+                <textPath href="#plRingPath" textLength="286" lengthAdjust="spacing">Selected work · Selected work ·</textPath>
+              </text>
+            </svg>
+            <span class="plh-ring-core" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M15 5H7M15 5V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
         </div>
-        <div class="pf-hero-right reveal-up" data-delay="0.3">
-          <div class="pf-hero-stat">
-            <strong data-count="16">16</strong> Projects Shipped
-          </div>
-          <div class="pf-hero-stat">
-            <strong data-count="4">4</strong> Project Areas
-          </div>
-          <div class="pf-hero-stat">
-            <strong data-count="8">8</strong> Years Experience
-          </div>
-        </div>
+      </div>
+
+      <!-- BRAND LOGO MARQUEE — same endless loop as the homepage hero -->
+      <div class="pz-strip" aria-label="Brands we have worked with">
+        <div class="pz-strip-track"><span class="pz-logo-item"><img src="images/brand-strip/brand-01.png" alt="Telecard" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-02.png" alt="Morinaga" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-03.png" alt="Rheumatology Consultants" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-04.png" alt="Caary" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-05.png" alt="Squicle" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-06.png" alt="RichAI" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-07.png" alt="PulseGenesis" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-08.png" alt="InvestDex" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-09.png" alt="tinykiwi" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-10.png" alt="LinkDrip" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-11.png" alt="AssistEvent" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-12.png" alt="DocLink" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-13.png" alt="Zylmi" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-14.png" alt="Top Fashion Studio" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-15.png" alt="Futehally" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-16.png" alt="Pakbrunei" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-17.png" alt="Takaful Oman" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-18.png" alt="Client logo" height="38" decoding="async"></span><span class="pz-logo-item"><img src="images/brand-strip/brand-19.png" alt="Liberty Tax" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-01.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-02.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-03.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-04.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-05.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-06.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-07.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-08.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-09.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-10.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-11.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-12.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-13.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-14.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-15.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-16.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-17.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-18.png" alt="" height="38" decoding="async"></span><span class="pz-logo-item" aria-hidden="true"><img src="images/brand-strip/brand-19.png" alt="" height="38" decoding="async"></span></div>
       </div>
     </section>
 
-    <!-- ══ PORTFOLIO BENTO GRID ══ -->
-    <section class="pf-grid-section" id="portfolio">
-      <div class="pf-grain" aria-hidden="true"></div>
-      <div class="container" style="position:relative;z-index:1;">
-        <div class="pf-grid-heading">
-          <div>
-            <span class="pf-grid-eyebrow">Selected work</span>
-            <h2>Made for the way people work.</h2>
-          </div>
-          <p id="pfProjectCount" aria-live="polite">16 projects</p>
+    <!-- ══ INTRO — plain-language overview ══ -->
+    <section class="pz-intro" id="intro">
+      <div class="container pz-intro-inner">
+        <div class="pz-intro-copy" data-pz-reveal>
+          <span class="pz-eyebrow">Our work, in plain words</span>
+          <h2>Every project below started with a simple problem.</h2>
+          <p>A business came to us with something that was slow, confusing or missing. We figured out what people really needed, designed it, built it and launched it. Scroll down to meet the projects one by one, see what each one does and read how we got there.</p>
         </div>
-        <div class="pf-bento" id="pfBento" aria-label="Project grid"></div>
+        <ul class="pz-intro-points" data-pz-reveal>
+          <li><b>01</b><span><strong>We listen first.</strong> We learn how your business works before we draw or code anything.</span></li>
+          <li><b>02</b><span><strong>We build it properly.</strong> Websites, mobile apps, dashboards and AI tools that are fast and easy to use.</span></li>
+          <li><b>03</b><span><strong>We stay with you.</strong> After launch we fix, improve and grow the product with you.</span></li>
+        </ul>
       </div>
     </section>
+
+    <!-- ══ SELECTED WORK — zig-zag, one full-screen project per row ══ -->
+    <section class="pz-work" id="work" aria-label="Selected projects">
+      <div class="pz-list" id="pzList"></div>
+    </section>
+
+<!-- ══ REVIEWS — client testimonials ══ -->
+<section class="clients-section" id="reviews" aria-label="Client testimonials">
+  <div class="clients-inner">
+    <!-- Client testimonials — horizontal auto-sliding carousel, tied to the brands above -->
+    <div class="clt-wrap" id="cltWrap">
+      <div class="clt-header">
+        <span class="clt-eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L14.6 9.2L22 12L14.6 14.8L12 22L9.4 14.8L2 12L9.4 9.2L12 2Z" fill="#C99B5C"/></svg>
+          Client Voices
+        </span>
+        <h3 class="clt-heading">What They <em>Say</em></h3>
+      </div>
+
+      <div class="clt-viewport" id="cltViewport">
+        <div class="clt-track" id="cltTrack">
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">We came to Analytic Insider with a messy billing flow and a lot of frustrated customers. They rebuilt the recharge and bill pay experience from the ground up and were upfront every time something needed more time. Our support tickets dropped within the first month of launch.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#4A72C9">AR</div>
+              <div class="clt-person">
+                <span class="clt-project">Telecard</span>
+                <span class="clt-name">Ahsan Raza, Product Lead at Telecard</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">I had tried two other agencies before this one and neither actually listened to what our shoppers needed. The Analytic Insider team sat with us for hours understanding our catalog before writing a single line of code, and it shows in how smooth checkout feels now.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#C95C8E">SK</div>
+              <div class="clt-person">
+                <span class="clt-project">Zylmi</span>
+                <span class="clt-name">Sara Khalid, Founder at Zylmi</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">We needed an AI assistant that could actually reason about trades instead of just spitting out canned responses. What we got was faster and far more reliable than anything our in house team had managed in six months of trying on their own.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#3DA06A">DC</div>
+              <div class="clt-person">
+                <span class="clt-project">Rich AI</span>
+                <span class="clt-name">Daniel Cole, CEO at Rich AI</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">Our old dashboard was a spreadsheet dressed up as software. Now our coaches pull up a client's progress in seconds and actually trust the numbers they are looking at. It changed how our whole team runs its day.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#D46B5C">MG</div>
+              <div class="clt-person">
+                <span class="clt-project">Pulse Genesis</span>
+                <span class="clt-name">Maria Gonzalez, Operations Manager at Pulse Genesis</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">Launching in two markets at once meant our calorie tracker had to work perfectly the first time, no room for a slow beta. The team tested edge cases we had not even thought of and caught them before our users ever saw a glitch.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#4A9FD4">KS</div>
+              <div class="clt-person">
+                <span class="clt-project">Morinaga</span>
+                <span class="clt-name">Kenji Sato, Product Manager at Morinaga</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+          <div class="clt-card">
+          <article class="clt-card-inner">
+            <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
+            <p class="clt-text">Our investors expect a portfolio tool that feels institutional, not like a hobby project. What they delivered handles the numbers beautifully and still looks like something we are proud to open in front of a client.</p>
+            <div class="clt-footer">
+              <div class="clt-avatar" style="--av:#D4A24E">JW</div>
+              <div class="clt-person">
+                <span class="clt-project">Invest Power Labs</span>
+                <span class="clt-name">James Whitfield, Managing Director at Invest Power Labs</span>
+              </div>
+              <div class="clt-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="clt-nav">
+        <button class="clt-arrow clt-prev" id="cltPrev" type="button" aria-label="Previous testimonial">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="clt-dots" id="cltDots"></div>
+        <button class="clt-arrow clt-next" id="cltNext" type="button" aria-label="Next testimonial">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+      
+</section>
+<!-- ══ /REVIEWS ══ -->
 
     <section class="sap-section" id="startProject">
       <div class="sap-glow-1" aria-hidden="true"></div>
@@ -190,7 +324,7 @@
             <li><a href="service.html?s=website-development">Website Development</a></li>
             <li><a href="service.html?s=mobile-app-development">Mobile App Development</a></li>
             <li><a href="service.html?s=ai-development">AI &amp; Machine Learning</a></li>
-            <li><a href="service.html?s=product-design-development">Product &amp; UI/UX Design</a></li>
+            <li><a href="service.html?s=product-design-development">Product Development</a></li>
             <li><a href="service.html?s=digital-marketing-branding">Marketing &amp; Branding</a></li>
           </ul>
           <a class="footer-viewall" href="services.html">View all services <svg viewBox="0 0 20 20" width="13" height="13" fill="none" aria-hidden="true"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -274,30 +408,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/script.js?v=4.1"></script>
-  <script src="js/portfolio.js?v=6.1"></script>
+  <script src="js/portfolio.js?v=10.0"></script>
+  <script src="js/reviews-carousel.js?v=1.0"></script>
   <script src="js/mega.js?v=3.0"></script>
   <script src="js/shared.js?v=1.0"></script>
 
-  <script>
-    /* ── Hero reveal-up trigger ── */
-    (function() {
-      const reduces = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const revEls = document.querySelectorAll('.reveal-up');
-      if (reduces) {
-        revEls.forEach(el => el.classList.add('in'));
-        return;
-      }
-      revEls.forEach(el => {
-        const delay = parseFloat(el.dataset.delay || 0);
-        el.style.transitionDelay = delay + 's';
-      });
-      // Trigger after slight paint delay
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          revEls.forEach(el => el.classList.add('in'));
-        });
-      });
-    })();
-  </script>
 </body>
 </html>

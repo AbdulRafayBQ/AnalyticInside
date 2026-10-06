@@ -1,5 +1,5 @@
 /* ==========================================================================
-   EXISTING PROJECT SUPPORT: section above CTA + right-side drawer.
+   EXISTING PRODUCT SUPPORT: section above CTA + right-side drawer.
    Services and categories follow each service page (s.slug).
    Exposes window.EP = { html(s), init(s) }
    ========================================================================== */
@@ -42,12 +42,12 @@
       ['Extend', 'Workflow Automation', 'Connect your tools and automate repetitive tasks.']
     ],
     'product-design-development': [
-      ['Fix & Refine', 'UX Issue Fixes', 'Resolve usability problems found in analytics or user tests.'],
-      ['Fix & Refine', 'Accessibility Audit', 'WCAG fixes so your product works for everyone.'],
-      ['Redesign', 'Design System Upgrade', 'Consistent components and tokens across your product.'],
-      ['Redesign', 'Full UI Overhaul', 'A fresh visual direction for an existing product.'],
-      ['Handover', 'Figma to Code Handover', 'Clean specs and assets your dev team can build from.'],
-      ['Handover', 'Prototype Expansion', 'Interactive prototypes for new features before building.']
+      ['Already Started', 'Finish a Half Built Product', 'Pick up where a previous developer, no-code tool, or AI builder left off.'],
+      ['Already Started', 'Fix & Refine the UX', 'Resolve confusing flows and usability problems real users are hitting.'],
+      ['Grow', 'Add New Features', 'New modules and functionality added to your existing product, properly built.'],
+      ['Grow', 'Redesign & Rebuild', 'A fresh look and a stronger foundation for a product that has outgrown its first version.'],
+      ['Scale', 'Backend & Database Setup', 'Proper backend, database and hosting so your product can handle real users.'],
+      ['Scale', 'Prepare for Investors or Launch', 'Polish your product and pitch materials before a funding round or public launch.']
     ],
     'ai-consultancy-automation-strategy': [
       ['Review', 'AI Audit of Current Setup', 'Review what you have and identify quick wins.'],
@@ -92,10 +92,10 @@
   };
 
   const GENERIC = [
-    ['Fix & Maintain', 'Bug Fixes', 'Resolve errors and broken features in your current project.'],
-    ['Upgrade', 'Tech Stack Conversion', 'Move your project to a modern, maintainable stack.'],
+    ['Fix & Maintain', 'Bug Fixes', 'Resolve errors and broken features in your current product.'],
+    ['Upgrade', 'Tech Stack Conversion', 'Move your product to a modern, maintainable stack.'],
     ['Extend', 'New Feature Add-ons', 'Each new feature saves your team time or helps you earn more, without rebuilding what already works.'],
-    ['Extend', 'Performance Optimization', 'Make your project faster, more stable and more scalable.']
+    ['Extend', 'Performance Optimization', 'Make your product faster, more stable and more scalable.']
   ];
 
   const esc = t => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -103,19 +103,13 @@
   const catsOf = list => [...new Set(list.map(i => i[0]))];
 
   /* slug -> layout, theme, and the section it is placed after */
+  /* Only these three services show the section, placed below Strategic Overview and above the Get a Quote section */
   const PLAN = {
-    'website-development':               { v: 'rows',     after: 'caps',     light: 0 },
-    'mobile-app-development':            { v: 'tabs',     after: 'overview', light: 1 },
-    'custom-software-development':       { v: 'timeline', after: 'proc',     light: 1 },
-    'ai-development':                    { v: 'orbit',    after: 'cs',       light: 0 },
-    'product-design-development':        { v: 'slices',   after: 'caps',     light: 0 },
-    'ai-consultancy-automation-strategy':{ v: 'road',     after: 'overview', light: 1 },
-    'vibe-code-to-production':           { v: 'term',     after: 'caps',     light: 0 },
-    'data-management-database-solutions':{ v: 'cols',     after: 'tech',     light: 1 },
-    'data-analytics-consultancy':        { v: 'bars',     after: 'impact',   light: 0 },
-    'digital-marketing-branding':        { v: 'type',     after: 'why',      light: 1 }
+    'website-development':         { v: 'rows', after: 'overview', light: 0 },
+    'mobile-app-development':      { v: 'tabs', after: 'overview', light: 1 },
+    'custom-software-development': { v: 'rows', after: 'overview', light: 0 }
   };
-  const planOf = s => PLAN[s.slug] || { v: 'rows', after: 'faq', light: 0 };
+  const planOf = s => PLAN[s.slug] || { v: 'none', after: '__none__', light: 0 };
 
   function body(v, L) {
     const n = i => String(i + 1).padStart(2, '0');
@@ -160,19 +154,20 @@
   }
 
   function html(s) {
+    if (!PLAN[s.slug]) return '';
     const list = itemsFor(s), P = planOf(s);
     return `
-    <section class="ep-sec ep-v-${P.v}${P.light ? ' is-light' : ''}" id="existingProject" data-sec>
+    <section class="ep-sec ep-anim ep-v-${P.v}${P.light ? ' is-light' : ''}" id="existingProject" data-sec>
       <div class="ep-glow" aria-hidden="true"></div>
       <div class="ep-head">
-        <span class="ep-eyebrow">Already Have a Project?</span>
-        <h2 class="ep-title">Let's take your existing <em>${esc(s.title)}</em> project further</h2>
-        <p class="ep-sub">Fixes, redesigns, tech upgrades and new features for projects that are already live. Pick what you need, or send us everything in one brief.</p>
+        <span class="ep-eyebrow">Already Have a Product?</span>
+        <h2 class="ep-title">Let's take your existing <em>${esc(s.title)}</em> product further</h2>
+        <p class="ep-sub">Fixes, redesigns, tech upgrades and new features for products that are already live. Pick what you need, or send us everything in one brief.</p>
       </div>
       ${body(P.v, list)}
       <div class="ep-foot">
-        <button type="button" class="ep-open-btn" data-ep-open="">Request Support for My Project ${ARROW}</button>
-        <span class="ep-foot-note">Share your current project link and we reply with a plan within 24 hours.</span>
+        <button type="button" class="ep-open-btn" data-ep-open="">Request Support for My Product ${ARROW}</button>
+        <span class="ep-foot-note">Share your current product link and we reply with a plan within 24 hours.</span>
       </div>
     </section>`;
   }
@@ -191,18 +186,18 @@
     const wrap = document.createElement('div');
     wrap.innerHTML = `
       <div class="ep-overlay" id="epOverlay"></div>
-      <aside class="ep-drawer" id="epDrawer" aria-hidden="true" role="dialog" aria-label="Existing project request">
+      <aside class="ep-drawer" id="epDrawer" aria-hidden="true" role="dialog" aria-label="Existing product request">
         <button class="ep-close" id="epClose" type="button" aria-label="Close">&times;</button>
         <div class="ep-form-wrap" id="epFormWrap">
-          <span class="ep-d-eyebrow">Existing Project Request</span>
-          <h2 class="ep-d-title">Tell us about<br>your project.</h2>
+          <span class="ep-d-eyebrow">Existing Product Request</span>
+          <h2 class="ep-d-title">Tell us about<br>your product.</h2>
           <p class="ep-d-sub">Select the services you need for <strong>${esc(s.title)}</strong>. We will review your current setup and reply within 24 hours.</p>
           <form id="epForm" novalidate>
             <div class="ep-row">
               <div class="ep-field"><label for="epName">Your Name</label><input id="epName" type="text" placeholder="Ali Ahmed"></div>
               <div class="ep-field"><label for="epEmail">Email</label><input id="epEmail" type="email" placeholder="you@company.com"></div>
             </div>
-            <div class="ep-field"><label for="epLink">Project Link (live URL, repo or store link)</label><input id="epLink" type="url" placeholder="https://yourproject.com"></div>
+            <div class="ep-field"><label for="epLink">Product Link (live URL, repo or store link)</label><input id="epLink" type="url" placeholder="https://yourproduct.com"></div>
             <div class="ep-field"><label for="epStack">Current Tech Stack (optional)</label><input id="epStack" type="text" placeholder="e.g. WordPress, React, Firebase"></div>
             <div class="ep-field">
               <label>Services Needed</label>
@@ -219,13 +214,14 @@
         <div class="ep-success" id="epSuccess">
           <div class="ep-ok">✓</div>
           <h3>Request Received!</h3>
-          <p>Thanks. We will review your project and get back to you within 24 hours.</p>
+          <p>Thanks. We will review your product and get back to you within 24 hours.</p>
         </div>
       </aside>`;
     document.body.appendChild(wrap);
   }
 
   function init(s) {
+    if (!PLAN[s.slug]) return;
     buildDrawer(s);
     const ov = document.getElementById('epOverlay');
     const dr = document.getElementById('epDrawer');
@@ -278,6 +274,15 @@
       secEl.addEventListener('mouseover', act);
       secEl.addEventListener('focusin', act);
       secEl.addEventListener('click', e => { if (e.target.closest('[data-ep-pick]') && !e.target.closest('[data-ep-open]')) act(e); });
+    }
+
+    /* Scroll motion: animates in when scrolling down into view and resets when it leaves, so scrolling back up replays it */
+    if (secEl) {
+      if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        secEl.classList.add('ep-in');
+      } else {
+        new IntersectionObserver(es => es.forEach(en => secEl.classList.toggle('ep-in', en.isIntersecting)), { threshold: 0.18 }).observe(secEl);
+      }
     }
 
     dr.addEventListener('change', e => {

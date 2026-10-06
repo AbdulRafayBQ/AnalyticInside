@@ -1,0 +1,8 @@
+/* ==========================================================================
+   SOFTWARE DEV SERVICE PAGE — hero (form area)
+   Original light background is kept; decorative background objects are hidden.
+   Scoped to the custom-software-development page only (#svc[data-slug]).
+   ========================================================================== */
+#svc[data-slug="custom-software-development"] .sv-hero .sv-deco {
+  display: none !important;
+}

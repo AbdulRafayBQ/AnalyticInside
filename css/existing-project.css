@@ -249,3 +249,15 @@
   .ep-road { grid-template-columns:1fr; }
   .ep-term-b { padding:16px; }
 }
+
+/* ===== SCROLL MOTION (plays on scroll down, replays on scroll up) ===== */
+.ep-anim > *:not(.ep-glow) { opacity: 0; translate: 0 48px; transition: opacity .75s cubic-bezier(.2,.7,.2,1), translate .75s cubic-bezier(.2,.7,.2,1); }
+.ep-anim.ep-in > *:not(.ep-glow) { opacity: 1; translate: 0 0; }
+.ep-anim.ep-in > :not(.ep-glow):not(.ep-head) { transition-delay: .18s; }
+.ep-anim .ep-rows > .ep-r, .ep-anim .ep-cols > .ep-col, .ep-anim .ep-bars > .ep-bar, .ep-anim .ep-road > .ep-st, .ep-anim .ep-tl > li {
+  opacity: 0; translate: 0 30px; transition: opacity .6s ease, translate .6s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i, 0) * 90ms + .25s); }
+.ep-anim.ep-in .ep-rows > .ep-r, .ep-anim.ep-in .ep-cols > .ep-col, .ep-anim.ep-in .ep-bars > .ep-bar, .ep-anim.ep-in .ep-road > .ep-st, .ep-anim.ep-in .ep-tl > li { opacity: 1; translate: 0 0; }
+@media (prefers-reduced-motion: reduce) {
+  .ep-anim > *, .ep-anim .ep-rows > .ep-r, .ep-anim .ep-cols > .ep-col, .ep-anim .ep-bars > .ep-bar, .ep-anim .ep-road > .ep-st, .ep-anim .ep-tl > li { opacity: 1 !important; translate: none !important; transition: none !important; }
+}
+

@@ -24,7 +24,7 @@
     'website-development': { cat: 'build', name: 'Websites', line: 'Good looking websites that load fast, show up on Google and bring in enquiries. Your team can edit the content without calling a developer.', gets: ['A design that matches your brand', 'Quick on phones and slow connections', 'Easy editing and SEO basics included'], time: '3 to 8 weeks' },
     'mobile-app-development': { cat: 'build', name: 'Mobile Apps', line: 'iPhone and Android apps that feel smooth and are simple to use. We handle the design, the build, the testing and getting you live on the app stores.', gets: ['One app for both phones, or fully native if you need it', 'Notifications, payments and offline mode', 'Store submission and updates after launch'], time: '8 to 20 weeks' },
     'ai-development': { cat: 'ai', name: 'AI and Automation', line: 'Practical AI that saves your team time. Chatbots that know your documents, tools that read and sort files, and automations that take over the boring repeat work.', gets: ['Assistants that answer from your own data', 'Automations for emails, forms and reports', 'Clear numbers on the time you save'], time: '4 to 12 weeks' },
-    'product-design-development': { cat: 'design', name: 'Product Design', line: 'We turn a rough idea into screens people understand on the first try. Research, wireframes and a full design you can test before any code is written.', gets: ['A clickable prototype to show users or investors', 'A design system so every screen matches', 'Files that are ready for developers'], time: '3 to 8 weeks' },
+    'product-design-development': { cat: 'build', name: 'Product Development', line: 'Got an idea but no technical background? We take it from a rough concept through design and real development, all the way to a live product.', gets: ['A clickable prototype to test early', 'A fully built, working product, not just designs', 'Support after launch as users come in'], time: '4 to 10 weeks' },
     'digital-marketing-branding': { cat: 'design', name: 'Marketing and Branding', line: 'A brand people remember and marketing that brings real customers. We cover logo and message, search, paid ads and email.', gets: ['Brand look, voice and guidelines', 'Search and ad campaigns with monthly reports', 'Content and email that keeps leads warm'], time: 'First results in 4 to 8 weeks' },
     'data-analytics-consultancy': { cat: 'ai', name: 'Data and Analytics', line: 'Stop guessing. We connect your data sources and build dashboards that show what is working, what is not and where your money goes.', gets: ['Dashboards your whole team can read', 'Clean data pulled together from all your tools', 'Reports that arrive on schedule'], time: '3 to 10 weeks' },
     'data-management-database-solutions': { cat: 'ai', name: 'Databases', line: 'We design, tidy up and look after your databases so your apps stay fast and your data stays safe. Moves, backups and speed fixes are all included.', gets: ['Faster searches and fewer slowdowns', 'Safe migration without losing data', 'Backups you can restore when needed'], time: '2 to 8 weeks' },
@@ -50,6 +50,31 @@
     'vibe-code-to-production': `<svg viewBox="0 0 520 400"><rect x="58" y="76" width="404" height="248" rx="18" fill="#17130E"/><circle cx="88" cy="102" r="5" fill="#ff6b6b"/><circle cx="104" cy="102" r="5" fill="#ffd166"/><circle cx="120" cy="102" r="5" fill="#06d6a0"/><text x="80" y="150" font-family="monospace" font-size="17" fill="var(--a)">$ deploy --prod</text><text x="80" y="180" font-family="monospace" font-size="15" fill="#ffffff" opacity=".65">Running checks...</text><text x="80" y="206" font-family="monospace" font-size="15" fill="#06d6a0">&#10003; Passed, shipping build</text><path class="hb-float1" d="M380 268q10-62 40-92q30 30-10 92z" fill="var(--a)"/><circle cx="400" cy="238" r="8" fill="#fff"/></svg>`
   };
   const art = slug => ART[slug] || ART['custom-software-development'];
+
+  /* Service photos (images/main-services-images). Each one gets floating chips that
+     describe what is in that picture, and its own focus point for the zoom + tilt. */
+  const PHOTO_DIR = 'images/main-services-images/';
+  const PHOTOS = {
+    'custom-software-development':        { file: 'Costume software development .jpeg',          fx: '42%', fy: '58%', chips: ['React', 'APIs', 'Cloud'] },
+    'website-development':                { file: 'website development.jpeg',                    fx: '55%', fy: '60%', chips: ['Responsive', 'SEO', 'Fast loading'] },
+    'mobile-app-development':             { file: 'Mobile app development.jpeg',                 fx: '52%', fy: '45%', chips: ['iOS', 'Android', 'App stores'] },
+    'ai-development':                     { file: 'AI Development.jpeg',                         fx: '55%', fy: '52%', chips: ['Chatbots', 'Automation', 'Workflows'], dark: true },
+    'product-design-development':         { file: 'Product Design and Development.jpeg',         fx: '45%', fy: '60%', chips: ['Wireframes', 'Prototype', 'Launch'] },
+    'digital-marketing-branding':         { file: 'Marketing and branding.jpeg',                 fx: '50%', fy: '55%', chips: ['Brand', 'Ads', 'Email'] },
+    'data-analytics-consultancy':         { file: 'Data & Analytics Consultancy.jpeg',           fx: '55%', fy: '50%', chips: ['Dashboards', 'Reports', 'Insights'] },
+    'data-management-database-solutions': { file: 'Data Management & Database Solutions.jpeg',   fx: '60%', fy: '50%', chips: ['Backups', 'Security', 'Speed'] },
+    'ai-consultancy-automation-strategy': { file: 'AI Consultancy & Automation Strategy.jpeg',   fx: '45%', fy: '60%', chips: ['Strategy', 'Roadmap', 'Automation'] },
+    'vibe-code-to-production':            { file: 'Vibe Code to Production & Scalejpeg.jpeg',    fx: '50%', fy: '55%', chips: ['Code review', 'Security', 'Go live'] }
+  };
+  const photoMarkup = (slug, title) => {
+    const ph = PHOTOS[slug];
+    if (!ph) return `<div class="hb-zz-art">${art(slug)}</div>`;
+    return `<div class="hb-zz-art hb-zz-photo${ph.dark ? ' is-dark' : ''}" style="--fx:${ph.fx};--fy:${ph.fy}" data-slug="${slug}">
+          <div class="hb-zz-frame"><img class="hb-zz-img" src="${encodeURI(PHOTO_DIR + ph.file)}" alt="${title}" loading="lazy" decoding="async"></div>
+          <span class="hb-zz-glare" aria-hidden="true"></span>
+          ${ph.chips.map((c, k) => `<span class="hb-chip-float hb-chip-float--${k + 1}" style="--k:${k}" aria-hidden="true"><i></i>${c}</span>`).join('')}
+        </div>`;
+  };
 
   /* hero tiles */
   const tiles = document.getElementById('hbTiles');
@@ -103,7 +128,7 @@
     return `
     <article class="hb-zz-row" data-cat="${c.cat}" style="--a:${sv.cardAccent};--b:${sv.cardBg}">
       <div class="hb-zz-media">
-        <div class="hb-zz-art">${art(sv.slug)}</div>
+        ${photoMarkup(sv.slug, sv.title)}
       </div>
       <div class="hb-zz-content">
         <div class="hb-zz-top"><span class="hb-ico">${ico(sv.slug)}</span><span class="hb-zz-num">${String(i + 1).padStart(2, '0')} / ${String(list.length).padStart(2, '0')}</span></div>
@@ -118,6 +143,52 @@
       </div>
     </article>`;
   }).join('');
+
+  /* photo cards: missing image -> fall back to the original illustration */
+  grid.addEventListener('error', e => {
+    const img = e.target;
+    if (!img || img.tagName !== 'IMG' || !img.classList.contains('hb-zz-img')) return;
+    const card = img.closest('.hb-zz-photo');
+    if (card) { card.outerHTML = `<div class="hb-zz-art">${art(card.dataset.slug)}</div>`; }
+  }, true);
+
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canHover = window.matchMedia('(hover: hover)').matches;
+
+  /* cursor tilt + moving glare, zooms toward the focus of each picture */
+  if (canHover && !calm) {
+    grid.querySelectorAll('.hb-zz-photo').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--rx', ((.5 - y) * 9).toFixed(2) + 'deg');
+        card.style.setProperty('--ry', ((x - .5) * 11).toFixed(2) + 'deg');
+        card.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+        card.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
+
+  /* gentle scroll parallax: the picture drifts a little inside its frame */
+  if (!calm) {
+    let queued = false;
+    const drift = () => {
+      queued = false;
+      const vh = window.innerHeight;
+      grid.querySelectorAll('.hb-zz-photo').forEach(card => {
+        const r = card.getBoundingClientRect();
+        if (r.bottom < -80 || r.top > vh + 80) return;
+        const t = (r.top + r.height / 2 - vh / 2) / vh;      /* about -1 .. 1 */
+        card.style.setProperty('--py', (t * -14).toFixed(1) + 'px');
+      });
+    };
+    window.addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(drift); } }, { passive: true });
+    drift();
+  }
 
   /* filters */
   document.querySelectorAll('.hb-chip').forEach(ch => ch.addEventListener('click', () => {

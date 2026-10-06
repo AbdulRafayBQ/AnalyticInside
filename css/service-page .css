@@ -1283,18 +1283,3 @@
 /* Engineering Methodology: one background for every service page, the same clean cream
    used on the marketing roadmap. Overrides the per-layout gradients (is-dark gold, --1..--10). */
 #process.sv-proc { background: linear-gradient(180deg, #FAF4E8, #F3EADA); color: #17130E; }
-
-/* Hero is a full-screen first view; the key stats sit inside it and animate in with the quote form */
-.sv-hero { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
-.sv-hero > .sv-inner { align-self: center; }
-.sv-hero-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 44px; border-top: 1px solid rgba(23,19,14,.12); padding-top: 26px; }
-.sv-hero-stat { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 0 22px; border-left: 1px solid rgba(23,19,14,.12); }
-.sv-hero-stat:first-child { padding-left: 0; border-left: none; }
-.sv-hero-stat-n { font: 800 clamp(26px, 2.6vw, 38px)/1 'Outfit', sans-serif; color: #17130E; letter-spacing: -.02em; }
-.sv-hero-stat-t { font: 600 12.5px/1.4 'Inter', sans-serif; color: #6b645b; }
-.sv-metrics { display: none; }
-@media (max-width: 900px) {
-  .sv-hero { min-height: auto; }
-  .sv-hero-stats { grid-template-columns: repeat(2, 1fr); row-gap: 22px; }
-  .sv-hero-stat { padding: 0 14px; } .sv-hero-stat:nth-child(odd) { padding-left: 0; border-left: none; }
-}

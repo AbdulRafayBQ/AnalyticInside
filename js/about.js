@@ -1,7 +1,8 @@
 /* =============================================
-   ANALYTIC INSIDER, ABOUT PAGE INTERACTIONS v7
-   Fast reveal, snappy counters, quick timeline,
-   smooth service viewer, responsive deck & work.
+   ANALYTIC INSIDER, ABOUT PAGE INTERACTIONS
+   Reveal, counters, side rail, story timeline,
+   service viewer, process deck, project viewer,
+   tech tabs and FAQ. One item on screen at a time.
    ============================================= */
 (function () {
   'use strict';
@@ -12,7 +13,6 @@
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var root = document.documentElement;
   root.classList.add('ab-js');
-  root.classList.add('ab-snap');
 
   function enc(path) { return path.split('/').map(encodeURIComponent).join('/'); }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
@@ -21,6 +21,8 @@
   /* ---------------- DATA ---------------- */
   var CATS = { build: 'Build a product', ai: 'AI and data', design: 'Design and growth' };
 
+
+  /* Simple line icons shown in the service card (replaces the old photos) */
   var SVC_ICONS = {
     'custom-software-development': '<path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/>',
     'website-development': '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/>',
@@ -39,7 +41,7 @@
     { slug: 'website-development', cat: 'build', name: 'Websites', line: 'Good looking websites that load fast, show up on Google and bring in enquiries. Your team can edit the content without calling a developer.', gets: ['A design that matches your brand', 'Quick on phones and slow connections', 'Easy editing and SEO basics included'], time: '3 to 8 weeks' },
     { slug: 'mobile-app-development', cat: 'build', name: 'Mobile Apps', line: 'iPhone and Android apps that feel smooth and are simple to use. We handle the design, the build, the testing and getting you live on the app stores.', gets: ['One app for both phones, or fully native if you need it', 'Notifications, payments and offline mode', 'Store submission and updates after launch'], time: '8 to 20 weeks' },
     { slug: 'ai-development', cat: 'ai', name: 'AI and Automation', line: 'Practical AI that saves your team time. Chatbots that know your documents, tools that read and sort files, and automations that take over the boring repeat work.', gets: ['Assistants that answer from your own data', 'Automations for emails, forms and reports', 'Clear numbers on the time you save'], time: '4 to 12 weeks' },
-    { slug: 'product-design-development', cat: 'design', name: 'Product Design', line: 'We turn a rough idea into screens people understand on the first try. Research, wireframes and a full design you can test before any code is written.', gets: ['A clickable prototype to show users or investors', 'A design system so every screen matches', 'Files that are ready for developers'], time: '3 to 8 weeks' },
+    { slug: 'product-design-development', cat: 'build', name: 'Product Development', line: 'Got an idea but no technical background? We take it from a rough concept through design and real development, all the way to a live product.', gets: ['A clickable prototype to test early', 'A fully built, working product, not just designs', 'Support after launch as users come in'], time: '4 to 10 weeks' },
     { slug: 'digital-marketing-branding', cat: 'design', name: 'Marketing and Branding', line: 'A brand people remember and marketing that brings real customers. We cover logo and message, search, paid ads and email.', gets: ['Brand look, voice and guidelines', 'Search and ad campaigns with monthly reports', 'Content and email that keeps leads warm'], time: 'First results in 4 to 8 weeks' },
     { slug: 'data-analytics-consultancy', cat: 'ai', name: 'Data and Analytics', line: 'Stop guessing. We connect your data sources and build dashboards that show what is working, what is not and where your money goes.', gets: ['Dashboards your whole team can read', 'Clean data pulled together from all your tools', 'Reports that arrive on schedule'], time: '3 to 10 weeks' },
     { slug: 'data-management-database-solutions', cat: 'ai', name: 'Databases', line: 'We design, tidy up and look after your databases so your apps stay fast and your data stays safe. Moves, backups and speed fixes are all included.', gets: ['Faster searches and fewer slowdowns', 'Safe migration without losing data', 'Backups you can restore when needed'], time: '2 to 8 weeks' },
@@ -59,28 +61,28 @@
   ];
 
   var TECH = {
-    web: [['React', 'react'], ['Next.js', 'nextjs'], ['TypeScript', 'typescript'], ['JavaScript', 'javascript'], ['Node.js', 'nodejs'], ['Vue', 'vuejs'], ['Angular', 'angularjs'], ['Tailwind CSS', 'tailwindcss'], ['Express', 'express'], ['GraphQL', 'graphql']],
-    mobile: [['Flutter', 'flutter'], ['React Native', 'reactnative'], ['Swift', 'swift'], ['SwiftUI', 'swiftui'], ['Kotlin', 'kotlin'], ['Jetpack Compose', 'jetpackcompose'], ['Dart', 'dart'], ['Android Studio', 'androidstudio'], ['Xcode', 'xcode'], ['App Store', 'appstore'], ['Google Play', 'googleplay']],
-    data: [['Python', 'python'], ['FastAPI', 'fastapi'], ['Django', 'django'], ['Flask', 'flask'], ['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['MongoDB', 'mongodb'], ['Redis', 'redis'], ['SQLite', 'sqlite'], ['Supabase', 'supabase']],
+    web: [['React', 'react'], ['Next.js', 'nextjs'], ['TypeScript', 'typescript'], ['JavaScript', 'javascript'], ['Node.js', 'nodejs'], ['Vue', 'vuejs'], ['Angular', 'angularjs'], ['Tailwind CSS', 'tailwindcss'], ['Express', 'express'], ['GraphQL', 'graphql'], ['HTML5', 'html5'], ['CSS3', 'css3']],
+    mobile: [['Flutter', 'flutter'], ['React Native', 'reactnative'], ['Swift', 'swift'], ['SwiftUI', 'swiftui'], ['Kotlin', 'kotlin'], ['Jetpack Compose', 'jetpackcompose'], ['Dart', 'dart'], ['Android Studio', 'androidstudio'], ['Xcode', 'xcode'], ['App Store', 'appstore'], ['Google Play', 'googleplay'], ['Java', 'java']],
+    data: [['Python', 'python'], ['FastAPI', 'fastapi'], ['Django', 'django'], ['Flask', 'flask'], ['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['MongoDB', 'mongodb'], ['Redis', 'redis'], ['SQLite', 'sqlite'], ['Supabase', 'supabase'], ['SQL Server', 'microsoftsqlserver'], ['REST API', 'restapi']],
     cloud: [['AWS', 'amazonwebservices'], ['Google Cloud', 'googlecloud'], ['Azure', 'azure'], ['Docker', 'docker'], ['Kubernetes', 'kubernetes'], ['GitHub Actions', 'githubactions'], ['Vercel', 'vercel'], ['Firebase', 'firebase'], ['Cloudflare', 'cloudflare'], ['Git', 'git'], ['Figma', 'figma'], ['Netlify', 'netlify']]
   };
 
-  /* ============== FAST REVEAL ============== */
+  /* ---------------- REVEAL ---------------- */
   var sections = $$('.ab-sec');
   if ('IntersectionObserver' in window) {
     var revealIO = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('ab-in'); revealIO.unobserve(e.target); }
       });
-    }, { threshold: 0.08 }); // lower threshold = triggers faster
+    }, { threshold: 0.12 });
     sections.forEach(function (s) { revealIO.observe(s); });
   } else {
     sections.forEach(function (s) { s.classList.add('ab-in'); });
   }
   var hero = $('#top');
-  if (hero) setTimeout(function () { hero.classList.add('ab-in'); }, 50); // faster hero reveal
+  if (hero) setTimeout(function () { hero.classList.add('ab-in'); }, 90);
 
-  /* ============== FAST COUNTERS ============== */
+  /* ---------------- COUNTERS ---------------- */
   var counted = false;
   function runCounters() {
     if (counted) return; counted = true;
@@ -88,20 +90,20 @@
       var target = parseInt(el.getAttribute('data-count'), 10) || 0;
       var suffix = el.getAttribute('data-suffix') || '';
       if (reduced) { el.textContent = target + suffix; return; }
-      var t0 = null, dur = 800; // FAST: 800ms instead of 1500ms
+      var t0 = null, dur = 1000;
       function step(ts) {
         if (t0 === null) t0 = ts;
         var p = Math.min((ts - t0) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 4); // steeper ease for snappier feel
+        var eased = 1 - Math.pow(1 - p, 3);
         el.textContent = Math.round(target * eased) + suffix;
         if (p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     });
   }
-  setTimeout(runCounters, 300); // trigger faster
+  setTimeout(runCounters, 120);
 
-  /* ============== HERO PARALLAX ============== */
+  /* ---------------- HERO PARALLAX ---------------- */
   var stack = $('#abStack');
   if (stack && hero && finePointer && !reduced) {
     hero.addEventListener('mousemove', function (e) {
@@ -117,8 +119,10 @@
     });
   }
 
-  /* ============== PROGRESS BAR ============== */
+  /* ---------------- PROGRESS, RAIL, TONE ---------------- */
   var progress = $('#abProgress');
+  var rail = $('#abRail');
+  var dots = $$('.ab-dot');
   var footer = $('#siteFooter');
   var ticking = false;
 
@@ -128,6 +132,20 @@
     var max = doc.scrollHeight - window.innerHeight;
     var p = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
     if (progress) progress.style.setProperty('--p', p.toFixed(4));
+
+    var line = window.innerHeight * 0.4;
+    var current = sections[0];
+    sections.forEach(function (s) {
+      var r = s.getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) current = s;
+    });
+    var inFooter = false;
+    if (footer) {
+      var fr = footer.getBoundingClientRect();
+      inFooter = fr.top < window.innerHeight * 0.5;
+    }
+    dots.forEach(function (d) { d.classList.toggle('on', !inFooter && d.getAttribute('data-target') === current.id); });
+    if (rail) rail.setAttribute('data-tone', inFooter ? 'light' : (current.getAttribute('data-tone') || 'light'));
   }
   window.addEventListener('scroll', function () {
     if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
@@ -139,11 +157,12 @@
     var el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
   }
+  dots.forEach(function (d) { d.addEventListener('click', function () { jump(d.getAttribute('data-target')); }); });
   $$('[data-jump]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); jump(a.getAttribute('data-jump')); });
   });
 
-  /* ============== STORY TIMELINE — FAST AUTO-PLAY ============== */
+  /* ---------------- STORY TIMELINE ---------------- */
   var eras = $$('.ab-era');
   var trackBtns = $$('#abTrack button');
   var trackFill = $('#abTrackFill');
@@ -170,16 +189,16 @@
   setEra(0);
   var storySec = $('#story');
   if (storySec && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { storyVisible = es[0].isIntersecting; }, { threshold: 0.35 }).observe(storySec);
+    new IntersectionObserver(function (es) { storyVisible = es[0].isIntersecting; }, { threshold: 0.45 }).observe(storySec);
   }
   if (!reduced) {
     eraTimer = setInterval(function () {
       if (eraUser || !storyVisible) return;
       setEra((eraNow + 1) % eras.length);
-    }, 3500); // FAST: 3.5s instead of 5.5s
+    }, 3800);
   }
 
-  /* ============== SERVICES VIEWER ============== */
+  /* ---------------- SERVICES VIEWER ---------------- */
   var svcList = $('#abSvcList');
   var svcCard = $('#abSvcCard');
   var svcBtns = [];
@@ -215,7 +234,7 @@
   }
   if (svcBtns.length) setSvc(0, false);
 
-  /* ============== PROCESS DECK — FASTER ============== */
+  /* ---------------- PROCESS DECK ---------------- */
   var cards = $$('.ab-pcard');
   var procNow = $('#abProcNow');
   var procI = 0;
@@ -236,16 +255,14 @@
     if (pn) pn.addEventListener('click', function () { setProc(procI + 1); });
     cards.forEach(function (c, k) { c.addEventListener('click', function () { setProc(k === procI ? procI + 1 : k); }); });
     var deck = $('#abDeck'), sx = 0;
-    if (deck) {
-      deck.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
-      deck.addEventListener('touchend', function (e) {
-        var dx = e.changedTouches[0].clientX - sx;
-        if (Math.abs(dx) > 40) setProc(procI + (dx < 0 ? 1 : -1));
-      }, { passive: true });
-    }
+    deck.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    deck.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) setProc(procI + (dx < 0 ? 1 : -1));
+    }, { passive: true });
   }
 
-  /* ============== PROJECT VIEWER — FASTER ============== */
+  /* ---------------- PROJECT VIEWER ---------------- */
   var thumbs = $('#abThumbs');
   var workImg = $('#abWorkImg');
   var workInfo = $('#abWorkInfo');
@@ -282,7 +299,7 @@
     if (!first && !reduced) { replay(workImg, 'swap'); replay(workInfo, 'swap'); }
   }
 
-  /* ============== TECH TABS ============== */
+  /* ---------------- TECH TABS ---------------- */
   var logos = $('#abLogos');
   var techTabs = $$('#abTechTabs button');
   function setTech(g) {
@@ -299,7 +316,7 @@
     setTech('web');
   }
 
-  /* ============== FAQ ============== */
+  /* ---------------- FAQ ---------------- */
   var qs = $$('#abAcc .ab-q');
   qs.forEach(function (q) {
     var btn = $('button', q);

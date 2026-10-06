@@ -251,63 +251,63 @@ const SERVICES = [
   },
   {
     slug: "product-design-development",
-    menu: "Product Design & Development",
-    title: "Product Design & Development",
-    tag: "From an Unformed Idea to a Scalable Digital Product People Love Using",
+    menu: "Product Development",
+    title: "Product Development",
+    tag: "You Bring the Idea, We Handle Everything It Takes to Get It to Market",
     h: 350,
     cardBg: "#FBF0F0",
     cardAccent: "#B8697A",
     stats: { built: "60+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "93%" },
     overview: [
-      "Building software before you've properly tested the idea is a costly gamble. A lot of teams jump straight into full development, only to realise months later that they built the wrong thing, or something too confusing for people to actually use.",
-      "We bring together strategy, real user research, design, clickable prototypes, and development into one clear process. That means helping founders turn a rough idea into a working first version, and helping bigger companies fix products that have become clunky over time.",
-      "Everything we design is built to be clear and easy to use from the first time someone opens it. We keep onboarding simple and make sure people understand the value straight away."
+      "You don't need to know anything about websites, apps, or code to have a great product idea. Most of the founders we work with have never built software before. What they have is a clear picture of a problem worth solving, and that's really all you need to get started with us.",
+      "We take care of the rest, from the very first conversation about what you're trying to build, right through to a real product that real people can open, sign up for, and use. That covers figuring out what to build first, designing screens that make sense, writing the code that runs behind them, and getting everything live and working on the internet.",
+      "You won't need to hire a designer, then a developer, then someone else to put it all online. One team carries your idea through every stage, explains things in plain language along the way, and keeps you updated on progress without burying you in technical terms."
     ],
-    tech: ["Figma", "Design Systems", "User Research", "Wireframing", "Clickable Prototypes", "React.js", "Next.js", "TypeScript", "Tailwind CSS", "Motion Design", "Usability Testing"],
+    tech: ["Idea Validation", "Figma", "User Research", "Clickable Prototypes", "React.js", "Next.js", "Node.js", "React Native", "PostgreSQL", "Tailwind CSS", "Cloud Hosting"],
     capabilities: [
-      { title: "Minimum Viable Products", desc: "Lean products designed, built and launched fast, so you can test your idea with real users." },
-      { title: "SaaS UX and UI Redesigns", desc: "Turn cluttered, outdated apps into clean, modern experiences people enjoy." },
-      { title: "Enterprise Design Systems", desc: "Reusable component libraries in Figma that keep every screen consistent." },
-      { title: "Interactive Prototyping", desc: "Clickable prototypes that feel like the real product, ready for demos and feedback." },
-      { title: "User Journey and Flow Mapping", desc: "Map every step users take and remove the points where they get stuck." },
-      { title: "Customer Research and Usability Testing", desc: "Real user interviews and tests that show what people need before we build." }
+      { title: "Idea to MVP", desc: "We take your idea, shape it into a clear plan, then design and build the first working version so you can get it in front of real users fast." },
+      { title: "Product Design", desc: "Easy to follow screens and flows, so people understand what your product does the moment they open it, no manual required." },
+      { title: "Full Stack Development", desc: "The actual working product, not just mockups. Front end, backend, database and everything in between, built and connected properly." },
+      { title: "Interactive Prototyping", desc: "A clickable, demo ready version of your product you can show investors, partners or early users before full development begins." },
+      { title: "Launch and Go Live Support", desc: "We handle hosting, domains, app store listings and the technical setup so your product goes live without you having to learn any of it." },
+      { title: "Ongoing Support After Launch", desc: "Once you're live, we stay close by to fix issues, add features and help your product grow as more people start using it." }
     ],
     process: [
-      { step: "01", title: "Product Discovery and User Problem Framing", desc: "We interview stakeholders, study competitor landscapes, and define the core problem statement that will anchor every product decision." },
-      { step: "02", title: "Information Architecture and User Flows", desc: "We map out the logical journey through the application to guarantee that users reach their primary goal in the fewest clicks possible." },
-      { step: "03", title: "Low Fidelity Wireframing and Logic Testing", desc: "Rapid skeletal layouts that let us test workflow logic, layout balance, and edge cases before getting distracted by colors." },
-      { step: "04", title: "High Fidelity Visual UI Design", desc: "Crafting beautiful, accessible interfaces with custom typography, clean iconography, clear visual hierarchy, and cohesive component styling." },
-      { step: "05", title: "Clickable Prototyping and User Validation", desc: "We link screens into a fully interactive prototype and run usability testing with prospective users to fix friction spots early." },
-      { step: "06", title: "Developer Ready Handoff and Engineering", desc: "We deliver fully documented design tokens, assets, and component specs, or build the product directly with our engineering team." }
+      { step: "01", title: "Understanding Your Idea and Your Users", desc: "We sit down with you in plain language, no jargon, to understand the problem you're solving, who it's for, and what success looks like for your product." },
+      { step: "02", title: "Planning What to Build First", desc: "Not every feature needs to exist on day one. We help you decide what truly belongs in version one, so you launch sooner and spend less." },
+      { step: "03", title: "Designing Easy to Use Screens", desc: "We design every screen so a first time visitor understands exactly what to do, without confusion, clutter, or a learning curve." },
+      { step: "04", title: "Building the Real Product", desc: "Our developers turn the design into a fully working website, app, or platform, with a proper backend, database, and secure login where needed." },
+      { step: "05", title: "Testing with Real People", desc: "Before launch, we test the product ourselves and with real users to catch confusing steps, bugs, and anything that would frustrate your first customers." },
+      { step: "06", title: "Launching and Supporting You After", desc: "We get your product live, whether that's a website, an app store release, or both, and stay on hand to help as your first users start coming in." }
     ],
     impact: [
-      { metric: "40%", title: "Usability Improvement", desc: "Observed in task completion rates and user satisfaction metrics following our redesigns." },
-      { metric: "60+", title: "Digital Products Launched", desc: "Across healthcare, financial technology, enterprise logistics, artificial intelligence, and e-commerce." },
-      { metric: "2x", title: "Faster Development Time", desc: "Because developers receive pixel perfect Figma files with zero guesswork or missing edge cases." },
-      { metric: "100%", title: "Design System Delivery", desc: "Complete reusable component libraries that make future feature additions effortless." }
+      { metric: "60+", title: "Products Taken to Launch", desc: "Founders and businesses who started with just an idea and ended up with a real, working product." },
+      { metric: "93%", title: "Clients Who Continue With Us", desc: "Most founders keep working with us after launch to add features and grow their product further." },
+      { metric: "4 to 10", title: "Weeks to a First Version", desc: "A focused first version of your product, ready to show to real users, investors or early customers." },
+      { metric: "100%", title: "You Own What We Build", desc: "The code, the designs and the product itself belong to you, fully, with nothing held back." }
     ],
     whyUs: [
-      "Our designers think about what's realistic to build, not just what looks nice",
-      "We design for every scenario, including loading states, empty screens, and errors, not just the ideal case",
-      "Our design files are organised clearly so developers never have to guess what we meant",
-      "Accessibility is built in from the start, not added as an afterthought",
-      "We help you decide what really belongs in version one, and what can wait",
-      "You keep full ownership of every design file and asset we create"
+      "You don't need any technical background, we explain everything in plain, simple language",
+      "One team handles design and development together, so nothing gets lost between handoffs",
+      "We help you figure out what actually matters for version one, so you don't overspend early",
+      "You get a real, working product at the end, not just design files or a slide deck",
+      "We stay involved after launch to fix issues and help your product grow",
+      "You keep full ownership of the code, designs and everything we build for you"
     ],
     deliverables: [
-      "Complete high fidelity Figma project file organized with components, auto layout, and responsive variants",
-      "Documented design system with color variables, typography scales, spacing tokens, and icon libraries",
-      "Clickable interactive prototype suitable for user testing, executive review, or investor pitching",
-      "Production ready asset exports covering vector graphics, icon sets, and responsive layout specifications",
-      "Direct design review support during front end development to guarantee implementation matches design"
+      "A fully working product, website, app, or both, live and ready for real users",
+      "Complete source code and design files that belong to you, with no restrictions",
+      "A clickable prototype you can use for demos, investor pitches or early feedback",
+      "A connected backend, database and hosting setup configured and ready to scale",
+      "Thirty days of post launch support to fix issues and help you settle in smoothly"
     ],
     faqs: [
-      { q: "What is the difference between product design and graphic design?", a: "Graphic design focuses on static visuals, branding, and aesthetics. Product design encompasses user psychology, information architecture, business workflow logic, technical feasibility, and continuous usability. We ensure your product does not just look beautiful, but functions smoothly and solves commercial problems." },
-      { q: "How long does it take to design an MVP?", a: "A comprehensive minimum viable product design engagement typically spans four to six weeks from discovery kickoff to developer ready handoff. This includes user research, wireframes, high fidelity UI, and clickable prototypes." },
-      { q: "Can you also build the product after designing it?", a: "Yes. We are a full service technology consultancy. Our engineering team can seamlessly take the validated designs and build the complete front end, backend, database, and cloud infrastructure." },
-      { q: "What if our product already has existing brand guidelines?", a: "We respect and extend your existing visual identity, adapting your colors, typography, and voice into a cohesive digital product design system that translates cleanly to screen interfaces." },
-      { q: "How do you test designs before coding begins?", a: "We connect the Figma artboards into an interactive clickable prototype. We then conduct moderated testing sessions where real target users attempt to complete key actions while narrating their thoughts, identifying confusion immediately." },
-      { q: "Will our developers be able to understand the Figma files?", a: "Yes. Our Figma files are famous among engineering teams for their organization. Every component uses auto layout, explicit responsive constraints, standard design tokens, and documented interaction states for hover, active, empty, and error." }
+      { q: "I have an idea but I know nothing about tech. Can you still help me?", a: "Yes, that's exactly who this service is built for. Most of our clients start out with no technical background at all. We guide you through every decision in plain language, so you never need to understand code to make the right call for your product." },
+      { q: "Do you only design the product, or do you actually build it too?", a: "We do both. Our team designs the screens and then builds the real, working product behind them, the website, app, backend and database, so you end up with something people can actually use, not just a set of pictures." },
+      { q: "How much does it cost to take an idea to a working product?", a: "It depends on how much the first version needs to do. Most first versions are scoped to stay lean and affordable, so you can test your idea without a huge upfront investment. We give you a clear cost estimate after our first conversation." },
+      { q: "How long does it take to go from idea to launch?", a: "A focused first version usually takes four to ten weeks, depending on how many features it needs. We always recommend starting lean, launching sooner, and adding more once real users give you feedback." },
+      { q: "What if I only have a rough idea and nothing written down?", a: "That's completely normal and where most projects start. Our first step together is turning that rough idea into a clear plan, what the product does, who it's for, and what the first version should include." },
+      { q: "What happens after my product launches?", a: "We don't disappear after launch. We offer ongoing support to fix bugs, make improvements, and add new features as your user base grows, so your product keeps getting better over time." }
     ]
   },
   {

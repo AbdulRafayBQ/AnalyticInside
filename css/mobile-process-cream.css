@@ -1,0 +1,31 @@
+/* ==========================================================================
+   MOBILE APP DEVELOPMENT — "Structured Delivery Roadmap" section
+   Golden cream theme (matches the other service pages). Scoped to the
+   mobile-app-development page only.
+   ========================================================================== */
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark {
+  background: linear-gradient(180deg, #FBF3DF 0%, #F3E4BF 100%);
+  color: #17130E;
+}
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .sv-title,
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark h4 { color: #17130E; }
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .sv-sub,
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .sv-eyebrow,
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark p,
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .pr1-card p,
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .pr4-node p,
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .pr7-txt p,
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .pr9-p { color: #5B5247; }
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .sv-eyebrow { color: #A9793A; }
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .pr1-spine { background: rgba(169,121,58,.28); }
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .pr1-card,
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .pr4-node,
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .pr7-fill {
+  background: rgba(255,255,255,.55);
+  border-color: rgba(169,121,58,.28);
+}
+#svc[data-slug="mobile-app-development"] .sv-proc.is-dark .pr1-node {
+  background: #F3E4BF;
+  border-color: #C99B5C;
+  color: #17130E;
+}

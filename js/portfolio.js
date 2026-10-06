@@ -1,6 +1,6 @@
 /* =============================================
    ANALYTIC INSIDER — PORTFOLIO (v4.0 FINAL)
-   Bento grid · GSAP morph · case study links
+   Zig-zag full-screen rows · overlay details · case study links
    All case study paths verified & connected
    ============================================= */
 (function () {
@@ -20,6 +20,7 @@
   const projects = [
     {
       title: 'Salasa OMS',
+      short: 'Salasa',
       sub: 'Enterprise Order Management',
       folder: 'salasa-oms',
       images: ['Case studies/salasa-oms-portfolio/images/dashboard.png', 'Case studies/salasa-oms-portfolio/images/assignation-rules.png', 'Case studies/salasa-oms-portfolio/images/merchant-pricing.png'],
@@ -41,6 +42,7 @@
     },
     {
       title: 'Dr. Asgar Rheumatology',
+      short: 'Asgar',
       sub: 'Mobile App + Dashboard',
       folder: 'Dr. Asgar Rheumatology Consultation - Mobile App and Dashboard Web App',
       images: ['Screenshot 2026-09-15 010134.png', 'Screenshot 2026-09-15 010234.png', 'Screenshot 2026-09-15 010255.png', 'Screenshot 2026-09-15 010308.png'],
@@ -61,6 +63,7 @@
     },
     {
       title: 'Caary Capital',
+      short: 'Caary',
       sub: 'Fintech Admin Dashboards',
       folder: 'Carry Capital',
       images: ['Screenshot 2026-09-15 010416.png'],
@@ -80,6 +83,7 @@
     },
     {
       title: 'Doc Link Healthcare',
+      short: 'DocLink',
       sub: 'Healthcare Platform',
       folder: 'health care platform pakistan based',
       images: ['Screenshot 2026-09-15 012724.png', 'Screenshot 2026-09-15 012834.png', 'Screenshot 2026-09-15 012936.png', 'Screenshot 2026-09-15 013016.png'],
@@ -99,6 +103,7 @@
     },
     {
       title: 'Morinaga Calories Counter',
+      short: 'Morinaga',
       sub: 'Mobile App + Web Dashboard',
       folder: 'Morinaga Calories Counter Mobile App (Android + iOS) & Web Dashboard',
       images: ['Screenshot 2026-09-15 010551.png', 'Screenshot 2026-09-15 010625.png', 'Screenshot 2026-09-15 010650.png'],
@@ -118,6 +123,7 @@
     },
     {
       title: 'Metadot',
+      short: 'Metadot',
       sub: 'Multi chain wallet extension',
       folder: 'metadot',
       images: [],
@@ -138,6 +144,7 @@
     },
     {
       title: 'IPv4 Mall',
+      short: 'IPv4',
       sub: 'IP Address Marketplace',
       folder: 'ipv4mall',
       images: [],
@@ -158,6 +165,7 @@
     },
     {
       title: 'HostSailor',
+      short: 'HostSailor',
       sub: 'Web Hosting Platform',
       folder: 'hostsailor',
       images: [],
@@ -178,6 +186,7 @@
     },
     {
       title: 'Assist Event',
+      short: 'Assist',
       sub: 'Event Management Platform',
       folder: 'Assist event manager',
       images: ['Screenshot 2026-09-15 011812.png', 'Screenshot 2026-09-15 011921.png'],
@@ -197,6 +206,7 @@
     },
     {
       title: 'Invest Powerlabs',
+      short: 'Invest',
       sub: 'Investdex.io · Web3',
       folder: 'invest power labs',
       images: ['Screenshot 2026-09-15 011505.png'],
@@ -216,6 +226,7 @@
     },
     {
       title: 'LinkDrip',
+      short: 'LinkDrip',
       sub: 'URL Shortening Platform',
       folder: 'LinkDrip',
       images: ['image_original'],
@@ -235,6 +246,7 @@
     },
     {
       title: 'Pulse Genesis',
+      short: 'Pulse',
       sub: 'DeFi Platform',
       folder: 'pulse genesis',
       images: ['Screenshot 2026-09-15 011156.png', 'Screenshot 2026-09-15 011258.png', 'Screenshot 2026-09-15 011326.png'],
@@ -254,6 +266,7 @@
     },
     {
       title: 'RichAI',
+      short: 'RichAI',
       sub: 'AI Image Generator + Voice Assistant',
       folder: 'Rich AI',
       images: ['Screenshot 2026-09-15 010929.png', 'Screenshot 2026-09-15 010947.png', 'Screenshot 2026-09-15 011001.png'],
@@ -273,6 +286,7 @@
     },
     {
       title: 'Telecard',
+      short: 'Telecard',
       sub: 'Enterprise Telecom and ICT',
       folder: 'Telecard',
       images: ['Screenshot 2026-09-15 013340.png', 'Screenshot 2026-09-15 013507.png'],
@@ -292,6 +306,7 @@
     },
     {
       title: 'Tiny Kiwi',
+      short: 'Kiwi',
       sub: 'Online Photo Editor',
       folder: 'tiny kiwi',
       images: ['Screenshot 2026-09-15 012118.png', 'Screenshot 2026-09-15 012148.png', 'Screenshot 2026-09-15 012211.png', 'Screenshot 2026-09-15 012226.png'],
@@ -311,6 +326,7 @@
     },
     {
       title: 'Zylmi',
+      short: 'Zylmi',
       sub: 'Brand & Web Design',
       folder: 'Zylmi',
       images: ['Screenshot 2026-09-15 013809.png', 'Screenshot 2026-09-15 013839.png', 'Screenshot 2026-09-15 013854.png'],
@@ -338,88 +354,9 @@
     }
   });
 
-  /* ─────────────────────────────────────────────
-     THUMBNAIL MAP (verified paths)
-  ───────────────────────────────────────────── */
-  const THUMBNAILS = {
-    'p0':  'Case studies/salasa-oms-portfolio/images/dashboard.png',
-    'p1':  'images/portfolio/Dr. Asgar Rheumatology Consultation - Mobile App and Dashboard Web App/Screenshot 2026-09-15 010134.png',
-    'p2':  'Case studies/caary-capital-portfolio/images/dashboard.png',
-    'p3':  'Case studies/doclink-healthcare-portfolio/images/home.png',
-    'p4':  'Case studies/morinaga-calories-portfolio/images/home.webp',
-    'p8':  'images/portfolio/Assist event manager/Screenshot 2026-09-15 011812.png',
-    'p12': 'images/portfolio/Rich AI/Screenshot 2026-09-15 010929.png',
-    'p13': 'images/portfolio/Telecard/Screenshot 2026-09-15 013340.png',
-    'p14': 'images/portfolio/tiny kiwi/Screenshot 2026-09-15 012118.png',
-    'p15': 'images/portfolio/Zylmi/Screenshot 2026-09-15 013809.png',
-  };
-
-  // Use real image for thumbnail if available
-  function getThumbSrc(p) {
-    const manual = THUMBNAILS[p.id];
-    if (manual) return manual;
-    // If project has real imgPaths, prefer first one
-    if (p.imgPaths && p.imgPaths.length > 0) {
-      const first = p.imgPaths[0];
-      // Filter out JSON and HTML "images"
-      if (first && !first.endsWith('.json') && !first.endsWith('.html')) return first;
-    }
-    return '';
-  }
-
-  /* ─────────────────────────────────────────────
-     BENTO GRID RENDERING
-  ───────────────────────────────────────────── */
-  const grid = qs('#pfBento');
-  let currentFilter = 'all';
-  let shownCount = projects.length;
-  const overlay = qs('#pfOverlay');
-  const detailEl = qs('#pfDetail');
-  const closeBtn = qs('#pfClose');
-  const overlayBg = qs('#pfOverlayBg');
-  let activeCard = null;
-
-  function categoryLabel(cat) {
-    const map = { mobile: 'Mobile App', web: 'Web Platform', ai: 'Design / AI', fintech: 'Fintech' };
-    return map[cat] || cat;
-  }
-
-  function cardMarkup(p, idx) {
-    const num = String(idx + 1).padStart(2, '0');
-    const thumbSrc = getThumbSrc(p);
-    const hasImg = Boolean(thumbSrc);
-    const imgHtml = hasImg
-      ? `<img class="pf-item-img" src="${thumbSrc}" alt="${p.title} screenshot" loading="lazy" onerror="this.remove()">`
-      : getProjectCover(p);
-    const caseStudyAction = p.caseStudy
-      ? `<a class="pf-case-study-link" href="${p.caseStudy}" target="_blank" rel="noopener noreferrer">View Case Study <span aria-hidden="true">↗</span></a>`
-      : `<button class="pf-case-study-link" type="button" data-case-study-open="${p.id}">View Case Study <span aria-hidden="true">↗</span></button>`;
-    const projectDetailsAction = `<button class="pf-project-details-link" type="button" data-project-open="${p.id}">View Project Details <span aria-hidden="true">↗</span></button>`;
-
-    return `
-      <article class="pf-item" data-id="${p.id}" data-cat="${p.category}">
-        <button class="pf-card-open" type="button" aria-label="Open ${p.title} project details">
-          <span class="pf-card-media pf-card-media--${p.category}">
-            ${imgHtml}
-            <span class="pf-card-number">${num}</span>
-            ${p.featured ? '<span class="pf-card-featured">Featured</span>' : ''}
-          </span>
-        </button>
-        <div class="pf-item-content">
-          <div class="pf-card-meta"><span>${categoryLabel(p.category)}</span><span>${p.sub}</span></div>
-          <h3 class="pf-item-title">${p.title}</h3>
-          <p class="pf-item-tagline">${p.tagline}</p>
-          <div class="pf-item-tags">${p.tags.slice(0, 3).map(t => `<span class="pf-item-tag">${t}</span>`).join('')}</div>
-          <div class="pf-card-actions">${projectDetailsAction}${caseStudyAction}</div>
-        </div>
-      </article>
-    `;
-  }
-
   function getProjectCover(project, detail = false) {
     const mark = project.title.replace(/[^a-z0-9]/gi, '').slice(0, 4).toUpperCase();
     return `<div class="pf-cover pf-cover--${project.category}${detail ? ' pf-cover--detail' : ''}">
-      <span class="pf-cover-category">${categoryLabel(project.category)}</span>
       <span class="pf-cover-mark" aria-hidden="true">${mark}</span>
       <div class="pf-cover-copy"><strong>${project.title}</strong><span>${project.sub}</span></div>
     </div>`;
@@ -452,47 +389,335 @@
     return preview[project.title] || getProjectCover(project, true);
   }
   
-  function renderGrid(count) {
-    const filtered = currentFilter === 'all'
-      ? projects
-      : projects.filter(p => p.category === currentFilter);
-    const visible = filtered.slice(0, count);
-    grid.innerHTML = visible.map((p, i) => cardMarkup(p, i)).join('');
-    bindCards();
-    revealCards();
-    const countLabel = qs('#pfProjectCount');
-    if (countLabel) countLabel.textContent = `${filtered.length} ${filtered.length === 1 ? 'project' : 'projects'}`;
+
+  /* ─────────────────────────────────────────────
+     SELECTED WORK — zig-zag rows (one project per full screen)
+     odd rows: thumbnail left, content right · even rows: flipped
+  ───────────────────────────────────────────── */
+  const list = qs('#pzList');
+  const overlay = qs('#pfOverlay');
+  const detailEl = qs('#pfDetail');
+  const closeBtn = qs('#pfClose');
+  const overlayBg = qs('#pfOverlayBg');
+  let activeCard = null;
+
+  // Seamless Branded Logo Card definitions — exact logo and matching background color per project
+  const BRAND_CARDS = {
+    'Salasa OMS': {
+      bg: '#0B132B',
+      theme: 'dark',
+      tag: 'Enterprise Logistics & Fulfillment',
+      accent: '#F59E0B',
+      vector: `<svg viewBox="0 0 420 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(15, 12)">
+          <path d="M42 0L84 24V72L42 96L0 72V24L42 0Z" fill="url(#slsGrad)"/>
+          <path d="M42 12L72 29V63L42 80L12 63V29L42 12Z" stroke="#F59E0B" stroke-width="3" fill="#0B132B"/>
+          <path d="M42 22L62 33V55L42 66L22 55V33L42 22Z" fill="#F59E0B"/>
+          <path d="M42 0V96M0 24L84 72M0 72L84 24" stroke="rgba(245,158,11,0.3)" stroke-width="1.5"/>
+        </g>
+        <defs>
+          <linearGradient id="slsGrad" x1="0" y1="0" x2="84" y2="96" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F59E0B"/>
+            <stop offset="1" stop-color="#D97706"/>
+          </linearGradient>
+        </defs>
+        <text x="130" y="58" font-family="'Outfit', sans-serif" font-weight="900" font-size="44" fill="#FFFFFF" letter-spacing="4">SALASA</text>
+        <text x="132" y="82" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#F59E0B" letter-spacing="3.5">ENTERPRISE OMS &amp; LOGISTICS</text>
+      </svg>`
+    },
+    'Dr. Asgar Rheumatology': {
+      bg: '#000000',
+      theme: 'dark',
+      logo: 'images/logos/Rheumatology Consultation.png',
+      tag: 'Healthcare Mobile & Web',
+      accent: '#3D9E6A'
+    },
+    'Caary Capital': {
+      bg: '#FFFFFF',
+      theme: 'light',
+      logo: 'images/logos/Screenshot 2026-09-22 190514.png',
+      tag: 'Fintech Operations Suite',
+      accent: '#475569'
+    },
+    'Doc Link Healthcare': {
+      bg: '#0077D1',
+      theme: 'blue',
+      logo: 'images/logos/Screenshot 2026-09-22 191625.png',
+      tag: 'Telehealth Platform',
+      accent: '#2DD4BF'
+    },
+    'Morinaga Calories Counter': {
+      bg: '#FFFFFF',
+      theme: 'light',
+      logo: 'images/logos/ChatGPT Image Sep 22, 2026, 07_49_35 PM.png',
+      tag: 'Health & Nutrition App',
+      accent: '#E11D48'
+    },
+    'Metadot': {
+      bg: '#0D0B18',
+      theme: 'dark',
+      tag: 'Web3 Multi-Chain Wallet',
+      accent: '#8B5CF6',
+      vector: `<svg viewBox="0 0 420 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(20, 16)">
+          <circle cx="38" cy="38" r="36" fill="url(#metaGrad)"/>
+          <circle cx="38" cy="38" r="26" fill="#0D0B18"/>
+          <circle cx="26" cy="38" r="6" fill="#38BDF8"/>
+          <circle cx="50" cy="38" r="6" fill="#A855F7"/>
+          <circle cx="38" cy="24" r="5" fill="#F43F5E"/>
+          <circle cx="38" cy="52" r="5" fill="#34D399"/>
+          <line x1="26" y1="38" x2="50" y2="38" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <line x1="38" y1="24" x2="38" y2="52" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+        </g>
+        <defs>
+          <linearGradient id="metaGrad" x1="0" y1="0" x2="76" y2="76" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8B5CF6"/>
+            <stop offset="1" stop-color="#3B82F6"/>
+          </linearGradient>
+        </defs>
+        <text x="124" y="58" font-family="'Outfit', sans-serif" font-weight="900" font-size="42" fill="#FFFFFF" letter-spacing="3">METADOT</text>
+        <text x="126" y="82" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#A855F7" letter-spacing="3">MULTI-CHAIN WEB3 WALLET</text>
+      </svg>`
+    },
+    'IPv4 Mall': {
+      bg: '#09131F',
+      theme: 'dark',
+      tag: 'IP Address Marketplace',
+      accent: '#38BDF8',
+      vector: `<svg viewBox="0 0 420 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(18, 16)">
+          <rect width="76" height="76" rx="20" fill="#0F1F35" stroke="#38BDF8" stroke-width="2"/>
+          <rect x="14" y="14" width="20" height="20" rx="6" fill="#38BDF8"/>
+          <rect x="42" y="14" width="20" height="20" rx="6" fill="#0284C7"/>
+          <rect x="14" y="42" width="20" height="20" rx="6" fill="#0284C7"/>
+          <rect x="42" y="42" width="20" height="20" rx="6" fill="#38BDF8"/>
+          <circle cx="38" cy="38" r="6" fill="#FFFFFF"/>
+        </g>
+        <text x="124" y="58" font-family="'Outfit', sans-serif" font-weight="900" font-size="40" fill="#FFFFFF" letter-spacing="2">IPv4 MALL</text>
+        <text x="126" y="82" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#38BDF8" letter-spacing="3">IP BROKERAGE &amp; MARKETPLACE</text>
+      </svg>`
+    },
+    'HostSailor': {
+      bg: '#071527',
+      theme: 'dark',
+      tag: 'Global Cloud Infrastructure',
+      accent: '#0EA5E9',
+      vector: `<svg viewBox="0 0 420 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(20, 14)">
+          <circle cx="38" cy="40" r="38" fill="#0A2242"/>
+          <path d="M38 14V66M38 18L60 62H38M38 28L20 58H38" stroke="#38BDF8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14 66C22 72 32 72 38 66C44 72 54 72 62 66" stroke="#0EA5E9" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <text x="124" y="58" font-family="'Outfit', sans-serif" font-weight="900" font-size="40" fill="#FFFFFF" letter-spacing="2.5">HOSTSAILOR</text>
+        <text x="126" y="82" font-family="'Inter', sans-serif" font-weight="700" font-size="12" fill="#38BDF8" letter-spacing="3">GLOBAL CLOUD &amp; SERVERS</text>
+      </svg>`
+    },
+    'Assist Event': {
+      bg: '#FFFFFF',
+      theme: 'light',
+      logo: 'images/logos/Screenshot 2026-09-22 191543.png',
+      tag: 'Event Management Engine',
+      accent: '#A21CAF'
+    },
+    'Invest Powerlabs': {
+      bg: '#FFFFFF',
+      theme: 'light',
+      logo: 'images/logos/ChatGPT Image Sep 23, 2026, 12_10_54 AM.png',
+      tag: 'InvestDex Web3 Portal',
+      accent: '#EC4899'
+    },
+    'LinkDrip': {
+      bg: '#FFFFFF',
+      theme: 'light',
+      logo: 'images/logos/Screenshot 2026-09-22 191507.png',
+      tag: 'Link Infrastructure & Analytics',
+      accent: '#3B82F6'
+    },
+    'Pulse Genesis': {
+      bg: '#1E1E1E',
+      theme: 'dark',
+      logo: 'images/logos/Screenshot 2026-09-22 191200.png',
+      tag: 'DeFi & Asset Protocols',
+      accent: '#A855F7'
+    },
+    'RichAI': {
+      bg: '#131219',
+      theme: 'dark',
+      logo: 'images/logos/Screenshot 2026-09-22 191134.png',
+      tag: 'Generative AI & Talking Avatars',
+      accent: '#F43F5E'
+    },
+    'Telecard': {
+      bg: '#FFFFFF',
+      theme: 'light',
+      logo: 'images/logos/ChatGPT Image Sep 22, 2026, 07_25_32 PM.png',
+      tag: 'Enterprise Telecom & ICT',
+      accent: '#0A327B'
+    },
+    'Tiny Kiwi': {
+      bg: '#FFFFFF',
+      theme: 'light',
+      logo: 'images/logos/ChatGPT Image Sep 23, 2026, 12_13_26 AM.png',
+      tag: 'Browser Creative Photo Suite',
+      accent: '#10B981'
+    },
+    'Zylmi': {
+      bg: '#FFFFFF',
+      theme: 'light',
+      logo: 'images/logos/Screenshot 2026-09-22 191708.png',
+      tag: 'Luxury Brand & E-Commerce',
+      accent: '#312E81'
+    }
+  };
+
+  // row accent colours (site gold palette)
+  const ACCENTS = ['#C99B5C', '#B87A4B', '#A9714F', '#C28A2E', '#9C7A54', '#D08A3C'];
+
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  function thumbMarkup(p) {
+    const brand = BRAND_CARDS[p.title] || {
+      bg: '#17130E',
+      theme: 'dark',
+      logo: (p.imgPaths && p.imgPaths[0]) || '',
+      tag: p.sub,
+      accent: '#C99B5C'
+    };
+    
+    let contentHtml = '';
+    if (brand.vector) {
+      contentHtml = `<span class="pz-brand-vector">${brand.vector}</span>`;
+    } else if (brand.logo) {
+      contentHtml = `<img class="pz-brand-logo" src="${encodeURI(brand.logo)}" alt="${esc(p.title)} brand identity" loading="lazy" decoding="async">`;
+    } else {
+      contentHtml = `<span class="pz-shot pz-shot--visual">${getProjectDetailVisual(p)}</span>`;
+    }
+
+    return `
+      <span class="pz-shot pz-shot--brand" data-theme="${brand.theme || 'dark'}" style="--card-bg:${brand.bg};--card-acc:${brand.accent}">
+        <span class="pz-brand-mesh" aria-hidden="true"></span>
+        <span class="pz-brand-watermark" aria-hidden="true">${esc(p.short || p.title)}</span>
+        <span class="pz-brand-stage">
+          ${contentHtml}
+        </span>
+        <span class="pz-brand-tag" aria-hidden="true">
+          <i style="background:${brand.accent}"></i>
+          ${esc(brand.tag || p.sub)}
+        </span>
+      </span>`;
   }
 
-  function revealCards() {
-    const cards = qsa('.pf-item', grid);
-    if (reduceMotion) { cards.forEach(c => c.classList.add('pf-visible')); return; }
-    cards.forEach((card, i) => { card.style.transitionDelay = (i * 0.055) + 's'; });
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('pf-visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
-    cards.forEach(c => io.observe(c));
+  function rowMarkup(p, i) {
+    const num = String(i + 1).padStart(2, '0');
+    const total = String(projects.length).padStart(2, '0');
+    const accent = ACCENTS[i % ACCENTS.length];
+    const cs = p.caseStudy
+      ? `<a class="pz-btn pz-btn--ghost" href="${p.caseStudy}" target="_blank" rel="noopener noreferrer">Case study <i aria-hidden="true">&nearr;</i></a>`
+      : '';
+    return `
+      <article class="pz-row${i % 2 ? ' pz-row--flip' : ''}" data-id="${p.id}" style="--pa:${accent}">
+        <div class="pz-media">
+          <span class="pz-ghost" aria-hidden="true">${num}</span>
+          <span class="pz-glow" aria-hidden="true"></span>
+          <button class="pz-thumb" type="button" data-id="${p.id}" aria-label="Open ${esc(p.title)} project details">
+            ${thumbMarkup(p)}
+            <span class="pz-open" aria-hidden="true">View project <i>&nearr;</i></span>
+          </button>
+        </div>
+        <div class="pz-body">
+          <div class="pz-meta"><span class="pz-count">${num} / ${total}</span><span class="pz-sub">${esc(p.sub)}</span></div>
+          <h3 class="pz-title">${esc(p.title)}</h3>
+          <p class="pz-tagline">${esc(p.tagline)}</p>
+          <p class="pz-desc">${esc(p.desc)}</p>
+          <ul class="pz-points">${p.features.slice(0, 3).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+          <div class="pz-tags">${p.tags.slice(0, 5).map(t => `<span>${esc(t)}</span>`).join('')}</div>
+          <div class="pz-actions">
+            <button class="pz-btn" type="button" data-id="${p.id}">View project details <i aria-hidden="true">&rarr;</i></button>
+            ${cs}
+          </div>
+        </div>
+      </article>`;
   }
 
-  renderGrid(shownCount);
+  if (list) {
+    list.innerHTML = projects.map(rowMarkup).join('');
 
-  // ─── Filter pills
-  qsa('.pf-filter-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      qsa('.pf-filter-pill').forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      currentFilter = pill.dataset.filter;
-      shownCount = projects.length;
-      renderGrid(shownCount);
-      // Scroll to grid gently
-      const gridEl = qs('#portfolio');
-      if (gridEl) gridEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // if a thumbnail file is missing, swap in the built-in preview so no row ever shows a broken image
+    list.addEventListener('error', e => {
+      const img = e.target;
+      if (!img || img.tagName !== 'IMG' || !img.closest('.pz-shot') || img.closest('.pz-shot--visual')) return;
+      const shot = img.closest('.pz-shot');
+      const project = projects.find(p => p.id === img.closest('.pz-row').dataset.id);
+      if (!project) return;
+      shot.classList.add('pz-shot--visual');
+      shot.innerHTML = getProjectDetailVisual(project);
+    }, true);
+
+    list.addEventListener('click', e => {
+      const trigger = e.target.closest('.pz-thumb, .pz-btn[data-id]');
+      if (!trigger) return;
+      const project = projects.find(p => p.id === trigger.dataset.id);
+      const card = trigger.closest('.pz-row').querySelector('.pz-thumb');
+      if (project) openProject(card, project, trigger, false);
     });
+
+    const rows = qsa('.pz-row', list);
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      rows.forEach(r => r.classList.add('is-in'));
+    } else {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.22 });
+      rows.forEach(r => io.observe(r));
+    }
+
+    // gentle 3D tilt on the thumbnail (desktop only)
+    if (hasHover && !reduceMotion) {
+      qsa('.pz-thumb', list).forEach(t => {
+        t.addEventListener('pointermove', e => {
+          const r = t.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          t.style.setProperty('--rx', (-y * 7).toFixed(2) + 'deg');
+          t.style.setProperty('--ry', (x * 9).toFixed(2) + 'deg');
+        });
+        t.addEventListener('pointerleave', () => {
+          t.style.setProperty('--rx', '0deg');
+          t.style.setProperty('--ry', '0deg');
+        });
+      });
+    }
+
+    // parallax drift for the big ghost number
+    if (!reduceMotion) {
+      let ticking = false;
+      const drift = () => {
+        ticking = false;
+        const vh = window.innerHeight;
+        rows.forEach(r => {
+          const rc = r.getBoundingClientRect();
+          if (rc.bottom < -100 || rc.top > vh + 100) return;
+          const t = (rc.top + rc.height / 2 - vh / 2) / vh; // -1..1
+          r.style.setProperty('--py', (t * -46).toFixed(1) + 'px');
+        });
+      };
+      window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(drift); } }, { passive: true });
+      drift();
+    }
+  }
+
+  /* intro block reveal */
+  qsa('[data-pz-reveal]').forEach(el => {
+    if (reduceMotion || !('IntersectionObserver' in window)) { el.classList.add('is-in'); return; }
+    const io = new IntersectionObserver(en => en.forEach(x => { if (x.isIntersecting) { x.target.classList.add('is-in'); io.disconnect(); } }), { threshold: 0.2 });
+    io.observe(el);
   });
 
-  // ─── Spotlight (mouse parallax in hero)
+  /* ─── Ticker removed from hero: hero stays compact ─── */
+
+  /* ─── Spotlight (mouse parallax in hero) ─── */
   const spotlight = qs('#pfSpotlight');
   if (spotlight && hasHover) {
     let raf = null, pos = null;
@@ -515,7 +740,7 @@
      OVERLAY / DETAIL PANEL
   ───────────────────────────────────────────── */
   function buildDetailMarkup(p) {
-    const extraImages = p.imgPaths.filter(img => img && !img.endsWith('.json') && !img.endsWith('.html')).slice(1);
+    const extraImages = []; // no screenshots on the portfolio page
     const textOnlyProcess = extraImages.length === 0;
 
     const processHtml = p.process.map((step, i) => {
@@ -556,7 +781,7 @@
       </div>
     `;
 
-    const heroThumb = getThumbSrc(p);
+    const heroThumb = '';
 
     detailEl.innerHTML = `
       <div class="pf-detail-inner">
@@ -677,7 +902,7 @@
           if (hero) hero.classList.add('pf-reveal-visible');
           if (showCaseStudy) requestAnimationFrame(scrollToCaseStudy);
         };
-        if (!targetImg) { finish(); return; }
+        if (!targetImg) { gsap.fromTo(detailEl, { opacity: 0 }, { opacity: 1, duration: 0.4 }); finish(); return; }
         const targetRect = targetImg.getBoundingClientRect();
         gsap.timeline({ onComplete: finish })
           .to(flying, { left: targetRect.left, top: targetRect.top, width: targetRect.width, height: targetRect.height, duration: 0.75, ease: 'power3.inOut' }, 0)
@@ -709,17 +934,6 @@
     }
   }
 
-  function bindCards() {
-    qsa('.pf-card-open, [data-project-open], [data-case-study-open]', grid).forEach(trigger => {
-      if (trigger.dataset.bound) return;
-      trigger.dataset.bound = '1';
-      trigger.addEventListener('click', () => {
-        const card = trigger.closest('.pf-item');
-        const project = projects.find(p => p.id === card.dataset.id);
-        if (project) openProject(card, project, trigger, trigger.hasAttribute('data-case-study-open'));
-      });
-    });
-  }
 
   closeBtn.addEventListener('click', closeProject);
   overlayBg.addEventListener('click', closeProject);
@@ -727,39 +941,18 @@
   document.addEventListener('click', e => { if (e.target.closest('[data-scroll-study]')) scrollToCaseStudy(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProject(); });
 
-  const statCounters = qsa('.pf-hero-stat strong[data-count]');
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    statCounters.forEach(counter => { counter.textContent = counter.dataset.count; });
-  } else {
-    const counterObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const counter = entry.target;
-        const target = Number(counter.dataset.count) || 0;
-        const start = performance.now();
-        const tick = now => {
-          const progress = Math.min((now - start) / 1100, 1);
-          counter.textContent = String(Math.round(target * (1 - Math.pow(1 - progress, 3))));
-          if (progress < 1) requestAnimationFrame(tick);
-        };
-        counter.textContent = '0';
-        requestAnimationFrame(tick);
-        counterObserver.unobserve(counter);
-      });
-    }, { threshold: 0.8 });
-    statCounters.forEach(counter => counterObserver.observe(counter));
-  }
-
   const requestedProject = new URLSearchParams(window.location.search).get('project');
   if (requestedProject) {
     const requestedSlug = requestedProject.toLowerCase().replace(/[^a-z0-9]/g, '');
     const project = projects.find(p => p.title.toLowerCase().replace(/[^a-z0-9]/g, '') === requestedSlug);
-    if (project) {
-      shownCount = projects.length;
-      renderGrid(shownCount);
-      const card = qs(`.pf-item[data-id="${project.id}"]`, grid);
-      const trigger = card && qs('.pf-card-open', card);
-      if (card && trigger) openProject(card, project, trigger);
+    if (project && list) {
+      const card = qs(`.pz-thumb[data-id="${project.id}"]`, list);
+      if (card) {
+        const row = card.closest('.pz-row');
+        if (row) row.classList.add('is-in');
+        row && row.scrollIntoView({ block: 'center' });
+        openProject(card, project, card);
+      }
     }
   }
 
