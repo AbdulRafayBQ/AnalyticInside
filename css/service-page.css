@@ -436,6 +436,10 @@
   .sv-hero-grid, .sv-hero--mirror .sv-hero-grid, .ov-grid--split, .ov-grid--sticky, .why-split, .faq-two, .cap-tabs, .pr8, .why-band { grid-template-columns: 1fr; gap: 36px; }
   .sv-hero--mirror .sv-hero-l { order: 1; } .sv-hero--mirror .sv-hero-r { order: 2; }
   .sv-deco--rings, .sv-deco--planes { opacity: .35; right: -30%; } .cube.c3, .dm.d3 { display: none; }
+  /* Hero becomes a single column on mobile, so the floating decorative shapes
+     (cubes, rings, planes, diamonds, canvas, floor) would otherwise sit right
+     behind the form card. Hide them all on mobile — form background stays clean. */
+  .sv-deco { display: none !important; }
   .ov-grid--sticky .sv-dbox, .why-l, .faq-side { position: static; } .ov-cols { grid-template-columns: 1fr; } .ov-strip { grid-template-columns: 1fr; }
   .cap-bento { grid-template-columns: repeat(2, 1fr); } .cap-b.b1, .cap-b.b2, .cap-b.b5, .cap-b.b6 { grid-column: span 2; grid-row: auto; } .cap-stair { grid-template-columns: 1fr; } .cap-s.is-r { margin-top: 0; }
   .cap-row { grid-template-columns: 50px 1fr 38px; gap: 14px; } .cap-row p { grid-column: 2 / 3; grid-row: 2; } .cap-go { grid-row: 1; grid-column: 3; }
@@ -702,6 +706,14 @@
   transform: translateY(-2px);
   box-shadow: 0 14px 28px -6px rgba(23, 19, 14, 0.45);
 }
+.stf-form-feedback {
+  min-height: 0;
+  margin: 10px 0 0;
+  color: #ffaaa3;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.stf-form-feedback:empty { display: none; }
 .stf-trust-bar {
   display: flex;
   align-items: center;
@@ -806,6 +818,7 @@
 .sv-brand-track {
   display: flex;
   width: max-content;
+  max-width: none;
   will-change: transform;
   animation: svBrandInfinite 34s linear infinite;
 }
@@ -815,12 +828,49 @@
 .sv-brand-group {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding-right: 24px;
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: none;
 }
 @keyframes svBrandInfinite {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(var(--sv-brand-shift, calc(-50% - 16px))); }
+}
+.sv-brand-sec .cl-logo-card {
+  flex: 0 0 168px;
+  width: 168px;
+  height: 94px;
+  margin-right: 24px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid rgba(23, 19, 14, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(23, 19, 14, 0.06);
+}
+.sv-brand-sec .cl-logo-card img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transform: none;
+}
+.sv-brand-sec .cl-logo-card:hover img {
+  transform: scale(1.04);
+}
+@media (max-width: 600px) {
+  .sv-brand-sec .cl-logo-card {
+    flex-basis: 142px;
+    width: 142px;
+    height: 82px;
+    margin-right: 16px;
+    padding: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sv-brand-track {
+    animation: none;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -1014,6 +1064,27 @@
 .sv-top-form-card .stf-submit-btn { margin-top: 6px; padding: 17px 22px; border-radius: 999px; background: var(--acc); color: #0d0d0d; font-size: 16px; font-weight: 700; box-shadow: none; }
 .sv-top-form-card .stf-submit-btn:hover { background: color-mix(in srgb, var(--acc) 85%, #fff); transform: translateY(-2px); box-shadow: none; }
 .sv-top-form-card .stf-success h3 { color: #fff; } .sv-top-form-card .stf-success p { color: #b5b5b5; }
+
+/* ══════════ STACK CHOICE: "we pick it" vs "I'll customize it" ══════════ */
+.sv-top-form-card .stf-stack { margin-bottom: 12px; }
+.sv-top-form-card .stf-scope-label { color: #8b8b8b; margin-bottom: 8px; }
+.stf-stack-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.stf-stack-opt { padding: 12px 10px; border-radius: 12px; background: #1b1b1b; border: 1.5px solid transparent; color: #cfcfcf; font-family: 'Outfit', sans-serif; font-size: 12.5px; font-weight: 700; cursor: pointer; transition: all .2s ease; text-align: center; line-height: 1.25; }
+.stf-stack-opt:hover { border-color: rgba(255,255,255,.18); }
+.stf-stack-opt.is-on { background: var(--acc); border-color: var(--acc); color: #0d0d0d; }
+.stf-stack-panel { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.22,1,.36,1), opacity .3s ease, margin .3s ease; margin-top: 0; }
+.stf-stack-panel.open { max-height: 380px; opacity: 1; margin-top: 12px; overflow-y: auto; padding-right: 4px; }
+.stf-stack-panel.open::-webkit-scrollbar { width: 5px; }
+.stf-stack-panel.open::-webkit-scrollbar-thumb { background: rgba(255,255,255,.18); border-radius: 4px; }
+.stf-stack-cat { margin-bottom: 12px; }
+.stf-stack-cat:last-child { margin-bottom: 0; }
+.stf-stack-cat-label { display: block; font-family: 'Outfit', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #8b8b8b; margin-bottom: 6px; }
+.stf-stack-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.stf-stack-item { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px 6px 7px; border-radius: 999px; background: #1b1b1b; border: 1px solid rgba(255,255,255,.08); font-family: 'Outfit', sans-serif; font-size: 11.5px; font-weight: 600; color: #cfcfcf; cursor: pointer; user-select: none; transition: all .2s ease; }
+.stf-stack-item input { display: none; }
+.stf-stack-item img { width: 15px; height: 15px; opacity: .9; }
+.stf-stack-item.is-active, .stf-stack-item:has(input:checked) { background: color-mix(in srgb, var(--acc) 22%, #1b1b1b); border-color: var(--acc); color: #fff; }
+@media (max-width: 420px) { .stf-stack-toggle { grid-template-columns: 1fr; } }
 
 /* ══════════ TECH SECTION (5 layouts × dark/light) ══════════ */
 .sv-tech.tx--dark { background: #050505; border: none; --tx-card: #0f0f0f; --tx-vis: #070707; --tx-fg: #fff; --tx-mut: rgba(255,255,255,.72); --tx-line: rgba(255,255,255,.1); --tx-ink: #f3f3f3; }

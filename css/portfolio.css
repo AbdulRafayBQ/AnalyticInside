@@ -992,3 +992,60 @@ body.pf-modal-open .pf-grain { display: none; }
   .pf-preview-table > div { font-size: 8px; }
   #startProject .sap-inner { width: calc(100% - 36px); padding: 42px 22px; }
 }
+
+/* ─── CASE STUDY — full-bleed view inside the same popup ─── */
+.pf-detail.pf-detail--cs {
+  padding: 0;
+  overflow: hidden;
+}
+.pf-detail--cs .pf-detail-inner { display: none; }
+.pf-cs-view {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+.pf-cs-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 70px 16px 22px;
+  background: #fffdf8;
+  border-bottom: 1px solid #e6dfd3;
+  flex: 0 0 auto;
+}
+.pf-cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 13px 'Inter', sans-serif;
+  color: #514b42;
+  background: transparent;
+  border: 1.5px solid #e6dfd3;
+  border-radius: 999px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.pf-cs-back:hover { border-color: #C99B5C; color: #17130e; background: rgba(201,155,92,0.08); }
+.pf-cs-bar-title {
+  font: 600 14px 'Outfit', sans-serif;
+  color: #17130e;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pf-cs-bar-title em { font-style: normal; color: #9c7a54; }
+.pf-cs-frame {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+@media (max-width: 640px) {
+  .pf-cs-bar { padding: 14px 60px 14px 16px; gap: 10px; }
+  .pf-cs-bar-title { font-size: 12.5px; }
+  .pf-cs-back span { display: none; }
+}

@@ -194,8 +194,8 @@
           <p class="ep-d-sub">Select the services you need for <strong>${esc(s.title)}</strong>. We will review your current setup and reply within 24 hours.</p>
           <form id="epForm" novalidate>
             <div class="ep-row">
-              <div class="ep-field"><label for="epName">Your Name</label><input id="epName" type="text" placeholder="Ali Ahmed"></div>
-              <div class="ep-field"><label for="epEmail">Email</label><input id="epEmail" type="email" placeholder="you@company.com"></div>
+              <div class="ep-field"><label for="epName">Your Name</label><input id="epName" type="text" placeholder="Ali Ahmed" required></div>
+              <div class="ep-field"><label for="epEmail">Email</label><input id="epEmail" type="email" placeholder="you@company.com" required></div>
             </div>
             <div class="ep-field"><label for="epLink">Product Link (live URL, repo or store link)</label><input id="epLink" type="url" placeholder="https://yourproduct.com"></div>
             <div class="ep-field"><label for="epStack">Current Tech Stack (optional)</label><input id="epStack" type="text" placeholder="e.g. WordPress, React, Firebase"></div>
@@ -237,6 +237,14 @@
     const open = preset => {
       form.style.display = ''; ok.classList.remove('on');
       form.reset();
+      const submitButton = form.querySelector('.ep-submit');
+      const note = form.querySelector('.ep-note');
+      submitButton.disabled = false;
+      submitButton.innerHTML = `Send Request ${ARROW}`;
+      if (note) {
+        note.textContent = 'No commitment. We reply with a plan within 24 hours.';
+        note.classList.remove('is-error');
+      }
       dr.querySelectorAll('input[name="ep-svc"]').forEach(inp => {
         inp.checked = !!preset && inp.value === preset;
         inp.closest('.ep-chip').classList.toggle('is-on', inp.checked);
@@ -296,15 +304,39 @@
     ov.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       nm.classList.toggle('ep-err', !nm.value.trim());
-      em.classList.toggle('ep-err', !em.value.trim());
-      if (!nm.value.trim() || !em.value.trim()) { (nm.value.trim() ? em : nm).focus(); return; }
+      em.classList.toggle('ep-err', !em.value.trim() || !em.validity.valid);
+      if (!nm.value.trim() || !em.value.trim() || !em.validity.valid) { (nm.value.trim() ? em : nm).focus(); return; }
       const picked = dr.querySelectorAll('input[name="ep-svc"]:checked');
       if (!picked.length) { dr.querySelector('.ep-groups').classList.add('ep-err'); return; }
-      /* Hook: send `new FormData(form)` + picked services to your email/CRM endpoint here */
-      form.style.display = 'none'; ok.classList.add('on');
+      const button = form.querySelector('.ep-submit');
+      const note = form.querySelector('.ep-note');
+      button.disabled = true;
+      button.textContent = 'Sending...';
+      try {
+        await window.ANALYTIC_LEADS.submit({
+          name: nm.value.trim(),
+          email: em.value.trim(),
+          productUrl: document.getElementById('epLink').value.trim(),
+          techStack: document.getElementById('epStack').value.trim(),
+          services: [...picked].map(input => input.value).join(', '),
+          timeline: document.getElementById('epUrgency').value,
+          message: document.getElementById('epBrief').value.trim(),
+          service: 'Existing product support',
+          source: location.href
+        });
+        form.style.display = 'none';
+        ok.classList.add('on');
+      } catch (error) {
+        if (note) {
+          note.textContent = error.message;
+          note.classList.add('is-error');
+        }
+        button.disabled = false;
+        button.textContent = `Send Request ${ARROW}`;
+      }
     });
   }
 

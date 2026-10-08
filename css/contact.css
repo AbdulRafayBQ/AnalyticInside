@@ -333,6 +333,9 @@
   color: #2f7a4d;
   font-weight: 500;
 }
+.form-feedback.error {
+  color: #b42318;
+}
 
 @media (max-width: 992px) {
   .contact-grid {

@@ -501,7 +501,7 @@ img { max-width: 100%; display: block; }
 .gallery { grid-template-columns: 1fr; gap: 64px; counter-reset: shot; }
 .gallery figure {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, minmax(0, 290px));
+  grid-template-columns: minmax(0, 1fr) minmax(0, minmax(0, 340px));
   align-items: center;
   gap: 44px;
   padding: 26px;
@@ -511,7 +511,7 @@ img { max-width: 100%; display: block; }
   margin: 0 6% 0 0;
 }
 .gallery figure:nth-child(even) {
-  grid-template-columns: minmax(0, minmax(0, 290px)) minmax(0, 1fr);
+  grid-template-columns: minmax(0, minmax(0, 340px)) minmax(0, 1fr);
   margin: 0 0 0 6%;
 }
 .gallery figure:nth-child(even) img { grid-column: 1; justify-self: start; }
@@ -523,7 +523,7 @@ img { max-width: 100%; display: block; }
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 500px;
+  max-height: 520px;
   aspect-ratio: auto;
   object-fit: contain;
   border-radius: 14px;

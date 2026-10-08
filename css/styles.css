@@ -352,7 +352,7 @@ body {
   padding-left: 28px;
   animation: heroCapSlide 45s linear infinite;
 }
-.hero-cap-strip:hover .hero-cap-track { animation-play-state: paused; }
+/* Never pause on hover/cursor — the strip must keep scrolling continuously */
 @keyframes heroCapSlide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .cap-item {
   display: flex; align-items: center; gap: 10px;
@@ -556,11 +556,33 @@ body {
 .fd-submit{margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 24px;background:#fff;color:#0A0A0A;font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;letter-spacing:.01em;transition:opacity .25s,transform .25s;}
 .fd-submit:hover{opacity:.88;transform:translateY(-1px);}
 .fd-note{font-family:'Inter',sans-serif;font-size:11.5px;color:rgba(255,255,255,.35);text-align:center;margin-top:12px;}
+.fd-note.is-error{color:#ffaaa3;}
 .fd-success{display:none;text-align:center;padding:48px 0;flex-direction:column;align-items:center;gap:12px;}
 .fd-success.show{display:flex;}
 .fd-success-icon{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:4px;}
 .fd-success h3{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;}
 .fd-success p{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,.5);line-height:1.55;max-width:300px;}
+
+/* ══════════ DRAWER: STACK CHOICE ("we pick it" vs "I'll customize it") ══════════ */
+.fd-stack{display:flex;flex-direction:column;gap:6px;}
+.fd-stack>label{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.06em;text-transform:uppercase;}
+.fd-stack-toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.fd-stack-opt{padding:12px 10px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.75);font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;transition:all .2s ease;text-align:center;line-height:1.25;}
+.fd-stack-opt:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08);}
+.fd-stack-opt.is-on{background:var(--accent);border-color:var(--accent);color:#17130E;}
+.fd-stack-panel{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .3s ease,margin .3s ease;margin-top:0;}
+.fd-stack-panel.open{max-height:340px;opacity:1;margin-top:4px;overflow-y:auto;padding-right:4px;}
+.fd-stack-panel.open::-webkit-scrollbar{width:5px;}
+.fd-stack-panel.open::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:4px;}
+.fd-stack-cat{margin-bottom:12px;}
+.fd-stack-cat:last-child{margin-bottom:0;}
+.fd-stack-cat-label{display:block;font-family:'Outfit',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px;}
+.fd-stack-grid{display:flex;flex-wrap:wrap;gap:6px;}
+.fd-stack-item{display:inline-flex;align-items:center;gap:6px;padding:6px 10px 6px 7px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-family:'Outfit',sans-serif;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.7);cursor:pointer;user-select:none;transition:all .2s ease;}
+.fd-stack-item input{display:none;}
+.fd-stack-item img{width:14px;height:14px;opacity:.9;}
+.fd-stack-item.is-active,.fd-stack-item:has(input:checked){background:color-mix(in srgb, var(--accent) 24%, rgba(255,255,255,.05));border-color:var(--accent);color:#fff;}
+@media (max-width:420px){.fd-stack-toggle{grid-template-columns:1fr;}}
 
 /* ══ BRIGHTNESS BOOST ══ */
 /* Video: lift from 0.80 → 1.1 so the background scene is actually readable */
@@ -4835,21 +4857,17 @@ em { font-style: italic; color: var(--accent); }
   height: 120px;
   padding: 14px;
   margin-right: 32px;
-  /* --cbg is set inline per-card to match that logo's own background
-     color (its dark/colored fill), so the card blends seamlessly with
-     no white border showing around non-white logos. Defaults to white
-     for logos that already have a white/transparent background. */
-  background: var(--cbg, #fff);
-  border: 1px solid rgba(26,20,14,.08);
+  /* Background removed — logos run directly on the page, no card/box
+     behind them. */
+  background: transparent;
+  border: none;
   border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(23,19,14,.03);
+  box-shadow: none;
   overflow: hidden;
-  transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+  transition: transform .3s ease;
 }
 
 .cl-logo-card:hover {
-  border-color: rgba(201,155,92,.4);
-  box-shadow: 0 14px 32px -10px rgba(201,155,92,.28), 0 2px 8px rgba(23,19,14,.06);
   transform: translateY(-4px);
   z-index: 5;
 }

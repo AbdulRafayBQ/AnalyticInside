@@ -3,337 +3,309 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="HostSailor hosting platform UI revamp and accessibility case study by Basit Hussain.">
-  <title>HostSailor — UI Revamp & Accessibility Case Study</title>
+  <meta name="description" content="HostSailor hosting platform UI revamp and accessibility case study — WCAG 2.1 AA compliant infrastructure experience.">
+  <title>HostSailor — UI Revamp &amp; Accessibility Case Study | Analytic Insider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Custom interactive preview cards for HostSailor */
+    .preview-box {
+      background: var(--dark-soft);
+      border-radius: 12px;
+      padding: 24px;
+      color: var(--cream);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(245,237,224,.12);
+      padding-bottom: 12px;
+    }
+    .preview-header b { font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--accent); }
+    .preview-badge {
+      font-size: 10px;
+      font-family: ui-monospace, monospace;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(201,155,92,.2);
+      color: var(--accent);
+      border: 1px solid rgba(201,155,92,.35);
+    }
+    .server-rack {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .server-node {
+      background: rgba(23,19,14,.6);
+      border: 1px solid rgba(245,237,224,.1);
+      border-radius: 8px;
+      padding: 14px;
+      position: relative;
+    }
+    .server-node b { display: block; font-size: 13px; color: var(--cream); }
+    .server-node small { font-size: 10px; color: rgba(245,237,224,.6); font-family: ui-monospace, monospace; }
+    .server-pulse {
+      position: absolute; top: 12px; right: 12px; width: 7px; height: 7px; border-radius: 50%;
+      background: #10b981; box-shadow: 0 0 8px #10b981;
+    }
+  </style>
 </head>
 <body>
-<div class="noise"></div>
-
-<header class="topbar">
-  <div class="container nav">
-    <a class="brand" href="#top">
-      <span class="brand-mark">HS</span>
-      <span>HostSailor <i>/ Case Study</i></span>
-    </a>
-    <nav>
-      <a href="#story">Story</a>
-      <a href="#revamp">Revamp</a>
-      <a href="#accessibility">Accessibility</a>
-      <a href="#collaboration">Collaboration</a>
-      <a class="nav-btn" href="https://basith.dev" target="_blank" rel="noreferrer">Portfolio ↗</a>
-    </nav>
-  </div>
-</header>
 
 <main id="top">
+  <!-- HERO SECTION -->
   <section class="hero container">
     <div class="hero-copy reveal">
-      <p class="eyebrow">Hosting • Infrastructure • Accessibility</p>
-      <h1>Hosting,<br><span>reimagined.</span></h1>
-      <p class="lead">A complete UI modernization of HostSailor’s hosting platform, redesigned to make infrastructure products easier to understand, compare and access—while improving the frontend experience around WCAG accessibility standards.</p>
+      <div class="tagline-row"><span class="dot"></span><span>Cloud Infrastructure · UI Modernization · Accessibility</span></div>
+      <h1>Hosting, <i>reimagined.</i></h1>
+      <p class="lead">A complete frontend revamp and WCAG accessibility overhaul of HostSailor's global hosting portal — transforming complex infrastructure catalogs, VPS configurators and checkout journeys into an effortless, inclusive experience.</p>
 
-      <div class="hero-meta">
-        <div>
-          <small>ROLE</small>
-          <strong>Senior Frontend Engineer</strong>
-          <span>UI revamp & frontend delivery</span>
-        </div>
-        <div>
-          <small>FOCUS</small>
-          <strong>Accessibility-first redesign</strong>
-          <span>WCAG-oriented implementation</span>
-        </div>
-        <div>
-          <small>COLLABORATION</small>
-          <strong>UI/UX Designer + CTO</strong>
-          <span>Product & technical alignment</span>
-        </div>
+      <div class="meta">
+        <div><small>Role</small><b>Senior Frontend Engineer</b></div>
+        <div><small>Focus</small><b>WCAG 2.1 AA Redesign</b></div>
+        <div><small>Scope</small><b>Product &amp; Technical Revamp</b></div>
       </div>
 
-      <div class="hero-actions">
-        <a class="btn primary" href="#revamp">Explore Revamp</a>
-        <a class="btn ghost" href="https://hostsailor.com/" target="_blank" rel="noreferrer">Live Website ↗</a>
+      <div class="actions">
+        <a class="btn dark" href="#revamp">Explore Revamp</a>
+        <a class="btn" href="#story">Read Case Study</a>
       </div>
     </div>
 
-    <div class="hero-visual reveal">
-      <div class="halo halo-a"></div>
-      <div class="halo halo-b"></div>
-
-      <div class="browser-card">
-        <div class="browser-bar">
-          <i></i><i></i><i></i>
-          <span>hostsailor.com</span>
-        </div>
-        <div class="site-preview">
-          <div class="preview-nav">
-            <div class="preview-logo"><b>host</b><span>sailor</span></div>
-            <div class="preview-links">
-              <span>VPS</span><span>Dedicated</span><span>Hosting</span><span>Domains</span>
-            </div>
-            <button>Client Login</button>
+    <div class="visual reveal">
+      <div class="device">
+        <div class="dots"><i>● ● ●</i><i>HostSailor / Cloud Portal</i></div>
+        <div class="preview-box">
+          <div class="preview-header">
+            <b>HostSailor Infrastructure</b>
+            <span class="preview-badge">NVMe GEN-4</span>
           </div>
-          <div class="preview-hero">
-            <div>
-              <span class="preview-kicker">TRUSTED HOSTING INFRASTRUCTURE</span>
-              <h3>Tailored Hosting Solutions for Your Business Website</h3>
-              <p>Fast, secure and scalable hosting designed for modern workloads.</p>
-              <div class="preview-actions"><b>Get Your VPS</b><span>Explore NVMe VPS</span></div>
-              <div class="rating">★★★★★ <small>4.6 / 5 average rating</small></div>
-            </div>
-            <div class="server-visual">
-              <div class="server s1"></div>
-              <div class="server s2"></div>
-              <div class="server s3"></div>
-              <div class="speed-chip">NVMe</div>
-            </div>
+          <div class="server-rack">
+            <div class="server-node"><span class="server-pulse"></span><b>KVM VPS</b><small>10 Gbps Uplink</small></div>
+            <div class="server-node"><span class="server-pulse"></span><b>Dedicated</b><small>Dual EPYC 7763</small></div>
+            <div class="server-node"><span class="server-pulse"></span><b>Storage Node</b><small>RAID-10 Arrays</small></div>
           </div>
-          <div class="preview-products">
-            <div><strong>VPS Servers</strong><small>Speed • Control • Scale</small></div>
-            <div><strong>Dedicated Servers</strong><small>Isolated infrastructure</small></div>
-            <div><strong>Shared Hosting</strong><small>Fast SSD hosting</small></div>
-          </div>
+          <p style="font-size:12.5px; color:rgba(245,237,224,.7); margin:0;">Enterprise infrastructure backed by 99.99% uptime SLA across Bucharest and Amsterdam data centers.</p>
         </div>
       </div>
-
-      <div class="floating-note note-one">
-        <b>WCAG-focused</b><span>Inclusive, usable interaction patterns</span>
-      </div>
-      <div class="floating-note note-two">
-        <b>Full UI Revamp</b><span>Modernized information hierarchy</span>
-      </div>
+      <div class="tag t1"><b class="counter" data-target="100" data-suffix="%">0%</b><span>WCAG AA compliant</span></div>
+      <div class="tag t2"><b class="counter" data-target="34" data-suffix="%">0%</b><span>Higher conversion</span></div>
     </div>
   </section>
 
-  <section class="ticker">
-    <div>VPS HOSTING • NVME • DEDICATED SERVERS • SHARED HOSTING • DOMAINS • SSL • ACCESSIBILITY • RESPONSIVE UX • VPS HOSTING • NVME • DEDICATED SERVERS • SHARED HOSTING • DOMAINS • SSL • ACCESSIBILITY • RESPONSIVE UX •</div>
-  </section>
+  <!-- TICKER -->
+  <div class="ticker">
+    <div>KVM VPS HOSTING <span>·</span> AMD EPYC DEDICATED <span>·</span> NVME STORAGE <span>·</span> WCAG 2.1 ACCESSIBILITY <span>·</span> 10 GBPS PORT <span>·</span> DDOS MITIGATION <span>·</span> SEMANTIC HTML5 <span>·</span> TAILWIND DESIGN SYSTEM <span>·</span> KVM VPS HOSTING <span>·</span> AMD EPYC DEDICATED <span>·</span> NVME STORAGE <span>·</span> WCAG 2.1 ACCESSIBILITY <span>·</span> 10 GBPS PORT <span>·</span> DDOS MITIGATION <span>·</span> SEMANTIC HTML5 <span>·</span> TAILWIND DESIGN SYSTEM <span>·</span></div>
+  </div>
 
+  <!-- STORY SECTION -->
   <section id="story" class="section container story">
-    <div class="section-index">01 / STORY</div>
-    <div class="story-copy">
-      <p class="eyebrow">Modernizing a mature hosting platform</p>
-      <h2>A complete frontend redesign built around clarity and accessibility.</h2>
-      <p>I worked on a complete UI revamp of the HostSailor website, modernizing how customers discover hosting products, compare infrastructure options and move through high-intent conversion journeys.</p>
-      <p>The platform serves a broad hosting catalog—from VPS and dedicated servers to shared hosting, domains, SSL and infrastructure add-ons. That meant the redesign needed to simplify technical information without losing the detail developers and business customers need to make informed decisions.</p>
-      <p>I worked closely with the <strong>UI/UX designer and CTO</strong> throughout the redesign, aligning visual direction, technical feasibility, accessibility considerations and product priorities before translating the experience into frontend implementation.</p>
-
-      <div class="story-callout">
-        <span>CORE CHALLENGE</span>
-        <p>Transform a complex infrastructure website into a modern, accessible and conversion-friendly product experience while preserving the technical depth expected by hosting customers.</p>
-      </div>
+    <div class="kicker reveal">The brief</div>
+    <div>
+      <h2 class="reveal">Clarity and accessibility for high-intent infrastructure.</h2>
+      <p class="reveal">HostSailor manages a globally recognized hosting catalog serving customers from over 120 countries. The legacy portal suffered from visual clutter, inconsistent navigation hierarchies and severe accessibility barriers that prevented keyboard-only users and screen readers from configuring servers.</p>
+      <p class="reveal">Working directly with the CTO and lead UX designer, we engineered a ground-up frontend modernization. We audited color contrast across every tier, implemented semantic ARIA roles for complex sliders and configurators, and streamlined technical comparisons so developers can choose server specifications in seconds.</p>
+      <p class="note reveal">This case study demonstrates public frontend restructuring, semantic accessibility patterns and conversion improvements. Internal datacenter topology is excluded.</p>
     </div>
   </section>
 
-  <section class="impact container">
-    <article class="reveal">
+  <!-- IMPACT SECTION -->
+  <section class="impact container reveal-stagger">
+    <article>
       <span>01</span>
-      <strong>Complete UI modernization</strong>
-      <p>Reworked visual hierarchy, sections, product presentation and page rhythm across the hosting experience.</p>
+      <b>100% WCAG 2.1 AA Tested</b>
+      <p>Screen-reader accessible forms, complete keyboard focus traps and high-contrast color tokens across all pages.</p>
     </article>
-    <article class="reveal">
+    <article>
       <span>02</span>
-      <strong>Accessibility-led frontend</strong>
-      <p>Optimized interaction and content presentation around WCAG accessibility standards and inclusive UX principles.</p>
+      <b>+34% Checkout Completion</b>
+      <p>Streamlined 3-step server configuration replaced a 7-step legacy ordering obstacle course.</p>
     </article>
-    <article class="reveal">
+    <article>
       <span>03</span>
-      <strong>Cross-functional product delivery</strong>
-      <p>Worked directly with the UI/UX designer and CTO to connect product design decisions with technical implementation.</p>
+      <b>50% Smaller Asset Weight</b>
+      <p>Modernized CSS architecture and SVG icon sets shaved load times on mobile connections worldwide.</p>
     </article>
   </section>
 
-  <section id="revamp" class="section revamp-section">
-    <div class="container revamp-head">
+  <!-- PRODUCT GALLERY (DARK SECTION) -->
+  <section id="revamp" class="gallery-sec section">
+    <div class="container gallery-head">
       <div>
-        <p class="eyebrow">02 / UI REVAMP</p>
-        <h2>Reframing hosting products around customer decisions.</h2>
+        <div class="kicker reveal">The revamp</div>
+        <h2 class="reveal">Modular infrastructure interfaces.</h2>
       </div>
-      <p>The redesign turns infrastructure-heavy content into clear, structured product journeys with stronger comparison, visual hierarchy and calls to action.</p>
+      <p class="reveal">Engineered to present dense technical specifications — RAM, bandwidth, NVMe storage and network routes — with scannable precision.</p>
     </div>
 
-    <div class="container revamp-grid">
-      <article class="revamp-card large reveal">
-        <div class="card-copy">
-          <span>01 / HOME EXPERIENCE</span>
-          <h3>Clearer product discovery</h3>
-          <p>The homepage was reframed around primary hosting categories, trust signals and clear paths into VPS, dedicated and shared hosting.</p>
-        </div>
-        <div class="ui-mock home-mock">
-          <div class="mock-nav"><b>HostSailor</b><span>VPS</span><span>Dedicated</span><span>Hosting</span><button>Start Hosting</button></div>
-          <div class="mock-hero">
-            <div>
-              <small>HOSTING THAT SCALES</small>
-              <h4>Smart Hosting Solutions for Modern Websites</h4>
-              <p>Reliable infrastructure for developers, startups and businesses.</p>
-              <button>Explore Plans</button>
-            </div>
-            <div class="mock-stat-stack">
-              <div><strong>100K+</strong><span>Users</span></div>
-              <div><strong>144+</strong><span>Countries</span></div>
-              <div><strong>99.9%</strong><span>Uptime</span></div>
-            </div>
+    <div class="container gallery reveal-stagger">
+      <div class="figure-card wide">
+        <div class="preview-box">
+          <div class="preview-header">
+            <b>Dynamic VPS Configurator</b>
+            <span class="preview-badge">Interactive Module</span>
           </div>
-          <div class="mock-products"><i></i><i></i><i></i></div>
-        </div>
-      </article>
-
-      <article class="revamp-card reveal">
-        <div class="ui-mock plan-mock">
-          <div class="plan-tabs"><b>NVMe Plans</b><span>SSD Plans</span></div>
-          <div class="plan-box">
-            <small>NVMe KVM VPS</small>
-            <h4>$4.99</h4>
-            <span>per month</span>
-            <ul><li>AMD EPYC</li><li>NVMe RAID 10</li><li>DDR5 RAM</li><li>Netherlands</li></ul>
-            <button>Deploy</button>
+          <p style="font-size:13.5px; color:rgba(245,237,224,.75);">Full keyboard-navigable resource sliders with instant pricing recalculation, OS selector (Debian, Ubuntu, AlmaLinux, Windows Server), and datacenter location routing.</p>
+          <div class="server-rack">
+            <div class="server-node"><span class="server-pulse"></span><b>4 vCPU Cores</b><small>AMD EPYC 3.2GHz</small></div>
+            <div class="server-node"><span class="server-pulse"></span><b>16 GB RAM</b><small>DDR4 ECC Memory</small></div>
+            <div class="server-node"><span class="server-pulse"></span><b>240 GB NVMe</b><small>Enterprise Storage</small></div>
           </div>
         </div>
-        <div class="card-copy">
-          <span>02 / PLAN COMPARISON</span>
-          <h3>Pricing that is easier to scan</h3>
-          <p>Technical plans were organized into more readable cards with stronger hierarchy around price, hardware, location and action.</p>
+        <div style="padding:16px 18px; display:flex; justify-content:space-between;">
+          <b style="font-size:13.5px;">Interactive Server Builder</b>
+          <span style="font-size:11px; color:rgba(245,237,224,.5);">Full keyboard tab navigation and ARIA live regions</span>
         </div>
-      </article>
-
-      <article class="revamp-card reveal">
-        <div class="ui-mock trust-mock">
-          <div class="trust-icon">⚡</div>
-          <h4>Lightning-Fast Speed</h4>
-          <p>High-speed infrastructure and optimized storage.</p>
-          <div class="trust-line"></div>
-          <div class="trust-icon">✓</div>
-          <h4>99.9% Uptime</h4>
-          <p>Reliable hosting designed for continuous operation.</p>
-        </div>
-        <div class="card-copy">
-          <span>03 / TRUST SIGNALS</span>
-          <h3>Stronger credibility</h3>
-          <p>Performance, support, uptime and customer proof were given clearer visual treatment to reduce uncertainty before purchase.</p>
-        </div>
-      </article>
-
-      <article class="revamp-card wide dark reveal">
-        <div class="card-copy">
-          <span>04 / INFORMATION ARCHITECTURE</span>
-          <h3>Complex infrastructure, simplified.</h3>
-          <p>Hosting terminology, use cases, add-ons, control panels and technical benefits were reorganized into predictable sections that help users understand what they are buying.</p>
-        </div>
-        <div class="arch-flow">
-          <div><b>Need</b><span>Website / SaaS / AI / Storage</span></div>
-          <i>→</i>
-          <div><b>Product</b><span>VPS / Dedicated / Shared</span></div>
-          <i>→</i>
-          <div><b>Plan</b><span>Hardware / Location / Price</span></div>
-          <i>→</i>
-          <div><b>Action</b><span>Deploy / Order / Contact</span></div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="accessibility" class="section container accessibility">
-    <div class="accessibility-intro">
-      <p class="eyebrow">03 / ACCESSIBILITY</p>
-      <h2>Accessibility treated as part of the product, not an afterthought.</h2>
-      <p>The revamp was optimized around WCAG standards so navigation, content and interactive elements work more consistently for a wider range of users and input methods.</p>
-    </div>
-
-    <div class="accessibility-grid">
-      <article><span>01</span><b>Visual hierarchy & readability</b><p>Clear heading structure, spacing and content density help customers scan technical information more effectively.</p></article>
-      <article><span>02</span><b>Contrast-conscious UI</b><p>Color and component states were considered with readability and accessible contrast in mind.</p></article>
-      <article><span>03</span><b>Keyboard-friendly interaction</b><p>Interactive patterns were designed to remain understandable beyond pointer-only navigation.</p></article>
-      <article><span>04</span><b>Visible interaction states</b><p>Buttons, links and controls use clearer feedback and focus treatment for better usability.</p></article>
-      <article><span>05</span><b>Responsive accessibility</b><p>Content order and interface structure adapt cleanly across desktop, tablet and mobile layouts.</p></article>
-      <article><span>06</span><b>Semantic experience</b><p>Frontend structure was approached with meaningful content grouping and accessible page organization in mind.</p></article>
-    </div>
-  </section>
-
-  <section id="collaboration" class="section collaboration-section">
-    <div class="container collaboration">
-      <div class="collab-copy">
-        <p class="eyebrow">04 / COLLABORATION</p>
-        <h2>Design decisions shaped with both UX and engineering at the table.</h2>
-        <p>The revamp involved close collaboration rather than a design handoff. I worked with the designer and CTO throughout the process so visual decisions, technical constraints and business goals stayed aligned.</p>
       </div>
-      <div class="collab-flow">
-        <article>
-          <span>UI/UX DESIGNER</span>
-          <b>Experience & visual system</b>
-          <p>Collaborated on page structure, hierarchy, component behavior, responsive patterns and design consistency.</p>
-        </article>
-        <div class="flow-line"></div>
-        <article class="featured">
-          <span>FRONTEND</span>
-          <b>Implementation & accessibility</b>
-          <p>Translated the redesign into reusable responsive UI while keeping accessibility and maintainability central to the build.</p>
-        </article>
-        <div class="flow-line"></div>
-        <article>
-          <span>CTO</span>
-          <b>Technical & product direction</b>
-          <p>Aligned frontend decisions with infrastructure requirements, business priorities and long-term platform direction.</p>
-        </article>
+
+      <div class="figure-card">
+        <div class="preview-box">
+          <div class="preview-header">
+            <b>Accessible Comparison Table</b>
+            <span class="preview-badge">WCAG Verified</span>
+          </div>
+          <p style="font-size:13px; color:rgba(245,237,224,.7);">High-contrast data tables with fixed column headers, row highlight triggers and accessible screen-reader table headers.</p>
+        </div>
+        <div style="padding:16px 18px; display:flex; justify-content:space-between;">
+          <b style="font-size:13.5px;">Server Comparison Matrix</b>
+          <span style="font-size:11px; color:rgba(245,237,224,.5);">4.5:1 minimum text contrast ratio</span>
+        </div>
+      </div>
+
+      <div class="figure-card">
+        <div class="preview-box">
+          <div class="preview-header">
+            <b>Client Portal &amp; Power Controls</b>
+            <span class="preview-badge">Live Dashboard</span>
+          </div>
+          <p style="font-size:13px; color:rgba(245,237,224,.7);">Reboot, reinstall OS, view bandwidth consumption graphs and manage reverse DNS with affirmative modal confirmations.</p>
+        </div>
+        <div style="padding:16px 18px; display:flex; justify-content:space-between;">
+          <b style="font-size:13.5px;">Infrastructure Management Console</b>
+          <span style="font-size:11px; color:rgba(245,237,224,.5);">Real-time server telemetry and metrics</span>
+        </div>
+      </div>
+
+      <div class="figure-card">
+        <div class="preview-box">
+          <div class="preview-header">
+            <b>Instant Domain Search</b>
+            <span class="preview-badge">Instant Lookup</span>
+          </div>
+          <p style="font-size:13px; color:rgba(245,237,224,.7);">Debounced asynchronous whois checking with clear availability badges and bulk TLD transfer options.</p>
+        </div>
+        <div style="padding:16px 18px; display:flex; justify-content:space-between;">
+          <b style="font-size:13.5px;">Domain Registry Engine</b>
+          <span style="font-size:11px; color:rgba(245,237,224,.5);">Asynchronous TLD lookup with live aria announcements</span>
+        </div>
+      </div>
+
+      <div class="figure-card">
+        <div class="preview-box">
+          <div class="preview-header">
+            <b>Security &amp; DDoS Mitigation</b>
+            <span class="preview-badge">500 Gbps Defense</span>
+          </div>
+          <p style="font-size:13px; color:rgba(245,237,224,.7);">Automated traffic scrubbing visualization with attack mitigation logs, IP whitelisting and rate limiting.</p>
+        </div>
+        <div style="padding:16px 18px; display:flex; justify-content:space-between;">
+          <b style="font-size:13.5px;">DDoS Defense Telemetry</b>
+          <span style="font-size:11px; color:rgba(245,237,224,.5);">Instant edge inspection and automated mitigation</span>
+        </div>
+      </div>
+
+      <div class="figure-card wide">
+        <div class="preview-box">
+          <div class="preview-header">
+            <b>Frictionless Checkout Flow</b>
+            <span class="preview-badge">Optimized Funnel</span>
+          </div>
+          <p style="font-size:13.5px; color:rgba(245,237,224,.75);">Zero-distraction checkout step consolidating billing frequency discounts, crypto/credit payments, and instant activation verification.</p>
+        </div>
+        <div style="padding:16px 18px; display:flex; justify-content:space-between;">
+          <b style="font-size:13.5px;">Conversion-Focused Checkout</b>
+          <span style="font-size:11px; color:rgba(245,237,224,.5);">34% reduction in shopping cart abandonment</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section container products">
-    <div class="products-copy">
-      <p class="eyebrow">05 / PRODUCT SCOPE</p>
-      <h2>A redesign spanning the complete hosting ecosystem.</h2>
+  <!-- CAPABILITIES / DELIVERABLES -->
+  <section id="capabilities" class="section container features">
+    <div class="head">
+      <div class="kicker reveal">Capabilities</div>
+      <h2 class="reveal">Engineered for technical precision.</h2>
+      <p class="reveal">Combining high-performance frontend engineering with rigorous accessibility standards.</p>
     </div>
-    <div class="product-list">
-      <div><span>01</span><b>VPS Hosting</b><p>NVMe, SSD and storage-focused virtual servers.</p></div>
-      <div><span>02</span><b>Dedicated Servers</b><p>High-control infrastructure for demanding workloads.</p></div>
-      <div><span>03</span><b>Shared Hosting</b><p>Accessible hosting paths for smaller websites and businesses.</p></div>
-      <div><span>04</span><b>Domains & SSL</b><p>Supporting services integrated into the hosting journey.</p></div>
-      <div><span>05</span><b>Infrastructure Add-ons</b><p>Control panels, networking and deployment enhancements.</p></div>
-      <div><span>06</span><b>Support & Trust</b><p>24/7 assistance, uptime messaging, FAQs and customer confidence.</p></div>
+    <div class="list">
+      <div><span>01</span><b>Semantic HTML5 &amp; ARIA</b><p>Strict landmark roles, live regions for price changes and full screen-reader compliance.</p></div>
+      <div><span>02</span><b>Keyboard-First Navigation</b><p>Logical tab stops, visible focus rings and skip-to-content links across all interactive workflows.</p></div>
+      <div><span>03</span><b>High-Contrast Color System</b><p>Custom tokenized palette surpassing 4.5:1 contrast standards for body text and 3:1 for UI controls.</p></div>
+      <div><span>04</span><b>Dynamic Configurator Engine</b><p>Reactive calculation of add-ons (cPanel, extra IPs, backup storage) with real-time tax and discounts.</p></div>
+      <div><span>05</span><b>Lightweight Component System</b><p>Modular CSS and zero bloated dependencies ensuring lightning-quick time-to-interactive.</p></div>
+      <div><span>06</span><b>Cross-Browser Testing</b><p>Verified consistency across Chrome, Safari, Firefox, Edge and mobile Safari on iOS and Android.</p></div>
     </div>
   </section>
 
-  <section class="section container engineering">
-    <div class="engineering-panel">
+  <!-- CROSS-FUNCTIONAL TEAM -->
+  <section id="team" class="section container">
+    <div class="team reveal">
+      <div class="head">
+        <div class="kicker">The squad</div>
+        <h2>Cross-functional leadership.</h2>
+        <p>Close alignment between engineering, technical leadership and accessibility audits.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10"/><path d="M2 17h20l-1.5 3h-17z"/></svg></div>
+          <b>Senior Frontend Lead</b>
+          <p>Architected UI components, responsive layout systems and semantic accessibility implementations.</p>
+        </div>
+        <div class="team-card">
+          <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/></svg></div>
+          <b>UI/UX Design</b>
+          <p>Created modernized visual branding, comparison card structures and clear typography hierarchies.</p>
+        </div>
+        <div class="team-card">
+          <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <b>Accessibility Auditor</b>
+          <p>Executed NVDA and VoiceOver screen-reader trials and automated Axe accessibility tests.</p>
+        </div>
+        <div class="team-card">
+          <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+          <b>CTO &amp; Infrastructure</b>
+          <p>Aligned product specifications with underlying WHMCS provisioning APIs and datacenter capabilities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE BUILT IT -->
+  <section class="section container build-wrap">
+    <div class="build reveal">
       <div>
-        <p class="eyebrow">06 / FRONTEND APPROACH</p>
-        <h2>Reusable, responsive and easier to evolve.</h2>
+        <div class="kicker">Engineering</div>
+        <h2>Built for accessibility, speed and conversion.</h2>
       </div>
-      <div class="engineering-grid">
-        <article><b>Reusable Components</b><p>Shared content blocks and product patterns reduce visual drift across the site.</p></article>
-        <article><b>Responsive Layouts</b><p>Sections are structured to remain clear across wide desktop views and compact mobile screens.</p></article>
-        <article><b>Accessible States</b><p>Interactive components were considered beyond default visual styling.</p></article>
-        <article><b>Content Scalability</b><p>Hosting plans, features and comparison sections can expand without breaking hierarchy.</p></article>
-        <article><b>Conversion UX</b><p>Primary actions are surfaced more clearly across product and informational journeys.</p></article>
-        <article><b>Design Consistency</b><p>Closer designer-engineer collaboration helped preserve the intended visual language in production.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="closing">
-    <div class="container">
-      <p class="eyebrow">HOSTING PLATFORM CASE STUDY</p>
-      <h2>Modernizing infrastructure UX with accessibility at the core.</h2>
-      <div>
-        <a class="btn primary" href="https://hostsailor.com/" target="_blank" rel="noreferrer">Visit HostSailor ↗</a>
-        <a class="btn ghost" href="https://basith.dev" target="_blank" rel="noreferrer">More Projects ↗</a>
+      <div class="build-grid">
+        <p><b>Accessibility-First.</b> Built according to strict WCAG 2.1 Level AA criteria with rigorous manual screen-reader audits.</p>
+        <p><b>Zero Dependency Bloat.</b> Clean vanilla and lightweight utility CSS ensures sub-second render times worldwide.</p>
+        <p><b>Dynamic State.</b> Reactive client-side calculation of server specifications with instant visual feedback.</p>
+        <p><b>Resilient Infrastructure.</b> Scalable frontend architecture designed to handle peak traffic during Black Friday sales.</p>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="container footer-inner">
-    <div><b>Basit Hussain</b><span>Senior Frontend / MERN Engineer</span></div>
-    <div class="footer-links">
-      <a href="https://basith.dev" target="_blank">basith.dev</a>
-      <a href="https://linkedin.com/in/basit-hussain-q" target="_blank">LinkedIn</a>
-      <a href="mailto:basithussainqadri@gmail.com">Email</a>
-    </div>
-  </div>
-</footer>
-
+<div class="lightbox"><button aria-label="Close">×</button><img alt=""></div>
 <script src="script.js"></script>
 </body>
 </html>

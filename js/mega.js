@@ -620,52 +620,109 @@ const SERVICES = [
 /* ── Testimonials data ── */
 const REVIEWS = [
   {
-    text: "We came to Analytic Insider with a messy billing flow and a lot of frustrated customers. They rebuilt the recharge and bill pay experience from the ground up and were upfront every time something needed more time. Our support tickets dropped within the first month of launch.",
-    name: "Ahsan Raza",
-    role: "Product Lead",
-    company: "Telecard",
-    init: "AR",
+    text: "Caary Capital needed a platform that felt as serious as the capital it manages. The team translated that expectation into a clean, fast interface and stayed responsive at every stage of the build. We now have something our investors genuinely trust opening in front of them.",
+    name: "Iman Asif",
+    company: "Caary Capital",
+    init: "IA",
     color: "#4A72C9"
   },
   {
-    text: "I had tried two other agencies before this one and neither actually listened to what our shoppers needed. The Analytic Insider team sat with us for hours understanding our catalog before writing a single line of code, and it shows in how smooth checkout feels now.",
-    name: "Sara Khalid",
-    role: "Founder",
-    company: "Zylmi",
-    init: "SK",
+    text: "We came in with a rough idea and a tight timeline. Analytic Insider shaped Salasa into a product that actually works the way our customers expect, and they kept us informed the whole way through. Launch day went far smoother than we expected.",
+    name: "Abdul Majeed",
+    company: "Salasa",
+    init: "AM",
     color: "#C95C8E"
   },
   {
-    text: "We needed an AI assistant that could actually reason about trades instead of just spitting out canned responses. What we got was faster and far more reliable than anything our in house team had managed in six months of trying on their own.",
-    name: "Daniel Cole",
-    role: "CEO",
-    company: "Rich AI",
-    init: "DC",
+    text: "Building a consultation platform for patients and doctors meant every detail had to be handled with care. The team understood that from day one and delivered a mobile app and dashboard that our clinic now relies on daily. Patient feedback has been overwhelmingly positive.",
+    name: "Muhammad Ali",
+    company: "Dr Asghar",
+    init: "MA",
     color: "#3DA06A"
   },
   {
-    text: "Our old dashboard was a spreadsheet dressed up as software. Now our coaches pull up a client's progress in seconds and actually trust the numbers they are looking at. It changed how our whole team runs its day.",
-    name: "Maria Gonzalez",
-    role: "Operations Manager",
-    company: "Pulse Genesis",
-    init: "MG",
+    text: "Doc Link needed a reliable way to connect patients with the right specialists quickly. What we got was a smooth, dependable platform built with real attention to how people actually use it. Our support requests have gone down since launch.",
+    name: "Timna Komal Michael",
+    company: "Doc Link",
+    init: "TM",
     color: "#D46B5C"
   },
   {
-    text: "Launching in two markets at once meant our calorie tracker had to work perfectly the first time, with no room for a slow beta. The team tested edge cases we had not even thought of and caught them before our users ever saw a glitch.",
-    name: "Kenji Sato",
-    role: "Product Manager",
-    company: "Morinaga",
-    init: "KS",
+    text: "Launching a calorie tracking app across two markets at once left no room for error. The team tested edge cases we hadn't even considered and caught them long before our users did. The app has performed flawlessly since day one.",
+    name: "David Watson",
+    company: "Morinaga Calories",
+    init: "DW",
     color: "#4A9FD4"
   },
   {
-    text: "Our investors expect a portfolio tool that feels institutional, not like a hobby project. What they delivered handles the numbers beautifully and still looks like something we are proud to open in front of a client.",
-    name: "James Whitfield",
-    role: "Managing Director",
-    company: "Invest Power Labs",
-    init: "JW",
+    text: "MetaDot started as a vague concept and a handful of sketches. Analytic Insider helped us turn that into a working product without losing sight of what made it different. Their patience with our constant changes did not go unnoticed.",
+    name: "Kashan",
+    company: "MetaDot",
+    init: "KA",
     color: "#D4A24E"
+  },
+  {
+    text: "We needed a marketplace that could handle real transactions without hiccups from day one. The team built IPv4MAll to be fast, secure, and genuinely easy for our buyers and sellers to navigate. It has held up well under real traffic.",
+    name: "Yuan Liu",
+    company: "IPv4MAll",
+    init: "YL",
+    color: "#8E6FD1"
+  },
+  {
+    text: "Hosting infrastructure demands reliability above everything else, and that is exactly what the team delivered for HostSailor. The platform has stayed stable under heavy load and our customers rarely need to contact support anymore. Working with this team felt effortless.",
+    name: "Khalid C.",
+    company: "HostSailor",
+    init: "KC",
+    color: "#5CA6A6"
+  },
+  {
+    text: "Assist Event needed to handle hundreds of moving pieces during live events without ever breaking. The team built something our staff could trust on the ground, even under pressure. It has become a core part of how we run every event now.",
+    name: "Naveed",
+    company: "Assist Event",
+    init: "NA",
+    color: "#C97A3D"
+  },
+  {
+    text: "I had a clear vision for LinkDrip and worried an outside team would water it down. Instead they sharpened it, pushed back when something would not work, and shipped a product I am proud to put in front of users. Communication throughout was excellent.",
+    name: "Simon Høiberg",
+    company: "LinkDrip",
+    init: "SH",
+    color: "#6B8E4A"
+  },
+  {
+    text: "Our old dashboard was basically a spreadsheet pretending to be software. Pulse Genesis now gives our coaches real time insight into client progress and they actually trust what they are looking at. It changed how our whole team works day to day.",
+    name: "Richards.",
+    company: "Pulse Genesis",
+    init: "RI",
+    color: "#B5553D"
+  },
+  {
+    text: "We wanted an assistant that could genuinely reason about trades instead of returning canned answers. What the team built for Rich AI was faster and more reliable than anything our in house attempts had managed. It exceeded what we thought was realistic.",
+    name: "Howard Richard",
+    company: "Rich AI",
+    init: "HR",
+    color: "#4A8FC9"
+  },
+  {
+    text: "Our billing and recharge flow was a constant source of customer complaints before this project. The team rebuilt it from the ground up and was upfront whenever something needed more time. Support tickets dropped noticeably within the first month after launch.",
+    name: "M. Farhan Chand",
+    company: "Telecard",
+    init: "FC",
+    color: "#9C5CC9"
+  },
+  {
+    text: "TinyKiwi needed a storefront that felt premium without slowing down on mobile, where most of our customers shop. The team nailed that balance and kept performance front of mind throughout the build. Conversion rates have improved since the new site went live.",
+    name: "Chris D.",
+    company: "TinyKiwi",
+    init: "CD",
+    color: "#5CC9A0"
+  },
+  {
+    text: "I had worked with two other agencies before this one and neither really listened to what our shoppers needed. This team sat with us for hours understanding our catalog before writing a single line of code, and it shows in how smooth checkout feels now.",
+    name: "CLint Elic",
+    company: "Zylmi",
+    init: "CE",
+    color: "#C9A75C"
   }
 ];
 

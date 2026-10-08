@@ -149,16 +149,80 @@
     </label>
   `).join('');
 
+  /* ── Featured add-on: "We pick the stack" vs "I'll customize it".
+     Only on the 4 services that need it. Collapsed by default — the
+     tech grid only appears once the visitor clicks "Customize". ── */
+  const TI = 'images/tech-stack/';
+  const STACK_CHOICE = {
+    'mobile-app-development': [
+      ['Android', [['Kotlin', 'kotlin'], ['Java', 'java'], ['Android Studio', 'androidstudio'], ['Jetpack Compose', 'jetpackcompose']]],
+      ['iOS', [['Swift', 'swift'], ['SwiftUI', 'swiftui'], ['Xcode', 'xcode']]],
+      ['Cross-Platform', [['Flutter', 'flutter'], ['React Native', 'reactnative'], ['Dart', 'dart'], ['.NET MAUI', 'dotnetcore']]],
+      ['Backend & APIs', [['Node.js', 'nodejs'], ['Python', 'python'], ['Spring Boot', 'spring'], ['PHP / Laravel', 'laravel'], ['REST API', 'restapi'], ['GraphQL', 'graphql']]],
+      ['Databases', [['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['MongoDB', 'mongodb'], ['Firebase', 'firebase'], ['Supabase', 'supabase'], ['SQLite', 'sqlite']]],
+      ['Dev Tools', [['VS Code', 'vscode'], ['Git', 'git'], ['GitHub', 'github'], ['Postman', 'postman']]],
+      ['Deployment', [['AWS', 'amazonwebservices'], ['Google Cloud', 'googlecloud'], ['Microsoft Azure', 'azure'], ['App Store', 'appstore'], ['Google Play', 'googleplay']]]
+    ],
+    'website-development': [
+      ['Core Languages', [['HTML', 'html5'], ['CSS', 'css3'], ['JavaScript', 'javascript'], ['TypeScript', 'typescript']]],
+      ['Frontend', [['React.js', 'react'], ['Next.js', 'nextjs'], ['Vue.js', 'vuejs'], ['Angular', 'angularjs'], ['Tailwind CSS', 'tailwindcss'], ['Bootstrap', 'bootstrap']]],
+      ['Backend', [['Node.js', 'nodejs'], ['Express.js', 'express'], ['PHP / Laravel', 'laravel'], ['Python / Django', 'django'], ['C# / ASP.NET', 'dotnetcore']]],
+      ['Database', [['MySQL', 'mysql'], ['PostgreSQL', 'postgresql'], ['MongoDB', 'mongodb'], ['Firebase', 'firebase'], ['Supabase', 'supabase']]],
+      ['Dev Tools', [['VS Code', 'vscode'], ['Git', 'git'], ['GitHub', 'github'], ['Figma', 'figma'], ['Postman', 'postman']]],
+      ['Hosting / Deployment', [['Vercel', 'vercel'], ['Netlify', 'netlify'], ['Hostinger', 'hostinger'], ['AWS', 'amazonwebservices'], ['Cloudflare', 'cloudflare']]]
+    ],
+    'custom-software-development': [
+      ['Languages', [['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['Python', 'python'], ['Java', 'java'], ['C#', 'csharp'], ['C++', 'cplusplus'], ['Go', 'go'], ['PHP', 'php'], ['Kotlin', 'kotlin'], ['Swift', 'swift']]],
+      ['Frontend', [['React', 'react'], ['Angular', 'angularjs'], ['Vue.js', 'vuejs'], ['Next.js', 'nextjs']]],
+      ['Backend', [['Node.js', 'nodejs'], ['.NET / ASP.NET', 'dotnetcore'], ['Django', 'django'], ['FastAPI', 'fastapi'], ['Spring Boot', 'spring'], ['Laravel', 'laravel']]],
+      ['Databases', [['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['MongoDB', 'mongodb'], ['SQL Server', 'microsoftsqlserver'], ['Redis', 'redis']]],
+      ['Dev Tools', [['Git', 'git'], ['GitHub', 'github'], ['VS Code', 'vscode'], ['Visual Studio', 'visualstudio'], ['Postman', 'postman'], ['Docker', 'docker']]],
+      ['Cloud / Deployment', [['AWS', 'amazonwebservices'], ['Microsoft Azure', 'azure'], ['Google Cloud', 'googlecloud'], ['Kubernetes', 'kubernetes'], ['CI/CD', 'githubactions']]],
+      ['APIs', [['REST API', 'restapi'], ['GraphQL', 'graphql']]]
+    ],
+    'vibe-code-to-production': [
+      ['Languages', [['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['Python', 'python']]],
+      ['Framework', [['React', 'react'], ['Next.js', 'nextjs'], ['Node.js', 'nodejs'], ['Vue.js', 'vuejs'], ['Express', 'express']]],
+      ['Database', [['PostgreSQL', 'postgresql'], ['Supabase', 'supabase'], ['MongoDB', 'mongodb'], ['MySQL', 'mysql'], ['Redis', 'redis']]],
+      ['Infra & CI/CD', [['Docker', 'docker'], ['Kubernetes', 'kubernetes'], ['GitHub Actions', 'githubactions'], ['Vercel', 'vercel'], ['AWS', 'amazonwebservices'], ['Netlify', 'netlify']]]
+    ]
+  };
+  const stackCats = STACK_CHOICE[s.slug];
+  const stackChoiceHTML = !stackCats ? '' : `
+    <div class="stf-stack" id="stfStack">
+      <span class="stf-scope-label">Tech Stack</span>
+      <div class="stf-stack-toggle" id="stfStackToggle" role="tablist">
+        <button type="button" class="stf-stack-opt is-on" data-mode="auto">We Pick The Best Stack</button>
+        <button type="button" class="stf-stack-opt" data-mode="custom">I'll Customize It</button>
+      </div>
+      <div class="stf-stack-panel" id="stfStackPanel">
+        ${stackCats.map(([cat, items]) => `
+          <div class="stf-stack-cat">
+            <span class="stf-stack-cat-label">${cat}</span>
+            <div class="stf-stack-grid">
+              ${items.map(([name, icon]) => `
+                <label class="stf-stack-item">
+                  <input type="checkbox" name="stack" value="${name}" />
+                  <img src="${TI}${icon}.svg" alt="" loading="lazy" width="18" height="18">
+                  <span>${name}</span>
+                </label>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+
   const topFormHTML = `
     <div class="sv-top-form-wrap" id="topServiceForm" ${fx('flipr', 3)}>
       <div class="sv-top-form-card">
         <h2 class="stf-title">Let's start a<br>${short(s.title)} Project</h2>
-        <form class="stf-form-el" id="stfFormEl" onsubmit="return false;">
+        <form class="stf-form-el" id="stfFormEl">
           <div class="stf-field"><input type="text" id="stfName" placeholder="Name*" required /></div>
           <div class="stf-field"><input type="email" id="stfEmail" placeholder="Email*" required /></div>
           <div class="stf-field"><input type="tel" id="stfPhone" placeholder="Phone" /></div>
+          ${stackChoiceHTML}
           <div class="stf-field"><textarea id="stfBrief" rows="4" placeholder="Briefly describe your idea, platform, timeline..."></textarea></div>
           <button type="submit" class="stf-submit-btn" id="stfSubmitBtn">Get Free Consultation</button>
+          <p class="stf-form-feedback" role="status" aria-live="polite"></p>
         </form>
         <div class="stf-success" id="stfSuccessBox">
           <div class="stf-success-icon">✓</div>
@@ -168,59 +232,43 @@
       </div>
     </div>`;
 
-  /* ═══════════ METRICS ═══════════ */
-  const metricList = [
-    [s.stats.built, 'Projects Built & Deployed'], [s.stats.experience, 'Senior Engineering Tenure'],
-    [s.stats.rating, 'Average Client Rating'], [s.stats.onTime, 'On Time Sprint Delivery'], [s.stats.retention, 'Client Retention Rate']
-  ];
+  /* Hero now shows only copy + form — the 5 trust metrics are no longer rendered anywhere. */
   const heroHTML = `
     <section class="sv-sec sv-hero sv-hero--split" data-sec data-hero>
       <div class="sv-hero-glow"></div>
-      ${decoHTML}
       <div class="sv-inner sv-hero-grid">
         ${heroLeft}
         ${topFormHTML}
       </div>
-      <div class="sv-inner sv-hero-stats" ${fx('flipr', 3)}>
-        ${metricList.map(m => `<div class="sv-hero-stat"><span class="sv-hero-stat-n">${m[0]}</span><span class="sv-hero-stat-t">${m[1]}</span></div>`).join('')}
-      </div>
     </section>`;
 
-  const metricsHTML = `
-    <section class="sv-sec sv-metrics sv-metrics--${R.metrics}" data-sec>
-      <div class="sv-inner sv-metrics-grid">
-        ${metricList.map((m, i) => `
-          <div class="sv-metric-w" ${fx(R.metrics === 'tiles' ? 'flipl' : 'drop', i)}>
-            <div class="sv-metric"><span class="sv-metric-number">${m[0]}</span><span class="sv-metric-title">${m[1]}</span></div>
-          </div>${R.metrics === 'strip' && i < 4 ? '<span class="sv-metric-sep"></span>' : ''}`).join('')}
-      </div>
-    </section>`;
+  /* NOTE: the 5 trust metrics (Projects Built, Years, Rating, On Time, Retention)
+     have been removed from the hero entirely — the hero now shows only the
+     left copy and the consultation form, nothing else. */
 
   /* ═══════════ BRAND MARQUEE (1 Row Infinite Seamless Loop) ═══════════ */
   const BRAND_LOGOS = [
-    { src: 'images/logos/telecard-cropped.png', alt: 'Telecard', cbg: '#ffffff' },
-    { src: 'images/logos/Rheumatology Consultation.png', alt: 'Rheumatology Consultation', cbg: '#000000' },
-    { src: 'images/logos/ChatGPT Image Sep 22, 2026, 07_49_35 PM.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 190514.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 190730.png', alt: 'Client Partner', cbg: '#df7758' },
-    { src: 'images/logos/Screenshot 2026-09-22 191134.png', alt: 'Client Partner', cbg: '#131219' },
-    { src: 'images/logos/Screenshot 2026-09-22 191200.png', alt: 'Client Partner', cbg: '#1e1e1e' },
-    { src: 'images/logos/Screenshot 2026-09-22 191239.png', alt: 'Client Partner', cbg: '#121212' },
-    { src: 'images/logos/Screenshot 2026-09-22 191416.png', alt: 'Client Partner', cbg: '#024c5b' },
-    { src: 'images/logos/Screenshot 2026-09-22 191507.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 191543.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 191625.png', alt: 'Client Partner', cbg: '#0077d1' },
-    { src: 'images/logos/Screenshot 2026-09-22 191708.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 191737.png', alt: 'Client Partner', cbg: '#43334c' },
-    { src: 'images/logos/Screenshot 2026-09-22 192021.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 192710.png', alt: 'Client Partner', cbg: '#170f28' },
-    { src: 'images/logos/Screenshot 2026-09-22 192728.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 192744.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 192803.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 192825.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 192906.png', alt: 'Client Partner', cbg: '#ffffff' },
-    { src: 'images/logos/Screenshot 2026-09-22 192933.png', alt: 'Client Partner', cbg: '#140c26' },
-    { src: 'images/logos/Screenshot 2026-09-22 193012.png', alt: 'Client Partner', cbg: '#2b2523' }
+    { src: 'images/brand-strip/brand-01.png', alt: 'Telecard', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-02.png', alt: 'Morinaga', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-03.png', alt: 'Rheumatology Consultants', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-04.png', alt: 'Caary', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-05.png', alt: 'Squicle', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-06.png', alt: 'RichAI', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-07.png', alt: 'PulseGenesis', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-08.png', alt: 'InvestDex', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-09.png', alt: 'tinykiwi', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-10.png', alt: 'LinkDrip', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-11.png', alt: 'AssistEvent', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-12.png', alt: 'DocLink', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-13.png', alt: 'Zylme', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-14.png', alt: 'Top Fashion Studio', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-15.png', alt: 'Futehally', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-16.png', alt: 'Pakbrunei', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-17.png', alt: 'Takaful Oman', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-18.png', alt: 'Client logo', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-19.png', alt: 'Liberty Tax', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-20.png', alt: 'Takaful Oman', cbg: '#ffffff' },
+    { src: 'images/brand-strip/brand-21.png', alt: 'Top Fashion Studio', cbg: '#ffffff' }
   ];
 
   const brandCardsHTML = BRAND_LOGOS.map(l => `
@@ -575,7 +623,7 @@
   const reviewsHTML = REVIEWS.map(r => `
     <div class="sv-testi-card"><div class="sv-testi-stars">★★★★★</div><p class="sv-testi-quote">${r.text}</p>
       <div class="sv-testi-author"><div class="sv-testi-avatar">${r.init}</div>
-      <div class="sv-testi-info"><strong class="sv-testi-name">${r.name}</strong><span class="sv-testi-role">${r.role}, ${r.company}</span></div></div></div>`).join('');
+      <div class="sv-testi-info"><strong class="sv-testi-name">${r.name}</strong><span class="sv-testi-role">${r.company}</span></div></div></div>`).join('');
   const revHTML = `
     <section class="sv-sec sv-reviews sv-reviews--${R.rev}" id="reviews" data-sec><div class="sv-inner">
       ${head('Client Voices', 'Feedback from Founders and Enterprise Leaders', '', 'center', R.rev === 'dark')}
@@ -613,7 +661,7 @@
         <p class="sap-subtitle" ${fx('rise', 5)}>Tell us what you are trying to build and we will reply within a day with next steps, timeline and a clear estimate.</p>
         <div class="sap-cta-row" ${fx('zoom', 6)}>
           <button class="sap-btn-primary" type="button" ${openDrawer}>Start a Project <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <a class="sap-btn-secondary" href="mailto:info@analyticinsider.com">Email Us Directly</a>
+          <a class="sap-btn-secondary" href="mailto:abdulrafay364p@gmail.com">Email Us Directly</a>
         </div>
         <div class="sap-meta-row" ${fx('rise', 7)}>
           <div class="sap-meta-item"><div class="sap-meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span>Dearborn, MI — working worldwide</span></div>
@@ -698,9 +746,9 @@
         <div class="footer-col footer-col-contact">
           <h3 class="footer-heading">Direct Inquiries</h3>
           <div class="footer-contact-details">
-            <a href="mailto:info@analyticinsider.com" class="footer-link-highlight">
+            <a href="mailto:abdulrafay364p@gmail.com" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>info@analyticinsider.com</span>
+              <span>abdulrafay364p@gmail.com</span>
             </a>
             <a href="tel:+13136551635" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -746,12 +794,12 @@
     },
     'website-development': {
       type: 'project-story',
-      title: 'HostSailor Platform',
-      tagline: 'Hosting plans made easier to compare',
-      desc: 'HostSailor offers VPS, dedicated and shared hosting. The redesign gives customers a clearer way to understand each option and find the right next step.',
-      metrics: [['VPS hosting', 'Flexible virtual servers'], ['Dedicated servers', 'Full server control'], ['Plan comparison', 'Features in plain language']],
-      link: 'portfolio.html?project=hostsailor',
-      tags: ['Next.js', 'React', 'TypeScript', 'Accessible design']
+      title: 'Salasa OMS',
+      tagline: 'An enterprise web platform built from the ground up',
+      desc: 'Salasa brings order tracking, carrier selection and merchant pricing into one web workspace. Teams can see the route for an order and understand why that carrier was selected, all inside a fast, modular React and Next.js build.',
+      metrics: [['Orders', 'Track work from intake to delivery'], ['Carrier rules', 'Choose routes around service and capacity'], ['Decision history', 'Review why a carrier was selected']],
+      link: 'portfolio.html?project=salasaoms',
+      tags: ['React', 'Next.js', 'TypeScript', 'Node.js']
     },
     'mobile-app-development': {
       type: 'project-story',
@@ -802,13 +850,14 @@
 
   const CS_IMG = {
     'custom-software-development': 'Case studies/salasa-oms-portfolio/images/dashboard.png',
+    'website-development': 'Case studies/salasa-oms-portfolio/images/dashboard.png',
     'mobile-app-development': 'Case studies/Rheumatology Consultants/images/case-studies/rheumatology/book-doctor.webp',
     'data-analytics-consultancy': 'Case studies/caary-capital-portfolio/images/dashboard.png'
   };
   const matchedCS = SERVICE_CASE_STUDIES[s.slug];
   let caseStudyHTML = '';
   if (matchedCS) {
-    const CS_MOCK = { 'website-development': `<div class="cs2-shot"><div class="hs-mock"><div class="hs-plan"><em>VPS</em><b>$9<small>/mo</small></b><span></span><span></span><span></span><i></i></div><div class="hs-plan hot"><em>Dedicated</em><b>$79<small>/mo</small></b><span></span><span></span><span></span><i></i></div><div class="hs-plan"><em>Shared</em><b>$3<small>/mo</small></b><span></span><span></span><span></span><i></i></div></div></div>` };
+    const CS_MOCK = {};
     const shot = CS_MOCK[s.slug] ? CS_MOCK[s.slug] : CS_IMG[s.slug]
       ? `<div class="cs2-shot"><img src="${encodeURI(CS_IMG[s.slug])}" alt="${matchedCS.title} screenshot" loading="lazy"></div>`
       : `<div class="cs2-shot"><div class="cs2-skel"><span></span><span></span><span></span><span></span></div></div>`;
@@ -847,6 +896,22 @@
   root.innerHTML = SEC_ORDER.map(x => x[1] + (x[0] === EP_AFTER ? EP_HTML : '')).join('') + ctaHTML + grandFooterHTML;
   if (window.EP) window.EP.init(s);
 
+  /* ═══════════ BRAND MARQUEE — EXACT PIXEL LOOP ═══════════
+     Use the untransformed layout width so the reveal animation cannot
+     shrink the measured offset and make the duplicated logo groups overlap. */
+  (function syncBrandMarqueeLoop() {
+    const track = root.querySelector('.sv-brand-track');
+    const firstGroup = track && track.querySelector('.sv-brand-group');
+    if (!track || !firstGroup) return;
+    let raf = null;
+    function measure() {
+      const w = firstGroup.offsetWidth;
+      if (w > 0) track.style.setProperty('--sv-brand-shift', `-${w}px`);
+    }
+    measure();
+    window.addEventListener('resize', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(measure); });
+  })();
+
   /* ═══════════ TOP SERVICE FORM ENGINE ═══════════ */
   (function initTopForm() {
     const fEl = $('#stfFormEl', root);
@@ -874,15 +939,73 @@
       });
     });
 
+    // Stack choice: "We pick it" (default) vs "I'll customize it" — the
+    // tech grid stays collapsed until the visitor opts in, nothing else changes.
+    const stackToggle = $('#stfStackToggle', root), stackPanel = $('#stfStackPanel', root);
+    if (stackToggle && stackPanel) {
+      stackToggle.querySelectorAll('.stf-stack-opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          stackToggle.querySelectorAll('.stf-stack-opt').forEach(b => b.classList.remove('is-on'));
+          btn.classList.add('is-on');
+          const custom = btn.dataset.mode === 'custom';
+          stackPanel.classList.toggle('open', custom);
+          if (!custom) stackPanel.querySelectorAll('input[type=checkbox]').forEach(c => { c.checked = false; c.closest('.stf-stack-item')?.classList.remove('is-active'); });
+        });
+      });
+      // Listen on 'change' of the checkbox itself — a <label> wrapping an
+      // <input> already toggles it natively on click, so also toggling it
+      // by hand on 'click' double-fires and cancels itself out.
+      stackPanel.addEventListener('change', (e) => {
+        const inp = e.target;
+        if (inp.matches('.stf-stack-item input[type=checkbox]')) {
+          inp.closest('.stf-stack-item').classList.toggle('is-active', inp.checked);
+        }
+      });
+    }
+
     // Form submission with instant feedback
-    fEl.addEventListener('submit', (e) => {
+    const submitButton = $('#stfSubmitBtn', root);
+    const feedback = fEl.querySelector('.stf-form-feedback');
+    fEl.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = $('#stfName', root)?.value.trim();
       const email = $('#stfEmail', root)?.value.trim();
-      if (!name || !email) return;
+      const emailInput = $('#stfEmail', root);
+      if (!name || !email || !emailInput.validity.valid) {
+        if (!name) $('#stfName', root)?.focus();
+        else emailInput.focus();
+        return;
+      }
 
-      fEl.style.display = 'none';
-      if (successBox) successBox.classList.add('on');
+      const picked = [...root.querySelectorAll('.stf-stack-item input:checked')].map(i => i.value);
+      const brief = $('#stfBrief', root)?.value.trim() || '';
+      const message = picked.length
+        ? `${brief}${brief ? '\n\n' : ''}Preferred tech stack: ${picked.join(', ')}.`
+        : brief;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+      }
+      if (feedback) feedback.textContent = '';
+      try {
+        await window.ANALYTIC_LEADS.submit({
+          name,
+          email,
+          phone: $('#stfPhone', root)?.value.trim() || '',
+          service: s.title,
+          techStack: picked.join(', '),
+          message,
+          source: location.href
+        });
+        fEl.style.display = 'none';
+        if (successBox) successBox.classList.add('on');
+      } catch (error) {
+        if (feedback) feedback.textContent = error.message;
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Get Free Consultation';
+        }
+      }
     });
   })();
 
@@ -896,6 +1019,14 @@
     const norm = x => x.toLowerCase().replace(/&amp;/g, '&').trim();
     const open = detail => {
       form.style.display = ''; ok.classList.remove('show');
+      const submit = document.getElementById('fdSubmit');
+      const note = form.querySelector('.fd-note');
+      submit.disabled = false;
+      submit.textContent = 'Send Project Brief';
+      if (note) {
+        note.textContent = "No commitment. We'll respond with a plan within 24 hours.";
+        note.classList.remove('is-error');
+      }
       const opt = Array.from(sel.options).find(o => o.value && (norm(o.text) === norm(s.title) || norm(s.title).startsWith(norm(o.text).slice(0, 14))));
       if (opt) sel.value = opt.value || opt.text;
       if (detail && detail.tech) msg.value = `I'd like to talk about using ${detail.tech} for my ${s.title} project.`;
@@ -908,11 +1039,34 @@
     document.getElementById('formClose')?.addEventListener('click', close);
     ov.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-    document.getElementById('fdSubmit')?.addEventListener('click', () => {
+    document.getElementById('fdSubmit')?.addEventListener('click', async () => {
       const bad = [nm, em].filter(f => !f.value.trim());
       [nm, em].forEach(f => { f.style.borderColor = f.value.trim() ? '' : '#ff6b6b'; });
       if (bad.length) { bad[0].focus(); return; }
-      form.style.display = 'none'; ok.classList.add('show');
+      if (!em.validity.valid) { em.style.borderColor = '#ff6b6b'; em.focus(); return; }
+      const submit = document.getElementById('fdSubmit');
+      const note = form.querySelector('.fd-note');
+      submit.disabled = true;
+      submit.textContent = 'Sending...';
+      try {
+        await window.ANALYTIC_LEADS.submit({
+          name: nm.value.trim(),
+          email: em.value.trim(),
+          company: document.getElementById('fd-company')?.value.trim() || '',
+          service: sel.value || s.title,
+          message: msg.value.trim(),
+          source: location.href
+        });
+        form.style.display = 'none';
+        ok.classList.add('show');
+      } catch (error) {
+        if (note) {
+          note.textContent = error.message;
+          note.classList.add('is-error');
+        }
+        submit.disabled = false;
+        submit.textContent = 'Send Project Brief';
+      }
     });
   })();
 

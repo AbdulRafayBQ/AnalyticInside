@@ -102,3 +102,7 @@ a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
   -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
   box-shadow: 0 6px 22px rgba(23,19,14,.06) !important;
 }
+
+/* ── BRAND-STRIP MARQUEE wrapper (used on pages where the strip isn't part of a hero) ── */
+.svc-brand-wrap { position: relative; height: 86px; }
+@media (max-width: 860px) { .svc-brand-wrap { height: 60px; } }

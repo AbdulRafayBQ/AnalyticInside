@@ -27,7 +27,7 @@
       tags: ['React', 'Next.js', 'TypeScript', 'Node.js'],
       tagline: 'An enterprise logistics platform built from the ground up.',
       category: 'web',
-      caseStudy: 'Case studies/salasa-oms-portfolio/Salasa OMS — Redesigned Case Study.html',
+      caseStudy: 'Case studies/salasa-oms-portfolio/index.html',
       useDirectPath: true,
       featured: true,
       desc: 'A full scale enterprise order management platform for logistics operations covering order workflows, rule based carrier assignation, merchant pricing and real time decision visibility. Built end to end by our product engineering team.',
@@ -70,7 +70,7 @@
       tags: ['React', 'TypeScript', 'Material UI', 'Redux'],
       tagline: 'Rebuilt fintech dashboards serving 500 plus internal users.',
       category: 'fintech',
-      caseStudy: 'Case studies/caary-capital-portfolio/index.html',
+      caseStudy: 'Case studies/caary-capital-case-study/index.html',
       desc: 'Admin dashboards for a fintech company managing internal operations for 500 plus users. Rebuilt data views in React and TypeScript with Redux, then went after load times with code splitting and lazy loading that dropped the bundle from 4.2MB to under 1MB.',
       process: [
         { phase: 'Audit and Diagnosis', detail: 'Spent two weeks auditing the legacy dashboard. Identified 34 separate data tables with no virtual scrolling, an unoptimised bundle of 4.2MB initial JS and zero TypeScript coverage.' },
@@ -611,17 +611,18 @@
     const num = String(i + 1).padStart(2, '0');
     const total = String(projects.length).padStart(2, '0');
     const accent = ACCENTS[i % ACCENTS.length];
-    const cs = p.caseStudy
-      ? `<a class="pz-btn pz-btn--ghost" href="${p.caseStudy}" target="_blank" rel="noopener noreferrer">Case study <i aria-hidden="true">&nearr;</i></a>`
-      : '';
+    const hasCS = !!p.caseStudy;
+    const primaryAction = hasCS ? 'cs' : 'details';
+    const primaryLabel = hasCS ? 'View case study' : 'View project details';
+    const thumbLabel = hasCS ? `View ${esc(p.title)} case study` : `Open ${esc(p.title)} project details`;
     return `
       <article class="pz-row${i % 2 ? ' pz-row--flip' : ''}" data-id="${p.id}" style="--pa:${accent}">
         <div class="pz-media">
           <span class="pz-ghost" aria-hidden="true">${num}</span>
           <span class="pz-glow" aria-hidden="true"></span>
-          <button class="pz-thumb" type="button" data-id="${p.id}" aria-label="Open ${esc(p.title)} project details">
+          <button class="pz-thumb" type="button" data-id="${p.id}" data-action="${primaryAction}" aria-label="${thumbLabel}">
             ${thumbMarkup(p)}
-            <span class="pz-open" aria-hidden="true">View project <i>&nearr;</i></span>
+            <span class="pz-open" aria-hidden="true">${hasCS ? 'View case study' : 'View project'} <i>&nearr;</i></span>
           </button>
         </div>
         <div class="pz-body">
@@ -632,8 +633,7 @@
           <ul class="pz-points">${p.features.slice(0, 3).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
           <div class="pz-tags">${p.tags.slice(0, 5).map(t => `<span>${esc(t)}</span>`).join('')}</div>
           <div class="pz-actions">
-            <button class="pz-btn" type="button" data-id="${p.id}">View project details <i aria-hidden="true">&rarr;</i></button>
-            ${cs}
+            <button class="pz-btn" type="button" data-id="${p.id}" data-action="${primaryAction}">${primaryLabel} <i aria-hidden="true">&rarr;</i></button>
           </div>
         </div>
       </article>`;
@@ -657,8 +657,11 @@
       const trigger = e.target.closest('.pz-thumb, .pz-btn[data-id]');
       if (!trigger) return;
       const project = projects.find(p => p.id === trigger.dataset.id);
+      if (!project) return;
       const card = trigger.closest('.pz-row').querySelector('.pz-thumb');
-      if (project) openProject(card, project, trigger, false);
+      const action = trigger.dataset.action || (project.caseStudy ? 'cs' : 'details');
+      if (action === 'cs' && project.caseStudy) openCaseStudy(project, card, trigger);
+      else openProject(card, project, trigger, false);
     });
 
     const rows = qsa('.pz-row', list);
@@ -769,7 +772,7 @@
 
     // ── Case study CTA section
     const detailCaseStudyAction = p.caseStudy
-      ? `<a href="${p.caseStudy}" class="pf-view-cs-btn" target="_blank" rel="noopener noreferrer">View Case Study <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`
+      ? `<button class="pf-view-cs-btn" type="button" data-open-cs>View Case Study <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`
       : `<button class="pf-view-cs-btn" type="button" data-scroll-study>View Case Study <span aria-hidden="true">↓</span></button>`;
     const csSectionHtml = `
       <div class="pf-view-cs-section pf-reveal">
@@ -800,7 +803,7 @@
             <p class="pf-detail-tagline">${p.tagline}</p>
             <p class="pf-detail-desc">${p.desc}</p>
             <div class="pf-pair-tags">${p.tags.map(t => `<span class="pf-pill">${t}</span>`).join('')}</div>
-            ${p.caseStudy ? `<a href="${p.caseStudy}" class="pf-detail-cs-link" target="_blank" rel="noopener noreferrer">View Case Study <span aria-hidden="true">↗</span></a>` : '<button class="pf-detail-cs-link" type="button" data-scroll-study>View Case Study <span aria-hidden="true">↓</span></button>'}
+            ${p.caseStudy ? `<button class="pf-detail-cs-link" type="button" data-open-cs>View Case Study <span aria-hidden="true">→</span></button>` : '<button class="pf-detail-cs-link" type="button" data-scroll-study>View Case Study <span aria-hidden="true">↓</span></button>'}
             <button class="btn ghost pf-back-btn" type="button">← Back to Portfolio</button>
           </div>
         </div>
@@ -873,6 +876,8 @@
     if (overlay.classList.contains('pf-open')) return;
     if (hasGSAP) gsap.killTweensOf(detailEl);
     detailEl.style.opacity = '1';
+    detailEl.classList.remove('pf-detail--cs');
+    currentProject = project;
     activeCard = trigger;
     const img = qs('img', card);
     buildDetailMarkup(project);
@@ -925,6 +930,7 @@
       document.body.style.overflow = '';
       document.body.classList.remove('pf-modal-open');
       detailEl.innerHTML = '';
+      detailEl.classList.remove('pf-detail--cs');
       if (activeCard) { activeCard.focus(); activeCard = null; }
     };
     if (hasGSAP && !reduceMotion) {
@@ -934,6 +940,63 @@
     }
   }
 
+
+  /* ─────────────────────────────────────────────
+     CASE STUDY — shown inside the same popup
+  ───────────────────────────────────────────── */
+  let currentProject = null;
+
+  function caseStudyMarkup(p) {
+    return `
+      <div class="pf-cs-view">
+        <div class="pf-cs-bar">
+          <button class="pf-cs-back" type="button">
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M13 8H3M3 8L7.5 3.5M3 8L7.5 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back to project details
+          </button>
+          <span class="pf-cs-bar-title">${esc(p.title)} <em>· Case study</em></span>
+        </div>
+        <iframe class="pf-cs-frame" src="${encodeURI(p.caseStudy)}" title="${esc(p.title)} case study"></iframe>
+      </div>`;
+  }
+
+  function openCaseStudy(project, card, trigger) {
+    if (!project || !project.caseStudy) return;
+    currentProject = project;
+    if (!overlay.classList.contains('pf-open')) {
+      activeCard = trigger || card || null;
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('pf-modal-open');
+      overlay.classList.add('pf-open');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+    if (hasGSAP) gsap.killTweensOf(detailEl);
+    detailEl.classList.add('pf-detail--cs');
+    detailEl.innerHTML = caseStudyMarkup(project);
+    detailEl.scrollTop = 0;
+    if (hasGSAP && !reduceMotion) gsap.fromTo(detailEl, { opacity: 0 }, { opacity: 1, duration: 0.35 });
+    else detailEl.style.opacity = '1';
+  }
+
+  function showProjectDetails(project) {
+    currentProject = project;
+    detailEl.classList.remove('pf-detail--cs');
+    buildDetailMarkup(project);
+    if (hasGSAP) gsap.killTweensOf(detailEl);
+    detailEl.style.opacity = '1';
+    detailEl.scrollTop = 0;
+    revealDetailSections();
+    const hero = qs('.pf-detail-hero', detailEl);
+    if (hero) hero.classList.add('pf-reveal-visible');
+  }
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-open-cs]');
+    if (btn && currentProject) openCaseStudy(currentProject, null, btn);
+  });
+  document.addEventListener('click', e => {
+    if (e.target.closest('.pf-cs-back') && currentProject) showProjectDetails(currentProject);
+  });
 
   closeBtn.addEventListener('click', closeProject);
   overlayBg.addEventListener('click', closeProject);

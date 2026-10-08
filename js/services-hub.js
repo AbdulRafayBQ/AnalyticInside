@@ -111,7 +111,7 @@
 
   const CASE_STUDIES = {
     'custom-software-development': { title: 'Salasa OMS', link: 'portfolio.html?project=salasaoms' },
-    'website-development': { title: 'HostSailor', link: 'portfolio.html?project=hostsailor' },
+    'website-development': { title: 'Salasa OMS', link: 'portfolio.html?project=salasaoms' },
     'mobile-app-development': { title: 'Dr. Asgar Rheumatology', link: 'portfolio.html?project=drasgarrheumatology' },
     'ai-development': { title: 'RichAI', link: 'portfolio.html?project=richai' },
     'product-design-development': { title: 'Zylmi', link: 'portfolio.html?project=zylmi' },
@@ -224,17 +224,55 @@
   if (ov && dr) {
     const form = document.getElementById('fdFormEl'), ok = document.getElementById('fdSuccess');
     const nm = document.getElementById('fd-name'), em = document.getElementById('fd-email');
-    const open = () => { form.style.display = ''; ok.classList.remove('show'); ov.classList.add('open'); dr.classList.add('open'); document.body.style.overflow = 'hidden'; setTimeout(() => nm && nm.focus(), 350); };
+    const note = form.querySelector('.fd-note');
+    const submit = document.getElementById('fdSubmit');
+    const open = () => {
+      form.style.display = '';
+      ok.classList.remove('show');
+      if (note) {
+        note.textContent = "No commitment. We'll respond with a plan within 24 hours.";
+        note.classList.remove('is-error');
+      }
+      if (submit) {
+        submit.disabled = false;
+        submit.textContent = 'Send Project Brief';
+      }
+      ov.classList.add('open'); dr.classList.add('open'); document.body.style.overflow = 'hidden';
+      setTimeout(() => nm && nm.focus(), 350);
+    };
     const close = () => { ov.classList.remove('open'); dr.classList.remove('open'); document.body.style.overflow = ''; };
     document.querySelectorAll('[data-open-drawer], #navCtaBtn').forEach(b => b.addEventListener('click', open));
     document.getElementById('formClose')?.addEventListener('click', close);
     ov.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-    document.getElementById('fdSubmit')?.addEventListener('click', () => {
+    submit?.addEventListener('click', async () => {
       [nm, em].forEach(f => { f.style.borderColor = f.value.trim() ? '' : '#ff6b6b'; });
       if (!nm.value.trim()) return nm.focus();
-      if (!em.value.trim()) return em.focus();
-      form.style.display = 'none'; ok.classList.add('show');
+      if (!em.value.trim() || !em.validity.valid) {
+        em.style.borderColor = '#ff6b6b';
+        return em.focus();
+      }
+      submit.disabled = true;
+      submit.textContent = 'Sending...';
+      try {
+        await window.ANALYTIC_LEADS.submit({
+          name: nm.value.trim(),
+          email: em.value.trim(),
+          company: document.getElementById('fd-company')?.value.trim() || '',
+          service: document.getElementById('fd-service')?.value || '',
+          message: document.getElementById('fd-message')?.value.trim() || '',
+          source: location.href
+        });
+        form.style.display = 'none';
+        ok.classList.add('show');
+      } catch (error) {
+        if (note) {
+          note.textContent = error.message;
+          note.classList.add('is-error');
+        }
+        submit.disabled = false;
+        submit.textContent = 'Send Project Brief';
+      }
     });
   }
   document.getElementById('svBackToTop')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
