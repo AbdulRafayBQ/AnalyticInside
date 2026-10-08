@@ -85,7 +85,32 @@
     });
   }
 
-  window.ANALYTIC_LEADS = {
-    submit
-  };
+  function resetForm(container) {
+    if (!container) return;
+
+    if (typeof container.reset === 'function') {
+      container.reset();
+    } else {
+      container.querySelectorAll('input, select, textarea').forEach(control => {
+        if (control.type === 'checkbox' || control.type === 'radio') {
+          control.checked = control.defaultChecked;
+        } else if (control.tagName === 'SELECT') {
+          Array.from(control.options).forEach(option => { option.selected = option.defaultSelected; });
+        } else {
+          control.value = control.defaultValue;
+        }
+      });
+    }
+
+    container.querySelectorAll('.fd-stack-panel, .stf-stack-panel').forEach(panel => panel.classList.remove('open'));
+    container.querySelectorAll('.fd-stack-item, .stf-stack-item').forEach(item => item.classList.remove('is-active'));
+    container.querySelectorAll('.fd-stack-opt, .stf-stack-opt').forEach(option => {
+      option.classList.toggle('is-on', option.dataset.mode === 'auto');
+    });
+    container.querySelectorAll('.ep-chip').forEach(chip => {
+      chip.classList.toggle('is-on', Boolean(chip.querySelector('input')?.checked));
+    });
+  }
+
+  window.ANALYTIC_LEADS = { submit, reset: resetForm };
 })();

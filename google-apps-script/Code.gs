@@ -30,6 +30,7 @@ function doPost(event) {
     }
 
     const sheet = getLeadSheet_();
+    let rowNumber;
     const lock = LockService.getScriptLock();
     lock.waitLock(10000);
     try {
@@ -47,10 +48,13 @@ function doPost(event) {
         clean_(lead.message, 12000),
         clean_(lead.source, 500)
       ]);
+      rowNumber = sheet.getLastRow();
     } finally {
       lock.releaseLock();
     }
 
+    const sheetUrl = sheet.getParent().getUrl();
+    const rowUrl = sheetUrl + '#gid=' + sheet.getSheetId() + '&range=A' + rowNumber;
     const subject = ('New website enquiry: ' + (lead.service || 'Project request'))
       .replace(/[\r\n]+/g, ' ').slice(0, 180);
     const body = [
@@ -69,7 +73,10 @@ function doPost(event) {
       'Message:',
       clean_(lead.message, 12000),
       '',
-      'Source: ' + clean_(lead.source, 500)
+      'Source: ' + clean_(lead.source, 500),
+      '',
+      'Saved in Google Sheet: ' + rowUrl,
+      'Sheet tab: ' + SHEET_NAME + ' (row ' + rowNumber + ')'
     ].join('\n');
 
     MailApp.sendEmail({

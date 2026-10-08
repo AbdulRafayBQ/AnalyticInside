@@ -343,9 +343,11 @@
           message: document.getElementById('cProject').value.trim(),
           source: location.href
         });
-          btn.style.display = 'none';
-          feedback.className = 'form-feedback success';
-          feedback.textContent = "Thank you! Your message has been received. We'll be in touch soon.";
+        window.ANALYTIC_LEADS.reset(document.getElementById('contactForm'));
+        btn.disabled = true;
+        btn.querySelector('span').textContent = 'Message sent';
+        feedback.className = 'form-feedback success';
+        feedback.textContent = "Thank you! Your message has been received. We'll be in touch soon.";
       } catch (error) {
         feedback.className = 'form-feedback error';
         feedback.textContent = error.message;

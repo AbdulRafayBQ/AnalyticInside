@@ -266,6 +266,8 @@
           message: document.getElementById('fd-message')?.value.trim() || '',
           source: location.href
         });
+        window.ANALYTIC_LEADS.reset(form);
+        submit.textContent = 'Message Sent';
         form.style.display = 'none';
         ok.classList.add('show');
       } catch (error) {

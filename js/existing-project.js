@@ -236,7 +236,7 @@
     };
     const open = preset => {
       form.style.display = ''; ok.classList.remove('on');
-      form.reset();
+      window.ANALYTIC_LEADS.reset(form);
       const submitButton = form.querySelector('.ep-submit');
       const note = form.querySelector('.ep-note');
       submitButton.disabled = false;
@@ -330,6 +330,8 @@
           service: 'Existing product support',
           source: location.href
         });
+        form.reset();
+        button.textContent = 'Request Sent';
         form.style.display = 'none';
         ok.classList.add('on');
       } catch (error) {

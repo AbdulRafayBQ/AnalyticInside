@@ -1000,6 +1000,8 @@
           message,
           source: location.href
         });
+        window.ANALYTIC_LEADS.reset(fEl);
+        if (submitButton) submitButton.textContent = 'Consultation Sent';
         fEl.style.display = 'none';
         if (successBox) successBox.classList.add('on');
       } catch (error) {
@@ -1063,6 +1065,8 @@
           message: msg.value.trim(),
           source: location.href
         });
+        window.ANALYTIC_LEADS.reset(form);
+        submit.textContent = 'Message Sent';
         form.style.display = 'none';
         ok.classList.add('show');
       } catch (error) {
