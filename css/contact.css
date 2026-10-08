@@ -330,8 +330,15 @@
 }
 
 .form-feedback.success {
-  color: #2f7a4d;
+  color: #a9c9b3;
   font-weight: 500;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.form-feedback.success.is-hiding {
+  opacity: 0;
+  transform: translateY(-5px);
 }
 .form-feedback.error {
   color: #b42318;
@@ -409,7 +416,7 @@
 }
 .btn-send:hover,
 .btn-send.btn.primary:hover { background: color-mix(in srgb, var(--accent) 85%, #fff); color: #0d0d0d; transform: translateY(-2px); box-shadow: none; }
-.form-feedback.success { color: var(--accent); }
+.form-feedback.success { color: #a9c9b3; }
 
 @media (max-width: 600px) {
   .contact-card, .contact-card:hover { padding: 24px 18px; }

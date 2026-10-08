@@ -559,7 +559,7 @@ body {
 .fd-note.is-error{color:#ffaaa3;}
 .fd-success{display:none;text-align:center;padding:48px 0;flex-direction:column;align-items:center;gap:12px;}
 .fd-success.show{display:flex;}
-.fd-success-icon{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:4px;}
+.fd-success-icon{width:56px;height:56px;border-radius:50%;background:rgba(232,218,190,.16);border:1px solid rgba(232,218,190,.42);color:#eadfc9;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:4px;}
 .fd-success h3{font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;}
 .fd-success p{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,.5);line-height:1.55;max-width:300px;}
 

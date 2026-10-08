@@ -1001,9 +1001,17 @@
           source: location.href
         });
         window.ANALYTIC_LEADS.reset(fEl);
-        if (submitButton) submitButton.textContent = 'Consultation Sent';
+        if (submitButton) {
+          submitButton.textContent = 'Consultation Sent';
+          submitButton.disabled = true;
+        }
         fEl.style.display = 'none';
-        if (successBox) successBox.classList.add('on');
+        if (successBox) {
+          successBox.classList.add('on');
+          requestAnimationFrame(() => {
+            root.querySelector('[data-hero]')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
       } catch (error) {
         if (feedback) feedback.textContent = error.message;
         if (submitButton) {
