@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbynpgTjUumr8mThRpOkochGAO6t34YWz1TGuIqTs5x1-hm9H9zLfhMu_S8HYGvkH-wM/exec';
+  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwFZWL55W9lViJSilyQrRCVPYC3MkWZyB_513msWkJU9f_Bm17GaorGBSzJYOiXfliC/exec';
   const endpoint = window.ANALYTIC_FORMS_ENDPOINT;
   let requestCounter = 0;
 
