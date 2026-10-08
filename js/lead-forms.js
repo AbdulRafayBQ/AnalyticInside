@@ -1,4 +1,3 @@
-```js
 (function () {
   'use strict';
 
@@ -90,4 +89,3 @@
     submit
   };
 })();
-```

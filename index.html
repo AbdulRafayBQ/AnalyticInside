@@ -2739,7 +2739,7 @@
   </footer>
 
 <script src="js/script.js?v=4.1"></script>
-<script src="js/lead-forms.js?v=1.0"></script>
+<script src="js/lead-forms.js?v=1.1"></script>
 <script src="js/fd-stack-choice.js?v=1.0"></script>
 <script src="js/svc-card-nav.js?v=1.0"></script>
 <script>
@@ -3882,6 +3882,9 @@
       submitBtn.disabled=true;
       submitBtn.textContent='Sending...';
       try{
+        if (!window.ANALYTIC_LEADS || typeof window.ANALYTIC_LEADS.submit !== 'function') {
+          throw new Error('The form service did not load. Refresh the page and try again.');
+        }
         await window.ANALYTIC_LEADS.submit({
           name:n,email:em,
           company:document.getElementById('fd-company')?.value.trim()||'',

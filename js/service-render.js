@@ -988,6 +988,9 @@
       }
       if (feedback) feedback.textContent = '';
       try {
+        if (!window.ANALYTIC_LEADS || typeof window.ANALYTIC_LEADS.submit !== 'function') {
+          throw new Error('The form service did not load. Refresh the page and try again.');
+        }
         await window.ANALYTIC_LEADS.submit({
           name,
           email,
@@ -1049,6 +1052,9 @@
       submit.disabled = true;
       submit.textContent = 'Sending...';
       try {
+        if (!window.ANALYTIC_LEADS || typeof window.ANALYTIC_LEADS.submit !== 'function') {
+          throw new Error('The form service did not load. Refresh the page and try again.');
+        }
         await window.ANALYTIC_LEADS.submit({
           name: nm.value.trim(),
           email: em.value.trim(),
