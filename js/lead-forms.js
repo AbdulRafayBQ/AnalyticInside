@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwFZWL55W9lViJSilyQrRCVPYC3MkWZyB_513msWkJU9f_Bm17GaorGBSzJYOiXfliC/exec';
+  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwYmtx5qynHaIN_F2OrvLeWkCl6wdLM8Y9MD9YsF1SIB5__mcfV2LPhadnnexvez76X/exec';
   const endpoint = window.ANALYTIC_FORMS_ENDPOINT;
   let requestCounter = 0;
 
@@ -40,12 +40,37 @@
 
     return new Promise((resolve, reject) => {
       let timeout;
+      let responseTimeout;
+      let submitted = false;
+      let settled = false;
 
       const cleanup = () => {
         window.removeEventListener('message', onMessage);
+        frame.removeEventListener('load', onFrameLoad);
         window.clearTimeout(timeout);
+        window.clearTimeout(responseTimeout);
         form.remove();
         frame.remove();
+      };
+
+      const fail = message => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        reject(new Error(message));
+      };
+
+      const onFrameLoad = () => {
+        if (!submitted) {
+          submitted = true;
+          form.submit();
+          return;
+        }
+
+        window.clearTimeout(responseTimeout);
+        responseTimeout = window.setTimeout(() => {
+          fail('Google could not confirm this submission. Please try again or email abdulrafay364p@gmail.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
+        }, 1500);
       };
 
       const onMessage = event => {
@@ -61,6 +86,8 @@
           return;
         }
 
+        if (settled) return;
+        settled = true;
         cleanup();
 
         if (event.data.success) {
@@ -76,18 +103,14 @@
       };
 
       window.addEventListener('message', onMessage);
+      frame.addEventListener('load', onFrameLoad);
 
       timeout = window.setTimeout(() => {
-        cleanup();
-        reject(
-          new Error(
-            'The form service did not respond. Please try again or email abdulrafay364p@gmail.com.'
-          )
-        );
-      }, 45000);
+        fail('Google did not respond to this submission. Please try again or email abdulrafay364p@gmail.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
+      }, 15000);
 
+      frame.src = 'about:blank';
       document.body.append(frame, form);
-      form.submit();
     });
   }
 
