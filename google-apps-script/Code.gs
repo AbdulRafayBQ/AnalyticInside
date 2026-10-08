@@ -121,6 +121,6 @@ function resultPage_(requestId, success, message) {
     message: message
   }).replace(/</g, '\\u003c');
   return HtmlService.createHtmlOutput(
-    '<!doctype html><html><body><script>window.parent.postMessage(' + data + ', "*");</script></body></html>'
+    '<!doctype html><html><body><script>window.top.postMessage(' + data + ', "*");</script></body></html>'
   ).setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }

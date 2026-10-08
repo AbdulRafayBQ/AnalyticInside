@@ -10,7 +10,10 @@
       return Promise.reject(new Error('Form delivery is not configured. Please email abdulrafay364p@gmail.com directly.'));
     }
 
-    const requestId = `${Date.now()}-${++requestCounter}`;
+    const randomId = window.crypto && typeof window.crypto.randomUUID === 'function'
+      ? window.crypto.randomUUID()
+      : `${Math.random().toString(36).slice(2)}-${Math.random().toString(36).slice(2)}`;
+    const requestId = `${Date.now()}-${++requestCounter}-${randomId}`;
     const frameName = `analytic-lead-${requestId}`;
 
     const frame = document.createElement('iframe');
@@ -46,8 +49,11 @@
       };
 
       const onMessage = event => {
+        const trustedOrigin = event.origin === 'https://script.google.com' ||
+          event.origin === 'https://script.googleusercontent.com' ||
+          event.origin.endsWith('.googleusercontent.com');
         if (
-          event.source !== frame.contentWindow ||
+          !trustedOrigin ||
           !event.data ||
           event.data.type !== 'analytic-lead-result' ||
           event.data.requestId !== requestId
