@@ -1,8 +1,8 @@
 /* ==========================================================================
-   ANALYTIC INSIDER — "WHATEVER YOUR IDEA IS, WE BUILD IT" SECTION (v2)
-   Dark + gold theme. An idea types itself out, then moves through
-   Idea -> Design -> Build -> Launch on a live build board. Toolkit tabs
-   cover apps, websites, software, AI, design and cloud.
+   ANALYTIC INSIDER — PRODUCT DEVELOPMENT "TECHNOLOGY STACK" SECTION (v3)
+   Same design as the homepage Technology Stack: cream container, pill tab
+   bar, grouped tech pills, and a swipe-style category switcher on phones.
+   Uses the homepage's own .tech-* classes from css/styles.css.
    Exposes window.PRODUCT_DESIGN = { html(), init(root) }
    ========================================================================== */
 (function () {
@@ -112,158 +112,131 @@
       ['Sentry', ['tech:sentry'], 'Catching and fixing errors fast']
     ]]
   ];
-  const IDEAS = [
-    'a SaaS platform for remote teams in 50 countries',
-    'a cross-border payments app with multi-currency wallets',
-    'a global marketplace connecting freelancers and clients',
-    'a language-learning app launching on iOS and Android worldwide',
-    'a subscription platform for creators selling to global fans',
-    'a multi-language travel booking app for international tourists',
-    'an AI analytics dashboard for brands selling in many markets',
-    'a healthcare telemedicine app for patients across borders'
-  ];
-  const STAGES = ['Idea', 'Design', 'Build', 'Launch'];
-  const CORNERS = ['stack:figma', 'stack:react', 'tech:openai', 'stack:firebase'];
-  const CHIPS = ['Global SaaS', 'Mobile App', 'Multi-currency Wallet', 'Worldwide Marketplace', 'Web Platform', 'AI Tool', 'Subscription Platform', 'Multi-language App', 'Analytics Dashboard', 'Cross-border Payments', 'E-commerce', 'Telemedicine App', 'Creator Platform', 'Enterprise Software'];
-  const total = CATS.reduce((n, c) => n + c[1].length, 0);
-  const logo = icons => icons.map(src).join('');
 
-  function canvasBody(stage) {
-    const bar = (w, on) => `<i class="pd-sk pd-sk-bar${on ? ' on' : ''}" style="width:${w}%"></i>`;
-    const boxes = on => `<div class="pd-row"><i class="pd-sk pd-sk-box${on ? ' on' : ''}"></i><i class="pd-sk pd-sk-box${on ? ' on' : ''}"></i><i class="pd-sk pd-sk-box${on ? ' on' : ''}"></i></div>`;
-    if (stage === 0) return `${bar(38)}${boxes(false)}<i class="pd-sk pd-sk-line"></i><i class="pd-sk pd-sk-line" style="width:70%"></i>`;
-    if (stage === 1) return `${bar(46, true)}<div class="pd-swatch"><span style="background:${GOLD}"></span><span style="background:#F4EEE4"></span><span style="background:#2A231B"></span></div>${boxes(true)}<i class="pd-sk pd-sk-line on"></i>`;
-    if (stage === 2) return `${bar(46, true)}${boxes(true)}<div class="pd-log"><p>&rsaquo; Setting up the project</p><p>&rsaquo; Building screens and APIs</p><p>&rsaquo; All checks passing</p></div>`;
-    return `<div class="pd-live"><div class="pd-hero"><b>Your product is live</b><span>Ready for real users, tested and secured</span></div>${boxes(true)}</div>`;
+  /* Tabs → groups → tool names (names are looked up in CATS above) */
+  const TABS = [
+    ['Design & Prototype', [
+      ['Design Tools', ['Figma', 'Adobe XD', 'Framer']],
+      ['Research & Prototyping', ['User Research', 'Clickable Prototypes', 'Motion Design']]
+    ]],
+    ['Mobile Apps', [
+      ['Cross Platform', ['Flutter', 'React Native', 'Dart']],
+      ['Android', ['Jetpack Compose', 'Android Studio', 'Kotlin']],
+      ['iOS', ['SwiftUI', 'Xcode', 'Swift']],
+      ['Publishing', ['App Store', 'Google Play']]
+    ]],
+    ['Web Platforms', [
+      ['Languages', ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Go', 'PHP', 'Rust', 'C++']],
+      ['Frontend', ['React.js', 'Next.js', 'Vue.js', 'Angular', 'Tailwind CSS', 'Bootstrap', 'HTML5 & CSS3']],
+      ['Backend', ['Node.js', 'Express', 'Django', 'Flask', 'FastAPI', 'Laravel', 'Spring', '.NET Core', 'REST & GraphQL']]
+    ]],
+    ['AI & Machine Learning', [
+      ['AI Models', ['OpenAI', 'Anthropic Claude', 'Gemini']],
+      ['AI Tooling & Data', ['LangChain', 'Hugging Face', 'PyTorch', 'Snowflake', 'Airflow']]
+    ]],
+    ['Database', [
+      ['Relational & Document', ['PostgreSQL', 'MySQL', 'MongoDB', 'SQL Server']],
+      ['Realtime & Cache', ['Supabase', 'Firebase', 'Redis', 'SQLite']]
+    ]],
+    ['Cloud & DevOps', [
+      ['Cloud', ['AWS', 'Google Cloud', 'Microsoft Azure']],
+      ['Hosting & Delivery', ['Docker', 'Kubernetes', 'Vercel', 'Netlify', 'Cloudflare']],
+      ['Quality & Releases', ['GitHub Actions', 'Git', 'Sentry']]
+    ]]
+  ];
+  const FLAT = {};
+  CATS.forEach(c => c[1].forEach(it => { FLAT[it[0]] = it; }));
+  const esc = t => String(t).replace(/&/g, '&amp;');
+
+  function pill(name) {
+    const it = FLAT[name]; if (!it) return '';
+    return `<div class="tech-pill" data-n="${esc(name)}"><span class="tech-icon">${src(it[1][0])}</span><span class="tech-name">${esc(name)}</span></div>`;
   }
 
   function html() {
-    const chips = CHIPS.map(c => `<span class="pd-chip">${c}</span>`).join('');
-    const corners = CORNERS.map((k, i) => `<span class="pd-corner pc${i}">${src(k)}</span>`).join('');
-    const stages = STAGES.map((s, i) => `<div class="pd-st" data-i="${i}"><em>0${i + 1}</em><span>${s}</span></div>`).join('<u></u>');
-    const screens = STAGES.map((_, i) => `<div class="pd-screen${i === 0 ? ' on' : ''}" data-i="${i}">${canvasBody(i)}</div>`).join('');
-    const tabs = CATS.map((c, i) => `<button type="button" role="tab" class="ts-tab${i === 0 ? ' on' : ''}" data-i="${i}"><em>0${i + 1}</em>${c[0]}<sup>${c[1].length}</sup><s></s></button>`).join('');
+    const tabs = TABS.map((t, i) => `<button class="tech-tab-btn${i === 0 ? ' active' : ''}" data-tab="pd${i}" role="tab" aria-selected="${i === 0}">${esc(t[0])}</button>`).join('');
+    const dots = TABS.map((t, i) => `<button class="tech-mob-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Category ${i + 1}: ${esc(t[0])}"></button>`).join('');
+    const panels = TABS.map((t, i) => `
+            <div class="tech-panel${i === 0 ? ' active' : ''}" data-tab-panel="pd${i}" role="tabpanel">${t[1].map(g => `
+              <div class="tech-group">
+                <h3 class="tech-group-heading">${esc(g[0])}</h3>
+                <div class="tech-pills">${g[1].map(pill).join('')}</div>
+              </div>`).join('')}
+            </div>`).join('');
+    const arrow = d => `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="${d}"></polyline></svg>`;
     return `
-    <section class="sv-sec ts pd" id="techStack" data-sec>
-      <div class="pd-marquee" aria-hidden="true"><div class="pd-marquee-track">${chips}${chips}</div></div>
-      <div class="sv-inner ts-wrap" id="pdRoot">
-        <div class="pd-top">
-          <div class="ts-rv" style="--i:0">
-            <span class="ts-eyebrow"><b></b>Whatever Your Idea Is, We Build It</span>
-            <h2 class="ts-title">Got an idea? <em>We turn it into a live product.</em></h2>
-            <p class="ts-sub">Whether it is a mobile app, a website, custom software, an AI tool, or something nobody has built yet, we take it from a rough concept to a working product. Research, design and engineering happen with one team, so you never have to go looking for a separate developer.</p>
-            <div class="ts-stats"><div><b data-count="${CATS.length}">0</b><span>Toolkit categories</span></div><div><b data-count="${total}">0</b><span>Tools &amp; methods</span></div><div><b data-count="100">0</b><span>% real, working product</span></div></div>
+    <section class="sv-sec tech-section pdh" id="techStack" data-sec>
+      <div class="tech-ambient-glow" aria-hidden="true"></div>
+      <div class="tech-inner">
+        <div class="tech-header">
+          <div class="tech-header-left">
+            <p class="tech-eyebrow">Technology Stack</p>
+            <h2 class="tech-title">Stack That <em>Builds Products.</em></h2>
           </div>
-          <div class="pd-scene ts-rv" style="--i:2" id="pdScene">
-            <div class="pd-input"><span class="pd-prompt">Your idea</span><span class="pd-typed" id="pdType"></span><i class="pd-caret"></i></div>
-            <div class="pd-hud"><div><span>Clarity</span><b id="pdA">0%</b></div><div><span>Progress</span><b id="pdB">0%</b></div><div><span>Launch ready</span><b id="pdC">0%</b></div></div>
-            <div class="pd-board-wrap">
-              ${corners}
-              <div class="pd-board">
-                <div class="pd-board-bar"><i></i><i></i><i></i><span id="pdFileName">Untitled project</span></div>
-                <div class="pd-board-body"><div class="pd-canvas" id="pdCanvas">${screens}</div></div>
-              </div>
-            </div>
-            <div class="pd-rail">
-              <div class="pd-rail-track"><s id="pdFill"></s></div>
-              <div class="pd-stages">${stages}</div>
-              <div class="pd-ready" id="pdReady"><i></i>Live &amp; ready for real users</div>
-            </div>
+          <div class="tech-header-right">
+            <p class="tech-subtitle">From the first sketch to a live launch, these are the design tools, frameworks, databases and cloud platforms we use to turn your idea into a working product.</p>
           </div>
         </div>
-        <div class="ta-panel ts-rv" style="--i:3">
-          <div class="ts-tabs" role="tablist">${tabs}</div>
-          <div class="ts-grid" id="pdGrid"></div>
+        <div class="tech-container" id="pdTechContainer">
+          <div class="tech-texture" aria-hidden="true"></div>
+          <div class="tech-tabs-wrap"><div class="tech-tabs" role="tablist">${tabs}</div></div>
+          <div class="tech-mobile-nav" aria-label="Technology category navigator">
+            <button class="tech-mob-arrow tech-mob-prev" type="button" aria-label="Previous Category">${arrow('15 18 9 12 15 6')}</button>
+            <div class="tech-mob-category-card"><span class="tech-mob-category-title">${esc(TABS[0][0])}</span><span class="tech-mob-counter">1 / ${TABS.length}</span></div>
+            <button class="tech-mob-arrow tech-mob-next" type="button" aria-label="Next Category">${arrow('9 18 15 12 9 6')}</button>
+          </div>
+          <div class="tech-mob-dots" role="tablist" aria-label="Category indicator">${dots}</div>
+          <div class="tech-panels">${panels}
+          </div>
         </div>
       </div>
     </section>`;
   }
 
   function init(root) {
-    const wrap = root.querySelector('#pdRoot'); if (!wrap) return;
-    const $ = s => wrap.querySelector(s), sec = wrap.closest('.ts');
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const sleep = ms => new Promise(r => setTimeout(r, ms));
-    const inView = async () => { while (!sec.classList.contains('is-in')) await sleep(400); };
+    const box = root.querySelector('#pdTechContainer'); if (!box) return;
+    const tabs = [...box.querySelectorAll('.tech-tab-btn')], panels = [...box.querySelectorAll('.tech-panel')];
+    const wrap = box.querySelector('.tech-panels'), title = box.querySelector('.tech-mob-category-title'), counter = box.querySelector('.tech-mob-counter');
+    const dots = [...box.querySelectorAll('.tech-mob-dot')];
+    let cur = 0;
 
-    /* tabs + cards */
-    const grid = $('#pdGrid'), tabs = [...wrap.querySelectorAll('.ts-tab')];
-    let cur = 0, manual = false, hover = false;
-    function show(i) {
-      cur = i;
-      tabs.forEach((t, n) => { t.classList.toggle('on', n === i); t.classList.remove('run'); });
-      void tabs[i].offsetWidth; if (!manual) tabs[i].classList.add('run');
-      grid.classList.remove('swap'); void grid.offsetWidth; grid.classList.add('swap');
-      grid.innerHTML = CATS[i][1].map((it, n) => `<button type="button" class="ts-card" data-n="${it[0]}" style="--i:${n}"><span class="ts-glow"></span><span class="ts-logo${it[1].length > 1 ? ' multi m' + it[1].length : ''}">${logo(it[1])}</span><strong>${it[0]}</strong><small>${it[2]}</small><span class="ts-go">Let's Talk &nearr;</span></button>`).join('');
+    /* lock the box to the tallest category so switching tabs never makes the page jump */
+    function equalize() {
+      wrap.style.minHeight = '';
+      let max = 0;
+      panels.forEach(p => {
+        const on = p.classList.contains('active');
+        if (!on) p.style.cssText = 'display:block;position:absolute;left:0;right:0;visibility:hidden;pointer-events:none;';
+        max = Math.max(max, p.offsetHeight);
+        if (!on) p.style.cssText = '';
+      });
+      if (max) wrap.style.minHeight = Math.ceil(max) + 'px';
     }
-    tabs.forEach((t, i) => t.addEventListener('click', () => { manual = true; show(i); }));
-    show(0);
-    setInterval(() => { if (!manual && !hover && sec.classList.contains('is-in')) show((cur + 1) % CATS.length); }, 6500);
-    grid.addEventListener('pointerenter', () => { hover = true; });
-    grid.addEventListener('pointerleave', () => { hover = false; });
-    grid.addEventListener('pointermove', e => {
-      const c = e.target.closest('.ts-card'); if (!c) return;
-      const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      c.style.setProperty('--mx', x * 100 + '%'); c.style.setProperty('--my', y * 100 + '%');
-      c.style.setProperty('--ry', ((x - .5) * 14).toFixed(1) + 'deg'); c.style.setProperty('--rx', ((.5 - y) * 14).toFixed(1) + 'deg');
-    });
-    grid.addEventListener('pointerout', e => { const c = e.target.closest('.ts-card'); if (c) { c.style.removeProperty('--rx'); c.style.removeProperty('--ry'); } });
-    grid.addEventListener('click', e => { const c = e.target.closest('.ts-card'); if (c) document.dispatchEvent(new CustomEvent('analytic:open-drawer', { detail: { tech: c.dataset.n } })); });
+    equalize();
+    addEventListener('load', equalize); addEventListener('resize', equalize);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalize);
 
-    /* counters */
-    let counted = false;
-    const count = () => wrap.querySelectorAll('[data-count]').forEach(e => {
-      const to = +e.dataset.count, t0 = performance.now();
-      (function f(t) { const p = Math.min((t - t0) / 1400, 1); e.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(f); })(t0);
-    });
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) box.classList.add('tech-in'); }), { threshold: 0.15 }).observe(box);
 
-    /* idea typewriter */
-    const typed = $('#pdType');
-    (async function typeLoop() {
-      let k = 0;
-      if (reduce) { typed.textContent = IDEAS[0]; return; }
-      for (;;) {
-        await inView();
-        const word = IDEAS[k++ % IDEAS.length];
-        for (let n = 1; n <= word.length; n++) { typed.textContent = word.slice(0, n); await sleep(55); }
-        await sleep(1700);
-        for (let n = word.length; n >= 0; n--) { typed.textContent = word.slice(0, n); await sleep(26); }
-        await sleep(300);
-      }
-    })();
-
-    /* build board: Idea -> Design -> Build -> Launch */
-    const screens = [...wrap.querySelectorAll('.pd-screen')];
-    const fill = $('#pdFill'), stEls = [...wrap.querySelectorAll('.pd-st')], ready = $('#pdReady'), fileName = $('#pdFileName');
-    const hA = $('#pdA'), hB = $('#pdB'), hC = $('#pdC');
-    const logLines = () => [...wrap.querySelectorAll('.pd-log p')];
-    const FILES = ['Untitled project', 'Design file', 'Building your app', 'yourproduct.com'];
-    const timers = [];
-    function setStage(i) {
-      timers.splice(0).forEach(clearTimeout);
-      screens.forEach((s, n) => s.classList.toggle('on', n === i));
-      stEls.forEach((s, n) => s.classList.toggle('on', i >= 0 && n <= i));
-      const p = i < 0 ? 0 : (i + 1) / STAGES.length;
-      fill.style.width = p * 100 + '%';
-      hA.textContent = Math.round(100 * Math.min(p + 0.1, 1)) + '%';
-      hB.textContent = Math.round(100 * p) + '%';
-      hC.textContent = i === STAGES.length - 1 ? '100%' : Math.round(100 * p * 0.9) + '%';
-      fileName.textContent = i < 0 ? FILES[0] : FILES[i];
-      fileName.classList.toggle('is-live', i === STAGES.length - 1);
-      ready.classList.toggle('on', i === STAGES.length - 1);
-      logLines().forEach(p => p.classList.remove('on'));
-      if (i === 2) logLines().forEach((p, n) => timers.push(setTimeout(() => p.classList.add('on'), 350 + n * 650)));
+    function set(i) {
+      cur = (i + tabs.length) % tabs.length;
+      window.__navSuppressUntil = Date.now() + 800;
+      tabs.forEach((t, n) => { t.classList.toggle('active', n === cur); t.setAttribute('aria-selected', n === cur); });
+      panels.forEach((p, n) => p.classList.toggle('active', n === cur));
+      dots.forEach((d, n) => d.classList.toggle('active', n === cur));
+      title.textContent = tabs[cur].textContent.trim();
+      counter.textContent = (cur + 1) + ' / ' + tabs.length;
+      tabs[cur].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
     }
+    tabs.forEach((t, i) => t.addEventListener('click', () => set(i)));
+    dots.forEach((d, i) => d.addEventListener('click', () => set(i)));
+    box.querySelector('.tech-mob-prev').addEventListener('click', () => set(cur - 1));
+    box.querySelector('.tech-mob-next').addEventListener('click', () => set(cur + 1));
 
-    (async function loop() {
-      if (reduce) { setStage(STAGES.length - 1); logLines().forEach(p => p.classList.add('on')); count(); return; }
-      for (;;) {
-        await inView(); if (!counted) { counted = true; count(); }
-        for (let i = 0; i < STAGES.length; i++) { await inView(); setStage(i); await sleep(2600); }
-        await sleep(2400);
-        setStage(-1); await sleep(700);
-      }
-    })();
+    /* click a tool → open the project drawer with that tech (same as before) */
+    box.addEventListener('click', e => {
+      const p = e.target.closest('.tech-pill'); if (p) document.dispatchEvent(new CustomEvent('analytic:open-drawer', { detail: { tech: p.dataset.n } }));
+    });
   }
   window.PRODUCT_DESIGN = { html, init };
 })();

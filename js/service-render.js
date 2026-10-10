@@ -150,8 +150,9 @@
   `).join('');
 
   /* ── Featured add-on: "We pick the stack" vs "I'll customize it".
-     Only on the 4 services that need it. Collapsed by default — the
-     tech grid only appears once the visitor clicks "Customize". ── */
+     Only on the 3 services that need it (Mobile App, Website, Software
+     Development). Collapsed by default — the tech grid only appears
+     once the visitor clicks "Customize". ── */
   const TI = 'images/tech-stack/';
   const STACK_CHOICE = {
     'mobile-app-development': [
@@ -179,12 +180,6 @@
       ['Dev Tools', [['Git', 'git'], ['GitHub', 'github'], ['VS Code', 'vscode'], ['Visual Studio', 'visualstudio'], ['Postman', 'postman'], ['Docker', 'docker']]],
       ['Cloud / Deployment', [['AWS', 'amazonwebservices'], ['Microsoft Azure', 'azure'], ['Google Cloud', 'googlecloud'], ['Kubernetes', 'kubernetes'], ['CI/CD', 'githubactions']]],
       ['APIs', [['REST API', 'restapi'], ['GraphQL', 'graphql']]]
-    ],
-    'vibe-code-to-production': [
-      ['Languages', [['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['Python', 'python']]],
-      ['Framework', [['React', 'react'], ['Next.js', 'nextjs'], ['Node.js', 'nodejs'], ['Vue.js', 'vuejs'], ['Express', 'express']]],
-      ['Database', [['PostgreSQL', 'postgresql'], ['Supabase', 'supabase'], ['MongoDB', 'mongodb'], ['MySQL', 'mysql'], ['Redis', 'redis']]],
-      ['Infra & CI/CD', [['Docker', 'docker'], ['Kubernetes', 'kubernetes'], ['GitHub Actions', 'githubactions'], ['Vercel', 'vercel'], ['AWS', 'amazonwebservices'], ['Netlify', 'netlify']]]
     ]
   };
   const stackCats = STACK_CHOICE[s.slug];
@@ -362,28 +357,28 @@
   const C = s.capabilities;
   if (R.caps === 'grid') {
     capsInner = `<div class="cap-grid">${C.map((c, i) => `
-      <div class="cap-w" ${fx(['rise', 'swing', 'rise', 'twist', 'zoom', 'twist'][i] || 'rise', (i % 3) + Math.floor(i / 3))}>
+      <div class="cap-w" id="cap-${i + 1}" ${fx(['rise', 'swing', 'rise', 'twist', 'zoom', 'twist'][i] || 'rise', (i % 3) + Math.floor(i / 3))}>
         <div class="cap-card" data-tilt data-tilt-max="7"><span class="cap-n">${pad(i)}</span><h3>${c.title}</h3><p>${c.desc}</p><i class="cap-glow"></i></div>
       </div>`).join('')}</div>`;
   } else if (R.caps === 'rows') {
     capsInner = `<div class="cap-rows">${C.map((c, i) => `
-      <div class="cap-row" ${fx(i % 2 ? 'flipr' : 'flipl', i)}>
+      <div class="cap-row" id="cap-${i + 1}" ${fx(i % 2 ? 'flipr' : 'flipl', i)}>
         <span class="cap-rn">${pad(i)}</span><h3>${c.title}</h3><p>${c.desc}</p>
         <span class="cap-go">${arrowSvg}</span><i class="cap-line"></i>
       </div>`).join('')}</div>`;
   } else if (R.caps === 'bento') {
     capsInner = `<div class="cap-bento">${C.map((c, i) => `
-      <div class="cap-b b${i + 1}" ${fx(['zoom', 'flipr', 'rise', 'rise', 'flipl', 'zoom'][i], i)}>
+      <div class="cap-b b${i + 1}" id="cap-${i + 1}" ${fx(['zoom', 'flipr', 'rise', 'rise', 'flipl', 'zoom'][i], i)}>
         <div class="cap-b-in"><span class="cap-n">${pad(i)}</span><h3>${c.title}</h3><p>${c.desc}</p></div>
       </div>`).join('')}</div>`;
   } else if (R.caps === 'stair') {
     capsInner = `<div class="cap-stair">${C.map((c, i) => `
-      <div class="cap-s ${i % 2 ? 'is-r' : 'is-l'}" ${fx(i % 2 ? 'flipr' : 'flipl', Math.floor(i / 2))}>
+      <div class="cap-s ${i % 2 ? 'is-r' : 'is-l'}" id="cap-${i + 1}" ${fx(i % 2 ? 'flipr' : 'flipl', Math.floor(i / 2))}>
         <span class="cap-sn">${pad(i)}</span><div><h3>${c.title}</h3><p>${c.desc}</p></div>
       </div>`).join('')}</div>`;
   } else {
     capsInner = `<div class="cap-tabs" data-tabs>
-      <div class="cap-tab-list" ${fx('flipl', 1)}>${C.map((c, i) => `<button type="button" class="cap-tab${i === 0 ? ' on' : ''}" data-i="${i}"><span>${pad(i)}</span>${c.title}<i></i></button>`).join('')}</div>
+      <div class="cap-tab-list" ${fx('flipl', 1)}>${C.map((c, i) => `<button type="button" class="cap-tab${i === 0 ? ' on' : ''}" id="cap-${i + 1}" data-i="${i}"><span>${pad(i)}</span>${c.title}<i></i></button>`).join('')}</div>
       <div class="cap-tab-stage" ${fx('flipr', 2)}>${C.map((c, i) => `
         <div class="cap-pane${i === 0 ? ' on' : ''}" data-i="${i}"><span class="cap-bignum">${pad(i)}</span><h3>${c.title}</h3><p>${c.desc}</p>
         <button class="sv-main-btn sm" type="button" ${openDrawer}>Discuss This ${arrowSvg}</button></div>`).join('')}
@@ -781,117 +776,424 @@
   </footer>
   `;
 
-  /* ═══════════ SERVICE MATCHED CASE STUDY SECTION ═══════════ */
-  const SERVICE_CASE_STUDIES = {
-    'custom-software-development': {
-      type: 'project-story',
-      title: 'Salasa OMS',
-      tagline: 'A clear place to manage every order',
-      desc: 'Salasa brings order tracking, carrier selection and merchant pricing into one operations workspace. Teams can see the route for an order and understand why that carrier was selected.',
-      metrics: [['Orders', 'Track work from intake to delivery'], ['Carrier rules', 'Choose routes around service and capacity'], ['Decision history', 'Review why a carrier was selected']],
-      link: 'portfolio.html?project=salasaoms',
-      tags: ['React', 'Next.js', 'TypeScript', 'Node.js']
-    },
-    'website-development': {
-      type: 'project-story',
-      title: 'Salasa OMS',
-      tagline: 'An enterprise web platform built from the ground up',
-      desc: 'Salasa brings order tracking, carrier selection and merchant pricing into one web workspace. Teams can see the route for an order and understand why that carrier was selected, all inside a fast, modular React and Next.js build.',
-      metrics: [['Orders', 'Track work from intake to delivery'], ['Carrier rules', 'Choose routes around service and capacity'], ['Decision history', 'Review why a carrier was selected']],
-      link: 'portfolio.html?project=salasaoms',
-      tags: ['React', 'Next.js', 'TypeScript', 'Node.js']
-    },
-    'mobile-app-development': {
-      type: 'project-story',
-      title: 'Dr. Asgar Clinic',
-      tagline: 'Patient care and clinic tools in one flow',
-      desc: 'Patients can book a visit, keep track of symptoms and stay in touch with the clinic. Staff use a separate dashboard to manage appointments and records.',
-      metrics: [['Patient app', 'Appointments and follow up'], ['Clinic dashboard', 'Schedules and records'], ['Shared experience', 'Mobile and web tools']],
-      link: 'portfolio.html?project=drasgarrheumatology',
-      tags: ['React Native', 'NestJS', 'PostgreSQL', 'Healthcare']
-    },
-    'ai-development': {
-      type: 'project-story',
-      title: 'RichAI',
-      tagline: 'An image studio with a voice assistant',
-      desc: 'RichAI brings image creation, chat and voice into one simple workspace. The project focused on making each tool easy to find and keeping the response flowing while the system works.',
-      metrics: [['Image generation', 'Create artwork from a prompt'], ['Voice assistant', 'Speak with the product'], ['Talking avatar', 'See responses come to life']],
-      link: 'portfolio.html?project=richai',
-      tags: ['Stable Diffusion', 'Voice input', 'React', 'Node.js']
-    },
-    'product-design-development': {
-      type: 'project-story',
-      title: 'Zylmi',
-      tagline: 'A clear brand and a welcoming web experience',
-      desc: 'Zylmi needed a distinct identity and a website that felt like the same brand from the first visit to the final action. The work brought research, visual design and a responsive React build into one process.',
-      metrics: [['Brand identity', 'A consistent visual language'], ['Website design', 'A clear path through the content'], ['React build', 'Responsive pages and reusable parts']],
-      link: 'portfolio.html?project=zylmi',
-      tags: ['Brand identity', 'Product design', 'React', 'Tailwind CSS']
-    },
-    'data-analytics-consultancy': {
-      type: 'project-story',
-      title: 'Caary Capital',
-      tagline: 'Fintech operations data made easier to scan',
-      desc: 'Caary Capital needed internal teams to work with large amounts of account and transaction information. The dashboard puts important records, tables and decisions in a clearer view.',
-      metrics: [['Dashboards', 'Review accounts and activity'], ['Large tables', 'Find records without losing context'], ['Forms', 'Catch missing details before saving']],
-      link: 'portfolio.html?project=caarycapital',
-      tags: ['React', 'TypeScript', 'Redux Toolkit', 'Data tables']
-    },
-    'data-management-database-solutions': {
-      type: 'project-story',
-      title: 'IPv4 Mall',
-      tagline: 'Address listings and transfer steps in one place',
-      desc: 'IPv4 Mall helps people buy, sell and lease blocks of internet addresses. The marketplace brings listings, registry details and transfer progress into a clearer flow.',
-      metrics: [['Address blocks', 'Search across five registries'], ['Listings', 'Buy, sell and lease'], ['Transfer steps', 'See what needs attention next']],
-      link: 'portfolio.html?project=ipv4mall',
-      tags: ['PostgreSQL', 'Marketplace', 'Registry transfers', 'Node.js']
-    }
+  /* ═══════════ RELATED WORK — 3 PROJECT CARDS FOR EVERY SERVICE ═══════════
+     Every service page shows the same 3-card format Mobile App Development
+     always had. Projects are picked per service from real, shipped case
+     studies and reused across services where relevant, same as before. */
+  const SERVICE_PROJECTS = {
+    'mobile-app-development': [
+      { title: 'Dr. Asgar Clinic', tagline: 'Patient care and clinic tools in one flow.', link: 'portfolio.html?project=drasgarrheumatology', tags: ['React Native', 'NestJS', 'Healthcare'] },
+      { title: 'Doc Link Healthcare', tagline: 'Skip the waiting room. Video checkups, bookings and prescriptions in one healthcare app.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['Healthcare App', 'Video Consultation', 'Booking'] },
+      { title: 'Morinaga Calories Counter', tagline: 'Barcode scanning and daily macro tracking for iPhone and Android, synced live.', link: 'portfolio.html?project=morinagacaloriescounter', tags: ['React Native', 'Firebase', 'iOS & Android'] }
+    ],
+    'website-development': [
+      { title: 'Salasa OMS', tagline: 'A full web platform for orders, carriers and pricing, built for logistics teams.', link: 'portfolio.html?project=salasaoms', tags: ['React', 'Next.js', 'TypeScript'] },
+      { title: 'Telecard', tagline: 'A clear company website that makes 15 service lines easy to find.', link: 'portfolio.html?project=telecard', tags: ['WordPress', 'HTML5', 'CSS3'] },
+      { title: 'Tiny Kiwi', tagline: 'A fast photo editor that runs right inside the browser, with nothing to install.', link: 'portfolio.html?project=tinykiwi', tags: ['React', 'Next.js', 'Web Workers'] }
+    ],
+    'custom-software-development': [
+      { title: 'Doc Link Healthcare', tagline: 'A full custom healthcare system, built from the ground up: bookings, video visits and prescriptions.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['React', 'Next.js', 'Node.js'] },
+      { title: 'Caary Capital', tagline: 'Fintech dashboards rebuilt for 500 plus internal users.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux'] },
+      { title: 'Assist Event', tagline: 'One booking platform for venues, catering and more.', link: 'portfolio.html?project=assistevent', tags: ['React Native', 'Node.js', 'MySQL'] }
+    ],
+    'ai-development': [
+      { title: 'RichAI', tagline: 'Image generation, chat and voice in one workspace.', link: 'portfolio.html?project=richai', tags: ['Stable Diffusion', 'React', 'Node.js'] },
+      { title: 'Tiny Kiwi', tagline: 'AI background removal built into a browser editor.', link: 'portfolio.html?project=tinykiwi', tags: ['React', 'Next.js', 'Web Workers'] },
+      { title: 'Zylmi', tagline: 'Brand identity paired with a smart digital presence.', link: 'portfolio.html?project=zylmi', tags: ['Figma', 'React', 'Tailwind CSS'] }
+    ],
+    'product-design-development': [
+      { title: 'Zylmi', tagline: 'Brand identity and web design from the ground up.', link: 'portfolio.html?project=zylmi', tags: ['Figma', 'React', 'Tailwind CSS'] },
+      { title: 'Assist Event', tagline: 'From idea to a full multi vendor booking platform.', link: 'portfolio.html?project=assistevent', tags: ['React Native', 'Next.js', 'Node.js'] },
+      { title: 'Doc Link Healthcare', tagline: 'A healthcare product built from concept to launch.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['React', 'Next.js', 'Redux'] }
+    ],
+    'ai-consultancy-automation-strategy': [
+      { title: 'RichAI', tagline: 'An AI pipeline from voice input to a talking avatar.', link: 'portfolio.html?project=richai', tags: ['Stable Diffusion', 'Node.js', 'React'] },
+      { title: 'Caary Capital', tagline: 'Automated data flows behind 500 plus user dashboards.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux'] },
+      { title: 'LinkDrip', tagline: 'Automated click, geo and device analytics on every link.', link: 'portfolio.html?project=linkdrip', tags: ['Node.js', 'React', 'Amazon S3'] }
+    ],
+    'vibe-code-to-production': [
+      { title: 'Caary Capital', tagline: 'Legacy dashboards audited, rebuilt and hardened.', link: 'portfolio.html?project=caarycapital', tags: ['TypeScript', 'React', 'Redux'] },
+      { title: 'Tiny Kiwi', tagline: 'An existing codebase profiled, fixed and sped up.', link: 'portfolio.html?project=tinykiwi', tags: ['React', 'Node.js', 'Web Workers'] },
+      { title: 'LinkDrip', tagline: 'A working product taken further and polished for scale.', link: 'portfolio.html?project=linkdrip', tags: ['Node.js', 'React', 'Amazon S3'] }
+    ],
+    'data-management-database-solutions': [
+      { title: 'Caary Capital', tagline: '10,000 row tables rendering in under 100 ms.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux'] },
+      { title: 'Salasa OMS', tagline: 'Order, carrier and pricing data in one clean model.', link: 'portfolio.html?project=salasaoms', tags: ['Structured Data', 'React', 'Node.js'] },
+      { title: 'Doc Link Healthcare', tagline: 'Patient records and bookings kept in sync.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['React', 'Next.js', 'Redux'] }
+    ],
+    'data-analytics-consultancy': [
+      { title: 'Caary Capital', tagline: 'Fintech data made easier to scan and act on.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux'] },
+      { title: 'LinkDrip', tagline: 'Click tracking with a clear geo and device breakdown.', link: 'portfolio.html?project=linkdrip', tags: ['Node.js', 'React', 'Amazon S3'] },
+      { title: 'Assist Event', tagline: 'A live view of bookings, vendors and conflicts.', link: 'portfolio.html?project=assistevent', tags: ['React Native', 'Node.js', 'MySQL'] }
+    ],
+    'digital-marketing-branding': [
+      { title: 'Zylmi', tagline: 'A full identity system built for a modern startup.', link: 'portfolio.html?project=zylmi', tags: ['Figma', 'React', 'Tailwind CSS'] },
+      { title: 'Telecard', tagline: 'A corporate site that made 15 service lines easy to find.', link: 'portfolio.html?project=telecard', tags: ['WordPress', 'HTML5', 'CSS3'] },
+      { title: 'Doc Link Healthcare', tagline: 'A consumer facing platform built to earn trust fast.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['React', 'Next.js', 'Redux'] }
+    ]
   };
 
-  const CS_IMG = {
-    'custom-software-development': 'Case studies/salasa-oms-portfolio/images/dashboard.png',
-    'website-development': 'Case studies/salasa-oms-portfolio/images/dashboard.png',
-    'mobile-app-development': 'Case studies/Rheumatology Consultants/images/case-studies/rheumatology/book-doctor.webp',
-    'data-analytics-consultancy': 'Case studies/caary-capital-portfolio/images/dashboard.png'
+  const projects = SERVICE_PROJECTS[s.slug] || SERVICE_PROJECTS['website-development'];
+
+  /* ── Self-drawn thumbnails (no screenshots): every project gets its own
+     bespoke illustration — same hand-built, layered look as the homepage
+     "Selected Work" showcase — instead of a cropped screenshot or a
+     generic repeated dashboard. Each one is tailored to what that
+     product actually does. ── */
+  const PROJECT_META = {
+    'Dr. Asgar Clinic': { kind: 'app', accent: '#C99B5C' },
+    'Doc Link Healthcare': { kind: 'app', accent: '#8B6CF0' },
+    'Morinaga Calories Counter': { kind: 'app', accent: '#3d9e6a' },
+    'Salasa OMS': { kind: 'web', accent: '#C99B5C' },
+    'Telecard': { kind: 'web', accent: '#5CE1B4' },
+    'Tiny Kiwi': { kind: 'web', accent: '#8B6CF0' },
+    'Caary Capital': { kind: 'web', accent: '#C99B5C' },
+    'Assist Event': { kind: 'web', accent: '#C99B5C' },
+    'RichAI': { kind: 'web', accent: '#8B6CF0' },
+    'Zylmi': { kind: 'web', accent: '#5CE1B4' },
+    'LinkDrip': { kind: 'web', accent: '#3d7ec6' }
   };
-  const matchedCS = SERVICE_CASE_STUDIES[s.slug];
-  let caseStudyHTML = '';
-  if (matchedCS) {
-    const CS_MOCK = {};
-    const shot = CS_MOCK[s.slug] ? CS_MOCK[s.slug] : CS_IMG[s.slug]
-      ? `<div class="cs2-shot"><img src="${encodeURI(CS_IMG[s.slug])}" alt="${matchedCS.title} screenshot" loading="lazy"></div>`
-      : `<div class="cs2-shot"><div class="cs2-skel"><span></span><span></span><span></span><span></span></div></div>`;
-    caseStudyHTML = `
-      <section class="sv-sec cs2" id="caseStudy" data-sec>
-        <div class="sv-inner">
-          <div class="cs2-head"><span class="cs2-eye"><b></b>Related Project</span>
-            <h2 class="cs2-h">Where this service <em>shipped for real</em></h2></div>
-          <div class="cs2-card">
-            <span class="cs2-wm" aria-hidden="true">${matchedCS.title}</span>
-            <div class="cs2-info">
-              <span class="cs2-badge">${matchedCS.type === 'project-story' ? 'Featured Project' : 'Featured Case Study'}</span>
-              <h3 class="cs2-title">${matchedCS.title}</h3>
-              <p class="cs2-tag">${matchedCS.tagline}</p>
-              <p class="cs2-desc">${matchedCS.desc}</p>
-              <ul class="cs2-mets">${(matchedCS.metrics || []).map((m, i) => `<li><i>0${i + 1}</i><b>${m[0]}</b><span>${m[1]}</span></li>`).join('')}</ul>
-              <div class="cs2-act">
-                <a class="cs2-btn" href="${matchedCS.link}">View Project Details ${arrowSvg}</a>
-                <a class="cs2-btn gh" href="portfolio.html#portfolio">View All Work</a>
-              </div>
-            </div>
-            <div class="cs2-vis" aria-hidden="true">
-              ${(matchedCS.tags || []).slice(0, 4).map(x => `<span class="cs2-chip">${x}</span>`).join('')}
-              <div class="cs2-browser"><div class="cs2-bar"><i></i><i></i><i></i><span>analyticinsider.com/${matchedCS.link.split('=')[1] || 'project'}</span></div>${shot}</div>
-            </div>
-          </div>
+
+  /* Shared browser / phone chrome so every illustration reads as one
+     consistent product family, while the content inside is unique. */
+  const rpWebChrome = (gid, urlLabel) => `
+      <rect width="460" height="300" rx="16" fill="#FFFDF8"/>
+      <path d="M0 18A18 18 0 0 1 18 0h424a18 18 0 0 1 18 18v24H0z" fill="#F3EBD9"/>
+      <circle cx="22" cy="21" r="4.6" fill="#E8B4A0"/><circle cx="38" cy="21" r="4.6" fill="#E8D9A0"/><circle cx="54" cy="21" r="4.6" fill="#A8D8B9"/>
+      <rect x="110" y="11" width="240" height="19" rx="9.5" fill="#FFFDF8"/>
+      <text x="230" y="24" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(23,19,14,.45)">${urlLabel}</text>
+      <circle cx="430" cy="21" r="11" fill="url(#${gid})"/>`;
+
+  const rpAppChrome = (gid, header, sub) => `
+      <rect width="300" height="420" fill="#17130E"/>
+      <rect x="12" y="24" width="276" height="372" rx="22" fill="#0e1118"/>
+      <text x="34" y="44" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="rgba(255,255,255,.7)">9:41</text>
+      <rect x="236" y="37" width="14" height="8" rx="2" fill="rgba(255,255,255,.5)"/><rect x="254" y="37" width="12" height="8" rx="2" fill="rgba(255,255,255,.3)"/>
+      <rect x="12" y="56" width="276" height="68" fill="url(#${gid})"/>
+      <text x="34" y="85" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,.75)">${sub}</text>
+      <text x="34" y="106" font-family="Outfit,Inter,sans-serif" font-size="16.5" font-weight="800" fill="#fff">${header}</text>
+      <circle cx="254" cy="88" r="15" fill="rgba(255,255,255,.22)"/>`;
+
+  /* 01 · Assist Event — events dashboard with a floating ticket, the
+     same storytelling device used on the homepage card. */
+  const rpArtAssistEvent = gid => `
+    <svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C99B5C"/><stop offset="1" stop-color="#E6C48B"/></linearGradient></defs>
+      ${rpWebChrome(gid, 'assistevent.app/dashboard')}
+      <rect x="0" y="42" width="104" height="258" fill="#17130E"/>
+      <circle cx="52" cy="74" r="16" fill="url(#${gid})"/><text x="52" y="79" text-anchor="middle" font-family="Outfit,Inter,sans-serif" font-size="13" font-weight="800" fill="#17130E">A</text>
+      <rect x="20" y="110" width="64" height="24" rx="9" fill="rgba(201,155,92,.24)"/><rect x="30" y="118" width="8" height="8" rx="2" fill="#C99B5C"/><rect x="44" y="119" width="30" height="5" rx="2.5" fill="#F5EFE0"/>
+      <rect x="30" y="150" width="8" height="8" rx="2" fill="rgba(245,239,224,.35)"/><rect x="44" y="151" width="26" height="5" rx="2.5" fill="rgba(245,239,224,.28)"/>
+      <rect x="30" y="178" width="8" height="8" rx="2" fill="rgba(245,239,224,.35)"/><rect x="44" y="179" width="22" height="5" rx="2.5" fill="rgba(245,239,224,.28)"/>
+      <text x="120" y="68" font-family="Outfit,Inter,sans-serif" font-size="14" font-weight="800" fill="#17130E">Upcoming events</text>
+      <rect x="112" y="84" width="130" height="58" rx="14" fill="#fff" stroke="#EBE0C8"/><text x="124" y="102" font-family="Inter,sans-serif" font-size="9" fill="rgba(23,19,14,.5)">Revenue</text><text x="124" y="124" font-family="Outfit,Inter,sans-serif" font-size="19" font-weight="800" fill="#17130E">$48k</text>
+      <rect x="252" y="84" width="130" height="58" rx="14" fill="url(#${gid})"/><text x="264" y="102" font-family="Inter,sans-serif" font-size="9" fill="rgba(23,19,14,.55)">Check-ins</text><text x="264" y="124" font-family="Outfit,Inter,sans-serif" font-size="19" font-weight="800" fill="#17130E">1,284</text>
+      <rect x="112" y="154" width="270" height="118" rx="14" fill="#fff" stroke="#EBE0C8"/>
+      <text x="126" y="174" font-family="Outfit,Inter,sans-serif" font-size="10.5" font-weight="700" fill="#17130E">Bookings this month</text>
+      <rect x="128" y="222" width="12" height="36" rx="3" fill="#F0DDBA"/><rect x="148" y="206" width="12" height="52" rx="3" fill="#F0DDBA"/><rect x="168" y="214" width="12" height="44" rx="3" fill="#F0DDBA"/><rect x="188" y="194" width="12" height="64" rx="3" fill="#F0DDBA"/><rect x="208" y="200" width="12" height="58" rx="3" fill="url(#${gid})"/><rect x="228" y="214" width="12" height="44" rx="3" fill="#F0DDBA"/><rect x="248" y="220" width="12" height="38" rx="3" fill="#F0DDBA"/>
+      <g transform="translate(316,186) rotate(-4)"><rect x="-54" y="0" width="108" height="56" rx="12" fill="#17130E"/><rect width="108" height="2.5" fill="#C99B5C" x="-54"/><text x="-40" y="19" font-family="Inter,sans-serif" font-size="7" letter-spacing="1.6" font-weight="700" fill="#C99B5C">ADMIT ONE</text><text x="-40" y="37" font-family="Outfit,Inter,sans-serif" font-size="13" font-weight="800" fill="#F5EFE0">Gala Night</text><text x="-40" y="48" font-family="Inter,sans-serif" font-size="7" fill="rgba(245,239,224,.6)">Gate 3 · VIP A12</text></g>
+    </svg>`;
+
+  /* 02 · Dr. Asgar Clinic — patient booking app */
+  const rpArtClinic = gid => `
+    <svg class="rp-art" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C99B5C"/><stop offset="1" stop-color="#8a6a3b"/></linearGradient></defs>
+      ${rpAppChrome(gid, 'Book an appointment', 'Dr. Asgar Clinic')}
+      <rect x="30" y="140" width="240" height="78" rx="16" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.1)"/>
+      <circle cx="66" cy="179" r="24" fill="url(#${gid})"/><text x="66" y="185" text-anchor="middle" font-family="Outfit,Inter,sans-serif" font-size="16" font-weight="800" fill="#17130E">SA</text>
+      <text x="104" y="172" font-family="Outfit,Inter,sans-serif" font-size="13" font-weight="800" fill="#fff">Dr. S. Asgar</text>
+      <text x="104" y="188" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(255,255,255,.55)">Rheumatologist</text>
+      <rect x="104" y="196" width="56" height="15" rx="7.5" fill="rgba(61,158,106,.2)"/><text x="132" y="206.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#5CE1B4">Available</text>
+      <text x="30" y="246" font-family="Outfit,Inter,sans-serif" font-size="11.5" font-weight="700" fill="#fff">This week</text>
+      <g font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.6)">
+        <rect x="30" y="256" width="34" height="46" rx="12" fill="rgba(255,255,255,.06)"/><text x="47" y="274" text-anchor="middle" fill="rgba(255,255,255,.5)">MON</text><text x="47" y="292" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">12</text>
+        <rect x="70" y="256" width="34" height="46" rx="12" fill="url(#${gid})"/><text x="87" y="274" text-anchor="middle" fill="rgba(23,19,14,.6)">TUE</text><text x="87" y="292" text-anchor="middle" fill="#17130E" font-weight="800" font-size="13">13</text>
+        <rect x="110" y="256" width="34" height="46" rx="12" fill="rgba(255,255,255,.06)"/><text x="127" y="274" text-anchor="middle" fill="rgba(255,255,255,.5)">WED</text><text x="127" y="292" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">14</text>
+        <rect x="150" y="256" width="34" height="46" rx="12" fill="rgba(255,255,255,.06)"/><text x="167" y="274" text-anchor="middle" fill="rgba(255,255,255,.5)">THU</text><text x="167" y="292" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">15</text>
+        <rect x="190" y="256" width="34" height="46" rx="12" fill="rgba(255,255,255,.06)"/><text x="207" y="274" text-anchor="middle" fill="rgba(255,255,255,.5)">FRI</text><text x="207" y="292" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">16</text>
+        <rect x="230" y="256" width="40" height="46" rx="12" fill="rgba(255,255,255,.06)"/><text x="250" y="274" text-anchor="middle" fill="rgba(255,255,255,.5)">SAT</text><text x="250" y="292" text-anchor="middle" fill="#fff" font-weight="800" font-size="13">17</text>
+      </g>
+      <rect x="30" y="320" width="240" height="52" rx="26" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)"/>
+      <circle cx="54" cy="346" r="9" fill="#5CE1B4"/><path d="M50 346l3 3 6-6" stroke="#0e1118" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="72" y="342" font-family="Outfit,Inter,sans-serif" font-size="11.5" font-weight="700" fill="#fff">Appointment confirmed</text>
+      <text x="72" y="358" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.55)">Tue 13, 4:30 PM · Clinic Room 2</text>
+      <rect x="30" y="386" width="240" height="18" rx="9" fill="url(#${gid})"/><text x="150" y="398.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#17130E">Confirm booking</text>
+    </svg>`;
+
+  /* 03 · Doc Link Healthcare — live video consultation app */
+  const rpArtTelehealth = gid => `
+    <svg class="rp-art" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B6CF0"/><stop offset="1" stop-color="#5a3fc4"/></linearGradient></defs>
+      <rect width="300" height="420" fill="#17130E"/>
+      <rect x="12" y="24" width="276" height="372" rx="22" fill="#15111f"/>
+      <text x="34" y="44" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="rgba(255,255,255,.7)">9:41</text>
+      <rect x="236" y="37" width="14" height="8" rx="2" fill="rgba(255,255,255,.5)"/><rect x="254" y="37" width="12" height="8" rx="2" fill="rgba(255,255,255,.3)"/>
+      <rect x="12" y="56" width="276" height="252" fill="url(#${gid})" opacity=".9"/>
+      <circle cx="150" cy="160" r="46" fill="rgba(255,255,255,.14)"/><circle cx="150" cy="148" r="19" fill="rgba(255,255,255,.4)"/><path d="M110 206c0-24 18-38 40-38s40 14 40 38" fill="rgba(255,255,255,.4)"/>
+      <rect x="208" y="76" width="68" height="92" rx="12" fill="#17130E" stroke="rgba(255,255,255,.15)"/><circle cx="242" cy="108" r="13" fill="rgba(255,255,255,.3)"/><path d="M226 142c0-11 8-17 16-17s16 6 16 17" fill="rgba(255,255,255,.3)"/>
+      <rect x="24" y="76" width="100" height="22" rx="11" fill="rgba(23,19,14,.45)"/><circle cx="36" cy="87" r="4" fill="#ff6b6b"/><text x="48" y="90.5" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#fff">00:18:42</text>
+      <text x="150" y="268" text-anchor="middle" font-family="Outfit,Inter,sans-serif" font-size="13.5" font-weight="800" fill="#fff">Dr. Sana Khan</text>
+      <text x="150" y="284" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(255,255,255,.75)">Cardiologist · Video visit</text>
+      <circle cx="104" cy="334" r="24" fill="rgba(255,255,255,.1)"/><rect x="95" y="325" width="18" height="18" rx="4" fill="#fff"/>
+      <circle cx="150" cy="334" r="26" fill="#ff5b5b"/><rect x="138" y="332" width="24" height="5" rx="2.5" fill="#fff" transform="rotate(45 150 334)"/>
+      <circle cx="196" cy="334" r="24" fill="rgba(255,255,255,.1)"/><circle cx="196" cy="327" r="5" fill="#fff"/><path d="M186 344c0-7 5-11 10-11s10 4 10 11" fill="#fff"/>
+      <rect x="30" y="372" width="140" height="20" rx="10" fill="rgba(139,108,240,.2)"/><text x="40" y="385.5" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="#D9CCFC">Rx sent · Amoxicillin 500mg</text>
+    </svg>`;
+
+  /* 04 · Morinaga Calories Counter — food + macro tracking app */
+  const rpArtCalories = gid => `
+    <svg class="rp-art" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d9e6a"/><stop offset="1" stop-color="#2a7a4f"/></linearGradient></defs>
+      ${rpAppChrome(gid, 'Good morning 👋', 'Today · Tue 13 Oct')}
+      <rect x="24" y="36" width="54" height="22" rx="11" fill="rgba(255,255,255,.18)"/><circle cx="34" cy="47" r="5" fill="#fff"/><path d="M30 47l3 3 5-5" stroke="#17130E" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="56" y="50.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#fff">Scan</text>
+      <circle cx="150" cy="212" r="68" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="14"/>
+      <circle cx="150" cy="212" r="68" fill="none" stroke="url(#${gid})" stroke-width="14" stroke-linecap="round" stroke-dasharray="320 427" transform="rotate(-90 150 212)"/>
+      <text x="150" y="206" text-anchor="middle" font-family="Outfit,Inter,sans-serif" font-size="26" font-weight="800" fill="#fff">1,460</text>
+      <text x="150" y="226" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(255,255,255,.55)">of 2,100 kcal left</text>
+      <g font-family="Inter,sans-serif" font-size="8.5" fill="rgba(255,255,255,.6)">
+        <rect x="46" y="308" width="68" height="40" rx="12" fill="rgba(255,255,255,.05)"/><text x="80" y="325" text-anchor="middle">Protein</text><text x="80" y="340" text-anchor="middle" fill="#fff" font-weight="800" font-size="12">88g</text>
+        <rect x="116" y="308" width="68" height="40" rx="12" fill="rgba(255,255,255,.05)"/><text x="150" y="325" text-anchor="middle">Carbs</text><text x="150" y="340" text-anchor="middle" fill="#fff" font-weight="800" font-size="12">142g</text>
+        <rect x="186" y="308" width="68" height="40" rx="12" fill="rgba(255,255,255,.05)"/><text x="220" y="325" text-anchor="middle">Fat</text><text x="220" y="340" text-anchor="middle" fill="#fff" font-weight="800" font-size="12">41g</text>
+      </g>
+      <rect x="30" y="360" width="240" height="34" rx="14" fill="rgba(255,255,255,.05)"/>
+      <circle cx="50" cy="377" r="9" fill="url(#${gid})"/><rect x="66" y="371" width="70" height="6" rx="3" fill="rgba(255,255,255,.5)"/><rect x="66" y="381" width="44" height="5" rx="2.5" fill="rgba(255,255,255,.25)"/><text x="248" y="381" text-anchor="end" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="#5CE1B4">340 kcal</text>
+    </svg>`;
+
+  /* 05 · Salasa OMS — logistics / carrier operations dashboard */
+  const rpArtLogistics = gid => `
+    <svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C99B5C"/><stop offset="1" stop-color="#E6C48B"/></linearGradient></defs>
+      ${rpWebChrome(gid, 'app.salasa-oms.com/zones')}
+      <rect x="0" y="42" width="112" height="258" fill="#17130E"/>
+      <rect x="20" y="64" width="72" height="24" rx="9" fill="rgba(201,155,92,.24)"/><text x="32" y="80" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="#F5EFE0">Zones</text>
+      <text x="32" y="112" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(245,239,224,.4)">Carriers</text>
+      <text x="32" y="140" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(245,239,224,.4)">Pricing</text>
+      <text x="32" y="168" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(245,239,224,.4)">Orders</text>
+      <text x="126" y="66" font-family="Outfit,Inter,sans-serif" font-size="14" font-weight="800" fill="#17130E">Carrier capacity</text>
+      <g>
+        <text x="126" y="90" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(23,19,14,.55)">TCS</text><rect x="126" y="96" width="300" height="9" rx="4.5" fill="#F3EBD9"/><rect x="126" y="96" width="240" height="9" rx="4.5" fill="url(#${gid})"/>
+        <text x="126" y="116" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(23,19,14,.55)">Leopards</text><rect x="126" y="122" width="300" height="9" rx="4.5" fill="#F3EBD9"/><rect x="126" y="122" width="168" height="9" rx="4.5" fill="url(#${gid})"/>
+        <text x="126" y="142" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(23,19,14,.55)">M&amp;P</text><rect x="126" y="148" width="300" height="9" rx="4.5" fill="#F3EBD9"/><rect x="126" y="148" width="204" height="9" rx="4.5" fill="url(#${gid})"/>
+      </g>
+      <rect x="126" y="172" width="300" height="112" rx="14" fill="#fff" stroke="#EBE0C8"/>
+      <text x="140" y="192" font-family="Outfit,Inter,sans-serif" font-size="10.5" font-weight="700" fill="#17130E">Recent orders</text>
+      <rect x="378" y="180" width="38" height="16" rx="8" fill="rgba(61,158,106,.15)"/><text x="397" y="191.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#3d9e6a">Live</text>
+      <g font-family="Inter,sans-serif" font-size="8.5" fill="rgba(23,19,14,.55)">
+        <text x="140" y="214">#OMS-4471</text><text x="300" y="214">Karachi → Lahore</text><rect x="378" y="203" width="40" height="15" rx="7.5" fill="rgba(61,158,106,.15)"/><text x="398" y="213.5" text-anchor="middle" fill="#3d9e6a" font-size="7.5" font-weight="700">Shipped</text>
+        <text x="140" y="238">#OMS-4470</text><text x="300" y="238">Lahore → Multan</text><rect x="378" y="227" width="40" height="15" rx="7.5" fill="rgba(201,155,92,.18)"/><text x="398" y="237.5" text-anchor="middle" fill="#C99B5C" font-size="7.5" font-weight="700">Transit</text>
+        <text x="140" y="262">#OMS-4469</text><text x="300" y="262">Karachi → Hyderabad</text><rect x="378" y="251" width="40" height="15" rx="7.5" fill="rgba(61,126,198,.15)"/><text x="398" y="261.5" text-anchor="middle" fill="#3d7ec6" font-size="7.5" font-weight="700">Queued</text>
+      </g>
+    </svg>`;
+
+  /* 06 · Telecard — corporate services website (15 service lines) */
+  const rpArtTelecard = gid => `
+    <svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5CE1B4"/><stop offset="1" stop-color="#2fae87"/></linearGradient></defs>
+      ${rpWebChrome(gid, 'telecard.com.pk/services')}
+      <rect x="0" y="42" width="460" height="86" fill="#17130E"/>
+      <text x="28" y="76" font-family="Outfit,Inter,sans-serif" font-size="17" font-weight="800" fill="#fff">Connecting Pakistan,</text>
+      <text x="28" y="98" font-family="Outfit,Inter,sans-serif" font-size="17" font-weight="800" fill="url(#${gid})">one service at a time.</text>
+      <rect x="28" y="108" width="92" height="20" rx="10" fill="url(#${gid})"/><text x="74" y="121.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" font-weight="700" fill="#0b2318">Explore services</text>
+      <g font-family="Inter,sans-serif" font-size="8" fill="rgba(23,19,14,.55)">
+        <rect x="24" y="148" width="96" height="62" rx="12" fill="#fff" stroke="#EBE0C8"/><circle cx="46" cy="170" r="11" fill="rgba(92,225,180,.22)"/><text x="46" y="174" text-anchor="middle" fill="#2fae87" font-weight="700" font-size="10">☎</text><text x="38" y="196">Voice &amp; SIM</text>
+        <rect x="128" y="148" width="96" height="62" rx="12" fill="#fff" stroke="#EBE0C8"/><circle cx="150" cy="170" r="11" fill="rgba(92,225,180,.22)"/><text x="150" y="174" text-anchor="middle" fill="#2fae87" font-weight="700" font-size="10">◱</text><text x="142" y="196">Internet</text>
+        <rect x="232" y="148" width="96" height="62" rx="12" fill="#fff" stroke="#EBE0C8"/><circle cx="254" cy="170" r="11" fill="rgba(92,225,180,.22)"/><text x="254" y="174" text-anchor="middle" fill="#2fae87" font-weight="700" font-size="10">☁</text><text x="246" y="196">Cloud PBX</text>
+        <rect x="336" y="148" width="100" height="62" rx="12" fill="#fff" stroke="#EBE0C8"/><circle cx="358" cy="170" r="11" fill="rgba(92,225,180,.22)"/><text x="358" y="174" text-anchor="middle" fill="#2fae87" font-weight="700" font-size="10">⬡</text><text x="350" y="196">Enterprise</text>
+        <rect x="24" y="218" width="96" height="62" rx="12" fill="#fff" stroke="#EBE0C8"/><circle cx="46" cy="240" r="11" fill="rgba(92,225,180,.22)"/><text x="46" y="244" text-anchor="middle" fill="#2fae87" font-weight="700" font-size="10">◈</text><text x="38" y="266">Broadband</text>
+        <rect x="128" y="218" width="96" height="62" rx="12" fill="#fff" stroke="#EBE0C8"/><circle cx="150" cy="240" r="11" fill="rgba(92,225,180,.22)"/><text x="150" y="244" text-anchor="middle" fill="#2fae87" font-weight="700" font-size="10">✦</text><text x="139" y="266">Data Centre</text>
+        <rect x="232" y="218" width="204" height="62" rx="12" fill="url(#${gid})"/><text x="248" y="245" font-family="Outfit,Inter,sans-serif" font-size="11" font-weight="800" fill="#0b2318">+9 more service lines</text><text x="248" y="262" fill="rgba(11,35,24,.7)">All plans, one dashboard</text>
+      </g>
+    </svg>`;
+
+  /* 07 · Tiny Kiwi — in-browser photo editor (AI background removal) */
+  const rpArtEditor = gid => `
+    <svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B6CF0"/><stop offset="1" stop-color="#5a3fc4"/></linearGradient>
+        <linearGradient id="${gid}sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe3fb"/><stop offset="1" stop-color="#eef6ff"/></linearGradient>
+      </defs>
+      ${rpWebChrome(gid, 'tinykiwi.app/editor')}
+      <rect x="0" y="42" width="60" height="258" fill="#17130E"/>
+      <rect x="14" y="60" width="32" height="32" rx="9" fill="url(#${gid})"/><text x="30" y="80" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="#fff">✂</text>
+      <rect x="14" y="100" width="32" height="32" rx="9" fill="rgba(255,255,255,.06)"/><text x="30" y="120" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="rgba(255,255,255,.5)">◐</text>
+      <rect x="14" y="140" width="32" height="32" rx="9" fill="rgba(255,255,255,.06)"/><text x="30" y="160" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="rgba(255,255,255,.5)">T</text>
+      <rect x="14" y="180" width="32" height="32" rx="9" fill="rgba(255,255,255,.06)"/><text x="30" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" fill="rgba(255,255,255,.5)">▦</text>
+      <rect x="76" y="56" width="332" height="194" rx="14" fill="#f4f1ea" stroke="#EBE0C8"/>
+      <clipPath id="${gid}clip"><rect x="76" y="56" width="166" height="194" rx="14"/></clipPath>
+      <g clip-path="url(#${gid}clip)"><rect x="76" y="56" width="166" height="194" fill="url(#${gid}sky)"/><circle cx="160" cy="150" r="52" fill="#c4b094"/><rect x="120" y="190" width="80" height="60" fill="#8a7357"/></g>
+      <g><rect x="242" y="56" width="166" height="194" fill="repeating-conic-gradient(#e9e4d8 0 25%, #fff 0 50%)"/><rect x="242" y="56" width="166" height="194" fill="#fff"/><circle cx="325" cy="150" r="52" fill="#c4b094"/><rect x="285" y="190" width="80" height="60" fill="#8a7357"/></g>
+      <line x1="242" y1="56" x2="242" y2="250" stroke="#fff" stroke-width="3"/><circle cx="242" cy="153" r="13" fill="#fff" stroke="url(#${gid})" stroke-width="2.5"/><path d="M237 153h-4M247 153h4" stroke="${'#8B6CF0'}" stroke-width="2" stroke-linecap="round"/>
+      <rect x="76" y="266" width="332" height="20" rx="10" fill="url(#${gid})"/><text x="242" y="280" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#fff">Removing background… done in 0.8s</text>
+    </svg>`;
+
+  /* 08 · Caary Capital — fintech dashboard for internal teams */
+  const rpArtFintech = gid => `
+    <svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C99B5C"/><stop offset="1" stop-color="#E6C48B"/></linearGradient>
+        <linearGradient id="${gid}f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C99B5C" stop-opacity=".5"/><stop offset="1" stop-color="#C99B5C" stop-opacity="0"/></linearGradient>
+      </defs>
+      ${rpWebChrome(gid, 'app.caarycapital.com/overview')}
+      <rect x="0" y="42" width="112" height="258" fill="#17130E"/>
+      <circle cx="56" cy="74" r="16" fill="url(#${gid})"/><text x="56" y="79" text-anchor="middle" font-family="Outfit,Inter,sans-serif" font-size="13" font-weight="800" fill="#17130E">C</text>
+      <rect x="22" y="110" width="68" height="24" rx="9" fill="rgba(201,155,92,.24)"/><rect x="32" y="118" width="8" height="8" rx="2" fill="#C99B5C"/><rect x="46" y="119" width="30" height="5" rx="2.5" fill="#F5EFE0"/>
+      <rect x="32" y="148" width="8" height="8" rx="2" fill="rgba(245,239,224,.35)"/><rect x="46" y="149" width="26" height="5" rx="2.5" fill="rgba(245,239,224,.28)"/>
+      <rect x="32" y="176" width="8" height="8" rx="2" fill="rgba(245,239,224,.35)"/><rect x="46" y="177" width="30" height="5" rx="2.5" fill="rgba(245,239,224,.28)"/>
+      <text x="126" y="66" font-family="Outfit,Inter,sans-serif" font-size="14" font-weight="800" fill="#17130E">Portfolio overview</text>
+      <rect x="126" y="80" width="132" height="58" rx="14" fill="#fff" stroke="#EBE0C8"/><text x="140" y="98" font-family="Inter,sans-serif" font-size="9" fill="rgba(23,19,14,.5)">AUM</text><text x="140" y="120" font-family="Outfit,Inter,sans-serif" font-size="19" font-weight="800" fill="#17130E">$12.4M</text>
+      <rect x="266" y="80" width="140" height="58" rx="14" fill="url(#${gid})"/><text x="280" y="98" font-family="Inter,sans-serif" font-size="9" fill="rgba(23,19,14,.55)">Active users</text><text x="280" y="120" font-family="Outfit,Inter,sans-serif" font-size="19" font-weight="800" fill="#17130E">512</text>
+      <rect x="126" y="150" width="280" height="110" rx="14" fill="#fff" stroke="#EBE0C8"/>
+      <text x="140" y="170" font-family="Outfit,Inter,sans-serif" font-size="10.5" font-weight="700" fill="#17130E">Q3 performance</text>
+      <rect x="360" y="158" width="40" height="16" rx="8" fill="rgba(61,158,106,.15)"/><text x="380" y="169.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#3d9e6a">+18%</text>
+      <path d="M140 232 C166 214,180 236,204 210 C228 184,242 220,268 194 C294 168,308 202,334 180 L334 244 L140 244 Z" fill="url(#${gid}f)"/>
+      <path d="M140 232 C166 214,180 236,204 210 C228 184,242 220,268 194 C294 168,308 202,334 180" fill="none" stroke="url(#${gid})" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="334" cy="180" r="5" fill="#C99B5C" stroke="#fff" stroke-width="2"/>
+    </svg>`;
+
+  /* 09 · RichAI — AI image / chat / voice studio */
+  const rpArtAiStudio = gid => `
+    <svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B6CF0"/><stop offset="1" stop-color="#D9C2FF"/></linearGradient>
+        <linearGradient id="${gid}t1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B6CF0"/><stop offset="1" stop-color="#5a3fc4"/></linearGradient>
+        <linearGradient id="${gid}t2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5CE1B4"/><stop offset="1" stop-color="#2fae87"/></linearGradient>
+        <linearGradient id="${gid}t3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C99B5C"/><stop offset="1" stop-color="#E6C48B"/></linearGradient>
+      </defs>
+      <rect width="460" height="300" rx="16" fill="#17130E"/>
+      <path d="M0 18A18 18 0 0 1 18 0h424a18 18 0 0 1 18 18v24H0z" fill="#1d1830"/>
+      <circle cx="22" cy="21" r="4.6" fill="rgba(255,255,255,.2)"/><circle cx="38" cy="21" r="4.6" fill="rgba(255,255,255,.2)"/><circle cx="54" cy="21" r="4.6" fill="rgba(255,255,255,.2)"/>
+      <text x="230" y="24" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.45)">richai.studio/create</text>
+      <rect x="0" y="42" width="156" height="258" fill="rgba(255,255,255,.03)"/>
+      <rect x="18" y="62" width="120" height="30" rx="14" fill="rgba(255,255,255,.07)"/><text x="30" y="81" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.75)">🎙 "A golden retriever…"</text>
+      <rect x="18" y="104" width="120" height="48" rx="14" fill="url(#${gid}t1)"/><text x="30" y="124" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.9)">…astronaut, studio</text><text x="30" y="138" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.9)">lighting, 4k</text>
+      <rect x="18" y="164" width="120" height="30" rx="14" fill="rgba(255,255,255,.07)"/><text x="30" y="183" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.75)">⚡ Generating…</text>
+      <rect x="18" y="266" width="120" height="18" rx="9" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.14)"/><text x="30" y="279" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(255,255,255,.5)">Type a prompt…</text>
+      <g>
+        <rect x="170" y="56" width="128" height="96" rx="12" fill="url(#${gid}t1)"/><circle cx="234" cy="104" r="26" fill="rgba(255,255,255,.22)"/>
+        <rect x="306" y="56" width="128" height="96" rx="12" fill="url(#${gid}t2)"/><circle cx="370" cy="104" r="26" fill="rgba(255,255,255,.22)"/>
+        <rect x="170" y="160" width="128" height="96" rx="12" fill="url(#${gid}t3)"/><circle cx="234" cy="208" r="26" fill="rgba(255,255,255,.22)"/>
+        <rect x="306" y="160" width="128" height="96" rx="12" fill="#2a2440" stroke="rgba(255,255,255,.1)"/><circle cx="370" cy="200" r="22" fill="none" stroke="url(#${gid})" stroke-width="4" stroke-dasharray="90 138" transform="rotate(-90 370 200)"/><text x="370" y="205" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#fff">65%</text>
+      </g>
+      <rect x="306" y="226" width="128" height="18" rx="9" fill="rgba(255,255,255,.08)"/><text x="370" y="239" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(255,255,255,.6)">Rendering variation 4/4</text>
+    </svg>`;
+
+  /* 10 · Zylmi — brand identity system */
+  const rpArtBrand = gid => `
+    <svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5CE1B4"/><stop offset="1" stop-color="#2fae87"/></linearGradient></defs>
+      ${rpWebChrome(gid, 'brand.zylmi.co/kit')}
+      <text x="28" y="68" font-family="Outfit,Inter,sans-serif" font-size="13" font-weight="800" fill="#17130E">Brand identity</text>
+      <rect x="28" y="80" width="130" height="130" rx="18" fill="#0b2318"/>
+      <circle cx="93" cy="130" r="38" fill="none" stroke="url(#${gid})" stroke-width="7"/>
+      <path d="M93 92a38 38 0 0 1 0 76" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+      <text x="93" y="188" text-anchor="middle" font-family="Outfit,Inter,sans-serif" font-size="11" font-weight="800" fill="#fff" letter-spacing="2">ZYLMI</text>
+      <text x="172" y="96" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(23,19,14,.5)">Palette</text>
+      <rect x="172" y="104" width="34" height="34" rx="8" fill="#0b2318"/><rect x="210" y="104" width="34" height="34" rx="8" fill="#2fae87"/><rect x="248" y="104" width="34" height="34" rx="8" fill="#5CE1B4"/><rect x="286" y="104" width="34" height="34" rx="8" fill="#F3EBD9"/>
+      <text x="172" y="156" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(23,19,14,.5)">Typeface</text>
+      <text x="172" y="192" font-family="Outfit,Inter,sans-serif" font-size="42" font-weight="800" fill="#17130E">Aa</text>
+      <text x="230" y="178" font-family="Inter,sans-serif" font-size="9" fill="rgba(23,19,14,.55)">Outfit / Inter</text>
+      <text x="230" y="194" font-family="Inter,sans-serif" font-size="8" fill="rgba(23,19,14,.4)">Headings · Body</text>
+      <rect x="332" y="80" width="100" height="130" rx="16" fill="url(#${gid})"/>
+      <rect x="350" y="100" width="64" height="18" rx="9" fill="rgba(255,255,255,.3)"/>
+      <rect x="350" y="150" width="64" height="40" rx="10" fill="rgba(255,255,255,.2)"/>
+      <text x="28" y="238" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(23,19,14,.5)">Site preview</text>
+      <rect x="28" y="246" width="404" height="38" rx="10" fill="#fff" stroke="#EBE0C8"/>
+      <circle cx="46" cy="265" r="9" fill="url(#${gid})"/><rect x="62" y="260" width="70" height="6" rx="3" fill="rgba(23,19,14,.5)"/><rect x="62" y="270" width="48" height="5" rx="2.5" fill="rgba(23,19,14,.22)"/>
+      <rect x="360" y="256" width="56" height="18" rx="9" fill="#0b2318"/><text x="388" y="268.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="700" fill="#5CE1B4">Visit site</text>
+    </svg>`;
+
+  /* 11 · LinkDrip — link click / geo / device analytics */
+  const rpArtLinkAnalytics = gid => `
+    <svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d7ec6"/><stop offset="1" stop-color="#6fa8e0"/></linearGradient></defs>
+      ${rpWebChrome(gid, 'linkdrip.io/analytics/x7f2')}
+      <rect x="28" y="56" width="200" height="70" rx="14" fill="#fff" stroke="#EBE0C8"/>
+      <text x="42" y="78" font-family="Inter,sans-serif" font-size="9" fill="rgba(23,19,14,.5)">Total clicks</text>
+      <text x="42" y="106" font-family="Outfit,Inter,sans-serif" font-size="24" font-weight="800" fill="#17130E">24,812</text>
+      <path d="M150 100l6-10 6 6 8-14" stroke="#3d9e6a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="240" y="56" width="192" height="70" rx="14" fill="url(#${gid})"/>
+      <text x="254" y="78" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,.75)">Unique visitors</text>
+      <text x="254" y="106" font-family="Outfit,Inter,sans-serif" font-size="24" font-weight="800" fill="#fff">9,240</text>
+      <rect x="28" y="138" width="230" height="138" rx="14" fill="#fff" stroke="#EBE0C8"/>
+      <text x="42" y="158" font-family="Outfit,Inter,sans-serif" font-size="10.5" font-weight="700" fill="#17130E">Clicks by region</text>
+      <ellipse cx="143" cy="222" rx="100" ry="46" fill="none" stroke="rgba(23,19,14,.08)"/>
+      <circle cx="90" cy="206" r="4" fill="url(#${gid})"/><circle cx="140" cy="228" r="6" fill="url(#${gid})"/><circle cx="188" cy="212" r="4" fill="url(#${gid})"/><circle cx="118" cy="244" r="3" fill="url(#${gid})"/><circle cx="168" cy="196" r="3" fill="url(#${gid})"/><circle cx="206" cy="238" r="4" fill="url(#${gid})"/>
+      <rect x="282" y="138" width="150" height="138" rx="14" fill="#fff" stroke="#EBE0C8"/>
+      <text x="296" y="158" font-family="Outfit,Inter,sans-serif" font-size="10.5" font-weight="700" fill="#17130E">Devices</text>
+      <g font-family="Inter,sans-serif" font-size="8.5" fill="rgba(23,19,14,.55)">
+        <text x="296" y="178">Mobile</text><rect x="296" y="184" width="120" height="8" rx="4" fill="#F3EBD9"/><rect x="296" y="184" width="84" height="8" rx="4" fill="url(#${gid})"/>
+        <text x="296" y="208">Desktop</text><rect x="296" y="214" width="120" height="8" rx="4" fill="#F3EBD9"/><rect x="296" y="214" width="48" height="8" rx="4" fill="url(#${gid})"/>
+        <text x="296" y="238">Tablet</text><rect x="296" y="244" width="120" height="8" rx="4" fill="#F3EBD9"/><rect x="296" y="244" width="18" height="8" rx="4" fill="url(#${gid})"/>
+      </g>
+    </svg>`;
+
+  const ART_MAP = {
+    'Assist Event': rpArtAssistEvent,
+    'Dr. Asgar Clinic': rpArtClinic,
+    'Doc Link Healthcare': rpArtTelehealth,
+    'Morinaga Calories Counter': rpArtCalories,
+    'Salasa OMS': rpArtLogistics,
+    'Telecard': rpArtTelecard,
+    'Tiny Kiwi': rpArtEditor,
+    'Caary Capital': rpArtFintech,
+    'RichAI': rpArtAiStudio,
+    'Zylmi': rpArtBrand,
+    'LinkDrip': rpArtLinkAnalytics
+  };
+
+  const rpChips = (p, meta) => {
+    const web = meta.kind !== 'app';
+    const chip1 = web ? `<span class="rp-chip rp-chip-1"><i style="background:#3d9e6a"></i>Shipped &amp; live</span>`
+                       : `<span class="rp-chip rp-chip-1"><i style="background:#3d9e6a"></i>Synced</span>`;
+    const chip2 = web ? `<span class="rp-chip rp-chip-2"><i style="background:${meta.accent}"></i>${p.tags[0] || 'Custom build'}</span>`
+                       : `<span class="rp-chip rp-chip-2"><i style="background:${meta.accent}"></i>4.9★ rated</span>`;
+    return chip1 + chip2;
+  };
+  const rpArt = (p, i) => {
+    const gid = `rpg${k}${i}`;
+    const builder = ART_MAP[p.title];
+    if (builder) return builder(gid);
+    const meta = PROJECT_META[p.title] || { kind: 'web', accent: s.color || '#C99B5C' };
+    return `<svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg"><rect width="460" height="300" fill="${meta.accent}"/></svg>`;
+  };
+  const rpKind = p => (PROJECT_META[p.title]?.kind === 'app' ? 'Mobile App' : 'Web Platform');
+  const rpAccent = p => PROJECT_META[p.title]?.accent || s.color || '#C99B5C';
+
+  const caseStudyHTML = `
+    <section class="sv-sec rp" id="caseStudy" data-sec>
+      <div class="sv-inner">
+        <div class="rp-head" ${fx('rise', 0)}>
+          <span class="rp-eyebrow"><b></b>Selected Work</span>
+          <h2 class="rp-h2">Real projects, <em>real results</em></h2>
+          <p class="rp-sub">A quick look at work we've shipped for clients in this exact space.</p>
         </div>
-      </section>
-    `;
-  }
+        <div class="rp-zigzag">
+          ${projects.map((p, i) => `
+            <div class="rp-row${i % 2 ? ' rp-row-rev' : ''}">
+              <a class="rp-media" href="${p.link}" style="--halo:${rpAccent(p)}66" ${fx(i % 2 ? 'flipr' : 'flipl', i)}>
+                <span class="rp-halo"></span>
+                <span class="rp-plate${PROJECT_META[p.title]?.kind === 'app' ? ' is-app' : ''}">${rpArt(p, i)}</span>
+                ${rpChips(p, PROJECT_META[p.title] || { kind: 'web', accent: s.color || '#C99B5C' })}
+                <span class="rp-ground"></span>
+                <span class="rp-view">${arrowSvg}</span>
+              </a>
+              <div class="rp-body" ${fx(i % 2 ? 'flipl' : 'flipr', i)}>
+                <span class="rp-idx">0${i + 1}</span>
+                <p class="rp-kicker">${rpKind(p)}</p>
+                <h3 class="rp-h3">${p.title}</h3>
+                <p class="rp-desc">${p.tagline}</p>
+                <div class="rp-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
+                <a class="rp-link" href="${p.link}">View Case Study ${arrowSvg}</a>
+              </div>
+            </div>`).join('')}
+        </div>
+        <div class="rp-more" ${fx('rise', 3)}><a class="sv-ghost-btn dark" href="portfolio.html">View All Work ${arrowSvg}</a></div>
+      </div>
+    </section>`;
 
   /* ═══════════ ASSEMBLE ═══════════ */
   const EP_HTML = window.EP ? window.EP.html(s) : '';
-  const SEC_ORDER = [['hero', heroHTML], ['brand', svBrandMarqueeHTML], ['overview', overviewHTML], ['q1', quoteCTA1], ['caps', capsHTML], ['proc', procHTML], ['cs', caseStudyHTML], ['q2', quoteCTA2], ['tech', techHTML], ['impact', impactHTML], ['why', whyHTML], ['rev', revHTML], ['faq', faqHTML]];
+  const SEC_ORDER = [['hero', heroHTML], ['brand', svBrandMarqueeHTML], ['cs', caseStudyHTML], ['overview', overviewHTML], ['q1', quoteCTA1], ['caps', capsHTML], ['proc', procHTML], ['q2', quoteCTA2], ['tech', techHTML], ['impact', impactHTML], ['why', whyHTML], ['rev', revHTML], ['faq', faqHTML]];
   const EP_AFTER = window.EP ? window.EP.plan(s).after : 'faq';
   root.innerHTML = SEC_ORDER.map(x => x[1] + (x[0] === EP_AFTER ? EP_HTML : '')).join('') + ctaHTML + grandFooterHTML;
   if (window.EP) window.EP.init(s);
@@ -1268,5 +1570,25 @@
     if (!('IntersectionObserver' in window)) { targets.forEach(count); return; }
     const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { count(en.target); io.unobserve(en.target); } }), { threshold: 0.4 });
     targets.forEach(el => io.observe(el));
+  })();
+
+  /* ═══════════ JUMP TO SECTION (from the mega menu, or any #hash link) ═══════════
+     The page content above is injected after load, so the browser's native
+     "scroll to #hash on load" never finds the target in time. Do it ourselves
+     once everything has rendered, and again on any later hash change (so
+     clicking a mega menu link while already on this page still scrolls). */
+  (function initHashScroll() {
+    const scrollToHash = () => {
+      const hash = location.hash.replace('#', '');
+      if (!hash) return;
+      const target = document.getElementById(hash);
+      if (!target) return;
+      if (target.classList.contains('cap-tab')) target.click();   /* tabs layout: open that capability */
+      const top = target.getBoundingClientRect().top + window.pageYOffset - 84;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    };
+    // Give the just injected DOM and fonts/images a tick to settle before measuring.
+    setTimeout(scrollToHash, 120);
+    window.addEventListener('hashchange', () => setTimeout(scrollToHash, 60));
   })();
 })();

@@ -124,7 +124,7 @@
   const grid = document.getElementById('hbGrid');
   grid.innerHTML = list.map(({ sv, c, i }) => {
     const cs = CASE_STUDIES[sv.slug];
-    const csBtn = cs ? `<a class="hb-cs-btn" href="${cs.link}"><span>View ${cs.title} Project Details</span> <i>&nearr;</i></a>` : '';
+    const csBtn = cs ? `<a class="hb-cs-btn" href="${cs.link}"><span>View ${cs.title} Case Study</span> <i>&nearr;</i></a>` : '';
     return `
     <article class="hb-zz-row" data-cat="${c.cat}" style="--a:${sv.cardAccent};--b:${sv.cardBg}">
       <div class="hb-zz-media">

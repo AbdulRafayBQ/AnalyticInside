@@ -10,12 +10,12 @@
   /* [category, service title, short description] */
   const DATA = {
     'website-development': [
-      ['Fix & Maintain', 'Bug Fixes', 'Resolve broken pages, forms, layouts and checkout issues fast.'],
-      ['Fix & Maintain', 'Speed & Core Web Vitals', 'Faster load times and better scores on mobile and desktop.'],
-      ['Upgrade & Redesign', 'Website Redesign', 'Fresh look and better UX while keeping your content and SEO.'],
-      ['Backend & Server', 'Backend & API Development', 'Custom APIs, admin panels and server logic built or rebuilt properly, so your site stays fast, stable and ready to grow behind the scenes.'],
-      ['Backend & Server', 'Database, Security & Hosting', 'Faster queries, safer data, backups and a reliable server setup, so your site stays online and your customers\' information stays protected.'],
-      ['Extend', 'New Features & Integrations', 'Online booking brings in customers around the clock, payments let you get paid instantly, and dashboards save your team hours of manual work.']
+      ['Fix & Maintain', 'Bug Fixes', 'We fix broken pages, forms, layouts and checkout problems quickly.'],
+      ['Fix & Maintain', 'Speed & Core Web Vitals', 'Pages that load faster and score better on both phones and computers.'],
+      ['Upgrade & Redesign', 'Website Redesign', 'A fresh modern look and easier navigation, keeping your content and Google rankings safe.'],
+      ['Backend & Server', 'Backend & API Development', 'Custom APIs, admin panels and server logic, built or rebuilt properly so your site stays fast, stable and ready to grow.'],
+      ['Backend & Server', 'Database, Security & Hosting', 'Faster data, stronger security, regular backups and reliable hosting, so your site stays online and customer information stays safe.'],
+      ['Extend', 'New Features & Integrations', 'Add online booking to get customers around the clock, payments to get paid instantly, and dashboards that save your team hours of manual work.']
     ],
     'mobile-app-development': [
       ['Fix & Stabilize', 'Crash & Bug Fixes', 'Fix crashes, freezes and device-specific bugs.'],

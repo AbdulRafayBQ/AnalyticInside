@@ -15,26 +15,27 @@ const SERVICES = [
     cardAccent: "#C4735F",
     stats: { built: "40+", experience: "8 Years", rating: "4.8 / 5", onTime: "97%", retention: "92%" },
     overview: [
-      "People expect a lot from mobile apps. If one is slow, drains the battery, or is confusing at checkout, it gets deleted within minutes. Earning a spot on someone's home screen takes an app that works smoothly and is genuinely useful.",
-      "We design and build iPhone and Android apps that feel fast and look great. Depending on your goals, that might mean one shared app built with Flutter or React Native, or two separate apps built natively with Swift and Kotlin. We help you choose whichever gives you the best result for your budget.",
-      "From the first sketches of how the app should work, through connecting it to your backend, working offline, adding secure login, and getting it approved on the App Store and Google Play, we handle the whole process for you."
+      "A mobile app is a software program built to run on a smartphone or tablet. Your customer downloads it from the App Store or Google Play, and it lives as an icon on their home screen, one tap away. Unlike a website, an app can use the phone itself, the camera, location, notifications, Face ID and fingerprint login, and it can keep working even when the internet connection is weak.",
+      "It is necessary today because your customers already spend most of their day on their phones. Mobile traffic has overtaken desktop in almost every industry, and a business without a proper app often looks slower and less trustworthy than one that has it. An app also gives you the one channel you fully own. No algorithm decides who sees it, and you can reach a user directly with a push notification at the moment it matters.",
+      "The benefits are practical and easy to measure. Users come back more often, check out and book faster, and stay loyal for longer because your brand sits on their home screen instead of buried in a search result. An app also opens new income through subscriptions and in app purchases, gives you clear data on how people use your product, and lets your team automate bookings, orders, payments and support.",
+      "We design and build mobile apps from the first idea to a live listing on the App Store and Google Play. Depending on your goals and budget, we build with Flutter, FlutterFlow or React Native for iPhone and Android from one codebase, or with native Android (Java or Kotlin) and native iOS. We have shipped real products this way, from the Doc Link Healthcare booking platform to the Morinaga Calories Counter, and we help you choose the approach that gives you the best result."
     ],
     tech: ["React Native", "Flutter", "Swift", "Kotlin", "Java", "Firebase", "GraphQL", "REST APIs", "AWS Amplify", "SQLite", "Push Notifications", "Fastlane"],
     capabilities: [
-      { title: "Native iOS Applications", desc: "Smooth iOS apps built with Swift and SwiftUI, tuned for Apple devices, widgets and Apple Pay." },
-      { title: "Native Android Applications", desc: "Fast, reliable Android apps built with Kotlin that run well on every popular phone and screen size." },
-      { title: "Cross Platform Mobile Apps", desc: "One shared codebase with Flutter or React Native. Near native speed and lower build costs." },
-      { title: "Mobile E-Commerce and Booking", desc: "Easy shopping, bookings and one tap payments with Apple Pay, Google Pay and cards." },
-      { title: "Field Workforce Applications", desc: "Apps that keep working offline, so field teams can log work even with weak signal." },
-      { title: "Real Time Social and Community Apps", desc: "Chat, live feeds and push notifications that keep your community engaged." }
+      { title: "Custom Mobile App Development", desc: "Flutter, FlutterFlow, React Native, Android and iOS apps built for your goals." },
+      { title: "Social Media Integration", desc: "Facebook, Google, Apple, Instagram and YouTube logins and APIs." },
+      { title: "Payment and Subscription Systems", desc: "Stripe, PayPal, Razorpay, Apple Pay, Google Pay and RevenueCat billing." },
+      { title: "Chat, Messaging and Calling", desc: "Real time chat, audio and video calls and live streaming with Socket and Twilio." },
+      { title: "Existing App Redesign and Rebuild", desc: "Fix crashes, refresh the UI and add new features to an app you already have.", section: "existingProject" },
+      { title: "Backend and Admin Dashboards", desc: "Servers, databases, APIs and a web dashboard to run the app behind the scenes." }
     ],
     process: [
-      { step: "01", title: "Product Concept and User Mapping", desc: "We define core user personas, key functional journeys, and platform requirements to ensure the app solves real problems efficiently." },
-      { step: "02", title: "Touch Ergonomics and UI Prototyping", desc: "Every screen is designed for thumb friendly interaction, followed by an interactive prototype you can click through on a real phone." },
-      { step: "03", title: "Front End Application Development", desc: "Smooth transitions, native gesture handling, offline state storage, and clean architecture implemented with surgical precision." },
-      { step: "04", title: "Backend and API Synchronization", desc: "We integrate authentication, databases, push notification servers, analytics, and third party service endpoints." },
-      { step: "05", title: "Multi Device Lab Testing", desc: "Testing across a matrix of real physical devices covering various screen sizes, processor capabilities, and operating system updates." },
-      { step: "06", title: "App Store and Google Play Submission", desc: "We navigate guidelines, prepare promotional screenshots, write store copy, and manage review processes until approval is granted." }
+      { step: "01", title: "Idea, Planning and Roadmap", desc: "We understand your business, your users and your goals, then agree on features, platforms, timeline and budget. You leave this stage with a clear roadmap and a scoped first version." },
+      { step: "02", title: "UI and UX Design", desc: "Every app starts with design. We map the user journey, sketch wireframes and design each screen for easy one hand use, then turn it into a clickable prototype you can test on a real phone before any code is written." },
+      { step: "03", title: "App Coding", desc: "Once the design is approved, our developers code the app itself: screens, navigation, animations, gestures, logins and offline storage, built on clean architecture that is easy to maintain and extend." },
+      { step: "04", title: "Backend and Integrations", desc: "Next we build the backend that powers the app: server, database, authentication, APIs and the admin dashboard. We then connect payments, chat, push notifications, analytics and any social or third party services." },
+      { step: "05", title: "Testing on Real Devices", desc: "We test across real iPhones and Android phones with different screen sizes and OS versions, checking speed, security and crashes so the app is stable before real users touch it." },
+      { step: "06", title: "Launch and Ongoing Support", desc: "We prepare store listings, screenshots and privacy details, submit to the App Store and Google Play, handle review feedback, and keep monitoring, fixing and improving the app after launch." }
     ],
     impact: [
       { metric: "4.8 ★", title: "Average App Store Rating", desc: "Driven by intuitive user experience design, rapid response times, and near zero crash rates." },
@@ -70,61 +71,62 @@ const SERVICES = [
     slug: "website-development",
     menu: "Website Development",
     title: "Website Development",
-    tag: "High Performance Websites Engineered to Convert Visitors into Clients",
+    tag: "Fast, Beautiful Websites That Turn Visitors Into Customers",
     h: 26,
     cardBg: "#FAF3EA",
     cardAccent: "#B87A4B",
     stats: { built: "80+", experience: "8 Years", rating: "4.9 / 5", onTime: "99%", retention: "96%" },
     overview: [
-      "Your website is often the first thing people see. In just a couple of seconds, visitors decide whether your business looks trustworthy and current. If the site loads slowly or is confusing to use, you lose that visitor before you even get the chance to talk to them.",
-      "We build fast, clean websites that work properly on every screen, from phones to laptops. Built using modern tools like React and Next.js, your site will look sharp and load quickly no matter what device someone is using.",
-      "We also make sure your site is easy for Google to find, easy for visitors to use, and quick to load, usually under two seconds. The goal is simple: a site that explains what you do clearly and turns visitors into customers."
+      "A website is your business address on the internet. It is a set of pages that anyone can open in a browser on a phone, tablet or computer to learn what you do, see your work, contact you or buy from you. Unlike social media pages, a website belongs to you completely, so you control the look, the message and the data.",
+      "It is necessary because people check you online before they ever call or visit. In just a few seconds a visitor decides whether your business looks trustworthy and current, and a slow, outdated or missing website sends that customer straight to a competitor. It is also open 24 hours a day, so it can answer questions, take bookings and sell for you while your team sleeps.",
+      "The benefits are easy to measure. A good website builds trust, brings in more enquiries and sales, shows up on Google when customers search, and gives you clear numbers on who visits and what they do. It also cuts repeat work by handling forms, payments, bookings and customer accounts automatically, and it grows with your business instead of being rebuilt every year.",
+      "We design and build websites from the first idea to a live launch. That means clean design, fast code in Next.js, React, Angular, Vue or WordPress, a backend and admin panel where needed, and SEO basics built in from day one. We have delivered real platforms this way, from enterprise portals like Salasa OMS to healthcare platforms like Doc Link, and we choose the setup that fits your goals and budget."
     ],
     tech: ["Next.js", "React.js", "Angular", ".NET", "Tailwind CSS", "Sanity CMS", "Vue.js", "Nuxt.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Node.js", "PHP", "Laravel", "PostgreSQL", "WordPress Headless", "Shopify", "Vercel", "AWS CloudFront"],
     capabilities: [
-      { title: "Corporate Web Platforms", desc: "A strong main website that builds trust fast and explains your value in seconds." },
-      { title: "High Conversion Landing Pages", desc: "Landing pages designed to turn ad clicks into real enquiries." },
-      { title: "SaaS Marketing Portals", desc: "Interactive marketing sites with product demos, pricing tools and free trial sign ups." },
-      { title: "Client Portals and Dashboards", desc: "Secure customer areas where clients log in, check their account and send requests." },
-      { title: "Headless CMS Implementations", desc: "Easy content editing for your team, so you can publish updates without touching code." },
-      { title: "E-Commerce Experiences", desc: "Online stores with quick checkout, live stock updates and secure payments." }
+      { title: "Custom Website Development", desc: "Fast, responsive sites built with Next.js, React, Angular, Vue or WordPress." },
+      { title: "Online Stores and Ecommerce", desc: "Stores with quick checkout, live stock and secure card and wallet payments." },
+      { title: "Web Apps and Client Portals", desc: "Secure logins and dashboards where clients manage accounts and requests." },
+      { title: "CMS and Easy Content Editing", desc: "Edit pages, blogs and products yourself with WordPress, Sanity or a headless CMS." },
+      { title: "Existing Website Redesign", desc: "A modern look, faster speed and better SEO without losing content or rankings.", section: "existingProject" },
+      { title: "Backend, APIs and Admin Panels", desc: "Servers, databases and APIs that keep your site fast, secure and ready to grow." }
     ],
     process: [
-      { step: "01", title: "Audience and Conversion Strategy", desc: "We evaluate your customer journey, competitive differentiators, and sales funnel goals to structure the ideal site map and page flow." },
-      { step: "02", title: "Information Architecture and Wireframing", desc: "We establish a clear content hierarchy so visitors can immediately grasp what you offer, why you are different, and what action to take next." },
-      { step: "03", title: "High Fidelity UI Design", desc: "Tailored visual design reflecting your brand typography, tailored illustrations, color palette, and micro interactions." },
-      { step: "04", title: "Front End and CMS Engineering", desc: "Pixel perfect code written in modern frameworks with clean semantic markup, automated image compression, and blazing load times." },
-      { step: "05", title: "Technical SEO and Performance Audits", desc: "Comprehensive optimization for Core Web Vitals, schema markup, OpenGraph tags, sitemaps, and search engine crawlability." },
-      { step: "06", title: "Launch and Team CMS Training", desc: "Zero downtime domain cutover, analytics verification, and hands on training so your staff can update content with ease." }
+      { step: "01", title: "Idea, Planning and Sitemap", desc: "We learn about your business, your customers and your goals, then plan the pages, features and timeline. You get a clear sitemap and a scoped plan before any design begins." },
+      { step: "02", title: "UI and UX Design", desc: "Every website starts with design. We build wireframes and then polished screens for desktop and mobile, with your brand colours, fonts and images, and share a clickable preview for your feedback." },
+      { step: "03", title: "Website Coding", desc: "Once the design is approved, our developers code the front end with clean, fast code. Pages are responsive, accessible and tuned for speed so they load quickly on any device." },
+      { step: "04", title: "Backend, CMS and Integrations", desc: "Next we build the backend: database, admin panel, forms, logins and APIs. We also connect the CMS so you can edit content, plus payments, email, analytics and any other tools you use." },
+      { step: "05", title: "Testing and SEO Checks", desc: "We test on real phones and browsers, check speed and security, and set up titles, metadata, sitemaps and tracking so the site is ready to be found on Google." },
+      { step: "06", title: "Launch and Ongoing Support", desc: "We move the site live with no downtime, train your team to manage content, and stay on hand for fixes, updates and new features after launch." }
     ],
     impact: [
-      { metric: "2.8x", title: "Average Conversion Boost", desc: "Achieved through clear visual hierarchy, fast load times, and persuasive call to action positioning." },
-      { metric: "< 1.4s", title: "Mobile Page Load Time", desc: "Engineered to pass all Google Core Web Vitals benchmarks with straight green scores." },
-      { metric: "65%", title: "Lower Bounce Rates", desc: "Visitors stay longer and explore more service pages when browsing is effortless." },
-      { metric: "100%", title: "Responsive Fidelity", desc: "Thoroughly tested across dozens of real physical devices to guarantee perfection everywhere." }
+      { metric: "2.8x", title: "Average Conversion Boost", desc: "Clear layouts, fast pages and well placed buttons turn more visitors into enquiries and sales." },
+      { metric: "< 1.4s", title: "Mobile Page Load Time", desc: "Pages open in about a second on a phone and pass Google Core Web Vitals." },
+      { metric: "65%", title: "Lower Bounce Rates", desc: "Easy navigation keeps visitors reading and exploring instead of leaving." },
+      { metric: "100%", title: "Responsive Fidelity", desc: "Every page is checked on real phones, tablets and browsers so it looks right everywhere." }
     ],
     whyUs: [
-      "We build with clean code, not clunky drag and drop builders that slow your site down",
-      "Every design starts mobile first, since most of your visitors are on their phones",
-      "SEO basics are built in from the start, giving you a real chance of ranking on Google",
-      "Every image and file is optimised so your site stays fast, even on slower connections",
-      "You get an easy content dashboard to edit your own site, with no ongoing licence fees",
-      "Our designers and developers work closely together, so the final site matches the design"
+      "We write clean, hand built code instead of heavy page builders, so your site stays fast",
+      "Every design starts on mobile, because most of your visitors are on their phones",
+      "SEO basics are built in from day one, so Google can find and understand your pages",
+      "Images and files are compressed, so the site stays quick even on slow connections",
+      "You get a simple dashboard to edit your own content, with no monthly licence fees",
+      "Designers and developers work side by side, so the live site matches the approved design"
     ],
     deliverables: [
-      "Fully responsive production ready web build hosted on high speed global content delivery networks",
-      "Integrated Content Management System configured with custom intuitive editing fields",
-      "Complete technical SEO setup including XML sitemaps, robots configurations, and structured metadata",
-      "Configured Google Analytics and conversion tracking events for all key form submissions",
-      "Thirty days of full post launch warranty and complimentary editorial guidance"
+      "A fully responsive, production ready website hosted on a fast global network",
+      "A content management system set up so your team can edit pages without code",
+      "Complete SEO setup with sitemaps, page titles, descriptions and structured data",
+      "Google Analytics and tracking for your forms, calls and key buttons",
+      "Thirty days of free support after launch for fixes and guidance"
     ],
     faqs: [
-      { q: "How long does it take to launch a new website?", a: "A custom five to ten page corporate website is typically designed, developed, and deployed within three to five weeks. More extensive portals with custom portals, user authentication, or e-commerce workflows generally require six to ten weeks." },
-      { q: "Will our new website rank prominently on Google?", a: "We implement rigorous technical SEO including semantic markup, schema tags, rapid load speeds, clean URL structures, and mobile accessibility. Combined with quality content, this gives your site the strongest possible organic ranking foundation." },
-      { q: "Can my team edit content without knowing code?", a: "Yes. We set up an intuitive visual CMS tailored precisely to your content model. Adding new blog posts, modifying team bios, changing copy, or uploading project photos is as easy as filling out a simple online form." },
-      { q: "Do you redesign existing websites or only build new ones?", a: "Both. We frequently redesign older, outdated websites to modernize their appearance, boost mobile responsiveness, and dramatically improve lead generation while carefully protecting existing search ranking equity." },
-      { q: "Where will our website be hosted?", a: "We typically configure hosting on enterprise grade global platforms like Vercel or AWS CloudFront. These platforms offer automatic SSL certificates, global edge distribution, and instantaneous scaling with zero maintenance overhead." },
-      { q: "Will the website work properly on older mobile phones?", a: "Yes. We rigorously test our code across multiple generations of iPhones, Android devices, and legacy browsers to ensure universal usability and flawless rendering." }
+      { q: "How long does it take to build a website?", a: "A custom website of five to ten pages usually takes three to five weeks from kickoff to launch. Larger projects with client logins, dashboards or an online store usually take six to ten weeks." },
+      { q: "Will my website show up on Google?", a: "We build SEO into every page with clean code, fast loading, proper titles and descriptions, and a mobile friendly layout. Together with good content, this gives you the strongest possible start in search results." },
+      { q: "Can my team edit the website without knowing code?", a: "Yes. We set up an easy editor so your team can add blog posts, change text, update team pages and upload photos as simply as filling in an online form." },
+      { q: "Can you redesign my existing website?", a: "Yes. We refresh old websites with a modern look, better mobile layout and faster speed, while protecting your current content and Google rankings." },
+      { q: "Where will my website be hosted?", a: "We usually host on trusted platforms like Vercel or AWS. They include a free security certificate, fast delivery worldwide and automatic scaling when traffic grows." },
+      { q: "Will the website work on older phones and browsers?", a: "Yes. We test on many generations of iPhones, Android phones and browsers, so your site works properly for all of your visitors." }
     ]
   },
   {
@@ -735,6 +737,54 @@ const pad = n => String(n + 1).padStart(2, '0');
    Click on Services nav item toggles the menu dropdown
    instead of navigating to the old video coverflow page
 ══════════════════════════════════════════════════════════ */
+/* Sections every service page is built from (see service-render.js SEC_ORDER).
+   Used to turn the mega menu's middle column into real jump links, so
+   clicking one takes the user straight to that section on the page. The
+   blurb under each label is built FROM that service's own data below, so
+   every one of the 10 services shows its own content, not shared copy. */
+const PAGE_SECTIONS = [
+  { id: "overview", label: "Strategic Overview" },
+  { id: "capabilities", label: "What We Build" },
+  { id: "process", label: "Our Process" },
+  { id: "techStack", label: "Tech Stack" },
+  { id: "impact", label: "Results & Impact" },
+  { id: "whyUs", label: "Why Choose Us" },
+  { id: "caseStudy", label: "Related Work" },
+  { id: "faqs", label: "FAQs" }
+];
+/* Headings are now generic across every service (no service name baked
+   in), otherwise ten services × a long title each made the menu look
+   huge. The blurbs below are each clamped to roughly the same length so
+   every link in the mega menu wraps to about the same number of lines,
+   give or take one. */
+function sectionHeading(id) {
+  switch (id) {
+    case 'overview': return 'Service Overview';
+    case 'capabilities': return 'What We Build';
+    case 'process': return 'Our Process';
+    case 'techStack': return 'Tech We Use';
+    case 'impact': return 'Results & Impact';
+    case 'whyUs': return 'Why Choose Us';
+    case 'caseStudy': return 'Related Work';
+    case 'faqs': return 'Common Questions';
+    default: return '';
+  }
+}
+function sectionBlurb(id, svc) {
+  const trim = (str, n) => (str.length > n ? str.slice(0, n).replace(/\s+\S*$/, '') + '…' : str);
+  switch (id) {
+    case 'overview': return trim(svc.overview[0], 170);
+    case 'capabilities': return trim(`${svc.capabilities[0].desc} ${svc.capabilities[1].desc}`, 170);
+    case 'process': return trim(`${svc.process[0].desc} ${svc.process[1].title} comes right after.`, 170);
+    case 'techStack': return trim(`Built with ${svc.tech.slice(0, 5).join(', ')} and other proven tools matched to your product and timeline.`, 170);
+    case 'impact': return trim(`${svc.impact[0].metric} ${svc.impact[0].title.toLowerCase()} and ${svc.impact[1].metric} ${svc.impact[1].title.toLowerCase()}, numbers we can back up with real client projects.`, 170);
+    case 'whyUs': return trim(`${svc.whyUs[0]}. ${svc.whyUs[1]}.`, 170);
+    case 'caseStudy': return trim(`A real ${svc.menu.toLowerCase()} project we designed, built and shipped end to end, from the first idea to a live launch our clients use every day.`, 170);
+    case 'faqs': return trim(`${svc.faqs[0].q} We also cover timelines, fair pricing, and exactly what happens after launch.`, 170);
+    default: return '';
+  }
+}
+
 (function initMegaMenu() {
   const hd = $('#siteHeader');
   const li = [...document.querySelectorAll('.nav li')].find(l => /services/i.test(l.textContent));
@@ -821,7 +871,7 @@ const pad = n => String(n + 1).padStart(2, '0');
           <div class="mg-p${i === panelDefaultIdx ? ' on' : ''}" data-i="${i}" style="--h:${s.h}">
             <div class="mg-m">
               ${s.capabilities.slice(0, 6).map((c, j) => `
-                <a href="service.html?s=${s.slug}#capabilities" style="--j:${j}">
+                <a href="service.html?s=${s.slug}#${c.section || 'cap-' + (j + 1)}" style="--j:${j}">
                   <b>${c.title}</b>
                   <span>${c.desc}</span>
                 </a>
@@ -922,6 +972,86 @@ const pad = n => String(n + 1).padStart(2, '0');
   });
 
   // Escape key closes menu
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      immediateClose();
+    }
+  });
+})();
+
+/* ══════════════════════════════════════════════════════════
+   "PORTFOLIO" NAV DROPDOWN — same glassy card used by the
+   Services mega menu's center column, reused on its own as a
+   simple preview grid of featured projects. Opens on hover on
+   desktop; on mobile the nav link just navigates normally, same
+   as every other top level link. Sits right after Services in
+   the header, same position it already has in the nav markup.
+══════════════════════════════════════════════════════════ */
+(function initPortfolioMega() {
+  const hd = $('#siteHeader');
+  const li = [...document.querySelectorAll('.nav li')].find(l => /^portfolio$/i.test(l.textContent.trim()));
+  if (!hd || !li) return;
+
+  const PF_PROJECTS = [
+    { title: 'Salasa OMS', tagline: 'An enterprise logistics platform built from the ground up.', slug: 'salasaoms' },
+    { title: 'Dr. Asgar Rheumatology', tagline: 'Cross platform care app paired with a secure clinic dashboard.', slug: 'drasgarrheumatology' },
+    { title: 'Caary Capital', tagline: 'Rebuilt fintech dashboards serving 500 plus internal users.', slug: 'caarycapital' },
+    { title: 'Doc Link Healthcare', tagline: 'Skip the waiting room. Checkups and bookings in one app.', slug: 'doclinkhealthcare' },
+    { title: 'Morinaga Calories Counter', tagline: 'Cross platform calorie tracking with real time sync.', slug: 'morinagacaloriescounter' },
+    { title: 'RichAI', tagline: 'A talking avatar and chatbot with real image generation.', slug: 'richai' },
+    { title: 'Zylmi', tagline: 'Brand identity and digital presence for a modern startup.', slug: 'zylmi' },
+    { title: 'Telecard', tagline: 'A corporate WordPress build for a long standing ICT provider.', slug: 'telecard' }
+  ];
+
+  const m = document.createElement('div');
+  m.className = 'mega pf-mega';
+  m.innerHTML = `
+    <div class="mg-m">
+      ${PF_PROJECTS.map((p, j) => `
+        <a href="portfolio.html?project=${p.slug}" style="--j:${j}">
+          <b>${p.title}</b>
+          <span>${p.tagline}</span>
+        </a>
+      `).join('')}
+    </div>
+    <div class="pf-all-wrap"><a class="mg-all" href="portfolio.html">View All Projects &rarr;</a></div>
+  `;
+  hd.appendChild(m);
+
+  let timer;
+  const open = () => {
+    if (window.innerWidth <= 960) return;
+    clearTimeout(timer);
+    m.classList.add('open');
+    hd.classList.add('mega-open');
+  };
+  const close = () => {
+    timer = setTimeout(() => {
+      m.classList.remove('open');
+      hd.classList.remove('mega-open');
+    }, 180);
+  };
+  const immediateClose = () => {
+    clearTimeout(timer);
+    m.classList.remove('open');
+    hd.classList.remove('mega-open');
+  };
+
+  [li, m].forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 960) open();
+    });
+    el.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 960) close();
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!li.contains(e.target) && !m.contains(e.target)) {
+      immediateClose();
+    }
+  });
+
   window.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       immediateClose();

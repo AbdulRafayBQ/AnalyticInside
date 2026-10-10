@@ -123,3 +123,12 @@
 /* monogram badge for languages without a logo file */
 .pd-mono { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px; background: linear-gradient(135deg, #C99B5C, #E8C58E); color: #17130E; font: 800 13px 'Outfit', sans-serif; letter-spacing: .02em; }
 .pd .ts-logo .pd-mono { width: 44px; height: 44px; font-size: 15px; }
+
+/* ══════ v3: Technology Stack now uses the homepage .tech-* design (css/styles.css) ══════ */
+.pdh { padding: 90px 0 120px; }
+.pdh .tech-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.pdh .tech-icon .pd-mono { width: 22px; height: 22px; border-radius: 6px; font-size: 9px; }
+.pdh .tech-pill { cursor: pointer; }
+.pdh .tech-container { opacity: 0; }
+.pdh .tech-container.tech-in { opacity: 1; }
+@media (max-width: 768px) { .pdh { padding: 64px 0 80px; } }

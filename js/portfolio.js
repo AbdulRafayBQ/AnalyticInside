@@ -84,14 +84,14 @@
     {
       title: 'Doc Link Healthcare',
       short: 'DocLink',
-      sub: 'Healthcare Platform',
+      sub: 'Healthcare Mobile App + Web Platform',
       folder: 'health care platform pakistan based',
       images: ['Screenshot 2026-09-15 012724.png', 'Screenshot 2026-09-15 012834.png', 'Screenshot 2026-09-15 012936.png', 'Screenshot 2026-09-15 013016.png'],
       tags: ['React', 'Next.js', 'Redux', 'Material UI'],
-      tagline: 'Skip the waiting room. Checkups and bookings in one app.',
-      category: 'web',
+      tagline: 'Skip the waiting room. See a doctor, book a visit and get your prescription from one app.',
+      category: 'mobile',
       caseStudy: 'Case studies/doclink-healthcare-portfolio/index.html',
-      desc: 'Built for a Pakistan based healthcare startup that wanted patients to skip waiting rooms entirely. Full online checkups, appointment booking with real clinics and round the clock doctor access all in one connected platform.',
+      desc: 'Doc Link is a healthcare app for patients in Pakistan who are tired of long clinic queues. Patients can consult a doctor online by video or audio call, book appointments with real clinics, get reminders and download their prescription after the visit. Doctors get a verified profile and a simple schedule, and the whole platform runs on a secure web dashboard behind the app. We handled the product from research and UI UX design to coding, backend and launch.',
       process: [
         { phase: 'Market Research', detail: 'Interviewed 30 patients in Karachi about healthcare friction points. The top complaint was waiting 45 to 90 minutes at clinics for a 5 minute consultation. That became the north star metric to eliminate.' },
         { phase: 'Platform Architecture', detail: 'Next.js for SSR and SEO, which is critical for a health platform people search for. Redux for global state so appointment status, doctor availability and user session stayed in sync across tabs.' },
@@ -108,10 +108,10 @@
       folder: 'Morinaga Calories Counter Mobile App (Android + iOS) & Web Dashboard',
       images: ['Screenshot 2026-09-15 010551.png', 'Screenshot 2026-09-15 010625.png', 'Screenshot 2026-09-15 010650.png'],
       tags: ['React Native', 'Next.js', 'Material UI', 'Tailwind CSS'],
-      tagline: 'Cross platform calorie tracking with real time sync.',
+      tagline: 'Scan, log and understand every meal. One app for iPhone and Android with live sync.',
       category: 'mobile',
       caseStudy: 'Case studies/morinaga-calories-portfolio/index.html',
-      desc: 'A calorie tracking app for Morinaga built cross platform with React Native. Paired with a Next.js admin dashboard for tracking usage on the business side, with real time syncing across devices via Firebase.',
+      desc: 'Morinaga Calories Counter helps people track what they eat and stay mindful through the day. Users search a food database of 8,000 plus items or scan a barcode to log meals in seconds, and a daily macro bar shows their progress at a glance. The app is built once with React Native for both iPhone and Android, and it syncs in real time through Firebase with a Next.js admin dashboard where the Morinaga team sees which products people use most.',
       process: [
         { phase: 'Nutrition Data Architecture', detail: 'Sourced and structured a food database of 8,000 plus items including Morinaga product lines with verified macro data. Built a search as you type ingredient lookup with fuzzy matching.' },
         { phase: 'Barcode Scanner', detail: 'Integrated device camera for barcode scanning using React Native Vision Camera. Scanned product barcodes map to the nutrition database in under 200ms. Fallback to manual search when barcode is unrecognised.' },
@@ -613,8 +613,8 @@
     const accent = ACCENTS[i % ACCENTS.length];
     const hasCS = !!p.caseStudy;
     const primaryAction = hasCS ? 'cs' : 'details';
-    const primaryLabel = hasCS ? 'View case study' : 'View project details';
-    const thumbLabel = hasCS ? `View ${esc(p.title)} case study` : `Open ${esc(p.title)} project details`;
+    const primaryLabel = 'View Case Study';
+    const thumbLabel = `View ${esc(p.title)} case study`;
     return `
       <article class="pz-row${i % 2 ? ' pz-row--flip' : ''}" data-id="${p.id}" style="--pa:${accent}">
         <div class="pz-media">
@@ -622,7 +622,7 @@
           <span class="pz-glow" aria-hidden="true"></span>
           <button class="pz-thumb" type="button" data-id="${p.id}" data-action="${primaryAction}" aria-label="${thumbLabel}">
             ${thumbMarkup(p)}
-            <span class="pz-open" aria-hidden="true">${hasCS ? 'View case study' : 'View project'} <i>&nearr;</i></span>
+            <span class="pz-open" aria-hidden="true">View case study <i>&nearr;</i></span>
           </button>
         </div>
         <div class="pz-body">
@@ -777,8 +777,8 @@
     const csSectionHtml = `
       <div class="pf-view-cs-section pf-reveal">
         <div class="pf-view-cs-text">
-          <h4>${p.caseStudy ? 'Full Case Study Available' : `${p.title} Project Story`}</h4>
-          <p>${p.caseStudy ? `Read the complete project breakdown for ${p.title}.` : `Explore the decisions and steps behind the ${p.title} project.`}</p>
+          <h4>${p.caseStudy ? 'Full Case Study Available' : `${p.title} Case Study`}</h4>
+          <p>${p.caseStudy ? `Read the complete project breakdown for ${p.title}.` : `Every phase of the ${p.title} build, from first decisions to launch.`}</p>
         </div>
         ${detailCaseStudyAction}
       </div>
@@ -952,7 +952,7 @@
         <div class="pf-cs-bar">
           <button class="pf-cs-back" type="button">
             <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M13 8H3M3 8L7.5 3.5M3 8L7.5 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Back to project details
+            Back to overview
           </button>
           <span class="pf-cs-bar-title">${esc(p.title)} <em>· Case study</em></span>
         </div>
@@ -995,7 +995,7 @@
     if (btn && currentProject) openCaseStudy(currentProject, null, btn);
   });
   document.addEventListener('click', e => {
-    if (e.target.closest('.pf-cs-back') && currentProject) showProjectDetails(currentProject);
+    if (e.target.closest('.pf-cs-back')) closeProject();
   });
 
   closeBtn.addEventListener('click', closeProject);
@@ -1014,7 +1014,8 @@
         const row = card.closest('.pz-row');
         if (row) row.classList.add('is-in');
         row && row.scrollIntoView({ block: 'center' });
-        openProject(card, project, card);
+        if (project.caseStudy) openCaseStudy(project, card, card);
+        else openProject(card, project, card);
       }
     }
   }
