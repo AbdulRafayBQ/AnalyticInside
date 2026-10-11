@@ -157,28 +157,22 @@
   const STACK_CHOICE = {
     'mobile-app-development': [
       ['Android', [['Kotlin', 'kotlin'], ['Java', 'java'], ['Android Studio', 'androidstudio'], ['Jetpack Compose', 'jetpackcompose']]],
-      ['iOS', [['Swift', 'swift'], ['SwiftUI', 'swiftui'], ['Xcode', 'xcode']]],
+      ['iOS', [['Swift', 'swift'], ['SwiftUI', 'swiftui']]],
       ['Cross-Platform', [['Flutter', 'flutter'], ['React Native', 'reactnative'], ['Dart', 'dart'], ['.NET MAUI', 'dotnetcore']]],
-      ['Backend & APIs', [['Node.js', 'nodejs'], ['Python', 'python'], ['Spring Boot', 'spring'], ['PHP / Laravel', 'laravel'], ['REST API', 'restapi'], ['GraphQL', 'graphql']]],
-      ['Databases', [['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['MongoDB', 'mongodb'], ['Firebase', 'firebase'], ['Supabase', 'supabase'], ['SQLite', 'sqlite']]],
-      ['Dev Tools', [['VS Code', 'vscode'], ['Git', 'git'], ['GitHub', 'github'], ['Postman', 'postman']]],
-      ['Deployment', [['AWS', 'amazonwebservices'], ['Google Cloud', 'googlecloud'], ['Microsoft Azure', 'azure'], ['App Store', 'appstore'], ['Google Play', 'googleplay']]]
+      ['Backend & APIs', [['Node.js', 'nodejs'], ['NestJS', 'nestjs'], ['Python', 'python'], ['Spring Boot', 'spring'], ['PHP / Laravel', 'laravel'], ['REST API', 'restapi'], ['GraphQL', 'graphql']]],
+      ['Databases', [['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['MongoDB', 'mongodb'], ['Firebase', 'firebase'], ['Supabase', 'supabase'], ['SQLite', 'sqlite']]]
     ],
     'website-development': [
-      ['Core Languages', [['HTML', 'html5'], ['CSS', 'css3'], ['JavaScript', 'javascript'], ['TypeScript', 'typescript']]],
-      ['Frontend', [['React.js', 'react'], ['Next.js', 'nextjs'], ['Vue.js', 'vuejs'], ['Angular', 'angularjs'], ['Tailwind CSS', 'tailwindcss'], ['Bootstrap', 'bootstrap']]],
-      ['Backend', [['Node.js', 'nodejs'], ['Express.js', 'express'], ['PHP / Laravel', 'laravel'], ['Python / Django', 'django'], ['C# / ASP.NET', 'dotnetcore']]],
-      ['Database', [['MySQL', 'mysql'], ['PostgreSQL', 'postgresql'], ['MongoDB', 'mongodb'], ['Firebase', 'firebase'], ['Supabase', 'supabase']]],
-      ['Dev Tools', [['VS Code', 'vscode'], ['Git', 'git'], ['GitHub', 'github'], ['Figma', 'figma'], ['Postman', 'postman']]],
-      ['Hosting / Deployment', [['Vercel', 'vercel'], ['Netlify', 'netlify'], ['Hostinger', 'hostinger'], ['AWS', 'amazonwebservices'], ['Cloudflare', 'cloudflare']]]
+      ['Core Languages', [['TypeScript', 'typescript'], ['Python', 'python']]],
+      ['Frontend', [['React.js', 'react'], ['Next.js', 'nextjs'], ['Vue.js', 'vuejs'], ['Angular', 'angularjs']]],
+      ['Backend', [['Node.js', 'nodejs'], ['NestJS', 'nestjs'], ['Express.js', 'express'], ['PHP / Laravel', 'laravel'], ['Python / Django', 'django'], ['C# / ASP.NET', 'dotnetcore']]],
+      ['Database', [['MySQL', 'mysql'], ['PostgreSQL', 'postgresql'], ['MongoDB', 'mongodb'], ['Firebase', 'firebase'], ['Supabase', 'supabase']]]
     ],
     'custom-software-development': [
       ['Languages', [['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['Python', 'python'], ['Java', 'java'], ['C#', 'csharp'], ['C++', 'cplusplus'], ['Go', 'go'], ['PHP', 'php'], ['Kotlin', 'kotlin'], ['Swift', 'swift']]],
       ['Frontend', [['React', 'react'], ['Angular', 'angularjs'], ['Vue.js', 'vuejs'], ['Next.js', 'nextjs']]],
-      ['Backend', [['Node.js', 'nodejs'], ['.NET / ASP.NET', 'dotnetcore'], ['Django', 'django'], ['FastAPI', 'fastapi'], ['Spring Boot', 'spring'], ['Laravel', 'laravel']]],
+      ['Backend', [['Node.js', 'nodejs'], ['NestJS', 'nestjs'], ['.NET / ASP.NET', 'dotnetcore'], ['Django', 'django'], ['FastAPI', 'fastapi'], ['Spring Boot', 'spring'], ['Laravel', 'laravel']]],
       ['Databases', [['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['MongoDB', 'mongodb'], ['SQL Server', 'microsoftsqlserver'], ['Redis', 'redis']]],
-      ['Dev Tools', [['Git', 'git'], ['GitHub', 'github'], ['VS Code', 'vscode'], ['Visual Studio', 'visualstudio'], ['Postman', 'postman'], ['Docker', 'docker']]],
-      ['Cloud / Deployment', [['AWS', 'amazonwebservices'], ['Microsoft Azure', 'azure'], ['Google Cloud', 'googlecloud'], ['Kubernetes', 'kubernetes'], ['CI/CD', 'githubactions']]],
       ['APIs', [['REST API', 'restapi'], ['GraphQL', 'graphql']]]
     ]
   };

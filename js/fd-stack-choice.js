@@ -11,23 +11,20 @@
   const STACKS = {
     'software development': [
       ['Languages', [['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['Python', 'python'], ['Java', 'java'], ['C#', 'csharp'], ['Go', 'go'], ['PHP', 'php'], ['C++', 'cplusplus']]],
-      ['Backend & Frameworks', [['Node.js', 'nodejs'], ['Django', 'django'], ['Spring', 'spring'], ['.NET', 'dotnetcore'], ['Laravel', 'laravel'], ['FastAPI', 'fastapi']]],
-      ['Database', [['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['MongoDB', 'mongodb'], ['Redis', 'redis'], ['SQL Server', 'microsoftsqlserver']]],
-      ['Cloud & DevOps', [['AWS', 'amazonwebservices'], ['Azure', 'azure'], ['Google Cloud', 'googlecloud'], ['Docker', 'docker'], ['Kubernetes', 'kubernetes'], ['GitHub Actions', 'githubactions']]]
+      ['Backend & Frameworks', [['Node.js', 'nodejs'], ['NestJS', 'nestjs'], ['Django', 'django'], ['Spring', 'spring'], ['.NET', 'dotnetcore'], ['Laravel', 'laravel'], ['FastAPI', 'fastapi']]],
+      ['Database', [['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['MongoDB', 'mongodb'], ['Redis', 'redis'], ['SQL Server', 'microsoftsqlserver']]]
     ],
     'website development': [
-      ['Frontend', [['React', 'react'], ['Next.js', 'nextjs'], ['Vue.js', 'vuejs'], ['Angular', 'angularjs'], ['Tailwind CSS', 'tailwindcss'], ['Bootstrap', 'bootstrap'], ['HTML5', 'html5'], ['CSS3', 'css3']]],
-      ['Backend', [['Node.js', 'nodejs'], ['PHP / Laravel', 'laravel'], ['Python', 'python'], ['Express', 'express'], ['Django', 'django'], ['FastAPI', 'fastapi']]],
-      ['Database', [['MySQL', 'mysql'], ['PostgreSQL', 'postgresql'], ['MongoDB', 'mongodb'], ['Supabase', 'supabase'], ['Redis', 'redis']]],
-      ['Deployment', [['Vercel', 'vercel'], ['Netlify', 'netlify'], ['AWS', 'amazonwebservices'], ['Cloudflare', 'cloudflare'], ['Hostinger', 'hostinger']]]
+      ['Frontend', [['React', 'react'], ['Next.js', 'nextjs'], ['Vue.js', 'vuejs'], ['Angular', 'angularjs'], ['TypeScript', 'typescript']]],
+      ['Backend', [['Node.js', 'nodejs'], ['NestJS', 'nestjs'], ['PHP / Laravel', 'laravel'], ['Python', 'python'], ['Express', 'express'], ['Django', 'django'], ['FastAPI', 'fastapi']]],
+      ['Database', [['MySQL', 'mysql'], ['PostgreSQL', 'postgresql'], ['MongoDB', 'mongodb'], ['Supabase', 'supabase'], ['Redis', 'redis']]]
     ],
     'mobile app development': [
       ['Android', [['Kotlin', 'kotlin'], ['Java', 'java'], ['Jetpack Compose', 'jetpackcompose'], ['Android Studio', 'androidstudio']]],
-      ['iOS', [['Swift', 'swift'], ['SwiftUI', 'swiftui'], ['Xcode', 'xcode']]],
+      ['iOS', [['Swift', 'swift'], ['SwiftUI', 'swiftui']]],
       ['Cross-Platform', [['Flutter', 'flutter'], ['React Native', 'reactnative'], ['Dart', 'dart']]],
-      ['Backend & APIs', [['Node.js', 'nodejs'], ['Python', 'python'], ['Laravel', 'laravel'], ['Firebase', 'firebase'], ['REST API', 'restapi'], ['GraphQL', 'graphql']]],
-      ['Database', [['PostgreSQL', 'postgresql'], ['MongoDB', 'mongodb'], ['MySQL', 'mysql'], ['SQLite', 'sqlite'], ['Supabase', 'supabase']]],
-      ['Deployment', [['Firebase', 'firebase'], ['AWS', 'amazonwebservices'], ['Google Cloud', 'googlecloud'], ['App Store', 'appstore'], ['Google Play', 'googleplay']]]
+      ['Backend & APIs', [['Node.js', 'nodejs'], ['NestJS', 'nestjs'], ['Python', 'python'], ['Laravel', 'laravel'], ['Firebase', 'firebase'], ['REST API', 'restapi'], ['GraphQL', 'graphql']]],
+      ['Database', [['PostgreSQL', 'postgresql'], ['MongoDB', 'mongodb'], ['MySQL', 'mysql'], ['SQLite', 'sqlite'], ['Supabase', 'supabase']]]
     ]
   };
   const norm = x => x.toLowerCase().replace(/&amp;/g, '&').replace(/^custom\s+/, '').replace(/\s*&.*$/, '').trim();
