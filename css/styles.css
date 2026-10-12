@@ -1291,6 +1291,15 @@ body {
 }
 .pfh-plate-gold   { background: linear-gradient(135deg, #F6E8C9 0%, #E2BC7E 52%, #C99B5C 100%); }
 .pfh-plate-violet { background: linear-gradient(135deg, #F0EAFF 0%, #CDBBF8 52%, #A78BFA 100%); }
+.pfh-plate-salasa { background: linear-gradient(135deg, #DDF8F2 0%, #91E8D5 52%, #32CDB0 100%); }
+.pfh-plate-morinaga { background: linear-gradient(135deg, #FFE4E8 0%, #FF9CA8 52%, #EE3048 100%); }
+.pfh-plate-asgar {
+  inset: 3% 4% 2% 4%;
+  background:
+    radial-gradient(120% 70% at 85% 0%, rgba(213,123,221,.42), transparent 60%),
+    linear-gradient(165deg, #F8E7F5 0%, #D9C7F4 100%);
+}
+.pfh-plate-asgar::before { background-image: radial-gradient(rgba(45,48,91,.14) 1.3px, transparent 1.6px); }
 .pfh-plate-ink {
   inset: 3% 4% 2% 4%;
   background:
@@ -1300,6 +1309,24 @@ body {
 .pfh-plate-ink::before {
   background-image: radial-gradient(rgba(245,239,224,.12) 1.3px, transparent 1.6px);
 }
+.pfh-row[data-index="0"] .pfh-layer:not(.pfh-salasa-art),
+.pfh-row[data-index="2"] .pfh-layer:not(.pfh-morinaga-art) { display: none; }
+.pfh-asgar-art [fill="#17130E"],
+.pfh-asgar-art [fill="#2E2216"] { fill: #24345F !important; }
+.pfh-asgar-art [fill="#33251A"] { fill: #302C66 !important; }
+.pfh-asgar-art [fill="#C99B5C"],
+.pfh-asgar-art [fill="#B67F3E"],
+.pfh-asgar-art [fill="#D2A567"] { fill: #D77DDD !important; }
+.pfh-asgar-art [fill="#E6C48B"] { fill: #F1B8E8 !important; }
+.pfh-asgar-art [fill="#F5EFE0"],
+.pfh-asgar-art [fill="#FBF7EE"] { fill: #FBF6FC !important; }
+.pfh-asgar-art [stroke="#C99B5C"] { stroke: #C96CD5 !important; }
+.pfh-asgar-art [stroke="#17130E"] { stroke: #24345F !important; }
+.pfh-asgar-art [stop-color="#C99B5C"],
+.pfh-asgar-art [stop-color="#D2A567"] { stop-color: #DA83DE !important; }
+.pfh-asgar-art [stop-color="#B67F3E"] { stop-color: #8657B4 !important; }
+.pfh-asgar-art [stop-color="#E6C48B"] { stop-color: #F0B8E8 !important; }
+.pfh-asgar-art [stop-color="#17130E"] { stop-color: #24345F !important; }
 
 /* each floating layer: own depth (--z), optional tilt (--r) */
 .pfh-layer {
@@ -3492,6 +3519,7 @@ body {
   box-shadow: none;
   transition: transform .3s ease, box-shadow .3s ease;
 }
+.svc-card[hidden] { display: none !important; }
 .sap-btn-primary:hover { background: #33291d; border-color: #33291d; transform: translateY(-3px); box-shadow: 0 12px 26px rgba(23,19,14,.18); }
 .sap-btn-primary svg { width: 15px; height: 15px; transition: transform .3s ease; }
 .sap-btn-primary:hover svg { transform: translateX(3px); }

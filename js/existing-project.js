@@ -203,9 +203,6 @@
               <label>Services Needed</label>
               <div class="ep-groups">${groups}</div>
             </div>
-            <div class="ep-field"><label for="epUrgency">Timeline</label>
-              <select id="epUrgency"><option>Within 1 week</option><option>Within 2 to 4 weeks</option><option>Flexible</option></select>
-            </div>
             <div class="ep-field"><label for="epBrief">What needs to be done?</label><textarea id="epBrief" rows="4" placeholder="Describe the problem, goal or change you need..."></textarea></div>
             <button type="submit" class="ep-submit">Send Request ${ARROW}</button>
             <p class="ep-note">No commitment. We reply with a plan within 24 hours.</p>
@@ -325,7 +322,6 @@
           productUrl: document.getElementById('epLink').value.trim(),
           techStack: document.getElementById('epStack').value.trim(),
           services: [...picked].map(input => input.value).join(', '),
-          timeline: document.getElementById('epUrgency').value,
           message: document.getElementById('epBrief').value.trim(),
           service: 'Existing product support',
           source: location.href

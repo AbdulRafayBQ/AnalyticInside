@@ -619,6 +619,24 @@ const SERVICES = [
   }
 ];
 
+const HIDDEN_SERVICE_SLUGS = new Set([
+  "data-analytics-consultancy",
+  "data-management-database-solutions",
+  "ai-consultancy-automation-strategy"
+]);
+const PUBLIC_SERVICE_ORDER = [
+  "mobile-app-development",
+  "website-development",
+  "custom-software-development",
+  "product-design-development",
+  "ai-development",
+  "digital-marketing-branding",
+  "vibe-code-to-production"
+];
+const PUBLIC_SERVICES = PUBLIC_SERVICE_ORDER
+  .map(slug => SERVICES.find(service => service.slug === slug))
+  .filter(Boolean);
+
 /* ── Testimonials data ── */
 const REVIEWS = [
   {
@@ -798,7 +816,7 @@ function sectionBlurb(id, svc) {
   const currentSlug = /service\.html/i.test(location.pathname)
     ? new URLSearchParams(location.search).get('s')
     : null;
-  let activeIdx = SERVICES.findIndex(sv => sv.slug === currentSlug);
+  let activeIdx = PUBLIC_SERVICES.findIndex(sv => sv.slug === currentSlug);
   const onValidServicePage = activeIdx >= 0;
   // Which entry looks "selected" (bold) in the left list before any hover.
   // Only mark one when we're actually on that service's page — never
@@ -810,7 +828,7 @@ function sectionBlurb(id, svc) {
   // entry is NOT marked as selected unless onValidServicePage is true.
   const panelDefaultIdx = onValidServicePage ? activeIdx : 0;
   if (onValidServicePage) {
-    const svc = SERVICES[activeIdx];
+    const svc = PUBLIC_SERVICES[activeIdx];
     a.href = `service.html?s=${svc.slug}`;
     a.textContent = svc.menu;
   }
@@ -833,7 +851,7 @@ function sectionBlurb(id, svc) {
   mobSub.className = 'nav-mobile-services';
   mobSub.innerHTML = `
     <div class="nms-list">
-      ${SERVICES.map((sv, i) => `
+      ${PUBLIC_SERVICES.map((sv, i) => `
         <a class="nms-item${sv.slug === currentSlug ? ' on' : ''}" href="service.html?s=${sv.slug}">
           <span class="nms-dot"></span>
           <span class="nms-title">${sv.menu}</span>
@@ -863,11 +881,11 @@ function sectionBlurb(id, svc) {
   m.innerHTML = `
     <div class="mega-in">
       <div class="mg-l">
-        ${SERVICES.map((s, i) => `<a class="ml${i === mlDefaultIdx ? ' on' : ''}" data-i="${i}" href="service.html?s=${s.slug}">${s.menu}</a>`).join('')}
+        ${PUBLIC_SERVICES.map((s, i) => `<a class="ml${i === mlDefaultIdx ? ' on' : ''}" data-i="${i}" href="service.html?s=${s.slug}">${s.menu}</a>`).join('')}
         ${onValidServicePage ? `<a class="mg-all" href="services.html">&larr; Back to All Services</a>` : ''}
       </div>
       <div class="mg-stack">
-        ${SERVICES.map((s, i) => `
+        ${PUBLIC_SERVICES.map((s, i) => `
           <div class="mg-p${i === panelDefaultIdx ? ' on' : ''}" data-i="${i}" style="--h:${s.h}">
             <div class="mg-m">
               ${s.capabilities.slice(0, 6).map((c, j) => `
@@ -1058,4 +1076,3 @@ function sectionBlurb(id, svc) {
     }
   });
 })();
-

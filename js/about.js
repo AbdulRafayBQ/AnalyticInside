@@ -48,6 +48,9 @@
     { slug: 'ai-consultancy-automation-strategy', cat: 'ai', name: 'AI Consultancy', line: 'Not sure where AI fits in your business? We study how you work, find the places where it will really pay off and hand you a simple plan with costs and dates.', gets: ['An honest review of where AI helps and where it does not', 'A ranked list of ideas with expected return', 'A small pilot to prove it before you invest more'], time: '2 to 4 weeks' },
     { slug: 'vibe-code-to-production', cat: 'build', name: 'Vibe Code to Production', line: 'Built your app with an AI tool and now it has to survive real users? We review the code, fix the weak spots, secure it and get it ready to launch.', gets: ['A full code and security review', 'Bugs fixed and the structure cleaned up', 'Hosting, monitoring and automatic releases'], time: '2 to 6 weeks' }
   ];
+  var publicServices = PUBLIC_SERVICE_ORDER
+    .map(function (slug) { return SERVICES.find(function (service) { return service.slug === slug; }); })
+    .filter(Boolean);
 
   var PROJECTS = [
     { slug: 'salasaoms', title: 'Salasa OMS', kind: 'Web platform', img: 'Case studies/salasa-oms-portfolio/images/dashboard.png', tag: 'An enterprise logistics platform built from the ground up.', tags: ['React', 'Next.js', 'TypeScript', 'Node.js'] },
@@ -203,7 +206,7 @@
   var svcCard = $('#abSvcCard');
   var svcBtns = [];
   if (svcList && svcCard) {
-    SERVICES.forEach(function (s, i) {
+    publicServices.forEach(function (s, i) {
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'ab-svc-btn'; b.setAttribute('role', 'tab');
       b.innerHTML = '<small>' + pad(i + 1) + '</small><span>' + s.name + '</span>';
@@ -220,7 +223,7 @@
     });
   }
   function setSvc(i, animate) {
-    var s = SERVICES[i];
+    var s = publicServices[i];
     svcBtns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
     $('#abSvcImg').setAttribute('data-cat', s.cat);
     $('#abSvcIcon').innerHTML = '<svg viewBox="0 0 24 24" width="96" height="96" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">' + (SVC_ICONS[s.slug] || '') + '</svg>';

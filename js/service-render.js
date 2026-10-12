@@ -11,6 +11,10 @@
   if (!root) return;
 
   const urlParam = new URLSearchParams(location.search).get('s');
+  if (HIDDEN_SERVICE_SLUGS.has(urlParam)) {
+    location.replace('services.html');
+    return;
+  }
   const matchedIdx = SERVICES.findIndex(s => s.slug === urlParam);
   const k = matchedIdx >= 0 ? matchedIdx : 0;
   const s = SERVICES[k];
@@ -209,7 +213,7 @@
           <div class="stf-field"><input type="email" id="stfEmail" placeholder="Email*" required /></div>
           <div class="stf-field"><input type="tel" id="stfPhone" placeholder="Phone" /></div>
           ${stackChoiceHTML}
-          <div class="stf-field"><textarea id="stfBrief" rows="4" placeholder="Briefly describe your idea, platform, timeline..."></textarea></div>
+          <div class="stf-field"><textarea id="stfBrief" rows="4" placeholder="Briefly describe your idea or platform..."></textarea></div>
           <button type="submit" class="stf-submit-btn" id="stfSubmitBtn">Get Free Consultation</button>
           <p class="stf-form-feedback" role="status" aria-live="polite"></p>
         </form>
@@ -829,23 +833,20 @@
 
   const projects = SERVICE_PROJECTS[s.slug] || SERVICE_PROJECTS['website-development'];
 
-  /* ── Self-drawn thumbnails (no screenshots): every project gets its own
-     bespoke illustration — same hand-built, layered look as the homepage
-     "Selected Work" showcase — instead of a cropped screenshot or a
-     generic repeated dashboard. Each one is tailored to what that
-     product actually does. ── */
+  /* ── Use the project-specific 3D showcase artwork where available, with
+     the bespoke SVG illustrations retained for projects without artwork. ── */
   const PROJECT_META = {
-    'Dr. Asgar Clinic': { kind: 'app', accent: '#C99B5C' },
-    'Doc Link Healthcare': { kind: 'app', accent: '#8B6CF0' },
-    'Morinaga Calories Counter': { kind: 'app', accent: '#3d9e6a' },
-    'Salasa OMS': { kind: 'web', accent: '#C99B5C' },
-    'Telecard': { kind: 'web', accent: '#5CE1B4' },
-    'Tiny Kiwi': { kind: 'web', accent: '#8B6CF0' },
-    'Caary Capital': { kind: 'web', accent: '#C99B5C' },
-    'Assist Event': { kind: 'web', accent: '#C99B5C' },
-    'RichAI': { kind: 'web', accent: '#8B6CF0' },
-    'Zylmi': { kind: 'web', accent: '#5CE1B4' },
-    'LinkDrip': { kind: 'web', accent: '#3d7ec6' }
+    'Dr. Asgar Clinic': { kind: 'app', accent: '#D77DDD', slug: 'drasgarrheumatology', image: 'images/Portfolio thumbnails/Dr. Asgar Rheumatology App Showcase.png', metric: '482', detail: 'Patients cared for', theme: 'CLINIC CARE' },
+    'Doc Link Healthcare': { kind: 'app', accent: '#8B6CF0', image: 'images/Portfolio thumbnails/Telehealth Dashboard Product Showcase.png', metric: '24/7', detail: 'Care, connected', theme: 'TELEHEALTH' },
+    'Morinaga Calories Counter': { kind: 'app', accent: '#ED2944', slug: 'morinagacaloriescounter', image: 'images/Portfolio thumbnails/Morinaga Kids Health App Showcase.png', metric: '1,240', detail: 'Daily kcal tracked', theme: 'HEALTHY HABITS' },
+    'Salasa OMS': { kind: 'web', accent: '#31CDB0', slug: 'salasaoms', image: 'images/Portfolio thumbnails/SALASA Logistics Platform Showcase.png', metric: '10K+', detail: 'Orders in motion', theme: 'LOGISTICS OS' },
+    'Telecard': { kind: 'web', accent: '#5CE1B4', image: 'images/Portfolio thumbnails/Telecard Connected Future Showcase.png', metric: '15+', detail: 'Services, one hub', theme: 'CONNECTED FUTURE' },
+    'Tiny Kiwi': { kind: 'web', accent: '#8B6CF0', image: 'images/Portfolio thumbnails/Tiny Kiwi Photo Editing Workspace.png', metric: '1-click', detail: 'Creative workflow', theme: 'BROWSER STUDIO' },
+    'Caary Capital': { kind: 'web', accent: '#C99B5C', image: 'images/Portfolio thumbnails/CAARY Capital Fintech Dashboard Showcase.png', metric: '500+', detail: 'Team members served', theme: 'FINTECH PLATFORM' },
+    'Assist Event': { kind: 'web', accent: '#C99B5C', image: 'images/Portfolio thumbnails/Elegant Event Management Dashboard Showcase.png', metric: '01', detail: 'Place to plan it all', theme: 'EVENT EXPERIENCE' },
+    'RichAI': { kind: 'web', accent: '#8B6CF0', image: 'images/Portfolio thumbnails/RichAI Dog Assistant Hero Scene.png', metric: 'AI', detail: 'Create, chat, speak', theme: 'CREATIVE ASSISTANT' },
+    'Zylmi': { kind: 'web', accent: '#5CE1B4', image: 'images/Portfolio thumbnails/Zylmi Brand Identity Showcase.png', metric: '01', detail: 'Distinctive identity', theme: 'BRAND SYSTEM' },
+    'LinkDrip': { kind: 'web', accent: '#3d7ec6', image: 'images/Portfolio thumbnails/LinkDrip Dashboard Hero Scene.png', metric: '48.2K', detail: 'Clicks, understood', theme: 'LINK ANALYTICS' }
   };
 
   /* Shared browser / phone chrome so every illustration reads as one
@@ -1136,6 +1137,7 @@
   };
 
   const rpChips = (p, meta) => {
+    if (PROJECT_META[p.title]?.image) return '';
     const web = meta.kind !== 'app';
     const chip1 = web ? `<span class="rp-chip rp-chip-1"><i style="background:#3d9e6a"></i>Shipped &amp; live</span>`
                        : `<span class="rp-chip rp-chip-1"><i style="background:#3d9e6a"></i>Synced</span>`;
@@ -1145,10 +1147,18 @@
   };
   const rpArt = (p, i) => {
     const gid = `rpg${k}${i}`;
+    const meta = PROJECT_META[p.title];
+    if (meta?.image) return `
+      <span class="rp-scene" style="--scene-accent:${meta.accent}">
+        <span class="rp-image-window"><img class="rp-image" src="${encodeURI(meta.image)}" alt="${p.title} project artwork" loading="lazy" decoding="async"></span>
+        <span class="rp-scene-brand"><i>${short(p.title).slice(0, 1)}</i><span><small>${meta.theme}</small><b>${p.title}</b></span></span>
+        <span class="rp-scene-metric"><small>PROJECT SIGNAL</small><b>${meta.metric}</b><span>${meta.detail}</span><i aria-hidden="true"><em></em><em></em><em></em><em></em><em></em><em></em><em></em></i></span>
+        <span class="rp-scene-tag"><i></i>${p.tags[0] || 'Product design'}</span>
+      </span>`;
     const builder = ART_MAP[p.title];
     if (builder) return builder(gid);
-    const meta = PROJECT_META[p.title] || { kind: 'web', accent: s.color || '#C99B5C' };
-    return `<svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg"><rect width="460" height="300" fill="${meta.accent}"/></svg>`;
+    const fallbackMeta = meta || { kind: 'web', accent: s.color || '#C99B5C' };
+    return `<svg class="rp-art" viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg"><rect width="460" height="300" fill="${fallbackMeta.accent}"/></svg>`;
   };
   const rpKind = p => (PROJECT_META[p.title]?.kind === 'app' ? 'Mobile App' : 'Web Platform');
   const rpAccent = p => PROJECT_META[p.title]?.accent || s.color || '#C99B5C';
@@ -1164,12 +1174,12 @@
         <div class="rp-zigzag">
           ${projects.map((p, i) => `
             <div class="rp-row${i % 2 ? ' rp-row-rev' : ''}">
-              <a class="rp-media" href="${p.link}" style="--halo:${rpAccent(p)}66" ${fx(i % 2 ? 'flipr' : 'flipl', i)}>
+              <a class="rp-media" href="${p.link}" data-project="${PROJECT_META[p.title]?.slug || ''}" data-tilt data-tilt-max="6" style="--halo:${rpAccent(p)}66" ${fx(i % 2 ? 'flipr' : 'flipl', i)}>
                 <span class="rp-halo"></span>
-                <span class="rp-plate${PROJECT_META[p.title]?.kind === 'app' ? ' is-app' : ''}">${rpArt(p, i)}</span>
+                <span class="rp-plate${PROJECT_META[p.title]?.kind === 'app' ? ' is-app' : ''}${PROJECT_META[p.title]?.image ? ' has-image' : ''}">${rpArt(p, i)}</span>
                 ${rpChips(p, PROJECT_META[p.title] || { kind: 'web', accent: s.color || '#C99B5C' })}
                 <span class="rp-ground"></span>
-                <span class="rp-view">${arrowSvg}</span>
+                ${PROJECT_META[p.title]?.image ? '' : `<span class="rp-view">${arrowSvg}</span>`}
               </a>
               <div class="rp-body" ${fx(i % 2 ? 'flipl' : 'flipr', i)}>
                 <span class="rp-idx">0${i + 1}</span>
@@ -1191,6 +1201,35 @@
   const EP_AFTER = window.EP ? window.EP.plan(s).after : 'faq';
   root.innerHTML = SEC_ORDER.map(x => x[1] + (x[0] === EP_AFTER ? EP_HTML : '')).join('') + ctaHTML + grandFooterHTML;
   if (window.EP) window.EP.init(s);
+
+  const projectImageWindows = root.querySelectorAll('.rp-image-window');
+  const markProjectImageReady = frame => {
+    const image = frame.querySelector('img');
+    if (!image) return;
+    image.decode().then(() => frame.classList.add('is-ready'), () => frame.classList.add('is-ready'));
+  };
+  projectImageWindows.forEach(frame => {
+    const image = frame.querySelector('img');
+    if (!image) return;
+    image.addEventListener('load', () => markProjectImageReady(frame), { once: true });
+    if (image.complete && image.naturalWidth > 0) markProjectImageReady(frame);
+  });
+  const revealProjectImage = frame => {
+    const image = frame.querySelector('img');
+    if (!image) return;
+    image.loading = 'eager';
+    if (image.complete && image.naturalWidth > 0) markProjectImageReady(frame);
+  };
+  if ('IntersectionObserver' in window) {
+    const projectImageObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      projectImageObserver.unobserve(entry.target);
+      revealProjectImage(entry.target);
+    }), { rootMargin: '180px 0px' });
+    projectImageWindows.forEach(frame => projectImageObserver.observe(frame));
+  } else {
+    projectImageWindows.forEach(revealProjectImage);
+  }
 
   /* ═══════════ BRAND MARQUEE — EXACT PIXEL LOOP ═══════════
      Use the untransformed layout width so the reveal animation cannot
@@ -1433,7 +1472,8 @@
 
   /* ═══════════ 3D MOUSE TILT ═══════════ */
   const canHover = window.matchMedia('(hover: hover)').matches;
-  if (canHover) root.querySelectorAll('[data-tilt]').forEach(el => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (canHover && !reduceMotion) root.querySelectorAll('[data-tilt]').forEach(el => {
     const max = parseFloat(el.dataset.tiltMax || 9);
     el.addEventListener('pointermove', e => {
       const r = el.getBoundingClientRect();

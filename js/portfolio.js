@@ -575,35 +575,42 @@
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  function thumbMarkup(p) {
-    const brand = BRAND_CARDS[p.title] || {
-      bg: '#17130E',
-      theme: 'dark',
-      logo: (p.imgPaths && p.imgPaths[0]) || '',
-      tag: p.sub,
-      accent: '#C99B5C'
-    };
-    
-    let contentHtml = '';
-    if (brand.vector) {
-      contentHtml = `<span class="pz-brand-vector">${brand.vector}</span>`;
-    } else if (brand.logo) {
-      contentHtml = `<img class="pz-brand-logo" src="${encodeURI(brand.logo)}" alt="${esc(p.title)} brand identity" loading="lazy" decoding="async">`;
-    } else {
-      contentHtml = `<span class="pz-shot pz-shot--visual">${getProjectDetailVisual(p)}</span>`;
-    }
+  const PROJECT_THUMBNAILS = {
+    'Salasa OMS': 'images/Portfolio thumbnails/SALASA Logistics Platform Showcase.jpg',
+    'Dr. Asgar Rheumatology': 'images/Portfolio thumbnails/Dr. Asgar Rheumatology App Showcase.jpg',
+    'Caary Capital': 'images/Portfolio thumbnails/CAARY Capital Fintech Dashboard Showcase.jpg',
+    'Doc Link Healthcare': 'images/Portfolio thumbnails/Telehealth Dashboard Product Showcase.jpg',
+    'Morinaga Calories Counter': 'images/Portfolio thumbnails/Morinaga Kids Health App Showcase.jpg',
+    'Metadot': 'images/Portfolio thumbnails/MetaDot Multi-Chain Wallet Showcase.jpg',
+    'IPv4 Mall': 'images/Portfolio thumbnails/Global IPv4 Marketplace Showcase.jpg',
+    'HostSailor': 'images/Portfolio thumbnails/Hotsailor.jpg',
+    'Assist Event': 'images/Portfolio thumbnails/Elegant Event Management Dashboard Showcase.jpg',
+    'Invest Powerlabs': 'images/Portfolio thumbnails/Invest Powerlabs Web3 Dashboard Showcase.jpg',
+    'LinkDrip': 'images/Portfolio thumbnails/LinkDrip Dashboard Hero Scene.jpg',
+    'Pulse Genesis': 'images/Portfolio thumbnails/Pulse Genesis DeFi Dashboard Showcase.jpg',
+    'RichAI': 'images/Portfolio thumbnails/RichAI Dog Assistant Hero Scene.jpg',
+    'Telecard': 'images/Portfolio thumbnails/Telecard Connected Future Showcase.jpg',
+    'Tiny Kiwi': 'images/Portfolio thumbnails/Tiny Kiwi Photo Editing Workspace.jpg',
+    'Zylmi': 'images/Portfolio thumbnails/Zylmi Brand Identity Showcase.jpg'
+  };
 
+  /* Thumbnail card: same build as the photo cards on the Services page.
+     wipe reveal, slow zoom, scroll drift, cursor tilt + glare, floating chips */
+  function thumbMarkup(p, index) {
+    const projectThumbnail = PROJECT_THUMBNAILS[p.title];
+    const loading = index < 2 ? 'eager' : 'lazy';
+    const priority = index === 0 ? ' fetchpriority="high"' : '';
+    const inner = projectThumbnail
+      ? `<img class="pz-img" src="${encodeURI(projectThumbnail)}" alt="${esc(p.title)} project preview" loading="${loading}" decoding="async"${priority}>`
+      : `<span class="pz-shot pz-shot--visual">${getProjectDetailVisual(p)}</span>`;
+    const chips = (p.tags || []).slice(0, 3)
+      .map((c, k) => `<span class="pz-chip pz-chip--${k + 1}" style="--k:${k}" aria-hidden="true"><i></i>${esc(c)}</span>`)
+      .join('');
     return `
-      <span class="pz-shot pz-shot--brand" data-theme="${brand.theme || 'dark'}" style="--card-bg:${brand.bg};--card-acc:${brand.accent}">
-        <span class="pz-brand-mesh" aria-hidden="true"></span>
-        <span class="pz-brand-watermark" aria-hidden="true">${esc(p.short || p.title)}</span>
-        <span class="pz-brand-stage">
-          ${contentHtml}
-        </span>
-        <span class="pz-brand-tag" aria-hidden="true">
-          <i style="background:${brand.accent}"></i>
-          ${esc(brand.tag || p.sub)}
-        </span>
+      <span class="pz-art">
+        <span class="pz-frame">${inner}</span>
+        <span class="pz-glare" aria-hidden="true"></span>
+        ${chips}
       </span>`;
   }
 
@@ -618,10 +625,8 @@
     return `
       <article class="pz-row${i % 2 ? ' pz-row--flip' : ''}" data-id="${p.id}" style="--pa:${accent}">
         <div class="pz-media">
-          <span class="pz-ghost" aria-hidden="true">${num}</span>
-          <span class="pz-glow" aria-hidden="true"></span>
           <button class="pz-thumb" type="button" data-id="${p.id}" data-action="${primaryAction}" aria-label="${thumbLabel}">
-            ${thumbMarkup(p)}
+            ${thumbMarkup(p, i)}
             <span class="pz-open" aria-hidden="true">View case study <i>&nearr;</i></span>
           </button>
         </div>
@@ -645,12 +650,11 @@
     // if a thumbnail file is missing, swap in the built-in preview so no row ever shows a broken image
     list.addEventListener('error', e => {
       const img = e.target;
-      if (!img || img.tagName !== 'IMG' || !img.closest('.pz-shot') || img.closest('.pz-shot--visual')) return;
-      const shot = img.closest('.pz-shot');
+      if (!img || img.tagName !== 'IMG' || !img.classList.contains('pz-img')) return;
+      const frame = img.closest('.pz-frame');
       const project = projects.find(p => p.id === img.closest('.pz-row').dataset.id);
-      if (!project) return;
-      shot.classList.add('pz-shot--visual');
-      shot.innerHTML = getProjectDetailVisual(project);
+      if (!frame || !project) return;
+      frame.innerHTML = `<span class="pz-shot pz-shot--visual">${getProjectDetailVisual(project)}</span>`;
     }, true);
 
     list.addEventListener('click', e => {
@@ -664,46 +668,51 @@
       else openProject(card, project, trigger, false);
     });
 
+    /* reveal on scroll (same trigger point as the Services rows) */
     const rows = qsa('.pz-row', list);
     if (reduceMotion || !('IntersectionObserver' in window)) {
       rows.forEach(r => r.classList.add('is-in'));
     } else {
       const io = new IntersectionObserver(entries => {
         entries.forEach(en => {
-          if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+          if (!en.isIntersecting) return;
+          en.target.classList.add('is-in');
+          io.unobserve(en.target);
         });
-      }, { threshold: 0.22 });
+      }, { threshold: 0.12 });
       rows.forEach(r => io.observe(r));
     }
 
-    // gentle 3D tilt on the thumbnail (desktop only)
+    /* cursor tilt + moving glare on the thumbnail (desktop only) */
     if (hasHover && !reduceMotion) {
-      qsa('.pz-thumb', list).forEach(t => {
-        t.addEventListener('pointermove', e => {
-          const r = t.getBoundingClientRect();
-          const x = (e.clientX - r.left) / r.width - 0.5;
-          const y = (e.clientY - r.top) / r.height - 0.5;
-          t.style.setProperty('--rx', (-y * 7).toFixed(2) + 'deg');
-          t.style.setProperty('--ry', (x * 9).toFixed(2) + 'deg');
+      qsa('.pz-art', list).forEach(card => {
+        card.addEventListener('pointermove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width;
+          const y = (e.clientY - r.top) / r.height;
+          card.style.setProperty('--rx', ((0.5 - y) * 9).toFixed(2) + 'deg');
+          card.style.setProperty('--ry', ((x - 0.5) * 11).toFixed(2) + 'deg');
+          card.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+          card.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
         });
-        t.addEventListener('pointerleave', () => {
-          t.style.setProperty('--rx', '0deg');
-          t.style.setProperty('--ry', '0deg');
+        card.addEventListener('pointerleave', () => {
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
         });
       });
     }
 
-    // parallax drift for the big ghost number
+    /* gentle scroll parallax: the picture drifts a little inside its frame */
     if (!reduceMotion) {
       let ticking = false;
       const drift = () => {
         ticking = false;
         const vh = window.innerHeight;
-        rows.forEach(r => {
-          const rc = r.getBoundingClientRect();
-          if (rc.bottom < -100 || rc.top > vh + 100) return;
-          const t = (rc.top + rc.height / 2 - vh / 2) / vh; // -1..1
-          r.style.setProperty('--py', (t * -46).toFixed(1) + 'px');
+        qsa('.pz-art', list).forEach(card => {
+          const rc = card.getBoundingClientRect();
+          if (rc.bottom < -80 || rc.top > vh + 80) return;
+          const t = (rc.top + rc.height / 2 - vh / 2) / vh;   // about -1 .. 1
+          card.style.setProperty('--py', (t * -9).toFixed(1) + 'px');
         });
       };
       window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(drift); } }, { passive: true });

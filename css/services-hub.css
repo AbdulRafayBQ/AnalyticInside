@@ -79,7 +79,6 @@
 .hb-gets li { display:flex; gap:10px; font-size:14.5px; line-height:1.55; }
 .hb-gets li::before { content:''; flex:none; width:18px; height:18px; margin-top:2px; border-radius:50%; background:var(--a) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23111' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 10.5l3.2 3.2L15 6.8'/%3E%3C/svg%3E") center/12px no-repeat; }
 .hb-foot { display:flex; flex-wrap:wrap; align-items:center; gap:22px; padding-top:6px; }
-.hb-time { font-size:12.5px; color:var(--mut); } .hb-time b { display:block; color:var(--ink); font:700 13.5px 'Outfit',sans-serif; }
 .hb-go { position:relative; display:inline-flex; align-items:center; gap:10px; font:700 14.5px 'Inter',sans-serif; color:var(--ink); text-decoration:none; }
 .hb-go i { width:36px; height:36px; border-radius:50%; background:var(--ink); color:#fff; display:grid; place-items:center; font-style:normal; transition:transform .3s var(--ease), background .3s; }
 .hb-go:hover i { transform:translateX(5px); background:var(--a); color:#111; }

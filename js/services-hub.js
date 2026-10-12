@@ -32,7 +32,7 @@
     'vibe-code-to-production': { cat: 'build', name: 'Vibe Code to Production', line: 'Built your app with an AI tool and now it has to survive real users? We review the code, fix the weak spots, secure it and get it ready to launch.', gets: ['A full code and security review', 'Bugs fixed and the structure cleaned up', 'Hosting, monitoring and automatic releases'], time: '2 to 6 weeks' }
   };
 
-  const list = SERVICES.map((sv, i) => ({ sv, c: COPY[sv.slug] || { cat: 'build', name: sv.menu, line: sv.tag, gets: [], time: '' }, i }));
+  const list = PUBLIC_SERVICES.map((sv, i) => ({ sv, c: COPY[sv.slug] || { cat: 'build', name: sv.menu, line: sv.tag, gets: [], time: '' }, i }));
 
   /* Original, hand drawn style illustrations for the zig-zag section.
      These are brand new artwork made just for this section, not the
@@ -136,7 +136,6 @@
         <p>${c.line}</p>
         <ul class="hb-gets">${c.gets.map(g => `<li>${g}</li>`).join('')}</ul>
         <div class="hb-foot">
-          <div class="hb-time"><b>${c.time}</b>usual timeline</div>
           ${csBtn}
           <a class="hb-go" href="service.html?s=${sv.slug}" aria-label="Learn more about ${sv.title}">Learn more <i>&rarr;</i></a>
         </div>
