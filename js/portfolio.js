@@ -1,5 +1,5 @@
 /* =============================================
-   ANALYTIC INSIDER — PORTFOLIO (v4.0 FINAL)
+   ELEVEN — PORTFOLIO (v4.0 FINAL)
    Zig-zag full-screen rows · overlay details · case study links
    All case study paths verified & connected
    ============================================= */

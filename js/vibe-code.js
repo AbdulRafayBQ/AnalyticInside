@@ -158,7 +158,23 @@
     const sec = $('vibeCode');
     if (sec) {
       if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) sec.classList.add('vc-in');
-      else new IntersectionObserver(es => es.forEach(en => sec.classList.toggle('vc-in', en.isIntersecting)), { threshold: 0.15 }).observe(sec);
+      else {
+        /* Replays the animation on every entry, scrolling down or up.
+           --dy flips sign with the scroll direction so things arrive from the right side. */
+        let lastY = window.scrollY, ticking = false;
+        const setDir = () => { const y = window.scrollY; sec.style.setProperty('--dy', y >= lastY ? '44px' : '-44px'); lastY = y; };
+        const progress = () => {
+          const r = sec.getBoundingClientRect(), vh = window.innerHeight || 1;
+          sec.style.setProperty('--vp', Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height))).toFixed(3));
+          ticking = false;
+        };
+        window.addEventListener('scroll', () => { setDir(); if (!ticking) { ticking = true; requestAnimationFrame(progress); } }, { passive: true });
+        progress();
+        new IntersectionObserver(es => es.forEach(en => {
+          if (en.intersectionRatio >= 0.14) sec.classList.add('vc-in');
+          else if (en.intersectionRatio === 0) sec.classList.remove('vc-in');
+        }), { threshold: [0, 0.14] }).observe(sec);
+      }
     }
 
     form.addEventListener('submit', async e => {
@@ -176,13 +192,35 @@
       const toolName = tool.value === 'Other' && $('vcToolOtherIn').value.trim() ? $('vcToolOtherIn').value.trim() : tool.value;
       try {
         if (!window.ANALYTIC_LEADS || typeof window.ANALYTIC_LEADS.submit !== 'function') throw new Error('The form service did not load. Refresh the page and try again.');
+        const brief = $('vcBrief').value.trim();
+        const users = $('vcUsers').value.trim();
+        const typeLabel = c.typeLabel.replace(/\?$/, '');
+        const needs = [...picked].map(i => i.value).join(', ');
+        const projectType = type ? type.value : 'Not specified';
+        /* Everything is written as clear labelled lines so the email and the Google Sheet
+           both show full, readable details (no more squashed single-line text). */
+        const message = [
+          'REQUEST: Vibe Code to Production',
+          `Service page: ${s.title}`,
+          `Built with: ${toolName}`,
+          `${typeLabel}: ${projectType}`,
+          users ? `Monthly users / visitors: ${users}` : '',
+          `Needs: ${needs}`,
+          `Link / repo: ${$('vcLink').value.trim() || 'Not provided'}`,
+          `Details: ${brief || 'Not provided'}`
+        ].filter(Boolean).join('\n');
         await window.ANALYTIC_LEADS.submit({
           name: nm.value.trim(), email: em.value.trim(),
           productUrl: $('vcLink').value.trim(),
           techStack: toolName,
-          services: [...picked].map(i => i.value).join(', '),
-          message: [`${c.typeLabel} ${type ? type.value : 'n/a'}`, $('vcUsers').value.trim() ? `Users: ${$('vcUsers').value.trim()}` : '', $('vcBrief').value.trim()].filter(Boolean).join(' | '),
-          service: `Vibe code to production (${s.title})`,
+          services: needs,
+          message,
+          service: `Vibe Code to Production - ${s.title}`,
+          builtWith: toolName,
+          projectType,
+          monthlyUsers: users,
+          needs,
+          brief,
           source: location.href
         });
         form.reset(); btn.textContent = 'Request Sent'; form.style.display = 'none'; ok.classList.add('on');

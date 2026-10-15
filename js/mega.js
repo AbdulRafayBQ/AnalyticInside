@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ANALYTIC INSIDER — SERVICES & MEGA NAVIGATION ENGINE
+   ELEVEN — SERVICES & MEGA NAVIGATION ENGINE
    10 Fully Expanded Service Landing Pages with Zero Hyphens/Dashes
    Human-Optimized Copy, Bold Typography, Light Pastel Gradients
    ========================================================================== */
@@ -1111,159 +1111,178 @@ const SERVICES = [
     ]
   },
   {
-    "slug": "data-management-database-solutions",
-    "menu": "Data Management & Databases",
-    "title": "Data Management & Database Solutions",
-    "tag": "High Concurrency Database Architectures Engineered for Speed, Integrity, and Scale",
-    "h": 33,
-    "cardBg": "#FAF4EA",
-    "cardAccent": "#B5895A",
+    "slug": "ecommerce-shopify-development",
+    "menu": "E-Commerce & Shopify",
+    "title": "E-Commerce & Shopify Development",
+    "tag": "Online stores built to look great and actually convert visitors into buyers.",
+    "h": 28,
+    "cardBg": "#FAF2E6",
+    "cardAccent": "#C17A3E",
     "stats": {
-      "built": "45+",
+      "built": "60+",
       "experience": "8 Years",
-      "rating": "4.9 / 5",
-      "onTime": "99%",
+      "rating": "4.8 / 5",
+      "onTime": "98%",
       "retention": "94%"
     },
     "overview": [
-      "A poorly built database quietly slows a growing business down. Things run fine at first, but as your customers and data grow, simple actions start taking longer, pages slow to a crawl, server costs creep up, and reports start crashing your app during busy hours.",
-      "We design, clean up, move, and secure databases so this doesn't happen. Whether that's a fast relational database, a flexible document store, a caching layer to speed things up, or moving your data to the cloud without any downtime, we make sure it holds up under pressure.",
-      "We treat data accuracy, security, and backups as essentials, not extras. That means your apps stay fast and your customers' information stays safe, no matter what."
+      "An online store is where people actually buy from you. It needs to load fast, look great on a phone and make checkout feel effortless, or visitors leave before they pay.",
+      "Shopify, a custom build, a headless setup or a store you already run, we match the platform to how you sell today and where you want to grow next.",
+      "We design, build and launch your store end to end, then keep improving it with better speed, better product pages and automation that saves you time."
     ],
     "tech": [
-      "PostgreSQL",
-      "MySQL",
-      "MongoDB",
-      "Redis",
-      "Oracle",
-      "Snowflake",
-      "Elasticsearch",
-      "AWS RDS",
-      "Amazon Aurora",
-      "Database Sharding",
-      "Replication",
-      "Prisma",
-      "Flyway"
+      "Shopify",
+      "Shopify Plus",
+      "Liquid",
+      "Next.js",
+      "React.js",
+      "Node.js",
+      "Stripe",
+      "PayPal",
+      "REST APIs",
+      "GraphQL",
+      "Klaviyo",
+      "Mailchimp",
+      "Google Analytics",
+      "Meta Pixel",
+      "AWS",
+      "Headless Commerce"
     ],
     "capabilities": [
       {
-        "title": "Query Optimization and Index Tuning",
-        "desc": "Speed up slow queries and smart indexes so your app responds in a blink."
+        "title": "Ecommerce Website Development",
+        "desc": "Full online stores built for brands and businesses, with responsive layouts, product pages, shopping carts and secure checkout."
       },
       {
-        "title": "Zero Downtime Cloud Migration",
-        "desc": "Move your database from old servers to the cloud safely, with zero downtime."
+        "title": "Shopify Store Development",
+        "desc": "Custom Shopify stores with theme customization, homepage design, product collections, navigation and a smooth launch setup."
       },
       {
-        "title": "High Availability and Failover Clustering",
-        "desc": "Automatic failover and copies in more than one region, so your data stays online."
+        "title": "Custom Storefront Design",
+        "desc": "Unique storefronts and product pages with mobile first layouts, built to match your brand instead of looking like everyone else's store."
       },
       {
-        "title": "Enterprise Database Security and Encryption",
-        "desc": "Strong encryption for stored and moving data, with strict access control."
+        "title": "Store Management and Integrations",
+        "desc": "Product catalogue setup, inventory, shipping rules, payment gateways, order workflows and the apps your store depends on."
       },
       {
-        "title": "Automated Disaster Recovery and Backups",
-        "desc": "Regular backups with point in time recovery, so you can roll back any mistake."
+        "title": "Ecommerce Optimization",
+        "desc": "We improve store speed, mobile usability, product discovery and checkout flow so more visitors actually complete a purchase."
       },
       {
-        "title": "Database Sharding and Horizontal Partitioning",
-        "desc": "Split very large databases across servers so they stay fast as they grow."
+        "title": "Ecommerce Growth and Automation",
+        "desc": "Analytics setup, abandoned cart recovery, email automation and retention workflows connected to your marketing tools."
+      },
+      {
+        "title": "Headless Commerce",
+        "desc": "A custom frontend connected to your commerce platform through APIs, giving you full control over design, speed and user experience."
+      },
+      {
+        "title": "Marketplace Development",
+        "desc": "Multi vendor stores where many sellers can list and manage their own products under one single platform."
+      },
+      {
+        "title": "Store Migration",
+        "desc": "Moving an existing store to Shopify or another platform without losing products, orders, customers or your search rankings."
+      },
+      {
+        "title": "Maintenance and Support",
+        "desc": "Ongoing updates, bug fixes and small improvements so your store keeps running smoothly long after launch."
       }
     ],
     "process": [
       {
         "step": "01",
-        "title": "Performance Profiling and Schema Audit",
-        "desc": "We run deep query profiling to identify slow joins, missing indexes, bloated tables, and connection pool exhaustion points."
+        "title": "Plan",
+        "desc": "We learn your products, customers and goals, then plan the platform, pages and features your store needs."
       },
       {
         "step": "02",
-        "title": "Target Architecture and Schema Refinement",
-        "desc": "We design optimized relational or document schemas with proper normalization, foreign key constraints, and partition keys."
+        "title": "Design",
+        "desc": "We design your storefront and product pages around your brand, and share a preview before we build anything."
       },
       {
         "step": "03",
-        "title": "Indexing and In Memory Caching Setup",
-        "desc": "Implementing intelligent composite indexing and Redis caching layers to absorb ninety percent of read queries before they hit disk."
+        "title": "Build the store",
+        "desc": "We build the store, product catalogue, cart and checkout on clean, fast and reliable code."
       },
       {
         "step": "04",
-        "title": "Staging Migration and Load Stress Testing",
-        "desc": "Simulating peak production traffic against staging replicas to verify that throughput targets and response benchmarks are exceeded."
+        "title": "Integrations",
+        "desc": "We connect payments, shipping, inventory and the marketing tools your store runs on every day."
       },
       {
         "step": "05",
-        "title": "Zero Downtime Cutover and Replication",
-        "desc": "Executing phased replication cutover during low traffic windows with continuous data validation checks and immediate fallback safeguards."
+        "title": "Test",
+        "desc": "We test every page, device and payment flow so checkout works smoothly for every single customer."
       },
       {
         "step": "06",
-        "title": "Monitoring and Automated Alerting",
-        "desc": "Setting up real time dashboards tracking CPU utilization, IOPS, slow query logs, connection spikes, and storage growth."
+        "title": "Launch and support",
+        "desc": "We go live without downtime, then keep improving speed, conversion and features after launch."
       }
     ],
     "impact": [
       {
-        "metric": "85%",
-        "title": "Drop in Average Query Latency",
-        "desc": "Achieved through proper index engineering, query refactoring, and intelligent caching."
+        "metric": "3.1x",
+        "title": "Average conversion lift",
+        "desc": "Clear product pages and a fast checkout turn more visitors into paying customers."
       },
       {
-        "metric": "10x",
-        "title": "Concurrent User Capacity",
-        "desc": "Enabling your applications to support massive traffic surges without slowdown or database crashes."
+        "metric": "< 1.6s",
+        "title": "Mobile store load time",
+        "desc": "Fast pages keep shoppers from leaving before they even see your products."
       },
       {
-        "metric": "Zero",
-        "title": "Data Loss Migrations",
-        "desc": "Flawlessly maintained across dozens of mission critical enterprise database transfers."
+        "metric": "40%",
+        "title": "Cart recovery rate",
+        "desc": "With automated abandoned cart emails set up from the very first day."
       },
       {
-        "metric": "45%",
-        "title": "Infrastructure Cost Savings",
-        "desc": "Achieved by eliminating CPU over provisioning through query efficiency."
+        "metric": "100%",
+        "title": "Secure checkout",
+        "desc": "Every store we build uses trusted, properly compliant payment gateways."
       }
     ],
     "whyUs": [
-      "We fix the real performance problem instead of just telling you to buy a bigger server",
-      "We move your data to the cloud with zero downtime for your customers",
-      "We actually test our backups by restoring them, so you know they'll work when needed",
-      "Databases are designed around how your business actually uses data, not generic templates",
-      "Our security setup follows recognised standards like HIPAA and SOC2",
-      "You get full documentation explaining every decision we made"
+      "We build stores that are genuinely fast on mobile, not just desktop",
+      "Shopify, headless or custom, we pick whichever platform fits you",
+      "Checkout is kept simple so fewer carts get abandoned at the last step",
+      "Inventory, shipping and payments all connect together properly",
+      "We migrate existing stores without losing products or rankings",
+      "You get real support after your store goes live, not silence"
     ],
     "deliverables": [
-      "Fully optimized production database cluster with multi availability zone failover configurations",
-      "Automated Redis caching layer integrated to offload repetitive read heavy transactional queries",
-      "Comprehensive automated backup and point in time disaster recovery automation scripts",
-      "Documented schema dictionary, indexing rationale, and developer query guidelines",
-      "Thirty days of post migration database telemetry monitoring and performance tuning"
+      "A fully built, ready to sell online store",
+      "Product catalogue, cart and checkout fully set up",
+      "Payment gateways and shipping rules configured",
+      "Analytics and abandoned cart recovery in place",
+      "Thirty days of free support after launch"
     ],
     "faqs": [
       {
-        "q": "How do you migrate a live database without taking our application down?",
-        "a": "We set up continuous change data capture replication between your existing database and the new cloud cluster. Once both databases are perfectly synchronized in real time, we execute an instantaneous DNS cutover that takes less than one second, resulting in zero user facing downtime."
+        "q": "Shopify or a custom built store?",
+        "a": "Shopify suits most stores and launches faster. We suggest a custom or headless build only when your catalogue or workflow genuinely needs it."
       },
       {
-        "q": "Our database gets very slow during peak hours. Can this be fixed without a full rewrite?",
-        "a": "In almost all cases, yes. The vast majority of database bottlenecks stem from a handful of unindexed queries, inefficient table joins, or lack of a caching layer. By pinpointing and tuning these specific queries, we typically achieve eighty percent speed improvements without rewriting the underlying application."
+        "q": "How long does a store take to build?",
+        "a": "A standard Shopify store usually takes three to six weeks. Custom or headless builds take six to twelve weeks depending on scope."
       },
       {
-        "q": "Should we use PostgreSQL or MongoDB?",
-        "a": "PostgreSQL is ideal when your data is relational, requires strict transactional integrity, or involves complex cross table queries. MongoDB shines for flexible document schemas, rapid prototyping, and high volume write operations. We evaluate your application structure and advise on the right engine."
+        "q": "Can you migrate my existing store?",
+        "a": "Yes. We move your products, orders and customers to the new platform without losing your search rankings."
       },
       {
-        "q": "How do you protect our database against ransomware and catastrophic failure?",
-        "a": "We implement immutable backups stored in isolated, air gapped cloud storage buckets with multi factor delete protection. We also configure automated daily restore tests to verify that backup snapshots can be spun up into functional databases within minutes."
+        "q": "Do you set up payments and shipping?",
+        "a": "Yes. We configure your payment gateways, tax rules and shipping options as part of every build we do."
       },
       {
-        "q": "Do you offer database administration and monitoring retainers?",
-        "a": "Yes. Many of our clients retain us for monthly database administration, including continuous query log analysis, index maintenance, vacuuming, OS patching, and proactive capacity planning."
+        "q": "Can I manage products myself after launch?",
+        "a": "Yes. You get a simple dashboard to add products, update prices and manage orders without needing a developer."
       },
       {
-        "q": "Can you optimize databases running on cloud providers like AWS or Azure?",
-        "a": "Yes. We work extensively with Amazon Aurora, AWS RDS, Azure Database for PostgreSQL, Google Cloud SQL, and self hosted Linux database servers."
+        "q": "Do you help after the store goes live?",
+        "a": "Yes. We offer ongoing maintenance, fix issues quickly and keep improving the store as your business grows."
       }
     ]
   },
@@ -1582,13 +1601,13 @@ const SERVICES = [
 
 const HIDDEN_SERVICE_SLUGS = new Set([
   "data-analytics-consultancy",
-  "data-management-database-solutions",
   "ai-consultancy-automation-strategy",
   "vibe-code-to-production"
 ]);
 const PUBLIC_SERVICE_ORDER = [
   "mobile-app-development",
   "website-development",
+  "ecommerce-shopify-development",
   "custom-software-development",
   "product-design-development",
   "ai-development",
@@ -1608,7 +1627,7 @@ const REVIEWS = [
     color: "#4A72C9"
   },
   {
-    text: "We came in with a rough idea and a tight timeline. Analytic Insider shaped Salasa into a product that actually works the way our customers expect, and they kept us informed the whole way through. Launch day went far smoother than we expected.",
+    text: "We came in with a rough idea and a tight timeline. Eleven shaped Salasa into a product that actually works the way our customers expect, and they kept us informed the whole way through. Launch day went far smoother than we expected.",
     name: "Abdul Majeed",
     company: "Salasa",
     init: "AM",
@@ -1636,7 +1655,7 @@ const REVIEWS = [
     color: "#4A9FD4"
   },
   {
-    text: "MetaDot started as a vague concept and a handful of sketches. Analytic Insider helped us turn that into a working product without losing sight of what made it different. Their patience with our constant changes did not go unnoticed.",
+    text: "MetaDot started as a vague concept and a handful of sketches. Eleven helped us turn that into a working product without losing sight of what made it different. Their patience with our constant changes did not go unnoticed.",
     name: "Kashan",
     company: "MetaDot",
     init: "KA",

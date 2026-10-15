@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ANALYTIC INSIDER — SERVICE PAGE RENDERER (v2)
+   ELEVEN — SERVICE PAGE RENDERER (v2)
    Every service gets its own layout recipe: hero, metrics, overview,
    capabilities, impact, why us, tech stack, FAQ and a completely unique
    Development Process design. All sections enter with 3D animations that
@@ -20,7 +20,7 @@
   const s = SERVICES[k];
   const clamp = (v, a, z) => Math.min(Math.max(v, a), z);
 
-  document.title = `${s.title} — Analytic Insider`;
+  document.title = `${s.title} — Eleven`;
   root.style.setProperty('--h', s.h);
   root.style.setProperty('--card-bg', s.cardBg);
   root.style.setProperty('--card-accent', s.cardAccent);
@@ -35,7 +35,7 @@
     { hero: 'marquee', deco: 'canvas',   metrics: 'strip', overview: 'sticky', caps: 'stair', impact: 'bars',  why: 'split', tech: 'chips',   faq: 'twocol',    rev: 'light' },
     { hero: 'mirror',  deco: 'rings',    metrics: 'tiles', overview: 'stack',  caps: 'grid',  impact: 'split', why: 'grid',  tech: 'tiles',   faq: 'accordion', rev: 'dark'  },
     { hero: 'center',  deco: 'cubes',    metrics: 'strip', overview: 'sticky', caps: 'bento', impact: 'cards', why: 'stack', tech: 'marquee', faq: 'twocol',    rev: 'light' },
-    { hero: 'split',   deco: 'planes',   metrics: 'tiles', overview: 'stack',  caps: 'rows',  impact: 'split', why: 'split', tech: 'tiles',   faq: 'accordion', rev: 'dark'  },
+    { hero: 'split',   deco: 'planes',   metrics: 'tiles', overview: 'stack',  caps: 'flow',  impact: 'split', why: 'split', tech: 'tiles',   faq: 'accordion', rev: 'dark'  },
     { hero: 'layers',  deco: 'floor',    metrics: 'strip', overview: 'split',  caps: 'stair', impact: 'bars',  why: 'stack', tech: 'chips',   faq: 'twocol',    rev: 'light' },
     { hero: 'marquee', deco: 'cubes',    metrics: 'tiles', overview: 'sticky', caps: 'tabs',  impact: 'cards', why: 'grid',  tech: 'marquee', faq: 'accordion', rev: 'dark'  }
   ];
@@ -90,6 +90,10 @@
     'data-management-database-solutions': [
       'Database Architecture', 'PostgreSQL / MongoDB', 'Performance Optimization',
       'Cloud Migration', 'High Availability Cluster', 'Backup & Disaster Recovery'
+    ],
+    'ecommerce-shopify-development': [
+      'Shopify Store Build', 'Custom Storefront', 'Headless Commerce',
+      'Marketplace Build', 'Store Migration', 'Store Optimization'
     ],
     'ai-consultancy-strategy': [
       'Enterprise AI Roadmap', 'Feasibility & ROI Audit', 'Model & Tool Selection',
@@ -341,9 +345,9 @@
               Get a Quote
               ${arrowSvg}
             </button>
-            <a class="sv-qb-phone" href="tel:+13136551635">
+            <a class="sv-qb-phone" href="tel:+923340317145">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              +1 (313) 655-1635
+              0334 0317145
             </a>
           </div>
         </div>
@@ -374,6 +378,23 @@
       <div class="cap-s ${i % 2 ? 'is-r' : 'is-l'}" id="cap-${i + 1}" ${fx(i % 2 ? 'flipr' : 'flipl', Math.floor(i / 2))}>
         <span class="cap-sn">${pad(i)}</span><div><h3>${c.title}</h3><p>${c.desc}</p></div>
       </div>`).join('')}</div>`;
+  } else if (R.caps === 'flow') {
+    /* Borderless, card free list. Items sit on one continuous gradient
+       wash with a glowing thread running down the middle instead of
+       any dividing lines, so the whole section reads as one merged
+       surface rather than a stack of separate boxes. */
+    capsInner = `<div class="cap-flow">
+      <span class="cap-flow-thread" data-fx="flowline" aria-hidden="true"></span>
+      ${C.map((c, i) => `
+      <div class="cap-flow-item ${i % 2 ? 'is-r' : 'is-l'}" id="cap-${i + 1}" ${fx(i % 2 ? 'flipr' : 'flipl', i)}>
+        <span class="cap-flow-dot" style="--k:${i}"></span>
+        <div class="cap-flow-card">
+          <span class="cap-flow-n">${pad(i)}</span>
+          <h3>${c.title}</h3>
+          <p>${c.desc}</p>
+        </div>
+      </div>`).join('')}
+    </div>`;
   } else {
     capsInner = `<div class="cap-tabs" data-tabs>
       <div class="cap-tab-list" ${fx('flipl', 1)}>${C.map((c, i) => `<button type="button" class="cap-tab${i === 0 ? ' on' : ''}" id="cap-${i + 1}" data-i="${i}"><span>${pad(i)}</span>${c.title}<i></i></button>`).join('')}</div>
@@ -403,7 +424,7 @@
     () => `<div class="pr2" data-tabs data-auto="5200" ${fx('rise', 0)}>
       <div class="pr2-chrome"><span class="dots"><i></i><i></i><i></i></span>
         <div class="pr2-tabs">${P.map((p, i) => `<button type="button" class="pr2-tab${i === 0 ? ' on' : ''}" data-i="${i}"><b>${p.step}</b>${short(p.title)}</button>`).join('')}</div></div>
-      <div class="pr2-url"><span class="lock"></span><em>analyticinsider.com/${s.slug}/<u class="pr2-path">stage-01</u></em><span class="pr2-load"><i></i></span></div>
+      <div class="pr2-url"><span class="lock"></span><em>eleven.com/${s.slug}/<u class="pr2-path">stage-01</u></em><span class="pr2-load"><i></i></span></div>
       <div class="pr2-view">${P.map((p, i) => `
         <div class="pr2-pane${i === 0 ? ' on' : ''}" data-i="${i}"><span class="pr2-big">${p.step}</span>
           <div><h4>${p.title}</h4><p>${p.desc}</p><div class="pr2-skel"><i></i><i></i><i></i></div></div></div>`).join('')}</div>
@@ -594,7 +615,7 @@
 
   /* ═══════════ WHY US ═══════════ */
   const W = s.whyUs;
-  const trust = `<div class="why-trust" ${fx('pop', 3)}><strong>100% In House Senior Engineering</strong><span>Based in Dearborn, Michigan and collaborating with ambitious enterprises worldwide.</span></div>`;
+  const trust = `<div class="why-trust" ${fx('pop', 3)}><strong>100% In House Senior Engineering</strong><span>Based in Karachi, Pakistan and collaborating with ambitious enterprises worldwide.</span></div>`;
   let whyInner;
   if (R.why === 'split') {
     whyInner = `<div class="why-split"><div class="why-l">
@@ -658,7 +679,7 @@
           <a class="sap-btn-secondary" href="mailto:abdulrafay364p@gmail.com">Email Us</a>
         </div>
         <div class="sap-meta-row" ${fx('rise', 7)}>
-          <div class="sap-meta-item"><div class="sap-meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span>Dearborn, MI — working worldwide</span></div>
+          <div class="sap-meta-item"><div class="sap-meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span>Karachi, Pakistan — working worldwide</span></div>
         </div>
       </div>
     </section>`;
@@ -672,15 +693,15 @@
         <!-- Col 1: Brand & Identity -->
         <div class="footer-col footer-col-brand">
           <a class="footer-brand" href="index.html">
-            <span class="footer-brand-title">ANALYTIC INSIDER</span>
+            <span class="footer-brand-title">ELEVEN</span>
             <span class="footer-brand-dot"></span>
           </a>
           <p class="footer-brand-tagline">
             Architecture, artificial intelligence, and bespoke digital experiences crafted for companies building the future.
           </p>
-          <a class="footer-location-row" href="https://maps.google.com/?q=Dearborn,+MI+48128,+USA" target="_blank" rel="noopener noreferrer">
+          <a class="footer-location-row" href="https://maps.google.com/?q=Karachi,+Pakistan" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Dearborn, MI 48128, USA — working worldwide</span>
+            <span>Karachi, Pakistan — working worldwide</span>
           </a>
           <div class="footer-social-wrapper">
             <span class="footer-social-label">Connect with us</span>
@@ -744,13 +765,13 @@
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               <span>abdulrafay364p@gmail.com</span>
             </a>
-            <a href="tel:+13136551635" class="footer-link-highlight">
+            <a href="tel:+923340317145" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+1 (313) 655-1635</span>
+              <span>0334 0317145</span>
             </a>
-            <a href="tel:+923332159764" class="footer-link-highlight">
+            <a href="tel:+923340317145" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+92 333 2159764</span>
+              <span>0334 0317145</span>
             </a>
           </div>
         </div>
@@ -760,7 +781,7 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom-bar">
         <div class="footer-bottom-left">
-          <span>&copy; 2026 Analytic Insider. All rights reserved.</span>
+          <span>&copy; 2026 Eleven. All rights reserved.</span>
           <span class="footer-bottom-sep">&bull;</span>
           <span>Software &middot; Web &middot; AI &middot; Mobile</span>
         </div>

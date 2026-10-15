@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ANALYTIC INSIDER — PRODUCT DEVELOPMENT "TECHNOLOGY STACK" SECTION (v3)
+   ELEVEN — PRODUCT DEVELOPMENT "TECHNOLOGY STACK" SECTION (v3)
    Same design as the homepage Technology Stack: cream container, pill tab
    bar, grouped tech pills, and a swipe-style category switcher on phones.
    Uses the homepage's own .tech-* classes from css/styles.css.

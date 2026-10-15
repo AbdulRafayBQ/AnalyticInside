@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ANALYTIC INSIDER — CUSTOM SOFTWARE TECH STACK (motion section)
+   ELEVEN — CUSTOM SOFTWARE TECH STACK (motion section)
    Orbit of live logos, animated CI/CD terminal, network canvas,
    auto-cycling category tabs and spotlight / tilt cards.
    Exposes window.TECH_STACK = { html(), init(root) }

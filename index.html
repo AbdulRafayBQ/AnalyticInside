@@ -1,18 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="icon" href="images/brand/eleven-logo.png" type="image/png">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ANALYTIC INSIDER</title>
+  <title>ELEVEN</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=4.8">
+  <link rel="stylesheet" href="css/styles.css?v=4.9">
   <link rel="stylesheet" href="css/mobile-fix.css?v=3.0">
 
   <link rel="stylesheet" href="css/mega.css?v=3.0">
   <link rel="stylesheet" href="css/shared.css?v=1.1">
   <link rel="stylesheet" href="css/site-redesign.css?v=3.0">
   <link rel="stylesheet" href="css/hero-merge.css?v=1.0">
+  <link rel="stylesheet" href="css/hero-orbit.css?v=1.0">
   <link rel="stylesheet" href="css/svc-refine.css?v=1.0">
   <link rel="stylesheet" href="css/vibe-code.css?v=1.0">
 </head>
@@ -48,6 +50,7 @@
           <option value="" disabled selected>Select a service…</option>
           <option>Mobile App Development</option>
           <option>Website Development</option>
+          <option>E-Commerce &amp; Shopify Development</option>
           <option>Custom Software Development</option>
           <option>Product Development</option>
           <option>AI Development</option>
@@ -78,25 +81,25 @@
 
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <a class="logo" href="#">ANALYTIC INSIDER</a>
+      <a class="logo logo-img-link" href="#"><img src="images/brand/eleven-logo.png" alt="Eleven" class="logo-img"></a>
       <nav class="nav" id="mainNav">
         <ul>
-          <li><a href="about.html" class="nav-link">Our Story</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="portfolio.html" class="nav-link">Our Work</a></li>
+          <li><a href="about.html" class="nav-link">Story</a></li>
+          <li><a href="services.html" class="nav-link">Expertise</a></li>
+          <li><a href="portfolio.html" class="nav-link">Work</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </nav>
       <!-- Phone + CTA grouped -->
       <div class="nav-right-group">
-        <a class="nav-phone" href="tel:+13136551635">
+        <a class="nav-phone" href="tel:+923340317145">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
             <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          +1 (313) 655-1635
+          0334 0317145
         </a>
         <button class="btn-nav-cta" id="navCtaBtn" style="cursor:pointer;border:none;font-family:'Inter',sans-serif;">
-          Start a Project
+          Let's Talk
           <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M3 10H17M17 10L12 5M17 10L12 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -117,7 +120,7 @@
 
         <!-- LEFT: Text -->
         <div class="hero-left">
-          <p class="hero-eyebrow"><span class="hero-eyebrow-cycle" id="eyebrowCycle"><span class="hec-label" id="eyebrowLabel">Digital Agency</span><span class="hero-eyebrow-location">Dearborn, MI</span></span></p>
+          <p class="hero-eyebrow"><span class="hero-eyebrow-cycle" id="eyebrowCycle"><span class="hec-label" id="eyebrowLabel">Digital Agency</span><span class="hero-eyebrow-location">Karachi, Pakistan</span></span></p>
 
           <h1 class="hero-headline">
             <span class="line-wrap"><span class="line-inner">From Idea To</span></span>
@@ -149,70 +152,126 @@
 
       </div><!-- /hero-content -->
 
-      <!-- BACKGROUND ART — CSS-built orbit scene, with logo + animated dots overlaid -->
+      <!-- BACKGROUND ART — realistic 3D laptop on a pedestal, gold orbit ring, floating mini cards -->
       <div class="hero-art-layer" aria-hidden="true">
 
-        <div class="hero-orbit-ring ring-1"></div>
-        <div class="hero-orbit-ring ring-2"></div>
+        <div class="hs-stage">
+          <div class="hs-glow"></div>
+          <div class="hs-ring hs-ring-1"></div>
+          <div class="hs-ring hs-ring-2"></div>
 
-        <div class="hero-pedestal-shadow"></div>
-        <div class="hero-pedestal"></div>
+          <svg class="hs-gold hs-gold-back" viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <!-- shine only on the right side of the ring -->
+            <linearGradient id="hsGradback" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C99B5C" stop-opacity=".25"/><stop offset=".55" stop-color="#D2A765" stop-opacity=".55"/><stop offset=".85" stop-color="#F7DCA0" stop-opacity="1"/><stop offset="1" stop-color="#FFF0C8" stop-opacity="1"/></linearGradient>
+            <linearGradient id="hsShineback" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F3C97A" stop-opacity="0"/><stop offset=".62" stop-color="#F3C97A" stop-opacity="0"/><stop offset=".9" stop-color="#F6D48C" stop-opacity=".75"/><stop offset="1" stop-color="#FFE9B8" stop-opacity=".9"/></linearGradient>
+            <radialGradient id="hsBeadback" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFF1CC"/><stop offset=".45" stop-color="#D9A850"/><stop offset="1" stop-color="#7d5524"/></radialGradient>
+            <filter id="hsBlGback" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation=".9"/></filter>
+            <clipPath id="hsClipback"><rect x="-30" y="-30" width="160" height="84"/></clipPath>
+          </defs>
+          <g transform="rotate(-16 50 54)" clip-path="url(#hsClipback)">
+            <ellipse cx="50" cy="54" rx="45" ry="16" fill="none" stroke="url(#hsShineback)" stroke-width="1.6" filter="url(#hsBlGback)"/>
+            <ellipse cx="50" cy="54" rx="45" ry="16" fill="none" stroke="url(#hsGradback)" stroke-width="0.35"/>
+            <circle r="2" fill="url(#hsBeadback)"><animateMotion dur="14s" repeatCount="indefinite" path="M5 54 a45 16 0 1 1 90 0 a45 16 0 1 1 -90 0"/></circle>
+          </g>
+        </svg>
 
-        <!-- Logo slot: sits exactly on the black card. Drop images/logo.png
-             into the project and it will swap in automatically. -->
+          <!-- pedestal (behind laptop) -->
+          <svg class="hs-pedestal" viewBox="0 0 500 150" aria-hidden="true">
+            <defs>
+              <linearGradient id="hsPedTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EFE5CE"/></linearGradient>
+              <linearGradient id="hsPedSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D9C9A6"/><stop offset=".3" stop-color="#F8F0DE"/><stop offset=".7" stop-color="#E8D9B9"/><stop offset="1" stop-color="#CDBB93"/></linearGradient>
+              <radialGradient id="hsGoldGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F6D493" stop-opacity=".85"/><stop offset=".55" stop-color="#C99B5C" stop-opacity=".28"/><stop offset="1" stop-color="#C99B5C" stop-opacity="0"/></radialGradient>
+              <filter id="hsBlur" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+              <filter id="hsBlurS" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+              <clipPath id="hsFrontHalf"><rect x="0" y="62" width="500" height="100"/></clipPath>
+            </defs>
+            <ellipse cx="250" cy="128" rx="226" ry="14" fill="rgba(23,19,14,.20)" filter="url(#hsBlur)"/>
+            <ellipse cx="250" cy="86" rx="240" ry="56" fill="#CDBA92"/>
+            <rect x="10" y="60" width="480" height="26" fill="url(#hsPedSide)"/>
+            <ellipse cx="250" cy="60" rx="240" ry="56" fill="url(#hsPedTop)"/>
+            <ellipse cx="250" cy="60" rx="240" ry="56" fill="none" stroke="rgba(255,255,255,.95)" stroke-width="1.5"/>
+            <ellipse class="hs-glow-base" cx="250" cy="66" rx="212" ry="42" fill="url(#hsGoldGlow)"/>
+            <g clip-path="url(#hsFrontHalf)"><ellipse cx="250" cy="66" rx="222" ry="48" fill="none" stroke="#E9BE72" stroke-width="3" opacity=".7" filter="url(#hsBlurS)"/></g>
+          </svg>
+
+          <!-- real laptop render -->
+          <div class="hs-laptop-wrap">
+            <div class="hs-laptop-fig">
+              <img class="hs-laptop-img" src="images/hero.png" alt="" draggable="false">
+              <svg class="hs-screen" viewBox="0 0 1488 1057" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="scY" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6CB62"/><stop offset="1" stop-color="#E1A53A"/></linearGradient>
+                  <linearGradient id="scG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D6D6D7"/><stop offset="1" stop-color="#B4B4B6"/></linearGradient>
+                  <linearGradient id="scG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#78787B"/><stop offset="1" stop-color="#5E5E61"/></linearGradient>
+                </defs>
+                <g transform="translate(744.5 337.5) rotate(4.1)"><rect class="hs-bar" x="-46.7" y="-6.8" width="93.4" height="13.6" rx="6.8" fill="url(#scY)" style="--d:0.00s"/></g>
+                <g transform="translate(764.4 367.4) rotate(4.8)"><rect class="hs-bar" x="-38.7" y="-7.0" width="77.5" height="14.0" rx="7.0" fill="url(#scG1)" style="--d:0.42s"/></g>
+                <g transform="translate(918.1 380.0) rotate(4.8)"><rect class="hs-bar" x="-109.5" y="-7.2" width="218.9" height="14.4" rx="7.2" fill="url(#scG1)" style="--d:0.84s"/></g>
+                <g transform="translate(808.4 402.5) rotate(4.9)"><rect class="hs-bar" x="-75.9" y="-6.8" width="151.7" height="13.6" rx="6.8" fill="url(#scY)" style="--d:1.26s"/></g>
+                <g transform="translate(923.0 412.3) rotate(4.6)"><rect class="hs-bar" x="-32.2" y="-6.8" width="64.4" height="13.6" rx="6.8" fill="url(#scG2)" style="--d:1.68s"/></g>
+                <circle class="hs-dot" cx="699.0" cy="421.0" r="6.0" fill="url(#scG2)" style="--d:2.10s"/>
+                <g transform="translate(749.5 425.6) rotate(5.1)"><rect class="hs-bar" x="-36.8" y="-6.7" width="73.6" height="13.3" rx="6.7" fill="url(#scG2)" style="--d:2.28s"/></g>
+                <circle class="hs-dot" cx="693.8" cy="448.4" r="6.4" fill="url(#scG2)" style="--d:2.70s"/>
+                <g transform="translate(742.0 453.4) rotate(6.0)"><rect class="hs-bar" x="-35.1" y="-6.7" width="70.3" height="13.4" rx="6.7" fill="url(#scY)" style="--d:2.88s"/></g>
+                <g transform="translate(806.0 460.0) rotate(5.6)"><rect class="hs-bar" x="-31.1" y="-6.7" width="62.2" height="13.3" rx="6.7" fill="url(#scG2)" style="--d:3.30s"/></g>
+                <g transform="translate(845.0 493.8) rotate(6.3)"><rect class="hs-bar" x="-131.8" y="-7.2" width="263.6" height="14.4" rx="7.2" fill="url(#scG1)" style="--d:3.72s"/></g>
+                <g transform="translate(779.9 520.3) rotate(6.8)"><rect class="hs-bar" x="-72.5" y="-6.9" width="145.0" height="13.9" rx="6.9" fill="url(#scY)" style="--d:4.14s"/></g>
+                <g transform="translate(882.0 532.6) rotate(6.3)"><rect class="hs-bar" x="-23.3" y="-6.9" width="46.6" height="13.9" rx="6.9" fill="url(#scG2)" style="--d:4.56s"/></g>
+                <circle class="hs-dot" cx="677.0" cy="535.0" r="6.0" fill="url(#scG2)" style="--d:4.98s"/>
+                <g transform="translate(731.0 541.9) rotate(7.1)"><rect class="hs-bar" x="-41.4" y="-6.6" width="82.9" height="13.2" rx="6.6" fill="url(#scG2)" style="--d:5.16s"/></g>
+                <g transform="translate(749.5 571.3) rotate(7.7)"><rect class="hs-bar" x="-65.1" y="-6.6" width="130.3" height="13.3" rx="6.6" fill="url(#scG2)" style="--d:5.58s"/></g>
+              </svg>
+            </div>
+          </div>
+
+          <svg class="hs-gold hs-gold-front" viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <!-- shine only on the right side of the ring -->
+            <linearGradient id="hsGradfront" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C99B5C" stop-opacity=".25"/><stop offset=".55" stop-color="#D2A765" stop-opacity=".55"/><stop offset=".85" stop-color="#F7DCA0" stop-opacity="1"/><stop offset="1" stop-color="#FFF0C8" stop-opacity="1"/></linearGradient>
+            <linearGradient id="hsShinefront" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F3C97A" stop-opacity="0"/><stop offset=".62" stop-color="#F3C97A" stop-opacity="0"/><stop offset=".9" stop-color="#F6D48C" stop-opacity=".75"/><stop offset="1" stop-color="#FFE9B8" stop-opacity=".9"/></linearGradient>
+            <radialGradient id="hsBeadfront" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFF1CC"/><stop offset=".45" stop-color="#D9A850"/><stop offset="1" stop-color="#7d5524"/></radialGradient>
+            <filter id="hsBlGfront" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation=".9"/></filter>
+            <clipPath id="hsClipfront"><rect x="-30" y="54" width="160" height="80"/></clipPath>
+          </defs>
+          <g transform="rotate(-16 50 54)" clip-path="url(#hsClipfront)">
+            <ellipse cx="50" cy="54" rx="45" ry="16" fill="none" stroke="url(#hsShinefront)" stroke-width="1.6" filter="url(#hsBlGfront)"/>
+            <ellipse cx="50" cy="54" rx="45" ry="16" fill="none" stroke="url(#hsGradfront)" stroke-width="0.5"/>
+            <circle r="2" fill="url(#hsBeadfront)"><animateMotion dur="14s" repeatCount="indefinite" path="M5 54 a45 16 0 1 1 90 0 a45 16 0 1 1 -90 0"/></circle>
+          </g>
+        </svg>
+
+          <div class="hs-items">
+          <div class="hs-item" style="left:21.3%;top:15.7%"><div class="hs-pill" style="--d:0s">
+            <span class="hs-pill-dot" style="color:#17130E;background:#EFE6D6"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5L1 9l5 4M12 5l5 4-5 4"/></svg></span>
+            <span class="hs-pill-label">Projects</span><span class="hs-pill-val"><span id="projectsCount">0</span>+</span></div></div>
+          <div class="hs-item" style="left:104.6%;top:39.1%"><div class="hs-pill" style="--d:1.1s">
+            <span class="hs-pill-dot" style="color:#8b8fae;background:#EDEEF5"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="3"/><path d="M3 16c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg></span>
+            <span class="hs-pill-label">Clients</span><span class="hs-pill-val">Happy</span></div></div>
+          <div class="hs-item" style="left:13.7%;top:71.3%"><div class="hs-pill" style="--d:2.2s">
+            <span class="hs-pill-dot" style="color:#C99B5C;background:#F6ECDB"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 2"/></svg></span>
+            <span class="hs-pill-label">Delivered</span><span class="hs-pill-val">On Time</span></div></div>
+          <div class="hs-item" style="left:91.2%;top:81.4%"><div class="hs-pill" style="--d:3.1s">
+            <span class="hs-pill-dot" style="color:#C99B5C;background:transparent"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l2.3 4.8 5.2.7-3.8 3.7.9 5.3L10 14.5l-4.6 2.5.9-5.3-3.8-3.7 5.2-.7z"/></svg></span>
+            <span class="hs-pill-label">Experience</span><span class="hs-pill-val">8 Yrs</span></div></div>
+          <div class="hs-item" style="left:87.8%;top:20.1%"><div class="hs-card white" style="--d:1.7s"><svg viewBox="0 0 24 24" fill="none" stroke="#C99B5C" stroke-width="2.4" stroke-linecap="round"><path d="M6 20v-6M12 20V8M18 20V4"/></svg></div></div>
+          <div class="hs-item" style="left:0.8%;top:45.8%"><span class="hs-orb peri" style="--d:1.4s"></span></div>
+          <div class="hs-item" style="left:98.4%;top:56.9%"><span class="hs-orb dark sm" style="--d:2.1s"></span></div>
+          <div class="hs-item" style="left:18.2%;top:85.1%"><span class="hs-orb gold sm" style="--d:0.9s"></span></div>
+          <div class="hs-item" style="left:82.3%;top:87.1%"><span class="hs-orb dark" style="--d:2.6s"></span></div>
+          </div>
+        </div>
+
+        <!-- legacy logo slot kept (hidden) so the onerror fallback script still has a target -->
         <div class="hero-logo-slot" id="heroLogoSlot">
-          <img src="images/logo.png" alt="Analytic Insider logo" id="heroLogoImg"
+          <img src="images/logo.png" alt="Eleven logo" id="heroLogoImg"
                onerror="this.style.display='none'; this.parentNode.classList.add('fallback');">
           <svg class="hero-logo-fallback" viewBox="0 0 24 24" fill="white" fill-rule="evenodd" stroke="none">
             <path d="M12 3L3 20h4.2l1.7-3.4h6.2L16.8 20H21L12 3zm0 5.4l2.3 4.6H9.7L12 8.4z"/>
           </svg>
         </div>
 
-        <!-- small white bars-icon card -->
-        <div class="hero-art-icon">
-          <svg viewBox="0 0 18 18" fill="none" stroke="#C99B5C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="4" y1="15" x2="4" y2="10"/><line x1="9" y1="15" x2="9" y2="6"/><line x1="14" y1="15" x2="14" y2="3"/>
-          </svg>
-        </div>
-
-        <!-- floating stat pills -->
-        <div class="hw-pill hw-pill-1">
-          <span class="hw-pill-dot" style="color:#17130E;background:#EFE6D6">
-            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5L1 9l5 4M12 5l5 4-5 4"/></svg>
-          </span>
-          <span class="hw-pill-label">Projects</span>
-          <span class="hw-pill-val"><span id="projectsCount">0</span>+</span>
-        </div>
-        <div class="hw-pill hw-pill-2">
-          <span class="hw-pill-dot" style="color:#8b8fae;background:#EDEEF5">
-            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="3"/><path d="M3 16c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
-          </span>
-          <span class="hw-pill-label">Clients</span>
-          <span class="hw-pill-val">Happy</span>
-        </div>
-        <div class="hw-pill hw-pill-3">
-          <span class="hw-pill-dot" style="color:#C99B5C;background:#F6ECDB">
-            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 2"/></svg>
-          </span>
-          <span class="hw-pill-label">Delivered</span>
-          <span class="hw-pill-val">On Time</span>
-        </div>
-        <div class="hw-pill hw-pill-4 hw-pill-star">
-          <span class="hw-pill-dot" style="color:#C99B5C">
-            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M10 2.5l2.3 4.8 5.2.7-3.8 3.7.9 5.3L10 14.5l-4.6 2.5.9-5.3-3.8-3.7 5.2-.7z"/></svg>
-          </span>
-          <span class="hw-pill-label">Experience</span>
-          <span class="hw-pill-val">8 Yrs</span>
-        </div>
-
-        <!-- animated orbit dots -->
-        <span class="art-dot art-dot-1"></span>
-        <span class="art-dot art-dot-2"></span>
-        <span class="art-dot art-dot-3"></span>
-        <span class="art-dot art-dot-4"></span>
-        <span class="art-dot art-dot-5"></span>
-
-        <!-- decorative wooden blocks + leaf -->
+        <!-- decorative wooden blocks + leaf (unchanged) -->
         <div class="hero-deco-blocks"><i></i><i></i><i></i></div>
         <div class="hero-deco-leaf"></div>
       </div>
@@ -1072,18 +1131,23 @@
     <!-- Stats strip — real, grounded numbers instead of generic marketing figures -->
     <div class="cl-stats">
       <div class="cl-stat">
-        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="60">0</span>+</span>
-        <span class="cl-stat-label">Projects Delivered</span>
+        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="49">0</span>+</span>
+        <span class="cl-stat-label">Projects Completed</span>
       </div>
       <span class="cl-stat-div" aria-hidden="true"></span>
       <div class="cl-stat">
-        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="10">0</span>+</span>
+        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="8">0</span>+</span>
+        <span class="cl-stat-label">Years Experience</span>
+      </div>
+      <span class="cl-stat-div" aria-hidden="true"></span>
+      <div class="cl-stat">
+        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="20">0</span>+</span>
         <span class="cl-stat-label">Industries Served</span>
       </div>
       <span class="cl-stat-div" aria-hidden="true"></span>
       <div class="cl-stat">
-        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="98">0</span>%</span>
-        <span class="cl-stat-label">Client Retention</span>
+        <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="10">0</span></span>
+        <span class="cl-stat-label">People Team</span>
       </div>
     </div>
 
@@ -2456,7 +2520,7 @@
           <div class="clt-card">
           <article class="clt-card-inner">
             <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
-            <p class="clt-text">We came in with a rough idea and a tight timeline. Analytic Insider shaped Salasa into a product that actually works the way our customers expect, and they kept us informed the whole way through. Launch day went far smoother than we expected.</p>
+            <p class="clt-text">We came in with a rough idea and a tight timeline. Eleven shaped Salasa into a product that actually works the way our customers expect, and they kept us informed the whole way through. Launch day went far smoother than we expected.</p>
             <div class="clt-footer">
               <div class="clt-avatar" style="--av:#C95C8E">AM</div>
               <div class="clt-person">
@@ -2516,7 +2580,7 @@
           <div class="clt-card">
           <article class="clt-card-inner">
             <svg class="clt-quote" width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M14.6 0C7 2.4 2 8.6 2 16.4c0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C9.9 9.6 12.7 5.3 17.4 3.1L14.6 0Zm17.4 0c-7.6 2.4-12.6 8.6-12.6 16.4 0 5.2 3.4 9 8 9 3.7 0 6.4-2.7 6.4-6.2 0-3.3-2.3-5.6-5.4-5.6-.6 0-1.1.1-1.5.2C27.3 9.6 30.1 5.3 34.8 3.1L32 0Z" fill="#C99B5C" fill-opacity=".28"/></svg>
-            <p class="clt-text">MetaDot started as a vague concept and a handful of sketches. Analytic Insider helped us turn that into a working product without losing sight of what made it different. Their patience with our constant changes did not go unnoticed.</p>
+            <p class="clt-text">MetaDot started as a vague concept and a handful of sketches. Eleven helped us turn that into a working product without losing sight of what made it different. Their patience with our constant changes did not go unnoticed.</p>
             <div class="clt-footer">
               <div class="clt-avatar" style="--av:#D4A24E">KA</div>
               <div class="clt-person">
@@ -2708,7 +2772,7 @@
             <div class="sap-meta-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
-            <span>Dearborn, MI — working worldwide</span>
+            <span>Karachi, Pakistan — working worldwide</span>
           </div>
         </div>
       </div>
@@ -2726,16 +2790,16 @@
         <!-- Col 1: Brand & Identity -->
         <div class="footer-col footer-col-brand">
           <a class="footer-brand" href="index.html">
-            <span class="footer-brand-title">ANALYTIC INSIDER</span>
+            <span class="footer-brand-title">ELEVEN</span>
             <span class="footer-brand-dot"></span>
           </a>
           <p class="footer-brand-tagline">
             Software, AI and design for businesses that want to grow.
           </p>
 
-          <a class="footer-location-row" href="https://maps.google.com/?q=Dearborn,+MI+48128,+USA" target="_blank" rel="noopener noreferrer">
+          <a class="footer-location-row" href="https://maps.google.com/?q=Karachi,+Pakistan" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Dearborn, MI 48128, USA — working worldwide</span>
+            <span>Karachi, Pakistan — working worldwide</span>
           </a>
 
 
@@ -2743,20 +2807,17 @@
           <div class="footer-social-wrapper">
             <span class="footer-social-label">Connect with us</span>
             <div class="footer-social-links">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.25c-.91 0-1.64.73-1.64 1.64s.73 1.64 1.64 1.64 1.64-.73 1.64-1.64-.73-1.64-1.64-1.64Z"/></svg>
-              </a>
-              <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="X / Twitter">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.58v1.87h2.78l-.44 2.91h-2.34v7.03C18.34 21.24 22 17.08 22 12.06z"/></svg>
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </a>
-              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Behance">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.726 3-3.045 0-5.46-2.021-5.46-5.5 0-3.328 2.279-5.5 5.251-5.5 3.32 0 4.966 2.378 4.773 5.5h-7.666c.071 1.621 1.272 2.652 2.827 2.652 1.341 0 2.164-.707 2.457-1.152h2.544zm-7.636-4h5.201c-.139-1.393-1.076-2.128-2.502-2.128-1.554 0-2.529.837-2.699 2.128zm-9.09-8h-7v14h7.362c4.156 0 6.638-1.957 6.638-5.167 0-2.071-1.2-3.64-2.923-4.22 1.332-.619 2.174-1.895 2.174-3.535 0-2.937-2.315-4.078-6.251-4.078zm-4.364 2.5h3.84c1.86 0 2.824.62 2.824 1.83 0 1.24-.964 1.87-2.824 1.87h-3.84v-3.7zm0 6h4.341c2.083 0 3.159.72 3.159 2.13 0 1.45-1.076 2.17-3.159 2.17h-4.341v-4.3z"/></svg>
+              <a href="https://wa.me/923340317145" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.06-1.33A10 10 0 1 0 12 2zm0 18.2a8.17 8.17 0 0 1-4.17-1.14l-.3-.18-3.1.81.83-3-.19-.31A8.2 8.2 0 1 1 12 20.2zm4.47-6.14c-.24-.12-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.12-.17.24-.63.8-.77.97-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z"/></svg>
+              </a>
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="X / Twitter">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
             </div>
           </div>
@@ -2811,13 +2872,9 @@
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               <span>abdulrafay364p@gmail.com</span>
             </a>
-            <a href="tel:+13136551635" class="footer-link-highlight">
+            <a href="tel:+923340317145" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+1 (313) 655-1635</span>
-            </a>
-            <a href="tel:+923332159764" class="footer-link-highlight">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+92 333 2159764</span>
+              <span>0334 0317145</span>
             </a>
           </div>
         </div>
@@ -2827,7 +2884,7 @@
       <!-- ══ BOTTOM BAR ══ -->
       <div class="footer-bottom-bar">
         <div class="footer-bottom-left">
-          <span>&copy; 2026 Analytic Insider. All rights reserved.</span>
+          <span>&copy; 2026 Eleven. All rights reserved.</span>
           <span class="footer-bottom-sep">&bull;</span>
           <span>Software &middot; Web &middot; AI &middot; Mobile</span>
         </div>
@@ -3715,7 +3772,7 @@
   }
 })();
 
-/* ── HERO EYEBROW CYCLER — "Digital Agency · Dearborn, MI 48128, USA" flips as ONE unit ── */
+/* ── HERO EYEBROW CYCLER — "Digital Agency · Karachi, Pakistan" flips as ONE unit ── */
 (function(){
   const el  = document.getElementById('eyebrowCycle');   // wrapper = label + location
   const lab = document.getElementById('eyebrowLabel');   // only the changing words
@@ -3742,7 +3799,7 @@
       el.style.opacity    = '0';
       el.style.transform  = 'translateY(14px) rotateX(-28deg)';
       void el.offsetWidth;
-      // ENTER: label + "Dearborn, MI 48128, USA" flip into place together
+      // ENTER: label + "Karachi, Pakistan" flip into place together
       el.style.transition = 'opacity 0.42s ease, transform 0.48s cubic-bezier(.22,1,.36,1)';
       el.style.opacity    = '1';
       el.style.transform  = 'translateY(0) rotateX(0deg)';
@@ -4618,5 +4675,6 @@
 </script>
   <script src="js/mega.js?v=3.2"></script>
   <script src="js/shared.js?v=1.0"></script>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ANALYTIC INSIDER — MOBILE APP DEVELOPMENT TECH STACK
+   ELEVEN — MOBILE APP DEVELOPMENT TECH STACK
    A phone mockup cycles through Android / iOS / Cross-platform screens while
    the core stack orbits around it, and a build rail runs Design → Develop →
    Test → Publish, ending with the app live on the App Store & Google Play.

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ANALYTIC INSIDER — SERVICE LANDING PAGES (v2)
+   ELEVEN — SERVICE LANDING PAGES (v2)
    Warm neutral palette, whisper-light gradients, ten different layout recipes,
    3D scroll entrances (replay when a section leaves and returns).
    ========================================================================== */
@@ -1534,3 +1534,88 @@
   .rp-image-window { clip-path: none !important; }
   .rp-chip { animation: none !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   CAPABILITIES — "flow" layout (no grid cards)
+   A single borderless list that reads as one continuous surface: a soft
+   gradient thread runs down the middle, each item is plain text sitting
+   directly on the page, nothing boxed, nothing bordered.
+   ══════════════════════════════════════════════════════════════════════ */
+.cap-flow { position: relative; max-width: 940px; margin: 0 auto; display: flex; flex-direction: column; gap: 6px; }
+.cap-flow-thread {
+  position: absolute; left: 50%; top: 10px; bottom: 10px; width: 2px; translate: -50% 0;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--acc) 55%, transparent) 10%, color-mix(in srgb, var(--acc) 55%, transparent) 90%, transparent);
+  opacity: .55; z-index: 0;
+}
+#svc [data-fx="flowline"] { opacity: .55; transform: scaleY(0); transform-origin: 50% 0; transition: transform 1.4s var(--ease); }
+#svc .is-in [data-fx="flowline"] { transform: scaleY(1); }
+.cap-flow-item { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 30px 0; }
+.cap-flow-item.is-l .cap-flow-card { grid-column: 1; text-align: right; padding-right: 54px; }
+.cap-flow-item.is-r .cap-flow-card { grid-column: 2; grid-row: 1; text-align: left; padding-left: 54px; }
+.cap-flow-dot {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 13px; height: 13px; border-radius: 50%;
+  background: var(--cream); border: 2.5px solid var(--acc); box-shadow: 0 0 0 6px color-mix(in srgb, var(--acc) 14%, transparent); z-index: 2;
+}
+.cap-flow-n { display: block; font: 800 15px 'Outfit', sans-serif; letter-spacing: .1em; color: color-mix(in srgb, var(--acc) 75%, transparent); margin-bottom: 10px; }
+.cap-flow-card h3 { font: 800 21px 'Outfit', sans-serif; letter-spacing: -.015em; margin: 0 0 10px; color: var(--ink); }
+.cap-flow-card p { font-size: 14.5px; line-height: 1.7; color: #59554d; margin: 0; max-width: 400px; }
+.cap-flow-item.is-l .cap-flow-card p { margin-left: auto; }
+.cap-flow-item.is-r .cap-flow-card p { margin-right: auto; }
+@media (max-width: 860px) {
+  .cap-flow-thread { left: 20px; }
+  .cap-flow-item, .cap-flow-item.is-l, .cap-flow-item.is-r { grid-template-columns: 1fr; padding: 22px 0 22px 50px; }
+  .cap-flow-item.is-l .cap-flow-card, .cap-flow-item.is-r .cap-flow-card { grid-column: 1; text-align: left; padding: 0; }
+  .cap-flow-item.is-l .cap-flow-card p, .cap-flow-item.is-r .cap-flow-card p { margin: 0; max-width: none; }
+  .cap-flow-dot { left: 20px; top: 28px; translate: -50% -50%; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   E-COMMERCE & SHOPIFY DEVELOPMENT — page-only gradient merge theme.
+   Scoped to this one service page via [data-slug]; nothing here touches
+   any other service page. One soft gradient runs behind every section
+   so the page reads as a single continuous surface, with the hard
+   section-to-section divider lines removed.
+   ══════════════════════════════════════════════════════════════════════ */
+#svc[data-slug="ecommerce-shopify-development"] {
+  background: linear-gradient(180deg,
+    #FFFCF6 0%, #FBF1DF 12%, #F6E6C9 26%, #FFFFFF 42%,
+    #FDF7EC 56%, #FAEFDC 70%, #F4E4C6 84%, #FFFCF6 100%);
+}
+#svc[data-slug="ecommerce-shopify-development"] .sv-overview,
+#svc[data-slug="ecommerce-shopify-development"] .sv-caps,
+#svc[data-slug="ecommerce-shopify-development"] .sv-tech,
+#svc[data-slug="ecommerce-shopify-development"] .sv-impact,
+#svc[data-slug="ecommerce-shopify-development"] .sv-why,
+#svc[data-slug="ecommerce-shopify-development"] .sv-faq,
+#svc[data-slug="ecommerce-shopify-development"] .sv-brand-sec,
+#svc[data-slug="ecommerce-shopify-development"] .sv-proc--8 {
+  background: transparent !important;
+  border: none !important;
+}
+#svc[data-slug="ecommerce-shopify-development"] .sv-tech,
+#svc[data-slug="ecommerce-shopify-development"] .sv-brand-sec,
+#svc[data-slug="ecommerce-shopify-development"] .cap-rows,
+#svc[data-slug="ecommerce-shopify-development"] .sv-metrics--strip,
+#svc[data-slug="ecommerce-shopify-development"] .sv-faq-item,
+#svc[data-slug="ecommerce-shopify-development"] .sv-faq-item:first-child {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+#svc[data-slug="ecommerce-shopify-development"] .imp-split,
+#svc[data-slug="ecommerce-shopify-development"] .sv-dbox,
+#svc[data-slug="ecommerce-shopify-development"] .why-row,
+#svc[data-slug="ecommerce-shopify-development"] .tech-tile,
+#svc[data-slug="ecommerce-shopify-development"] .ov-col {
+  background: color-mix(in srgb, #fff 86%, var(--acc) 3%);
+  border-color: rgba(23,19,14,.06);
+}
+/* the only genuinely dark band left on this page (testimonials) gets a
+   feathered top and bottom edge instead of a flat line where it meets
+   the warm gradient, so it reads as a soft fade rather than a seam */
+#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark { position: relative; }
+#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark::before,
+#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 110px; pointer-events: none; z-index: 1;
+}
+#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark::before { top: -1px; background: linear-gradient(180deg, #F4E4C6, #17130E); }
+#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark::after { bottom: -1px; background: linear-gradient(0deg, #FFFCF6, #17130E); }
