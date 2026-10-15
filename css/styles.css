@@ -2955,22 +2955,26 @@ body {
   margin-bottom: 20px;
 }
 
-/* Grid of Pills */
+/* Grid of Pills — equal-width/equal-height cells so every tile in a
+   category is exactly the same size, no matter how long its name is */
 .tech-pills {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
   gap: 14px;
 }
 
 /* Individual Tech Pill */
 .tech-pill {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
+  height: 58px;
+  box-sizing: border-box;
   background: #FFFFFF;
   border: 1px solid rgba(23, 19, 14, 0.09);
   border-radius: 16px;
-  padding: 12px 22px;
+  padding: 0 22px;
   box-shadow: 0 4px 12px rgba(23, 19, 14, 0.03);
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.28s ease,
@@ -3023,6 +3027,11 @@ body {
   font-size: 14.5px;
   font-weight: 600;
   color: #17130E;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.25;
 }
 
 @media (max-width: 900px) {

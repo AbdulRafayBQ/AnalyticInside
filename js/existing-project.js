@@ -162,7 +162,7 @@
       <div class="ep-head">
         <span class="ep-eyebrow">Already Have a Product?</span>
         <h2 class="ep-title">Let's take your existing <em>${esc(s.title)}</em> product further</h2>
-        <p class="ep-sub">Fixes, redesigns, tech upgrades and new features for products that are already live. Pick what you need, or send us everything in one brief.</p>
+        <p class="ep-sub">Already have a product? We fix it, refresh it and add new features.</p>
       </div>
       ${body(P.v, list)}
       <div class="ep-foot">

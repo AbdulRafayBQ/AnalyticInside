@@ -10,11 +10,11 @@
   /* [display name, [icon files], short role] */
   const CATS = [
     ['Android', [['Kotlin', ['kotlin'], 'Modern, concise Android code'], ['Java', ['java'], 'Proven Android foundation'], ['Android Studio', ['androidstudio'], 'Official Android IDE'], ['Jetpack Compose', ['jetpackcompose'], 'Declarative native UI']]],
-    ['iOS', [['Swift', ['swift'], 'Fast, safe native iOS'], ['SwiftUI', ['swiftui'], 'Declarative iOS interfaces'], ['Xcode', ['xcode'], 'Apple\u2019s native IDE']]],
+    ['iOS', [['Swift', ['swift'], 'Fast, safe native iOS'], ['SwiftUI', ['swiftui'], 'Declarative iOS interfaces']]],
     ['Cross-Platform', [['Flutter', ['flutter', 'dart'], 'One codebase, Dart-powered'], ['React Native', ['reactnative', 'javascript', 'typescript'], 'Native apps in JS / TS'], ['.NET MAUI', ['dotnetcore', 'csharp'], 'Cross-platform C# apps']]],
-    ['Backend & APIs', [['Node.js', ['nodejs'], 'Realtime, event-driven APIs'], ['Python', ['python'], 'Rapid, secure backends'], ['Java / Spring Boot', ['java', 'spring'], 'Enterprise-grade services'], ['C# / .NET', ['csharp', 'dotnetcore'], 'Robust managed backends'], ['PHP / Laravel', ['php', 'laravel'], 'Elegant, proven backends'], ['REST API', ['restapi'], 'Clean resource endpoints'], ['GraphQL', ['graphql'], 'Query exactly what you need']]],
+    ['Backend & APIs', [['Node.js', ['nodejs'], 'Realtime, event-driven APIs'], ['NestJS', ['nestjs'], 'Structured, scalable Node.js framework'], ['Python', ['python'], 'Rapid, secure backends'], ['Java / Spring Boot', ['java', 'spring'], 'Enterprise-grade services'], ['C# / .NET', ['csharp', 'dotnetcore'], 'Robust managed backends'], ['PHP / Laravel', ['php', 'laravel'], 'Elegant, proven backends'], ['REST API', ['restapi'], 'Clean resource endpoints'], ['GraphQL', ['graphql'], 'Query exactly what you need']]],
     ['Databases', [['PostgreSQL', ['postgresql'], 'Powerful relational data'], ['MySQL', ['mysql'], 'Reliable relational SQL'], ['MongoDB', ['mongodb'], 'Flexible document storage'], ['Firebase', ['firebase'], 'Realtime data & auth'], ['Supabase', ['supabase'], 'Open-source Postgres backend'], ['SQLite', ['sqlite'], 'Fast on-device storage']]],
-    ['Dev Tools', [['Android Studio', ['androidstudio'], 'Build & debug Android'], ['Xcode', ['xcode'], 'Build & debug iOS'], ['VS Code', ['vscode'], 'Cross-platform editor'], ['Git / GitHub', ['git', 'github'], 'Version control & review'], ['Postman', ['postman'], 'API design & testing'], ['Firebase Console', ['firebase'], 'Monitor, test & configure']]],
+    ['Dev Tools', [['Android Studio', ['androidstudio'], 'Build & debug Android'], ['VS Code', ['vscode'], 'Cross-platform editor'], ['Git / GitHub', ['git', 'github'], 'Version control & review'], ['Postman', ['postman'], 'API design & testing'], ['Firebase Console', ['firebase'], 'Monitor, test & configure']]],
     ['Deployment', [['Firebase', ['firebase'], 'Hosting, auth & crashlytics'], ['AWS', ['amazonwebservices'], 'Scalable cloud infrastructure'], ['Google Cloud', ['googlecloud'], 'Managed cloud services'], ['Microsoft Azure', ['azure'], 'Enterprise cloud platform'], ['App Store', ['appstore'], 'Publish to iOS users'], ['Google Play Console', ['googleplay'], 'Publish to Android users']]]
   ];
   const ORBIT = ['kotlin', 'swift', 'flutter', 'reactnative', 'nodejs', 'firebase', 'amazonwebservices', 'figma'];
@@ -47,7 +47,7 @@
           <div class="ts-rv" style="--i:0">
             <span class="ts-eyebrow"><b></b>Our Technology Stack</span>
             <h2 class="ts-title">Build once, <em>ship to every screen</em></h2>
-            <p class="ts-sub">From native Android and iOS to cross-platform frameworks, every app we build is engineered for performance, offline reliability and a smooth path to the App Store and Google Play.</p>
+            <p class="ts-sub">From native to cross platform, we pick what gives your app the best speed and reliability.</p>
             <div class="ts-stats"><div><b data-count="${CATS.length}">0</b><span>Tech categories</span></div><div><b data-count="${total}">0</b><span>Technologies</span></div><div><b data-count="2">0</b><span>App stores shipped</span></div></div>
           </div>
           <div class="ta-scene ts-rv" style="--i:2" id="taScene">

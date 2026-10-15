@@ -132,3 +132,26 @@
 .pdh .tech-container { opacity: 0; }
 .pdh .tech-container.tech-in { opacity: 1; }
 @media (max-width: 768px) { .pdh { padding: 64px 0 80px; } }
+
+/* ══════ v4: FIXED-SIZE tech card — same height in every category ══════
+   The panel area has one fixed height; if a category has more tools than fit,
+   they scroll inside the card instead of stretching it (web + mobile). */
+.pdh .tech-panels { height: 370px; min-height: 0; overflow-x: hidden !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch; overscroll-behavior: auto; padding: 4px 6px 8px; margin: 0 -6px; scrollbar-width: thin; scrollbar-color: #C99B5C transparent; }
+.pdh .tech-panels::-webkit-scrollbar { width: 5px; }
+.pdh .tech-panels::-webkit-scrollbar-thumb { background: #C99B5C; border-radius: 6px; }
+.pdh .tech-panels::-webkit-scrollbar-track { background: transparent; }
+.pdh .tech-group { margin-bottom: 24px; }
+.pdh .tech-group:last-child { margin-bottom: 0; }
+.pdh .tech-group-heading { font-size: 20px; margin-bottom: 14px; }
+.pdh .tech-pills { gap: 10px; }
+.pdh .tech-pill { height: 50px; }
+@media (max-width: 900px) {
+  .pdh .tech-panels { height: 370px; }
+}
+@media (max-width: 768px) {
+  .pdh .tech-panels { height: 340px; }
+  .pdh .tech-group { margin-bottom: 18px; }
+  .pdh .tech-group-heading { font-size: 14px !important; margin-bottom: 10px !important; }
+  .pdh .tech-pills { gap: 8px !important; }
+  .pdh .tech-pill { height: 46px; padding-top: 0 !important; padding-bottom: 0 !important; }
+}

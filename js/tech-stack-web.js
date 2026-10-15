@@ -8,12 +8,11 @@
   const IC = 'images/tech-stack/';
   /* [display name, [icon files], short role] */
   const CATS = [
-    ['Core Languages', [['HTML', ['html5'], 'Website structure'], ['CSS', ['css3'], 'Design & layout'], ['JavaScript', ['javascript'], 'Interactions & functionality'], ['TypeScript', ['typescript'], 'Typed JavaScript for large projects']]],
-    ['Frontend', [['React.js', ['react'], 'Component-driven interfaces'], ['Next.js', ['nextjs'], 'SEO-ready, server-rendered React'], ['Vue.js', ['vuejs'], 'Progressive, lightweight UI'], ['Angular', ['angularjs'], 'Structured enterprise front ends'], ['Tailwind CSS', ['tailwindcss'], 'Fast, consistent styling'], ['Bootstrap', ['bootstrap'], 'Responsive layouts, quickly']]],
-    ['Backend', [['Node.js', ['nodejs'], 'Fast, scalable server runtime'], ['Express.js', ['express'], 'Lean, flexible APIs'], ['PHP / Laravel', ['php', 'laravel'], 'Elegant, proven web backends'], ['Python / Django / Flask', ['python', 'django-plain', 'flask'], 'Rapid, secure Python back ends'], ['C# / ASP.NET', ['csharp', 'dotnetcore'], 'Enterprise-grade web platforms']]],
+    ['Frontend', [['React.js', ['react'], 'Component-driven interfaces'], ['Next.js', ['nextjs'], 'SEO-ready, server-rendered React'], ['Vue.js', ['vuejs'], 'Progressive, lightweight UI'], ['Angular', ['angularjs'], 'Structured enterprise front ends'], ['TypeScript', ['typescript'], 'Typed JavaScript for large projects']]],
+    ['Backend', [['Node.js', ['nodejs'], 'Fast, scalable server runtime'], ['NestJS', ['nestjs'], 'Structured, scalable Node.js framework'], ['Express.js', ['express'], 'Lean, flexible APIs'], ['PHP / Laravel', ['php', 'laravel'], 'Elegant, proven web backends'], ['Python / Django / Flask', ['python', 'django-plain', 'flask'], 'Rapid, secure Python back ends'], ['C# / ASP.NET', ['csharp', 'dotnetcore'], 'Enterprise-grade web platforms']]],
     ['Database', [['MySQL', ['mysql'], 'Reliable relational data'], ['PostgreSQL', ['postgresql'], 'Powerful, standards-based SQL'], ['MongoDB', ['mongodb'], 'Flexible document storage'], ['Firebase', ['firebase'], 'Realtime data & auth'], ['Supabase', ['supabase'], 'Open-source Postgres backend']]],
     ['Dev Tools', [['VS Code', ['vscode'], 'Our daily editor'], ['Git', ['git'], 'Version control'], ['GitHub', ['github'], 'Code review & collaboration'], ['Figma', ['figma'], 'Design & handoff'], ['Postman', ['postman'], 'API design & testing'], ['Chrome DevTools', ['chrome'], 'Debugging & performance']]],
-    ['Hosting / Deployment', [['Vercel', ['vercel'], 'Instant global deploys'], ['Netlify', ['netlify'], 'Jamstack hosting & CI'], ['Hostinger', ['hostinger'], 'Reliable, affordable hosting'], ['AWS', ['amazonwebservices'], 'Scalable cloud infrastructure'], ['Cloudflare', ['cloudflare'], 'CDN, security & DNS']]]
+    ['Hosting / Deployment', [['Hostinger', ['hostinger'], 'Reliable, affordable hosting'], ['AWS', ['amazonwebservices'], 'Scalable cloud infrastructure'], ['Cloudflare', ['cloudflare'], 'CDN, security & DNS']]]
   ];
   const STAGES = [['figma', 'Design', 0.2], ['react', 'Build', 0.45], ['vercel', 'Deploy', 0.7], ['amazonwebservices', 'Scale', 0.9]];
   const WP = [[60, 412], [118, 352], [168, 370], [236, 292], [290, 312], [362, 218], [414, 236], [484, 134], [548, 72]];
@@ -34,7 +33,7 @@
           <div class="ts-rv" style="--i:0">
             <span class="ts-eyebrow"><b></b>Our Technology Stack</span>
             <h2 class="ts-title">Launch your business with the <em>right stack</em></h2>
-            <p class="ts-sub">From the first line of HTML to global hosting, every tool we use is chosen to make your website fast, secure and ready to grow with your business. Design it, build it, ship it, scale it.</p>
+            <p class="ts-sub">We pick tools that keep your website fast, secure and ready to grow.</p>
             <div class="ts-stats"><div><b data-count="${CATS.length}">0</b><span>Tech categories</span></div><div><b data-count="${total}">0</b><span>Technologies</span></div><div><b data-count="${STAGES.length}">0</b><span>Launch stages</span></div></div>
           </div>
           <div class="tw-scene ts-rv" style="--i:2" id="twScene">

@@ -13,7 +13,7 @@
   const CATS = [
     ['Languages', [['JavaScript', 'javascript', 'Web logic everywhere'], ['TypeScript', 'typescript', 'Type-safe at scale'], ['Python', 'python', 'AI, data & automation'], ['Java', 'java', 'Enterprise-grade systems'], ['C#', 'csharp', 'Robust .NET applications'], ['C++', 'cplusplus', 'High-performance engines'], ['Go', 'go', 'Fast concurrent services'], ['PHP', 'php', 'Proven web platforms'], ['Kotlin', 'kotlin', 'Modern Android & backend'], ['Swift', 'swift', 'Native iOS apps']]],
     ['Frontend', [['React', 'react', 'Component-driven UIs'], ['Angular', 'angularjs', 'Enterprise front ends'], ['Vue.js', 'vuejs', 'Progressive interfaces'], ['Next.js', 'nextjs', 'SSR & full-stack React']]],
-    ['Backend', [['Node.js', 'nodejs', 'Event-driven APIs'], ['.NET / ASP.NET', 'dotnetcore', 'Secure enterprise backends'], ['Django', 'django', 'Batteries-included Python'], ['FastAPI', 'fastapi', 'High-speed Python APIs'], ['Spring Boot', 'spring', 'Production-ready Java'], ['Laravel', 'laravel', 'Elegant PHP framework']]],
+    ['Backend', [['Node.js', 'nodejs', 'Event-driven APIs'], ['NestJS', 'nestjs', 'Structured, scalable Node.js framework'], ['.NET / ASP.NET', 'dotnetcore', 'Secure enterprise backends'], ['Django', 'django', 'Batteries-included Python'], ['FastAPI', 'fastapi', 'High-speed Python APIs'], ['Spring Boot', 'spring', 'Production-ready Java'], ['Laravel', 'laravel', 'Elegant PHP framework']]],
     ['Databases', [['PostgreSQL', 'postgresql', 'Relational powerhouse'], ['MySQL', 'mysql', 'Reliable SQL workhorse'], ['MongoDB', 'mongodb', 'Flexible documents'], ['Microsoft SQL Server', 'microsoftsqlserver', 'Enterprise data platform'], ['Redis', 'redis', 'Millisecond caching']]],
     ['Dev Tools', [['Git', 'git', 'Version control'], ['GitHub', 'github', 'Code collaboration'], ['VS Code', 'vscode', 'Daily driver editor'], ['Visual Studio', 'visualstudio', 'Full .NET IDE'], ['Postman', 'postman', 'API design & testing'], ['Docker', 'docker', 'Containerised builds']]],
     ['Cloud / Deployment', [['AWS', 'amazonwebservices', 'Scalable cloud infra'], ['Microsoft Azure', 'azure', 'Enterprise cloud'], ['Google Cloud', 'googlecloud', 'Data & AI cloud'], ['Docker', 'docker', 'Portable containers'], ['Kubernetes', 'kubernetes', 'Orchestrated scale'], ['CI/CD', 'githubactions', 'Automated releases']]],
@@ -41,7 +41,7 @@
           <div class="ts-rv" style="--i:0">
             <span class="ts-eyebrow"><b></b>Our Technology Stack</span>
             <h2 class="ts-title">Engineered with the <em>tools that scale</em></h2>
-            <p class="ts-sub">Every layer of your custom software, from the language to the cloud, is chosen for performance, security and long-term maintainability. Here is what powers the products we ship.</p>
+            <p class="ts-sub">We pick tools that are fast, secure and easy to maintain.</p>
             <div class="ts-stats"><div><b data-count="${CATS.length}">0</b><span>Tech categories</span></div><div><b data-count="${total}">0</b><span>Tools &amp; frameworks</span></div><div><b data-count="9">0</b><span>Core languages</span></div></div>
           </div>
           <div class="ts-term ts-rv" style="--i:2">

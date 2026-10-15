@@ -133,7 +133,7 @@
 
   const heroLeft = `
     <div class="sv-hero-l">
-      <div class="sv-live-badge" ${fx('rise', 0)}><span class="sv-live-pulse"></span><span>Enterprise Engineering &middot; Production Ready</span></div>
+      <div class="sv-live-badge" ${fx('rise', 0)}><span class="sv-live-pulse"></span><span>Senior team &middot; Clear process</span></div>
       <h1 class="sv-hero-title">${titleWords}</h1>
       <p class="sv-hero-lead" ${fx('rise', 4)}>${s.tag}</p>
       <div class="sv-hero-actions" ${fx('rise', 5)}>
@@ -294,27 +294,27 @@
   const delivHTML = s.deliverables.map((d, i) => `<div class="sv-deliv" ${fx('pop', i + 2)}><span class="sv-deliv-ic">${checkSvg}</span><span>${d}</span></div>`).join('');
   const delivBox = `
     <div class="sv-dbox" ${fx(R.overview === 'sticky' ? 'flipl' : 'flipr', 2)}>
-      <h4 class="sv-dbox-title">Production Standards</h4>
+      <h4 class="sv-dbox-title">What you get</h4>
       <div class="sv-dlist">${delivHTML}</div>
-      <button class="sv-box-btn" type="button" ${openDrawer}>Schedule Architecture Review</button>
+      <button class="sv-box-btn" type="button" ${openDrawer}>Book a Free Call</button>
     </div>`;
   const ovText = s.overview.map((p, i) => `<p class="sv-body-p" ${fx('rise', i + 3)}>${b(p)}</p>`).join('');
   let overviewInner;
   if (R.overview === 'stack') {
     overviewInner = `
-      ${head('Strategic Overview', `The Foundation Behind High Performance ${s.title}`, '', 'center')}
+      ${head('About this service', `${s.title}, in simple words`, '', 'center')}
       <div class="ov-cols">${s.overview.map((p, i) => `
         <div class="ov-col" ${fx(i === 1 ? 'zoom' : (i === 0 ? 'flipl' : 'flipr'), i + 1)}>
           <span class="ov-num">${pad(i)}</span><p class="sv-body-p">${b(p)}</p>
         </div>`).join('')}</div>
       <div class="ov-strip" ${fx('rise', 5)}>
         <div class="ov-strip-list">${s.deliverables.map((d, i) => `<span class="ov-chip" ${fx('pop', i + 6)}>${checkSvg}${d}</span>`).join('')}</div>
-        <button class="sv-box-btn ov-btn" type="button" ${openDrawer}>Schedule Architecture Review</button>
+        <button class="sv-box-btn ov-btn" type="button" ${openDrawer}>Book a Free Call</button>
       </div>`;
   } else {
     const textCol = `<div class="ov-text">
-        <span class="sv-eyebrow" ${fx('rise', 0)}>Strategic Overview</span>
-        <h2 class="sv-title" ${fx('rise', 1)}>The Foundation Behind High Performance ${s.title}</h2>
+        <span class="sv-eyebrow" ${fx('rise', 0)}>About this service</span>
+        <h2 class="sv-title" ${fx('rise', 1)}>${s.title}, in simple words</h2>
         ${ovText}</div>`;
     overviewInner = `<div class="ov-grid ov-grid--${R.overview}">${R.overview === 'sticky' ? delivBox + textCol : textCol + delivBox}</div>`;
   }
@@ -327,18 +327,18 @@
         <div class="sv-quote-banner" ${fx('zoom', 0)}>
           <div class="sv-qb-glow" aria-hidden="true"></div>
           <div class="sv-qb-content">
-            <span class="sv-qb-eyebrow">Transparent Pricing &middot; Sprint Milestones</span>
-            <h3 class="sv-qb-title">Need a Dedicated Quote for <em>${s.title}</em>?</h3>
-            <p class="sv-qb-desc">Share your scope, integration requirements, or system architecture goals. Our technical leads provide an itemized sprint roadmap with fixed milestone costs.</p>
+            <span class="sv-qb-eyebrow">Clear pricing</span>
+            <h3 class="sv-qb-title">Want a quote for <em>${s.title}</em>?</h3>
+            <p class="sv-qb-desc">Tell us what you need. We reply with a clear plan, timeline and price.</p>
             <div class="sv-qb-meta">
-              <span>✓ Direct Senior Engineer Lead</span>
-              <span>✓ 100% Intellectual Property Handover</span>
-              <span>✓ Guaranteed Production SLA</span>
+              <span>✓ Senior team</span>
+              <span>✓ You own the code</span>
+              <span>✓ Support after launch</span>
             </div>
           </div>
           <div class="sv-qb-action">
             <button class="sv-qb-btn" type="button" ${scrollToQuote}>
-              Get A Custom Quote
+              Get a Quote
               ${arrowSvg}
             </button>
             <a class="sv-qb-phone" href="tel:+13136551635">
@@ -385,7 +385,7 @@
   }
   const capsHTML = `
     <section class="sv-sec sv-caps sv-caps--${R.caps}" id="capabilities" data-sec><div class="sv-inner">
-      ${head('Core Capabilities', 'What We Build Under This Service', 'Comprehensive digital solutions engineered to eliminate operational bottlenecks, capture new market share, and deliver scalable value.', R.caps === 'rows' || R.caps === 'stair' ? 'left' : 'center')}
+      ${head('What we do', 'What we can build for you', 'Pick what you need. We take care of the rest.', R.caps === 'rows' || R.caps === 'stair' ? 'left' : 'center')}
       ${capsInner}
     </div></section>`;
 
@@ -477,7 +477,7 @@
   /* Marketing uses the funnel layout (builder 6) on a light theme, not the vibe-code terminal */
   const procIdx = s.slug === 'digital-marketing-branding' ? 5 : k;
   const procDark = [true, false, false, true, false, false, true, false, true, true][procIdx];
-  const procHead = ['Engineering Methodology', 'Our Structured Six Stage <em style="font-style:italic;color:#C99B5C;">Delivery Roadmap</em>', 'Every engagement follows a rigorous technical process ensuring complete transparency, locked milestones, and working software at every stage.'];
+  const procHead = ['How we work', 'Six simple <em style="font-style:italic;color:#C99B5C;">steps</em>', 'You always know what is done and what comes next.'];
   const procHTML = `
     <section class="sv-sec sv-proc sv-proc--${procIdx + 1} ${procDark ? 'is-dark' : 'is-light'}" id="process" data-sec ${procIdx === 0 ? 'data-prog' : ''}>
       <div class="sv-inner">
@@ -492,13 +492,13 @@
         <div class="sv-quote-banner sv-quote-banner--dark" ${fx('swing', 0)}>
           <div class="sv-qb-glow" aria-hidden="true"></div>
           <div class="sv-qb-content">
-            <span class="sv-qb-eyebrow">Agile Sprint Breakdown</span>
-            <h3 class="sv-qb-title">Ready to Plan Your <em>${s.title}</em> Roadmap?</h3>
-            <p class="sv-qb-desc">Every engagement begins with locked milestones, two-week sprint intervals, and functional staging deployments delivered from week two.</p>
+            <span class="sv-qb-eyebrow">Simple steps</span>
+            <h3 class="sv-qb-title">Ready to start your <em>${s.title}</em> project?</h3>
+            <p class="sv-qb-desc">We work in two week steps, and you see real progress from week two.</p>
             <div class="sv-qb-meta">
-              <span>✓ 2-Week Sprint Intervals</span>
-              <span>✓ Working Staging Demos</span>
-              <span>✓ Zero Surprise Invoices</span>
+              <span>✓ Two week steps</span>
+              <span>✓ Working demos</span>
+              <span>✓ No surprise bills</span>
             </div>
           </div>
           <div class="sv-qb-action">
@@ -514,7 +514,7 @@
   /* ═══════════ TECH (cubix-style, different layout per service) ═══════════ */
   const TECH_FEATURE = [
     [['React.js', 'Fast, component-based interfaces for complex business dashboards, portals and SaaS products that stay easy to maintain as they grow.', 'react'], ['Angular', 'Structured, TypeScript-first front ends for large enterprise apps with many modules, roles and long-term maintenance needs.', 'angular'], ['.NET', 'ASP.NET Core and C# backends for secure, high-performance enterprise systems that integrate cleanly with Microsoft and Azure.', 'dotnet'], ['Node.js', 'Event-driven backends and APIs that handle thousands of concurrent users with clean, scalable service architecture.', 'node'], ['Python', 'Reliable business logic, automation and data-heavy services built quickly and with strong long-term maintainability.', 'python'], ['AWS', 'Secure, auto-scaling cloud infrastructure with monitoring, backups and zero-downtime deployments.', 'aws']],
-    [['Next.js', 'Server-rendered React sites with blazing load speeds, clean URLs and built-in SEO advantages.', 'next'], ['React.js', 'Interactive, reusable UI components that make every page fast, consistent and easy to extend.', 'react'], ['Angular', 'Scalable, well-structured web applications and portals for teams that need strict architecture and typed code.', 'angular'], ['.NET', 'ASP.NET Core web platforms and APIs for secure, enterprise-grade websites backed by C# and SQL Server.', 'dotnet'], ['Tailwind CSS', 'Pixel-perfect, responsive designs shipped quickly with a lightweight and consistent styling system.', 'tailwind'], ['Sanity CMS', 'Flexible headless content management so your team can update pages without touching code.', 'sanity']],
+    [['Next.js', 'Server-rendered React sites with blazing load speeds, clean URLs and built-in SEO advantages.', 'next'], ['React.js', 'Interactive, reusable UI components that make every page fast, consistent and easy to extend.', 'react'], ['Angular', 'Scalable, well-structured web applications and portals for teams that need strict architecture and typed code.', 'angular'], ['.NET', 'ASP.NET Core web platforms and APIs for secure, enterprise-grade websites backed by C# and SQL Server.', 'dotnet'], ['Sanity CMS', 'Flexible headless content management so your team can update pages without touching code.', 'sanity']],
     [['React Native', 'One codebase for iOS and Android with near-native performance and faster time to market.', 'react'], ['Flutter', 'Beautiful, high-fps cross-platform apps with custom animations and a single shared codebase.', 'flutter'], ['Swift', 'Fully native iOS apps that use the latest Apple features with maximum speed and polish.', 'swift'], ['Kotlin', 'Modern native Android development built for performance, stability and Play Store readiness.', 'kotlin']],
     [['OpenAI APIs', 'Powerful language and vision models integrated into your product, support and internal workflows.', 'openai'], ['LangChain', 'Agent and RAG pipelines that connect LLMs with your own documents, tools and business data.', 'langchain'], ['PyTorch', 'Custom model training and fine-tuning when off-the-shelf AI is not accurate enough for your use case.', 'pytorch'], ['HuggingFace', 'Open-source models and datasets that let us build accurate, cost-efficient AI you fully control.', 'huggingface']],
     [['Figma', 'Collaborative design, prototypes and developer-ready handoff in a single shared workspace.', 'figma'], ['Framer', 'Realistic interactive prototypes and motion you can test with users before a single line of code is written.', 'framer'], ['Storybook', 'A living component library that keeps every screen consistent and fast to build.', 'storybook'], ['Adobe XD', 'Rapid wireframing and clickable flows to validate ideas and remove friction before launch.', 'xd']],
@@ -526,7 +526,8 @@
   ];
   const TECH_LAYOUT = [['alt', 'dark'], ['tabs', 'dark'], ['grid', 'light'], ['panels', 'dark'], ['list', 'light'], ['alt', 'light'], ['grid', 'dark'], ['tabs', 'light'], ['panels', 'light'], ['list', 'dark']];
   const [TL, TT] = TECH_LAYOUT[k] || TECH_LAYOUT[0];
-  const TF = TECH_FEATURE[k] || TECH_FEATURE[0];
+  /* Marketing & Branding must use its own marketing tools row (index 5), not the row that happens to share its position in SERVICES */
+  const TF = (s.slug === 'digital-marketing-branding' ? TECH_FEATURE[5] : TECH_FEATURE[k]) || TECH_FEATURE[0];
   const tslug = n => n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const PLATFORM_BADGE = {
     'react native': 'both', 'flutter': 'both', 'swift': 'ios', 'kotlin': 'android'
@@ -560,7 +561,7 @@
   const moreTech = s.tech.filter(t => !featNames.includes(t));
   const techHTMLDefault = `
     <section class="sv-sec sv-tech tx--${TT} tx-l-${TL}" id="techStack" data-sec><div class="sv-inner">
-      ${head('Our Technology Stack', `${s.title}<br>technologies we use`, `The tools behind your ${s.title.toLowerCase()} project are chosen for performance, scalability and long-term success, so every solution is secure, reliable and built to evolve with your business.`, 'left', TT === 'dark')}
+      ${head('Our tools', `${s.title}<br>technologies we use`, `We pick tools that are fast, safe and easy to grow with.`, 'left', TT === 'dark')}
       ${techInner}
       ${moreTech.length ? `<div class="tx-more" ${fx('rise', 2)}><span>Also in our toolkit</span>${moreTech.map(t => `<b class="tx-chip">${t}</b>`).join('')}</div>` : ''}
     </div></section>`;
@@ -587,7 +588,7 @@
   }
   const impactHTML = `
     <section class="sv-sec sv-impact sv-impact--${R.impact}" id="impact" data-sec><div class="sv-inner">
-      ${head('Quantifiable Impact', 'Business Outcomes You Can Count On', 'We measure success in tangible economic returns, reduced labor overhead, elevated conversion rates, and rock solid uptime.', R.impact === 'bars' ? 'left' : 'center')}
+      ${head('Results', 'What you can expect', 'Numbers from real projects we have delivered.', R.impact === 'bars' ? 'left' : 'center')}
       ${impInner}
     </div></section>`;
 
@@ -602,7 +603,7 @@
         <p class="sv-body-p" ${fx('rise', 2)}>We are not a bloated agency that sells a project and hands it to junior contractors. You partner with senior engineers who understand architecture, business strategy, and clean code.</p>${trust}</div>
       <div class="why-r">${W.map((w, i) => `<div class="why-row" ${fx('flipr', i)}><span class="why-ic">${checkSvg}</span><p>${w}</p></div>`).join('')}</div></div>`;
   } else if (R.why === 'grid') {
-    whyInner = `${head('The Analytic Advantage', `Why Industry Leaders Choose Us for ${s.title}`, 'We are not a bloated agency that sells a project and hands it to junior contractors. You partner with senior engineers who understand architecture, business strategy, and clean code.', 'center')}
+    whyInner = `${head('Why us', `Why choose us for ${s.title}`, 'Senior people, plain talk and no surprises.', 'center')}
       <div class="why-grid">${W.map((w, i) => `<div class="why-gw" ${fx(['flipl', 'rise', 'flipr'][i % 3], Math.floor(i / 3))}><div class="why-gc" data-tilt data-tilt-max="6"><span class="why-gn">${pad(i)}</span><p>${w}</p></div></div>`).join('')}</div>
       <div class="why-center">${trust}</div>`;
   } else {
@@ -619,7 +620,7 @@
       <div class="sv-testi-info"><strong class="sv-testi-name">${r.name}</strong><span class="sv-testi-role">${r.company}</span></div></div></div>`).join('');
   const revHTML = `
     <section class="sv-sec sv-reviews sv-reviews--${R.rev}" id="reviews" data-sec><div class="sv-inner">
-      ${head('Client Voices', 'Feedback from Founders and Enterprise Leaders', '', 'center', R.rev === 'dark')}
+      ${head('Reviews', 'What our clients say', '', 'center', R.rev === 'dark')}
       <div class="sv-reviews-viewport" id="svReviewsViewport" ${fx('zoom', 1)}><div class="sv-reviews-track" id="svReviewsTrack">${reviewsHTML}</div></div>
       <div class="sv-reviews-controls" ${fx('rise', 2)}>
         <button class="sv-ctrl-arrow" id="svRevPrev" type="button" aria-label="Previous Testimonial"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
@@ -638,10 +639,10 @@
       <div class="faq-side"><span class="faq-q" ${fx('zoom', 0)}>?</span>
         <span class="sv-eyebrow" ${fx('rise', 1)}>Clear Answers</span>
         <h2 class="sv-title" ${fx('rise', 2)}>Frequently Asked Questions</h2>
-        <p class="sv-sub" ${fx('rise', 3)}>Straightforward answers regarding our engineering standards, timelines, commercial models, and code ownership.</p></div>
+        <p class="sv-sub" ${fx('rise', 3)}>Quick answers before you start.</p></div>
       <div class="sv-faq-accordion">${faqItems}</div></div></section>` : `
     <section class="sv-sec sv-faq sv-faq--accordion" id="faqs" data-sec><div class="sv-inner">
-      ${head('Clear Answers', 'Frequently Asked Questions', 'Straightforward answers regarding our engineering standards, timelines, commercial models, and code ownership.', 'center')}
+      ${head('Questions', 'Common questions', 'Quick answers before you start.', 'center')}
       <div class="sv-faq-accordion">${faqItems}</div></div></section>`;
 
   /* ═══════════ CTA + FOOTER ═══════════ */
@@ -651,10 +652,10 @@
       <div class="sap-inner" id="sapInner" ${fx('swing', 0)}>
         <p class="sap-eyebrow" ${fx('rise', 3)}>Start a Project</p>
         <h2 class="sap-title" ${fx('rise', 4)}>Got an idea? Let's build <em>something real.</em></h2>
-        <p class="sap-subtitle" ${fx('rise', 5)}>Tell us what you are trying to build and we will reply within a day with next steps, timeline and a clear estimate.</p>
+        <p class="sap-subtitle" ${fx('rise', 5)}>Tell us your idea. We reply within a day with next steps and a clear estimate.</p>
         <div class="sap-cta-row" ${fx('zoom', 6)}>
           <button class="sap-btn-primary" type="button" ${openDrawer}>Start a Project <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <a class="sap-btn-secondary" href="mailto:abdulrafay364p@gmail.com">Email Us Directly</a>
+          <a class="sap-btn-secondary" href="mailto:abdulrafay364p@gmail.com">Email Us</a>
         </div>
         <div class="sap-meta-row" ${fx('rise', 7)}>
           <div class="sap-meta-item"><div class="sap-meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span>Dearborn, MI — working worldwide</span></div>
@@ -1169,7 +1170,7 @@
         <div class="rp-head" ${fx('rise', 0)}>
           <span class="rp-eyebrow"><b></b>Selected Work</span>
           <h2 class="rp-h2">Real projects, <em>real results</em></h2>
-          <p class="rp-sub">A quick look at work we've shipped for clients in this exact space.</p>
+          <p class="rp-sub">Work we have delivered for clients like you.</p>
         </div>
         <div class="rp-zigzag">
           ${projects.map((p, i) => `
@@ -1199,8 +1200,10 @@
   const EP_HTML = window.EP ? window.EP.html(s) : '';
   const SEC_ORDER = [['hero', heroHTML], ['brand', svBrandMarqueeHTML], ['cs', caseStudyHTML], ['overview', overviewHTML], ['q1', quoteCTA1], ['caps', capsHTML], ['proc', procHTML], ['q2', quoteCTA2], ['tech', techHTML], ['impact', impactHTML], ['why', whyHTML], ['rev', revHTML], ['faq', faqHTML]];
   const EP_AFTER = window.EP ? window.EP.plan(s).after : 'faq';
-  root.innerHTML = SEC_ORDER.map(x => x[1] + (x[0] === EP_AFTER ? EP_HTML : '')).join('') + ctaHTML + grandFooterHTML;
+  const VC_HTML = window.VC ? window.VC.html(s) : '';
+  root.innerHTML = SEC_ORDER.map(x => x[1] + (x[0] === EP_AFTER ? EP_HTML : '') + (x[0] === 'overview' ? VC_HTML : '')).join('') + ctaHTML + grandFooterHTML;
   if (window.EP) window.EP.init(s);
+  if (window.VC) window.VC.init(s);
 
   const projectImageWindows = root.querySelectorAll('.rp-image-window');
   const markProjectImageReady = frame => {
@@ -1548,28 +1551,54 @@
     });
   });
 
-  /* ═══════════ TESTIMONIALS ═══════════ */
+  /* ═══════════ TESTIMONIALS ═══════════
+     True infinite loop: clone enough cards onto each end of the track so the
+     viewport is always full (max 3 cards show at once on desktop), then once
+     the track glides past the real cards into the cloned set, silently snap
+     back to the matching real position with the transition switched off.
+     That way the last card is never left alone with blank space after it —
+     it just keeps flowing straight into the first card again. */
   (function initReviewsCarousel() {
     const track = $('#svReviewsTrack'), dotsBox = $('#svRevDots'), prevBtn = $('#svRevPrev'), nextBtn = $('#svRevNext');
     if (!track || !dotsBox) return;
+    const realCards = Array.from(track.querySelectorAll('.sv-testi-card'));
+    const total = realCards.length;
+    if (!total) return;
+    const CLONES = Math.min(3, total); // covers the max cards visible at once (3-up desktop)
+
+    const headClones = realCards.slice(-CLONES).map(c => { const n = c.cloneNode(true); n.setAttribute('aria-hidden', 'true'); return n; });
+    const tailClones = realCards.slice(0, CLONES).map(c => { const n = c.cloneNode(true); n.setAttribute('aria-hidden', 'true'); return n; });
+    headClones.forEach(n => track.insertBefore(n, track.firstChild));
+    tailClones.forEach(n => track.appendChild(n));
+
     const cards = Array.from(track.querySelectorAll('.sv-testi-card'));
-    let idx = 0, timer = null;
-    cards.forEach((_, i) => {
+    let idx = CLONES, timer = null; // idx is a position in `cards`; CLONES = first real card
+
+    realCards.forEach((_, i) => {
       const d = document.createElement('button'); d.className = 'sv-ctrl-dot' + (i === 0 ? ' active' : ''); d.type = 'button'; d.setAttribute('aria-label', `Testimonial ${i + 1}`);
-      d.addEventListener('click', () => { goTo(i); restart(); }); dotsBox.appendChild(d);
+      d.addEventListener('click', () => { goTo(CLONES + i); restart(); }); dotsBox.appendChild(d);
     });
     const dots = Array.from(dotsBox.children);
-    function render() {
+
+    function realIndex() { return (idx - CLONES + total) % total; }
+    function render(animate) {
       const c = cards[0]; if (!c) return;
+      track.style.transition = animate === false ? 'none' : '';
       track.style.transform = `translateX(-${idx * (c.offsetWidth + 20)}px)`;
+      const ri = realIndex();
       cards.forEach((el, i) => el.classList.toggle('active', i === idx));
-      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      dots.forEach((d, i) => d.classList.toggle('active', i === ri));
     }
-    function goTo(i) { idx = (i + cards.length) % cards.length; render(); }
+    function goTo(i) { idx = i; render(); }
+    function settleIfOnClone() {
+      if (idx >= CLONES + total) { idx -= total; render(false); }
+      else if (idx < CLONES) { idx += total; render(false); }
+    }
+    track.addEventListener('transitionend', settleIfOnClone);
     function restart() { clearInterval(timer); timer = setInterval(() => goTo(idx + 1), 4800); }
     prevBtn && prevBtn.addEventListener('click', () => { goTo(idx - 1); restart(); });
     nextBtn && nextBtn.addEventListener('click', () => { goTo(idx + 1); restart(); });
-    window.addEventListener('resize', render); restart(); render();
+    window.addEventListener('resize', () => render(false)); restart(); render(false);
   })();
 
   const btt = $('#svBackToTop'); if (btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

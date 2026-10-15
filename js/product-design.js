@@ -46,7 +46,6 @@
       ['Jetpack Compose', ['stack:jetpackcompose'], 'Modern native Android UI'],
       ['SwiftUI', ['stack:swiftui'], 'Native iOS UI that feels at home'],
       ['Android Studio', ['stack:androidstudio'], 'Build and test Android apps'],
-      ['Xcode', ['stack:xcode'], 'Build, test and ship iOS apps'],
       ['App Store', ['stack:appstore'], 'Publishing to Apple users'],
       ['Google Play', ['stack:googleplay'], 'Publishing to Android users']
     ]],
@@ -54,13 +53,11 @@
       ['React.js', ['stack:react'], 'Component-driven interfaces'],
       ['Next.js', ['stack:nextjs'], 'Fast, SEO-ready production sites'],
       ['Vue.js', ['stack:vuejs'], 'Approachable, reactive interfaces'],
-      ['Angular', ['stack:angularjs'], 'Structured apps for large teams'],
-      ['Tailwind CSS', ['stack:tailwindcss'], 'Pixel-precise, responsive styling'],
-      ['Bootstrap', ['stack:bootstrap'], 'Quick, consistent responsive layouts'],
-      ['HTML5 & CSS3', ['stack:html5', 'stack:css3'], 'The foundation of every page']
+      ['Angular', ['stack:angularjs'], 'Structured apps for large teams']
     ]],
     ['Backend & Frameworks', [
       ['Node.js', ['stack:nodejs'], 'APIs and real-time backends'],
+      ['NestJS', ['stack:nestjs'], 'Structured, scalable Node.js framework'],
       ['Express', ['stack:express'], 'Lean, flexible Node.js servers'],
       ['Django', ['stack:django'], 'Secure, batteries-included web apps'],
       ['Flask', ['stack:flask'], 'Lightweight Python services'],
@@ -104,8 +101,6 @@
       ['Microsoft Azure', ['stack:azure'], 'Enterprise cloud and identity'],
       ['Docker', ['stack:docker'], 'Same environment from dev to production'],
       ['Kubernetes', ['stack:kubernetes'], 'Containers that scale automatically'],
-      ['Vercel', ['stack:vercel'], 'Instant deployments and global speed'],
-      ['Netlify', ['stack:netlify'], 'Fast static and jamstack hosting'],
       ['Cloudflare', ['stack:cloudflare'], 'Security, CDN and edge performance'],
       ['GitHub Actions', ['stack:githubactions'], 'Automated testing and releases'],
       ['Git', ['stack:git'], 'Version control for every project'],
@@ -120,15 +115,12 @@
       ['Research & Prototyping', ['User Research', 'Clickable Prototypes', 'Motion Design']]
     ]],
     ['Mobile Apps', [
-      ['Cross Platform', ['Flutter', 'React Native', 'Dart']],
-      ['Android', ['Jetpack Compose', 'Android Studio', 'Kotlin']],
-      ['iOS', ['SwiftUI', 'Xcode', 'Swift']],
+      ['Cross Platform, Android & iOS', ['Flutter', 'React Native', 'Dart', 'Jetpack Compose', 'Android Studio', 'Kotlin', 'SwiftUI', 'Swift']],
       ['Publishing', ['App Store', 'Google Play']]
     ]],
     ['Web Platforms', [
       ['Languages', ['JavaScript', 'TypeScript', 'Python', 'Java', 'C#', 'Go', 'PHP', 'Rust', 'C++']],
-      ['Frontend', ['React.js', 'Next.js', 'Vue.js', 'Angular', 'Tailwind CSS', 'Bootstrap', 'HTML5 & CSS3']],
-      ['Backend', ['Node.js', 'Express', 'Django', 'Flask', 'FastAPI', 'Laravel', 'Spring', '.NET Core', 'REST & GraphQL']]
+      ['Frameworks', ['React.js', 'Next.js', 'Vue.js', 'Angular', 'Node.js', 'NestJS', 'Express', 'Django', 'Flask', 'FastAPI', 'Laravel', 'Spring', '.NET Core', 'REST & GraphQL']]
     ]],
     ['AI & Machine Learning', [
       ['AI Models', ['OpenAI', 'Anthropic Claude', 'Gemini']],
@@ -140,7 +132,7 @@
     ]],
     ['Cloud & DevOps', [
       ['Cloud', ['AWS', 'Google Cloud', 'Microsoft Azure']],
-      ['Hosting & Delivery', ['Docker', 'Kubernetes', 'Vercel', 'Netlify', 'Cloudflare']],
+      ['Hosting & Delivery', ['Docker', 'Kubernetes', 'Cloudflare']],
       ['Quality & Releases', ['GitHub Actions', 'Git', 'Sentry']]
     ]]
   ];
@@ -174,7 +166,7 @@
             <h2 class="tech-title">Stack That <em>Builds Products.</em></h2>
           </div>
           <div class="tech-header-right">
-            <p class="tech-subtitle">From the first sketch to a live launch, these are the design tools, frameworks, databases and cloud platforms we use to turn your idea into a working product.</p>
+            <p class="tech-subtitle">The design and build tools we use to turn your idea into a real product.</p>
           </div>
         </div>
         <div class="tech-container" id="pdTechContainer">
@@ -196,25 +188,11 @@
   function init(root) {
     const box = root.querySelector('#pdTechContainer'); if (!box) return;
     const tabs = [...box.querySelectorAll('.tech-tab-btn')], panels = [...box.querySelectorAll('.tech-panel')];
-    const wrap = box.querySelector('.tech-panels'), title = box.querySelector('.tech-mob-category-title'), counter = box.querySelector('.tech-mob-counter');
+    const title = box.querySelector('.tech-mob-category-title'), counter = box.querySelector('.tech-mob-counter');
     const dots = [...box.querySelectorAll('.tech-mob-dot')];
     let cur = 0;
 
-    /* lock the box to the tallest category so switching tabs never makes the page jump */
-    function equalize() {
-      wrap.style.minHeight = '';
-      let max = 0;
-      panels.forEach(p => {
-        const on = p.classList.contains('active');
-        if (!on) p.style.cssText = 'display:block;position:absolute;left:0;right:0;visibility:hidden;pointer-events:none;';
-        max = Math.max(max, p.offsetHeight);
-        if (!on) p.style.cssText = '';
-      });
-      if (max) wrap.style.minHeight = Math.ceil(max) + 'px';
-    }
-    equalize();
-    addEventListener('load', equalize); addEventListener('resize', equalize);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalize);
+    /* panel height is now fixed in CSS (css/product-design.css) so every category is the same size */
 
     new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) box.classList.add('tech-in'); }), { threshold: 0.15 }).observe(box);
 
