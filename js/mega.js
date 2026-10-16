@@ -1785,7 +1785,10 @@ function sectionBlurb(id, svc) {
 
 (function initMegaMenu() {
   const hd = $('#siteHeader');
-  const li = [...document.querySelectorAll('.nav li')].find(l => /services/i.test(l.textContent));
+  const li = [...document.querySelectorAll('.nav li')].find(l => {
+    const link = l.querySelector('a');
+    return link && /(^|\/)services\.html(\?|#|$)/i.test(link.getAttribute('href') || '');
+  });
   if (!hd || !li) return;
 
   const a = li.querySelector('a');
