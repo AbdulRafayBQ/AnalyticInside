@@ -106,3 +106,31 @@ a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
 /* ── BRAND-STRIP MARQUEE wrapper (used on pages where the strip isn't part of a hero) ── */
 .svc-brand-wrap { position: relative; height: 86px; }
 @media (max-width: 860px) { .svc-brand-wrap { height: 60px; } }
+
+/* ── MAILTO TOAST — confirms the "Email Us Directly" style buttons worked,
+   even on devices/browsers with no default mail client configured ── */
+.mailto-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%) translateY(16px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #17130E;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 13px 20px;
+  border-radius: 999px;
+  box-shadow: 0 16px 36px rgba(23,19,14,.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+  max-width: calc(100vw - 32px);
+  text-align: center;
+}
+.mailto-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.mailto-toast svg { flex-shrink: 0; color: #C99B5C; }

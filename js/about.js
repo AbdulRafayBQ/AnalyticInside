@@ -30,25 +30,33 @@
   if (hero) setTimeout(function () { hero.classList.add('ab-in'); }, 90);
 
   /* ---------------- COUNTERS ---------------- */
-  var counted = false;
+  function runCounter(el) {
+    if (el.__counted) return; el.__counted = true;
+    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (reduced) { el.textContent = target + suffix; return; }
+    var t0 = null, dur = 1100;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
   function runCounters() {
-    if (counted) return; counted = true;
-    $$('[data-count]').forEach(function (el) {
-      var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-      var suffix = el.getAttribute('data-suffix') || '';
-      if (reduced) { el.textContent = target + suffix; return; }
-      var t0 = null, dur = 1100;
-      function step(ts) {
-        if (t0 === null) t0 = ts;
-        var p = Math.min((ts - t0) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(target * eased) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    });
+    $$('.ab-hero [data-count]').forEach(runCounter);
   }
   setTimeout(runCounters, 250);
+  /* counters outside the hero (story section) run when scrolled into view */
+  var lateCounters = $$('[data-count]').filter(function (el) { return !el.closest('.ab-hero'); });
+  if ('IntersectionObserver' in window) {
+    var cIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { runCounter(e.target); cIO.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    lateCounters.forEach(function (el) { cIO.observe(el); });
+  } else { lateCounters.forEach(runCounter); }
 
   /* ---------------- SCROLL PROGRESS ---------------- */
   var progress = $('#abProgress');

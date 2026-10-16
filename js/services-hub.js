@@ -62,7 +62,8 @@
     'website-development':                { file: 'website development.jpeg',                    fx: '55%', fy: '60%', chips: ['Responsive', 'SEO', 'Fast loading'] },
     'mobile-app-development':             { file: 'Mobile app development.jpeg',                 fx: '52%', fy: '45%', chips: ['iOS', 'Android', 'App stores'] },
     'ai-development':                     { file: 'AI Development.jpeg',                         fx: '55%', fy: '52%', chips: ['Chatbots', 'Automation', 'Workflows'], dark: true },
-    'product-design-development':         { file: 'Product Design and Development.jpeg',         fx: '45%', fy: '60%', chips: ['Wireframes', 'Prototype', 'Launch'] },
+    'product-design-development':         { file: 'Product Design Brewly.jpeg',                  fx: '50%', fy: '55%', chips: [] },
+    'ecommerce-shopify-development':      { file: 'Shopify Storefront.jpeg',                     fx: '50%', fy: '52%', chips: ['Storefront', '', 'Go live'] },
     'digital-marketing-branding':         { file: 'Marketing and branding.jpeg',                 fx: '50%', fy: '55%', chips: ['Brand', 'Ads', 'Email'] },
     'data-analytics-consultancy':         { file: 'Data & Analytics Consultancy.jpeg',           fx: '55%', fy: '50%', chips: ['Dashboards', 'Reports', 'Insights'] },
     'data-management-database-solutions': { file: 'Data Management & Database Solutions.jpeg',   fx: '60%', fy: '50%', chips: ['Backups', 'Security', 'Speed'] },
@@ -72,10 +73,10 @@
   const photoMarkup = (slug, title) => {
     const ph = PHOTOS[slug];
     if (!ph) return `<div class="hb-zz-art">${art(slug)}</div>`;
-    return `<div class="hb-zz-art hb-zz-photo${ph.dark ? ' is-dark' : ''}" style="--fx:${ph.fx};--fy:${ph.fy}" data-slug="${slug}">
+    return `<div class="hb-zz-art hb-zz-photo${ph.dark ? ' is-dark' : ''}" style="--fx:${ph.fx};--fy:${ph.fy}${ph.accent ? `;--a:${ph.accent}` : ''}" data-slug="${slug}">
           <div class="hb-zz-frame"><img class="hb-zz-img" src="${encodeURI(PHOTO_DIR + ph.file)}" alt="${title}" loading="lazy" decoding="async"></div>
           <span class="hb-zz-glare" aria-hidden="true"></span>
-          ${ph.chips.map((c, k) => `<span class="hb-chip-float hb-chip-float--${k + 1}" style="--k:${k}" aria-hidden="true"><i></i>${c}</span>`).join('')}
+          ${ph.chips.map((c, k) => !c ? '' : `<span class="hb-chip-float hb-chip-float--${k + 1}" style="--k:${k}" aria-hidden="true"><i></i>${c}</span>`).join('')}
         </div>`;
   };
 
@@ -127,9 +128,9 @@
   const grid = document.getElementById('hbGrid');
   grid.innerHTML = list.map(({ sv, c, i }) => {
     const cs = CASE_STUDIES[sv.slug];
-    const csBtn = cs ? `<a class="hb-cs-btn" href="${cs.link}"><span>View ${cs.title} Case Study</span> <i>&nearr;</i></a>` : '';
+    const csBtn = ''; /* case study buttons removed from service cards */
     return `
-    <article class="hb-zz-row" data-cat="${c.cat}" style="--a:${sv.cardAccent};--b:${sv.cardBg}">
+    <article class="hb-zz-row" data-cat="${c.cat}" style="--a:${(PHOTOS[sv.slug] || {}).accent || sv.cardAccent};--b:${(PHOTOS[sv.slug] || {}).bg || sv.cardBg}">
       <div class="hb-zz-media">
         ${photoMarkup(sv.slug, sv.title)}
       </div>
@@ -216,8 +217,9 @@
     shown.forEach(cd => { if (io) io.observe(cd); else cd.classList.add('in'); });
   }));
 
-  /* reveal on scroll */
-  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 }) : null;
+  /* reveal on scroll — plays the entrance both scrolling down (into view)
+     and scrolling back up (re-entering view), instead of only once */
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { e.target.classList.toggle('in', e.isIntersecting); }), { threshold: .12 }) : null;
   hub.querySelectorAll('.rv').forEach(el => io ? io.observe(el) : el.classList.add('in'));
   hub.querySelectorAll('.hb-zz-row').forEach(el => io ? io.observe(el) : el.classList.add('in'));
 

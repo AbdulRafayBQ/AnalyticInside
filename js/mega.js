@@ -1116,8 +1116,8 @@ const SERVICES = [
     "title": "E-Commerce & Shopify Development",
     "tag": "Online stores built to look great and actually convert visitors into buyers.",
     "h": 28,
-    "cardBg": "#FAF2E6",
-    "cardAccent": "#C17A3E",
+    "cardBg": "#EAF6F4",
+    "cardAccent": "#2E9C8F",
     "stats": {
       "built": "60+",
       "experience": "8 Years",

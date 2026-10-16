@@ -291,3 +291,7 @@
 /* photo cards have no intrinsic size (image is absolutely placed), so give them the full column width */
 .hb-zz-media { width: 100%; }
 .hb-zz-art.hb-zz-photo { width: 100%; }
+
+/* tick circles + chip dots: one theme colour on every service (same as Custom Software) */
+.hb-gets li::before { background-color: var(--acc); }
+.hb-chip-float i { background: var(--acc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 22%, transparent); }

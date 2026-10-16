@@ -4,6 +4,10 @@
    WCU icon badges, every breakpoint 320px–768px
    ================================================================ */
 
+/* The mobile-menu "Let's Talk" CTA only ever shows inside the open
+   mobile dropdown (see .nav.open .nav-mobile-cta below); hidden on desktop. */
+.nav-mobile-cta { display: none; }
+
 /* ────────────────────────────────────────────────────────────────
    1. GLOBAL — prevent ALL horizontal overflow on every screen
    ──────────────────────────────────────────────────────────────── */
@@ -180,6 +184,33 @@ img, video, svg, canvas, iframe {
     font-weight: 700 !important;
   }
 
+  /* "Let's Talk" CTA inside the mobile dropdown menu */
+  .nav-mobile-cta {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin: 10px 6px 4px !important;
+    padding: 14px 20px !important;
+    background: #17130E !important;
+    color: #fff !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14.5px !important;
+    font-weight: 700 !important;
+    border: none !important;
+    border-radius: 999px !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    transition: background 0.25s, transform 0.25s !important;
+  }
+  .nav-mobile-cta:hover,
+  .nav-mobile-cta:active {
+    background: #C99B5C !important;
+    color: #17130E !important;
+    transform: translateY(-1px) !important;
+  }
+  .nav-mobile-cta svg { flex-shrink: 0 !important; }
+
   /* Push page content below fixed navbar */
   body {
     padding-top: 76px !important;
@@ -191,6 +222,7 @@ img, video, svg, canvas, iframe {
    ──────────────────────────────────────────────────────────────── */
 @media (max-width: 860px) {
   .hero {
+    height: calc(100vh - 76px) !important;
     min-height: calc(100vh - 76px) !important;
     padding-top: 0 !important;
   }
@@ -198,8 +230,13 @@ img, video, svg, canvas, iframe {
   .hero-content {
     grid-template-columns: 1fr !important;
     padding: 0 24px !important;
+    position: absolute !important;
     top: 50% !important;
+    left: 0 !important;
+    right: 0 !important;
     transform: translateY(-50%) !important;
+    max-height: 100% !important;
+    overflow-y: auto !important;
   }
 
   .hero-left {

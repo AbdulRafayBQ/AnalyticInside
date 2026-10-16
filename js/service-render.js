@@ -619,7 +619,7 @@
   let whyInner;
   if (R.why === 'split') {
     whyInner = `<div class="why-split"><div class="why-l">
-        <span class="sv-eyebrow" ${fx('rise', 0)}>The Analytic Advantage</span>
+        <span class="sv-eyebrow" ${fx('rise', 0)}>The Eleven Advantage</span>
         <h2 class="sv-title" ${fx('rise', 1)}>Why Industry Leaders Choose Us for ${s.title}</h2>
         <p class="sv-body-p" ${fx('rise', 2)}>We are not a bloated agency that sells a project and hands it to junior contractors. You partner with senior engineers who understand architecture, business strategy, and clean code.</p>${trust}</div>
       <div class="why-r">${W.map((w, i) => `<div class="why-row" ${fx('flipr', i)}><span class="why-ic">${checkSvg}</span><p>${w}</p></div>`).join('')}</div></div>`;
@@ -628,7 +628,7 @@
       <div class="why-grid">${W.map((w, i) => `<div class="why-gw" ${fx(['flipl', 'rise', 'flipr'][i % 3], Math.floor(i / 3))}><div class="why-gc" data-tilt data-tilt-max="6"><span class="why-gn">${pad(i)}</span><p>${w}</p></div></div>`).join('')}</div>
       <div class="why-center">${trust}</div>`;
   } else {
-    whyInner = `<div class="why-band" ${fx('zoom', 0)}><div><span class="sv-eyebrow">The Analytic Advantage</span>
+    whyInner = `<div class="why-band" ${fx('zoom', 0)}><div><span class="sv-eyebrow">The Eleven Advantage</span>
         <h2 class="sv-title">Why Industry Leaders Choose Us for ${s.title}</h2></div>${trust.replace(/ data-fx="pop" style="--i:3;"/, '')}</div>
       <div class="why-two">${W.map((w, i) => `<div class="why-tr" ${fx(i % 2 ? 'flipr' : 'flipl', Math.floor(i / 2))}><span class="why-ic">${checkSvg}</span><p>${w}</p></div>`).join('')}</div>`;
   }
@@ -1408,6 +1408,7 @@
     const close = () => { ov.classList.remove('open'); dr.classList.remove('open'); document.body.style.overflow = ''; };
     document.addEventListener('analytic:open-drawer', e => open(e.detail));
     const nav = document.getElementById('navCtaBtn'); if (nav) nav.addEventListener('click', () => open());
+    const navM = document.getElementById('navCtaBtnMobile'); if (navM) navM.addEventListener('click', () => open());
     document.getElementById('formClose')?.addEventListener('click', close);
     ov.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });

@@ -455,3 +455,17 @@
   .ab-fr-a, .ab-fr-b, .ab-era-card::after { animation: none !important; }
   .ab-js .ab-rv, .ab-js .ab-line > span { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+/* ── Stats strip (same design as the Services page) ── */
+.about-page .ab-metrics { --ab-line: rgba(23,19,14,.11); display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 70px; background: #fff; border: 1px solid var(--ab-line); border-radius: 24px; box-shadow: 0 20px 50px -30px rgba(23,19,14,.35); }
+.about-page .ab-metrics--story { margin-top: 54px; }
+.about-page .ab-metric { padding: 26px 20px; text-align: center; border-right: 1px solid var(--ab-line); }
+.about-page .ab-metric:last-child { border: none; }
+.about-page .ab-metric b { display: block; font: 800 clamp(28px, 3vw, 40px) 'Outfit', sans-serif; letter-spacing: -.02em; color: #17130E; }
+.about-page .ab-metric span { font-size: 13.5px; color: #5d5952; }
+.about-page .ab-metric b .ab-mnum { font-size: inherit; color: inherit; }
+@media (max-width: 900px) {
+  .about-page .ab-metrics { grid-template-columns: repeat(2, 1fr); margin-top: 48px; }
+  .about-page .ab-metric:nth-child(2) { border-right: none; }
+  .about-page .ab-metric:nth-child(-n+2) { border-bottom: 1px solid var(--ab-line); }
+}

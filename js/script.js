@@ -80,7 +80,7 @@
       menuBtn.classList.toggle('open', open);
       menuBtn.setAttribute('aria-expanded', String(open));
     });
-    nav.querySelectorAll('a').forEach(l => {
+    nav.querySelectorAll('a, .nav-mobile-cta').forEach(l => {
       l.addEventListener('click', (e) => {
         if (l.classList.contains('nav-services-toggle') || l.closest('.nav-mobile-services-toggle')) {
           return;

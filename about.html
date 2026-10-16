@@ -9,13 +9,73 @@
   <script>document.documentElement.className += ' ab-js';</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=5.0">
   <link rel="stylesheet" href="css/mobile-fix.css?v=3.0">
   <link rel="stylesheet" href="css/mega.css">
   <link rel="stylesheet" href="css/shared.css?v=1.1">
-  <link rel="stylesheet" href="css/about.css?v=9.0">
+  <link rel="stylesheet" href="css/about.css?v=9.6">
+  <link rel="stylesheet" href="css/eli-avatar.css?v=3.0">
 </head>
 <body class="about-page">
+
+  <!-- ══ FORM DRAWER ══ -->
+  <div class="form-drawer-overlay" id="formOverlay"></div>
+  <div class="form-drawer" id="formDrawer">
+    <button class="fd-close" id="formClose" aria-label="Close">&times;</button>
+
+    <div class="fd-eyebrow">Start a Project</div>
+    <h2 class="fd-title">Let's build something<br>extraordinary.</h2>
+    <p class="fd-sub">Tell us about your idea. We'll get back to you within 24 hours.</p>
+
+    <div class="fd-form" id="fdFormEl">
+      <div class="fd-row">
+        <div class="fd-field">
+          <label for="fd-name">Your Name</label>
+          <input id="fd-name" type="text" placeholder="Ali Ahmed" />
+        </div>
+        <div class="fd-field">
+          <label for="fd-email">Email Address</label>
+          <input id="fd-email" type="email" placeholder="you@company.com" />
+        </div>
+      </div>
+      <div class="fd-field">
+        <label for="fd-company">Company / Brand</label>
+        <input id="fd-company" type="text" placeholder="Your company name" />
+      </div>
+      <div class="fd-field">
+        <label for="fd-service">Service Needed</label>
+        <select id="fd-service">
+          <option value="" disabled selected>Select a service…</option>
+          <option>Mobile App Development</option>
+          <option>Website Development</option>
+          <option>E-Commerce &amp; Shopify Development</option>
+          <option>Custom Software Development</option>
+          <option>Product Development</option>
+          <option>AI Development</option>
+          <option>Marketing &amp; Branding</option>
+          <option>Full-Stack Digital Partnership</option>
+          <option>Other's</option>
+        </select>
+      </div>
+      <div class="fd-field">
+        <label for="fd-message">Project Brief</label>
+        <textarea id="fd-message" rows="4" placeholder="Describe your idea, goals, or challenges…"></textarea>
+      </div>
+      <button class="fd-submit" id="fdSubmit">
+        Send Project Brief
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="fd-note" role="status" aria-live="polite">No commitment. We'll respond with a plan within 24 hours.</p>
+    </div>
+
+    <div class="fd-success" id="fdSuccess">
+      <div class="fd-success-icon">✓</div>
+      <h3>Message Sent!</h3>
+      <p>Thanks for reaching out. We'll review your brief and be in touch within 24 hours.</p>
+    </div>
+  </div>
 
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
@@ -27,14 +87,15 @@
           <li><a href="portfolio.html" class="nav-link">Work</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
+        <a class="nav-mobile-cta" href="contact.html">
+          Let's Talk
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M3 10H17M17 10L12 5M17 10L12 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </nav>
       <!-- Phone + CTA grouped -->
       <div class="nav-right-group">
         <a class="nav-phone" href="tel:+923340317145">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          0334 0317145
+          <span class="nav-phone-text">+92 334 0317145</span>
         </a>
         <a class="btn-nav-cta" href="contact.html">
           Let's Talk
@@ -82,26 +143,11 @@
           </div>
         </div>
 
-        <div class="cl-stats ab-rv">
-          <div class="cl-stat">
-            <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="49">0</span>+</span>
-            <span class="cl-stat-label">Projects Completed</span>
-          </div>
-          <span class="cl-stat-div" aria-hidden="true"></span>
-          <div class="cl-stat">
-            <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="8">0</span>+</span>
-            <span class="cl-stat-label">Years Experience</span>
-          </div>
-          <span class="cl-stat-div" aria-hidden="true"></span>
-          <div class="cl-stat">
-            <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="20">0</span>+</span>
-            <span class="cl-stat-label">Industries Served</span>
-          </div>
-          <span class="cl-stat-div" aria-hidden="true"></span>
-          <div class="cl-stat">
-            <span class="cl-stat-num"><span class="cl-stat-count ab-num" data-count="10">0</span></span>
-            <span class="cl-stat-label">People Team</span>
-          </div>
+        <div class="ab-metrics ab-rv">
+          <div class="ab-metric"><b><span class="ab-mnum" data-count="49" data-suffix="+">0</span></b><span>Projects Completed</span></div>
+          <div class="ab-metric"><b><span class="ab-mnum" data-count="8" data-suffix="+">0</span></b><span>Years Experience</span></div>
+          <div class="ab-metric"><b><span class="ab-mnum" data-count="20" data-suffix="+">0</span></b><span>Industries Served</span></div>
+          <div class="ab-metric"><b><span class="ab-mnum" data-count="10" data-suffix="">0</span></b><span>People Team</span></div>
         </div>
       </div>
     </section>
@@ -192,6 +238,13 @@
             <div class="ab-era" data-i="3"><span class="ab-year">2024</span><h3>AI, used sensibly</h3><p>We added AI, but only where it saves real time. If a simple form works, we say so.</p></div>
             <div class="ab-era" data-i="4"><span class="ab-year">2026</span><h3>Where we are today</h3><p>Strategy, design, engineering and AI in one team, with clients on four continents.</p></div>
           </div>
+        </div>
+
+        <div class="ab-metrics ab-rv ab-metrics--story">
+          <div class="ab-metric"><b><span class="ab-mnum" data-count="49" data-suffix="+">0</span></b><span>Projects Completed</span></div>
+          <div class="ab-metric"><b><span class="ab-mnum" data-count="8" data-suffix="+">0</span></b><span>Years Experience</span></div>
+          <div class="ab-metric"><b><span class="ab-mnum" data-count="20" data-suffix="+">0</span></b><span>Industries Served</span></div>
+          <div class="ab-metric"><b><span class="ab-mnum" data-count="10" data-suffix="">0</span></b><span>People Team</span></div>
         </div>
 
         <div class="ab-track ab-rv" id="abTrack" role="tablist" aria-label="Our timeline">
@@ -376,8 +429,8 @@
           <h2 class="ab-h2 ab-rv">Things people <em>ask us.</em></h2>
           <p class="ab-p ab-rv">Not sure what you need? Tell us your goal and we will point you the right way.</p>
           <div class="ab-actions ab-rv">
-            <a class="ab-btn primary" href="contact.html">Book a free call</a>
-            <a class="ab-btn ghost" href="tel:+923340317145">Call 0334 0317145</a>
+            <button type="button" class="ab-btn primary" id="abFaqContactBtn" onclick="document.dispatchEvent(new Event('analytic:open-drawer'))">Talk to Us</button>
+            <a class="ab-btn ghost" href="portfolio.html">View Our Work</a>
           </div>
         </div>
         <div class="ab-acc ab-rv" id="abAcc">
@@ -546,6 +599,83 @@
   <script src="js/script.js"></script>
   <script src="js/mega.js?v=3.2"></script>
   <script src="js/shared.js?v=1.0"></script>
-  <script src="js/about.js?v=9.0"></script>
+  <script src="js/about.js?v=9.1"></script>
+  <script src="js/lead-forms.js?v=1.4"></script>
+  <script>
+  /* ── FORM DRAWER ── */
+  (function(){
+    const overlay=document.getElementById('formOverlay');
+    const drawer=document.getElementById('formDrawer');
+    const closeBtn=document.getElementById('formClose');
+    const formEl=document.getElementById('fdFormEl');
+    const success=document.getElementById('fdSuccess');
+    const submitBtn=document.getElementById('fdSubmit');
+    if(!overlay||!drawer||!closeBtn||!formEl||!success||!submitBtn) return;
+    function openDrawer(){
+      formEl.style.display='';
+      success.classList.remove('show');
+      const note=formEl.querySelector('.fd-note');
+      if(note){
+        note.textContent="No commitment. We'll respond with a plan within 24 hours.";
+        note.classList.remove('is-error');
+      }
+      submitBtn.disabled=false;
+      submitBtn.textContent='Send Project Brief';
+      overlay.classList.add('open');drawer.classList.add('open');document.body.style.overflow='hidden';
+    }
+    function closeDrawer(){
+      overlay.classList.remove('open');drawer.classList.remove('open');document.body.style.overflow='';
+      document.dispatchEvent(new Event('analytic:drawer-closed'));
+    }
+    [document.getElementById('navCtaBtn'),document.getElementById('ctaStartBtn'),document.getElementById('abFaqContactBtn')]
+      .forEach(btn=>{if(btn)btn.addEventListener('click',openDrawer);});
+    document.addEventListener('analytic:open-drawer', openDrawer);
+    closeBtn.addEventListener('click',closeDrawer);
+    overlay.addEventListener('click',closeDrawer);
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+    if(submitBtn){
+      submitBtn.addEventListener('click',async()=>{
+        const n=document.getElementById('fd-name').value.trim();
+        const em=document.getElementById('fd-email').value.trim();
+        const email=document.getElementById('fd-email');
+        if(!n||!em||!email.validity.valid){
+          document.getElementById('fd-name').style.borderColor=n?'':'rgba(255,80,80,.6)';
+          email.style.borderColor=em&&email.validity.valid?'':'rgba(255,80,80,.6)';
+          if(!n) document.getElementById('fd-name').focus();
+          else email.focus();
+          return;
+        }
+        const note=formEl.querySelector('.fd-note');
+        submitBtn.disabled=true;
+        submitBtn.textContent='Sending...';
+        try{
+          if (!window.ANALYTIC_LEADS || typeof window.ANALYTIC_LEADS.submit !== 'function') {
+            throw new Error('The form service did not load. Refresh the page and try again.');
+          }
+          await window.ANALYTIC_LEADS.submit({
+            name:n,email:em,
+            company:document.getElementById('fd-company')?.value.trim()||'',
+            service:document.getElementById('fd-service')?.value||'',
+            message:document.getElementById('fd-message')?.value.trim()||'',
+            source:location.href
+          });
+          window.ANALYTIC_LEADS.reset(formEl);
+          submitBtn.textContent='Message Sent';
+          formEl.style.display='none';
+          success.classList.add('show');
+        }catch(error){
+          if(note){
+            note.textContent=error.message;
+            note.classList.add('is-error');
+          }
+          submitBtn.disabled=false;
+          submitBtn.textContent='Send Project Brief';
+        }
+      });
+    }
+  })();
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/eli-avatar.js?v=3.0"></script>
 </body>
 </html>
