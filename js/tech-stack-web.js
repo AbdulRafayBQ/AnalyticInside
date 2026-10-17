@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ELEVEN — WEBSITE DEVELOPMENT TECH STACK
+   ELYVEN — WEBSITE DEVELOPMENT TECH STACK
    A small business grows into a skyline while a rocket launches along the
    growth curve, dropping Design / Build / Deploy / Scale badges on the way.
    Exposes window.TECH_WEB = { html(), init(root) }

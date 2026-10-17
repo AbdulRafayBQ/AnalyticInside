@@ -1,4 +1,4 @@
-/* ELEVEN: Services hub page. Depends on SERVICES, $ from mega.js */
+/* ELYVEN: Services hub page. Depends on SERVICES, $ from mega.js */
 (function () {
   const hub = document.getElementById('hub');
   if (!hub) return;

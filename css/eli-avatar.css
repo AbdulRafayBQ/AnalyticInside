@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   ELEV — funny site guide avatar  (v2 · dark theme)
+   ELY — funny site guide avatar  (v2 · dark theme)
    Dark body + glowing gold/cream eyes & mouth, thought-bubble chat,
    floating "z" bubbles, dizzy stars, confetti, sweat, steam.
    ══════════════════════════════════════════════════════════════ */
@@ -181,7 +181,8 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 220, 200, .95), rgba(255, 120, 90, .0) 70%);
+  background: radial-gradient(circle, rgba(190, 182, 176, .65), rgba(120, 112, 108, 0) 70%);
+  filter: blur(2px);
   pointer-events: none;
   animation: eli-steam-up 1s ease-out forwards;
 }
@@ -247,31 +248,26 @@
 }
 .eli-bubble.eli-open .eli-card { opacity: 1; transform: scale(1) translateY(0); }
 
-/* the little trail of circles pointing at Eli's head (like the thought bubble) */
-.eli-trail { position: absolute; left: var(--tx, 40px); width: 0; height: 0; pointer-events: none; }
-.eli-trail i {
+/* clean speech-bubble tail (replaces the old dotted trail that sat on top of Ely's head) */
+.eli-trail { display: none !important; }
+.eli-card::after {
+  content: "";
   position: absolute;
-  border-radius: 50%;
+  left: calc(var(--ox, 40px) - 8px);
+  width: 16px;
+  height: 16px;
   background: #FFF8EA;
   border: 1px solid rgba(201, 155, 92, .55);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
-  opacity: 0;
-  transform: scale(.3);
-  transition: opacity .2s ease, transform .3s cubic-bezier(.2, 1.6, .4, 1);
+  transform: rotate(45deg);
+  z-index: -1;
+  pointer-events: none;
 }
-.eli-bubble.eli-open .eli-trail i { opacity: 1; transform: scale(1); }
-.eli-bubble.eli-open .eli-trail i:nth-child(2) { transition-delay: .06s; }
-.eli-bubble.eli-open .eli-trail i:nth-child(3) { transition-delay: .12s; }
-/* tail below the card (bubble sits above Eli) */
-.eli-bubble[data-tail="bottom"] .eli-trail { bottom: 0; }
-.eli-bubble[data-tail="bottom"] .eli-trail i:nth-child(1) { width: 14px; height: 14px; left: -10px; top: 6px; }
-.eli-bubble[data-tail="bottom"] .eli-trail i:nth-child(2) { width: 9px;  height: 9px;  left: -2px;  top: 24px; }
-.eli-bubble[data-tail="bottom"] .eli-trail i:nth-child(3) { width: 5px;  height: 5px;  left: 4px;   top: 36px; }
-/* tail above the card (bubble sits below Eli) */
-.eli-bubble[data-tail="top"] .eli-trail { top: 0; }
-.eli-bubble[data-tail="top"] .eli-trail i:nth-child(1) { width: 14px; height: 14px; left: -10px; bottom: 6px; }
-.eli-bubble[data-tail="top"] .eli-trail i:nth-child(2) { width: 9px;  height: 9px;  left: -2px;  bottom: 24px; }
-.eli-bubble[data-tail="top"] .eli-trail i:nth-child(3) { width: 5px;  height: 5px;  left: 4px;   bottom: 36px; }
+.eli-bubble[data-tail="bottom"] .eli-card::after { bottom: -8px; border-top: 0; border-left: 0; border-radius: 0 0 6px 0; }
+.eli-bubble[data-tail="top"] .eli-card::after { top: -8px; border-bottom: 0; border-right: 0; border-radius: 6px 0 0 0; }
+/* the chat bubble keeps one fixed width so it never reflows while Ely types */
+.eli-chat { width: min(272px, calc(100vw - 24px)); }
+/* options are laid out from the start (so the bubble has its final size) but stay hidden until typing ends */
+.eli-opts.eli-wait .eli-opt { animation: none; opacity: 0; transform: translateY(6px); pointer-events: none; }
 
 .eli-head-row { display: flex; align-items: center; justify-content: space-between; margin: 0 0 6px; }
 .eli-tag {
@@ -358,3 +354,11 @@
 @media (prefers-reduced-motion: reduce) {
   .eli-z, .eli-stars i, .eli-sweat, .eli-steam, .eli-spark, .eli-pulse.eli-pulse-run { animation-duration: .01s !important; }
 }
+
+
+/* phones / tablets: a finger is bigger than a cursor, so the whole round body is the tap target
+   (a tap near his edge no longer falls through to the button underneath) */
+@media (pointer: coarse) {
+  #eli-hit { left: 0; top: 0; width: 100%; height: 100%; }
+}
+#eli-root, #eli-hit { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }

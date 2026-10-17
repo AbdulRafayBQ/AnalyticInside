@@ -421,3 +421,246 @@
 @media (max-width: 600px) {
   .contact-card, .contact-card:hover { padding: 24px 18px; }
 }
+
+/* Tech stack picker (We pick the stack / I'll customize it) under "Service Interested In" */
+.fd-stack--contact { margin-bottom: 12px; gap: 8px; }
+.fd-stack--contact > label { font-size: 11.5px; color: #b5b5b5; padding-left: 4px; }
+.fd-stack--contact .fd-stack-opt { background: #1b1b1b; border: 1.5px solid transparent; border-radius: 16px; padding: 15px 12px; font-size: 13.5px; color: #d8d8d8; }
+.fd-stack--contact .fd-stack-opt:hover { border-color: rgba(255,255,255,.28); background: #222; }
+.fd-stack--contact .fd-stack-opt.is-on { background: var(--accent, #C99B5C); border-color: var(--accent, #C99B5C); color: #17130E; }
+.fd-stack--contact .fd-stack-panel { background: #1b1b1b; border-radius: 16px; }
+.fd-stack--contact .fd-stack-panel.open { padding: 14px; margin-top: 2px; }
+.fd-stack--contact .fd-stack-item { background: #262626; }
+
+/* =============================================================
+   RESPONSIVE FIXES (contact page)
+   ============================================================= */
+/* tablet (601 – 992px): form centred with a comfortable width, info card as one tidy row */
+@media (min-width: 601px) and (max-width: 992px) {
+  .contact-main { padding: 120px 0 72px; }
+  .contact-header { margin-bottom: 44px; }
+  .contact-form-col { width: 100%; max-width: 680px; margin: 0 auto; }
+  .contact-info-col { width: 100%; max-width: 680px; margin: 0 auto; }
+  .info-list { flex-direction: row; flex-wrap: wrap; gap: 22px 36px; }
+  .info-item { flex: 1 1 180px; min-width: 0; }
+  .info-val { overflow-wrap: anywhere; }
+}
+
+/* phones: real side padding (the global .container loses it under 480px), no cut corners */
+@media (max-width: 600px) {
+  .contact-main { padding: 96px 0 56px; }
+  .contact-main .container { width: 100%; max-width: 100%; padding: 0 16px; box-sizing: border-box; }
+  .contact-header { margin-bottom: 28px; }
+  .contact-title { font-size: clamp(32px, 9.4vw, 44px); overflow-wrap: break-word; }
+  .contact-subtitle { font-size: 15px; }
+  .contact-grid { gap: 20px; }
+  .contact-card, .contact-card:hover { border-radius: 22px; padding: 24px 16px; }
+  .form-title { font-size: 24px; }
+  .form-desc { margin-bottom: 18px; }
+  /* 16px stops iPhones from zooming the page when a field is focused */
+  .form-field input, .form-field textarea, .form-field select { font-size: 16px; padding: 15px 16px; border-radius: 14px; }
+  .form-field select { padding-right: 44px; background-position: right 16px center; }
+  .form-field textarea { min-height: 120px; }
+  .btn-send, .btn-send.btn.primary { width: 100%; justify-content: center; padding: 16px 20px; }
+  .fd-stack--contact .fd-stack-toggle { grid-template-columns: 1fr; }
+  .fd-stack--contact .fd-stack-panel.open { max-height: 300px; padding: 12px; }
+  .fd-stack--contact .fd-stack-opt { padding: 13px 12px; font-size: 13px; }
+}
+@media (max-width: 360px) {
+  .contact-main .container { padding: 0 12px; }
+  .contact-card, .contact-card:hover { padding: 20px 14px; }
+  .form-title { font-size: 22px; }
+  .fd-stack--contact .fd-stack-item { font-size: 11px; padding: 5px 9px 5px 6px; }
+}
+/* touch screens: no 3D hover tilt on the cards */
+@media (hover: none) {
+  .contact-card { transform: none !important; }
+}
+
+/* =============================================================
+   v4: a more attractive contact form (icons, two-column rows,
+   gold accents, glowing focus, trust line). Same ids and logic.
+   ============================================================= */
+.contact-card.form-card {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(520px 260px at 100% 0%, rgba(201,155,92,.20), transparent 70%),
+    radial-gradient(380px 220px at 0% 100%, rgba(201,155,92,.10), transparent 70%),
+    linear-gradient(180deg, #131313 0%, #0b0b0b 100%);
+  border: 1px solid rgba(201,155,92,.22);
+  box-shadow: 0 40px 80px -30px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.06);
+  padding: 40px 36px 34px;
+}
+.contact-card.form-card::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #C99B5C 25%, #ffd9a0 50%, #C99B5C 75%, transparent);
+}
+.contact-card.form-card::after {
+  content: ''; position: absolute; width: 220px; height: 220px; right: -90px; top: -90px; border-radius: 50%;
+  border: 1px dashed rgba(201,155,92,.28); animation: cfSpin 40s linear infinite; pointer-events: none;
+}
+@keyframes cfSpin { to { transform: rotate(360deg); } }
+
+.form-chip {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; padding: 7px 14px 7px 12px;
+  border-radius: 999px; background: rgba(201,155,92,.12); border: 1px solid rgba(201,155,92,.3);
+  font: 700 11px 'Inter', sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #e6c28f;
+}
+.form-chip i { width: 7px; height: 7px; border-radius: 50%; background: #5CE1B4; box-shadow: 0 0 0 0 rgba(92,225,180,.6); animation: cfPing 1.8s infinite; }
+@keyframes cfPing { 70% { box-shadow: 0 0 0 8px rgba(92,225,180,0); } 100% { box-shadow: 0 0 0 0 rgba(92,225,180,0); } }
+.form-card .form-title { background: linear-gradient(100deg, #fff 30%, #f1d3a3 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.form-card .form-desc { margin-bottom: 26px; }
+
+.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; z-index: 1; }
+.contact-form .form-field { margin: 0; position: relative; }
+.contact-form .form-field-wide, .contact-form .form-field-service, .contact-form .fd-stack--contact,
+.contact-form .btn-send, .contact-form .form-trust, .contact-form .form-feedback { grid-column: 1 / -1; }
+.contact-form .form-field-service { grid-column: auto; }
+@media (min-width: 601px) { .contact-form .form-field-service { grid-column: auto; } }
+
+.form-field .ff-ic {
+  position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 38px; height: 38px;
+  display: grid; place-items: center; border-radius: 12px; z-index: 2; pointer-events: none;
+  background: rgba(201,155,92,.12); color: #C99B5C; transition: background .3s, color .3s, transform .3s;
+}
+.form-field .ff-ic svg { width: 19px; height: 19px; }
+.form-field-area .ff-ic { top: 14px; transform: none; }
+.form-field:focus-within .ff-ic { background: #C99B5C; color: #0d0d0d; transform: translateY(-50%) scale(1.06); }
+.form-field-area:focus-within .ff-ic { transform: scale(1.06); }
+
+.contact-form .form-field input,
+.contact-form .form-field textarea,
+.contact-form .form-field select {
+  width: 100%; box-sizing: border-box; padding: 19px 20px 19px 66px; border-radius: 18px;
+  background: linear-gradient(180deg, #1d1d1d, #171717);
+  border: 1.5px solid rgba(255,255,255,.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+  transition: border-color .3s, box-shadow .3s, background .3s, transform .3s;
+}
+.contact-form .form-field textarea { min-height: 140px; padding-top: 20px; resize: none; }
+.contact-form .form-field input:hover,
+.contact-form .form-field textarea:hover,
+.contact-form .form-field select:hover { border-color: rgba(201,155,92,.35); }
+.contact-form .form-field input:focus,
+.contact-form .form-field textarea:focus,
+.contact-form .form-field select:focus {
+  border-color: #C99B5C; background: #1a1a1a;
+  box-shadow: 0 0 0 4px rgba(201,155,92,.16), 0 14px 30px -16px rgba(201,155,92,.55);
+  outline: none; transform: translateY(-1px);
+}
+.contact-form .form-field select { padding-right: 46px; }
+
+.contact-form .btn-send, .contact-form .btn-send.btn.primary {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  margin-top: 6px; padding: 19px 24px; border-radius: 18px; font-size: 16.5px; font-weight: 800; letter-spacing: .01em;
+  background: linear-gradient(100deg, #C99B5C 0%, #ffd9a0 50%, #C99B5C 100%); background-size: 200% 100%;
+  color: #0d0d0d; box-shadow: 0 18px 36px -14px rgba(201,155,92,.7);
+  transition: background-position .6s, transform .3s, box-shadow .3s;
+}
+.contact-form .btn-send:hover, .contact-form .btn-send.btn.primary:hover {
+  background-position: 100% 0; transform: translateY(-3px); box-shadow: 0 24px 44px -14px rgba(201,155,92,.85);
+}
+.contact-form .btn-send .send-arrow { width: 16px; height: 16px; transition: transform .3s; }
+.contact-form .btn-send:hover .send-arrow { transform: translate(3px, -3px); }
+
+.form-trust { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; }
+.form-trust li { display: inline-flex; align-items: center; gap: 7px; font: 600 12.5px 'Inter', sans-serif; color: #b5b5b5; }
+.form-trust li::before { content: ''; width: 16px; height: 16px; border-radius: 50%; background: rgba(92,225,180,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235CE1B4' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 10px no-repeat; }
+
+@media (max-width: 600px) {
+  .contact-card.form-card { padding: 30px 18px 24px; }
+  .contact-form { grid-template-columns: 1fr; gap: 12px; }
+  .contact-form .form-field input, .contact-form .form-field textarea, .contact-form .form-field select { padding-left: 62px; font-size: 16px; }
+  .form-field .ff-ic { left: 13px; }
+}
+@media (prefers-reduced-motion: reduce) { .contact-card.form-card::after, .form-chip i { animation: none; } }
+
+/* v4: sticky info card now matches the new form card (gold glow, icon badges) */
+.contact-card.info-card {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(420px 240px at 0% 0%, rgba(201,155,92,.20), transparent 70%),
+    radial-gradient(320px 200px at 100% 100%, rgba(201,155,92,.10), transparent 70%),
+    linear-gradient(180deg, #131313 0%, #0b0b0b 100%);
+  border: 1px solid rgba(201,155,92,.22);
+  box-shadow: 0 40px 80px -30px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.06);
+  padding: 36px 32px 34px;
+}
+.contact-card.info-card::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, #C99B5C 25%, #ffd9a0 50%, #C99B5C 75%, transparent);
+}
+.contact-card.info-card::after {
+  content: ''; position: absolute; width: 200px; height: 200px; left: -90px; bottom: -90px; border-radius: 50%;
+  border: 1px dashed rgba(201,155,92,.25); pointer-events: none;
+}
+.info-title { font: 800 clamp(24px, 2.3vw, 30px)/1.15 'Outfit', sans-serif; letter-spacing: -.02em; color: #fff; margin: 0 0 24px; }
+.info-title em { font-style: italic; color: #C99B5C; }
+.info-card .info-list { position: relative; z-index: 1; gap: 14px; }
+.info-card .info-item {
+  display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 18px;
+  background: linear-gradient(180deg, #1d1d1d, #171717); border: 1.5px solid rgba(255,255,255,.06);
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+.info-card .info-item:hover { border-color: rgba(201,155,92,.4); transform: translateY(-2px); box-shadow: 0 16px 30px -18px rgba(201,155,92,.55); }
+.info-ic { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; background: rgba(201,155,92,.12); color: #C99B5C; transition: background .3s, color .3s; }
+.info-ic svg { width: 21px; height: 21px; }
+.info-card .info-item:hover .info-ic { background: #C99B5C; color: #0d0d0d; }
+.info-body { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.info-card .info-tag { font: 700 10.5px 'Inter', sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #C99B5C; }
+.info-card .info-val { font: 600 15.5px 'Outfit', sans-serif; color: #fff; overflow-wrap: anywhere; margin: 0; }
+@media (max-width: 992px) { .info-card .info-item { padding: 14px 16px; } }
+.info-card .info-item { flex-direction: row !important; justify-content: flex-start; text-align: left; }
+.info-card .info-body { align-items: flex-start; }
+.info-card .info-link:hover { transform: none; }
+
+
+/* =============================================================
+   v5: calm contact page. No mouse-hover movement on the form
+   card, its fields or its buttons. (The 3D tilt was removed in
+   the HTML; these rules make every :hover look like the resting
+   state.) Empty-field errors are styled at the bottom.
+   ============================================================= */
+.contact-card, .contact-card:hover, .contact-card.form-card:hover, .contact-card.info-card:hover {
+  transform: none !important;
+}
+.contact-card.info-card:hover { border-color: rgba(255,255,255,.08); box-shadow: 0 30px 60px -24px rgba(0,0,0,.5); }
+.contact-card.form-card:hover { border-color: rgba(201,155,92,.22); box-shadow: 0 40px 80px -30px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.06); }
+
+.contact-form .btn-send,
+.contact-form .btn-send.btn.primary,
+.contact-form .btn-send:hover,
+.contact-form .btn-send.btn.primary:hover,
+.contact-form .btn-send:active,
+.contact-form .btn-send.btn.primary:active {
+  transform: none !important;
+  opacity: 1;
+  background-position: 0 0;
+  box-shadow: 0 18px 36px -14px rgba(201,155,92,.7);
+  transition: none;
+}
+.contact-form .btn-send .send-arrow,
+.contact-form .btn-send:hover .send-arrow { transform: none !important; transition: none; }
+
+.contact-form .form-field input:hover,
+.contact-form .form-field textarea:hover,
+.contact-form .form-field select:hover { border-color: rgba(255,255,255,.06); }
+.contact-form .form-field input:focus,
+.contact-form .form-field textarea:focus,
+.contact-form .form-field select:focus { transform: none; }
+.form-field:focus-within .ff-ic { transform: translateY(-50%); }
+.form-field-area:focus-within .ff-ic { transform: none; }
+
+.info-card .info-item, .info-card .info-item:hover { transform: none; box-shadow: none; border-color: rgba(255,255,255,.06); }
+.info-card .info-item:hover .info-ic { background: rgba(201,155,92,.12); color: #C99B5C; }
+.info-link, .info-link:hover, .info-link:hover svg { transform: none; }
+
+/* ----- empty / wrong field errors ----- */
+.contact-form .form-field > .ep-err-msg { position: absolute; left: 6px; top: 100%; margin-top: 5px; z-index: 2; }
+.contact-form .form-field.has-err { margin-bottom: 24px; }
+.contact-form .form-field input.ep-err,
+.contact-form .form-field textarea.ep-err,
+.contact-form .form-field select.ep-err { border-color: #ff6b6b; box-shadow: 0 0 0 4px rgba(255,107,107,.14); }
+
+/* fields keep their own height when a neighbour shows an error (icons stay centred) */
+.contact-form { align-items: start; }

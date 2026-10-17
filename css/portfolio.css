@@ -1,5 +1,5 @@
 /* =============================================
-   ELEVEN — PORTFOLIO PAGE v6.0
+   ELYVEN — PORTFOLIO PAGE v6.0
    Editorial grid · designed project covers
    Light cream theme · refined motion
    ============================================= */
@@ -1049,3 +1049,23 @@ body.pf-modal-open .pf-grain { display: none; }
   .pf-cs-bar-title { font-size: 12.5px; }
   .pf-cs-back span { display: none; }
 }
+
+/* ─── SINGLE BACK BUTTON ───
+   In case study view the only control is the Back button (top left),
+   so the round close button on the right is hidden. */
+.pf-overlay.pf-cs-mode .pf-close { display: none; }
+.pf-cs-bar { padding-right: 22px; }
+
+/* ─── EMBEDDED MODE ───
+   portfolio.html?project=xxx&embed=1 is what the case study overlay on
+   every other page loads. Only the project itself is visible; the page
+   chrome and every in page close/back control are hidden because the
+   host page supplies the one Back button (top left). */
+html.pf-embed, html.pf-embed body { background: #fffdf8 !important; overflow: hidden !important; }
+html.pf-embed body > *:not(.pf-overlay) { visibility: hidden !important; pointer-events: none !important; }
+html.pf-embed .pf-overlay-bg { backdrop-filter: none; -webkit-backdrop-filter: none; background: #fffdf8; }
+html.pf-embed .pf-close,
+html.pf-embed .pf-cs-back,
+html.pf-embed .pf-back-btn { display: none !important; }
+html.pf-embed .pf-cs-bar { padding-left: 132px; min-height: 68px; box-sizing: border-box; }
+html.pf-embed .pf-detail-inner { padding-top: 72px; }

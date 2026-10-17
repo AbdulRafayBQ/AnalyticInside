@@ -134,3 +134,18 @@ a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
 }
 .mailto-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 .mailto-toast svg { flex-shrink: 0; color: #C99B5C; }
+
+
+/* ===== Inline field errors (drawer forms + contact form) ===== */
+.ep-err-msg {
+  display: flex; align-items: flex-start; gap: 6px; margin: 2px 0 0; font: 600 12.5px/1.4 'Inter', sans-serif; color: #ff8f8f;
+  animation: epErrIn .28s ease both;
+}
+.ep-err-msg::before {
+  content: '!'; flex: none; width: 15px; height: 15px; margin-top: 1px; border-radius: 50%; background: #ff6b6b; color: #170b0b;
+  font: 800 10px/15px 'Inter', sans-serif; text-align: center;
+}
+@keyframes epErrIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.ep-shake { animation: epNudge .36s ease; }
+@keyframes epNudge { 20% { transform: translateX(-5px); } 45% { transform: translateX(5px); } 70% { transform: translateX(-3px); } 100% { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ep-shake, .ep-err-msg { animation: none; } }

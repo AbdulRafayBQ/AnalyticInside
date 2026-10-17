@@ -155,3 +155,6 @@
   .pdh .tech-pills { gap: 8px !important; }
   .pdh .tech-pill { height: 46px; padding-top: 0 !important; padding-bottom: 0 !important; }
 }
+
+/* Mobile: no idea marquee animation in the tools section */
+@media (max-width: 768px) { .pdh .pd-marquee { display: none !important; } }

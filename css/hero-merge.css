@@ -72,3 +72,9 @@
 }
 /* first/last sections next to the hero or footer keep their solid edge */
 .hero-sticky-wrap + .pfh-section { -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 110px), transparent 100%); mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 110px), transparent 100%); }
+
+/* ── Marketing & Branding heading was sitting inside the 110px top fade of the section mask,
+      so "Tools We Use / Marketing & Branding." looked invisible. Give it room below the fade. ── */
+.mkt-section { padding-top: 130px !important; }
+@media (max-width: 768px) { .mkt-section { padding-top: 130px !important; } }
+.mkt-section .tech-eyebrow, .mkt-section .tech-title { position: relative; z-index: 3; }

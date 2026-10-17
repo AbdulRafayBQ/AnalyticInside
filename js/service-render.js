@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ELEVEN — SERVICE PAGE RENDERER (v2)
+   ELYVEN — SERVICE PAGE RENDERER (v2)
    Every service gets its own layout recipe: hero, metrics, overview,
    capabilities, impact, why us, tech stack, FAQ and a completely unique
    Development Process design. All sections enter with 3D animations that
@@ -20,7 +20,7 @@
   const s = SERVICES[k];
   const clamp = (v, a, z) => Math.min(Math.max(v, a), z);
 
-  document.title = `${s.title} — Eleven`;
+  document.title = `${s.title} — Elyven`;
   root.style.setProperty('--h', s.h);
   root.style.setProperty('--card-bg', s.cardBg);
   root.style.setProperty('--card-accent', s.cardAccent);
@@ -347,7 +347,7 @@
             </button>
             <a class="sv-qb-phone" href="tel:+923340317145">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              0334 0317145
+              +92 334 0317145
             </a>
           </div>
         </div>
@@ -424,7 +424,7 @@
     () => `<div class="pr2" data-tabs data-auto="5200" ${fx('rise', 0)}>
       <div class="pr2-chrome"><span class="dots"><i></i><i></i><i></i></span>
         <div class="pr2-tabs">${P.map((p, i) => `<button type="button" class="pr2-tab${i === 0 ? ' on' : ''}" data-i="${i}"><b>${p.step}</b>${short(p.title)}</button>`).join('')}</div></div>
-      <div class="pr2-url"><span class="lock"></span><em>eleven.com/${s.slug}/<u class="pr2-path">stage-01</u></em><span class="pr2-load"><i></i></span></div>
+      <div class="pr2-url"><span class="lock"></span><em>elyven.com/${s.slug}/<u class="pr2-path">stage-01</u></em><span class="pr2-load"><i></i></span></div>
       <div class="pr2-view">${P.map((p, i) => `
         <div class="pr2-pane${i === 0 ? ' on' : ''}" data-i="${i}"><span class="pr2-big">${p.step}</span>
           <div><h4>${p.title}</h4><p>${p.desc}</p><div class="pr2-skel"><i></i><i></i><i></i></div></div></div>`).join('')}</div>
@@ -464,14 +464,30 @@
       <div class="pr7-col" style="--i:${i};--hg:${250 + i * 42}px;--wd:${58 + i * 8}%"><div class="pr7-fill"></div>
         <div class="pr7-txt"><span>${p.step}</span><h4>${p.title}</h4><p>${p.desc}</p></div></div>`).join('')}</div>`,
 
-    /* 8 — Data management: isometric layer stack linked to a step list */
-    () => `<div class="pr8" data-tabs data-auto="4200">
-      <div class="pr8-iso" ${fx('zoom', 0)}><div class="pr8-stack">${P.map((p, i) => `
-        <div class="pr8-slab${i === 0 ? ' on' : ''}" data-i="${i}" style="--i:${i}"><b>${p.step}</b></div>`).join('')}</div></div>
-      <div class="pr8-list">${P.map((p, i) => `
-        <div class="pr8-item${i === 0 ? ' on' : ''}" data-i="${i}" ${fx('flipr', i)}><button type="button"><span>${p.step}</span>${p.title}</button>
-          <p>${p.desc}</p></div>`).join('')}</div>
-    </div>`,
+    /* 8 — Mobile app dev: flat fanned icon-card deck linked to a step list */
+    () => {
+      const PR8_ICONS = [
+        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 11h6M9 15h6"/></svg>`,
+        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 1 1 3 3L7 19l-4 1 1-4Z"/></svg>`,
+        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5 2 12l6 7"/><path d="M16 5l6 7-6 7"/></svg>`,
+        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>`,
+        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>`,
+        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 19 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`
+      ];
+      return `<div class="pr8" data-tabs data-auto="4200">
+        <div class="pr8-iso" ${fx('zoom', 0)}>
+          <div class="pr8-stack">${P.map((p, i) => `
+            <div class="pr8-slab${i === 0 ? ' on' : ''}" data-i="${i}" style="--i:${i}">
+              <span class="pr8-slab-ic">${PR8_ICONS[i] || PR8_ICONS[0]}</span>
+              <span class="pr8-slab-num">${p.step}</span>
+            </div>`).join('')}</div>
+          <div class="pr8-cap"><span class="pr8-cap-num">${P[0].step}</span><span class="pr8-cap-ttl">${P[0].title}</span></div>
+        </div>
+        <div class="pr8-list">${P.map((p, i) => `
+          <div class="pr8-item${i === 0 ? ' on' : ''}" data-i="${i}" ${fx('flipr', i)}><button type="button"><span>${p.step}</span>${p.title}</button>
+            <p>${p.desc}</p></div>`).join('')}</div>
+      </div>`;
+    },
 
     /* 9 — AI strategy: orbit ring with a hub that narrates each stage */
     () => `<div class="pr9" data-tabs data-auto="4800" ${fx('zoom', 0)}>
@@ -496,7 +512,8 @@
       </div></div>`
   ];
   /* Marketing uses the funnel layout (builder 6) on a light theme, not the vibe-code terminal */
-  const procIdx = s.slug === 'digital-marketing-branding' ? 5 : k;
+  /* Mobile App Development borrows the E-Commerce & Shopify process section (same layout, same light/gold theme) */
+  const procIdx = s.slug === 'digital-marketing-branding' ? 5 : (s.slug === 'mobile-app-development' ? 7 : k);
   const procDark = [true, false, false, true, false, false, true, false, true, true][procIdx];
   const procHead = ['How we work', 'Six simple <em style="font-style:italic;color:#C99B5C;">steps</em>', 'You always know what is done and what comes next.'];
   const procHTML = `
@@ -504,6 +521,27 @@
       <div class="sv-inner">
         ${head(procHead[0], procHead[1], procHead[2], [ 'center', 'left', 'center', 'center', 'left', 'left', 'center', 'left', 'center', 'left' ][procIdx], procDark)}
         <div class="sv-proc-body">${procBuilders[procIdx]()}</div>
+      </div></section>`;
+
+  /* Mobile App Development: same "How we work" content, shown as the stacked card deck from the About page */
+  const procMobileHTML = `
+    <section class="sv-sec sv-proc sv-proc--mp" id="process" data-sec>
+      <div class="sv-inner">
+        <div class="mp-proc">
+          <div class="mp-copy">
+            <p class="mp-label" ${fx('rise', 0)}>How we work</p>
+            <h2 class="mp-h2" ${fx('rise', 1)}>Six simple <em>steps.</em></h2>
+            <p class="mp-p" ${fx('rise', 2)}>You always know what is done and what comes next.</p>
+            <div class="mp-ctrl" ${fx('rise', 3)}>
+              <button type="button" class="mp-arrow" data-mp="prev" aria-label="Previous step"><svg viewBox="0 0 18 18" width="18" height="18"><path d="M11 3L5 9l6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button type="button" class="mp-arrow" data-mp="next" aria-label="Next step"><svg viewBox="0 0 18 18" width="18" height="18"><path d="M7 3l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="mp-count"><b class="mp-now">${P[0].step}</b> of ${String(P.length).padStart(2, '0')}</span>
+            </div>
+          </div>
+          <div class="mp-deck" data-mpdeck ${fx('zoom', 2)}>
+            ${P.map((p, i) => `<article class="mp-card" data-i="${i}" data-c="${i % 4}"><span class="mp-pn">${p.step}</span><h3>${p.title}</h3><p>${p.desc}</p></article>`).join('')}
+          </div>
+        </div>
       </div></section>`;
 
   /* ═══════════ INTERSPERSED GET A QUOTE #2 ═══════════ */
@@ -563,7 +601,10 @@
       : p === 'ios' ? `<span class="tx-plat-chip">${iosGlyph}iOS only</span>` : `<span class="tx-plat-chip">${androidGlyph}Android only</span>`;
     return `<div class="tx-plat-badge">${chips}</div>`;
   };
-  const tvis = (name, i, icon) => `<img src="images/tech-cards/${tslug(name)}.webp" alt="${name} illustration" loading="lazy" decoding="async" width="800" height="600">${platformBadge(name)}`;
+  const MKT_LOGO = { 'google ads': 'googleads', 'meta ads manager': 'meta', 'semrush': 'semrush', 'email automation': 'mailchimp', 'figma': 'figma', 'adobe creative suite': 'adobe', 'linkedin ads': 'linkedin' };
+  const isMkt = s.slug === 'digital-marketing-branding';
+  const mktLogo = n => MKT_LOGO[n.toLowerCase()];
+  const tvis = (name, i, icon) => isMkt && mktLogo(name) ? `<div class="tx-logo"><span><img src="images/tech-brand/${mktLogo(name)}.svg" alt="${name} logo" loading="lazy" width="96" height="96"></span></div>` : `<img src="images/tech-cards/${tslug(name)}.webp" alt="${name} illustration" loading="lazy" decoding="async" width="800" height="600">${platformBadge(name)}`;
   const tBtn = n => `<button class="tx-btn" type="button" onclick="document.dispatchEvent(new CustomEvent('analytic:open-drawer',{detail:{tech:'${n}'}}))">Let's Talk</button>`;
   const tTxt = (f, i) => `<div class="tx-txt"><span class="tx-kicker"><i>0${i + 1}</i>Technology</span><h3>${f[0]}</h3><p>${f[1]}</p>${tBtn(f[0])}</div>`;
   let techInner;
@@ -584,7 +625,7 @@
     <section class="sv-sec sv-tech tx--${TT} tx-l-${TL}" id="techStack" data-sec><div class="sv-inner">
       ${head('Our tools', `${s.title}<br>technologies we use`, `We pick tools that are fast, safe and easy to grow with.`, 'left', TT === 'dark')}
       ${techInner}
-      ${moreTech.length ? `<div class="tx-more" ${fx('rise', 2)}><span>Also in our toolkit</span>${moreTech.map(t => `<b class="tx-chip">${t}</b>`).join('')}</div>` : ''}
+      ${moreTech.length ? `<div class="tx-more" ${fx('rise', 2)}><span>Also in our toolkit</span>${moreTech.map(t => `<b class="tx-chip">${isMkt && mktLogo(t) ? `<img class="tx-chip-ic" src="images/tech-brand/${mktLogo(t)}.svg" alt="" width="16" height="16">` : ''}${t}</b>`).join('')}</div>` : ''}
     </div></section>`;
 
 
@@ -619,7 +660,7 @@
   let whyInner;
   if (R.why === 'split') {
     whyInner = `<div class="why-split"><div class="why-l">
-        <span class="sv-eyebrow" ${fx('rise', 0)}>The Eleven Advantage</span>
+        <span class="sv-eyebrow" ${fx('rise', 0)}>The Elyven Advantage</span>
         <h2 class="sv-title" ${fx('rise', 1)}>Why Industry Leaders Choose Us for ${s.title}</h2>
         <p class="sv-body-p" ${fx('rise', 2)}>We are not a bloated agency that sells a project and hands it to junior contractors. You partner with senior engineers who understand architecture, business strategy, and clean code.</p>${trust}</div>
       <div class="why-r">${W.map((w, i) => `<div class="why-row" ${fx('flipr', i)}><span class="why-ic">${checkSvg}</span><p>${w}</p></div>`).join('')}</div></div>`;
@@ -628,7 +669,7 @@
       <div class="why-grid">${W.map((w, i) => `<div class="why-gw" ${fx(['flipl', 'rise', 'flipr'][i % 3], Math.floor(i / 3))}><div class="why-gc" data-tilt data-tilt-max="6"><span class="why-gn">${pad(i)}</span><p>${w}</p></div></div>`).join('')}</div>
       <div class="why-center">${trust}</div>`;
   } else {
-    whyInner = `<div class="why-band" ${fx('zoom', 0)}><div><span class="sv-eyebrow">The Eleven Advantage</span>
+    whyInner = `<div class="why-band" ${fx('zoom', 0)}><div><span class="sv-eyebrow">The Elyven Advantage</span>
         <h2 class="sv-title">Why Industry Leaders Choose Us for ${s.title}</h2></div>${trust.replace(/ data-fx="pop" style="--i:3;"/, '')}</div>
       <div class="why-two">${W.map((w, i) => `<div class="why-tr" ${fx(i % 2 ? 'flipr' : 'flipl', Math.floor(i / 2))}><span class="why-ic">${checkSvg}</span><p>${w}</p></div>`).join('')}</div>`;
   }
@@ -693,7 +734,7 @@
         <!-- Col 1: Brand & Identity -->
         <div class="footer-col footer-col-brand">
           <a class="footer-brand" href="index.html">
-            <span class="footer-brand-title">ELEVEN</span>
+            <span class="footer-brand-title">ELYVEN</span>
             <span class="footer-brand-dot"></span>
           </a>
           <p class="footer-brand-tagline">
@@ -767,11 +808,11 @@
             </a>
             <a href="tel:+923340317145" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>0334 0317145</span>
+              <span>+92 334 0317145</span>
             </a>
             <a href="tel:+923340317145" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>0334 0317145</span>
+              <span>+92 334 0317145</span>
             </a>
           </div>
         </div>
@@ -781,7 +822,7 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom-bar">
         <div class="footer-bottom-left">
-          <span>&copy; 2026 Eleven. All rights reserved.</span>
+          <span>&copy; 2026 Elyven. All rights reserved.</span>
           <span class="footer-bottom-sep">&bull;</span>
           <span>Software &middot; Web &middot; AI &middot; Mobile</span>
         </div>
@@ -801,6 +842,7 @@
      always had. Projects are picked per service from real, shipped case
      studies and reused across services where relevant, same as before. */
   const SERVICE_PROJECTS = {
+    'ecommerce-shopify-development': [],
     'mobile-app-development': [
       { title: 'Dr. Asgar Clinic', tagline: 'Patient care and clinic tools in one flow.', link: 'portfolio.html?project=drasgarrheumatology', tags: ['React Native', 'NestJS', 'Healthcare'] },
       { title: 'Doc Link Healthcare', tagline: 'Skip the waiting room. Video checkups, bookings and prescriptions in one healthcare app.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['Healthcare App', 'Video Consultation', 'Booking'] },
@@ -812,9 +854,8 @@
       { title: 'Tiny Kiwi', tagline: 'A fast photo editor that runs right inside the browser, with nothing to install.', link: 'portfolio.html?project=tinykiwi', tags: ['React', 'Next.js', 'Web Workers'] }
     ],
     'custom-software-development': [
-      { title: 'Doc Link Healthcare', tagline: 'A full custom healthcare system, built from the ground up: bookings, video visits and prescriptions.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['React', 'Next.js', 'Node.js'] },
-      { title: 'Caary Capital', tagline: 'Fintech dashboards rebuilt for 500 plus internal users.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux'] },
-      { title: 'Assist Event', tagline: 'One booking platform for venues, catering and more.', link: 'portfolio.html?project=assistevent', tags: ['React Native', 'Node.js', 'MySQL'] }
+      { title: 'RichAI', tagline: 'Image generation, chat and voice in one workspace.', link: 'portfolio.html?project=richai', tags: ['Stable Diffusion', 'React', 'Node.js'] },
+      { title: 'Tiny Kiwi', tagline: 'A fast photo editor that runs right inside the browser, with nothing to install.', link: 'portfolio.html?project=tinykiwi', tags: ['React', 'Next.js', 'Web Workers'] }
     ],
     'ai-development': [
       { title: 'RichAI', tagline: 'Image generation, chat and voice in one workspace.', link: 'portfolio.html?project=richai', tags: ['Stable Diffusion', 'React', 'Node.js'] },
@@ -822,27 +863,27 @@
       { title: 'Zylmi', tagline: 'Brand identity paired with a smart digital presence.', link: 'portfolio.html?project=zylmi', tags: ['Figma', 'React', 'Tailwind CSS'] }
     ],
     'product-design-development': [
-      { title: 'Zylmi', tagline: 'Brand identity and web design from the ground up.', link: 'portfolio.html?project=zylmi', tags: ['Figma', 'React', 'Tailwind CSS'] },
-      { title: 'Assist Event', tagline: 'From idea to a full multi vendor booking platform.', link: 'portfolio.html?project=assistevent', tags: ['React Native', 'Next.js', 'Node.js'] },
+      { title: 'Morinaga Calories Counter', tagline: 'Barcode scanning and daily macro tracking for iPhone and Android, synced live.', link: 'portfolio.html?project=morinagacaloriescounter', tags: ['React Native', 'Firebase', 'iOS & Android'] },
+      { title: 'Metadot', tagline: 'One browser wallet for balances, sending and network settings across chains.', link: 'portfolio.html?project=metadot', tags: ['React', 'TypeScript', 'Web3'] },
       { title: 'Doc Link Healthcare', tagline: 'A healthcare product built from concept to launch.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['React', 'Next.js', 'Redux'] }
     ],
     'ai-consultancy-automation-strategy': [
       { title: 'RichAI', tagline: 'An AI pipeline from voice input to a talking avatar.', link: 'portfolio.html?project=richai', tags: ['Stable Diffusion', 'Node.js', 'React'] },
-      { title: 'Caary Capital', tagline: 'Automated data flows behind 500 plus user dashboards.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux'] },
+      { title: 'Caary Capital', tagline: 'Automated data flows behind 500 plus user dashboards.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux', '.NET', 'MySQL'] },
       { title: 'LinkDrip', tagline: 'Automated click, geo and device analytics on every link.', link: 'portfolio.html?project=linkdrip', tags: ['Node.js', 'React', 'Amazon S3'] }
     ],
     'vibe-code-to-production': [
-      { title: 'Caary Capital', tagline: 'Legacy dashboards audited, rebuilt and hardened.', link: 'portfolio.html?project=caarycapital', tags: ['TypeScript', 'React', 'Redux'] },
+      { title: 'Caary Capital', tagline: 'Legacy dashboards audited, rebuilt and hardened.', link: 'portfolio.html?project=caarycapital', tags: ['TypeScript', 'React', 'Redux', '.NET', 'MySQL'] },
       { title: 'Tiny Kiwi', tagline: 'An existing codebase profiled, fixed and sped up.', link: 'portfolio.html?project=tinykiwi', tags: ['React', 'Node.js', 'Web Workers'] },
       { title: 'LinkDrip', tagline: 'A working product taken further and polished for scale.', link: 'portfolio.html?project=linkdrip', tags: ['Node.js', 'React', 'Amazon S3'] }
     ],
     'data-management-database-solutions': [
-      { title: 'Caary Capital', tagline: '10,000 row tables rendering in under 100 ms.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux'] },
+      { title: 'Caary Capital', tagline: '10,000 row tables rendering in under 100 ms.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux', '.NET', 'MySQL'] },
       { title: 'Salasa OMS', tagline: 'Order, carrier and pricing data in one clean model.', link: 'portfolio.html?project=salasaoms', tags: ['Structured Data', 'React', 'Node.js'] },
       { title: 'Doc Link Healthcare', tagline: 'Patient records and bookings kept in sync.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['React', 'Next.js', 'Redux'] }
     ],
     'data-analytics-consultancy': [
-      { title: 'Caary Capital', tagline: 'Fintech data made easier to scan and act on.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux'] },
+      { title: 'Caary Capital', tagline: 'Fintech data made easier to scan and act on.', link: 'portfolio.html?project=caarycapital', tags: ['React', 'TypeScript', 'Redux', '.NET', 'MySQL'] },
       { title: 'LinkDrip', tagline: 'Click tracking with a clear geo and device breakdown.', link: 'portfolio.html?project=linkdrip', tags: ['Node.js', 'React', 'Amazon S3'] },
       { title: 'Assist Event', tagline: 'A live view of bookings, vendors and conflicts.', link: 'portfolio.html?project=assistevent', tags: ['React Native', 'Node.js', 'MySQL'] }
     ],
@@ -868,6 +909,7 @@
     'Assist Event': { kind: 'web', accent: '#C99B5C', image: 'images/Portfolio thumbnails/Elegant Event Management Dashboard Showcase.png', metric: '01', detail: 'Place to plan it all', theme: 'EVENT EXPERIENCE' },
     'RichAI': { kind: 'web', accent: '#8B6CF0', image: 'images/Portfolio thumbnails/RichAI Dog Assistant Hero Scene.png', metric: 'AI', detail: 'Create, chat, speak', theme: 'CREATIVE ASSISTANT' },
     'Zylmi': { kind: 'web', accent: '#5CE1B4', image: 'images/Portfolio thumbnails/Zylmi Brand Identity Showcase.png', metric: '01', detail: 'Distinctive identity', theme: 'BRAND SYSTEM' },
+    'Metadot': { kind: 'web', accent: '#C99B5C', slug: 'metadot', image: 'images/Portfolio thumbnails/MetaDot Multi-Chain Wallet Showcase.png', metric: '5+', detail: 'Chains, one wallet', theme: 'MULTI-CHAIN WALLET' },
     'LinkDrip': { kind: 'web', accent: '#3d7ec6', image: 'images/Portfolio thumbnails/LinkDrip Dashboard Hero Scene.png', metric: '48.2K', detail: 'Clicks, understood', theme: 'LINK ANALYTICS' }
   };
 
@@ -1185,7 +1227,7 @@
   const rpKind = p => (PROJECT_META[p.title]?.kind === 'app' ? 'Mobile App' : 'Web Platform');
   const rpAccent = p => PROJECT_META[p.title]?.accent || s.color || '#C99B5C';
 
-  const caseStudyHTML = `
+  const caseStudyHTML = !projects.length ? '' : `
     <section class="sv-sec rp" id="caseStudy" data-sec>
       <div class="sv-inner">
         <div class="rp-head" ${fx('rise', 0)}>
@@ -1219,7 +1261,7 @@
 
   /* ═══════════ ASSEMBLE ═══════════ */
   const EP_HTML = window.EP ? window.EP.html(s) : '';
-  const SEC_ORDER = [['hero', heroHTML], ['brand', svBrandMarqueeHTML], ['cs', caseStudyHTML], ['overview', overviewHTML], ['q1', quoteCTA1], ['caps', capsHTML], ['proc', procHTML], ['q2', quoteCTA2], ['tech', techHTML], ['impact', impactHTML], ['why', whyHTML], ['rev', revHTML], ['faq', faqHTML]];
+  const SEC_ORDER = [['hero', heroHTML], ['brand', svBrandMarqueeHTML], ['cs', caseStudyHTML], ['overview', overviewHTML], ['q1', quoteCTA1], ['caps', capsHTML], ['proc', s.slug === 'mobile-app-development' ? procMobileHTML : procHTML], ['q2', quoteCTA2], ['tech', techHTML], ['impact', impactHTML], ['why', whyHTML], ['rev', revHTML], ['faq', faqHTML]];
   const EP_AFTER = window.EP ? window.EP.plan(s).after : 'faq';
   const VC_HTML = window.VC ? window.VC.html(s) : '';
   root.innerHTML = SEC_ORDER.map(x => x[1] + (x[0] === EP_AFTER ? EP_HTML : '') + (x[0] === 'overview' ? VC_HTML : '')).join('') + ctaHTML + grandFooterHTML;
@@ -1525,6 +1567,8 @@
       const path = box.querySelector('.pr2-path'); if (path) path.textContent = 'stage-' + String(cur + 1).padStart(2, '0');
       const hn = box.querySelector('.pr9-hnum'), ht = box.querySelector('.pr9-htitle');
       if (hn && ht) { const p = P[cur]; hn.textContent = p.step; ht.textContent = p.title; }
+      const pcn = box.querySelector('.pr8-cap-num'), pct = box.querySelector('.pr8-cap-ttl');
+      if (pcn && pct) { const p = P[cur]; pcn.textContent = p.step; pct.textContent = p.title; }
       box.style.setProperty('--cur', cur);
       box.classList.remove('ticking'); void box.offsetWidth; box.classList.add('ticking');
     }
@@ -1538,6 +1582,34 @@
     box.addEventListener('mouseenter', () => { hovering = true; });
     box.addEventListener('mouseleave', () => { hovering = false; });
     set(0); restart();
+  });
+
+  /* ═══════════ MOBILE PROCESS DECK (stacked cards, arrows / swipe / click) ═══════════ */
+  root.querySelectorAll('[data-mpdeck]').forEach(deck => {
+    const wrap = deck.closest('.mp-proc');
+    const cards = Array.from(deck.querySelectorAll('.mp-card'));
+    const now = wrap.querySelector('.mp-now');
+    let cur = 0;
+    function set(i) {
+      cur = (i + cards.length) % cards.length;
+      cards.forEach((c, k) => {
+        const o = k - cur;
+        c.classList.toggle('past', o < 0);
+        c.classList.toggle('back', o > 0);
+        c.style.setProperty('--o', o < 0 ? 0 : o);
+      });
+      if (now) now.textContent = P[cur].step;
+    }
+    set(0);
+    wrap.querySelector('[data-mp="prev"]').addEventListener('click', () => set(cur - 1));
+    wrap.querySelector('[data-mp="next"]').addEventListener('click', () => set(cur + 1));
+    cards.forEach((c, k) => c.addEventListener('click', () => set(k === cur ? cur + 1 : k)));
+    let sx = 0;
+    deck.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    deck.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) set(cur + (dx < 0 ? 1 : -1));
+    }, { passive: true });
   });
 
   /* ═══════════ COVERFLOW (process 3) ═══════════ */

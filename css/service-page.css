@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ELEVEN — SERVICE LANDING PAGES (v2)
+   ELYVEN — SERVICE LANDING PAGES (v2)
    Warm neutral palette, whisper-light gradients, ten different layout recipes,
    3D scroll entrances (replay when a section leaves and returns).
    ========================================================================== */
@@ -307,15 +307,27 @@
 .pr7-txt { position: absolute; inset: 0; padding: 22px 16px; opacity: 0; translate: 0 18px; transition: opacity .6s, translate .7s var(--ease); transition-delay: calc(var(--i) * .15s + .8s); } .sv-proc.is-in .pr7-txt { opacity: 1; translate: 0 0; }
 .pr7-txt span { font: 800 26px 'Outfit', sans-serif; color: var(--acc); display: block; margin-bottom: 8px; } .pr7-txt h4 { font-size: 14.5px; line-height: 1.25; margin-bottom: 8px !important; } .pr7-txt p { font-size: 12.5px; line-height: 1.6; }
 
-/* 8 · isometric layers */
+/* 8 · fanned icon-card deck — left-side visual (redesigned; right-side list below is untouched) */
 .sv-proc--8 { background: #fff; }
 .pr8 { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
-.pr8-iso { height: 470px; display: grid; place-items: center; perspective: 1500px; }
-.pr8-stack { position: relative; width: 250px; height: 250px; transform-style: preserve-3d; transform: rotateX(58deg) rotateZ(-38deg); }
-.pr8-slab { position: absolute; inset: 0; border-radius: 20px; display: grid; place-items: end start; padding: 16px 20px; background: color-mix(in srgb, var(--acc) calc(10% + var(--i) * 4%), rgba(255,255,255,.75)); border: 1.5px solid color-mix(in srgb, var(--acc) 55%, transparent); box-shadow: 0 0 0 1px #fff inset;
-  transform: translateZ(calc(var(--i) * 50px + 420px)); opacity: 0; transition: transform 1s var(--ease) calc(var(--i) * .13s), opacity .5s calc(var(--i) * .13s), background .4s; }
-.sv-proc.is-in .pr8-slab { transform: translateZ(calc(var(--i) * 50px)); opacity: 1; } .sv-proc.is-in .pr8-slab.on { transform: translateZ(calc(var(--i) * 50px + 34px)); background: var(--acc); transition-delay: 0s; }
-.pr8-slab b { font: 800 20px 'Outfit', sans-serif; color: var(--ink); }
+.pr8-iso { position: relative; height: 470px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 32px; padding-bottom: 40px; }
+.pr8-iso::before { content: ""; position: absolute; left: 50%; bottom: 10px; translate: -50% 0; width: 300px; height: 200px; border-radius: 50%; background: radial-gradient(ellipse, color-mix(in srgb, var(--acc) 20%, transparent), transparent 72%); filter: blur(4px); pointer-events: none; }
+.pr8-stack { position: relative; width: 280px; height: 300px; }
+.pr8-slab { position: absolute; left: 50%; bottom: 0; width: 162px; height: 216px; margin-left: -81px; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  background: #fff; border: 1.5px solid var(--line); box-shadow: 0 16px 28px -18px rgba(23,19,14,.28);
+  transform-origin: 50% 100%; z-index: calc(var(--i) + 1);
+  transform: rotate(calc((var(--i) - 2.5) * 11deg)) translateY(50px); opacity: 0;
+  transition: transform .8s var(--ease) calc(var(--i) * .08s), opacity .6s calc(var(--i) * .08s), background .4s, border-color .4s, box-shadow .4s; }
+.sv-proc.is-in .pr8-slab { opacity: 1; transform: rotate(calc((var(--i) - 2.5) * 11deg)) translateY(0); }
+.sv-proc.is-in .pr8-slab.on { transform: rotate(0deg) translateY(-20px) scale(1.08); background: linear-gradient(150deg, var(--acc), color-mix(in srgb, var(--acc) 66%, #17130E)); border-color: transparent; box-shadow: 0 26px 42px -16px color-mix(in srgb, var(--acc) 60%, transparent); z-index: 50; transition-delay: 0s; }
+.pr8-slab-ic { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 13px; background: color-mix(in srgb, var(--acc) 12%, transparent); color: var(--acc); transition: background .4s, color .4s; }
+.pr8-slab-ic svg { width: 20px; height: 20px; }
+.pr8-slab.on .pr8-slab-ic { background: rgba(255,255,255,.2); color: #fff; }
+.pr8-slab-num { font: 800 15px 'Outfit', sans-serif; color: var(--mut); letter-spacing: .03em; transition: color .4s; }
+.pr8-slab.on .pr8-slab-num { color: #fff; }
+.pr8-cap { position: relative; z-index: 60; display: inline-flex; align-items: center; gap: 12px; padding: 12px 22px; border-radius: 999px; background: var(--cream); border: 1px solid var(--line); box-shadow: 0 10px 22px -14px rgba(23,19,14,.2); }
+.pr8-cap-num { font: 800 14px 'Outfit', sans-serif; color: var(--acc); }
+.pr8-cap-ttl { font: 700 15.5px 'Outfit', sans-serif; color: var(--ink); }
 .pr8-list { display: grid; gap: 8px; }
 .pr8-item { border: 1px solid var(--line); border-radius: 16px; background: var(--cream); padding: 4px; transition: background .4s, border-color .4s; } .pr8-item.on { background: var(--ink); color: #fff; border-color: var(--ink); }
 .pr8-item button { display: flex; align-items: center; gap: 14px; width: 100%; padding: 12px 14px; border: none; background: none; color: inherit; font: 700 15.5px 'Outfit', sans-serif; text-align: left; cursor: pointer; } .pr8-item button span { font-size: 12.5px; color: var(--accd); } .pr8-item.on button span { color: var(--acc); }
@@ -450,7 +462,12 @@
   .pr2-pane { grid-template-columns: 1fr; gap: 6px; padding: 28px 24px; } .pr2-big { font-size: 64px; } .pr2-view { min-height: 340px; }
   .pr5 { flex-direction: column; height: auto; gap: 10px; } .pr5-panel, .pr5-panel.on { flex: none; height: 72px; transition: height .7s var(--ease), background .5s; } .pr5-panel.on { height: 300px; }
   .pr5-rot { writing-mode: horizontal-tb; transform: none; left: 62px; top: 24px; bottom: auto; translate: 0 0; font-size: 15px; } .pr5-body { min-width: 0; bottom: 22px; } .pr5-body h4 { font-size: 20px; }
-  .pr8-iso { height: 400px; padding-top: 70px; } .pr8-stack { width: 190px; height: 190px; }
+  .pr8-iso { height: 380px; gap: 22px; padding-bottom: 26px; } .pr8-stack { width: 220px; height: 240px; }
+  .pr8-slab { width: 120px; height: 160px; margin-left: -60px; gap: 10px; transform: rotate(calc((var(--i) - 2.5) * 8deg)) translateY(50px); }
+  .sv-proc.is-in .pr8-slab { transform: rotate(calc((var(--i) - 2.5) * 8deg)) translateY(0); }
+  .sv-proc.is-in .pr8-slab.on { transform: rotate(0deg) translateY(-14px) scale(1.08); }
+  .pr8-slab-ic { width: 30px; height: 30px; } .pr8-slab-ic svg { width: 16px; height: 16px; } .pr8-slab-num { font-size: 13px; }
+  .pr8-cap { padding: 10px 18px; } .pr8-cap-ttl { font-size: 14px; }
   .pr9-node { width: 42px; height: 42px; font-size: 12.5px; } .pr9-desc { min-height: 150px; } .pr9-p { font-size: 15px; }
   .tech-mq-pill { font-size: 15px; padding: 12px 22px; }
 }
@@ -1569,53 +1586,77 @@
   .cap-flow-dot { left: 20px; top: 28px; translate: -50% -50%; }
 }
 
-/* ══════════════════════════════════════════════════════════════════════
-   E-COMMERCE & SHOPIFY DEVELOPMENT — page-only gradient merge theme.
-   Scoped to this one service page via [data-slug]; nothing here touches
-   any other service page. One soft gradient runs behind every section
-   so the page reads as a single continuous surface, with the hard
-   section-to-section divider lines removed.
-   ══════════════════════════════════════════════════════════════════════ */
-#svc[data-slug="ecommerce-shopify-development"] {
-  background: linear-gradient(180deg,
-    #FFFCF6 0%, #FBF1DF 12%, #F6E6C9 26%, #FFFFFF 42%,
-    #FDF7EC 56%, #FAEFDC 70%, #F4E4C6 84%, #FFFCF6 100%);
+
+/* =============================================================
+   MOBILE APP DEV: "How we work" stacked card deck
+   (same design as the About page process section)
+   ============================================================= */
+#process.sv-proc--mp {
+  background: radial-gradient(620px 420px at 102% 100%, rgba(201,155,92,.3), transparent 66%), linear-gradient(170deg, #F9F2E6, #F7EEDD);
+  color: #17130E; overflow: hidden;
 }
-#svc[data-slug="ecommerce-shopify-development"] .sv-overview,
-#svc[data-slug="ecommerce-shopify-development"] .sv-caps,
-#svc[data-slug="ecommerce-shopify-development"] .sv-tech,
-#svc[data-slug="ecommerce-shopify-development"] .sv-impact,
-#svc[data-slug="ecommerce-shopify-development"] .sv-why,
-#svc[data-slug="ecommerce-shopify-development"] .sv-faq,
-#svc[data-slug="ecommerce-shopify-development"] .sv-brand-sec,
-#svc[data-slug="ecommerce-shopify-development"] .sv-proc--8 {
-  background: transparent !important;
-  border: none !important;
+.mp-proc { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 60px; align-items: center; }
+#process.sv-proc--mp .mp-label {
+  display: inline-flex; align-items: center; gap: 12px; margin: 0 0 20px;
+  font: 700 11px/1 'Inter', sans-serif; letter-spacing: .22em; text-transform: uppercase; color: #C99B5C;
 }
-#svc[data-slug="ecommerce-shopify-development"] .sv-tech,
-#svc[data-slug="ecommerce-shopify-development"] .sv-brand-sec,
-#svc[data-slug="ecommerce-shopify-development"] .cap-rows,
-#svc[data-slug="ecommerce-shopify-development"] .sv-metrics--strip,
-#svc[data-slug="ecommerce-shopify-development"] .sv-faq-item,
-#svc[data-slug="ecommerce-shopify-development"] .sv-faq-item:first-child {
-  border-top: none !important;
-  border-bottom: none !important;
+.mp-label::before { content: ''; width: 26px; height: 1px; background: currentColor; flex: none; }
+.mp-h2 { font: 800 clamp(32px, 4.6vw, 58px)/1.05 'Outfit', sans-serif; letter-spacing: -.035em; margin: 0 0 20px; color: #17130E; }
+.mp-h2 em { font-style: italic; color: #C99B5C; }
+#process.sv-proc--mp .mp-p { font-size: clamp(15px, 1.25vw, 17px); line-height: 1.75; color: rgba(23,19,14,.64); max-width: 56ch; margin: 0 0 24px; }
+.mp-ctrl { display: flex; align-items: center; gap: 12px; }
+.mp-arrow {
+  width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; padding: 0;
+  border: 1.5px solid rgba(23,19,14,.16); background: #fff; color: #17130E;
+  transition: background .3s, color .3s, transform .3s, border-color .3s;
 }
-#svc[data-slug="ecommerce-shopify-development"] .imp-split,
-#svc[data-slug="ecommerce-shopify-development"] .sv-dbox,
-#svc[data-slug="ecommerce-shopify-development"] .why-row,
-#svc[data-slug="ecommerce-shopify-development"] .tech-tile,
-#svc[data-slug="ecommerce-shopify-development"] .ov-col {
-  background: color-mix(in srgb, #fff 86%, var(--acc) 3%);
-  border-color: rgba(23,19,14,.06);
+.mp-arrow:hover { background: #17130E; border-color: #17130E; color: #fff; transform: scale(1.06); }
+.mp-count { margin-left: 8px; font: 500 14px/1 'Inter', sans-serif; color: #17130E; opacity: .7; }
+.mp-count b { font: 800 26px/1 'Outfit', sans-serif; color: #C99B5C; }
+
+.mp-deck { --st: 38px; --sy: 20px; position: relative; height: 440px; perspective: 1400px; }
+.mp-card {
+  --o: 0; position: absolute; inset: 0 112px 0 0; padding: 38px 40px; border-radius: 30px;
+  display: flex; flex-direction: column; gap: 14px; justify-content: center;
+  box-shadow: 0 30px 60px rgba(23,19,14,.18); cursor: pointer; overflow: hidden;
+  transform: translate3d(calc(min(var(--o), 3) * var(--st)), calc(min(var(--o), 3) * var(--sy) * -1), 0) scale(calc(1 - min(var(--o), 3) * .05));
+  opacity: calc(1 - min(var(--o), 3) * .22); z-index: calc(10 - var(--o));
+  transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .35s;
 }
-/* the only genuinely dark band left on this page (testimonials) gets a
-   feathered top and bottom edge instead of a flat line where it meets
-   the warm gradient, so it reads as a soft fade rather than a seam */
-#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark { position: relative; }
-#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark::before,
-#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark::after {
-  content: ""; position: absolute; left: 0; right: 0; height: 110px; pointer-events: none; z-index: 1;
+.mp-card:nth-child(n+5) { opacity: 0; pointer-events: none; }
+.mp-card.past { transform: translate3d(-115%, 0, 0) rotate(-9deg); opacity: 0; pointer-events: none; }
+.mp-card[data-c="0"] { background: #17130E; color: #fff; --pc: #fff; }
+.mp-card[data-c="1"] { background: #C99B5C; color: #17130E; --pc: #17130E; }
+.mp-card[data-c="2"] { background: #fff; color: #17130E; --pc: #C99B5C; }
+.mp-card[data-c="3"] { background: #241D16; color: #fff; --pc: #fff; border: 1px solid rgba(201,155,92,.5); }
+.mp-pn {
+  position: absolute; right: 26px; top: 10px; font: 800 150px/1 'Outfit', sans-serif; letter-spacing: -.06em;
+  color: transparent; -webkit-text-stroke: 2px var(--pc, #fff); opacity: .35; pointer-events: none;
 }
-#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark::before { top: -1px; background: linear-gradient(180deg, #F4E4C6, #17130E); }
-#svc[data-slug="ecommerce-shopify-development"] .sv-reviews--dark::after { bottom: -1px; background: linear-gradient(0deg, #FFFCF6, #17130E); }
+.mp-card > * { transition: opacity .4s; }
+.mp-card.back > * { opacity: 0 !important; }
+.mp-card h3 { position: relative; margin: 0; max-width: 14ch; font: 700 clamp(24px, 2.8vw, 36px)/1.05 'Outfit', sans-serif; letter-spacing: -.03em; color: inherit; }
+#process.sv-proc--mp .mp-card p { position: relative; margin: 0; max-width: 40ch; font-size: 16px; line-height: 1.7; opacity: .82; color: inherit; }
+
+@media (max-width: 960px) {
+  .mp-proc { grid-template-columns: 1fr; gap: 44px; }
+}
+@media (max-width: 720px) {
+  .mp-deck { --st: 18px; --sy: 10px; height: 410px; }
+  .mp-card { inset: 0 40px 0 0; padding: 26px 22px; border-radius: 24px; }
+  .mp-pn { font-size: 92px; right: 16px; }
+  #process.sv-proc--mp .mp-card p { font-size: 15px; }
+  .mp-arrow { width: 46px; height: 46px; }
+}
+@media (max-width: 380px) {
+  .mp-card h3 { font-size: 22px; }
+  .mp-deck { height: 430px; }
+}
+
+/* Marketing & Branding tools: real brand logos on a clean tile instead of illustrations */
+.tx-vis .tx-logo { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, #ffffff 0%, #f6efe3 70%, #efe3cf 100%); }
+.tx-vis .tx-logo span { display: grid; place-items: center; width: clamp(96px, 34%, 150px); aspect-ratio: 1; border-radius: 28px; background: #fff; box-shadow: 0 24px 48px -24px rgba(23,19,14,.45), 0 0 0 1px rgba(23,19,14,.06); transition: transform .5s cubic-bezier(.3,1.4,.5,1); }
+.tx-vis .tx-logo img { width: 56%; height: 56%; object-fit: contain; transform: none !important; transition: none; filter: none; }
+.tx-row:hover .tx-logo span, .tx-card:hover .tx-logo span, .tx-panel:hover .tx-logo span, .tx-li:hover .tx-logo span, .tx-pn.on:hover .tx-logo span { transform: scale(1.07) rotate(-3deg); }
+.tx-chip { display: inline-flex; align-items: center; gap: 8px; }
+.tx-chip-ic { width: 16px; height: 16px; object-fit: contain; flex-shrink: 0; }

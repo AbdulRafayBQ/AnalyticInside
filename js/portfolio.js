@@ -1,5 +1,5 @@
 /* =============================================
-   ELEVEN — PORTFOLIO (v4.0 FINAL)
+   ELYVEN — PORTFOLIO (v4.0 FINAL)
    Zig-zag full-screen rows · overlay details · case study links
    All case study paths verified & connected
    ============================================= */
@@ -12,6 +12,9 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasHover = window.matchMedia('(hover: hover)').matches;
   const hasGSAP = typeof window.gsap !== 'undefined';
+  /* opened inside the case study overlay of another page (see js/case-study-overlay.js) */
+  const EMBED = new URLSearchParams(window.location.search).get('embed') === '1';
+  if (EMBED) document.documentElement.classList.add('pf-embed');
   if (hasGSAP && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
   /* ─────────────────────────────────────────────
@@ -67,7 +70,7 @@
       sub: 'Fintech Admin Dashboards',
       folder: 'Carry Capital',
       images: ['Screenshot 2026-09-15 010416.png'],
-      tags: ['React', 'TypeScript', 'Material UI', 'Redux'],
+      tags: ['React', 'TypeScript', 'Material UI', 'Redux', '.NET', 'MySQL'],
       tagline: 'Rebuilt fintech dashboards serving 500 plus internal users.',
       category: 'fintech',
       caseStudy: 'Case studies/caary-capital-case-study/index.html',
@@ -636,7 +639,7 @@
           <p class="pz-tagline">${esc(p.tagline)}</p>
           <p class="pz-desc">${esc(p.desc)}</p>
           <ul class="pz-points">${p.features.slice(0, 3).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
-          <div class="pz-tags">${p.tags.slice(0, 5).map(t => `<span>${esc(t)}</span>`).join('')}</div>
+          <div class="pz-tags">${p.tags.slice(0, 6).map(t => `<span>${esc(t)}</span>`).join('')}</div>
           <div class="pz-actions">
             <button class="pz-btn" type="button" data-id="${p.id}" data-action="${primaryAction}">${primaryLabel} <i aria-hidden="true">&rarr;</i></button>
           </div>
@@ -886,6 +889,7 @@
     if (hasGSAP) gsap.killTweensOf(detailEl);
     detailEl.style.opacity = '1';
     detailEl.classList.remove('pf-detail--cs');
+    overlay.classList.remove('pf-cs-mode');
     currentProject = project;
     activeCard = trigger;
     const img = qs('img', card);
@@ -932,6 +936,7 @@
   }
 
   function closeProject() {
+    if (EMBED) { try { window.parent.postMessage({ type: 'eleven-close-case-study' }, '*'); } catch (e) { /* ignore */ } return; }
     if (!overlay.classList.contains('pf-open')) return;
     const done = () => {
       overlay.classList.remove('pf-open');
@@ -940,6 +945,7 @@
       document.body.classList.remove('pf-modal-open');
       detailEl.innerHTML = '';
       detailEl.classList.remove('pf-detail--cs');
+      overlay.classList.remove('pf-cs-mode');
       if (activeCard) { activeCard.focus(); activeCard = null; }
     };
     if (hasGSAP && !reduceMotion) {
@@ -961,7 +967,7 @@
         <div class="pf-cs-bar">
           <button class="pf-cs-back" type="button">
             <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M13 8H3M3 8L7.5 3.5M3 8L7.5 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Back to overview
+            Back
           </button>
           <span class="pf-cs-bar-title">${esc(p.title)} <em>· Case study</em></span>
         </div>
@@ -981,6 +987,7 @@
     }
     if (hasGSAP) gsap.killTweensOf(detailEl);
     detailEl.classList.add('pf-detail--cs');
+    overlay.classList.add('pf-cs-mode');
     detailEl.innerHTML = caseStudyMarkup(project);
     detailEl.scrollTop = 0;
     if (hasGSAP && !reduceMotion) gsap.fromTo(detailEl, { opacity: 0 }, { opacity: 1, duration: 0.35 });
@@ -990,6 +997,7 @@
   function showProjectDetails(project) {
     currentProject = project;
     detailEl.classList.remove('pf-detail--cs');
+    overlay.classList.remove('pf-cs-mode');
     buildDetailMarkup(project);
     if (hasGSAP) gsap.killTweensOf(detailEl);
     detailEl.style.opacity = '1';

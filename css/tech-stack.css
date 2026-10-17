@@ -144,3 +144,10 @@
 .cs2-card, .cs2-head { transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
 @media (max-width: 960px) { .cs2 { padding: 70px 0; } .cs2-card { grid-template-columns: 1fr; padding: 34px 22px; gap: 30px; border-radius: 26px; } .cs2-browser { transform: none; } .cs2-chip { font-size: 11px; padding: 7px 12px; } }
 @media (prefers-reduced-motion: reduce) { .cs2 *, .cs2 *::before { animation: none !important; } }
+
+/* Mobile: no terminal / tool-icon wall marquee animation, only the heading and the tool categories below it */
+@media (max-width: 768px) {
+  .ts .ts-net, .ts .ts-floor, .ts .ts-toks, .ts .ts-stats, .ts .ts-term, .ts .ts-wall-col { display: none !important; }
+  .ts .ts-top { display: block !important; margin-bottom: 18px !important; }
+  .ts .ts-main { display: block !important; }
+}

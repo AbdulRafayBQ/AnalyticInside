@@ -114,8 +114,87 @@
     });
   }
 
+
+  /* ---------- inline field errors (shown right under the empty / wrong field) ---------- */
+  function errHost(el) {
+    return el.closest('.ep-field, .form-field') || el.parentElement;
+  }
+
+  function clearError(el) {
+    if (!el) return;
+    el.classList.remove('ep-err');
+    el.removeAttribute('aria-invalid');
+    const host = errHost(el);
+    if (!host) return;
+    host.querySelectorAll(':scope > .ep-err-msg').forEach(node => node.remove());
+    host.classList.remove('has-err', 'ep-shake');
+  }
+
+  function setError(el, message) {
+    if (!el) return;
+    const host = errHost(el);
+    let msg = host.querySelector(':scope > .ep-err-msg');
+    if (!msg) {
+      msg = document.createElement('small');
+      msg.className = 'ep-err-msg';
+      msg.setAttribute('role', 'alert');
+      host.appendChild(msg);
+    }
+    msg.textContent = message;
+    el.classList.add('ep-err');
+    el.setAttribute('aria-invalid', 'true');
+    host.classList.add('has-err');
+    host.classList.remove('ep-shake');
+    void host.offsetWidth;
+    host.classList.add('ep-shake');
+  }
+
+  function clearAllErrors(container) {
+    if (!container) return;
+    container.querySelectorAll('.ep-err-msg').forEach(node => node.remove());
+    container.querySelectorAll('.ep-err').forEach(node => {
+      node.classList.remove('ep-err');
+      node.removeAttribute('aria-invalid');
+    });
+    container.querySelectorAll('.has-err, .ep-shake').forEach(node => node.classList.remove('has-err', 'ep-shake'));
+  }
+
+  /* list: [{ el, msg, kind: 'empty' | 'invalid', focus?: element to focus (null = do not focus) }]
+     Shows every error at once, scrolls to the first one and tells Ely about it. */
+  function showErrors(list) {
+    list = (list || []).filter(Boolean);
+    if (!list.length) return false;
+    list.forEach(item => setError(item.el, item.msg));
+    const first = list[0];
+    const focusTarget = 'focus' in first ? first.focus : first.el;
+    if (focusTarget && typeof focusTarget.focus === 'function') {
+      try { focusTarget.focus({ preventScroll: true }); } catch (err) { /* ignore */ }
+    }
+    try { first.el.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (err) { /* ignore */ }
+    try {
+      document.dispatchEvent(new CustomEvent('ely:field-problem', {
+        detail: { el: first.el, msg: first.msg, kind: first.kind || 'empty' }
+      }));
+    } catch (err) { /* ignore */ }
+    return true;
+  }
+
+  /* the error disappears the moment the person starts fixing that field */
+  document.addEventListener('input', event => {
+    const t = event.target;
+    if (t && t.classList && t.classList.contains('ep-err')) clearError(t);
+  }, true);
+  document.addEventListener('change', event => {
+    const t = event.target;
+    if (!t || !t.closest) return;
+    const group = t.closest('.ep-groups');
+    if (group && group.classList.contains('ep-err')) clearError(group);
+    if (t.classList && t.classList.contains('ep-err')) clearError(t);
+  }, true);
+
   function resetForm(container) {
     if (!container) return;
+    clearAllErrors(container);
 
     if (typeof container.reset === 'function') {
       container.reset();
@@ -141,5 +220,5 @@
     });
   }
 
-  window.ANALYTIC_LEADS = { submit, reset: resetForm };
+  window.ANALYTIC_LEADS = { submit, reset: resetForm, showErrors, clearError, clearAllErrors };
 })();

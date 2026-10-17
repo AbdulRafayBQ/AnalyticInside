@@ -1,5 +1,5 @@
 /* =============================================
-   ELEVEN, ABOUT PAGE INTERACTIONS (v9)
+   ELYVEN, ABOUT PAGE INTERACTIONS (v9)
    Reveal, counters, brands marquee, story timeline,
    process deck, scroll progress and FAQ.
    ============================================= */

@@ -64,3 +64,9 @@
   .ta .ts-grid { grid-template-columns: repeat(2, 1fr); }
   .ta-stages span { font-size: 9.5px; }
 }
+
+/* Mobile: no phone/orbit card animation, only the heading and the tool categories below it */
+@media (max-width: 768px) {
+  .ta .ta-scene, .ta .ts-stats, .ta .ts-toks { display: none !important; }
+  .ta .ta-top { display: block !important; margin-bottom: 18px !important; }
+}

@@ -55,11 +55,16 @@
     return wrap;
   }
 
-  function init() {
-    const sel = document.getElementById('fd-service');
-    const msg = document.getElementById('fd-message');
+  /* the drawer form and the Contact page form share the same stack picker */
+  const FORMS = [['fd-service', 'fd-message'], ['cService', 'cProject']];
+  function init() { FORMS.forEach(f => initOne(f[0], f[1])); }
+
+  function initOne(selId, msgId) {
+    const sel = document.getElementById(selId);
+    const msg = document.getElementById(msgId);
     if (!sel || !msg) return;
-    const serviceField = sel.closest('.fd-field');
+    const isContact = selId === 'cService';
+    const serviceField = sel.closest('.fd-field, .form-field');
     if (!serviceField) return;
 
     let panel = null, cache = {};
@@ -81,6 +86,7 @@
       removePanel();
       panel = buildPanel(STACKS[key]);
       cache.key = key;
+      if (isContact) panel.classList.add('fd-stack--contact');
       serviceField.insertAdjacentElement('afterend', panel);
 
       const toggle = panel.querySelector('.fd-stack-toggle');
@@ -114,6 +120,9 @@
       if (STACKS[key]) showPanel(key); else removePanel();
     }
     sel.addEventListener('change', onChange);
+    /* after the contact form is sent / reset, drop the picker again */
+    const formEl = sel.closest('form');
+    if (formEl) formEl.addEventListener('reset', () => setTimeout(() => { cache = {}; removePanel(); }, 0));
     // Service pages pre-fill the select when opening the drawer (without
     // firing 'change'), so re-check right after the drawer-open handlers run.
     document.addEventListener('analytic:open-drawer', onChange);

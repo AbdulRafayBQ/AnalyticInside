@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ELEVEN — SERVICES & MEGA NAVIGATION ENGINE
+   ELYVEN — SERVICES & MEGA NAVIGATION ENGINE
    10 Fully Expanded Service Landing Pages with Zero Hyphens/Dashes
    Human-Optimized Copy, Bold Typography, Light Pastel Gradients
    ========================================================================== */
@@ -1627,7 +1627,7 @@ const REVIEWS = [
     color: "#4A72C9"
   },
   {
-    text: "We came in with a rough idea and a tight timeline. Eleven shaped Salasa into a product that actually works the way our customers expect, and they kept us informed the whole way through. Launch day went far smoother than we expected.",
+    text: "We came in with a rough idea and a tight timeline. Elyven shaped Salasa into a product that actually works the way our customers expect, and they kept us informed the whole way through. Launch day went far smoother than we expected.",
     name: "Abdul Majeed",
     company: "Salasa",
     init: "AM",
@@ -1655,7 +1655,7 @@ const REVIEWS = [
     color: "#4A9FD4"
   },
   {
-    text: "MetaDot started as a vague concept and a handful of sketches. Eleven helped us turn that into a working product without losing sight of what made it different. Their patience with our constant changes did not go unnoticed.",
+    text: "MetaDot started as a vague concept and a handful of sketches. Elyven helped us turn that into a working product without losing sight of what made it different. Their patience with our constant changes did not go unnoticed.",
     name: "Kashan",
     company: "MetaDot",
     init: "KA",

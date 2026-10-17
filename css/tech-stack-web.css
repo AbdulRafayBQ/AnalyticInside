@@ -57,3 +57,9 @@
 .hs-plan span { height: 6px; border-radius: 4px; background: rgba(255,255,255,.14); } .hs-plan span:nth-of-type(2) { width: 78%; } .hs-plan span:nth-of-type(3) { width: 58%; }
 .hs-plan i { margin-top: auto; height: 22px; border-radius: 99px; background: rgba(255,255,255,.14); } .hs-plan.hot i { background: #C99B5C; }
 .hs-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,.08); } .hs-bar::after { content: ''; display: block; height: 100%; width: 40%; background: #5CE1B4; animation: hsSlide 3s ease-in-out infinite alternate; } @keyframes hsSlide { to { margin-left: 60%; } }
+
+/* Mobile: no rocket/growth scene animation, only the heading and the tool categories below it */
+@media (max-width: 768px) {
+  .tw .tw-scene, .tw .ts-stats, .tw .ts-toks, .tw .tw-rail { display: none !important; }
+  .tw .tw-top { display: block !important; margin-bottom: 18px !important; }
+}

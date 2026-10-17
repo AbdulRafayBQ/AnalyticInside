@@ -143,15 +143,13 @@
       btn.disabled = false; btn.innerHTML = `Send Request ${ARROW}`;
       note.textContent = 'No commitment. We reply with a plan within 24 hours.'; note.classList.remove('is-error');
       dr.querySelectorAll('input[name="vc-svc"]').forEach(i => { i.checked = !!preset && i.value === preset; });
-      dr.querySelectorAll('.ep-groups').forEach(g => g.classList.remove('ep-err'));
-      [nm, em].forEach(f => f.classList.remove('ep-err'));
       sync();
       dr.classList.add('open'); ov.classList.add('open'); dr.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
       setTimeout(() => nm.focus(), 350);
     };
 
     document.addEventListener('click', e => { const b = e.target.closest('[data-vc-open]'); if (b) open(b.dataset.vcOpen || ''); });
-    dr.addEventListener('change', e => { if (e.target.matches('.ep-chip input')) { sync(); e.target.closest('.ep-groups').classList.remove('ep-err'); } });
+    dr.addEventListener('change', e => { if (e.target.matches('.ep-chip input')) sync(); });
     $('vcClose').addEventListener('click', close); ov.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 
@@ -179,13 +177,18 @@
 
     form.addEventListener('submit', async e => {
       e.preventDefault();
-      const badMail = !em.value.trim() || !em.validity.valid;
-      nm.classList.toggle('ep-err', !nm.value.trim()); em.classList.toggle('ep-err', badMail);
-      if (!nm.value.trim() || badMail) { (nm.value.trim() ? em : nm).focus(); return; }
+      const L = window.ANALYTIC_LEADS;
+      L.clearAllErrors(form);
       const tool = checked('vc-tool');
-      if (!tool) { $('vcToolBox').classList.add('ep-err'); return; }
       const picked = dr.querySelectorAll('input[name="vc-svc"]:checked');
-      if (!picked.length) { $('vcGroups').classList.add('ep-err'); return; }
+      const problems = [];
+      if (!nm.value.trim()) problems.push({ el: nm, kind: 'empty', msg: 'Your name is empty. Please type your name.' });
+      if (!em.value.trim()) problems.push({ el: em, kind: 'empty', msg: 'Your email is empty. Please type your email address.' });
+      else if (!em.validity.valid) problems.push({ el: em, kind: 'invalid', msg: 'This email does not look right. Use a format like you@company.com.' });
+      if (!tool) problems.push({ el: $('vcToolBox'), kind: 'empty', msg: 'Nothing selected yet. Choose the tool or stack you built it with.', focus: null });
+      else if (tool.value === 'Other' && !$('vcToolOtherIn').value.trim()) problems.push({ el: $('vcToolOtherIn'), kind: 'empty', msg: 'This is empty. Please tell us which tool or stack you used.' });
+      if (!picked.length) problems.push({ el: $('vcGroups'), kind: 'empty', msg: 'Nothing selected yet. Pick at least one thing you need.', focus: null });
+      if (problems.length) { L.showErrors(problems); return; }
       const btn = form.querySelector('.ep-submit'), note = form.querySelector('.ep-note');
       btn.disabled = true; btn.textContent = 'Sending...';
       const type = checked('vc-type');

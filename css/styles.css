@@ -1,5 +1,5 @@
 /* =============================================
-   ELEVEN — BLACK / WHITE / GREY
+   ELYVEN — BLACK / WHITE / GREY
    Cinematic dark, inspired by cubix.co style
    ============================================= */
 
@@ -203,6 +203,8 @@ body {
   height: 2px; border-radius: 2px;
   background: #C99B5C;
 }
+.nav-link.active::after { transform-origin: left center; animation: navLineIn .5s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes navLineIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .nav-phone { color: rgba(23,19,14,.65) !important; border-color: rgba(23,19,14,.14) !important; }
 .nav-phone:hover { color:#17130E !important; border-color:rgba(23,19,14,.28) !important; background:rgba(23,19,14,.05) !important; }
 .btn-nav-cta { background:#17130E !important; color:#fff !important; border-radius:999px !important; display:inline-flex !important; align-items:center !important; gap:8px !important; padding:10px 20px 10px 22px !important; }

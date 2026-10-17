@@ -153,6 +153,25 @@
     return `<div class="ep-type"><div class="ep-type-w">${m((it, i) => `<button type="button" ${pick(it, i).replace('class="on"', 'class="on"')} style="--i:${i}">${T(it)}</button>${i < L.length - 1 ? '<i>✦</i>' : ''}`)}</div>${panel(L[0])}</div>`;
   }
 
+  /* placeholder for "Current Tech Stack": tools that belong to THIS service, not generic ones */
+  var STACK_HINTS = {
+    'mobile-app-development': 'Flutter, Kotlin, Firebase',
+    'website-development': 'Next.js, React, Node.js',
+    'custom-software-development': '.NET, PostgreSQL, Docker',
+    'ai-development': 'Python, OpenAI APIs, LangChain',
+    'product-design-development': 'Figma, React, Node.js',
+    'ai-consultancy-automation-strategy': 'OpenAI APIs, Zapier, Power BI',
+    'vibe-code-to-production': 'Next.js, TypeScript, Supabase',
+    'ecommerce-shopify-development': 'Shopify, Liquid, Stripe',
+    'data-analytics-consultancy': 'Power BI, Snowflake, Python',
+    'digital-marketing-branding': 'Google Ads, Meta Ads, Figma'
+  };
+  function stackHint(s) {
+    var h = STACK_HINTS[s && s.slug];
+    if (!h && s && s.tech && s.tech.length) h = s.tech.slice(0, 3).join(', ');
+    return 'e.g. ' + (h || 'React, Node.js, PostgreSQL');
+  }
+
   function html(s) {
     if (!PLAN[s.slug]) return '';
     const list = itemsFor(s), P = planOf(s);
@@ -198,7 +217,7 @@
               <div class="ep-field"><label for="epEmail">Email</label><input id="epEmail" type="email" placeholder="you@company.com" required></div>
             </div>
             <div class="ep-field"><label for="epLink">Product Link (live URL, repo or store link)</label><input id="epLink" type="url" placeholder="https://yourproduct.com"></div>
-            <div class="ep-field"><label for="epStack">Current Tech Stack (optional)</label><input id="epStack" type="text" placeholder="e.g. WordPress, React, Firebase"></div>
+            <div class="ep-field"><label for="epStack">Current Tech Stack (optional)</label><input id="epStack" type="text" placeholder="${esc(stackHint(s))}"></div>
             <div class="ep-field">
               <label>Services Needed</label>
               <div class="ep-groups">${groups}</div>
@@ -303,11 +322,16 @@
 
     form.addEventListener('submit', async e => {
       e.preventDefault();
-      nm.classList.toggle('ep-err', !nm.value.trim());
-      em.classList.toggle('ep-err', !em.value.trim() || !em.validity.valid);
-      if (!nm.value.trim() || !em.value.trim() || !em.validity.valid) { (nm.value.trim() ? em : nm).focus(); return; }
+      const L = window.ANALYTIC_LEADS;
+      L.clearAllErrors(form);
       const picked = dr.querySelectorAll('input[name="ep-svc"]:checked');
-      if (!picked.length) { dr.querySelector('.ep-groups').classList.add('ep-err'); return; }
+      const mailVal = em.value.trim();
+      const problems = [];
+      if (!nm.value.trim()) problems.push({ el: nm, kind: 'empty', msg: 'Your name is empty. Please type your name.' });
+      if (!mailVal) problems.push({ el: em, kind: 'empty', msg: 'Your email is empty. Please type your email address.' });
+      else if (!em.validity.valid) problems.push({ el: em, kind: 'invalid', msg: 'This email does not look right. Use a format like you@company.com.' });
+      if (!picked.length) problems.push({ el: dr.querySelector('.ep-groups'), kind: 'empty', msg: 'Nothing selected yet. Pick at least one service you need.', focus: null });
+      if (problems.length) { L.showErrors(problems); return; }
       const button = form.querySelector('.ep-submit');
       const note = form.querySelector('.ep-note');
       button.disabled = true;

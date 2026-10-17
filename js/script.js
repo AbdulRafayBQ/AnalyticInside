@@ -1,5 +1,5 @@
 /* =============================================
-   ELEVEN — INTERACTIONS
+   ELYVEN — INTERACTIONS
    Scroll Reveals · 3D Tilt · Parallax · Counter
    ============================================= */
 (function () {
@@ -58,12 +58,27 @@
   /* ─── Active nav link ─── */
   const sections  = qsa('section[id]');
   const navLinks  = qsa('.nav-link');
+  /* Current page → its navbar button gets the underline (service.html belongs to "Expertise") */
+  function markCurrentPage() {
+    let file = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    if (file === 'service.html') file = 'services.html';
+    document.querySelectorAll('#mainNav a.nav-link').forEach(l => {
+      const h = (l.getAttribute('href') || '').toLowerCase();
+      if (h.indexOf('#') === 0 || h.indexOf('?') !== -1) return;
+      l.classList.toggle('active', h === file);
+    });
+  }
+  markCurrentPage();
+  window.addEventListener('load', markCurrentPage);
+
+  /* in-page anchor links only (never touches the page-level underline) */
   const secObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove('active'));
         const a = navLinks.find(l => l.getAttribute('href') === '#' + e.target.id);
-        if (a) a.classList.add('active');
+        if (!a) return;
+        navLinks.forEach(l => { if ((l.getAttribute('href') || '').charAt(0) === '#') l.classList.remove('active'); });
+        a.classList.add('active');
       }
     });
   }, { rootMargin: '-40% 0px -50% 0px' });

@@ -4,16 +4,16 @@
   <link rel="icon" href="images/brand/eleven-logo.png" type="image/png">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — ELEVEN</title>
+  <title>Contact — ELYVEN</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=5.0">
-  <link rel="stylesheet" href="css/contact.css?v=3.1">
+  <link rel="stylesheet" href="css/contact.css?v=3.2">
   <link rel="stylesheet" href="css/mobile-fix.css?v=3.0">
   <link rel="stylesheet" href="css/mega.css">
-  <link rel="stylesheet" href="css/shared.css?v=1.1">
-  <link rel="stylesheet" href="css/eli-avatar.css?v=3.0">
+  <link rel="stylesheet" href="css/shared.css?v=1.2">
+  <link rel="stylesheet" href="css/eli-avatar.css?v=3.1">
 </head>
 <body>
 
@@ -67,29 +67,41 @@
           <div class="contact-info-col reveal-up" data-delay="0.1">
             
             <!-- Direct Info Card -->
-            <div class="contact-card info-card" data-tilt>
+            <div class="contact-card info-card">
+
+              <span class="form-chip"><i></i>Available for new projects</span>
+              <h3 class="info-title">Talk to us <em>directly.</em></h3>
 
               <div class="info-list">
                 
                 <div class="info-item">
+                  <span class="info-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7.5l8.5 6 8.5-6"/></svg></span>
+                  <div class="info-body">
                   <span class="info-tag">Email</span>
                   <a href="mailto:abdulrafay364p@gmail.com" class="info-val info-link">
                     abdulrafay364p@gmail.com
                     <svg width="14" height="14" viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
                   </a>
+                  </div>
                 </div>
 
                 <div class="info-item">
+                  <span class="info-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+                  <div class="info-body">
                   <span class="info-tag">Phone / WhatsApp</span>
                   <a href="https://wa.me/923340317145" target="_blank" rel="noopener noreferrer" class="info-val info-link">
-                    0334 0317145
+                    +92 334 0317145
                     <svg width="14" height="14" viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
                   </a>
+                  </div>
                 </div>
 
                 <div class="info-item">
+                  <span class="info-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg></span>
+                  <div class="info-body">
                   <span class="info-tag">Location</span>
                   <p class="info-val">Karachi, Pakistan &mdash; working worldwide</p>
+                  </div>
                 </div>
 
               </div>
@@ -99,29 +111,34 @@
 
           <!-- RIGHT COLUMN: CONTACT FORM -->
           <div class="contact-form-col reveal-up" data-delay="0.2">
-            <div class="contact-card form-card" data-tilt>
+            <div class="contact-card form-card">
+              <span class="form-chip"><i></i>Free consultation</span>
               <h2 class="form-title">Send a message</h2>
               <p class="form-desc">We reply within 24 hours.</p>
 
-              <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); window.handleContactSubmit();">
+              <form class="contact-form" id="contactForm" novalidate onsubmit="event.preventDefault(); window.handleContactSubmit();">
                 
                 <div class="form-field">
                   <label for="cName">Your name</label>
+                  <span class="ff-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
                   <input type="text" id="cName" required placeholder="Name*" autocomplete="name" />
                 </div>
 
                 <div class="form-field">
                   <label for="cEmail">Email</label>
+                  <span class="ff-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7.5l8.5 6 8.5-6"/></svg></span>
                   <input type="email" id="cEmail" required placeholder="Email*" autocomplete="email" />
                 </div>
 
                 <div class="form-field">
                   <label for="cPhone">Phone</label>
+                  <span class="ff-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
                   <input type="tel" id="cPhone" placeholder="Phone" autocomplete="tel" />
                 </div>
 
                 <div class="form-field form-field-service">
                   <label for="cService">Service Interested In</label>
+                  <span class="ff-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><path d="M17.2 13.5v7.5M13.5 17.2H21"/></svg></span>
                   <select id="cService" required>
                     <option value="" disabled selected>Select a service</option>
                     <option value="Mobile App Development">Mobile App Development</option>
@@ -134,15 +151,18 @@
                   </select>
                 </div>
 
-                <div class="form-field">
+                <div class="form-field form-field-wide form-field-area">
                   <label for="cProject">Tell us about your project</label>
+                  <span class="ff-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span>
                   <textarea id="cProject" rows="5" required placeholder="Briefly describe your idea or platform..."></textarea>
                 </div>
 
-                <button type="submit" class="btn primary btn-send" id="sendBtn">
+                <button type="submit" class="btn primary btn-send form-field-wide" id="sendBtn">
                   <span>Send message</span>
                   <svg class="send-arrow" width="14" height="14" viewBox="0 0 12 12"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>
                 </button>
+
+                <ul class="form-trust" aria-label="What to expect"><li>Reply within 24 hours</li><li>Free estimate</li><li>NDA on request</li></ul>
 
                 <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
               </form>
@@ -196,7 +216,7 @@
         <!-- Col 1: Brand & Identity -->
         <div class="footer-col footer-col-brand">
           <a class="footer-brand" href="index.html">
-            <span class="footer-brand-title">ELEVEN</span>
+            <span class="footer-brand-title">ELYVEN</span>
             <span class="footer-brand-dot"></span>
           </a>
           <p class="footer-brand-tagline">
@@ -280,11 +300,11 @@
             </a>
             <a href="tel:+923340317145" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>0334 0317145</span>
+              <span>+92 334 0317145</span>
             </a>
             <a href="tel:+923340317145" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>0334 0317145</span>
+              <span>+92 334 0317145</span>
             </a>
           </div>
         </div>
@@ -294,7 +314,7 @@
       <!-- ══ BOTTOM BAR ══ -->
       <div class="footer-bottom-bar">
         <div class="footer-bottom-left">
-          <span>&copy; 2026 Eleven. All rights reserved.</span>
+          <span>&copy; 2026 Elyven. All rights reserved.</span>
           <span class="footer-bottom-sep">&bull;</span>
           <span>Software &middot; Web &middot; AI &middot; Mobile</span>
         </div>
@@ -309,13 +329,29 @@
     </div><!-- /footer-inner -->
   </footer>
 
-  <script src="js/lead-forms.js?v=1.4"></script>
+  <script src="js/lead-forms.js?v=1.5"></script>
+  <script src="js/fd-stack-choice.js?v=1.2"></script>
   <script src="js/script.js"></script>
   <script>
     window.handleContactSubmit = async function() {
       const btn = document.getElementById('sendBtn');
       const feedback = document.getElementById('formFeedback');
       if (!btn || !feedback) return;
+      /* empty / wrong fields: show the error right under the field and let Ely react */
+      var L = window.ANALYTIC_LEADS;
+      if (L && typeof L.showErrors === 'function') {
+        var f = function (id) { return document.getElementById(id); };
+        L.clearAllErrors(f('contactForm'));
+        feedback.className = 'form-feedback';
+        feedback.textContent = '';
+        var problems = [];
+        if (!f('cName').value.trim()) problems.push({ el: f('cName'), kind: 'empty', msg: 'Please enter your name.' });
+        if (!f('cEmail').value.trim()) problems.push({ el: f('cEmail'), kind: 'empty', msg: 'Please enter your email.' });
+        else if (!f('cEmail').validity.valid) problems.push({ el: f('cEmail'), kind: 'invalid', msg: 'Enter a valid email, like you@company.com' });
+        if (!f('cService').value) problems.push({ el: f('cService'), kind: 'empty', msg: 'Please choose a service.' });
+        if (!f('cProject').value.trim()) problems.push({ el: f('cProject'), kind: 'empty', msg: 'Please tell us about your project.' });
+        if (L.showErrors(problems)) return;
+      }
       window.clearTimeout(window.contactFeedbackTimer);
       feedback.classList.remove('is-hiding');
       btn.disabled = true;
@@ -358,6 +394,7 @@
   <script src="js/mega.js?v=3.2"></script>
   <script src="js/shared.js?v=1.0"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/eli-avatar.js?v=3.0"></script>
+  <script src="js/eli-avatar.js?v=3.1"></script>
+  <script src="js/case-study-overlay.js?v=1.0"></script>
 </body>
 </html>

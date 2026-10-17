@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════
-   ELEV — the site's funny guide avatar  (v3)
+   ELY — the site's funny guide avatar  (v3)
    • Dark body, glowing bold eyes + mouth (read from kirby.avatar.json)
    • Thought-bubble chat: every click = a new random question, every
      answer opens a different branch (services → work → contact …)
@@ -19,7 +19,7 @@
   window.__ELI_INIT__ = true;
 
   if (typeof THREE === 'undefined') {
-    console.warn('[Elev] three.js not found — avatar disabled.');
+    console.warn('[Ely] three.js not found — avatar disabled.');
     return;
   }
 
@@ -59,7 +59,7 @@
     }
     return a;
   }
-  /* wait() can be fast-forwarded (used when the person grabs Elev during his entrance) */
+  /* wait() can be fast-forwarded (used when the person grabs Ely during his entrance) */
   var abortFlag = false, waiters = [];
   function wait(ms) {
     return new Promise(function (r) {
@@ -138,14 +138,13 @@
     r_budget:  { q: 'Thinking about budget? 💸', mood: 'thinking', o: [['Tight budget', 'n_tight'], ['Flexible', 'n_flex'], ['No idea yet', 'n_dunno']] },
     r_time:    { q: 'Are you in a hurry? ⏱️', mood: 'surprised', o: [['ASAP!', 'n_asap'], ['A few weeks', 'n_flex'], ['No rush', 'n_explore']] },
     r_trust:   { q: 'Need proof before trusting a goofy blob? 😄', mood: 'suspicious', o: [['Client reviews', '@portfolio.html#reviews'], ['Past projects', '@portfolio.html#work'], ['Meet the team', '@about.html#team']] },
-    r_design:  { q: 'Want it to look stunning? 🎨', mood: 'proud', o: [['Brand & logo', 'n_brand'], ['UI / UX design', 'n_brand'], ['Just polish my site', 'n_fix']] },
+    r_design:  { q: 'Want it to look stunning? 🎨', mood: 'proud', o: [['Brand & logo', 'n_brand'], ['UI / UX design', 'n_brand'], ['Just polish my site', '@service.html?s=website-development']] },
     r_stuck:   { q: 'Feeling lost on this page? 🧭', mood: 'searching', o: [['Take me home', '@index.html'], ['Show me services', '@services.html'], ['Show me the work', '@portfolio.html'], ['Surprise me!', '@random']] },
     r_fun:     { q: 'Want a fun fact about me?', mood: 'playful', o: [['Sure!', 'n_fact'], ['Nah, business please', 'n_unsure']] },
     r_process: { q: 'Wondering how a project actually goes? 🧩', mood: 'thinking', o: [['Show me step by step', '@about.html#process'], ['How long will it take?', 'n_howlong'], ['What does it cost?', 'r_budget']] },
     r_mobile:  { q: 'On your phone? I fit in a pocket! 📱', mood: 'happy', o: [['Show me mobile apps', 'n_app'], ['Show me everything', 'n_explore']] },
     r_ai:      { q: 'AI is everywhere. Want some in your product? 🤖', mood: 'excited', o: [['Yes please!', 'n_ai'], ['What can it do?', 'n_ai_auto'], ['Maybe later', 'n_explore']] },
-    r_svc:     { q: ['Want a fresh build, or help with something you already have?', 'New project, or fixing something that already exists?'], mood: 'curious', only: ['service.html'], o: [['A brand new project', '!form'], ['Fix a bug or upgrade my product', '!ep'], ['My AI-built (vibe coded) app', '!vc']] },
-    r_rescue:  { q: 'Is something on fire? 🔥 (like, your website?)', mood: 'scared', o: [['Yes! Fix it!', 'n_fix'], ['Nope, building new', 'r_build'], ['Just browsing', 'n_browse']] },
+    r_svc:     { q: ['Want a fresh build, or help with something you already have?', 'New project, or fixing something that already exists?', 'Where to? I can open a form, or show you around.'], mood: 'curious', only: ['service.html'], o: [['A brand new project', '!form'], ['Fix a bug or upgrade my product', '!ep'], ['My AI-built (vibe coded) app', '!vc']] },
 
     /* ---- branches ---- */
     n_web:      { q: ['Nice! What kind of website?', 'Websites, my favourite! Which type?'], mood: 'happy', o: [['Business / brand site', 'n_web_biz'], ['Dashboard or SaaS', 'n_saas'], ['Online store', 'n_store']] },
@@ -162,7 +161,6 @@
     n_unsure:   { q: 'No stress! Tell me your vibe:', mood: 'happy', o: [['I need to explore first', 'n_explore'], ['I need advice', '@contact.html'], ['Just browsing', 'n_browse']] },
     n_explore:  { q: 'Pick your adventure!', mood: 'excited', o: [['Services', '@services.html'], ['Portfolio', '@portfolio.html'], ['About us', '@about.html'], ['Home', '@index.html']] },
     n_browse:   { q: 'Browse away! Want a guided hop?', mood: 'playful', o: [['Surprise me', '@random'], ['Show the work', '@portfolio.html'], ['Show services', '@services.html']] },
-    n_fix:      { q: 'Fixing things is a superpower. What needs rescuing?', mood: 'scared', o: [['My website', '@service.html?s=website-development#!ep'], ['My mobile app', '@service.html?s=mobile-app-development#!ep'], ['My AI-built (vibe coded) app', '@service.html?s=website-development#!vc'], ['Talk to a human now', '@contact.html']] },
     n_work_pick:{ q: 'Prefer browsing projects or hearing from clients?', mood: 'curious', o: [['Browse projects', '@portfolio.html#work'], ['Client reviews', '@portfolio.html#reviews'], ['Talk to the team', '@contact.html']] },
     n_reply:    { q: 'Usually within 24 hours! Send a message now?', mood: 'proud', o: [['Send a message', '@contact.html'], ['Let me look around first', 'n_explore']] },
     n_team:     { q: 'Nice people, right? What now?', mood: 'happy', o: [['Meet the team', '@about.html#team'], ['See their work', '@portfolio.html#work'], ['Get in touch', '@contact.html']] },
@@ -199,19 +197,18 @@
   function lookFor(mood) { return LOOKS[MOOD_LOOK[mood]] || LOOKS.base; }
 
   /* ───────────────────────── text pools ───────────────────────── */
-  var FIRST_GREET = 'Hi, I am Elev';   /* said ONCE, typed out, never repeated */
+  var FIRST_GREET = 'Hi, I am Ely';   /* said ONCE, typed out, never repeated */
   var WAKE_LINES = ['Whoa! I am up, I am up! 😳', 'Huh?! Who woke me?', 'Oh! Okay okay, I am awake!', '*snort* I was NOT sleeping!', 'Back from dreamland! ✨'];
   var OOPS_WALL = ['Ouch!! Who put a wall there? 😵', 'Note to self: walls exist.', 'I meant to do that. 😅', 'Okay… the wall wins. 🥴'];
-  var OOPS_FLOOR = ['Aaaaah! 😱', 'Gravity: 1, Elev: 0', 'Landing: needs work. 😵‍💫'];
-  var SEND_LINES = ['Sending… fingers crossed 🤞', 'Delivering your message! 📨', 'Off it goes! 🚀'];
+  var OOPS_FLOOR = ['Aaaaah! 😱', 'Gravity: 1, Ely: 0', 'Landing: needs work. 😵‍💫'];
   var DONE_LINES = ['Message sent! You are awesome! 🎉', 'Yesss! We got it! 🥳', 'Woohoo! Talk soon! 🎊'];
   var LEAVE_LINES = ['Off we go! 🚀', 'Follow me! ✨', 'Hold tight! 💨', 'Wheeee! 🛫'];
 
   /* ───────────────────────── boot ───────────────────────── */
   fetch('kirby.avatar.json?v=3', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error('avatar json ' + r.status); return r.json(); })
-    .then(function (def) { try { init(def); } catch (err) { console.warn('[Elev] init failed:', err); } })
-    .catch(function (err) { console.warn('[Elev] could not load avatar definition:', err); });
+    .then(function (def) { try { init(def); } catch (err) { console.warn('[Ely] init failed:', err); } })
+    .catch(function (err) { console.warn('[Ely] could not load avatar definition:', err); });
 
   function init(def) {
     /* ════════ DOM ════════ */
@@ -241,7 +238,7 @@
     chat.setAttribute('data-tail', 'bottom');
     chat.innerHTML =
       '<div class="eli-card">' +
-      '  <div class="eli-head-row"><span class="eli-tag">Elev says</span><button type="button" class="eli-x" aria-label="Close">×</button></div>' +
+      '  <div class="eli-head-row"><span class="eli-tag">Ely says</span><button type="button" class="eli-x" aria-label="Close">×</button></div>' +
       '  <p class="eli-q"></p>' +
       '  <div class="eli-opts"></div>' +
       '  <button type="button" class="eli-more">Ask me something else</button>' +
@@ -404,7 +401,12 @@
     /* ════════ expression / animation player ════════ */
     var anims = def.animations;
 
-    function calmEye(e) {
+    function calmEye(e, angry) {
+      if (angry) {                       /* JSON angles are CSS-style (clockwise +); three.js is the opposite, so angry eyes read as SAD. Flip them. */
+        var a = Math.abs(e.angle || 0);
+        e.angle = -Math.sign(e.angle || 1) * Math.max(a, 26);
+        e.height = Math.min(e.height, 52);   /* a bit narrower = glaring */
+      }
       e.x = clamp(e.x || 0, -4, 4);
       e.y = clamp(e.y || 0, -6, 8);
       e.height = Math.min(e.height, 66);
@@ -415,10 +417,11 @@
       var ex = def.expressions[exprName] || def.expressions.neutral;
       var mouth = mouthOverride || ex.mouth || { width: 40, openness: 0, curve: 0.2, x: 0, y: 46, angle: 0 };
       var L = lookFor(mood);
+      var isAngry = /^angry/.test(exprName);
       return {
         head: { x: clamp((ex.head.x || 0) * 0.2, -5, 5), y: clamp((ex.head.y || 0) * 0.2, -5, 5), z: clamp((ex.head.z || 0) * 0.2, -5, 5) },
-        eyeL: calmEye(lerpEye(ex.eyes.left, ex.eyes.left, 0)),
-        eyeR: calmEye(lerpEye(ex.eyes.right, ex.eyes.right, 0)),
+        eyeL: calmEye(lerpEye(ex.eyes.left, ex.eyes.left, 0), isAngry),
+        eyeR: calmEye(lerpEye(ex.eyes.right, ex.eyes.right, 0), isAngry),
         spacing: ex.eyes.spacing || 30,
         mouth: {
           width: mouth.width, openness: mouth.openness || 0, curve: mouth.curve || 0,
@@ -427,7 +430,7 @@
         },
         bodyColor: L.body, eyesColor: L.eyes, mouthColor: L.mouth, glowColor: L.glow,
         ga: L.ga, eg: L.eg,
-        shake: (ex.motion && ex.motion.body === 'shake')
+        shake: false
       };
     }
     function cloneKf(kf) { return JSON.parse(JSON.stringify(kf)); }
@@ -538,16 +541,18 @@
     var fx = { dx: 0, dy: 0, rot: 0, sx: 1, sy: 1 };      // scripted offsets (motions)
     var dragging = false, busy = true, fxLock = false, asleep = false, waking = false;
     var bubbleOpen = false;
-    var talk = 0, snoreT = -9999, rage = 0, extraJitter = 0;
+    var talk = 0, snoreT = -9999, rage = 0, extraJitter = 0, heldShaking = false;
     var dragOffset = { x: 0, y: 0 }, pointerTrail = [], downInfo = null;
     var scrollBob = { offset: 0, velocity: 0 };
     var lastScrollY = window.scrollY || window.pageYOffset;
     var lastActivity = performance.now();
     var pointer = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.5 };
     var lookX = 0, lookY = 0, lookEl = null, hovered = false;
+    var gazeBoost = 1, headNo = 0, emptyLookEl = null, emptyBusy = false;   // empty-field reaction: stronger look + head "no" shake
     var pokes = [];
     var entering = false, pendingGrab = null, pointerIsDown = false, pendingAction = '';
-    var lastShakeAt = 0, userScrolled = false;
+    var lastShakeAt = 0, userScrolled = false, calmTimer = null;
+    var shakeStartAt = 0, shakeLineAt = -99999, shakeLineUntil = 0;   // "stop shaking me" appears only after a while of shaking, then stays ~4.5s
     window.addEventListener('pointerdown', function () { pointerIsDown = true; }, true);
     window.addEventListener('pointerup', function () { pointerIsDown = false; }, true);
     window.addEventListener('pointercancel', function () { pointerIsDown = false; }, true);
@@ -650,6 +655,76 @@
         })(el);
       }
     }
+    /* ════════ realistic impact burst (replaces the old emoji blast) ════════
+       No emoji, no rainbow: a hot flash, two soft shockwave rings, drifting graphite smoke and thin ember streaks
+       that fly out, slow down and fall — all one warm/graphite palette. */
+    function impactBurst(ox, oy) {
+      var n = reduceMotion ? 0.35 : 1;
+      function node(css) {
+        var el = document.createElement('div');
+        el.style.cssText = 'position:fixed;left:0;top:0;pointer-events:none;z-index:2147481;will-change:transform,opacity;' + css;
+        document.body.appendChild(el);
+        return el;
+      }
+      function run(el, kf, opt) {
+        var a = el.animate(kf, opt);
+        a.onfinish = function () { if (el.parentNode) el.parentNode.removeChild(el); };
+      }
+      /* 1 · flash */
+      var fl = node('width:220px;height:220px;margin:-110px 0 0 -110px;border-radius:50%;mix-blend-mode:screen;' +
+        'background:radial-gradient(circle,rgba(255,250,235,.95) 0%,rgba(255,214,150,.55) 28%,rgba(255,150,70,.18) 55%,rgba(255,120,40,0) 72%);');
+      run(fl, [
+        { transform: 'translate(' + ox + 'px,' + oy + 'px) scale(.15)', opacity: 1 },
+        { transform: 'translate(' + ox + 'px,' + oy + 'px) scale(1.15)', opacity: .85, offset: .35 },
+        { transform: 'translate(' + ox + 'px,' + oy + 'px) scale(1.7)', opacity: 0 }
+      ], { duration: 520, easing: 'cubic-bezier(.1,.8,.3,1)' });
+      /* 2 · shockwave rings */
+      [0, 90].forEach(function (delay, i) {
+        var ring = node('width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;' +
+          'border:' + (i ? 1 : 2) + 'px solid rgba(255,238,215,' + (i ? .35 : .6) + ');' +
+          'box-shadow:0 0 18px rgba(255,190,120,.35),inset 0 0 22px rgba(255,210,160,.18);');
+        run(ring, [
+          { transform: 'translate(' + ox + 'px,' + oy + 'px) scale(.1)', opacity: 0 },
+          { transform: 'translate(' + ox + 'px,' + oy + 'px) scale(.9)', opacity: 1, offset: .18 },
+          { transform: 'translate(' + ox + 'px,' + oy + 'px) scale(' + (i ? 3.6 : 4.4) + ')', opacity: 0 }
+        ], { duration: 820 + i * 160, delay: delay, easing: 'cubic-bezier(.12,.75,.25,1)', fill: 'backwards' });
+      });
+      /* 3 · smoke */
+      var smokeN = Math.round(9 * n) + 2;
+      for (var i = 0; i < smokeN; i++) {
+        (function () {
+          var sz = rand(46, 92), g = Math.round(rand(54, 96));
+          var sm = node('width:' + sz + 'px;height:' + sz + 'px;margin:' + (-sz / 2) + 'px 0 0 ' + (-sz / 2) + 'px;border-radius:50%;filter:blur(7px);' +
+            'background:radial-gradient(circle,rgba(' + (g + 22) + ',' + (g + 12) + ',' + g + ',.62) 0%,rgba(' + g + ',' + g + ',' + (g + 4) + ',.34) 48%,rgba(' + g + ',' + g + ',' + g + ',0) 72%);');
+          var ang = rand(0, Math.PI * 2), d = rand(30, 120);
+          var x1 = ox + Math.cos(ang) * d, y1 = oy + Math.sin(ang) * d * 0.7 - rand(10, 40);
+          run(sm, [
+            { transform: 'translate(' + ox + 'px,' + oy + 'px) scale(.2)', opacity: 0 },
+            { transform: 'translate(' + ((ox + x1) / 2) + 'px,' + ((oy + y1) / 2) + 'px) scale(.8)', opacity: .9, offset: .25 },
+            { transform: 'translate(' + (x1 + rand(-14, 14)) + 'px,' + (y1 - rand(50, 110)) + 'px) scale(' + rand(1.6, 2.4).toFixed(2) + ')', opacity: 0 }
+          ], { duration: rand(1300, 2100), delay: rand(0, 160), easing: 'cubic-bezier(.2,.6,.3,1)', fill: 'backwards' });
+        })();
+      }
+      /* 4 · ember streaks */
+      var emberN = Math.round(18 * n) + 3;
+      for (var j = 0; j < emberN; j++) {
+        (function () {
+          var len = rand(9, 24), ang = rand(0, Math.PI * 2), v = rand(90, 300);
+          var em = node('width:2px;height:' + len + 'px;margin:' + (-len / 2) + 'px -1px;border-radius:2px;transform-origin:50% 50%;' +
+            'background:linear-gradient(to bottom,rgba(255,246,222,1),rgba(255,176,82,.9) 45%,rgba(255,96,24,0));' +
+            'box-shadow:0 0 6px rgba(255,160,70,.7);');
+          var rot = (ang * 180 / Math.PI) + 90;
+          var mx = ox + Math.cos(ang) * v * 0.65, my = oy + Math.sin(ang) * v * 0.65;
+          var ex = ox + Math.cos(ang) * v, ey = oy + Math.sin(ang) * v + rand(30, 110);
+          run(em, [
+            { transform: 'translate(' + ox + 'px,' + oy + 'px) rotate(' + rot + 'deg) scaleY(1.2)', opacity: 1 },
+            { transform: 'translate(' + mx + 'px,' + my + 'px) rotate(' + rot + 'deg) scaleY(.9)', opacity: 1, offset: .45 },
+            { transform: 'translate(' + ex + 'px,' + ey + 'px) rotate(' + (rot + rand(-40, 40)) + 'deg) scaleY(.3)', opacity: 0 }
+          ], { duration: rand(650, 1150), easing: 'cubic-bezier(.1,.7,.35,1)' });
+        })();
+      }
+    }
+
     function confettiRain(n) {
       var W = window.innerWidth;
       for (var i = 0; i < n; i++) {
@@ -718,8 +793,9 @@
       var sleeping = player.mood === 'sleeping';
       var lookAmt = sleeping ? 0.7 : 1;
 
-      headGroup.rotation.x = degToRad(sf.head.x + lookY * 9 * lookAmt);
-      headGroup.rotation.y = degToRad(sf.head.y + lookX * 15 * lookAmt);
+      var lookAmtE = lookAmt * Math.min(gazeBoost, 1.5);               // eyes move a bit more when looking at a field
+      headGroup.rotation.x = degToRad(sf.head.x + lookY * 9 * lookAmt * gazeBoost);
+      headGroup.rotation.y = degToRad(sf.head.y + lookX * 15 * lookAmt * gazeBoost + headNo);   // headNo = left/right "no" shake
       headGroup.rotation.z = degToRad(sf.head.z);
 
       var blinkMul = 1;
@@ -730,9 +806,9 @@
 
       [[eyeL, sf.eyeL, -1], [eyeR, sf.eyeR, 1]].forEach(function (pair) {
         var grp = pair[0], e = pair[1], side = pair[2];
-        stickToSurface(grp, side * (sf.spacing / 2) + (e.x || 0) + lookX * 8 * lookAmt, -((e.y || 0) + lookY * 6 * lookAmt), 1.5);
+        stickToSurface(grp, side * (sf.spacing / 2) + (e.x || 0) + lookX * 8 * lookAmtE, -((e.y || 0) + lookY * 6 * lookAmtE), 1.5);
         var mesh = grp.userData.mesh;
-        var eyeDown = (e.y || 0) + lookY * 6 * lookAmt;                    // eye centre, downwards
+        var eyeDown = (e.y || 0) + lookY * 6 * lookAmtE;                    // eye centre, downwards
         var halfBase = Math.min((e.height || 50) / 2, Math.max(8, 28 - eyeDown));   // bottom stays well above the mouth
         mesh.scale.x = Math.max(5, Math.min((e.width || 24) / 2, 34));
         mesh.scale.y = Math.max(3, halfBase * blinkMul);
@@ -776,10 +852,22 @@
       }
 
       /* jitter (angry shake) + idle bob */
-      var jitter = (r.shake ? 1 : 0) * 5 + extraJitter + rage * 3;
       var t = now / 1000;
+      /* held by the cursor and angry → the whole body trembles (harder the redder he is); stops the moment he is let go */
+      var activeShake = dragging && (now - lastShakeAt < 400);          // the cursor is shaking him right now
+      var angryHeld = dragging && (player.mood === 'angry' || rage > 0.18 || activeShake);
+      var shakingNow = angryHeld;
+      var jitter = (angryHeld ? (activeShake ? 11 : 5) + clamp(rage, 0, 1) * 9 : 0) + extraJitter;
+      if (angryHeld && !reduceMotion) {
+        /* phone-vibrate feel: fast, tight, slightly random buzz — stronger while the cursor is really shaking him */
+        var rg = (activeShake ? 1 : 0.5) * (0.6 + clamp(rage, 0, 1) * 0.4);
+        fx.dx = (Math.sin(t * 95) + Math.sin(t * 143) * 0.6) * 3.4 * rg;
+        fx.dy = (Math.cos(t * 87) + Math.sin(t * 121) * 0.5) * 2.4 * rg;
+        fx.rot = Math.sin(t * 109) * 4.2 * rg;
+        heldShaking = true;
+      } else if (heldShaking) { fx.dx = 0; fx.rot = 0; fx.dy = 0; heldShaking = false; }
       var jx = 0, jy = 0;
-      if (jitter > 0.01 && !reduceMotion) { jx = Math.sin(t * 38) * jitter; jy = Math.cos(t * 31) * jitter * 0.6; }
+      if (jitter > 0.01 && !reduceMotion) { jx = Math.sin(t * 74) * jitter; jy = Math.cos(t * 61) * jitter * 0.6; }
       var bob = reduceMotion ? 0 : Math.sin(t * (sleeping ? 1.1 : 1.7)) * (sleeping ? 3 : 5);
       headGroup.position.x = jx;
       headGroup.position.y = jy + bob * 0.5 - (sleeping ? 4 : 0);
@@ -790,14 +878,16 @@
     function updateLook(dt) {
       var cx = pos.x + SIZE / 2 + fx.dx, cy = pos.y + SIZE / 2 + fx.dy;
       var tx = pointer.x, ty = pointer.y, follow = false;
-      if (lookEl && document.body.contains(lookEl)) {
-        var rc = lookEl.getBoundingClientRect();
+      var gazeEl = (emptyLookEl && document.body.contains(emptyLookEl)) ? emptyLookEl : lookEl;
+      if (gazeEl && document.body.contains(gazeEl)) {
+        var rc = gazeEl.getBoundingClientRect();
         tx = rc.left + Math.min(rc.width, 260) / 2; ty = rc.top + rc.height / 2;
         follow = true;
       } else if (dragging || bubbleOpen || hovered || Math.hypot(pointer.x - cx, pointer.y - cy) < SIZE * 0.95) {
         follow = true;
       }
-      var gx = follow ? clamp((tx - cx) / 320, -1, 1) : 0, gy = follow ? clamp((ty - cy) / 320, -1, 1) : 0;
+      var gd = emptyLookEl ? 120 : 320;   // looking at an empty field: turn fully toward it, wherever Ely is
+      var gx = follow ? clamp((tx - cx) / gd, -1, 1) : 0, gy = follow ? clamp((ty - cy) / gd, -1, 1) : 0;
       if (asleep) { gx = 0; gy = 0; }
       var k = 1 - Math.pow(follow ? 0.0008 : 0.02, dt / 1000);
       lookX += (gx - lookX) * k;
@@ -814,9 +904,17 @@
       var headX = pos.x + fx.dx + SIZE / 2;
       var top = pos.y + fx.dy + scrollBob.offset;
       var vh = window.innerHeight, vw = window.innerWidth;
-      var yAbove = top - 13 - h;
-      var yBelow = top + SIZE + 5;
-      var above = yAbove >= 8 || (yBelow + h > vh - 8 && yAbove > vh - 8 - (yBelow + h));
+      var GAP = 16;                                   /* room for the tail between bubble and head */
+      var yAbove = top - GAP - h;
+      var yBelow = top + SIZE + GAP - 8;
+      var fitsAbove = yAbove >= 8;
+      var fitsBelow = yBelow + h <= vh - 8;
+      /* decide once, then keep the side while it still fits: no more jumping from top to bottom while typing */
+      var above;
+      if (el._above === undefined) above = fitsAbove || (!fitsBelow && yAbove > vh - 8 - (yBelow + h));
+      else if (el._above) above = fitsAbove || !fitsBelow;
+      else above = !fitsBelow && fitsAbove;
+      el._above = above;
       var y = above ? yAbove : yBelow;
       y = clamp(y, 8, Math.max(8, vh - h - 8));
       var left = clamp(headX - 54, 10, Math.max(10, vw - w - 10));
@@ -836,6 +934,8 @@
     function say(text, ms) {
       if (bubbleOpen || sayTyping) return;
       text = noEmoji(text);
+      if (!sayOpen) sayEl._above = undefined;
+      sayLine.style.minHeight = '';
       sayLine.textContent = text;
       sayEl.classList.add('eli-open');
       sayOpen = true;
@@ -846,7 +946,8 @@
     function hideSay() {
       sayOpen = false;
       sayEl.classList.remove('eli-open');
-      clearInterval(sayTypeTimer); sayTyping = false; sayLine.style.minWidth = '';
+      clearInterval(sayTypeTimer); sayTyping = false; sayLine.style.minWidth = ''; sayLine.style.minHeight = '';
+      sayEl._above = undefined;
     }
     /* one-liner that is typed out letter by letter (used for the very first introduction) */
     var sayTypeTimer = null, sayTyping = false;
@@ -854,12 +955,14 @@
       if (bubbleOpen) return;
       text = noEmoji(text);
       clearInterval(sayTypeTimer); clearTimeout(sayTimer);
-      sayLine.style.minWidth = '';
+      sayLine.style.minWidth = ''; sayLine.style.minHeight = '';
+      if (!sayOpen) sayEl._above = undefined;
       sayLine.textContent = text;
       sayEl.classList.add('eli-open');
       sayOpen = true;
       var w = sayLine.offsetWidth;
       sayLine.style.minWidth = w + 'px';
+      sayLine.style.minHeight = sayLine.offsetHeight + 'px';   /* final height reserved, bubble never grows while typing */
       sayLine.textContent = '';
       placeBubble(sayEl);
       var chars = Array.from(text), i = 0;
@@ -883,6 +986,9 @@
     function typeInto(el, text, cb) {
       text = noEmoji(text);
       cancelTyping();
+      el.style.minHeight = '';
+      el.textContent = text;
+      el.style.minHeight = el.offsetHeight + 'px';   /* reserve the full text height first */
       el.textContent = '';
       var chars = Array.from(text), i = 0;
       var speed = clamp(900 / chars.length, 12, 30);
@@ -899,7 +1005,11 @@
     /* ════════ chat / roadmap ════════ */
     var rootDeck = [];
     function nextRoot() {
-      if (PAGE === 'service.html' && !HIST.svcAsked && document.getElementById('topServiceForm')) { HIST.svcAsked = true; HIST.lastRoot = 'r_svc'; return 'r_svc'; }
+      /* on a service page: first click always offers the forms; afterwards often (never twice in a row) */
+      if (PAGE === 'service.html' && document.getElementById('topServiceForm')) {
+        HIST.svcClicks = (HIST.svcClicks || 0) + 1;
+        if (HIST.svcClicks === 1 || (HIST.lastRoot !== 'r_svc' && chance(0.6))) { HIST.lastRoot = 'r_svc'; return 'r_svc'; }
+      }
       if (!rootDeck.length) {
         rootDeck = shuffle(ROOT_IDS);
         if (HIST.lastRoot && rootDeck[rootDeck.length - 1] === HIST.lastRoot) rootDeck.unshift(rootDeck.pop());
@@ -923,18 +1033,30 @@
       return false;
     }
 
+    /* service page node = the form shortcuts + one (sometimes two) "go somewhere else" options */
+    function svcNode() {
+      var hops = [['See our other services', '@services.html'], ['Show me your work', '@portfolio.html#work'], ['Read client reviews', '@portfolio.html#reviews'], ['Talk to a human', '@contact.html'], ['Meet the team', '@about.html#team']];
+      var extra = shuffle(hops).slice(0, chance(0.3) ? 2 : 1);
+      var base = NODES.r_svc;
+      return { q: base.q, mood: base.mood, keep: true, max: 5, o: base.o.concat(extra) };
+    }
     function showNode(id) {
       if (id === 'RANDOM_ROOT') id = nextRoot();
-      var n = NODES[id];
+      var n = id === 'r_svc' ? svcNode() : NODES[id];
       if (!n) return;
       var q = Array.isArray(n.q) ? pick(n.q) : n.q;
       optsEl.innerHTML = '';
       moreEl.style.visibility = 'hidden';
       if (n.mood && !asleep && !busy) setMood(n.mood, { once: true, returnTo: 'idle', force: true });
-      typeInto(qEl, q, function () { renderOptions(n); });
+      renderOptions(n, true);
+      typeInto(qEl, q, function () { revealOptions(); });
+    }
+    function revealOptions() {
+      optsEl.classList.remove('eli-wait');
+      moreEl.style.visibility = 'visible';
     }
 
-    function renderOptions(n) {
+    function renderOptions(n, hold) {
       var list = n.o.filter(function (o) {
         var t = o[1];
         if (t.charAt(0) === '!') return actionAvailable(t.slice(1));      // only offer forms this page really has
@@ -943,8 +1065,9 @@
         return !(d.same && !d.hash && !d.action);        // don't offer "go to the page you are on"
       });
       if (!list.length) list = n.o;
-      list = shuffle(list).slice(0, 4);
+      list = (n.keep ? list : shuffle(list)).slice(0, n.max || 4);
       optsEl.innerHTML = '';
+      optsEl.classList.toggle('eli-wait', !!hold);
       list.forEach(function (o, i) {
         var b = document.createElement('button');
         b.type = 'button';
@@ -955,7 +1078,7 @@
         b.addEventListener('click', function (e) { e.stopPropagation(); onOption(o); });
         optsEl.appendChild(b);
       });
-      moreEl.style.visibility = 'visible';
+      moreEl.style.visibility = hold ? 'hidden' : 'visible';
     }
 
     var OPT_REACTIONS = ['happy', 'excited', 'playful', 'proud', 'curious', 'surprised'];
@@ -976,6 +1099,7 @@
     function openBubble() {
       hideSay();
       bubbleOpen = true;
+      chat._above = undefined;
       chat.classList.add('eli-open');
       showNode(nextRoot());
       placeBubble(chat);
@@ -984,6 +1108,7 @@
       if (!bubbleOpen) return;
       cancelTyping();
       bubbleOpen = false;
+      chat._above = undefined;
       chat.classList.remove('eli-open');
     }
     closeEl.addEventListener('click', function (e) { e.stopPropagation(); closeBubble(); });
@@ -1023,7 +1148,7 @@
       var d = parseTarget(target);
       await leaveScreen(false);
       if (!d.same) {
-        if (d.action) { try { sessionStorage.setItem('elev_action', d.action); } catch (err) {} }
+        if (d.action) { try { sessionStorage.setItem('ely_action', d.action); } catch (err) {} }
         window.location.href = d.url;
         return;
       }
@@ -1071,10 +1196,10 @@
     function centerSpot() { var b = bounds(); return { x: Math.round((b.minX + b.maxX) / 2), y: Math.round((b.minY + b.maxY) / 2) }; }
 
     function alreadyVisited() {
-      try { return sessionStorage.getItem('elev_greeted') === '1'; } catch (err) { return false; }
+      try { return sessionStorage.getItem('ely_greeted') === '1'; } catch (err) { return false; }
     }
     function markVisited() {
-      try { sessionStorage.setItem('elev_greeted', '1'); } catch (err) {}
+      try { sessionStorage.setItem('ely_greeted', '1'); } catch (err) {}
     }
     function greet() {
       setMood('happy', { once: true, returnTo: 'idle', force: true });
@@ -1225,7 +1350,7 @@
       setMood('idle', { force: true });
       place(-500, -500); paint();
       await wait(reduceMotion ? 100 : rand(120, 350));
-      try { await ENTRANCES[kind](); } catch (err) { console.warn('[Elev] entrance failed', err); }
+      try { await ENTRANCES[kind](); } catch (err) { console.warn('[Ely] entrance failed', err); }
       entering = false; abortFlag = false;
       resetFx();
       var b = bounds();
@@ -1241,8 +1366,8 @@
       pendingGrab = null;
       /* arrived from a chat shortcut that wants a form opened */
       var act = pendingAction; pendingAction = '';
-      try { if (!act) { act = sessionStorage.getItem('elev_action') || ''; } sessionStorage.removeItem('elev_action'); } catch (err) {}
-      if (act) setTimeout(function () { runAction(act); }, 500);
+      try { if (!act) { act = sessionStorage.getItem('ely_action') || ''; } sessionStorage.removeItem('ely_action'); } catch (err) {}
+      if (act && PAGE === 'service.html' && actionAvailable(act)) setTimeout(function () { runAction(act); }, 500);
     }
 
     /* ════════ service-page actions: top form / right-side drawers ════════ */
@@ -1265,68 +1390,103 @@
       b.type = 'button'; b.setAttribute(attr, ''); b.style.display = 'none';
       document.body.appendChild(b); b.click(); document.body.removeChild(b);
     }
-    /* Elev tries to push the drawer open: 1-2 weak tries, then loses his temper and slams it open */
+    /* Ely stands on the drawer's left edge and PULLS it open. The drawer's position and Ely's position are one and the same
+       value (p = 0 closed … 1 open): weak tries open it a little and it slips shut again (Ely is dragged back with it),
+       the last try is angry and he drags it fully open — leading the way, drawer following. */
     async function drawerSequence(kind) {
       var dr = document.getElementById(kind === 'vc' ? 'vcDrawer' : 'epDrawer');
+      var ov = document.getElementById(kind === 'vc' ? 'vcOverlay' : 'epOverlay');
       if (!dr) { pointToTopForm(); return; }
       if (dr.classList.contains('open')) return;
       var wasBusy = busy;
       busy = true; setInteractive(false); closeBubble(); hideSay(); stopZ(); asleep = false; waking = false;
       fxLock = true;
+      var dw = dr.offsetWidth || Math.min(kind === 'vc' ? 520 : 480, window.innerWidth);
+      var CLOSED = dw * 1.04;                                   // matches the CSS "fully hidden" offset
+      function setP(p) {                                        // ONE number drives drawer + overlay + Ely
+        p = clamp(p, 0, 1);
+        dr.style.transition = 'none';
+        dr.style.transform = 'translateX(' + (CLOSED * (1 - p)).toFixed(1) + 'px)';
+        if (kind === 'vc') dr.style.visibility = p > 0.001 ? 'visible' : '';
+        if (ov) { ov.style.transition = 'none'; ov.style.opacity = String(p * 0.95); }
+        var bb = bounds();
+        var edge = window.innerWidth - dw * p;                  // drawer's left edge
+        pos.x = clamp(edge - SIZE + 18, bb.minX, bb.maxX);      // Ely's body sits right on that edge
+      }
+      function pull(p0, p1, dur, ease, extra) {
+        return anim(dur, function (e, raw) { setP(lerp(p0, p1, e)); if (extra) extra(e, raw); }, ease || easeInOut);
+      }
       var b = bounds();
-      var tries = chance(0.5) ? 2 : 3;
+      /* random: it opens on the 2nd, 3rd or 4th attempt. Mood climbs with every attempt:
+         1st happy · 2nd a little angry · 3rd furious & red · 4th blast. The blast only happens if it takes a 4th attempt. */
+      var tries = pick([2, 3, 4]);
+      var LEVELS = [
+        { mood: 'happy',   rage: 0,    steam: 0, peek: 0.22, line: ['Let me open that for you 😊', 'Easy, watch this!'],            fail: ['Hehe, it is a bit stuck…', 'Oops, almost! Let me try again 😄'] },
+        { mood: 'angry',   rage: 0.28, steam: 2, peek: 0.34, line: ['Hmm… okay, one more time 😒', 'Come on, move!'],                fail: ['Hey! Why will it not open?! 😠', 'Grr… stubborn drawer!'] },
+        { mood: 'angry',   rage: 0.72, steam: 5, peek: 0.3,  line: ['I AM GETTING MAD!! 😡', 'OPEN. UP. NOW.'],                      fail: ['ARRRGH!! 🔥', 'THAT IS IT!!'] },
+        { mood: 'angry',   rage: 1,    steam: 7, peek: 1,    line: ['ENOUGH! OPEN UP!!', 'I WILL BLOW THIS OPEN!!'],                 fail: [] }
+      ];
       try {
-        setMood('working', { force: true });
-        say('Let me open that for you', 1600);
         await flyTo(b.maxX, Math.round((b.minY + b.maxY) / 2), 750, easeInOut);
         resetFx();
         await wait(250);
-        var weak = ['Hmm, it is stuck…', 'Almost! Not yet…', 'Why will it not move?'];
-        var peeks = [16, 30, 22];
-        for (var i = 0; i < tries - 1; i++) {
-          setMood(i === 0 ? 'confused' : 'sad', { force: true });
-          dr.style.transition = 'transform .38s cubic-bezier(.2,.8,.2,1)';
-          dr.style.transform = 'translateX(' + (100 - peeks[i]) + '%)';                 // opens just a little…
-          await Promise.all([
-            anim(520, function (e) { fx.dx = 18 * Math.sin(e * Math.PI); fx.rot = -7 * Math.sin(e * Math.PI); fx.sx = 1 + 0.08 * Math.sin(e * Math.PI); }),
-            wait(80)
-          ]);
-          say(weak[i % weak.length], 1500);
-          await wait(420);
-          dr.style.transform = 'translateX(104%)';                                       // …and slides shut again
-          await wait(480);
-          dr.style.transition = ''; dr.style.transform = '';
-          resetFx();
-          await anim(700, function (e) { fx.rot = Math.sin(e * Math.PI * 4) * 6 * (1 - e); fx.dy = 5 * Math.sin(e * Math.PI); });
-          await wait(300);
+        for (var i = 0; i < tries; i++) {
+          var lv = LEVELS[i];
+          var last = (i === tries - 1);
+          setMood(lv.mood, { force: true });
+          if (lv.rage) rage = clamp(Math.max(rage, lv.rage), 0, 1);
+          if (lv.steam) steamPuffs(lv.steam);
+          say(pick(lv.line), 1500);
+          if (lv.rage >= 0.7) { extraJitter = 6; await wait(550); extraJitter = 0; } else { await wait(i === 0 ? 150 : 350); }
+          if (!last) {
+            var pk = lv.peek;
+            await pull(0, pk, 650 - i * 80, easeInOut, function (e) { fx.rot = -7 * Math.sin(e * Math.PI * 0.9); fx.sx = 1 + 0.07 * e; fx.sy = 1 - 0.04 * e; });
+            say(pick(lv.fail), 1500);
+            if (lv.steam) steamPuffs(2);
+            await anim(380, function (e) { fx.dx = Math.sin(e * 40) * (3 + i * 2) * (1 - e); fx.rot = -5 + Math.sin(e * 18) * 2; });
+            await wait(120);
+            await pull(pk, 0, 520, easeInCubic, function (e) { fx.rot = lerp(-5, 9, e); fx.sx = lerp(1.07, 1, e); fx.sy = lerp(0.96, 1, e); });
+            dr.style.transition = ''; dr.style.transform = ''; dr.style.visibility = '';
+            if (ov) { ov.style.transition = ''; ov.style.opacity = ''; }
+            await anim(700, function (e) { fx.rot = 9 * (1 - e) + Math.sin(e * Math.PI * 4) * 5 * (1 - e); fx.dy = 5 * Math.sin(e * Math.PI); });
+            resetFx();
+            await wait(250);
+          }
         }
-        /* last try: pure rage */
-        setMood('angry', { force: true });
-        rage = clamp(rage + 0.85, 0, 1);
-        steamPuffs(6);
-        say('ENOUGH! OPEN UP!!', 1700);
-        extraJitter = 7;
-        await wait(650);
-        extraJitter = 0;
-        await anim(300, function (e) { fx.dx = -46 * e; fx.sx = 1 - 0.1 * e; fx.sy = 1 + 0.12 * e; fx.rot = -10 * e; }, easeOutCubic);   // wind-up
-        await anim(170, function (e) { fx.dx = lerp(-46, 34, e); fx.sx = lerp(0.9, 1.3, e); fx.sy = lerp(1.12, 0.78, e); fx.rot = lerp(-10, 8, e); }, easeInCubic);   // slam
+        /* the successful pull: intensity matches the attempt it happens on */
+        var final = LEVELS[tries - 1];
+        var blast = (tries === 4);
+        await anim(300, function (e) { fx.dx = 26 * e; fx.sx = 1 - 0.1 * e; fx.sy = 1 + 0.12 * e; fx.rot = 10 * e; }, easeOutCubic);   // wind-up
+        if (final.steam) steamPuffs(Math.max(2, final.steam - 2));
+        extraJitter = 3 + tries * 1.5;
+        await pull(0, 1, 760, easeInOut, function (e) {              // heave: drawer + Ely move together
+          fx.dx = lerp(26, 0, Math.min(1, e * 2.2));
+          fx.rot = lerp(10, -8, Math.min(1, e * 2)) * (1 - Math.max(0, e - 0.75) * 4);
+          fx.sx = 1 + 0.18 * Math.sin(e * Math.PI); fx.sy = 1 - 0.12 * Math.sin(e * Math.PI);
+        });
+        if (blast) impactBurst(pos.x + SIZE * 0.5, pos.y + SIZE * 0.5);
+        /* hand over to the real form: same position, so there is no jump */
+        dr.style.transition = 'none'; dr.style.transform = 'translateX(0px)';
+        if (kind === 'vc') dr.style.visibility = 'visible';
         clickOpener(kind === 'vc' ? 'data-vc-open' : 'data-ep-open');
-        steamPuffs(4);
-        sparks(['💥', '✨', '⭐'], 6);
-        extraJitter = 9;
-        await anim(450, function (e) { var k = 1 - e; fx.dx = 34 * k; fx.sx = lerp(1.3, 1, e); fx.sy = lerp(0.78, 1, e); fx.rot = Math.sin(e * 40) * 7 * k; }, easeOutCubic);
+        requestAnimationFrame(function () {
+          dr.style.transition = ''; dr.style.transform = ''; dr.style.visibility = '';
+          if (ov) { ov.style.transition = ''; ov.style.opacity = ''; }
+        });
+        await anim(450, function (e) { var k = 1 - e; fx.dx = 0; fx.sx = lerp(1.1, 1, e); fx.sy = lerp(0.9, 1, e); fx.rot = Math.sin(e * 40) * 6 * k; }, easeOutCubic);
         extraJitter = 0;
         resetFx();
-        /* step aside so the form is not covered */
-        var dw = Math.min(480, window.innerWidth);
+        /* a step ahead of the form so it is never covered (small screens: tuck into the corner) */
         var nx = window.innerWidth - dw - SIZE - 18;
-        if (nx >= b.minX) await flyTo(nx, pos.y, 700, easeInOut);
+        var bb2 = bounds();
+        if (nx >= bb2.minX) await flyTo(nx, pos.y, 600, easeInOut); else await flyTo(bb2.minX, bb2.maxY, 600, easeInOut);
         setMood('proud', { force: true });
         say('Opened it. Fill it in!', 2600);
         await wait(1200);
         setMood('idle', { force: true });
-      } catch (err) { console.warn('[Elev] drawer sequence failed', err); }
-      dr.style.transition = ''; dr.style.transform = '';
+      } catch (err) { console.warn('[Ely] drawer sequence failed', err); }
+      dr.style.transition = ''; dr.style.transform = ''; dr.style.visibility = '';
+      if (ov) { ov.style.transition = ''; ov.style.opacity = ''; }
       if (!dr.classList.contains('open')) clickOpener(kind === 'vc' ? 'data-vc-open' : 'data-ep-open');   // never leave the form closed
       extraJitter = 0; resetFx();
       fxLock = false; busy = wasBusy; setInteractive(!busy);
@@ -1390,20 +1550,13 @@
         { m: 'searching', fx: 'lookAround', say: ['Looking for something?'] },
         { m: 'scared', fx: 'shiver', say: ['Too fast! Hold on! 😬'] }
       ],
-      hover: [
-        { m: 'happy', fx: 'nod', say: null },
-        { m: 'curious', fx: 'tiltWonder', say: null },
-        { m: 'playful', fx: 'wiggle', say: ['Hehe, that tickles!'] },
-        { m: 'shy', fx: 'hide', say: ['Oh! You found me… 🙈'] },
-        { m: 'surprised', fx: 'popHop', say: null }
-      ],
       click: [
         { m: 'curious', fx: 'none' }, { m: 'playful', fx: 'nod' }, { m: 'proud', fx: 'hopSmall' }, { m: 'happy', fx: 'wiggle' }
       ],
       drag: [
         { m: 'happy', say: ['Wheee! 🎈'] }, { m: 'playful', say: ['Put me down! …no wait, more!'] },
         { m: 'surprised', say: ['Whoa whoa whoa!'] }, { m: 'scared', say: ['Not the ears! 😬'] },
-        { m: 'laughing', say: ['Hehehe, that tickles!'] }
+        { m: 'playful', say: ['Hold on tight!'] }
       ],
       bump: [
         { m: 'confused', fx: 'dizzy', say: ['Ouch! That was a wall. 😵'] },
@@ -1486,23 +1639,58 @@
     }
 
     /* ════════ forms: wrong input, typing, completion ════════ */
-    var lastFormReact = 0, lastInvalidEl = null, sameCount = 0;
-    var ESCALATE = ['Same spot again! 👀', 'Third time… I believe in you! 💪', 'Okay, this field is stubborn 😅'];
+    var lastFormReact = 0;
     function formReact(kind, el) {
       var now = performance.now();
       if (now - lastFormReact < 900) return;
       lastFormReact = now;
-      var line = null;
-      if (kind === 'invalid') {
-        if (el && el === lastInvalidEl) { sameCount++; if (sameCount >= 1) line = ESCALATE[Math.min(sameCount - 1, ESCALATE.length - 1)]; }
-        else { sameCount = 0; }
-        lastInvalidEl = el || null;
-        if (asleep) return;
-      }
-      react(kind, { line: line });
+      if (kind === 'invalid' && asleep) return;
+      react(kind);
     }
 
-    document.addEventListener('invalid', function (e) { formReact('invalid', e.target); }, true);
+    /* ════════ empty / wrong field: look at it, shake head "no", feel sad ════════ */
+    var EMPTY_LINES = ['Oops, this one is empty.', 'Aww, you skipped this one.', 'Hmm, nothing is written here yet.', 'This field is empty. Please fill it in.', 'No no no, this one needs an answer.'];
+    var WRONG_LINES = ['Hmm, that does not look right.', 'Aww, please check this one again.', 'I think there is a typo in here.'];
+    function sleepMs(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+    async function emptyReact(detail) {
+      var el = detail && detail.el;
+      if (!el || !document.body.contains(el) || emptyBusy || asleep || waking || dragging || celebrating || entering || busy) return;
+      emptyBusy = true;
+      var locked = false;
+      try {
+        var guard = 0;
+        while (fxLock && guard++ < 25) await sleepMs(60);       // let any tiny reaction finish first
+        if (fxLock || dragging || asleep || busy) return;
+        fxLock = true; locked = true;
+        lastFormReact = performance.now();
+        closeBubble(); hideSay();
+        emptyLookEl = el; gazeBoost = 1.8;                      // turn toward the field, wherever Ely is on the screen
+        setMood('sad', { force: true });
+        await anim(520, function (e) { fx.dy = 5 * e; fx.sy = 1 - 0.04 * e; fx.sx = 1 + 0.02 * e; }, easeOutCubic);   // sinks a little
+        if (dragging) return;
+        say(noRepeat(detail.kind === 'invalid' ? WRONG_LINES : EMPTY_LINES, 'emptyLine_' + (detail.kind === 'invalid' ? 'w' : 'e')), 3800);
+        await anim(1500, function (e) {                          // head goes left, right, left, right: "no"
+          var k = 1 - e * 0.3;
+          headNo = Math.sin(e * Math.PI * 5) * 26 * k;
+          fx.dx = headNo * 0.16;
+        });
+        headNo = 0; fx.dx = 0;
+        await anim(700, function (e) { var k = Math.sin(e * Math.PI); fx.sx = 1.02 + 0.05 * k; fx.sy = 0.96 - 0.04 * k; fx.dy = 5 + 4 * k; }, easeInOut);   // slow sad sigh
+        if (dragging) return;
+        await sleepMs(1500);                                     // keeps looking at the field
+      } catch (err) { /* never block the page */ }
+      finally {
+        headNo = 0; gazeBoost = 1; emptyLookEl = null; emptyBusy = false;
+        if (locked) { resetFx(); fxLock = false; if (!asleep && player.mood === 'sad') setMood('idle', { force: true }); }
+        lastActivity = performance.now();
+      }
+    }
+    document.addEventListener('ely:field-problem', function (e) { emptyReact(e.detail || {}); });
+    document.addEventListener('invalid', function (e) {
+      var t = e.target;
+      if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) { emptyReact({ el: t, kind: (t.value || '').trim() ? 'invalid' : 'empty' }); return; }
+      formReact('invalid', t);
+    }, true);
 
     var errState = new WeakMap();
     var errObserver = new MutationObserver(function (list) {
@@ -1524,47 +1712,13 @@
       if (!/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
       lookEl = t;
       pulseEl.classList.remove('eli-pulse-run'); void pulseEl.offsetWidth; pulseEl.classList.add('eli-pulse-run');
-      var now = performance.now();
-      if (now - lastTypeReact > 3200) { lastTypeReact = now; react('typing'); }
     });
     document.addEventListener('focusout', function (e) { if (e.target === lookEl) lookEl = null; });
-    document.addEventListener('input', function (e) {
-      var t = e.target;
-      if (!t || !t.closest) return;
-      var form = t.closest('form');
-      if (!form) return;
-      typeCount++;
-      var now = performance.now();
-      if (typeCount % 14 === 0 && now - lastTypeReact > 4200) { lastTypeReact = now; react('typing'); }
-      /* whole form just became valid → little cheer */
-      try {
-        var req = form.querySelectorAll('[required]').length;
-        var valid = form.checkValidity();
-        if (req >= 2 && valid && !formWasValid.get(form)) {
-          formWasValid.set(form, true);
-          if (!asleep && !busy) {
-            setMood('excited', { once: true, returnTo: 'idle', force: true });
-            say('Everything looks perfect — hit send! 🚀', 2800);
-            sparks(['✨', '🎉', '⭐'], 6);
-            MOTION.hopSmall().then(resetFx);
-          }
-        } else if (!valid) formWasValid.set(form, false);
-      } catch (err) {}
-    });
-    document.addEventListener('change', function (e) {
-      var t = e.target;
-      if (!t || !t.closest || !t.closest('form') || !t.value) return;
-      try { if (t.checkValidity && !t.checkValidity()) return; } catch (err) {}
-      var now = performance.now();
-      if (now - lastTypeReact > 3000) { lastTypeReact = now; react('fieldOk'); }
-    });
-
     function wrapLeadForms() {
       if (!window.ANALYTIC_LEADS || window.ANALYTIC_LEADS.__eliWrapped) return;
       var orig = window.ANALYTIC_LEADS.submit;
       window.ANALYTIC_LEADS.submit = function (payload) {
-        if (!asleep && !busy && !celebrating) { setMood('working', { force: true }); say(pick(SEND_LINES), 2000); }
-        return orig.call(window.ANALYTIC_LEADS, payload).then(function (res) {
+                return orig.call(window.ANALYTIC_LEADS, payload).then(function (res) {
           celebrate();
           return res;
         }).catch(function (err) {
@@ -1681,6 +1835,39 @@
       beginDrag(e.clientX, e.clientY, e.pointerId, performance.now(), false);
     });
 
+    /* ════════ phones: tapping Ely must click ONLY Ely, never the button / link behind or near him ════════ */
+    var lastHitTap = { x: -9999, y: -9999, t: -99999 };
+    function noteHitTap(e) {
+      if (e.pointerType === 'mouse') return;                    // desktop mouse never leaks through, only touch / pen need this
+      lastHitTap.x = e.clientX; lastHitTap.y = e.clientY; lastHitTap.t = performance.now();
+    }
+    hit.addEventListener('pointerdown', noteHitTap, true);
+    hit.addEventListener('pointerup', noteHitTap, true);
+    /* even while Ely is not clickable (flying, talking, busy) a finger that lands ON him is meant for him, not for what is under him */
+    window.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' || !root.classList.contains('eli-ready') || root.classList.contains('eli-hidden')) return;
+      if (e.target && e.target.nodeType === 1 && (root.contains(e.target) || chat.contains(e.target) || sayEl.contains(e.target))) return;
+      var hr = hit.getBoundingClientRect();
+      var rx = hr.width / 2, ry = hr.height / 2;
+      if (!rx || !ry) return;
+      var dx = (e.clientX - (hr.left + rx)) / rx, dy = (e.clientY - (hr.top + ry)) / ry;
+      if (dx * dx + dy * dy <= 1) noteHitTap(e);
+    }, true);
+    hit.addEventListener('touchend', function (e) { if (e.cancelable) e.preventDefault(); }, { passive: false });   // no ghost mouse/click after the tap
+    function swallowGhostClick(e) {
+      var t = e.target;
+      if (t && t.nodeType === 1 && (chat.contains(t) || sayEl.contains(t)) && performance.now() - lastHitTap.t > 900) return;   // normal bubble buttons keep working
+      var cx = e.clientX, cy = e.clientY;
+      var recent = performance.now() - lastHitTap.t < 900 && Math.hypot(cx - lastHitTap.x, cy - lastHitTap.y) < 70;
+      var onEly = false;
+      if (!recent && root.classList.contains('eli-interactive')) {
+        var hr = hit.getBoundingClientRect();
+        onEly = cx >= hr.left && cx <= hr.right && cy >= hr.top && cy <= hr.bottom && !(t && root.contains(t));
+      }
+      if (recent || onEly) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); }
+    }
+    ['click', 'dblclick', 'auxclick', 'mouseup', 'mousedown'].forEach(function (type) { window.addEventListener(type, swallowGhostClick, true); });
+
     window.addEventListener('pointermove', function (e) {
       if (!dragging) return;
       var moved = downInfo && (Math.abs(e.clientX - downInfo.x) > 6 || Math.abs(e.clientY - downInfo.y) > 6);
@@ -1701,13 +1888,22 @@
 
     window.addEventListener('pointerup', function (e) {
       if (!dragging) return;
+      var wasShaken = performance.now() - lastShakeAt < 2500;
       dragging = false;
       root.classList.remove('eli-dragging');
+      extraJitter = 0; fx.dx = 0; fx.dy = 0; fx.rot = 0;                       // let go → stop shaking right now
+      if (performance.now() - lastShakeAt < 3500 || player.mood === 'angry') {   // still angry for a moment, but calm (no jitter), then cool down
+        clearTimeout(calmTimer);
+        calmTimer = setTimeout(function () { if (!dragging && player.mood === 'angry') setMood('idle', { force: true }); }, 2200);
+      }
       if (pointerTrail.length >= 2) {
         var a = pointerTrail[pointerTrail.length - 2], b2 = pointerTrail[pointerTrail.length - 1];
         var ddt = Math.max(8, b2.t - a.t);
-        vel.x = (b2.x - a.x) / ddt * 16;
-        vel.y = (b2.y - a.y) / ddt * 16;
+        vel.x = (b2.x - a.x) / ddt * 20;
+        vel.y = (b2.y - a.y) / ddt * 20;
+        /* a throw has a speed limit, so a hard flick can not send him flying across the whole screen */
+        var tv = Math.hypot(vel.x, vel.y), TMAX = 44;
+        if (tv > TMAX) { vel.x *= TMAX / tv; vel.y *= TMAX / tv; }
       }
       var wasClick = downInfo &&
         Math.abs(e.clientX - downInfo.x) < 6 && Math.abs(e.clientY - downInfo.y) < 6 &&
@@ -1716,10 +1912,42 @@
         vel.x = 0; vel.y = 0;
         onPoke();
       } else {
-        hideSay();
+        if (performance.now() > shakeLineUntil) hideSay();      // never cut the "stop shaking me" line short
         if (Math.hypot(vel.x, vel.y) < 6 && !isMad()) setMood('idle', { force: true });   // a real throw settles into mood via the wall bump instead
       }
+      if (wasShaken && !wasClick) releaseAfterShake();
     });
+
+    /* let go after being shaken → expression changes at once and he says something different every time */
+    var SHAKE_RELEASE = [
+      { m: 'confused',   fx: 'dizzy',        say: 'Why did you shake me like that? I am dizzy now.' },
+      { m: 'sad',        fx: 'slump',        say: 'What did I ever do to you? Why shake me?' },
+      { m: 'scared',     fx: 'shiver',       say: 'Please stop shaking me! I am scared!' },
+      { m: 'surprised',  fx: 'popHop',       say: 'Whoa! Why are you shaking me so hard?!' },
+      { m: 'angry',      fx: 'headShake',    say: 'I am not a snow globe! Stop shaking me!' },
+      { m: 'bored',      fx: 'sigh',         say: '*sigh* Are you done shaking me now?' },
+      { m: 'shy',        fx: 'hide',         say: 'Okay okay, you can stop shaking me now…' },
+      { m: 'suspicious', fx: 'leanIn',       say: 'Why are you shaking me? Do you want something?' },
+      { m: 'confused',   fx: 'tiltWonder',   say: 'Everything is spinning. Please do not shake me again.' },
+      { m: 'angry',      fx: 'wiggle',       say: 'Hey! I am not a maracas, do not shake me!' },
+      { m: 'sad',        fx: 'sweatNervous', say: 'My head hurts. Shaking me was not nice.' },
+      { m: 'playful',    fx: 'wiggle',       say: 'Hehe, you shake like a pro. But please stop.' },
+      { m: 'proud',      fx: 'hopSmall',     say: 'I am still standing. Your shaking could not beat me!' }
+    ];
+
+    function releaseAfterShake() {
+      if (asleep || waking || celebrating || entering) return;
+      clearTimeout(calmTimer);
+      rage = Math.min(rage, 0.08);          // cools down instantly, so the red fades and the new mood shows
+      lastShakeAt = 0;
+      var r = noRepeat(SHAKE_RELEASE, 'shakeRelease');
+      fxLock = true;
+      setMood(r.m, { once: true, returnTo: 'idle', force: true });
+      var lineWait = Math.max(0, shakeLineUntil - performance.now());   // let the "stop shaking me" line finish first
+      if (lineWait > 0) setTimeout(function () { if (!dragging && !bubbleOpen && !asleep) say(r.say, 4500); }, lineWait + 150);
+      else say(r.say, 4500);
+      (MOTION[r.fx] || MOTION.none)().then(function () { resetFx(); fxLock = false; });
+    }
 
     function onPoke() {
       var now = performance.now();
@@ -1753,17 +1981,29 @@
         if (dir !== 0) lastDir = dir;
       }
       if (reversals >= 2 && totalSpeed / pointerTrail.length > 0.28) {
-        lastShakeAt = performance.now();
-        extraJitter = 7;
+        var nowT = performance.now();
+        if (nowT - lastShakeAt > 900) shakeStartAt = nowT;      // a fresh shaking session
+        lastShakeAt = nowT;
+        clearTimeout(calmTimer);
         rage = clamp(Math.max(rage + 0.15, 0.4), 0, 1);   // each shake → redder, and immediately clearly mad
         downInfo && (downInfo.dragMood = true);           // no cheerful "whoa" once he is angry
-        if (player.mood !== 'angry') { setMood('angry', { force: true }); steamPuffs(3); say(rage > 0.6 ? 'I AM GETTING MAD!! 😡' : 'Hey! Stop shaking me! 😠', 1800); }
-        clearTimeout(checkShake._t);
-        checkShake._t = setTimeout(function () { extraJitter = 0; if (!dragging && !isMad()) setMood('idle', { force: true }); }, 2200);   // stays angry a while after the shaking stops
+        if (player.mood !== 'angry') { setMood('angry', { force: true }); steamPuffs(3); }
+        /* the line only shows once he has been shaken for a moment, stays long enough to read, then goes away */
+        if (nowT - shakeStartAt > 1400 && nowT - shakeLineAt > 9000) {
+          shakeLineAt = nowT; shakeLineUntil = nowT + 4500;
+          say(noRepeat(rage > 0.7 ? ['I AM GETTING MAD!! Stop shaking me!', 'STOP SHAKING ME!! I am turning red!'] : ['Hey! Stop shaking me!', 'Stop shaking me! I am getting dizzy!', 'Please stop shaking me!'], rage > 0.7 ? 'shakeHigh' : 'shakeLow'), 4500);
+        }
+        /* no lingering jitter: it stops the moment the shaking / the drag stops */
       }
     }
 
-    var FRICTION = 0.90, BOUNCE = 0.42, lastBump = 0;
+    var FRICTION = 0.945, BOUNCE = 0.6, REBOUND_MAX = 20, lastBump = 0, lastSquash = 0, hitAxis = 'x';
+    /* wall hit: most of the energy is absorbed (soft, rubbery wall), the rebound is slow and capped,
+       and the sliding along the wall is slowed down too, so he never shoots back across the screen */
+    function wallRebound(v, side) {
+      var r = -v * BOUNCE;
+      return Math.max(-REBOUND_MAX, Math.min(REBOUND_MAX, r));
+    }
     function stepPhysics(dtMs) {
       if (dragging || busy) return;
       if (Math.abs(vel.x) < 0.02 && Math.abs(vel.y) < 0.02) return;
@@ -1773,15 +2013,21 @@
         pos.x += vel.x; pos.y += vel.y;
         vel.x *= FRICTION; vel.y *= FRICTION;
         var hitSpeed = 0;
-        if (pos.x < b.minX) { pos.x = b.minX; hitSpeed = Math.abs(vel.x); vel.x *= -BOUNCE; }
-        if (pos.x > b.maxX) { pos.x = b.maxX; hitSpeed = Math.abs(vel.x); vel.x *= -BOUNCE; }
-        if (pos.y < b.minY) { pos.y = b.minY; vel.y = 0; }                 // top: just stop, no bounce/bump
-        if (pos.y > b.maxY) { pos.y = b.maxY; hitSpeed = Math.max(hitSpeed, Math.abs(vel.y)); vel.y *= -BOUNCE; }
+        if (pos.x < b.minX) { pos.x = b.minX; hitSpeed = Math.abs(vel.x); hitAxis = 'x'; vel.x = wallRebound(vel.x); vel.y *= 0.88; }
+        if (pos.x > b.maxX) { pos.x = b.maxX; hitSpeed = Math.abs(vel.x); hitAxis = 'x'; vel.x = wallRebound(vel.x); vel.y *= 0.88; }
+        if (pos.y < b.minY) { pos.y = b.minY; hitSpeed = Math.max(hitSpeed, Math.abs(vel.y)); hitAxis = 'y'; vel.y = wallRebound(vel.y); vel.x *= 0.9; }   // top: rubbery bounce too
+        if (pos.y > b.maxY) { pos.y = b.maxY; hitSpeed = Math.max(hitSpeed, Math.abs(vel.y)); hitAxis = 'y'; vel.y = wallRebound(vel.y); vel.x *= 0.88; }
+        /* chubby jelly squash on every bounce (the first big hit also plays the reaction below) */
+        if (hitSpeed > 2.5 && performance.now() - lastSquash > 260 && !dragging && !asleep && !fxLock) {
+          lastSquash = performance.now();
+          var kk = clamp(0.9 - hitSpeed * 0.015, 0.66, 0.88);
+          if (hitAxis === 'x') squashPop(kk, 2 - kk, 420); else squashPop(2 - kk, kk, 420);
+        }
         if (hitSpeed > 4 && performance.now() - lastBump > 1200 && !busy && !dragging && !asleep) {   // thrown into a wall — always shows, never swallowed by a running antic
           lastBump = performance.now();
           fxLock = false;                       // cut short whatever idle antic/reaction was mid-flight
           closeBubble();
-          squashPop(0.72, 1.22, 360);
+          if (hitAxis === 'x') squashPop(0.68, 1.26, 460); else squashPop(1.26, 0.68, 460);
           fxLock = true;
           if (isMad()) {
             setMood('angry', { once: true, returnTo: 'idle', force: true });
@@ -1829,18 +2075,80 @@
     var lastHoverReact = 0, lastClickReact = 0;
     hit.addEventListener('pointerenter', function () { hovered = true; });
     hit.addEventListener('pointerleave', function () { hovered = false; });
-    hit.addEventListener('pointerenter', function (e) {
-      if (e.pointerType === 'touch') return;
-      var now = performance.now();
-      if (now - lastHoverReact > 6000 && !bubbleOpen) { lastHoverReact = now; react('hover'); }
-    });
     document.addEventListener('click', function (e) {
       var t = e.target;
       if (!t || !t.closest || root.contains(t) || chat.contains(t)) return;
       if (!t.closest('button, .btn, [class*="btn"], [role="button"]')) return;
+      if (t.closest('[type="submit"], .btn-send, .ep-submit, .stf-submit-btn')) return;   // submit has its own reaction (empty field / success)
       var now = performance.now();
       if (now - lastClickReact > 5000) { lastClickReact = now; react('click'); }
     }, true);
+
+    /* ════════ section awareness: he comments on the section you are reading ════════ */
+    var SECTION_TALK = {
+      hero:            { m: 'happy',     fx: 'nod',       say: ['Welcome! This is the front door.', 'Nice landing spot, right?'] },
+      'pf-hero':       { m: 'proud',     fx: 'hopSmall',  say: ['Our work lives here. I am proud of it.'] },
+      intro:           { m: 'curious',   fx: 'tiltWonder',say: ['A little intro before the big projects.'] },
+      portfolio:       { m: 'proud',     fx: 'hopSmall',  say: ['Real projects, real clients. Look at those!', 'Some of our best work is right here.'] },
+      work:            { m: 'excited',   fx: 'popHop',    say: ['Pick any project, I dare you to click one.', 'Every one of these shipped. No kidding.'] },
+      services:        { m: 'curious',   fx: 'tiltWonder',say: ['So many services, so little time.', 'Which one sounds like you?'] },
+      'all-services':  { m: 'curious',   fx: 'tiltWonder',say: ['The full menu. Take your time.'] },
+      vibeCodeStrip:   { only: ['service.html'], m: 'playful',   fx: 'wiggle',    say: ['Built something with AI? We rescue those.', 'Vibe coded and stuck? We fix it.'] },
+      clients:         { m: 'happy',     fx: 'nod',       say: ['Big names trust us. Pretty cool.'] },
+      clientsMarquee:  { m: 'happy',     fx: 'nod',       say: ['These brands trust us. No pressure!'] },
+      brands:          { m: 'happy',     fx: 'nod',       say: ['Brands we have worked with.'] },
+      wcu:             { m: 'proud',     fx: 'hopSmall',  say: ['Why us? I could talk about this all day.'] },
+      whyUs:           { m: 'proud',     fx: 'hopSmall',  say: ['Here is why people stay with us.'] },
+      technology:      { m: 'thinking',  fx: 'none',      say: ['So much tech. I only know my own wires.', 'We speak all of these fluently.'] },
+      techStack:       { m: 'thinking',  fx: 'none',      say: ['The tools we build with. Shiny, right?'] },
+      marketing:       { m: 'playful',   fx: 'wiggle',    say: ['Design and marketing, the pretty side.'] },
+      process:         { m: 'thinking',  fx: 'nod',       say: ['This is how a project really goes.', 'Step by step. No surprises.'] },
+      overview:        { m: 'curious',   fx: 'tiltWonder',say: ['Quick overview of this service.'] },
+      capabilities:    { m: 'excited',   fx: 'popHop',    say: ['This is everything we can do here.'] },
+      impact:          { m: 'surprised', fx: 'popHop',    say: ['Whoa, those numbers are real.'] },
+      caseStudy:       { m: 'proud',     fx: 'hopSmall',  say: ['A project like yours, already delivered.'] },
+      existingProject: { only: ['service.html'], m: 'curious',   fx: 'tiltWonder',say: ['Already have a product? Tap a card and I will open the form.', 'Something broken? Tap one. I will handle the drawer.'] },
+      vibeCode:        { only: ['service.html'], m: 'playful',   fx: 'wiggle',    say: ['Made it with AI? Tap a card and I will pull the form open.'] },
+      topServiceForm:  { m: 'happy',     fx: 'nod',       say: ['Quick form for a brand new project.'] },
+      story:           { m: 'curious',   fx: 'tiltWonder',say: ['Our story. It has plot twists.'] },
+      team:            { m: 'happy',     fx: 'wiggle',    say: ['Meet the humans. I am the cute one.', 'The real brains behind me.'] },
+      faq:             { m: 'thinking',  fx: 'nod',       say: ['Got questions? Probably answered here.'] },
+      faqs:            { m: 'thinking',  fx: 'nod',       say: ['Questions? Probably answered here.'] },
+      reviews:         { m: 'proud',     fx: 'hopSmall',  say: ['Do not take my word, read theirs.', 'Happy clients, happy me.'] },
+      startProject:    { m: 'excited',   fx: 'popHop',    say: ['Ready? This is where it starts.', 'Psst, the start button is right here.'] },
+      siteFooter:      { m: 'happy',     fx: 'nod',       say: ['You made it to the bottom!'] }
+    };
+    var secCur = '', secSince = 0, secSaid = {}, lastSecTalk = performance.now() - 3000, pageLoadedAt = performance.now();
+    function currentSectionId() {
+      var y = window.innerHeight * 0.45, best = '', bestH = Infinity;
+      for (var id in SECTION_TALK) {
+        var el = document.getElementById(id);
+        if (!el) continue;
+        var r = el.getBoundingClientRect();
+        if (r.height < 120 || r.top > y || r.bottom < y) continue;     // not under the reading line
+        if (r.height < bestH) { bestH = r.height; best = id; }          // innermost wins
+      }
+      return best;
+    }
+    function sectionTick() {
+      if (document.hidden) return;
+      var id = currentSectionId(), now = performance.now();
+      if (id !== secCur) { secCur = id; secSince = now; return; }
+      if (!id || now - secSince < 1500) return;                          // he waits until you actually stay there
+      if (now - pageLoadedAt < 7000 || now - lastSecTalk < 7000) return;
+      if (secSaid[id] && now - secSaid[id] < 60000) return;
+      if (busy || fxLock || dragging || asleep || waking || bubbleOpen || celebrating || entering || isMad() || sayOpen) return;
+      if (document.body.style.overflow === 'hidden') return;             // a drawer / overlay is open
+      if (now - lastActivity > IDLE_MS - 2500) return;                   // about to doze off, leave him alone
+      var d = SECTION_TALK[id];
+      if (d.only && d.only.indexOf(PAGE) === -1) return;               // fix / vibe-code talk only on the service page itself
+      secSaid[id] = now; lastSecTalk = now;
+      fxLock = true;
+      setMood(d.m, { once: true, returnTo: 'idle', force: true });
+      say(pick(d.say), 3400);
+      (MOTION[d.fx] || MOTION.none)().then(function () { resetFx(); fxLock = false; });
+    }
+    setInterval(sectionTick, 600);
 
     /* coming back to the tab */
     var hiddenAt = 0;
@@ -1911,6 +2219,6 @@
     });
 
     /* tiny public hook for debugging from the console */
-    window.ELEV = window.ELI = { run: runAction, getMood: function () { return player.mood; }, getRage: function () { return rage; }, setMood: setMood, sleep: sleep, wake: wake, celebrate: celebrate, enter: enterRandom, say: say, open: openBubble };
+    window.ELY = window.ELEV = window.ELI = { run: runAction, getMood: function () { return player.mood; }, getRage: function () { return rage; }, setMood: setMood, sleep: sleep, wake: wake, celebrate: celebrate, enter: enterRandom, say: say, open: openBubble };
   }
 })();
