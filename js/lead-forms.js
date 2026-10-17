@@ -7,7 +7,7 @@
 
   function submit(payload) {
     if (!endpoint || endpoint.indexOf('https://script.google.com/macros/s/') !== 0) {
-      return Promise.reject(new Error('Form delivery is not configured. Please email abdulrafay364p@gmail.com directly.'));
+      return Promise.reject(new Error('Form delivery is not configured. Please email contact@elyvenltd.com directly.'));
     }
 
     const randomId = window.crypto && typeof window.crypto.randomUUID === 'function'
@@ -69,7 +69,7 @@
 
         window.clearTimeout(responseTimeout);
         responseTimeout = window.setTimeout(() => {
-          fail('Google could not confirm this submission. Please try again or email abdulrafay364p@gmail.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
+          fail('Google could not confirm this submission. Please try again or email contact@elyvenltd.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
         }, 1500);
       };
 
@@ -106,7 +106,7 @@
       frame.addEventListener('load', onFrameLoad);
 
       timeout = window.setTimeout(() => {
-        fail('Google did not respond to this submission. Please try again or email abdulrafay364p@gmail.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
+        fail('Google did not respond to this submission. Please try again or email contact@elyvenltd.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
       }, 15000);
 
       frame.src = 'about:blank';

@@ -1614,7 +1614,7 @@
 .mp-count { margin-left: 8px; font: 500 14px/1 'Inter', sans-serif; color: #17130E; opacity: .7; }
 .mp-count b { font: 800 26px/1 'Outfit', sans-serif; color: #C99B5C; }
 
-.mp-deck { --st: 38px; --sy: 20px; position: relative; height: 440px; perspective: 1400px; }
+.mp-deck { --st: 38px; --sy: 20px; position: relative; height: 440px; perspective: 1400px; margin-top: 24px; }
 .mp-card {
   --o: 0; position: absolute; inset: 0 112px 0 0; padding: 38px 40px; border-radius: 30px;
   display: flex; flex-direction: column; gap: 14px; justify-content: center;
@@ -1623,11 +1623,11 @@
   opacity: calc(1 - min(var(--o), 3) * .22); z-index: calc(10 - var(--o));
   transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .35s;
 }
-.mp-card:nth-child(n+5) { opacity: 0; pointer-events: none; }
+.mp-card[data-far="1"] { opacity: 0; pointer-events: none; }
 .mp-card.past { transform: translate3d(-115%, 0, 0) rotate(-9deg); opacity: 0; pointer-events: none; }
 .mp-card[data-c="0"] { background: #17130E; color: #fff; --pc: #fff; }
 .mp-card[data-c="1"] { background: #C99B5C; color: #17130E; --pc: #17130E; }
-.mp-card[data-c="2"] { background: #fff; color: #17130E; --pc: #C99B5C; }
+.mp-card[data-c="2"] { background: #fff; color: #17130E; --pc: #C99B5C; border: 1px solid rgba(201,155,92,.35); }
 .mp-card[data-c="3"] { background: #241D16; color: #fff; --pc: #fff; border: 1px solid rgba(201,155,92,.5); }
 .mp-pn {
   position: absolute; right: 26px; top: 10px; font: 800 150px/1 'Outfit', sans-serif; letter-spacing: -.06em;

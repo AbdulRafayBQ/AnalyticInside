@@ -717,7 +717,7 @@
         <p class="sap-subtitle" ${fx('rise', 5)}>Tell us your idea. We reply within a day with next steps and a clear estimate.</p>
         <div class="sap-cta-row" ${fx('zoom', 6)}>
           <button class="sap-btn-primary" type="button" ${openDrawer}>Start a Project <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <a class="sap-btn-secondary" href="mailto:abdulrafay364p@gmail.com">Email Us</a>
+          <a class="sap-btn-secondary" href="mailto:contact@elyvenltd.com">Email Us</a>
         </div>
         <div class="sap-meta-row" ${fx('rise', 7)}>
           <div class="sap-meta-item"><div class="sap-meta-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><span>Karachi, Pakistan — working worldwide</span></div>
@@ -802,13 +802,9 @@
         <div class="footer-col footer-col-contact">
           <h3 class="footer-heading">Direct Inquiries</h3>
           <div class="footer-contact-details">
-            <a href="mailto:abdulrafay364p@gmail.com" class="footer-link-highlight">
+            <a href="mailto:contact@elyvenltd.com" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>abdulrafay364p@gmail.com</span>
-            </a>
-            <a href="tel:+923340317145" class="footer-link-highlight">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+92 334 0317145</span>
+              <span>contact@elyvenltd.com</span>
             </a>
             <a href="tel:+923340317145" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -860,7 +856,7 @@
     'ai-development': [
       { title: 'RichAI', tagline: 'Image generation, chat and voice in one workspace.', link: 'portfolio.html?project=richai', tags: ['Stable Diffusion', 'React', 'Node.js'] },
       { title: 'Tiny Kiwi', tagline: 'AI background removal built into a browser editor.', link: 'portfolio.html?project=tinykiwi', tags: ['React', 'Next.js', 'Web Workers'] },
-      { title: 'Zylmi', tagline: 'Brand identity paired with a smart digital presence.', link: 'portfolio.html?project=zylmi', tags: ['Figma', 'React', 'Tailwind CSS'] }
+      { title: 'Doc Link Healthcare', tagline: 'Smart triage and bookings inside one healthcare app.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['React', 'Next.js', 'Redux'] }
     ],
     'product-design-development': [
       { title: 'Morinaga Calories Counter', tagline: 'Barcode scanning and daily macro tracking for iPhone and Android, synced live.', link: 'portfolio.html?project=morinagacaloriescounter', tags: ['React Native', 'Firebase', 'iOS & Android'] },
@@ -888,9 +884,7 @@
       { title: 'Assist Event', tagline: 'A live view of bookings, vendors and conflicts.', link: 'portfolio.html?project=assistevent', tags: ['React Native', 'Node.js', 'MySQL'] }
     ],
     'digital-marketing-branding': [
-      { title: 'Zylmi', tagline: 'A full identity system built for a modern startup.', link: 'portfolio.html?project=zylmi', tags: ['Figma', 'React', 'Tailwind CSS'] },
-      { title: 'Telecard', tagline: 'A corporate site that made 15 service lines easy to find.', link: 'portfolio.html?project=telecard', tags: ['WordPress', 'HTML5', 'CSS3'] },
-      { title: 'Doc Link Healthcare', tagline: 'A consumer facing platform built to earn trust fast.', link: 'portfolio.html?project=doclinkhealthcare', tags: ['React', 'Next.js', 'Redux'] }
+      { title: 'Mateen Food Center', tagline: 'Social media marketing and branding for a restaurant and caterer.', link: 'portfolio.html?project=mateenfoodcenter', tags: ['Social Media', 'Branding', 'Meta Ads'] }
     ]
   };
 
@@ -908,7 +902,7 @@
     'Caary Capital': { kind: 'web', accent: '#C99B5C', image: 'images/Portfolio thumbnails/CAARY Capital Fintech Dashboard Showcase.png', metric: '500+', detail: 'Team members served', theme: 'FINTECH PLATFORM' },
     'Assist Event': { kind: 'web', accent: '#C99B5C', image: 'images/Portfolio thumbnails/Elegant Event Management Dashboard Showcase.png', metric: '01', detail: 'Place to plan it all', theme: 'EVENT EXPERIENCE' },
     'RichAI': { kind: 'web', accent: '#8B6CF0', image: 'images/Portfolio thumbnails/RichAI Dog Assistant Hero Scene.png', metric: 'AI', detail: 'Create, chat, speak', theme: 'CREATIVE ASSISTANT' },
-    'Zylmi': { kind: 'web', accent: '#5CE1B4', image: 'images/Portfolio thumbnails/Zylmi Brand Identity Showcase.png', metric: '01', detail: 'Distinctive identity', theme: 'BRAND SYSTEM' },
+    'Mateen Food Center': { kind: 'web', accent: '#D9A441', image: 'images/Portfolio thumbnails/Mateen Food Center Showcase.png', metric: 'MFC', detail: 'One brand, every post', theme: 'FOOD BRAND' },
     'Metadot': { kind: 'web', accent: '#C99B5C', slug: 'metadot', image: 'images/Portfolio thumbnails/MetaDot Multi-Chain Wallet Showcase.png', metric: '5+', detail: 'Chains, one wallet', theme: 'MULTI-CHAIN WALLET' },
     'LinkDrip': { kind: 'web', accent: '#3d7ec6', image: 'images/Portfolio thumbnails/LinkDrip Dashboard Hero Scene.png', metric: '48.2K', detail: 'Clicks, understood', theme: 'LINK ANALYTICS' }
   };
@@ -1196,7 +1190,7 @@
     'Tiny Kiwi': rpArtEditor,
     'Caary Capital': rpArtFintech,
     'RichAI': rpArtAiStudio,
-    'Zylmi': rpArtBrand,
+    'Mateen Food Center': rpArtBrand,
     'LinkDrip': rpArtLinkAnalytics
   };
 
@@ -1596,6 +1590,7 @@
         const o = k - cur;
         c.classList.toggle('past', o < 0);
         c.classList.toggle('back', o > 0);
+        c.dataset.far = o > 3 ? '1' : '0';
         c.style.setProperty('--o', o < 0 ? 0 : o);
       });
       if (now) now.textContent = P[cur].step;

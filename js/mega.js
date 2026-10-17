@@ -105,7 +105,7 @@ const SERVICES = [
         "desc": "Easy design and very few crashes keep users happy."
       },
       {
-        "metric": "2M+",
+        "metric": "10K+",
         "title": "Total app downloads",
         "desc": "Across apps we have built and maintained."
       },
@@ -2000,7 +2000,7 @@ function sectionBlurb(id, svc) {
     { title: 'Doc Link Healthcare', tagline: 'Skip the waiting room. Checkups and bookings in one app.', slug: 'doclinkhealthcare' },
     { title: 'Morinaga Calories Counter', tagline: 'Cross platform calorie tracking with real time sync.', slug: 'morinagacaloriescounter' },
     { title: 'RichAI', tagline: 'A talking avatar and chatbot with real image generation.', slug: 'richai' },
-    { title: 'Zylmi', tagline: 'Brand identity and digital presence for a modern startup.', slug: 'zylmi' },
+    { title: 'Mateen Food Center', tagline: 'Social media marketing and branding for a restaurant and caterer.', slug: 'mateenfoodcenter' },
     { title: 'Telecard', tagline: 'A corporate WordPress build for a long standing ICT provider.', slug: 'telecard' }
   ];
 

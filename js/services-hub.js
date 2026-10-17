@@ -118,7 +118,7 @@
     'website-development': { title: 'Salasa OMS', link: 'portfolio.html?project=salasaoms' },
     'mobile-app-development': { title: 'Dr. Asgar Rheumatology', link: 'portfolio.html?project=drasgarrheumatology' },
     'ai-development': { title: 'RichAI', link: 'portfolio.html?project=richai' },
-    'product-design-development': { title: 'Zylmi', link: 'portfolio.html?project=zylmi' },
+    'product-design-development': { title: 'Tiny Kiwi', link: 'portfolio.html?project=tinykiwi' },
     'data-analytics-consultancy': { title: 'Caary Capital', link: 'portfolio.html?project=caarycapital' },
     'data-management-database-solutions': { title: 'IPv4 Mall', link: 'portfolio.html?project=ipv4mall' }
   };

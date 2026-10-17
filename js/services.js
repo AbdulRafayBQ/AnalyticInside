@@ -132,7 +132,7 @@
              'The goal is always an app that feels natural to use on the device it is running on. Not something that feels like a website wrapped in an app shell but something that behaves the way people expect their phone to behave.'],
       list: ['Native iOS & Android development','Flutter & React Native apps','App Store & Play Store submission','Push notifications & offline support'],
       tech: ['Swift','Kotlin','Flutter','React Native','Jetpack','Firebase','SQLite','MongoDB','REST APIs','GraphQL','AWS','Docker','Jenkins','Appium','XCTest'],
-      stats: [{ n: '40+', l: 'Apps published' }, { n: '4.8★', l: 'Average store rating' }, { n: '2M+', l: 'Total installs' }]
+      stats: [{ n: '40+', l: 'Apps published' }, { n: '4.8★', l: 'Average store rating' }, { n: '10K+', l: 'Total installs' }]
     },
     {
       num: 'Service 04', title: 'AI Development',

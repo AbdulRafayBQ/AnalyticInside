@@ -328,23 +328,24 @@
       features: ['In browser canvas editor', 'Undo and redo with compressed snapshots', 'Web Worker filter pipeline', 'AI background removal server side', 'Virtual layer compositing', 'High res print export at 300 DPI']
     },
     {
-      title: 'Zylmi',
-      short: 'Zylmi',
-      sub: 'Brand & Web Design',
-      folder: 'Zylmi',
-      images: ['Screenshot 2026-09-15 013809.png', 'Screenshot 2026-09-15 013839.png', 'Screenshot 2026-09-15 013854.png'],
-      tags: ['Figma', 'UI/UX Design', 'React', 'Tailwind CSS'],
-      tagline: 'Brand identity and digital presence for a modern startup.',
-      category: 'ai',
+      title: 'Mateen Food Center',
+      short: 'MFC',
+      sub: 'Social Media Marketing and Branding',
+      folder: 'mateen-food-center',
+      images: ['mfc-hero.jpg'],
+      tags: ['Social Media Marketing', 'Brand Identity', 'Content Creation', 'Meta Ads'],
+      tagline: 'A restaurant and catering brand that finally looks as good as its food.',
+      category: 'web',
       caseStudy: null,
-      desc: 'Full brand identity and web design for Zylmi. Starting from scratch, we developed the visual language, typography system and digital presence that positioned them distinctly in a crowded market.',
+      desc: 'Mateen Food Center is a restaurant and caterer serving everything from biryani and karahi to burgers and rolls. We run their social media and shaped how the brand looks and sounds, so the menu, the posts and the ads all feel like one confident name.',
       process: [
-        { phase: 'Discovery', detail: 'Deep dive into the founders vision, target market and competitive landscape. Developed three distinct positioning routes before aligning on the direction that felt most authentic to the brand.' },
-        { phase: 'Identity Design', detail: 'Logo system, colour palette, typography and brand voice guide. Every element was designed to work across digital, print and merchandise from day one.' },
-        { phase: 'Web Design', detail: 'High fidelity Figma designs for the marketing site. Designed for conversion with clear hierarchy, purposeful whitespace and CTAs that earned their prominence.' },
-        { phase: 'Build and Launch', detail: 'React with Tailwind CSS implementation. Built for speed and handoff, with a component library the client team could update without breaking the design.' }
+        { phase: 'Brand Review', detail: 'We looked at how MFC appeared on social pages, menus and banners. The food was strong but the look changed from post to post, so we set one clear direction first.' },
+        { phase: 'Visual Identity', detail: 'We kept the warm gold and brown of the MFC badge and paired it with a dark, rich background so the food colours stand out. Fonts, spacing and the logo lockup were fixed into simple rules the team can reuse.' },
+        { phase: 'Content System', detail: 'We planned a monthly calendar that mixes hero dishes, deals, catering offers and behind the scenes moments, with ready post, story and reel templates.' },
+        { phase: 'Campaigns and Ads', detail: 'We ran paid campaigns on Facebook and Instagram for deals and event catering, with creative built around the dish and one clear call to order.' },
+        { phase: 'Monthly Reporting', detail: 'Each month the owners get a short plain report on reach, orders and enquiries, plus what we will change next.' }
       ],
-      features: ['Logo and visual identity system', 'Brand guidelines document', 'Marketing site design', 'React and Tailwind implementation', 'Component library handoff', 'Designed for conversion']
+      features: ['Brand look and logo usage rules', 'Monthly social media calendar', 'Food photo editing and retouching', 'Post, story and carousel templates', 'Catering and deal campaigns', 'Simple monthly performance report']
     }
   ];
 
@@ -389,6 +390,9 @@
         <p class="pf-preview-caption">Illustrative plan selection interface</p>
       </div>`
     };
+    if (project.title === 'Mateen Food Center') {
+      return `<img class="pf-detail-photo" src="${IMG_BASE}mateen-food-center/mfc-hero.jpg" alt="Mateen Food Center brand banner" style="width:100%;height:100%;min-height:0;object-fit:contain;border-radius:18px;display:block;background:#000" decoding="async">`;
+    }
     return preview[project.title] || getProjectCover(project, true);
   }
   
@@ -564,12 +568,12 @@
       tag: 'Browser Creative Photo Suite',
       accent: '#10B981'
     },
-    'Zylmi': {
-      bg: '#FFFFFF',
-      theme: 'light',
-      logo: 'images/logos/Screenshot 2026-09-22 191708.png',
-      tag: 'Luxury Brand & E-Commerce',
-      accent: '#312E81'
+    'Mateen Food Center': {
+      bg: '#0B0B0B',
+      theme: 'dark',
+      logo: 'images/portfolio/mateen-food-center/mfc-logo.png',
+      tag: 'Restaurant and Catering Brand',
+      accent: '#D9A441'
     }
   };
 
@@ -594,7 +598,7 @@
     'RichAI': 'images/Portfolio thumbnails/RichAI Dog Assistant Hero Scene.jpg',
     'Telecard': 'images/Portfolio thumbnails/Telecard Connected Future Showcase.jpg',
     'Tiny Kiwi': 'images/Portfolio thumbnails/Tiny Kiwi Photo Editing Workspace.jpg',
-    'Zylmi': 'images/Portfolio thumbnails/Zylmi Brand Identity Showcase.jpg'
+    'Mateen Food Center': 'images/Portfolio thumbnails/Mateen Food Center Showcase.jpg'
   };
 
   /* Thumbnail card: same build as the photo cards on the Services page.
