@@ -8,12 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=5.0">
-  <link rel="stylesheet" href="css/contact.css?v=3.2">
-  <link rel="stylesheet" href="css/mobile-fix.css?v=3.0">
-  <link rel="stylesheet" href="css/mega.css">
-  <link rel="stylesheet" href="css/shared.css?v=1.2">
-  <link rel="stylesheet" href="css/eli-avatar.css?v=3.1">
+  <link rel="stylesheet" href="css/site-core.css">
+  <link rel="stylesheet" href="css/company-pages.css">
 </head>
 <body>
 
@@ -146,7 +142,7 @@
                     <option value="E-Commerce &amp; Shopify Development">E-Commerce &amp; Shopify Development</option>
                     <option value="Custom Software Development">Custom Software Development</option>
                     <option value="Product Development">Product Development</option>
-                    <option value="AI Development">AI Development</option>
+                    <option value="AI Development &amp; Automation">AI Development &amp; Automation</option>
                     <option value="Digital Marketing &amp; Branding">Digital Marketing &amp; Branding</option>
                   </select>
                 </div>
@@ -325,9 +321,7 @@
     </div><!-- /footer-inner -->
   </footer>
 
-  <script src="js/lead-forms.js?v=1.5"></script>
-  <script src="js/fd-stack-choice.js?v=1.2"></script>
-  <script src="js/script.js"></script>
+  <script src="js/site-core.js"></script>
   <script>
     window.handleContactSubmit = async function() {
       const btn = document.getElementById('sendBtn');
@@ -341,11 +335,11 @@
         feedback.className = 'form-feedback';
         feedback.textContent = '';
         var problems = [];
-        if (!f('cName').value.trim()) problems.push({ el: f('cName'), kind: 'empty', msg: 'Please enter your name.' });
-        if (!f('cEmail').value.trim()) problems.push({ el: f('cEmail'), kind: 'empty', msg: 'Please enter your email.' });
-        else if (!f('cEmail').validity.valid) problems.push({ el: f('cEmail'), kind: 'invalid', msg: 'Enter a valid email, like you@company.com' });
-        if (!f('cService').value) problems.push({ el: f('cService'), kind: 'empty', msg: 'Please choose a service.' });
-        if (!f('cProject').value.trim()) problems.push({ el: f('cProject'), kind: 'empty', msg: 'Please tell us about your project.' });
+        var pn = L.checkName(f('cName')); if (pn) problems.push(pn);
+        var pe = L.checkEmail(f('cEmail')); if (pe) problems.push(pe);
+        var pp = L.checkPhone(f('cPhone')); if (pp) problems.push(pp);
+        if (!f('cService').value) problems.push({ el: f('cService'), kind: 'empty', msg: 'Service is not selected. Please choose the service you need.' });
+        if (!f('cProject').value.trim()) problems.push({ el: f('cProject'), kind: 'empty', msg: 'Project details are missing. Tell us a little about your idea.' });
         if (L.showErrors(problems)) return;
       }
       window.clearTimeout(window.contactFeedbackTimer);
@@ -387,10 +381,8 @@
       }
     };
   </script>
-  <script src="js/mega.js?v=3.2"></script>
-  <script src="js/shared.js?v=1.0"></script>
+  <script src="js/site-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/eli-avatar.js?v=3.1"></script>
-  <script src="js/case-study-overlay.js?v=1.0"></script>
+  <script src="js/avatar.js"></script>
 </body>
 </html>
