@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
 (function () {
   'use strict';
 
-  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwYmtx5qynHaIN_F2OrvLeWkCl6wdLM8Y9MD9YsF1SIB5__mcfV2LPhadnnexvez76X/exec';
+  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbxP3mR51_EJo6BtTVzUKsErh_vJ8mRmp5OuqejJkR7peRILWGQQIYKfUD5nXmUaWDMJ/exec';
   const endpoint = window.ANALYTIC_FORMS_ENDPOINT;
   let requestCounter = 0;
 
@@ -1072,6 +1072,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (page === 'index.html') runServiceCardNavigation();
+})();
+
+
+/* ==========================================================================
+   SHARED FOOTER ENTRANCE
+   Apply the service-page footer reveal to static site pages too.
+   ========================================================================== */
+(function () {
+  'use strict';
+  function init() {
+    var footer = document.querySelector('.site-footer');
+    if (!footer || footer.querySelector('[data-fx]')) return;
+
+    footer.querySelectorAll('.footer-col').forEach(function (el, i) {
+      el.setAttribute('data-fx', ['flipl', 'rise', 'rise', 'rise', 'flipr'][i] || 'rise');
+      el.style.setProperty('--i', i);
+    });
+    var bottomBar = footer.querySelector('.footer-bottom-bar');
+    if (bottomBar) {
+      bottomBar.setAttribute('data-fx', 'rise');
+      bottomBar.style.setProperty('--i', footer.querySelectorAll('.footer-col').length);
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      footer.classList.add('is-in');
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        footer.classList.toggle('is-in', entry.isIntersecting);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    observer.observe(footer);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
 
 

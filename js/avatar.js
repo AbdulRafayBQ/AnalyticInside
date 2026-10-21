@@ -2130,7 +2130,7 @@
       /* no random chatter on button clicks */
     }, true);
 
-    /* ════════ section guide: rest the cursor on a section for ~2.5 s and Ely explains it ════════
+    /* ════════ section guide: rest the cursor on a section for ~1 s and Ely explains it ════════
        Nothing is said on his own. Every line below is triggered by the visitor's pointer.
        Override any text with   data-guide="your line"   on a section.                        */
     var GUIDES = {
@@ -2152,6 +2152,16 @@
       techStack:       { m: 'thinking',  fx: 'none',       say: ['These are the tools we use for this service. Tap a tool to know more about it.'] },
       marketing:       { m: 'playful',   fx: 'wiggle',     say: ['Design, branding and marketing tools live here. Pick a tab to see what we use for each job.'] },
       process:         { m: 'thinking',  fx: 'nod',        say: ['This is how we work, step by step, from the first call to launch. Go through each step to see what happens.'] },
+      /* ── Marketing & Branding page (service.html?s=digital-marketing-branding) ── */
+      start:           { only: ['service.html'], m: 'playful',  fx: 'wiggle',     say: ['This is the Marketing and Branding page. Tell me a little about your business in the form and we will send you a free plan within 24 hours.'] },
+      reels:           { only: ['service.html'], m: 'excited',  fx: 'popHop',     say: ['Each reel on the phone shows one thing we do for a business, before and after. Tap a tab to switch what it shows.'] },
+      gallery:         { only: ['service.html'], m: 'proud',    fx: 'hopSmall',   say: ['Real reels we shot, edited and posted for paying clients, nothing stock or borrowed. Scroll, or swipe on mobile, to spin through them.'] },
+      branding:        { only: ['service.html'], m: 'curious',  fx: 'tiltWonder', say: ['This is what we build for your identity: logo, colors, menu, packaging and social templates, all in one consistent look.'] },
+      targeting:       { only: ['service.html'], m: 'thinking', fx: 'nod',        say: ['We put your ads in front of the right people on the right platform, not just a boosted post to everyone.'] },
+      chatbot:         { only: ['service.html'], m: 'playful',  fx: 'wiggle',     say: ['A chatbot that replies and takes orders for you on WhatsApp, Instagram and your website, day and night.'] },
+      'marketing-packages': { only: ['service.html'], m: 'excited', fx: 'popHop',   say: ['Marketing packages, from steady social media to a full funnel with ads, chatbot and reporting. Pick one, or build your own.'] },
+      'brand-packages':     { only: ['service.html'], m: 'proud',   fx: 'hopSmall', say: ['Branding packages, from a first logo to a full identity across every touch-point your customers see.'] },
+      builder:         { only: ['service.html'], m: 'happy',    fx: 'nod',        say: ['Pick exactly what you need from branding and marketing here, and send your list straight to our team.'] },
       overview:        { m: 'curious',   fx: 'tiltWonder', say: ['This is a quick summary of the service, what it includes and who it is best for.'] },
       capabilities:    { m: 'excited',   fx: 'popHop',     say: ['Here is everything we can do for you under this service. Check the list for what you need.'] },
       impact:          { m: 'surprised', fx: 'popHop',     say: ['These numbers show the results we got for real projects.'] },
@@ -2218,9 +2228,9 @@
       if (!touchMode && !ptr.at) return;
       var el = guideSection();
       if (el !== guideCur) { guideCur = el; guideSince = now; return; }
-      if (!el || now - guideSince < 2000) return;                         // stay on one section ~2 s
-      if (touchMode) { if (now - guideLastScroll < 1500) return; }        // phone: only once scrolling has stopped
-      else if (now - ptr.at < 900) return;                                // desktop: pointer is resting
+      if (!el || now - guideSince < 1000) return;                         // stay on one section ~1 s
+      if (touchMode) { if (now - guideLastScroll < 1000) return; }        // phone: only once scrolling has stopped
+      else if (now - ptr.at < 350) return;                                // desktop: pointer is resting
       if (now - lastGuideAt < 7000) return;
       var seen = guideSaid.get(el);
       if (seen && now - seen < 90000) return;

@@ -2187,22 +2187,6 @@ function sectionBlurb(id, svc) {
     lateCounters.forEach(function (el) { cIO.observe(el); });
   } else { lateCounters.forEach(runCounter); }
 
-  /* ---------------- SCROLL PROGRESS ---------------- */
-  var progress = $('#abProgress');
-  var ticking = false;
-  function onScroll() {
-    ticking = false;
-    var doc = document.documentElement;
-    var max = doc.scrollHeight - window.innerHeight;
-    var p = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
-    if (progress) progress.style.setProperty('--p', p.toFixed(4));
-  }
-  window.addEventListener('scroll', function () {
-    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
-  }, { passive: true });
-  window.addEventListener('resize', onScroll);
-  onScroll();
-
   /* smooth jump for in-page links (Our Story button) */
   $$('a[href^="#"]').forEach(function (a) {
     var id = a.getAttribute('href').slice(1);
@@ -2636,6 +2620,34 @@ function sectionBlurb(id, svc) {
     });
   }
   document.getElementById('svBackToTop')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
+/* ══ FOOTER 3D ENTRANCE (same rise/flip reveal the Marketing & Branding /
+   service pages use, applied here so every page's footer animates too) ══ */
+(function footerReveal() {
+  const footer = document.querySelector('.site-footer');
+  if (!footer || footer.closest('#svc')) return; /* service.html builds + animates its own footer already */
+  footer.classList.add('sv-sec');
+  footer.setAttribute('data-sec', '');
+  const fxSeq = ['flipl', 'rise', 'rise', 'rise', 'flipr'];
+  const cols = footer.querySelectorAll('.footer-col');
+  cols.forEach((el, i) => { el.setAttribute('data-fx', fxSeq[i] || 'rise'); el.style.setProperty('--i', i); });
+  const bar = footer.querySelector('.footer-bottom-bar');
+  if (bar) { bar.setAttribute('data-fx', 'rise'); bar.style.setProperty('--i', cols.length); }
+
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    footer.classList.add('is-in');
+    return;
+  }
+  function evalFooter() {
+    const vh = window.innerHeight;
+    const r = footer.getBoundingClientRect();
+    if (r.top < vh * 0.9 && r.bottom > vh * 0.08) footer.classList.add('is-in');
+  }
+  let ticking = false;
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { evalFooter(); ticking = false; }); } }, { passive: true });
+  window.addEventListener('resize', evalFooter);
+  setTimeout(evalFooter, 140);
 })();
   }
 })();

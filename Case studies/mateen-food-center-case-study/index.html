@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mateen Food Center — Marketing & Branding Case Study | Elyven</title>
+<link rel="icon" href="../../images/brand/eleven-logo-nav.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15110C;--paper:#FBF7F0;--cream:#F3EADB;--gold:#C99B5C;--gold2:#E9B04A;--gold-d:#8F6428;--coral:#FF5A3C;--mut:#625C53;--line:rgba(21,17,12,.12)}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Outfit',sans-serif;letter-spacing:-.03em;line-height:1.08}
+.in{width:min(1160px,92%);margin:0 auto}
+.top{position:sticky;top:0;z-index:20;background:rgba(251,247,240,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .in{display:flex;align-items:center;justify-content:space-between;height:70px}
+.top img{height:50px;width:auto;display:block}
+.back{font:600 14px 'Inter',sans-serif;color:var(--ink);text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+.back:hover{color:var(--gold-d)}
+.btn{display:inline-flex;gap:10px;align-items:center;padding:15px 26px;border-radius:999px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--ink);font:700 15px 'Inter',sans-serif;text-decoration:none;box-shadow:0 10px 30px rgba(201,155,92,.38);transition:transform .25s}
+.btn:hover{transform:translateY(-3px)}
+.kick{display:inline-flex;align-items:center;gap:10px;font:700 13px 'Inter',sans-serif;color:var(--gold-d);margin-bottom:16px}
+.kick:before{content:"";width:26px;height:2px;background:currentColor}
+h2{font-size:clamp(30px,4.2vw,54px);font-weight:800;max-width:18ch}
+h1 em,h2 em{font-style:italic;color:var(--gold)}
+.sec{padding:clamp(60px,8vw,104px) 0}
+.lede{font-size:clamp(16px,1.4vw,19px);color:var(--mut);max-width:60ch;margin-top:18px;line-height:1.75}
+/* hero */
+.hero{background:#000;color:#fff;padding:clamp(54px,8vw,100px) 0;overflow:hidden}
+.hero .in{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(34px,4.6vw,58px);font-weight:900;letter-spacing:-.04em;max-width:13ch}
+.hero .lede{color:rgba(255,255,255,.72);max-width:48ch}
+.hero .kick{color:var(--gold2)}
+.hero-shot{align-self:center;margin:0;width:100%;height:fit-content;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px -24px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.07)}
+.hero-shot img{display:block;width:100%;height:auto;aspect-ratio:1671/941;object-fit:cover;object-position:center}
+@media(max-width:900px){.hero .in{grid-template-columns:1fr;gap:34px}.hero-shot{max-width:480px;margin:0 auto}}
+@media(max-width:600px){.hero-shot{border-radius:18px}}
+.snap{background:var(--ink);color:#fff}
+.snap .in{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:34px 0}
+.snap small{display:block;font:600 12px 'Inter',sans-serif;color:var(--gold2);margin-bottom:6px}
+.snap b{font:700 16px 'Outfit',sans-serif}
+/* challenge */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.pain{display:grid;gap:14px}
+.pain div{background:#fff;border-radius:20px;padding:20px 22px;box-shadow:inset 0 0 0 1px var(--line);display:flex;gap:16px}
+.pain i{flex:none;width:36px;height:36px;border-radius:50%;background:#FFE4DF;color:#d23b1e;display:grid;place-items:center;font-style:normal;font-weight:800}
+.pain p{font-size:15px;color:var(--mut)} .pain b{color:var(--ink);display:block;font-size:16px}
+/* lines */
+.lines{background:var(--cream)}
+.lgrid{display:grid;gap:22px;margin-top:44px}
+.line{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border-radius:30px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.line:nth-child(even){grid-template-columns:1.1fr .9fr}.line:nth-child(even) .lv{order:2}
+.lv{aspect-ratio:1671/941;min-height:0;display:grid;place-items:center;color:#fff;position:relative;overflow:hidden}
+.l1{background:#000 url("../../images/Marketing and branding/Ballrom.png") center/cover no-repeat}.l2{background:#000 url("../../images/Marketing and branding/catering.png") center/cover no-repeat}.l3{background:#000 url("../../images/Marketing and branding/dine and delivery.png") center/cover no-repeat}
+.lb{padding:clamp(24px,3.4vw,44px);display:grid;gap:14px;align-content:center}
+.lb h3{font-size:clamp(26px,2.8vw,36px);font-weight:800}
+.lb p{color:var(--mut)}
+.lb ul{list-style:none;padding:0;display:grid;gap:8px;font-size:15px}.lb li:before{content:"→ ";color:var(--gold-d);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips b{font:600 12.5px 'Inter',sans-serif;padding:6px 12px;border-radius:999px;background:var(--cream)}
+/* strategy */
+.str{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.str div{border-radius:24px;padding:26px;background:var(--ink);color:#fff}
+.str div:nth-child(2){background:var(--gold);color:var(--ink)}
+.str h4{font-size:22px;margin:10px 0}.str p{font-size:14px;opacity:.82}.str em{font:800 13px 'Inter',sans-serif;font-style:normal;color:var(--gold2)}.str div:nth-child(2) em{color:var(--ink)}
+/* reach */
+.reach{background:var(--ink);color:#fff}
+.reach h2{max-width:20ch}.reach .kick{color:var(--gold2)}.reach .lede{color:rgba(255,255,255,.68)}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.rc{background:rgba(255,255,255,.06);border-radius:26px;padding:28px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.rc h4{font-size:17px;color:rgba(255,255,255,.7);font-weight:600;margin-bottom:22px}
+.bar{margin-bottom:18px}.bar div{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:rgba(255,255,255,.65);margin-bottom:8px}
+.bar b{font:800 30px 'Outfit',sans-serif;color:#fff;letter-spacing:-.03em}
+.bar u{display:block;height:14px;border-radius:8px;background:rgba(255,255,255,.12);overflow:hidden}
+.bar u i{display:block;height:100%;width:0;border-radius:8px;background:rgba(255,255,255,.55);transition:width 1.6s cubic-bezier(.2,.9,.2,1)}
+.bar.now u i{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.rc.in .bar u i{width:var(--w)}
+.gain{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font:900 44px 'Outfit',sans-serif;color:var(--gold2);letter-spacing:-.04em}
+.gain span{font:500 13px 'Inter',sans-serif;color:rgba(255,255,255,.62);margin-left:8px;letter-spacing:0}
+/* reels */
+.reels{background:var(--ink);color:#fff}
+.reels .kick{color:var(--gold2)}.reels .lede{color:rgba(255,255,255,.68)}
+.reels h2{font-size:clamp(24px,2.6vw,34px)}
+.reels h2 em{font-style:italic;color:var(--gold)}
+.reel-row{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;padding:40px 0 4px}
+.reel{position:relative;flex:none;width:200px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:#000;scroll-snap-align:start;box-shadow:0 20px 44px rgba(0,0,0,.4);cursor:pointer}
+.reel video{width:100%;height:100%;object-fit:cover;display:block}
+.reel .rp-ic{position:absolute;right:10px;bottom:10px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:rgba(0,0,0,.5);backdrop-filter:blur(3px)}
+.reel .rp-ic svg{width:15px;height:15px}
+.reel.playing .rp-ic{background:var(--gold)}
+/* posters */
+.posters{background:var(--paper)}
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px}
+.poster{position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);background:#000}
+.poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.poster:hover img{transform:scale(1.07)}
+.poster span{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;font:700 12.5px 'Inter',sans-serif;color:#fff;text-align:center;background:linear-gradient(0deg,rgba(0,0,0,.78),transparent)}
+@media(max-width:900px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.reel{width:160px}}
+.cta{background:linear-gradient(135deg,#f6d894,var(--gold) 60%,#8f6428);text-align:center}
+.cta .in{display:grid;justify-items:center;gap:20px}
+.cta h2{max-width:16ch}.cta .btn{background:var(--ink);color:#fff;box-shadow:none}
+footer{padding:26px 0;text-align:center;font-size:13px;color:var(--mut)}
+@media(max-width:900px){.two,.line,.line:nth-child(even){grid-template-columns:1fr}.line:nth-child(even) .lv{order:0}.snap .in{grid-template-columns:1fr 1fr}.str{grid-template-columns:1fr 1fr}.rgrid{grid-template-columns:1fr}}
+@media(max-width:560px){.str{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.001s!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a href="../../index.html"><img src="../../images/brand/eleven-logo-nav.png" alt="Elyven"></a>
+  <a class="back" href="../../service.html?s=digital-marketing-branding">← Marketing &amp; Branding</a>
+</div></header>
+
+<section class="hero"><div class="in">
+  <div>
+    <span class="kick">Case study · Marketing &amp; Branding</span>
+    <h1>One name. Three businesses. One <em>brand</em>.</h1>
+    <p class="lede">How Elyven gave Mateen Food Center a single look, a clear voice for each service and ads that reach people who actually order.</p>
+  </div>
+  <figure class="hero-shot"><img src="../../images/Marketing and branding/case study hero.png" alt="Mateen Food Center case study overview: brand mark, social profile and packaging" width="1671" height="941"></figure>
+</div>
+</section>
+
+<div class="snap"><div class="in">
+  <div><small>Client</small><b>Mateen Food Center</b></div>
+  <div><small>Business lines</small><b>Ballroom · Catering · Restaurant</b></div>
+  <div><small>What we did</small><b>Branding · Social · Reels · Ads</b></div>
+  <div><small>Channels</small><b>Facebook · Instagram · WhatsApp</b></div>
+</div></div>
+
+<section class="sec"><div class="in two">
+  <div><span class="kick">The challenge</span><h2>Great food. No clear story <em>online</em>.</h2>
+    <p class="lede">Mateen Food Center serves everything from biryani and karahi to burgers and rolls, and also runs a ballroom and a catering arm. Each customer wants something different, but online it all looked the same.</p></div>
+  <div class="pain">
+    <div><i>1</i><p><b>Three services, one confusing page</b>Wedding hosts, party planners and diners all saw the same posts.</p></div>
+    <div><i>2</i><p><b>No consistent look</b>Menus, banners and posts were designed one at a time, with no system.</p></div>
+    <div><i>3</i><p><b>Ads reaching the wrong people</b>Boosted posts went to a broad audience, so budget was spent on people who would never book or order.</p></div>
+  </div>
+</div></section>
+
+<section class="sec lines"><div class="in">
+  <span class="kick">What we built</span><h2>A plan for every business <em>line</em>.</h2>
+  <p class="lede">Each service got its own audience, creative and goal, all under one recognisable brand.</p>
+  <div class="lgrid">
+    <article class="line"><div class="lv l1" role="img" aria-label="Mateen Ballroom event space"></div><div class="lb"><h3>Filling the hall</h3><p>Wedding and event bookings need trust and visuals. We showed the venue at its best and put it in front of people planning events.</p><ul><li>Venue photo and reel shoots</li><li>Enquiry-form ads aimed at engaged and event-planning audiences</li><li>Wedding-season content calendar</li></ul><div class="chips"><b>Reels</b><b>Lead ads</b><b>Photography</b></div></div></article>
+    <article class="line"><div class="lv l2" role="img" aria-label="Mateen catering spread"></div><div class="lb"><h3>Winning big orders</h3><p>Party, office and event catering is a high-value order. We made the menus and packages easy to understand and easy to ask about.</p><ul><li>Menu and package creatives</li><li>Lead-form ads for party orders</li><li>WhatsApp quick replies and quote flow</li></ul><div class="chips"><b>Menu design</b><b>WhatsApp</b><b>Lead forms</b></div></div></article>
+    <article class="line"><div class="lv l3" role="img" aria-label="Mateen restaurant dine-in and delivery"></div><div class="lb"><h3>Dine-in and delivery</h3><p>Daily footfall and online orders come from different moments. We ran dish-led reels and deals for both.</p><ul><li>Dish and deal reels for dine-in</li><li>Local targeting around the outlet</li><li>Delivery order campaigns with retargeting</li></ul><div class="chips"><b>Dine-in</b><b>Delivery</b><b>Local ads</b></div></div></article>
+  </div>
+</div></section>
+
+<section class="sec"><div class="in">
+  <span class="kick">Strategy</span><h2>Four moves behind the <em>growth</em>.</h2>
+  <div class="str">
+    <div><em>Brand</em><h4>One look</h4><p>A shared colour palette, type and template kit for posts, banners and menus.</p></div>
+    <div><em>Content</em><h4>A steady plan</h4><p>A monthly calendar with reels, dish shoots and deal posts, planned per service.</p></div>
+    <div><em>Ads</em><h4>Tight targeting</h4><p>Separate audiences for events, catering and diners, with exclusions to save budget.</p></div>
+    <div><em>Follow-up</em><h4>Fast replies</h4><p>Quick WhatsApp answers and retargeting so interested people do not go cold.</p></div>
+  </div>
+</div></section>
+
+<section class="sec reach" id="reach"><div class="in">
+  <span class="kick">Results</span><h2>Reach before and after <em>Elyven</em>.</h2>
+  <p class="lede">Monthly figures from the brand's social accounts and ad reports, compared before we started and now.</p>
+  <div class="rgrid" id="rgrid"></div>
+</div></section>
+
+<section class="sec reels"><div class="in">
+  <span class="kick">Reels</span><h2>Reels that <em>convert</em></h2>
+  <p class="lede">Shot, edited and posted for Mateen Food Center.</p>
+  <div class="reel-row" id="reelRow"></div>
+</div></section>
+
+<section class="sec posters"><div class="in">
+  <span class="kick">The creative</span><h2>Poster designs that got <em>noticed</em>.</h2>
+  <p class="lede">Flyers and carousel posts designed in-house for offers, menus and events.</p>
+  <div class="pgrid" id="posterGrid"></div>
+</div></section>
+
+<section class="sec cta"><div class="in">
+  <h2>Want your brand to grow like <em>this</em>?</h2>
+  <p class="lede" style="color:rgba(21,17,12,.75)">Tell us what you sell. We will show you the plan.</p>
+  <a class="btn" href="../../service.html?s=digital-marketing-branding#packages">See our packages →</a>
+</div></section>
+<footer>© Elyven · Marketing &amp; Branding</footer>
+
+<script>
+/* ─── EDIT HERE: replace with the real numbers from the project ─── */
+const DATA=[
+  {t:'Monthly reach',b:20000,n:96000,u:'+'},
+  {t:'Engagement rate',b:1.1,n:5.8,u:'%'},
+  {t:'Orders and enquiries per month',b:40,n:210,u:''}
+];
+const f=v=>v>=1000?(v/1000).toFixed(v%1000?1:0).replace('.0','')+'K':String(v);
+document.getElementById('rgrid').innerHTML=DATA.map(d=>`
+ <div class="rc"><h4>${d.t}</h4>
+ <div class="bar"><div><span>Before</span><b>${f(d.b)}${d.u}</b></div><u><i style="--w:${Math.max(d.b/d.n*100,8)}%"></i></u></div>
+ <div class="bar now"><div><span>Now</span><b>${f(d.n)}${d.u}</b></div><u><i style="--w:100%"></i></u></div>
+ <div class="gain">${(d.n/d.b).toFixed(1).replace('.0','')}x<span>growth</span></div></div>`).join('');
+const cards=[...document.querySelectorAll('.rc')];
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.3});cards.forEach(c=>io.observe(c))}else cards.forEach(c=>c.classList.add('in'));
+
+/* ─── reels row (autoplay, muted, loop) ─── */
+const REEL_DIR='../../images/marketing/real-reels/';
+const REEL_PICKS=[1,2,3,4];
+/* two distinct icons: sound OFF (speaker + cross) and sound ON (speaker + waves) */
+const iconOff='<svg class="rp-ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="#fff"/><path d="M16 9l5 6M21 9l-5 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';
+const iconOn='<svg class="rp-ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="#fff"/><path d="M15.3 8.3a5 5 0 0 1 0 7.4M18.4 5.6a9.3 9.3 0 0 1 0 12.8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';
+document.getElementById('reelRow').innerHTML=REEL_PICKS.map(n=>`
+ <div class="reel" data-n="${n}" role="button" tabindex="0" aria-label="Play with sound">
+   <video src="${REEL_DIR}reel-${n}.mp4" poster="${REEL_DIR}reel-${n}-poster.jpg" muted loop playsinline preload="auto" autoplay></video>
+   ${iconOff}
+ </div>`).join('');
+document.querySelectorAll('.reel').forEach(card=>{
+  const v=card.querySelector('video');
+  v.play().catch(()=>{});
+  const toggleSound=()=>{
+    v.muted=!v.muted;
+    const on=!v.muted;
+    card.classList.toggle('playing',on);
+    card.querySelector('.rp-ic').outerHTML=on?iconOn:iconOff;
+    card.setAttribute('aria-label',on?'Mute video':'Play with sound');
+  };
+  card.addEventListener('click',toggleSound);
+  card.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleSound(); } });
+});
+if('IntersectionObserver' in window){
+  const rio=new IntersectionObserver(es=>es.forEach(e=>{
+    const v=e.target.querySelector('video');
+    if(!v) return;
+    if(e.isIntersecting) v.play().catch(()=>{}); else v.pause();
+  }),{threshold:.2});
+  document.querySelectorAll('.reel').forEach(c=>rio.observe(c));
+}
+
+/* ─── poster designs ─── */
+const POSTER_DIR='../../images/Marketing and branding/';
+const POSTERS=[
+  {f:'825327786_1535680691916434_8707130781853393448_n.jpg',t:'Beef Lovers Promo'},
+  {f:'840499502_1538471438304026_3013097196281119291_n.jpg',t:'Welcome Carousel'},
+  {f:'841425563_1535510881933415_8783647779328698226_n.jpg',t:'Ballroom Menu'},
+  {f:'848482286_1541526247998545_3874303455955800207_n.jpg',t:'Why Choose Mateen'},
+  {f:'841465450_1533676115450225_5547214293796477710_n.jpg',t:'Nikkah Celebration'}
+];
+document.getElementById('posterGrid').innerHTML=POSTERS.map(p=>`
+ <figure class="poster"><img src="${encodeURI(POSTER_DIR+p.f)}" alt="${p.t} poster design" loading="lazy"><span>${p.t}</span></figure>`).join('');
+</script>
+</body>
+</html>

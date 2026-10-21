@@ -16,7 +16,7 @@
   <!-- SITE HEADER -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner">
-      <a class="logo logo-img-link" href="index.html"><img src="images/brand/eleven-logo.png" alt="Eleven" class="logo-img"></a>
+      <a class="logo logo-img-link" href="index.html"><img src="images/brand/eleven-logo-nav.png" alt="Elyven" class="logo-img"></a>
       <nav class="nav" id="mainNav">
         <ul>
           <li><a href="about.html" class="nav-link">Story</a></li>
@@ -212,8 +212,7 @@
         <!-- Col 1: Brand & Identity -->
         <div class="footer-col footer-col-brand">
           <a class="footer-brand" href="index.html">
-            <span class="footer-brand-title">ELYVEN</span>
-            <span class="footer-brand-dot"></span>
+            <img src="images/brand/eleven-logo-footer.png" alt="Elyven" class="footer-logo-img">
           </a>
           <p class="footer-brand-tagline">
             Software, AI and design for businesses that want to grow.
@@ -352,11 +351,16 @@
           throw new Error('The form service did not load. Refresh the page and try again.');
         }
         await window.ANALYTIC_LEADS.submit({
+          formType: 'contact_request',
           name: document.getElementById('cName').value.trim(),
           email: document.getElementById('cEmail').value.trim(),
           phone: document.getElementById('cPhone').value.trim(),
           service: document.getElementById('cService').value,
           message: document.getElementById('cProject').value.trim(),
+          details: {
+            service: document.getElementById('cService').value,
+            projectBrief: document.getElementById('cProject').value.trim()
+          },
           source: location.href
         });
         window.ANALYTIC_LEADS.reset(document.getElementById('contactForm'));

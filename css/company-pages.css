@@ -505,13 +505,6 @@ a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
 .about-page button { font-family: inherit; }
 .about-page img { max-width: 100%; }
 
-/* ---------- scroll progress ---------- */
-.ab-progress {
-  position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 200;
-  transform-origin: left; transform: scaleX(var(--p, 0));
-  background: linear-gradient(90deg, var(--ab-gold), var(--ab-gold2));
-}
-
 /* ---------- section base ---------- */
 .ab-sec { position: relative; display: block; min-height: 0; padding: 96px 0; overflow: hidden; background: var(--bg, #fff); }
 .ab-wrap { position: relative; z-index: 2; width: min(1200px, 92%); margin: 0 auto; }
