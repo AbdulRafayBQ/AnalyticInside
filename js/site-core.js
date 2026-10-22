@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
 (function () {
   'use strict';
 
-  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbyouUFgGA6aferAz76atq-REUiBiYwS-258RlXiok6db0AwS-VMZc1eJqRS1HTkizPx/exec';
+  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwB8bf5jRlgz5lUPxkdXXAjZBvAH_UAxyG1TWRJbZattYcTZGfXBaTfPDMIDeZi1Kds/exec';
   const endpoint = window.ANALYTIC_FORMS_ENDPOINT;
   let requestCounter = 0;
 
