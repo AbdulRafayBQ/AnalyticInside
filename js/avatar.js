@@ -2152,6 +2152,15 @@
       techStack:       { m: 'thinking',  fx: 'none',       say: ['These are the tools we use for this service. Tap a tool to know more about it.'] },
       marketing:       { m: 'playful',   fx: 'wiggle',     say: ['Design, branding and marketing tools live here. Pick a tab to see what we use for each job.'] },
       process:         { m: 'thinking',  fx: 'nod',        say: ['This is how we work, step by step, from the first call to launch. Go through each step to see what happens.'] },
+      /* ── AI Development & Automation page (service.html?s=ai-development) ── */
+      aiCosts:         { only: ['service.html'], m: 'thinking', fx: 'nod',        say: ['This section compares manual busywork with automated pipelines. It shows where companies lose hours every day.'] },
+      aiSolutions:     { only: ['service.html'], m: 'excited',  fx: 'popHop',     say: ['Four core AI layers we build: workflow automations, conversational bots, CRM bridges, and custom models.'] },
+      aiAssistant:     { only: ['service.html'], m: 'playful',  fx: 'wiggle',     say: ['Go ahead and talk to my AI colleague right there. Just please do not tell him that I am the cutest assistant in the room.', 'Careful testing that chatbot, it talks a lot. Between us, I think it is trying to take my job.'] },
+      aiWorkflow:      { only: ['service.html'], m: 'curious',  fx: 'tiltWonder', say: ['Watch this live rail: an incoming lead gets parsed, scored, and synced across your CRM in under two seconds.'] },
+      aiCustomSystems: { only: ['service.html'], m: 'proud',    fx: 'hopSmall',   say: ['Beyond basic bots, this is custom AI infrastructure: OCR document extraction, private vector RAG, and autonomous task agents.'] },
+      aiIntegrations:  { only: ['service.html'], m: 'thinking', fx: 'nod',        say: ['We plug AI into the tools you already run, including HubSpot, Salesforce, WhatsApp, PostgreSQL, and Slack.'] },
+      aiProcess:       { only: ['service.html'], m: 'curious',  fx: 'tiltWonder', say: ['A clear six-step roadmap from the initial workflow audit to working prototype and zero-downtime production launch.'] },
+      aiOutcomes:      { only: ['service.html'], m: 'happy',    fx: 'hopSmall',   say: ['Real business impact: sub-second response times, zero missed leads, and hours handed back to your team every week.'] },
       /* ── Marketing & Branding page (service.html?s=digital-marketing-branding) ── */
       start:           { only: ['service.html'], m: 'playful',  fx: 'wiggle',     say: ['This is the Marketing and Branding page. Tell me a little about your business in the form and we will send you a free plan within 24 hours.'] },
       reels:           { only: ['service.html'], m: 'excited',  fx: 'popHop',     say: ['Each reel on the phone shows one thing we do for a business, before and after. Tap a tab to switch what it shows.'] },
