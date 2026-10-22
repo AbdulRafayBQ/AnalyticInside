@@ -261,10 +261,15 @@ function doPost(event) {
       lock.releaseLock();
     }
 
+    const leadUrl =
+      spreadsheet.getUrl().split('#')[0] +
+      '#gid=' + sheet.getSheetId() +
+      '&range=A' + rowNumber;
+
     let emailStatus = 'Sent';
 
     try {
-      sendAdminEmail_(adminEmail, config, fields, email);
+      sendAdminEmail_(adminEmail, config, fields, email, leadUrl);
 
     } catch (emailError) {
       emailStatus = 'Failed';
@@ -467,7 +472,7 @@ function isValidEmail_(email) {
 /**
  * Sends a formatted notification to the admin.
  */
-function sendAdminEmail_(adminEmail, config, fields, replyTo) {
+function sendAdminEmail_(adminEmail, config, fields, replyTo, leadUrl) {
   const htmlRows = fields.map(function (field) {
     return (
       '<tr>' +
@@ -490,7 +495,8 @@ function sendAdminEmail_(adminEmail, config, fields, replyTo) {
     config.intro + '\n\n' +
     fields.map(function (field) {
       return field[0] + ': ' + (field[1] || 'Not provided');
-    }).join('\n');
+    }).join('\n') +
+    '\n\nOpen this lead in Google Sheets:\n' + leadUrl;
 
   MailApp.sendEmail({
     to: adminEmail,
@@ -514,6 +520,14 @@ function sendAdminEmail_(adminEmail, config, fields, replyTo) {
           'font-size:14px;margin-top:16px">' +
           htmlRows +
         '</table>' +
+        '<p style="margin:24px 0">' +
+          '<a href="' + escapeHtml_(leadUrl) + '" ' +
+            'style="display:inline-block;padding:12px 18px;' +
+              'background:#f97316;color:#fff;text-decoration:none;' +
+              'border-radius:6px;font-weight:600">' +
+            'Open this lead in Google Sheets' +
+          '</a>' +
+        '</p>' +
         '<p style="margin-top:24px;color:#777;font-size:12px">' +
           'Automated notification from the Elyven website.' +
         '</p>' +
