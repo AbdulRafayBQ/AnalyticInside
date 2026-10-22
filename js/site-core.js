@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
 (function () {
   'use strict';
 
-  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwB8bf5jRlgz5lUPxkdXXAjZBvAH_UAxyG1TWRJbZattYcTZGfXBaTfPDMIDeZi1Kds/exec';
+  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbwepy4QoHe5FDQeagIljyySBGzSzcEEgdH_4H9mg8d-k7KyM9lacY6J8lITKiqQ_Z2a/exec';
   const endpoint = window.ANALYTIC_FORMS_ENDPOINT;
   let requestCounter = 0;
 
@@ -639,8 +639,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.clearTimeout(responseTimeout);
         responseTimeout = window.setTimeout(() => {
-          fail('Google could not confirm this submission. Please try again or email contact@elyvenltd.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
-        }, 1500);
+          fail('The Apps Script response did not include the form confirmation. Update and redeploy the web app so doPost returns the analytic-lead-result message, then use its latest /exec URL.');
+        }, 10000);
       };
 
       const onMessage = event => {
@@ -676,8 +676,8 @@ document.addEventListener('DOMContentLoaded', () => {
       frame.addEventListener('load', onFrameLoad);
 
       timeout = window.setTimeout(() => {
-        fail('Google did not respond to this submission. Please try again or email contact@elyvenltd.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
-      }, 15000);
+        fail('The Apps Script web app did not respond. Check that it is deployed as a web app, runs as your account, is accessible to anyone, and that this is the latest /exec URL.');
+      }, 20000);
 
       frame.src = 'about:blank';
       document.body.append(frame, form);
