@@ -641,6 +641,7 @@
             throw new Error('The form service did not load. Refresh the page and try again.');
           }
           await window.ANALYTIC_LEADS.submit({
+            formType: 'project_enquiry',
             name:n,email:em,
             company:document.getElementById('fd-company')?.value.trim()||'',
             service:document.getElementById('fd-service')?.value||'',

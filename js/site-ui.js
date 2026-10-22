@@ -2598,6 +2598,7 @@ function sectionBlurb(id, svc) {
           throw new Error('The form service did not load. Refresh the page and try again.');
         }
         await window.ANALYTIC_LEADS.submit({
+          formType: 'project_enquiry',
           name: nm.value.trim(),
           email: em.value.trim(),
           company: document.getElementById('fd-company')?.value.trim() || '',
