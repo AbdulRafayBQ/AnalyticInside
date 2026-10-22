@@ -53,7 +53,10 @@
     bolt: 'M13 3L5 14h6l-1 7 8-11h-6z',
     mega: 'M3 11v3h3l8 4V7L6 11zM18 9a4 4 0 010 6',
     web: 'M3 5h18v12H3zM8 21h8M12 17v4',
-    cal: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4'
+    cal: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',
+    search: 'M11 19a8 8 0 100-16 8 8 0 000 16zM21 21l-4.3-4.3',
+    gem: 'M6 3h12l4 6-10 12L2 9z',
+    sparkle: 'M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3zM19 17l.7 2.1L22 20l-2.3.9L19 23l-.7-2.1L16 20l2.3-.9L19 17zM5 17l.5 1.5L7 19l-1.5.5L5 21l-.5-1.5L3 19l1.5-.5L5 17z'
   };
   const ico = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${IC[n]}"/></svg>`;
   const initialsAvatar = (txt, bg) => 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" rx="40" fill="${bg}"/><text x="50%" y="57%" font-family="Arial, sans-serif" font-size="32" fill="#fff" text-anchor="middle">${txt}</text></svg>`);
@@ -174,49 +177,7 @@
     ] }
   ];
 
-  /* ── Branding packages (identity, print, guidelines) ── */
-  const BPKG = [
-    { k: 'foundation', n: 'Foundation', ic: 'star',
-      tag: 'Build your identity. For new restaurants and shops that need a professional look from day one.',
-      g: ['Logo & visual identity', 'Brand colour & font system', 'Mini brand guideline'],
-      cta: 'Get Foundation' },
-    { k: 'signature', n: 'Signature', ic: 'shield', tag_badge: 'Most picked',
-      tag: 'One consistent look across every touch-point: digital, menu and packaging.',
-      g: ['Everything in Foundation', 'Menu, packaging & signboard design', 'Social media templates', 'Complete brand guideline document'],
-      cta: 'Get Signature' },
-    { k: 'heritage', n: 'Heritage', ic: 'bolt', hero: true,
-      tag: 'Full restaurant presence. For brands ready to open more branches.',
-      g: ['Everything in Signature', 'Visiting cards & print material', 'Packaging for every product line', 'Dedicated brand manager'],
-      cta: 'Get Heritage' }
-  ];
 
-  /* ── Marketing packages (social, ads, chatbot, reporting) ── */
-  const MPKG = [
-    { k: 'spark', n: 'Spark', ic: 'chat',
-      tag: 'Reach more people. Build a page that looks active and ready for customers.',
-      g: ['Social media management', 'Content calendar & scheduled posting', '4 reels & 8 posts every month'],
-      cta: 'Get Spark' },
-    { k: 'surge', n: 'Surge', ic: 'target', tag_badge: 'Most picked',
-      tag: 'Reach more people and turn followers into real enquiries.',
-      g: ['Everything in Spark', 'Content creation: photos & reels', 'Paid ads setup & targeting (Facebook, Instagram, Google)'],
-      cta: 'Get Surge' },
-    { k: 'apex', n: 'Apex', ic: 'mega', hero: true,
-      tag: 'From reach to repeat orders, with chatbot, retargeting and reporting.',
-      g: ['Everything in Surge', 'WhatsApp chatbot & order automation', 'Retargeting ads + monthly analytics report'],
-      cta: 'Get Apex' }
-  ];
-
-  const BUILD_BRAND = [
-    ['Identity & design', IC.star, ['Logo design', 'Brand colour & font system', 'Brand guideline document']],
-    ['Print & packaging', IC.cart, ['Menu design', 'Packaging design', 'Visiting cards & signboard']],
-    ['Brand strategy', IC.target, ['Brand positioning', 'Tone of voice guide', 'Competitor brand audit']]
-  ];
-  const BUILD_MKT = [
-    ['Social media', IC.chat, ['Content calendar', 'Posts and reels', 'Replying to comments and DMs']],
-    ['Ads and growth', IC.chart, ['Facebook and Instagram ads', 'Google and TikTok ads', 'Audience targeting']],
-    ['Chatbot and automation', 'M9 3v2m6-2v2M4 9h16v10H4zM9 14h.01M15 14h.01', ['WhatsApp order bot', 'Booking bot', 'Order confirmation flow']],
-    ['Reporting and growth', IC.chart, ['Monthly analytics report', 'Competitor tracking', 'Growth consultation call']]
-  ];
 
   const MOVES = [
     ['Understand', 'سمجھنا', 'What you sell, who you sell to, and where the gap is.'],
@@ -225,40 +186,69 @@
     ['Launch and grow', 'آغاز', 'We go live, watch the numbers, and scale what\'s working.']
   ];
 
-  /* sub-options shown under "Marketing" / "Branding" change with the business
-     type picked above them, so a clinic sees clinic-relevant items, a
-     restaurant sees restaurant-relevant items, and so on. */
-  const BIZ_NEEDS = {
-    'Restaurant or food': {
-      marketing: ['Social media management', 'Paid ads & targeting', 'WhatsApp order chatbot', 'Monthly reporting', 'Website or app'],
-      branding: ['Logo & visual identity', 'Brand guidelines', 'Menu & packaging design', 'Signboard & print']
-    },
-    'Clothing or fashion': {
-      marketing: ['Social media management', 'Paid ads & targeting', 'WhatsApp order chatbot', 'Lookbook & reel content', 'Website or online store'],
-      branding: ['Logo & visual identity', 'Brand guidelines', 'Packaging & tag design', 'Lookbook & catalogue design']
-    },
-    'Shop or retail': {
-      marketing: ['Social media management', 'Paid ads & targeting', 'WhatsApp order chatbot', 'Monthly reporting', 'Website or online store'],
-      branding: ['Logo & visual identity', 'Brand guidelines', 'Packaging design', 'Signboard & print']
-    },
-    'Real estate': {
-      marketing: ['Social media management', 'Paid ads & lead targeting', 'WhatsApp enquiry chatbot', 'Property listing content', 'Website or landing pages'],
-      branding: ['Logo & visual identity', 'Brand guidelines', 'Brochure & signage design', 'Property listing templates']
-    },
-    'Clinic or health': {
-      marketing: ['Social media management', 'Paid ads & targeting', 'WhatsApp appointment chatbot', 'Patient review management', 'Website or booking app'],
-      branding: ['Logo & visual identity', 'Brand guidelines', 'Signage & prescription pad design', 'Patient forms & print material']
-    },
-    'Education': {
-      marketing: ['Social media management', 'Paid ads & admission targeting', 'WhatsApp enquiry chatbot', 'Monthly reporting', 'Website or app'],
-      branding: ['Logo & visual identity', 'Brand guidelines', 'Prospectus & signage design', 'Certificate & print material']
-    },
-    'Something else': {
-      marketing: ['Social media management', 'Paid ads & targeting', 'WhatsApp chatbot', 'Monthly reporting', 'Website or app'],
-      branding: ['Logo & visual identity', 'Brand guidelines', 'Packaging & print design', 'Signboard design']
-    }
-  };
-  const DEFAULT_NEEDS = BIZ_NEEDS['Something else'];
+  /* ── Packages: Diamond / Platinum / Royal, built from
+     branding + marketing + SEO + website + ads + automation grouped by category ── */
+  const PKG_GROUPS = [
+    { ic: 'star', t: 'Branding & Brand Identity', items: ['Logo + brand guidelines'] },
+    { ic: 'mega', t: 'Social Media Marketing', items: ['8 posts · 4 reels · content calendar'] },
+    { ic: 'search', t: 'SEO', items: ['Basic audit · on-page (5 pages)'] },
+    { ic: 'web', t: 'Website Development', items: ['1-5 page business website'] },
+    { ic: 'wa', t: 'AI Chatbot & Automation', items: ['WhatsApp setup + quick replies'] }
+  ];
+  const PKG_GROUPS_ASCENDANT = [
+    { ic: 'star', t: 'Branding & Brand Identity', items: ['Extended assets + brand consistency'] },
+    { ic: 'mega', t: 'Social Media Marketing', items: ['12 posts · 8 reels · 12 stories · 2 ad creatives'] },
+    { ic: 'search', t: 'SEO', items: ['Technical + on-page · keyword research · 2 blog articles'] },
+    { ic: 'web', t: 'Website Development', items: ['5-10 page website · modern design'] },
+    { ic: 'wa', t: 'AI Chatbot & Automation', items: ['FAQ chatbot + lead capture'] },
+    { ic: 'target', t: 'Meta Ads & Google Ads', items: ['Campaign setup + monthly report'] }
+  ];
+  const PKG_GROUPS_SOVEREIGN = [
+    { ic: 'gem', t: 'Brand Strategy', items: ['Positioning + identity system'] },
+    { ic: 'mega', t: 'Social Media Marketing', items: ['16 posts · 12 reels · 20 stories · 4 ad creatives'] },
+    { ic: 'search', t: 'SEO & Content', items: ['On-page + local SEO · 4 blog articles'] },
+    { ic: 'web', t: 'Website Development', items: ['Custom website / web app'] },
+    { ic: 'wa', t: 'AI Chatbot & Automation', items: ['Advanced chatbot + workflow automation'] },
+    { ic: 'target', t: 'Meta Ads & Google Ads', items: ['Full campaign management'] },
+    { ic: 'chart', t: 'CRM & Integrations', items: ['Connect your tools and systems'] }
+  ];
+  const PACKAGES = [
+    { k: 'diamond', n: 'Diamond', badge: 'Starter', ic: 'gem',
+      headline: 'Build your brand. Get noticed.',
+      tag: 'Perfect for startups and small businesses that want a strong online presence.',
+      groups: PKG_GROUPS, cta: 'Get Diamond Package' },
+    { k: 'platinum', n: 'Platinum', badge: 'Most Popular', ic: 'bolt', popular: true,
+      headline: 'More reach. More customers.',
+      tag: 'Ideal for growing businesses that want better visibility and consistent leads.',
+      groups: PKG_GROUPS_ASCENDANT, cta: 'Get Platinum Package' },
+    { k: 'royal', n: 'Royal', badge: 'Elite', ic: 'shield',
+      headline: 'Bigger strategy. Stronger results.',
+      tag: 'For established brands that want full marketing support and maximum growth.',
+      groups: PKG_GROUPS_SOVEREIGN, cta: 'Get Royal Package' }
+  ];
+
+  /* ── the fourth, dark "build your own" card: one merged checklist drawn
+     from everything the three packages above cover, so the person sees at
+     a glance what a custom plan can pull from. ── */
+  const CUSTOM_ITEMS = [
+    'Branding & Brand Identity', 'Social Media Marketing', 'SEO & Search Visibility',
+    'Meta Ads & Google Ads', 'AI Automation & Chatbots', 'Website Development',
+    'CRM & Integrations', 'Custom AI Development'
+  ];
+
+  /* ── Custom builder categories: the same areas as the packages and the
+     custom-package checklist above, so the customize form is a direct,
+     pick-your-own version of what the cards already describe. ── */
+  const BUILD_CATS = [
+    ['Branding & Brand Identity', IC.star, ['Logo refinement', 'Mini brand guidelines', 'Brand voice & tone', 'Social profile setup', 'Full logo design', 'Packaging design']],
+    ['Social Media Marketing', IC.mega, ['8 posts per month', '4 Reels per month', 'Captions & content calendar', 'Extra posts or reels', 'Paid ads & targeting']],
+    ['SEO & Search Visibility', IC.search, ['Basic website SEO audit', 'On-page SEO (up to 5 pages)', 'Google Business Profile optimization', 'Keyword research', 'Monthly SEO blog articles']],
+    ['Website Development', IC.web, ['1-5 page business website', '5-10 page website', 'Online store / e-commerce', 'Custom website or web app']],
+    ['Meta Ads & Google Ads', IC.target, ['Campaign setup', 'Monthly campaign management', 'Extra ad creatives', 'Performance reporting']],
+    ['AI Automation & Chatbots', IC.wa, ['WhatsApp Business setup', 'Automated greeting & quick replies', 'Order / enquiry chatbot', 'Lead qualification & routing']],
+    ['CRM & Integrations', IC.chart, ['Connect your tools and systems', 'CRM setup', 'Workflow automation']],
+    ['Custom AI Development', IC.gem, ['Custom AI tool', 'AI-powered feature', 'Tailored automation build']]
+  ];
 
   /* ═══════════ MARKUP ═══════════ */
   const start = `
@@ -286,14 +276,6 @@
             <div class="mk-field"><label class="mk-sr-only" for="mkPhone">WhatsApp number</label><input id="mkPhone" type="tel" placeholder="WhatsApp number" autocomplete="tel"></div>
             <div class="mk-field"><label class="mk-sr-only" for="mkBiz">Type of business</label>
               <select id="mkBiz"><option value="">Type of business</option><option>Restaurant or food</option><option>Clothing or fashion</option><option>Shop or retail</option><option>Real estate</option><option>Clinic or health</option><option>Education</option><option>Something else</option></select></div>
-          </div>
-          <fieldset class="mk-needs"><legend>What do you need?</legend>
-            <label><input type="checkbox" value="Marketing" data-main="marketing"><span>Marketing</span></label>
-            <label><input type="checkbox" value="Branding" data-main="branding"><span>Branding</span></label>
-          </fieldset>
-          <div class="mk-subneeds" id="mkSubNeeds">
-            <div class="mk-subgrp" data-for="marketing" hidden><b>Marketing &mdash; pick what you need</b><div id="mkSubMarketing">${DEFAULT_NEEDS.marketing.map(x => `<button type="button" class="mk-chip" data-s="${x}">${x}</button>`).join('')}</div></div>
-            <div class="mk-subgrp" data-for="branding" hidden><b>Branding &mdash; pick what you need</b><div id="mkSubBranding">${DEFAULT_NEEDS.branding.map(x => `<button type="button" class="mk-chip" data-s="${x}">${x}</button>`).join('')}</div></div>
           </div>
           <div class="mk-field"><label class="mk-sr-only" for="mkMsg">Project details</label><textarea id="mkMsg" rows="3" placeholder="Tell us about your project"></textarea></div>
           <button class="mk-btn mk-btn--gold mk-submit" type="submit" id="mkSubmit">Send me a free plan ${arrow}</button>
@@ -453,47 +435,56 @@
     </div>
   </section>`;
 
-  /* reusable renderer for a packages row: intro column + N package cards,
-     styled as flat, non-illustrated cards (icon badge, checklist, price pill) */
-  const pkRow = (list, theme) => list.map((p, i) => `
-        <article class="mk-pkc${p.hero ? ' mk-pkc--hero' : ''}" data-k="${p.k}" ${R('up', i * 110)}>
-          ${p.tag_badge ? `<span class="ribbon">${p.tag_badge}</span>` : ''}
-          <div class="pkc-top"><i class="pkc-ic">${ico(p.ic)}</i><h3>${p.n}</h3></div>
-          <p class="tag">${p.tag}</p>
-          <ul class="pk-list">${p.g.map(f => `<li>${tick}<span>${f}</span></li>`).join('')}</ul>
-          <div class="pkc-foot">
-            <button class="mk-btn mk-btn--gold" type="button" data-pk="${p.n} package">${p.cta}</button>
+  /* reusable renderer for one package's feature groups — one compact row
+     per category (icon, title, items run together as a one-line summary),
+     matching a classic pricing-card layout rather than long bullet lists */
+  const pkgGroup = (g, gi) => `
+        <div class="pk2-group" ${R('up', gi * 90)}>
+          <i class="pk2-gic">${ico(g.ic)}</i>
+          <div><h4>${g.t}</h4><span>${g.items.join(' + ')}</span></div>
+        </div>`;
+
+  const pkgCard = (p, i) => `
+        <article class="mk-pkg2${p.popular ? ' is-popular' : ''}" data-k="${p.k}" ${R('up', i * 100)}>
+          ${p.popular ? `<span class="pk2-ribbon pk2-ribbon--dark">${ico(p.ic)}<span>${p.badge}</span></span>` : `<span class="pk2-eyebrow">${ico(p.ic)}<span>${p.badge}</span></span>`}
+          <div class="pk2-head">
+            <h3>${p.n}</h3>
+            <p class="headline">${p.headline}</p>
+            <p class="tag">${p.tag}</p>
           </div>
-        </article>`).join('');
+          <div class="pk2-groups">${p.groups.map(pkgGroup).join('')}</div>
+          <div class="pk2-foot">
+            <button class="mk-btn mk-btn--pkg" type="button" data-pk="${p.n} package">Get ${p.n} ${arrow}</button>
+          </div>
+        </article>`;
 
-  const marketingPkgs = `
-  <section class="mk-sec mk-pk mk-pk--mkt" id="marketing-packages">
-    <div class="mk-in">
-      <div class="mk-pk-row">
-        <div class="mk-pk-intro" ${R('up')}>
-          <span class="mk-pk-badge">${ico('mega')}<span>Marketing Packages</span></span>
-          <h2 class="mk-h2" ${R('up', 60)}>Reach more <em>customers</em></h2>
-          <p class="mk-lede" ${R('up', 100)}>From a steady social presence to a full funnel with ads, chatbot and reporting.</p>
-          <button class="mk-btn mk-btn--ghost mk-show-builder" type="button" ${R('up', 140)}>Build a custom marketing package ${arrow}</button>
-        </div>
-        <div class="mk-pk-cards">${pkRow(MPKG)}</div>
-      </div>
-      <p class="mk-pk-note" ${R('up')}><b>Good to know:</b> Ad spend is billed separately, directly from your own ad account.</p>
-    </div>
-  </section>`;
+  const customCard = `
+        <article class="mk-pkg2 mk-pkg2--custom" ${R('up', PACKAGES.length * 100)}>
+          <span class="pk2-eyebrow pk2-eyebrow--custom">${ico('sparkle')}<span>Custom</span></span>
+          <div class="pk2-head">
+            <h3>Custom Package</h3>
+            <p class="headline">Your goals. Our expertise.</p>
+            <p class="tag">Get a fully tailored package based on your needs, budget and timeline.</p>
+          </div>
+          <div class="pk2-custom-list">
+            <b>What you can include</b>
+            <ul>${CUSTOM_ITEMS.map(x => `<li>${tick}<span>${x}</span></li>`).join('')}</ul>
+          </div>
+          <div class="pk2-foot">
+            <button class="mk-btn mk-btn--gold mk-show-builder" type="button">Start Your Custom Plan ${arrow}</button>
+          </div>
+        </article>`;
 
-  const brandPkgs = `
-  <section class="mk-sec mk-pk mk-pk--brand" id="brand-packages">
+  const packages = `
+  <section class="mk-sec mk-pk mk-pk2" id="packages">
     <div class="mk-in">
-      <div class="mk-pk-row">
-        <div class="mk-pk-intro" ${R('up')}>
-          <span class="mk-pk-badge">${ico('star')}<span>Branding Packages</span></span>
-          <h2 class="mk-h2" ${R('up', 60)}>Build your <em>identity</em></h2>
-          <p class="mk-lede" ${R('up', 100)}>From a first logo to a full identity across every touch-point.</p>
-          <button class="mk-btn mk-btn--ghost mk-show-builder" type="button" ${R('up', 140)}>Build a custom branding package ${arrow}</button>
-        </div>
-        <div class="mk-pk-cards">${pkRow(BPKG)}</div>
+      <div class="pk2-top">
+        <span class="mk-kick" ${R('up')}>Our Packages ${ur('پیکجز')}</span>
+        <h2 class="mk-h2" ${R('up', 60)}>Marketing &amp; Branding <em>Packages</em></h2>
+        <p class="mk-lede" ${R('up', 100)}>Choose the package that fits your goals, or get a custom plan built for your business.</p>
       </div>
+      <div class="pk2-row">${PACKAGES.map(pkgCard).join('')}${customCard}</div>
+      <p class="mk-pk-note" ${R('up')}><b>Good to know:</b> Paid ad spend, if added later, is billed separately, directly from your own ad account.</p>
     </div>
   </section>`;
 
@@ -501,15 +492,11 @@
   <section class="mk-sec mk-build" id="builder" hidden>
     <div class="mk-in">
       <span class="mk-kick" ${R('up')}>Custom Package ${ur('اپنی مرضی')}</span><h2 class="mk-h2" ${R('up', 80)}>Customize <em>your package</em></h2>
-      <p class="mk-lede" ${R('up', 140)}>Pick what you need from branding and marketing separately. One click sends your list straight to our team.</p>
+      <p class="mk-lede" ${R('up', 140)}>Pick exactly what you need, across branding, social media, SEO, website, ads, automation, CRM and custom AI &mdash; the same categories as the packages above. One click sends your list straight to our team.</p>
       <div class="mk-build-grid">
         <div>
-          <h4 class="mk-build-cat" ${R('up')}>${ico('star')}Branding</h4>
-          ${BUILD_BRAND.map((g, gi) => `
-          <div class="mk-group" ${R('up', gi * 60)}><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${g[1]}"/></svg></i>${g[0]}</h4><div>${g[2].map(x => `<button type="button" class="mk-chip" data-s="${x}">${x}</button>`).join('')}</div></div>`).join('')}
-          <h4 class="mk-build-cat" ${R('up')}>${ico('mega')}Marketing</h4>
-          ${BUILD_MKT.map((g, gi) => `
-          <div class="mk-group" ${R('up', gi * 60)}><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${g[1]}"/></svg></i>${g[0]}</h4><div>${g[2].map(x => `<button type="button" class="mk-chip" data-s="${x}">${x}</button>`).join('')}</div></div>`).join('')}
+          ${BUILD_CATS.map((g, gi) => `
+          <div class="mk-group" ${R('up', gi * 70)}><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${g[1]}"/></svg></i>${g[0]}</h4><div>${g[2].map(x => `<button type="button" class="mk-chip" data-s="${x}">${x}</button>`).join('')}</div></div>`).join('')}
         </div>
         <aside class="mk-sum" aria-live="polite" ${R('left', 100)}>
           <h4>Your custom package</h4><div class="cnt" id="mkCnt">0</div><div class="lbl">services selected</div>
@@ -573,7 +560,7 @@
   root.classList.add('mk', 'mk-js');
   document.body.classList.add('mk-page');
   const tpl = document.createElement('div');
-  tpl.innerHTML = start + work + reels + gallery + brand + target + bot + marketingPkgs + brandPkgs + build + proc;
+  tpl.innerHTML = start + work + reels + gallery + brand + target + bot + packages + build + proc;
   const frag = document.createDocumentFragment();
   while (tpl.firstChild) frag.appendChild(tpl.firstChild);
   anchor ? root.insertBefore(frag, anchor) : root.appendChild(frag);
@@ -624,30 +611,6 @@
   (function initForm() {
     const form = document.getElementById('mkForm'), ok = document.getElementById('mkOk'), note = document.getElementById('mkNote'), btn = document.getElementById('mkSubmit');
     const nm = document.getElementById('mkName'), em = document.getElementById('mkEmail'), ph = document.getElementById('mkPhone');
-    const subWrap = document.getElementById('mkSubNeeds'), bizSelect = document.getElementById('mkBiz');
-    const subMarketing = document.getElementById('mkSubMarketing'), subBranding = document.getElementById('mkSubBranding');
-    const chipBtn = (x) => `<button type="button" class="mk-chip" data-s="${x}">${x}</button>`;
-    /* re-paints both sub-option lists for the business type picked above;
-       anything the user had already picked is kept checked if it still
-       exists in the new list. */
-    function renderNeeds() {
-      const needs = BIZ_NEEDS[bizSelect.value] || DEFAULT_NEEDS;
-      const keep = new Set([...subWrap.querySelectorAll('.mk-chip.on')].map(c => c.dataset.s));
-      subMarketing.innerHTML = needs.marketing.map(chipBtn).join('');
-      subBranding.innerHTML = needs.branding.map(chipBtn).join('');
-      subWrap.querySelectorAll('.mk-chip').forEach(c => c.classList.toggle('on', keep.has(c.dataset.s)));
-    }
-    bizSelect.addEventListener('change', renderNeeds);
-    form.querySelectorAll('.mk-needs label').forEach(l => l.addEventListener('change', () => {
-      const input = l.querySelector('input');
-      l.classList.toggle('on', input.checked);
-      const grp = subWrap.querySelector(`.mk-subgrp[data-for="${input.dataset.main}"]`);
-      if (grp) { grp.hidden = !input.checked; if (!input.checked) grp.querySelectorAll('.mk-chip.on').forEach(c => c.classList.remove('on')); }
-    }));
-    subWrap.addEventListener('click', e => {
-      const c = e.target.closest('.mk-chip[data-s]'); if (!c) return;
-      c.classList.toggle('on');
-    });
     form.addEventListener('submit', async e => {
       e.preventDefault();
       const L = window.ANALYTIC_LEADS;
@@ -656,10 +619,8 @@
       const problems = L ? [L.checkName(nm, 'Name'), L.checkEmail(em), L.checkPhone(ph)].filter(Boolean) : [];
       if (!L && (!nm.value.trim() || !em.validity.valid)) { (nm.value.trim() ? em : nm).focus(); return; }
       if (problems.length) { L.showErrors(problems); return; }
-      const needs = [...form.querySelectorAll('.mk-needs input:checked')].map(i => i.value);
-      const subs = [...subWrap.querySelectorAll('.mk-chip.on')].map(c => c.dataset.s);
       const biz = document.getElementById('mkBiz').value, brief = document.getElementById('mkMsg').value.trim();
-      const message = [biz && `Business: ${biz}.`, needs.length && `Need: ${needs.join(', ')}.`, subs.length && `Details: ${subs.join(', ')}.`, brief].filter(Boolean).join('\n');
+      const message = [biz && `Business: ${biz}.`, brief].filter(Boolean).join('\n');
       btn.disabled = true; btn.firstChild.nodeValue = 'Sending... ';
       try {
         if (!L || typeof L.submit !== 'function') throw new Error('The form did not load. Please refresh the page and try again.');
@@ -672,16 +633,11 @@
           message,
           details: {
             businessType: biz,
-            requestedAreas: needs,
-            selectedServices: subs,
             projectBrief: brief
           },
           source: location.href
         });
         L.reset(form); form.style.display = 'none'; ok.classList.add('show');
-        form.querySelectorAll('.mk-needs label').forEach(l => l.classList.remove('on'));
-        subWrap.querySelectorAll('.mk-chip.on').forEach(c => c.classList.remove('on'));
-        subWrap.querySelectorAll('.mk-subgrp').forEach(g => g.hidden = true);
       } catch (err) {
         note.textContent = err.message; note.classList.add('is-error');
         btn.disabled = false; btn.firstChild.nodeValue = 'Send me a free plan ';

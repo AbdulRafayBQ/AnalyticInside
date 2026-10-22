@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="icon" href="images/brand/eleven-logo.png" type="image/png">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Services — Elyven</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site-core.css">
+  <link rel="stylesheet" href="css/service-pages.css">
+  <link rel="stylesheet" href="css/marketing-page.css">
+</head>
+<body>
+
+  <!-- ══ FORM DRAWER ══ -->
+  <div class="form-drawer-overlay" id="formOverlay"></div>
+  <div class="form-drawer" id="formDrawer">
+    <button class="fd-close" id="formClose" aria-label="Close">&times;</button>
+    <div class="fd-eyebrow">Start a Project</div>
+    <h2 class="fd-title">Let's build something<br>extraordinary.</h2>
+    <p class="fd-sub">Tell us about your idea. We'll get back to you within 24 hours.</p>
+
+    <div class="fd-form" id="fdFormEl">
+      <div class="fd-row">
+        <div class="fd-field">
+          <label for="fd-name">Your Name</label>
+          <input id="fd-name" type="text" placeholder="Ali Ahmed" />
+        </div>
+        <div class="fd-field">
+          <label for="fd-email">Email Address</label>
+          <input id="fd-email" type="email" placeholder="you@company.com" />
+        </div>
+      </div>
+      <div class="fd-field">
+        <label for="fd-company">Company / Brand</label>
+        <input id="fd-company" type="text" placeholder="Your company name" />
+      </div>
+      <div class="fd-field">
+        <label for="fd-service">Service Needed</label>
+        <select id="fd-service">
+          <option value="" disabled selected>Select a service…</option>
+          <option>Mobile App Development</option>
+          <option>Website Development</option>
+          <option>E-Commerce &amp; Shopify Development</option>
+          <option>Custom Software Development</option>
+          <option>Product Development</option>
+          <option>AI Development &amp; Automation</option>
+          <option>Digital Marketing &amp; Branding</option>
+        </select>
+      </div>
+      <div class="fd-field">
+        <label for="fd-message">Project Brief</label>
+        <textarea id="fd-message" rows="4" placeholder="Describe your idea, goals, or challenges…"></textarea>
+      </div>
+      <button class="fd-submit" id="fdSubmit">
+        Send Project Brief
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="fd-note" role="status" aria-live="polite">No commitment. We'll respond with a plan within 24 hours.</p>
+    </div>
+
+    <div class="fd-success" id="fdSuccess">
+      <div class="fd-success-icon">✓</div>
+      <h3>Message Sent!</h3>
+      <p>Thanks for reaching out. We'll review your brief and be in touch within 24 hours.</p>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="logo logo-img-link" href="index.html"><img src="images/brand/eleven-logo-nav.png" alt="Elyven" class="logo-img"></a>
+      <nav class="nav" id="mainNav">
+        <ul>
+          <li><a href="about.html" class="nav-link">Story</a></li>
+          <li><a href="services.html" class="nav-link active">Expertise</a></li>
+          <li><a href="portfolio.html" class="nav-link">Work</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="nav-mobile-cta" id="navCtaBtnMobile" type="button">
+          Let's Talk
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M3 10H17M17 10L12 5M17 10L12 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </nav>
+      <div class="nav-right-group">
+        <a class="nav-phone" href="tel:+923340317145">
+          <span class="nav-phone-text">+92 334 0317145</span>
+        </a>
+        <button class="btn-nav-cta" id="navCtaBtn" style="cursor:pointer;border:none;font-family:'Inter',sans-serif;">
+          Let's Talk
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M3 10H17M17 10L12 5M17 10L12 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main dynamic landing page rendered by mega.js -->
+  <main id="svc"></main>
+
+  <script src="js/site-core.js"></script>
+  <script src="js/site-ui.js"></script>
+  <script src="js/service-pages.js"></script>
+  <script src="js/marketing-page.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/avatar.js"></script>
+</body>
+</html>
