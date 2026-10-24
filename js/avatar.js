@@ -968,7 +968,7 @@
       if (sayOpen) placeBubble(sayEl);
     }
 
-    var sayOpen = false, sayTimer = null;
+    var sayOpen = false, sayTimer = null, sayTalkTimer = null;
     function say(text, ms) {
       if (bubbleOpen || sayTyping) return;
       text = noEmoji(text);
@@ -980,10 +980,19 @@
       sayEl._dirty = true;
       placeBubble(sayEl);
       clearTimeout(sayTimer);
+      clearTimeout(sayTalkTimer);
+      // Lipsync: animate mouth actively while speaking
+      talk = 1;
+      var speakDuration = Math.min(ms || 2400, Math.max(1600, text.length * 45));
+      sayTalkTimer = setTimeout(function () {
+        talk = 0;
+      }, speakDuration);
       sayTimer = setTimeout(hideSay, ms || 2400);
     }
     function hideSay() {
       sayOpen = false;
+      talk = 0;
+      clearTimeout(sayTalkTimer);
       sayEl.classList.remove('eli-open');
       clearInterval(sayTypeTimer); sayTyping = false; sayLine.style.minWidth = ''; sayLine.style.minHeight = '';
       sayEl._above = undefined;
@@ -993,7 +1002,7 @@
     function sayTyped(text, holdMs) {
       if (bubbleOpen) return;
       text = noEmoji(text);
-      clearInterval(sayTypeTimer); clearTimeout(sayTimer);
+      clearInterval(sayTypeTimer); clearTimeout(sayTimer); clearTimeout(sayTalkTimer);
       sayLine.style.minWidth = ''; sayLine.style.minHeight = '';
       if (!sayOpen) sayEl._above = undefined;
       sayLine.textContent = text;
@@ -1011,7 +1020,9 @@
         i++;
         sayLine.textContent = chars.slice(0, i).join('');
         if (i >= chars.length) {
-          clearInterval(sayTypeTimer); talk = 0;
+          clearInterval(sayTypeTimer);
+          // Keep lipsync going for a brief natural period as word completes
+          setTimeout(function () { talk = 0; }, 600);
           sayTimer = setTimeout(function () { sayTyping = false; hideSay(); }, holdMs || 2200);
         }
       }, 85);
@@ -1189,24 +1200,88 @@
       resetFx();
     }
 
+    async function sectionArrivalAnimation() {
+      var b = bounds();
+      var r = restSpot(pos);
+      var styles = ['fall', 'float', 'swoop'];
+      var chosen = pick(styles);
+
+      if (chosen === 'fall') {
+        // Falling down animation: drops down with gravity into the section, bounces, and settles right
+        setMood('scared', { force: true });
+        place(r.x - rand(15, 45), -SIZE - 30);
+        await wait(200);
+        setMood('surprised', { force: true });
+        await flyTo(pos.x, r.y + 10, 620, easeInQuad);
+        await squashPop(1.35, 0.65, 260);
+        await anim(240, function (e) { pos.y = (r.y + 10) - 38 * Math.sin(e * Math.PI); });
+        resetFx();
+        setMood('shy', { once: true, returnTo: 'idle', force: true });
+        await flyTo(r.x, r.y, 650, easeInOut);
+      } else if (chosen === 'float') {
+        // Normal float down: glides smoothly down with the page scroll into resting spot
+        setMood('happy', { force: true });
+        await anim(900, function (e) {
+          pos.x = lerp(pos.x, r.x, e);
+          pos.y = lerp(pos.y, r.y, e);
+          fx.rot = Math.sin(e * Math.PI * 2) * 8;
+        }, easeInOut);
+        resetFx();
+        await squashPop(1.08, 0.94, 250);
+      } else {
+        // Swoop down: playful curved swoop from side into the section
+        setMood('excited', { force: true });
+        var startX = chance(0.5) ? b.minX - 30 : b.maxX + 30;
+        place(startX, Math.max(b.minY, pos.y - 120));
+        var cX = lerp(startX, r.x, 0.5) + rand(-40, 40);
+        var cY = lerp(pos.y, r.y, 0.5) - 60;
+        await anim(850, function (e) {
+          var u = 1 - e;
+          pos.x = u * u * startX + 2 * u * e * cX + e * e * r.x;
+          pos.y = u * u * pos.y + 2 * u * e * cY + e * e * r.y;
+          fx.rot = Math.sin(e * Math.PI) * 16;
+        }, easeOutCubic);
+        resetFx();
+        await squashPop(0.92, 1.12, 240);
+      }
+      setMood('idle', { force: true });
+    }
+
     async function finalRedirect(target) {
       closeBubble();
       busy = true; setInteractive(false);
-      say(noRepeat(LEAVE_LINES, 'leave'), 900);
-      await wait(260);
       var d = parseTarget(target);
-      await leaveScreen(false);
+
+      // DIFFERENT PAGE: full redirect
       if (!d.same) {
+        say(noRepeat(LEAVE_LINES, 'leave'), 900);
+        await wait(260);
+        await leaveScreen(false);
         if (d.action) { try { sessionStorage.setItem('ely_action', d.action); } catch (err) {} }
         window.location.href = d.url;
         return;
       }
-      if (d.action) pendingAction = d.action;
-      else if (d.hash && document.getElementById(d.hash)) smoothToEl(document.getElementById(d.hash));
-      else if (d.hash) { window.location.href = d.url; return; }
+
+      // SAME PAGE in-page section jump:
+      if (d.action) {
+        pendingAction = d.action;
+        if (PAGE === 'service.html' && actionAvailable(d.action)) runAction(d.action);
+        busy = false; setInteractive(true);
+        return;
+      }
+
+      var hopLines = ['Right this way!', 'Down we go!', 'Follow me!', 'Here we go!'];
+      say(noRepeat(hopLines, 'hop'), 1200);
+
+      var secEl = d.hash ? document.getElementById(d.hash) : null;
+      if (secEl) smoothToEl(secEl);
       else window.scrollTo({ top: 0, behavior: 'smooth' });
-      await wait(1100);
-      await enterRandom();
+
+      // Animate Ely arriving at that in-page section dynamically (falling down, normal float, or swoop)
+      await sectionArrivalAnimation();
+
+      busy = false; setInteractive(true);
+      scheduleAntic();
     }
     function smoothToEl(el) {
       try { el.style.scrollMarginTop = '88px'; } catch (err) {}
@@ -1231,18 +1306,18 @@
       var b = bounds();
       var isMob = (window.innerWidth <= 768) || (window.matchMedia && window.matchMedia('(max-width: 768px)').matches);
       if (isMob) {
-        // Mobile: dock into right bottom corner
+        // Mobile: dock cleanly into right bottom corner
         return { x: b.maxX - 6, y: b.maxY - 14 };
       }
-      // PC: right side slightly above bottom, or occasionally left side slightly above bottom
+      // PC: right side slightly above bottom (always right side, no jumping to left!)
       var spots = [
         { x: b.maxX - 24, y: b.maxY - 95 },
         { x: b.maxX - 24, y: b.maxY - 130 },
-        { x: b.maxX - 24, y: b.maxY - 70 },
-        { x: b.minX + 24, y: b.maxY - 95 }
+        { x: b.maxX - 24, y: b.maxY - 75 },
+        { x: b.maxX - 40, y: b.maxY - 110 }
       ];
       if (avoidNear) {
-        var filtered = spots.filter(function (s) { return Math.hypot(s.x - avoidNear.x, s.y - avoidNear.y) > SIZE * 1.2; });
+        var filtered = spots.filter(function (s) { return Math.hypot(s.x - avoidNear.x, s.y - avoidNear.y) > 40; });
         if (filtered.length) spots = filtered;
       }
       return pick(spots);
@@ -1266,7 +1341,7 @@
       if (!sayTyping) hideSay();
       setMood('playful', { once: true, returnTo: 'idle', force: true });
       var r = restSpot(pos);
-      await flyTo(r.x, r.y, 1100, easeInOut);
+      await flyTo(r.x, r.y, 1600, easeInOut);
     }
     function offscreenPoint(side) {
       var W = window.innerWidth, H = window.innerHeight, b = bounds();
@@ -1396,30 +1471,57 @@
       busy = true; entering = true; abortFlag = false; pendingGrab = null; setInteractive(false);
       closeBubble(); hideSay(); stopZ(); resetFx();
       asleep = false; waking = false;
-      var last = null;
-      try { last = sessionStorage.getItem('eli_last_enter'); } catch (e) {}
-      var keys = ENTRANCE_KEYS.filter(function (k) { return k !== last; });
-      var kind = pick(keys);
-      try { sessionStorage.setItem('eli_last_enter', kind); } catch (e) {}
       setMood('idle', { force: true });
       place(-500, -500); paint();
-      await wait(reduceMotion ? 100 : rand(120, 350));
-      try { await ENTRANCES[kind](); } catch (err) { console.warn('[Ely] entrance failed', err); }
+
+      var isFirst = !alreadyVisited();
+
+      if (isFirst) {
+        // FIRST VISIT EVER:
+        // Come straight to CENTER, say "Hi, I am Ely" with lipsync, wait 2.2s, then slowly glide to RIGHT!
+        await wait(reduceMotion ? 100 : 250);
+        var c = centerSpot();
+        place(c.x, -SIZE - 70); show();
+        setMood('happy', { force: true });
+        await flyTo(c.x, c.y, 950, easeOutCubic);
+        await squashPop(1.12, 0.9, 280);
+        markVisited();
+        sayTyped(FIRST_GREET, 2400); // Types "Hi, I am Ely" with active lipsync!
+        await wait(2200); // Pause in center to be seen and heard
+        var endRest = restSpot(pos);
+        setMood('playful', { once: true, returnTo: 'idle', force: true });
+        await flyTo(endRest.x, endRest.y, 1600, easeInOut); // Slow, smooth glide to the RIGHT
+        hideSay();
+      } else {
+        // REDIRECT / NEW PAGE:
+        // Arrive at a random entrance/position, stay for 2-3 sec, then smoothly glide to the RIGHT!
+        var last = null;
+        try { last = sessionStorage.getItem('eli_last_enter'); } catch (e) {}
+        var keys = ENTRANCE_KEYS.filter(function (k) { return k !== last; });
+        var kind = pick(keys);
+        try { sessionStorage.setItem('eli_last_enter', kind); } catch (e) {}
+        await wait(reduceMotion ? 100 : rand(120, 300));
+        try { await ENTRANCES[kind](); } catch (err) { console.warn('[Ely] entrance failed', err); }
+        resetFx();
+        var b = bounds();
+        var endRest = restSpot(pos);
+        // If not already resting on the right, wait 2-3 seconds at current random position then glide right
+        if (Math.hypot(pos.x - endRest.x, pos.y - endRest.y) > 35) {
+          await wait(2400); // 2-3 sec pause at random position
+          setMood('playful', { once: true, returnTo: 'idle', force: true });
+          await flyTo(endRest.x, endRest.y, 1600, easeInOut); // Slow, smooth glide to the RIGHT
+        }
+      }
+
       entering = false; abortFlag = false;
       resetFx();
       var b = bounds();
-      // Ensure Ely docks cleanly to rest spot (right bottom or left bottom on PC, right corner on mobile)
-      var endRest = restSpot(pos);
-      if (Math.hypot(pos.x - endRest.x, pos.y - endRest.y) > 35) {
-        await flyTo(endRest.x, endRest.y, reduceMotion ? 150 : 700, easeInOut);
-      }
-      pos.x = clamp(pos.x, b.minX, b.maxX); pos.y = clamp(pos.y, b.minY, b.maxY);
+      var finalRest = restSpot(pos);
+      pos.x = clamp(finalRest.x, b.minX, b.maxX); pos.y = clamp(finalRest.y, b.minY, b.maxY);
       vel.x = 0; vel.y = 0;
       lastActivity = performance.now();
       busy = false; setInteractive(true);
       scheduleAntic();
-      /* very first visit: if no entrance said it already, introduce himself now (typed, only once) */
-      if (!alreadyVisited()) { markVisited(); sayTyped(FIRST_GREET, 2400); }
       /* the person grabbed him mid-entrance → he lands right under the cursor */
       if (pendingGrab && pointerIsDown) { var g = pendingGrab; pendingGrab = null; beginDrag(g.x, g.y, g.id, g.t, true); }
       pendingGrab = null;
