@@ -154,6 +154,7 @@
     n_web_biz:  { q: 'Want to peek at similar work first?', mood: 'curious', o: [['Show me examples', '@portfolio.html#work'], ['Straight to the team', '@contact.html'], ['See web services', '@service.html?s=website-development']] },
     n_saas:     { q: 'Dashboards are our thing! Next step?', mood: 'proud', o: [['See dashboard projects', '@portfolio.html#work'], ['Custom software service', '@service.html?s=custom-software-development'], ['Book a chat', '@contact.html']] },
     n_store:    { q: 'Shopping carts, got it. How far along are you?', mood: 'thinking', o: [['Just an idea', 'n_idea'], ['Designs are ready', '@contact.html'], ['See the store service', '@service.html?s=ecommerce-shopify-development'], ['Live, needs fixing', 'n_fix']] },
+    n_fix:      { q: 'Got an existing site or app that needs bug fixes, speed or upgrades?', mood: 'thinking', o: [['Shopify & store upgrades', '@service.html?s=ecommerce-shopify-development'], ['Web & app overhaul', '@services.html'], ['Talk to the team', '@contact.html']] },
     n_idea:     { q: 'Ideas are gold! Got a rough budget?', mood: 'excited', o: [['Yes, roughly', 'r_budget'], ['Not yet', 'n_dunno'], ['Idea to MVP service', '@service.html?s=product-design-development'], ['Show me past projects', '@portfolio.html#work']] },
     n_app:      { q: 'Mobile app! iOS, Android or both?', mood: 'excited', o: [['Both', 'n_app_both'], ['iOS only', 'n_app_one'], ['Android only', 'n_app_one']] },
     n_app_both: { q: 'Cross-platform it is. What next?', mood: 'happy', o: [['See app case studies', '@portfolio.html#work'], ['Mobile app service', '@service.html?s=mobile-app-development'], ['Request a quote', '@contact.html']] },
@@ -1133,8 +1134,12 @@
       if (t.charAt(0) === '@') {
         var target = t === '@random' ? '@' + pick(PAGES.filter(function (p) { return p !== PAGE; })) : t;
         finalRedirect(target.slice(1));
-      } else {
+      } else if (t === 'RANDOM_ROOT') {
+        showNode(nextRoot());
+      } else if (NODES[t]) {
         showNode(t);
+      } else {
+        showNode(nextRoot());
       }
     }
 
@@ -1223,16 +1228,21 @@
     /* ════════ rest spots + entrances ════════ */
     function restSpot(avoidNear) {
       var b = bounds();
+      var isMob = (window.innerWidth <= 768) || (window.matchMedia && window.matchMedia('(max-width: 768px)').matches);
+      if (isMob) {
+        // Mobile: dock into right bottom corner
+        return { x: b.maxX - 6, y: b.maxY - 14 };
+      }
+      // PC: right side slightly above bottom, or occasionally left side slightly above bottom
       var spots = [
-        { x: b.maxX, y: b.maxY - 24 }, { x: b.maxX, y: b.maxY - 24 },
-        { x: b.minX, y: b.maxY - 24 },
-        { x: b.maxX, y: Math.round((b.minY + b.maxY) / 2) },
-        { x: b.minX, y: Math.round((b.minY + b.maxY) / 2) },
-        { x: b.maxX, y: b.minY + 80 }
+        { x: b.maxX - 24, y: b.maxY - 95 },
+        { x: b.maxX - 24, y: b.maxY - 130 },
+        { x: b.maxX - 24, y: b.maxY - 70 },
+        { x: b.minX + 24, y: b.maxY - 95 }
       ];
       if (avoidNear) {
-        spots = spots.filter(function (s) { return Math.hypot(s.x - avoidNear.x, s.y - avoidNear.y) > SIZE * 1.2; });
-        if (!spots.length) return restSpot();
+        var filtered = spots.filter(function (s) { return Math.hypot(s.x - avoidNear.x, s.y - avoidNear.y) > SIZE * 1.2; });
+        if (filtered.length) spots = filtered;
       }
       return pick(spots);
     }
@@ -1397,6 +1407,11 @@
       entering = false; abortFlag = false;
       resetFx();
       var b = bounds();
+      // Ensure Ely docks cleanly to rest spot (right bottom or left bottom on PC, right corner on mobile)
+      var endRest = restSpot(pos);
+      if (Math.hypot(pos.x - endRest.x, pos.y - endRest.y) > 35) {
+        await flyTo(endRest.x, endRest.y, reduceMotion ? 150 : 700, easeInOut);
+      }
       pos.x = clamp(pos.x, b.minX, b.maxX); pos.y = clamp(pos.y, b.minY, b.maxY);
       vel.x = 0; vel.y = 0;
       lastActivity = performance.now();

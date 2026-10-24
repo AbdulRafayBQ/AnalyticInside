@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiny Kiwi — In-Browser Graphic Canvas & Web Worker Pipeline | Elyven Case Study</title>
+  <meta name="description" content="A high-performance in-browser image editor engineered for fluid 60-FPS rendering, non-blocking Web Worker filters and memory-efficient undo snapshots.">
+  <link rel="icon" href="../../images/brand/eleven-logo-nav.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="cs-topbar" id="nav">
+  <div class="cs-topbar-in">
+    <div class="cs-topbar-left">
+      <a   href="../../portfolio.html"  class="cs-back-btn" target="_top" onclick="if(window.parent&&window.parent!==window){window.parent.postMessage({type:'eleven-close-case-study'},'*');return false;}else if(window.top){window.top.location.href=this.href;return false;}">
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M13 8H3M3 8L7.5 3.5M3 8L7.5 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Back to Work</span>
+      </a>
+      <span class="cs-topbar-title">Tiny Kiwi <em>· Case Study</em></span>
+    </div>
+    <div>
+      <a   href="../../contact.html" class="cs-topbar-cta" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">Start a project &nearr;</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO SECTION -->
+  <section class="hero container">
+    <div class="hero-copy reveal">
+      <div class="tagline-row"><span class="dot"></span><span>Canvas Performance · Web Workers · 60-FPS Rendering</span></div>
+      <h1>In-browser graphics, <i>accelerated to 60 FPS.</i></h1>
+      <p class="lead">A browser-native graphic design and image manipulation studio engineered with OffscreenCanvas, non-blocking Web Worker filter pipelines and ultra-compressed undo snapshots for smooth editing on any device.</p>
+
+      <div class="meta">
+        <div><small>Project</small><b>Tiny Kiwi Editor</b></div><div><small>Category</small><b>Creative Web Tooling</b></div><div><small>Engineered by</small><b>Elyven Product Team</b></div>
+      </div>
+
+      <div class="actions">
+        <a href="#product" class="btn dark">See the product</a>
+        <a href="#story" class="btn ghost">Read the case study</a>
+      </div>
+    </div>
+
+    <div class="visual reveal">
+      <div class="device" data-lightbox-src="../../images/Portfolio thumbnails/Tiny Kiwi Photo Editing Workspace.jpg" style="cursor:zoom-in;">
+        <div class="dots"><i>● ● ●</i><i>Tiny Kiwi / Flagship View</i></div>
+        <img src="../../images/Portfolio thumbnails/Tiny Kiwi Photo Editing Workspace.jpg" alt="Tiny Kiwi flagship interface preview" width="1440" height="900" loading="eager">
+      </div>
+      <div class="tag t1"><b class="counter" data-target="58" data-suffix="FPS">58FPS</b><span>Canvas Rendering</span></div>
+      <div class="tag t2"><b class="counter" data-target="300" data-suffix="DPI">300DPI</b><span>Print Export</span></div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="track">
+      <div class="item"><span>HTML5 CANVAS</span><b>·</b></div><div class="item"><span>OFFSCREENCANVAS</span><b>·</b></div><div class="item"><span>WEB WORKERS</span><b>·</b></div><div class="item"><span>REACT 19</span><b>·</b></div><div class="item"><span>NEXT.JS</span><b>·</b></div><div class="item"><span>COMMAND PATTERN</span><b>·</b></div><div class="item"><span>NODE.JS API</span><b>·</b></div><div class="item"><span>WEBP CONVERTER</span><b>·</b></div><div class="item"><span>TYPESCRIPT</span><b>·</b></div><div class="item"><span>HTML5 CANVAS</span><b>·</b></div><div class="item"><span>OFFSCREENCANVAS</span><b>·</b></div><div class="item"><span>WEB WORKERS</span><b>·</b></div><div class="item"><span>REACT 19</span><b>·</b></div><div class="item"><span>NEXT.JS</span><b>·</b></div><div class="item"><span>COMMAND PATTERN</span><b>·</b></div><div class="item"><span>NODE.JS API</span><b>·</b></div><div class="item"><span>WEBP CONVERTER</span><b>·</b></div><div class="item"><span>TYPESCRIPT</span><b>·</b></div>
+    </div>
+  </div>
+
+  <!-- THE BRIEF / STORY -->
+  <section id="story" class="section container story-sec">
+    <div class="story reveal">
+      <div>
+        <div class="kicker">The brief</div>
+        <h2>Eliminating canvas bottlenecks to deliver desktop-grade photo editing in the browser.</h2>
+      </div>
+      <div>
+        <p>Web-based photo editors frequently suffer from severe frame drops and sluggish slider interactions as layers, filters and high-res assets accumulate. Tiny Kiwi needed to feel as responsive and buttery-smooth as a native desktop application, even on mid-tier laptops.</p>
+        <p>Elyven refactored the rendering architecture from the ground up: moving heavy pixel filtering into parallel Web Workers via OffscreenCanvas, and implementing a diff-based undo/redo snapshot system that cut memory consumption by 92%.</p>
+        <p class="note">This case study uses portfolio-safe production screens and sanitized data. No confidential proprietary client information is displayed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT METRICS -->
+  <section class="container">
+    <div class="impact">
+      <article class="reveal"><span>01</span><b>Framerate Jump from 24 to 58 FPS</b><p>Virtual layer compositing ensures only visible elements in the current viewport are redrawn per frame.</p></article>
+      <article class="reveal"><span>02</span><b>Non-Blocking Filter Pipeline</b><p>Heavy gaussian blurs and duotone filters calculate in background worker threads without freezing the UI.</p></article>
+      <article class="reveal"><span>03</span><b>Under-50KB History Memory</b><p>JSON state diffs replace brute-force pixel snapshots, allowing hundreds of undo steps without memory leaks.</p></article>
+    </div>
+  </section>
+
+  <!-- PRODUCT SHOWCASE (Content LEFT, Screenshot RIGHT) -->
+  <section id="product" class="gallery-sec section">
+    <div class="container gallery-head reveal">
+      <div>
+        <div class="kicker">The product</div>
+        <h2>An uncluttered workspace where tools respond instantly.</h2>
+      </div>
+      <p>Designed with focus on the canvas: non-intrusive floating palettes, instant previews, and fluid pan-zoom gestures.</p>
+    </div>
+    <div class="container cs-showcase-list">
+      
+      <div class="cs-showcase-item reveal">
+        <!-- LEFT: Content -->
+        <div class="cs-showcase-copy">
+          <span class="cs-showcase-badge">01 — GRAPHICS CANVAS</span>
+          <h3>Hardware-Accelerated 60-FPS Canvas Studio</h3>
+          <p>Multi-layer browser canvas with sub-pixel typography rendering, transform controls and silky smooth pan-zoom interactions.</p>
+          <div class="cs-showcase-pills">
+            <span>GPU-Accelerated Context</span><span>58 FPS Frame Rate</span><span>Virtual Layer Compositing</span><span>Zero Frame Stutter</span>
+          </div>
+        </div>
+        <!-- RIGHT: Screenshot -->
+        <div class="cs-showcase-visual" data-lightbox-src="../../images/portfolio/tiny kiwi/Screenshot 2026-09-15 012118.png">
+          <div class="cs-showcase-topbar">
+            <i>● ● ●</i>
+            <span>Click to Zoom ↗</span>
+          </div>
+          <img src="../../images/portfolio/tiny kiwi/Screenshot 2026-09-15 012118.png" alt="Hardware-Accelerated 60-FPS Canvas Studio" loading="lazy">
+          <div class="cs-showcase-zoom-hint">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 12A5 5 0 107 2a5 5 0 000 10zM14 14l-3.5-3.5"/></svg>
+            Inspect Full-Res
+          </div>
+        </div>
+      </div>
+  
+
+      <div class="cs-showcase-item reveal">
+        <!-- LEFT: Content -->
+        <div class="cs-showcase-copy">
+          <span class="cs-showcase-badge">02 — AI SEGMENTATION</span>
+          <h3>Automated Background Removal & Masking</h3>
+          <p>Serverless Node.js edge segmentation extracting crisp alpha mattes without overloading client browser memory.</p>
+          <div class="cs-showcase-pills">
+            <span>Edge Foreground Extraction</span><span>Refinement Brush Suite</span><span>Transparent PNG Export</span><span>Batch Processing</span>
+          </div>
+        </div>
+        <!-- RIGHT: Screenshot -->
+        <div class="cs-showcase-visual" data-lightbox-src="../../images/portfolio/tiny kiwi/Screenshot 2026-09-15 012148.png">
+          <div class="cs-showcase-topbar">
+            <i>● ● ●</i>
+            <span>Click to Zoom ↗</span>
+          </div>
+          <img src="../../images/portfolio/tiny kiwi/Screenshot 2026-09-15 012148.png" alt="Automated Background Removal & Masking" loading="lazy">
+          <div class="cs-showcase-zoom-hint">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 12A5 5 0 107 2a5 5 0 000 10zM14 14l-3.5-3.5"/></svg>
+            Inspect Full-Res
+          </div>
+        </div>
+      </div>
+  
+
+      <div class="cs-showcase-item reveal">
+        <!-- LEFT: Content -->
+        <div class="cs-showcase-copy">
+          <span class="cs-showcase-badge">03 — FILTER PIPELINE</span>
+          <h3>Non-Blocking Web Worker Color Grading</h3>
+          <p>OffscreenCanvas filter computations running on background threads, keeping user sliders silky and responsive.</p>
+          <div class="cs-showcase-pills">
+            <span>Web Worker Multithreading</span><span>Duotone & Gradient Maps</span><span>Under-50KB History Diffs</span><span>Non-Destructive Adjustments</span>
+          </div>
+        </div>
+        <!-- RIGHT: Screenshot -->
+        <div class="cs-showcase-visual" data-lightbox-src="../../images/portfolio/tiny kiwi/Screenshot 2026-09-15 012211.png">
+          <div class="cs-showcase-topbar">
+            <i>● ● ●</i>
+            <span>Click to Zoom ↗</span>
+          </div>
+          <img src="../../images/portfolio/tiny kiwi/Screenshot 2026-09-15 012211.png" alt="Non-Blocking Web Worker Color Grading" loading="lazy">
+          <div class="cs-showcase-zoom-hint">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 12A5 5 0 107 2a5 5 0 000 10zM14 14l-3.5-3.5"/></svg>
+            Inspect Full-Res
+          </div>
+        </div>
+      </div>
+  
+
+      <div class="cs-showcase-item reveal">
+        <!-- LEFT: Content -->
+        <div class="cs-showcase-copy">
+          <span class="cs-showcase-badge">04 — EXPORT ENGINE</span>
+          <h3>Asset Library & 300 DPI Print Rendering</h3>
+          <p>High-resolution CMYK-compatible export pipeline rendering publication-ready graphics up to 300 DPI.</p>
+          <div class="cs-showcase-pills">
+            <span>300 DPI High-Res Export</span><span>SVG Vector Handling</span><span>Lossless WebP Pipeline</span><span>Stock Asset Browser</span>
+          </div>
+        </div>
+        <!-- RIGHT: Screenshot -->
+        <div class="cs-showcase-visual" data-lightbox-src="../../images/portfolio/tiny kiwi/Screenshot 2026-09-15 012226.png">
+          <div class="cs-showcase-topbar">
+            <i>● ● ●</i>
+            <span>Click to Zoom ↗</span>
+          </div>
+          <img src="../../images/portfolio/tiny kiwi/Screenshot 2026-09-15 012226.png" alt="Asset Library & 300 DPI Print Rendering" loading="lazy">
+          <div class="cs-showcase-zoom-hint">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 12A5 5 0 107 2a5 5 0 000 10zM14 14l-3.5-3.5"/></svg>
+            Inspect Full-Res
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+  <!-- CAPABILITIES / FEATURES -->
+  <section id="capabilities" class="section container features-sec">
+    <div class="features reveal">
+      <div class="head">
+        <div class="kicker">What it does</div>
+        <h2>Engineered for absolute reliability at scale.</h2>
+        <p>Every component, query and user interaction was designed to balance visual polish with raw performance.</p>
+      </div>
+      <div class="list">
+        <div class="feat-row"><span class="feat-num">01</span><div class="feat-body"><b>Hardware-Accelerated Canvas</b><p>Optimized rendering loop taking advantage of GPU canvas context with sub-pixel text rendering.</p></div></div>
+      <div class="feat-row"><span class="feat-num">02</span><div class="feat-body"><b>OffscreenCanvas Web Workers</b><p>Multi-threaded filter computation isolating heavy matrix transforms from the user interface thread.</p></div></div>
+      <div class="feat-row"><span class="feat-num">03</span><div class="feat-body"><b>Diff-Based Undo/Redo Engine</b><p>Lightweight snapshot manager storing parametric state deltas rather than whole bitmap buffers.</p></div></div>
+      <div class="feat-row"><span class="feat-num">04</span><div class="feat-body"><b>Serverless Background Removal</b><p>Node.js edge API integration for automated AI-based foreground segmentation and matte extraction.</p></div></div>
+      <div class="feat-row"><span class="feat-num">05</span><div class="feat-body"><b>Virtual Layer Compositor</b><p>Intelligent viewport culling compositing only the active bounding boxes during active pan and zoom.</p></div></div>
+      <div class="feat-row"><span class="feat-num">06</span><div class="feat-body"><b>High-Resolution 300 DPI Export</b><p>Vector and raster export pipeline generating print-ready CMYK-compatible assets without resolution loss.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SQUAD / TEAM -->
+  <section id="team" class="section container team-sec">
+    <div class="team-card-wrap reveal">
+      <div class="head">
+        <div class="kicker">The team</div>
+        <h2>Four disciplines, one product.</h2>
+        <p>No solo build. Tiny Kiwi came out of a focused product squad, each person owning a core part of getting it right.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10"/><path d="M2 17h20l-1.5 3h-17z"/></svg></div>
+          <b>Frontend Engineering</b>
+          <p>Architected responsive component hierarchies, fluid state stores and sub-second paint performance.</p>
+        </div>
+        <div class="team-card">
+          <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/></svg></div>
+          <b>Product &amp; UX Design</b>
+          <p>Transformed dense functional workflows into clear, scan-friendly visual hierarchy with zero clutter.</p>
+        </div>
+        <div class="team-card">
+          <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <b>Architecture &amp; Resilience</b>
+          <p>Engineered data pipelines, edge caching, error boundaries and state synchronization for continuous uptime.</p>
+        </div>
+        <div class="team-card">
+          <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+          <b>Quality &amp; Delivery</b>
+          <p>Enforced WCAG accessibility, end-to-end integration audits and cross-browser consistency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGINEERING PILLARS -->
+  <section class="section container build-wrap">
+    <div class="build reveal">
+      <div>
+        <div class="kicker">Engineering Pillars</div>
+        <h2>Product thinking, not just pixel delivery.</h2>
+      </div>
+      <div class="build-grid">
+        <p><b>Consistency.</b> Unified design tokens reduce cognitive load across every view.</p>
+        <p><b>Resilience.</b> Every screen gracefully handles empty, loading and degraded network states.</p>
+        <p><b>Performance.</b> Targeted fetching and bundle splitting keep interactions sub-second fast.</p>
+        <p><b>Maintainability.</b> Clean modular codebases that your internal developers can scale with ease.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDARDIZED PROPER CTA SECTION -->
+  <section class="container cs-cta-wrap">
+    <div class="cs-cta-box reveal">
+      <div class="cs-cta-badge">Let's Build Together</div>
+      <h2>Have a project like Tiny Kiwi in mind?</h2>
+      <p>Talk with our engineering squad to map architecture, timelines, and exact fixed pricing.</p>
+      <div class="cs-cta-actions">
+        <a href="../../contact.html"   class="cs-btn-primary" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">Start a Project <span aria-hidden="true">&nearr;</span></a>
+        <a href="../../portfolio.html"   class="cs-btn-secondary" target="_top" onclick="if(window.parent&&window.parent!==window){window.parent.postMessage({type:'eleven-close-case-study'},'*');return false;}else if(window.top){window.top.location.href=this.href;return false;}">Explore More Work</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container foot">
+    <div>&copy; 2026 Elyven. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="../../portfolio.html" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">All Work</a>
+      <a href="../../services.html" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">Services</a>
+      <a href="../../about.html" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">About</a>
+      <a href="../../contact.html" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FULLSCREEN LIGHTBOX -->
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded screenshot">
+  <button type="button" aria-label="Close image">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <img src="" alt="">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

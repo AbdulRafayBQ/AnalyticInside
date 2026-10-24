@@ -84,7 +84,7 @@
   };
   const visBot = {
     b: '<div class="cv"><b class="u">Will delivery happen today?</b><b class="u">Hello? Anyone there?</b><small class="seen">Seen 11:48 PM. No reply.</small></div>',
-    a: '<div class="cv"><b class="u">Will delivery happen today?</b><b class="bt">Yes! In 45 minutes. Shall I take your order?</b><b class="u">2 karak chai</b><b class="bt">Order confirmed &#10003;</b></div>'
+    a: '<div class="cv"><b class="u">Will delivery happen today?</b><b class="bt">Yes! In 45 minutes. Shall I take your order?</b><b class="u">2 desi chai</b><b class="bt">Order confirmed &#10003;</b></div>'
   };
   const visRet = {
     b: '<div class="ol"><div><span>#481</span><u class="bad">Return</u></div><div><span>#482</span><u class="bad">Cancel</u></div><div><span>#483</span><u class="bad">Return</u></div></div><small class="vl">Orders coming back</small>',
@@ -92,7 +92,7 @@
   };
   const visBrand = {
     b: '<div class="br-b"><span>LOGO</span><i></i><i></i><i></i></div><small class="vl">A different look everywhere</small>',
-    a: `<div class="br-a"><img src="${IMG}karak-logo.webp" alt="" width="120" height="120" loading="lazy"><div><i></i><i></i><i></i><i></i></div></div><small class="vl">One brand, one look</small>`
+    a: `<div class="br-a"><img src="${IMG}desi-dhabba-logo.jpg" alt="Desi Dhabba brand logo" width="120" height="120" loading="lazy"><div><i></i><i></i><i></i><i></i></div></div><small class="vl">One brand, one look</small>`
   };
 
   const REELS = [
@@ -152,12 +152,12 @@
     ['users', 'Hands off the tricky ones', 'Special questions go straight to your team.', 0]
   ];
   const BOT_SCENES = [
-    { k: 'Restaurant', brand: 'Karak & Co.', logo: 'karak-logo.webp', msgs: [
+    { k: 'Restaurant', brand: 'Desi Dhabba', logo: 'desi-dhabba-logo.jpg', msgs: [
       ['u', 'Hi, will there be delivery tonight?'],
-      ['b', 'Hello! Yes, delivery takes about 45 minutes.'],
-      ['b', 'What would you like to order?', ['Family deal', 'Karak chai x2']],
-      ['u', 'Family deal'],
-      ['b', 'Family deal: Rs 2,400. Please send your address.'],
+      ['b', 'Hello! Yes, delivery takes about 35-45 minutes.'],
+      ['b', 'What would you like to order?', ['Special Handi Deal', 'Desi Chai x2']],
+      ['u', 'Special Handi Deal'],
+      ['b', 'Special Handi Deal: Rs 2,400. Please send your address.'],
       ['u', 'Block 5, Clifton'],
       ['b', 'Thank you! Order #482 confirmed &#10003; The rider is on the way.']
     ] },
@@ -314,7 +314,7 @@
               <div class="mk-bars" id="mkBars">${REELS.map(() => '<i></i>').join('')}</div>
               <div class="mk-track" id="mkTrack">${REELS.map((r, i) => `
                 <div class="mk-slide${i ? '' : ' on'}">
-                  <div class="rs-top"><span class="rs-av"><img src="${IMG}karak-logo.webp" alt="" width="40" height="40" loading="lazy"></span><b>@your_brand</b><em>Follow</em></div>
+                  <div class="rs-top"><span class="rs-av"><img src="${IMG}desi-dhabba-logo.jpg" alt="" width="40" height="40" loading="lazy"></span><b>@your_brand</b><em>Follow</em></div>
                   <div class="ba"><div class="ba-b">${r.v.b}</div><div class="ba-a">${r.v.a}</div><i class="ba-line"></i><span class="ba-tag tb">Before</span><span class="ba-tag ta">After</span></div>
                   <div class="rs-cap"><h4>${r.cap}</h4><p>${r.t} &middot; Reel ${i + 1}</p></div>
                 </div>`).join('')}</div>
@@ -374,14 +374,14 @@
         <p class="mk-lede" ${R('up', 140)}>One look, everywhere a customer sees you: logo, colors, menu, packaging and posts.</p>
       </div>
       <figure class="mk-board" ${R('zoom')}>
-        <img src="${IMG}brandboard.webp" alt="Sample brand kit: logo, colors, fonts, menu, packaging and social post" width="1600" height="1000" loading="lazy">
-        <figcaption>Sample brand: Karak &amp; Co. (made by our team)</figcaption>
+        <img src="${IMG}desi-dhabba-brandboard.jpg" alt="Sample brand kit: Desi Dhabba logo, cultural truck art motifs, colors, takeaway packaging and ceramic merchandise" width="1600" height="1000" loading="lazy">
+        <figcaption>Sample brand: Desi Dhabba (made by our team)</figcaption>
       </figure>
-      <div class="mk-makes" ${R('up')}><b>What we build:</b>${['Logo', 'Colors and fonts', 'Menu', 'Packaging', 'Visiting card', 'Social templates', 'Signboard'].map(x => `<span>${x}</span>`).join('')}</div>
+      <div class="mk-makes" ${R('up')}><b>What we build:</b>${['Logo & Calligraphy', 'Cultural Motifs', 'Menu & Net Design', 'Takeaway Packaging', 'Staff Uniforms', 'Ceramic Mugs', 'Signboard'].map(x => `<span>${x}</span>`).join('')}</div>
       <div class="mk-surfs">
-        <article class="mk-surf" ${R('up', 0)}><img src="${IMG}surface-web.webp" alt="Sample website design" width="800" height="600" loading="lazy"><h3>Website</h3><p>A fast, good-looking site that turns people coming from ads and reels into an enquiry or an order.</p><ul><li>Business sites and online stores</li><li>Landing pages for ads</li><li>Chatbot and tracking built in</li></ul><a class="go" href="service.html?s=website-development">See websites ${arrow}</a></article>
-        <article class="mk-surf" ${R('up', 120)}><img src="${IMG}surface-social.webp" alt="Sample social media profile design" width="800" height="600" loading="lazy"><h3>Social media</h3><p>A profile that looks designed and posts on a plan, so followers stay and new people hit Follow.</p><ul><li>Content calendar, posts and reels</li><li>Matching highlights and templates</li><li>We reply to comments for you</li></ul><button class="go" type="button" data-pk="Social media management">Grow my social media ${arrow}</button></article>
-        <article class="mk-surf" ${R('up', 240)}><img src="${IMG}surface-app.webp" alt="Sample mobile app design" width="800" height="600" loading="lazy"><h3>Mobile app</h3><p>Your brand in the customer's pocket. We build the app, launch it, and promote it too.</p><ul><li>Android and iOS from one team</li><li>Loyalty, ordering or booking</li><li>App launch ads and promo reels</li></ul><a class="go" href="service.html?s=mobile-app-development">See mobile apps ${arrow}</a></article>
+        <article class="mk-surf" ${R('up', 0)}><img src="${IMG}desi-dhabba-identity.jpg" alt="Desi Dhabba brand identity and typography" width="800" height="600" loading="lazy"><h3>Brand Identity &amp; Logo</h3><p>Hand-crafted Urdu calligraphy, English typography lockups, cultural truck art patterns and a cohesive color kit that builds instant brand trust.</p><ul><li>Urdu calligraphy &amp; English wordmarks</li><li>Traditional geometric pattern system</li><li>Full brand guidelines &amp; color swatches</li></ul><button class="go" type="button" data-pk="Branding">Build my brand identity ${arrow}</button></article>
+        <article class="mk-surf" ${R('up', 120)}><img src="${IMG}desi-dhabba-packaging.jpg" alt="Desi Dhabba food packaging and takeaway boxes" width="800" height="600" loading="lazy"><h3>Food Packaging &amp; Boxes</h3><p>Custom die-cut takeaway boxes, greaseproof food liners, eco-friendly kraft delivery bags and tamper-evident branded seals.</p><ul><li>Custom die-cut boxes &amp; paratha containers</li><li>Eco-friendly kraft delivery paper bags</li><li>Branded seal stickers &amp; nutritional panels</li></ul><button class="go" type="button" data-pk="Branding">Design custom packaging ${arrow}</button></article>
+        <article class="mk-surf" ${R('up', 240)}><img src="${IMG}desi-dhabba-merchandise.jpg" alt="Desi Dhabba merchandise and staff apparel" width="800" height="600" loading="lazy"><h3>Merchandise &amp; Uniforms</h3><p>Dining &amp; takeaway merchandise that turns every customer into an ambassador: ceramic chai mugs, printed aprons, polo uniforms &amp; canvas totes.</p><ul><li>Ceramic chai &amp; coffee dining mugs</li><li>Staff kitchen aprons &amp; polo uniforms</li><li>Canvas tote bags &amp; table stationery</li></ul><button class="go" type="button" data-pk="Branding">Order branded merchandise ${arrow}</button></article>
       </div>
     </div>
   </section>`;
@@ -425,7 +425,7 @@
         <div class="mk-bot-demo" ${R('right', 100)}>
           <div class="mk-sc" id="mkSc" role="tablist" aria-label="Chatbot examples">${BOT_SCENES.map((s, i) => `<button type="button" role="tab" class="${i ? '' : 'on'}" data-i="${i}">${s.k}</button>`).join('')}</div>
           <div class="mk-wa">
-            <div class="wa-h"><img src="${IMG}karak-logo.webp" id="mkWaLogo" alt="" width="44" height="44" loading="lazy"><div><b id="mkWaBrand">Karak &amp; Co.</b><small>online &middot; chatbot</small></div></div>
+            <div class="wa-h"><img src="${IMG}desi-dhabba-logo.jpg" id="mkWaLogo" alt="" width="44" height="44" loading="lazy"><div><b id="mkWaBrand">Desi Dhabba</b><small>online &middot; chatbot</small></div></div>
             <div class="wa-b" id="mkChat" aria-live="off"></div>
             <div class="wa-f"><span>Type a message</span><i>${ico('share')}</i></div>
           </div>

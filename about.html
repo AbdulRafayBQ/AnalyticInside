@@ -328,22 +328,41 @@
         var m = TEAM[i]; cur = i;
         spotImg.src = m.img; spotImg.alt = m.name;
         spotRole.textContent = m.role; spotName.textContent = m.name; spotBio.textContent = m.bio;
-        items.forEach(function (el, idx) { el.classList.toggle('on', !auto && idx === i); });
+        items.forEach(function (el, idx) { el.classList.toggle('on', idx === i); });
         if (nowEl) nowEl.textContent = String(i + 1).padStart(2, '0');
         replayAnim();
+        if (auto && items[i] && row) {
+          var cLeft = items[i].offsetLeft;
+          var cWidth = items[i].offsetWidth;
+          var rScroll = row.scrollLeft;
+          var rWidth = row.clientWidth;
+          if (cLeft < rScroll || (cLeft + cWidth) > (rScroll + rWidth)) {
+            items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
       }
 
       var cur = 0, timer = null, pinTimer = null, pinned = false, hovering = false;
       var canHover = window.matchMedia('(hover: hover)').matches;
-      function stopAuto() { clearInterval(timer); timer = null; }
+
+      function getRandomMember() {
+        if (TEAM.length <= 1) return 0;
+        var next;
+        do {
+          next = Math.floor(Math.random() * TEAM.length);
+        } while (next === cur);
+        return next;
+      }
+
+      function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
       function startAuto() {
         stopAuto();
-        if (hovering || pinned || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (hovering || pinned) return;
         timer = setInterval(function () {
-          if (document.hidden) return;
-          var n; do { n = Math.floor(Math.random() * TEAM.length); } while (n === cur && TEAM.length > 1);
-          showMember(n, true);
-        }, 4000);
+          if (hovering || pinned) return;
+          var nextIdx = getRandomMember();
+          showMember(nextIdx, true);
+        }, 3500);
       }
 
       function renderRow() {
@@ -356,37 +375,94 @@
             '<span class="ab-team-id"><strong>' + m.name + '</strong><em>' + m.role + '</em></span>';
           card.style.setProperty('--i', i);
           card.tabIndex = 0;
-          card.addEventListener('mouseenter', function () { if (!canHover) return; hovering = true; stopAuto(); showMember(i); });
-          card.addEventListener('mouseleave', function () { if (!canHover) return; hovering = false; if (pinned) return; card.classList.remove('on'); startAuto(); });
-          card.addEventListener('click', function () {
-            showMember(i);
-            // keep the clicked member (and its highlight) for a while, then auto-rotate resumes
-            pinned = true; stopAuto(); clearTimeout(pinTimer);
-            pinTimer = setTimeout(function () { pinned = false; if (!hovering) startAuto(); }, 15000);
-            var r = spot.getBoundingClientRect();
-            if (r.top < 70 || r.bottom > window.innerHeight - 20) spot.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          card.addEventListener('mouseenter', function () {
+            if (!canHover) return;
+            hovering = true;
+            stopAuto();
+            showMember(i, false);
           });
-          card.addEventListener('focus', function () { if (!canHover) return; showMember(i); stopAuto(); });
-          card.addEventListener('blur', function () { if (canHover && !hovering) startAuto(); });
+          card.addEventListener('mouseleave', function () {
+            if (!canHover) return;
+            hovering = false;
+            if (pinned) return;
+            startAuto();
+          });
+          card.addEventListener('click', function () {
+            showMember(i, false);
+            pinned = true;
+            stopAuto();
+            clearTimeout(pinTimer);
+            pinTimer = setTimeout(function () {
+              pinned = false;
+              if (!hovering) startAuto();
+            }, 10000);
+            var r = spot.getBoundingClientRect();
+            if (r.top < 70 || r.bottom > window.innerHeight - 20) {
+              spot.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          });
+          card.addEventListener('focus', function () {
+            hovering = true;
+            stopAuto();
+            showMember(i, false);
+          });
+          card.addEventListener('blur', function () {
+            hovering = false;
+            if (!pinned) startAuto();
+          });
           row.appendChild(card);
           items.push(card);
         });
       }
 
-      if (prevBtn) prevBtn.addEventListener('click', function () { row.scrollBy({ left: -(items[1] ? items[1].offsetLeft - items[0].offsetLeft : 220), behavior: 'smooth' }); });
-      if (nextBtn) nextBtn.addEventListener('click', function () { row.scrollBy({ left: (items[1] ? items[1].offsetLeft - items[0].offsetLeft : 220), behavior: 'smooth' }); });
+      document.addEventListener('click', function (e) {
+        if (pinned && !e.target.closest('#team')) {
+          pinned = false;
+          clearTimeout(pinTimer);
+          if (!hovering) startAuto();
+        }
+      });
+
+      if (prevBtn) prevBtn.addEventListener('click', function () {
+        stopAuto();
+        var prevIdx = (cur - 1 + TEAM.length) % TEAM.length;
+        showMember(prevIdx, false);
+        if (items[prevIdx]) items[prevIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        pinned = true;
+        clearTimeout(pinTimer);
+        pinTimer = setTimeout(function () { pinned = false; if (!hovering) startAuto(); }, 8000);
+      });
+      if (nextBtn) nextBtn.addEventListener('click', function () {
+        stopAuto();
+        var nextIdx = (cur + 1) % TEAM.length;
+        showMember(nextIdx, false);
+        if (items[nextIdx]) items[nextIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        pinned = true;
+        clearTimeout(pinTimer);
+        pinTimer = setTimeout(function () { pinned = false; if (!hovering) startAuto(); }, 8000);
+      });
 
       renderRow();
-      showMember(0);
+      showMember(0, false);
       startAuto();
 
       // scroll in / scroll out animation (replays on every pass, up or down)
       var sec = document.getElementById('team');
       if (sec && 'IntersectionObserver' in window) {
         new IntersectionObserver(function (es) {
-          es.forEach(function (en) { sec.classList.toggle('tm-vis', en.isIntersecting); });
+          es.forEach(function (en) {
+            sec.classList.toggle('tm-vis', en.isIntersecting);
+            if (en.isIntersecting) {
+              if (!hovering && !pinned) startAuto();
+            } else {
+              stopAuto();
+            }
+          });
         }, { threshold: 0.12 }).observe(sec);
-      } else if (sec) { sec.classList.add('tm-vis'); }
+      } else if (sec) {
+        sec.classList.add('tm-vis');
+        startAuto();
+      }
     })();
     </script>
 

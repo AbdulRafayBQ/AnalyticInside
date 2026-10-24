@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="nomadBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#18120C"/>
+      <stop offset="50%" stop-color="#241910"/>
+      <stop offset="100%" stop-color="#0E0A07"/>
+    </linearGradient>
+    <radialGradient id="nomadGlow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#C99B5C" stop-opacity="0.32"/>
+      <stop offset="60%" stop-color="#8F5F2B" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="goldAcc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F3C68F"/>
+      <stop offset="100%" stop-color="#C99B5C"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="24" stdDeviation="30" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#nomadBg)"/>
+  <rect width="1920" height="1080" fill="url(#nomadGlow)"/>
+
+  <!-- Subtle Grid Lines -->
+  <g opacity="0.06" stroke="#FFFFFF" stroke-width="1">
+    <line x1="240" y1="0" x2="240" y2="1080"/>
+    <line x1="960" y1="0" x2="960" y2="1080"/>
+    <line x1="1680" y1="0" x2="1680" y2="1080"/>
+    <line x1="0" y1="360" x2="1920" y2="360"/>
+    <line x1="0" y1="720" x2="1920" y2="720"/>
+  </g>
+
+  <!-- Floating Ambient Orbs -->
+  <circle cx="1520" cy="280" r="180" fill="#C99B5C" opacity="0.08" filter="blur(60px)"/>
+  <circle cx="360" cy="780" r="220" fill="#8F5F2B" opacity="0.12" filter="blur(70px)"/>
+
+  <!-- Device Window Mockup -->
+  <g filter="url(#shadow)" transform="translate(260, 140)">
+    <!-- Window Frame -->
+    <rect width="1400" height="800" rx="24" fill="#1C1612" stroke="rgba(201,155,92,0.25)" stroke-width="2"/>
+    
+    <!-- Top Bar -->
+    <rect width="1400" height="56" rx="24" fill="#140F0C"/>
+    <rect y="40" width="1400" height="16" fill="#140F0C"/>
+    <circle cx="36" cy="28" r="6" fill="#FF5F56"/>
+    <circle cx="58" cy="28" r="6" fill="#FFBD2E"/>
+    <circle cx="80" cy="28" r="6" fill="#27C93F"/>
+    
+    <rect x="520" y="16" width="360" height="24" rx="12" fill="#241B15"/>
+    <text x="700" y="32" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#A89484" text-anchor="middle" letter-spacing="1.5">nomadcoffeestudio.com · 3D Storefront</text>
+
+    <!-- Inner Content Canvas -->
+    <rect x="20" y="70" width="1360" height="710" rx="14" fill="#0D0906"/>
+
+    <!-- Store Header -->
+    <text x="70" y="130" font-family="'Outfit', sans-serif" font-size="28" font-weight="800" fill="#FFFFFF" letter-spacing="3">NOMAD</text>
+    <text x="180" y="130" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#C99B5C" letter-spacing="2">COFFEE STUDIO</text>
+    
+    <g transform="translate(580, 116)">
+      <text x="0" y="14" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Our Blends</text>
+      <text x="120" y="14" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#8E7E72">Single Origin</text>
+      <text x="250" y="14" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#8E7E72">Brew Gear</text>
+      <text x="360" y="14" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#8E7E72">Origin Stories</text>
+    </g>
+
+    <!-- Main Stage Hero in Mockup -->
+    <!-- Left Hero Copy -->
+    <g transform="translate(80, 240)">
+      <rect width="180" height="28" rx="14" fill="rgba(201,155,92,0.18)"/>
+      <text x="90" y="18" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#F3C68F" text-anchor="middle" letter-spacing="1.5">COFFEE FOR THE CURIOUS</text>
+      
+      <text x="0" y="90" font-family="'Outfit', sans-serif" font-size="52" font-weight="800" fill="#FFFFFF" line-height="1.1">
+        <tspan x="0" dy="0">Experience for</tspan>
+        <tspan x="0" dy="56" fill="url(#goldAcc)">The Explorer</tspan>
+      </text>
+
+      <text x="0" y="185" font-family="'Inter', sans-serif" font-size="15" fill="#B0A092" width="460">
+        <tspan x="0" dy="0">Hand-selected harvest coffees &amp; precision</tspan>
+        <tspan x="0" dy="24">brewing tools in an interactive 3D shelf.</tspan>
+      </text>
+
+      <!-- CTA Button -->
+      <g transform="translate(0, 240)">
+        <rect width="170" height="46" rx="23" fill="url(#goldAcc)"/>
+        <text x="85" y="28" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#140F0C" text-anchor="middle">Explore Range →</text>
+      </g>
+    </g>
+
+    <!-- Right 3D Coffee Bags Presentation -->
+    <g transform="translate(740, 180)">
+      <!-- Central Ambient Ring -->
+      <ellipse cx="300" cy="400" rx="280" ry="80" fill="none" stroke="#C99B5C" stroke-width="2" opacity="0.35"/>
+      <ellipse cx="300" cy="400" rx="240" ry="60" fill="none" stroke="#C99B5C" stroke-width="1" opacity="0.2" stroke-dasharray="8 6"/>
+
+      <!-- Bag 1 Left (Voyager) -->
+      <g transform="translate(60, 120) scale(0.85)">
+        <rect width="160" height="260" rx="14" fill="#3A291C" stroke="rgba(201,155,92,0.4)" stroke-width="1.5"/>
+        <rect x="25" y="40" width="110" height="180" rx="8" fill="#FBF5ED"/>
+        <text x="80" y="80" font-family="'Outfit', sans-serif" font-size="14" font-weight="800" fill="#1C140D" text-anchor="middle">VOYAGER</text>
+        <circle cx="80" cy="120" r="18" fill="#C99B5C"/>
+        <text x="80" y="180" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#756152" text-anchor="middle">COLOMBIA · HONEY</text>
+      </g>
+
+      <!-- Bag 2 Center (Atlas Blend - Hero) -->
+      <g transform="translate(200, 70)" filter="url(#shadow)">
+        <rect width="200" height="310" rx="16" fill="#1F1710" stroke="#C99B5C" stroke-width="2.5"/>
+        <rect x="25" y="45" width="150" height="220" rx="10" fill="#FBF8F2"/>
+        <text x="100" y="95" font-family="'Outfit', sans-serif" font-size="18" font-weight="900" fill="#18120B" text-anchor="middle" letter-spacing="1">ATLAS BLEND</text>
+        <circle cx="100" cy="145" r="26" fill="url(#goldAcc)"/>
+        <text x="100" y="152" font-family="'Outfit', sans-serif" font-size="20" font-weight="900" fill="#140F0C" text-anchor="middle">N</text>
+        <text x="100" y="210" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#8F6335" text-anchor="middle">SPECIALTY ROAST</text>
+        <text x="100" y="235" font-family="'Inter', sans-serif" font-size="10" font-weight="500" fill="#6A5C50" text-anchor="middle">Notes of Fig, Cocoa &amp; Plum</text>
+        
+        <!-- Live Tag Badge -->
+        <rect x="45" y="285" width="110" height="22" rx="11" fill="#C99B5C"/>
+        <text x="100" y="300" font-family="'Inter', sans-serif" font-size="10" font-weight="800" fill="#140F0C" text-anchor="middle">BESTSELLER</text>
+      </g>
+
+      <!-- Bag 3 Right (AeroPress / Gear) -->
+      <g transform="translate(420, 130) scale(0.85)">
+        <rect width="160" height="250" rx="14" fill="#251D16" stroke="rgba(201,155,92,0.3)" stroke-width="1.5"/>
+        <rect x="25" y="35" width="110" height="175" rx="8" fill="#F8F3EC"/>
+        <text x="80" y="75" font-family="'Outfit', sans-serif" font-size="13" font-weight="800" fill="#1C140D" text-anchor="middle">AEROPRESS</text>
+        <circle cx="80" cy="115" r="16" fill="#3D9970"/>
+        <text x="80" y="175" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#5F5246" text-anchor="middle">CLEAR MINT · 2026</text>
+      </g>
+    </g>
+
+    <!-- Bottom Stat Strip inside Mockup -->
+    <g transform="translate(60, 690)">
+      <rect width="1280" height="60" rx="12" fill="#140E0A" stroke="rgba(201,155,92,0.15)" stroke-width="1"/>
+      <text x="40" y="35" font-family="'Outfit', sans-serif" font-size="18" font-weight="800" fill="#C99B5C">4+ Roast Categories</text>
+      <text x="340" y="35" font-family="'Outfit', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">100% Arabica Origins</text>
+      <text x="680" y="35" font-family="'Outfit', sans-serif" font-size="18" font-weight="800" fill="#C99B5C">3D CSS Interactive Shelf</text>
+      <text x="1050" y="35" font-family="'Outfit', sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Global Roast Dispatch</text>
+    </g>
+  </g>
+</svg>

@@ -3042,3 +3042,133 @@ a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
   #eli-hit { left: 0; top: 0; width: 100%; height: 100%; }
 }
 #eli-root, #eli-hit { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PORTFOLIO ENHANCEMENTS — Tech tags under thumbnail & Mockup Window
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Tech stack tags strictly under thumbnail */
+.pz-media-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: flex-start;
+}
+.pz-row--flip .pz-media-tags {
+  justify-content: flex-start;
+}
+.pz-media-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(23, 19, 14, 0.1);
+  font: 600 12px/1.3 'Inter', sans-serif;
+  color: var(--pz-ink, #17130e);
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 8px rgba(23, 19, 14, 0.04);
+  transition: transform 0.25s, background 0.25s, color 0.25s, border-color 0.25s;
+}
+.pz-media-tag:hover {
+  transform: translateY(-2px);
+  background: var(--pz-ink, #17130e);
+  border-color: var(--pz-ink, #17130e);
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .pz-media-tags {
+    margin-top: 14px;
+    justify-content: center;
+  }
+}
+
+/* Detail overlay stats bar (Salasa OMS luxury style) */
+.pf-detail-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 36px 0 44px;
+  padding: 24px 28px;
+  border-radius: 20px;
+  background: #14110E;
+  border: 1px solid rgba(201, 155, 92, 0.25);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.4);
+}
+.pf-dstat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pf-dstat-num {
+  font: 800 clamp(22px, 2.6vw, 32px)/1.1 'Outfit', sans-serif;
+  color: #C99B5C;
+  letter-spacing: -0.02em;
+}
+.pf-dstat-label {
+  font: 500 13px/1.3 'Inter', sans-serif;
+  color: rgba(255, 255, 255, 0.65);
+}
+@media (max-width: 768px) {
+  .pf-detail-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 14px;
+    padding: 20px;
+  }
+}
+
+/* Browser mockup window frame for showcase previews & process screenshots */
+.pf-mock-window {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #120F0D;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+.pf-mock-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.pf-mock-bar i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+.pf-mock-bar i:nth-child(1) { background: #FF5F56; }
+.pf-mock-bar i:nth-child(2) { background: #FFBD2E; }
+.pf-mock-bar i:nth-child(3) { background: #27C93F; }
+.pf-mock-bar span {
+  margin-left: 8px;
+  font: 600 11px/1 'JetBrains Mono', monospace;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pf-mock-body {
+  position: relative;
+  background: #000;
+  line-height: 0;
+}
+.pf-mock-body img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.pf-mock-window--sm {
+  border-radius: 14px;
+  box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.35);
+}
+.pf-mock-window--sm .pf-mock-bar {
+  padding: 8px 12px;
+}

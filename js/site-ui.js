@@ -1999,12 +1999,12 @@ function sectionBlurb(id, svc) {
   const PF_PROJECTS = [
     { title: 'Salasa OMS', tagline: 'An enterprise logistics platform built from the ground up.', slug: 'salasaoms' },
     { title: 'Dr. Asgar Rheumatology', tagline: 'Cross platform care app paired with a secure clinic dashboard.', slug: 'drasgarrheumatology' },
-    { title: 'Caary Capital', tagline: 'Rebuilt fintech dashboards serving 500 plus internal users.', slug: 'caarycapital' },
-    { title: 'Doc Link Healthcare', tagline: 'Skip the waiting room. Checkups and bookings in one app.', slug: 'doclinkhealthcare' },
-    { title: 'Morinaga Calories Counter', tagline: 'Cross platform calorie tracking with real time sync.', slug: 'morinagacaloriescounter' },
-    { title: 'RichAI', tagline: 'A talking avatar and chatbot with real image generation.', slug: 'richai' },
-    { title: 'Mateen Food Center', tagline: 'Social media marketing and branding for a restaurant and caterer.', slug: 'mateenfoodcenter' },
-    { title: 'Telecard', tagline: 'A corporate WordPress build for a long standing ICT provider.', slug: 'telecard' }
+    { title: 'Mateen Food Center', tagline: 'One name. Three businesses. A unified restaurant & catering brand.', slug: 'mateenfoodcenter' },
+    { title: 'Dalda Foods', tagline: 'Immersive 3D packaging showcase for a household consumer goods brand.', slug: 'daldafoods' },
+    { title: 'Nomad Coffee Studio', tagline: 'Specialty coffee discovery paired with tactile 3D bean and gear interaction.', slug: 'nomadcoffeestudio' },
+    { title: 'Realtor', tagline: 'Reimagining property search through spatial clarity and instant filtering.', slug: 'realtor' },
+    { title: 'Real Food Blends', tagline: 'Honest real-food nutrition presented with clinical clarity and interactive depth.', slug: 'realfoodblends' },
+    { title: 'Caary Capital', tagline: 'Rebuilt fintech dashboards serving 500 plus internal users.', slug: 'caarycapital' }
   ];
 
   const m = document.createElement('div');

@@ -73,6 +73,112 @@
       features: ['Secure patient records encrypted at rest', 'Appointment booking and reminders', 'Symptom tracker with trend charts', 'In app doctor messaging', 'Prescription and treatment log', 'Admin scheduling dashboard']
     },
     {
+      title: 'Mateen Food Center',
+      short: 'MFC',
+      sub: 'Brand Identity & Growth Marketing',
+      folder: 'mateen-food-center',
+      images: ['../../images/Marketing and branding/case study hero.png'],
+      tags: ['Brand Identity', 'Meta Ads Campaign', 'Social Strategy', 'Creative Direction'],
+      tagline: 'One name. Three businesses. A unified restaurant & catering brand.',
+      category: 'web',
+      caseStudy: 'Case studies/mateen-food-center-case-study/index.html',
+      useDirectPath: true,
+      featured: true,
+      desc: 'How Elyven gave Mateen Food Center a single look, a clear voice for each service line, and highly-targeted campaigns that reach real diners, event hosts, and corporate catering clients.',
+      process: [
+        { phase: 'Brand Review', detail: 'We looked at how MFC appeared across social pages, menus and banners. The food was strong but the look changed from post to post, so we established one confident direction.' },
+        { phase: 'Visual Identity System', detail: 'We paired the warm gold and deep tones of the MFC badge with rich dark framing so culinary photography stands out. Standardized typography, spacing and logo lockups.' },
+        { phase: 'Multi-Line Strategy', detail: 'Created distinct positioning and ad funnels for Ballroom bookings, Event Catering packages, and Dine-In / Delivery promotions.' },
+        { phase: 'Campaigns & Reels', detail: 'High-converting dish reels, wedding-season enquiry ads and localized delivery campaigns paired with automated WhatsApp quick replies.' },
+        { phase: 'Impact & Reporting', detail: 'Ongoing monthly tracking of verified leads, catering inquiries, and social reach with continuous creative optimization.' }
+      ],
+      features: ['Unified brand identity & guidelines', 'Ballroom event booking funnels', 'Corporate catering lead generation', 'High-converting dish & offer reels', 'WhatsApp instant quote integration', 'Monthly ROI & reach reports']
+    },
+    {
+      title: 'Dalda Foods',
+      short: 'Dalda',
+      sub: 'Brand Experience & 3D Packaging',
+      folder: 'dalda-case-study',
+      images: [],
+      tags: ['Next.js 15', 'Three.js / WebGL', 'GSAP ScrollTrigger', 'Tailwind CSS', 'TypeScript'],
+      tagline: 'Immersive 3D packaging showcase for a household consumer goods brand.',
+      category: 'web',
+      caseStudy: 'Case studies/Dalda-Foods-Case-Study-v2/dalda-case-study/index.html',
+      useDirectPath: true,
+      featured: true,
+      desc: 'An independent digital exploration of how a heritage family-first food brand presents its oils, teas and packaged goods through a tactile, interactive 3D shelf experience with sub-second paint times.',
+      process: [
+        { phase: 'Brand Architecture', detail: 'Structured the multi-brand catalog (Dalda, Manpasand, Knockout) under one unified family narrative without cluttering the visitor journey.' },
+        { phase: 'Zero-Engine 3D Carousel', detail: 'Built a hardware-accelerated CSS 3D rotating shelf with Pointer Events, allowing users to spin, swipe and inspect bottle, pouch and tin formats.' },
+        { phase: 'Resilient Media Loading', detail: 'Engineered SVG-based fallback pack silhouettes so layout never shifts or breaks if remote network assets experience latency.' },
+        { phase: 'Accessibility & Touch', detail: 'Added complete keyboard navigation, ARIA roles, visible focus states and reduced-motion safety across all dynamic modules.' }
+      ],
+      features: ['Interactive 3D pack carousel', 'Multi-brand tab architecture', 'Resilient responsive fallbacks', 'Zero-engine hardware acceleration', 'Accessible keyboard controls', 'Optimized mobile performance']
+    },
+    {
+      title: 'Nomad Coffee Studio',
+      short: 'Nomad',
+      sub: 'Specialty Coffee E-Commerce & 3D Shelf',
+      folder: 'nomad-case-study',
+      images: [],
+      tags: ['Next.js 15', 'Three.js / WebGL', 'Shopify Storefront GraphQL', 'GLSL Shaders', 'TypeScript'],
+      tagline: 'Specialty coffee discovery paired with tactile 3D bean and gear interaction.',
+      category: 'web',
+      caseStudy: 'Case studies/nomad-case-study/index.html',
+      useDirectPath: true,
+      featured: true,
+      desc: 'A high-performance e-commerce platform engineered for artisan coffee roasters. Featuring dynamic roast profiles, origin storytelling, an interactive 3D shelf and frictionless checkout.',
+      process: [
+        { phase: 'Sensory UI Architecture', detail: 'Translated sensory flavor notes, roast levels, and processing methods into clean, visual flavor cards with immediate visual contrast.' },
+        { phase: 'Interactive 3D Pack Shelf', detail: 'Engineered a silky, touch-enabled 3D circular carousel allowing customers to inspect roast profiles from any device without WebGL weight.' },
+        { phase: 'Sub-Second Frontend', detail: 'Handcrafted semantic HTML5 and vanilla JavaScript architecture achieving instant page load and zero layout shifts.' },
+        { phase: 'Conversion Optimization', detail: 'Streamlined the path from flavor exploration to multi-bag cart additions with clear roast size selection.' }
+      ],
+      features: ['3D interactive product shelf', 'Origin & flavor notes architecture', 'Direct roast subscription flows', 'Sub-second page transitions', 'Zero-framework responsive frontend', 'Fluid micro-interactions']
+    },
+    {
+      title: 'Realtor',
+      short: 'Realtor',
+      sub: 'Property Discovery & Architectural UX',
+      folder: 'realtor-case-study',
+      images: [],
+      tags: ['React 19', 'Next.js App Router', 'Mapbox GL JS', 'Zustand', 'Prisma ORM', 'Tailwind CSS'],
+      tagline: 'Reimagining property search through spatial clarity and instant filtering.',
+      category: 'web',
+      caseStudy: 'Case studies/realtor-case-study/index.html',
+      useDirectPath: true,
+      featured: true,
+      desc: 'A modern real estate portal that makes complex architectural listings, neighborhood analytics and property photography intuitive to browse on every screen size.',
+      process: [
+        { phase: 'Information Hierarchy', detail: 'Deconstructed cluttered property pages into clear spatial zones: essential price specs first, interactive floorplans second, and amenities on demand.' },
+        { phase: 'Responsive Spatial Grids', detail: 'Engineered fluid grid layouts that seamlessly adapt from 4K ultrawide displays down to compact mobile viewports without horizontal scroll.' },
+        { phase: 'Restrained 3D Depth', detail: 'Implemented subtle CSS 3D perspective tilts on property cards to highlight architectural depth without impacting rendering speed.' },
+        { phase: 'Performance Engineering', detail: 'Zero-framework architecture with lazy-loaded media assets ensuring sub-second paint times even with image-heavy catalogs.' }
+      ],
+      features: ['High-density property cards', 'Dynamic neighborhood filtering', 'Subtle 3D perspective previews', 'Zero layout shifts on image load', 'Full touch and keyboard support', 'Lightweight responsive engine']
+    },
+    {
+      title: 'Real Food Blends',
+      short: 'RFB',
+      sub: 'Nutritional UX & 3D Product Flip',
+      folder: 'rfb-case-study',
+      images: [],
+      tags: ['Next.js 15', 'React Three Fiber', 'Drei', 'Framer Motion', 'Tailwind CSS', 'TypeScript'],
+      tagline: 'Honest real-food nutrition presented with clinical clarity and interactive depth.',
+      category: 'web',
+      caseStudy: 'Case studies/rfb-case-study/index.html',
+      useDirectPath: true,
+      featured: true,
+      desc: 'An empathetic digital showcase for feeding-tube nutrition meals. Features an interactive 3D pouch flip revealing verified clinical nutrition facts and transparent ingredient breakdowns.',
+      process: [
+        { phase: 'Empathetic UX Strategy', detail: 'Designed for caregivers and clinical teams who need essential ingredient transparency, allergen alerts, and preparation guidelines without noise.' },
+        { phase: 'Interactive 3D Pouch Flip', detail: 'Developed a smooth CSS 3D perspective flip card that rotates from front packaging to official clinical nutrition facts at a single tap.' },
+        { phase: 'Meal Category Discovery', detail: 'Structured the meals into Breakfast, Lunch/Dinner, and Plant-Based categories with immediate ingredient tag chips.' },
+        { phase: 'Medical Clarity & Trust', detail: 'Balanced warm family-first aesthetics with clinical accuracy and explicit nutritional notices.' }
+      ],
+      features: ['Instant 3D pouch flip card', 'Direct nutrition label view', 'Categorized meal discovery', 'Accessible high-contrast typography', 'Zero-overhead Vanilla JS', 'Mobile-first responsive design']
+    },
+    {
       title: 'Caary Capital',
       short: 'Caary',
       sub: 'Fintech Admin Dashboards',
@@ -204,8 +310,7 @@
       tags: ['React Native', 'Next.js', 'Material UI', 'Redux Toolkit', 'Node.js'],
       tagline: 'One booking platform for venues, catering, decor and more.',
       category: 'web',
-      caseStudy: null,
-      desc: 'A full booking platform built for an event planning company that wanted their whole process online. Venues, catering, decor, photography, videography, florals, dance floors, sound systems and photobooths all bookable from one single place.',
+      caseStudy: 'Case studies/assist-event-case-study/index.html',
       process: [
         { phase: 'Discovery and Planning', detail: 'Ran stakeholder interviews with the event company team to map every vendor category, booking flow and edge case. Produced user journey diagrams for both planners and vendors before writing a line of code.' },
         { phase: 'Architecture', detail: 'Chose a monorepo structure with shared TypeScript types between the React Native app, Next.js web and Node and Express backend. MySQL with Sequelize ORM was selected to handle complex relational data.' },
@@ -224,8 +329,7 @@
       tags: ['web3.js', 'Node.js', 'React', 'Next.js', 'JavaScript'],
       tagline: 'Connecting founders, investors and engineers on chain.',
       category: 'fintech',
-      caseStudy: null,
-      desc: 'Investdex.io is a platform for the Web3 investment world built to connect founders, investors, engineers and industry people in one place. web3.js handles the on chain side while Next.js powers the off chain matching and deal flow.',
+      caseStudy: 'Case studies/invest-powerlabs-case-study/index.html',
       process: [
         { phase: 'Web3 Architecture', detail: 'Designed the on chain and off chain split. Profile data and matching logic live off chain using Next.js and Node.js for speed, while investment commitments and vesting agreements are recorded on chain via smart contract events.' },
         { phase: 'Wallet Integration', detail: 'Integrated MetaMask, WalletConnect and Coinbase Wallet via web3.js. Built a unified wallet state manager so the UI reactively updates on chain and network switch without a page reload.' },
@@ -244,8 +348,7 @@
       tags: ['Node.js', 'React', 'Next.js', 'JavaScript', 'Amazon S3'],
       tagline: 'A link shortener people actually want to open.',
       category: 'web',
-      caseStudy: null,
-      desc: 'Led the frontend build for LinkDrip, a link shortening tool that needed to feel like a product people wanted to open rather than just another utility. Kept the interface clean and fast, with Amazon S3 handling asset storage at scale.',
+      caseStudy: 'Case studies/linkdrip-case-study/index.html',
       process: [
         { phase: 'Product Definition', detail: 'Benchmarked 8 existing URL shorteners. The gap was that none of them felt designed. Users treated them as grudging utilities. The opportunity was to make link management genuinely enjoyable with clean dashboards and fast interactions.' },
         { phase: 'Frontend Architecture', detail: 'Next.js for the dashboard with React for component composition. Chose a minimal design system with 3 colours, 2 fonts and generous whitespace. Every feature had to earn its place on screen.' },
@@ -264,8 +367,7 @@
       tags: ['React', 'Tailwind CSS', 'JavaScript', 'Next.js', 'Firebase'],
       tagline: 'Wallets, NFTs and DeFi protocols made approachable.',
       category: 'fintech',
-      caseStudy: null,
-      desc: 'A DeFi platform where users connect wallets, browse NFTs and swap or farm across popular DeFi protocols. Built with Next.js and Firebase, focused on making technical DeFi concepts approachable for a wider audience.',
+      caseStudy: 'Case studies/pulse-genesis-case-study/index.html',
       process: [
         { phase: 'UX Research', detail: 'The core problem with most DeFi apps is that they assume users already understand APY, impermanent loss and liquidity pools. We designed every screen to explain concepts inline without condescending tooltips.' },
         { phase: 'Wallet and Chain Integration', detail: 'Multi chain support from day one covering Ethereum, PulseChain and BNB Chain. Built a unified transaction signing flow so users never had to context switch between wallet popups per chain.' },
@@ -284,8 +386,7 @@
       tags: ['Node.js', 'React', 'Next.js', 'JavaScript', 'Stable Diffusion'],
       tagline: 'A talking avatar and chatbot with real image generation.',
       category: 'ai',
-      caseStudy: null,
-      desc: 'An AI image generator paired with a voice assistant, a talking avatar plus a chatbot that holds a real conversation. Stable Diffusion handles image generation. Built to make talking to AI feel natural and productive for everyday users.',
+      caseStudy: 'Case studies/richai-case-study/index.html',
       process: [
         { phase: 'AI Pipeline Design', detail: 'Mapped the full AI pipeline before writing UI: user voice input to speech to text to LLM context to text to speech to avatar lip sync. Each step had a fallback to text interaction for accessibility.' },
         { phase: 'Stable Diffusion Integration', detail: 'Ran Stable Diffusion via the AUTOMATIC1111 API on a GPU backed Node.js server. Built a prompt engineering layer that automatically enhances user prompts with style and quality modifiers for better outputs.' },
@@ -304,8 +405,7 @@
       tags: ['WordPress', 'HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
       tagline: 'A corporate WordPress build for a long standing ICT provider.',
       category: 'web',
-      caseStudy: null,
-      desc: 'Telecard is a long standing enterprise telecom and ICT provider in Pakistan. A WordPress corporate site covering their full range of services and solutions, built for a non technical team to update with confidence.',
+      caseStudy: 'Case studies/telecard-case-study/index.html',
       process: [
         { phase: 'Content Strategy', detail: 'Telecard had 15 different service lines across enterprise, SMB and residential customers. Spent a week with their marketing team restructuring the information architecture so each audience segment could find their solution in under 2 clicks.' },
         { phase: 'Custom WordPress Theme', detail: 'Built a fully custom WordPress theme from scratch with no page builders and no bloat. Clean semantic HTML5, custom post types for services and case studies, and ACF Pro for the content team to manage everything without touching code.' },
@@ -324,8 +424,7 @@
       tags: ['React', 'Node.js', 'Next.js', 'JavaScript', 'Web Workers'],
       tagline: 'In browser photo editing that stays smooth as features stack up.',
       category: 'web',
-      caseStudy: null,
-      desc: 'Worked on major frontend pieces for Tiny Kiwi, an in browser photo editor. Built the snapshot feature, backend integration and kept editing smooth as more features were layered in. Performance went from 24fps to 58fps on a mid range laptop.',
+      caseStudy: 'Case studies/tiny-kiwi-case-study/index.html',
       process: [
         { phase: 'Canvas Architecture Review', detail: 'Joined the project mid build. First two weeks were reading the existing canvas rendering code, profiling with Chrome DevTools and writing a list of the 11 performance bottlenecks causing the editor to stutter on large images.' },
         { phase: 'Snapshot System', detail: 'Built the undo and redo snapshot system using a command pattern with serialisable canvas state diffs. Snapshots are stored as compressed JSON so a 10MB image edit history uses under 50KB of memory.' },
@@ -334,26 +433,6 @@
         { phase: 'Performance Hardening', detail: 'Added a virtual layer system so only visible layers are composited each frame. On a 20 layer project, frame rate went from 24fps to 58fps on a mid range laptop.' }
       ],
       features: ['In browser canvas editor', 'Undo and redo with compressed snapshots', 'Web Worker filter pipeline', 'AI background removal server side', 'Virtual layer compositing', 'High res print export at 300 DPI']
-    },
-    {
-      title: 'Mateen Food Center',
-      short: 'MFC',
-      sub: 'Social Media Marketing and Branding',
-      folder: 'mateen-food-center',
-      images: ['mfc-hero.jpg'],
-      tags: ['Social Media Marketing', 'Brand Identity', 'Content Creation', 'Meta Ads'],
-      tagline: 'A restaurant and catering brand that finally looks as good as its food.',
-      category: 'web',
-      caseStudy: null,
-      desc: 'Mateen Food Center is a restaurant and caterer serving everything from biryani and karahi to burgers and rolls. We run their social media and shaped how the brand looks and sounds, so the menu, the posts and the ads all feel like one confident name.',
-      process: [
-        { phase: 'Brand Review', detail: 'We looked at how MFC appeared on social pages, menus and banners. The food was strong but the look changed from post to post, so we set one clear direction first.' },
-        { phase: 'Visual Identity', detail: 'We kept the warm gold and brown of the MFC badge and paired it with a dark, rich background so the food colours stand out. Fonts, spacing and the logo lockup were fixed into simple rules the team can reuse.' },
-        { phase: 'Content System', detail: 'We planned a monthly calendar that mixes hero dishes, deals, catering offers and behind the scenes moments, with ready post, story and reel templates.' },
-        { phase: 'Campaigns and Ads', detail: 'We ran paid campaigns on Facebook and Instagram for deals and event catering, with creative built around the dish and one clear call to order.' },
-        { phase: 'Monthly Reporting', detail: 'Each month the owners get a short plain report on reach, orders and enquiries, plus what we will change next.' }
-      ],
-      features: ['Brand look and logo usage rules', 'Monthly social media calendar', 'Food photo editing and retouching', 'Post, story and carousel templates', 'Catering and deal campaigns', 'Simple monthly performance report']
     }
   ];
 
@@ -582,6 +661,30 @@
       logo: 'images/portfolio/mateen-food-center/mfc-logo.png',
       tag: 'Restaurant and Catering Brand',
       accent: '#D9A441'
+    },
+    'Dalda Foods': {
+      bg: '#141E15',
+      theme: 'dark',
+      tag: 'Heritage Consumer Goods & 3D Packaging',
+      accent: '#C99B5C'
+    },
+    'Nomad Coffee Studio': {
+      bg: '#181310',
+      theme: 'dark',
+      tag: 'Specialty Roastery & E-Commerce',
+      accent: '#E0A367'
+    },
+    'Realtor': {
+      bg: '#0F1622',
+      theme: 'dark',
+      tag: 'Architectural Real Estate Platform',
+      accent: '#38BDF8'
+    },
+    'Real Food Blends': {
+      bg: '#1A1813',
+      theme: 'dark',
+      tag: 'Clinical Medical Nutrition',
+      accent: '#48BB78'
     }
   };
 
@@ -593,6 +696,11 @@
   const PROJECT_THUMBNAILS = {
     'Salasa OMS': 'images/Portfolio thumbnails/SALASA Logistics Platform Showcase.jpg',
     'Dr. Asgar Rheumatology': 'images/Portfolio thumbnails/Dr. Asgar Rheumatology App Showcase.jpg',
+    'Mateen Food Center': 'images/Marketing and branding/case study hero.png',
+    'Dalda Foods': 'images/Portfolio thumbnails/Dalda Foods Showcase.svg',
+    'Nomad Coffee Studio': 'images/Portfolio thumbnails/Nomad Coffee Studio Showcase.svg',
+    'Realtor': 'images/Portfolio thumbnails/Realtor Modern Property Showcase.jpg',
+    'Real Food Blends': 'images/Portfolio thumbnails/Real Food Blends Showcase.svg',
     'Caary Capital': 'images/Portfolio thumbnails/CAARY Capital Fintech Dashboard Showcase.jpg',
     'Doc Link Healthcare': 'images/Portfolio thumbnails/Telehealth Dashboard Product Showcase.jpg',
     'Morinaga Calories Counter': 'images/Portfolio thumbnails/Morinaga Kids Health App Showcase.jpg',
@@ -605,8 +713,7 @@
     'Pulse Genesis': 'images/Portfolio thumbnails/Pulse Genesis DeFi Dashboard Showcase.jpg',
     'RichAI': 'images/Portfolio thumbnails/RichAI Dog Assistant Hero Scene.jpg',
     'Telecard': 'images/Portfolio thumbnails/Telecard Connected Future Showcase.jpg',
-    'Tiny Kiwi': 'images/Portfolio thumbnails/Tiny Kiwi Photo Editing Workspace.jpg',
-    'Mateen Food Center': 'images/Portfolio thumbnails/Mateen Food Center Showcase.jpg'
+    'Tiny Kiwi': 'images/Portfolio thumbnails/Tiny Kiwi Photo Editing Workspace.jpg'
   };
 
   /* Thumbnail card: same build as the photo cards on the Services page.
@@ -644,6 +751,7 @@
             ${thumbMarkup(p, i)}
             <span class="pz-open" aria-hidden="true">View case study <i>&nearr;</i></span>
           </button>
+          <div class="pz-media-tags" aria-label="Technologies used">${p.tags.map(t => `<span class="pz-media-tag">${esc(t)}</span>`).join('')}</div>
         </div>
         <div class="pz-body">
           <div class="pz-meta"><span class="pz-count">${num} / ${total}</span><span class="pz-sub">${esc(p.sub)}</span></div>
@@ -651,7 +759,6 @@
           <p class="pz-tagline">${esc(p.tagline)}</p>
           <p class="pz-desc">${esc(p.desc)}</p>
           <ul class="pz-points">${p.features.slice(0, 3).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
-          <div class="pz-tags">${p.tags.slice(0, 6).map(t => `<span>${esc(t)}</span>`).join('')}</div>
           <div class="pz-actions">
             <button class="pz-btn" type="button" data-id="${p.id}" data-action="${primaryAction}">${primaryLabel} <i aria-hidden="true">&rarr;</i></button>
           </div>
@@ -766,24 +873,73 @@
   /* ─────────────────────────────────────────────
      OVERLAY / DETAIL PANEL
   ───────────────────────────────────────────── */
+  const PROJECT_STATS = {
+    'Assist Event': [
+      { num: '120+', label: 'Venues & Vendors' },
+      { num: '99.9%', label: 'Platform Uptime' },
+      { num: '3.2x', label: 'Faster Booking' },
+      { num: '0', label: 'Scheduling Conflicts' }
+    ],
+    'Invest Powerlabs': [
+      { num: '3', label: 'Chains Connected' },
+      { num: '150+', label: 'Vetted Founders' },
+      { num: '< 1s', label: 'Wallet Sync' },
+      { num: '$4.8M+', label: 'Facilitated Volume' }
+    ],
+    'LinkDrip': [
+      { num: '< 10ms', label: 'Redirect Latency' },
+      { num: '99.99%', label: 'Infrastructure Uptime' },
+      { num: '1.4M+', label: 'Clicks Tracked' },
+      { num: '100%', label: 'Custom Domain SSL' }
+    ],
+    'Pulse Genesis': [
+      { num: '3', label: 'DeFi Ecosystems' },
+      { num: 'Live', label: 'Price Feeds' },
+      { num: '0%', label: 'Slippage Loss' },
+      { num: '100%', label: 'Non-Custodial' }
+    ],
+    'RichAI': [
+      { num: '< 1s', label: 'Perceived Latency' },
+      { num: '60 FPS', label: '3D Lip-Sync' },
+      { num: '20-Turn', label: 'Context Memory' },
+      { num: '512px', label: 'Diffusion Engine' }
+    ],
+    'Telecard': [
+      { num: '94', label: 'Lighthouse Score' },
+      { num: '< 1.8s', label: '4G Page Load' },
+      { num: '15', label: 'Enterprise Service Lines' },
+      { num: 'WCAG 2.1', label: 'AA Compliance' }
+    ],
+    'Tiny Kiwi': [
+      { num: '58 FPS', label: 'Canvas Rendering' },
+      { num: '300 DPI', label: 'High-Res Print' },
+      { num: '< 50KB', label: 'Snapshot Diff Size' },
+      { num: '11', label: 'Bottlenecks Solved' }
+    ]
+  };
+
   function buildDetailMarkup(p) {
-    const extraImages = []; // no screenshots on the portfolio page
-    const textOnlyProcess = extraImages.length === 0;
+    const stepImages = (p.imgPaths && p.imgPaths.length > 0) ? p.imgPaths : [];
+    const textOnlyProcess = stepImages.length === 0;
 
     const processHtml = p.process.map((step, i) => {
-      const img = extraImages[i];
+      const img = stepImages.length > 0 ? stepImages[i % stepImages.length] : null;
+      const side = i % 2 === 0 ? 'pf-zig-imgR' : 'pf-zig-imgL';
       const stepBody = `
         <div class="pf-step-icon">${String(i + 1).padStart(2, '0')}</div>
-        <div class="pf-step-phase">${step.phase}</div>
-        <p class="pf-step-detail">${step.detail}</p>`;
-      if (!img && textOnlyProcess) {
+        <div class="pf-step-phase">${esc(step.phase)}</div>
+        <p class="pf-step-detail">${esc(step.detail)}</p>`;
+      if (!img) {
         return `<div class="pf-proc-row pf-zig-row pf-proc-plain"><div class="pf-zig-text">${stepBody}</div></div>`;
       }
-      if (!img) return `<div class="pf-proc-row pf-zig-row pf-proc-plain"><div class="pf-zig-text">${stepBody}</div></div>`;
-      const side = i % 2 === 0 ? 'pf-zig-imgR' : 'pf-zig-imgL';
       return `
         <div class="pf-proc-row pf-zig-row ${side}">
-          <div class="pf-zig-media"><img src="${img}" alt="${p.title} ${step.phase}" loading="lazy"></div>
+          <div class="pf-zig-media">
+            <div class="pf-mock-window pf-mock-window--sm">
+              <div class="pf-mock-bar"><i></i><i></i><i></i><span>${esc(p.title)} · ${esc(step.phase)}</span></div>
+              <div class="pf-mock-body"><img src="${encodeURI(img)}" alt="${esc(p.title)} ${esc(step.phase)}" loading="lazy"></div>
+            </div>
+          </div>
           <div class="pf-zig-text">${stepBody}</div>
         </div>`;
     }).join('');
@@ -791,24 +947,45 @@
     const featuresHtml = p.features.map(f => `
       <li class="pf-feature-item">
         <span class="pf-feature-tick" aria-hidden="true">✓</span>
-        <span>${f}</span>
+        <span>${esc(f)}</span>
       </li>`).join('');
 
     // ── Case study CTA section
     const detailCaseStudyAction = p.caseStudy
       ? `<button class="pf-view-cs-btn" type="button" data-open-cs>View Case Study <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`
-      : `<button class="pf-view-cs-btn" type="button" data-scroll-study>View Case Study <span aria-hidden="true">↓</span></button>`;
+      : `<button class="pf-view-cs-btn" type="button" data-scroll-study>View Breakdown <span aria-hidden="true">↓</span></button>`;
     const csSectionHtml = `
       <div class="pf-view-cs-section pf-reveal">
         <div class="pf-view-cs-text">
-          <h4>${p.caseStudy ? 'Full Case Study Available' : `${p.title} Case Study`}</h4>
-          <p>${p.caseStudy ? `Read the complete project breakdown for ${p.title}.` : `Every phase of the ${p.title} build, from first decisions to launch.`}</p>
+          <h4>${p.caseStudy ? 'Full Case Study Available' : `${esc(p.title)} Overview`}</h4>
+          <p>${p.caseStudy ? `Read the complete project breakdown for ${esc(p.title)}.` : `Every phase of the ${esc(p.title)} build, from first decisions to production launch.`}</p>
         </div>
         ${detailCaseStudyAction}
       </div>
     `;
 
-    const heroThumb = '';
+    const heroThumb = PROJECT_THUMBNAILS[p.title] || (p.imgPaths && p.imgPaths[0]);
+    const heroMedia = heroThumb
+      ? `<div class="pf-mock-window">
+          <div class="pf-mock-bar"><i></i><i></i><i></i><span>${esc(p.title)} · Interface Preview</span></div>
+          <div class="pf-mock-body"><img src="${encodeURI(heroThumb)}" alt="${esc(p.title)}" loading="eager"></div>
+        </div>`
+      : getProjectDetailVisual(p);
+
+    const stats = PROJECT_STATS[p.title] || [
+      { num: '99.9%', label: 'High Availability' },
+      { num: 'Sub-second', label: 'Response Times' },
+      { num: 'Production', label: 'Grade Architecture' },
+      { num: 'End-to-End', label: 'Engineering' }
+    ];
+    const statsHtml = `
+      <div class="pf-detail-stats pf-reveal">
+        ${stats.map(s => `
+          <div class="pf-dstat">
+            <span class="pf-dstat-num">${s.num}</span>
+            <span class="pf-dstat-label">${s.label}</span>
+          </div>`).join('')}
+      </div>`;
 
     detailEl.innerHTML = `
       <div class="pf-detail-inner">
@@ -817,20 +994,21 @@
         <div class="pf-detail-hero">
           <div class="pf-detail-hero-media">
             <div class="pf-float-wrap">
-              ${heroThumb ? `<img src="${heroThumb}" alt="${p.title}" loading="lazy" onerror="this.style.display='none'">` : getProjectDetailVisual(p)}
+              ${heroMedia}
             </div>
             <div class="pf-float-shadow"></div>
           </div>
           <div class="pf-detail-hero-text">
-            <div class="pf-detail-label">${p.sub}</div>
-            <h2 class="pf-detail-title">${p.title}</h2>
-            <p class="pf-detail-tagline">${p.tagline}</p>
-            <p class="pf-detail-desc">${p.desc}</p>
-            <div class="pf-pair-tags">${p.tags.map(t => `<span class="pf-pill">${t}</span>`).join('')}</div>
-            ${p.caseStudy ? `<button class="pf-detail-cs-link" type="button" data-open-cs>View Case Study <span aria-hidden="true">→</span></button>` : '<button class="pf-detail-cs-link" type="button" data-scroll-study>View Case Study <span aria-hidden="true">↓</span></button>'}
+            <div class="pf-detail-label">${esc(p.sub)}</div>
+            <h2 class="pf-detail-title">${esc(p.title)}</h2>
+            <p class="pf-detail-tagline">${esc(p.tagline)}</p>
+            <p class="pf-detail-desc">${esc(p.desc)}</p>
+            ${p.caseStudy ? `<button class="pf-detail-cs-link" type="button" data-open-cs>View Case Study <span aria-hidden="true">→</span></button>` : '<button class="pf-detail-cs-link" type="button" data-scroll-study>View Breakdown <span aria-hidden="true">↓</span></button>'}
             <button class="btn ghost pf-back-btn" type="button">← Back to Portfolio</button>
           </div>
         </div>
+
+        ${statsHtml}
 
         ${csSectionHtml}
 
@@ -843,16 +1021,6 @@
           <div class="pf-zig-wrap ${textOnlyProcess ? 'pf-zig-wrap--plain' : ''}">
             ${processHtml}
           </div>
-        </div>
-
-        <div class="pf-section-block pf-reveal">
-          <div class="pf-section-label-row">
-            <span class="pf-section-eyebrow">Languages and tools</span>
-            <div class="pf-label-line"></div>
-          </div>
-          <ul class="pf-tech-stack-grid">
-            ${p.tags.map(tag => `<li>${tag}</li>`).join('')}
-          </ul>
         </div>
 
         <!-- FEATURES -->
@@ -1002,6 +1170,21 @@
     overlay.classList.add('pf-cs-mode');
     detailEl.innerHTML = caseStudyMarkup(project);
     detailEl.scrollTop = 0;
+    const csFrame = qs('.pf-cs-frame', detailEl);
+    if (csFrame) {
+      csFrame.addEventListener('load', () => {
+        try {
+          const loc = csFrame.contentWindow.location;
+          const path = (loc.pathname || '').toLowerCase();
+          if (path.includes('contact.html') || (path.includes('portfolio.html') && !loc.search.includes('project='))) {
+            if (!path.includes('case studies') && !path.includes('case%20studies')) {
+              closeProject();
+              window.location.href = loc.href;
+            }
+          }
+        } catch (err) {}
+      });
+    }
     if (hasGSAP && !reduceMotion) gsap.fromTo(detailEl, { opacity: 0 }, { opacity: 1, duration: 0.35 });
     else detailEl.style.opacity = '1';
   }
@@ -1032,6 +1215,11 @@
   document.addEventListener('click', e => { if (e.target.closest('.pf-back-btn')) closeProject(); });
   document.addEventListener('click', e => { if (e.target.closest('[data-scroll-study]')) scrollToCaseStudy(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProject(); });
+  window.addEventListener('message', e => {
+    if (e.data === 'eleven-close-case-study' || (e.data && e.data.type === 'eleven-close-case-study')) {
+      closeProject();
+    }
+  });
 
   const requestedProject = new URLSearchParams(window.location.search).get('project');
   if (requestedProject) {

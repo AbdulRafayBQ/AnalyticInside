@@ -453,6 +453,7 @@ body.mk-page .logo-img { height: 34px; }
 .mk-chans b { font: 700 15px 'Outfit', sans-serif; margin-right: 4px; }
 .mk-chans span { font: 600 13.5px 'Inter', sans-serif; padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.04); }
 .mk-bot-demo { position: sticky; top: 100px; min-width: 0; }
+.mk-bot-copy > .mk-btn { margin-top: 36px; }
 @media (max-width: 760px) { .mk-bcards { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 480px) {
   .mk-bot-grid { gap: 22px; margin-top: 24px; }

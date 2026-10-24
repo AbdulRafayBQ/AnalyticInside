@@ -5,6 +5,18 @@
 
   /* ---------------- scroll reveal ---------------- */
   var revealEls = document.querySelectorAll(".reveal, .reveal-stagger");
+  function revealVisible() {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    revealEls.forEach(function (el) {
+      if (!el.classList.contains("in")) {
+        var r = el.getBoundingClientRect();
+        if (r.top < vh + 100 && r.bottom > -40) {
+          el.classList.add("in");
+        }
+      }
+    });
+  }
+
   if (prefersReduced || !("IntersectionObserver" in window)) {
     revealEls.forEach(function (el) { el.classList.add("in"); });
   } else {
@@ -17,10 +29,16 @@
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.04, rootMargin: "60px 0px 60px 0px" }
     );
     revealEls.forEach(function (el) { io.observe(el); });
   }
+
+  window.addEventListener("scroll", revealVisible, { passive: true });
+  window.addEventListener("resize", revealVisible);
+  setTimeout(revealVisible, 120);
+  setTimeout(revealVisible, 450);
+  setTimeout(revealVisible, 1000);
 
   /* ---------------- hero load-in sequence ---------------- */
   window.requestAnimationFrame(function () {

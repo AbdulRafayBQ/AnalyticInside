@@ -1,188 +1,289 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Salasa OMS — Enterprise Order Management Platform | Elyven Case Study</title>
-<meta name="description" content="How Elyven's product team built Salasa OMS, an enterprise order management platform for logistics operations — carrier assignation, merchant pricing, service zones and real-time decision visibility.">
-<meta name="keywords" content="Salasa OMS, order management system, logistics platform, Elyven case study, carrier assignation, merchant pricing platform, enterprise frontend engineering, React Next.js dashboard">
-<meta name="robots" content="index, follow">
-<meta name="author" content="Elyven">
-<link rel="canonical" href="https://www.eleven.com/work/salasa-oms/">
-
-<!-- Open Graph -->
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Elyven">
-<meta property="og:title" content="Salasa OMS — Enterprise Order Management Platform">
-<meta property="og:description" content="An enterprise order management platform for logistics operations, engineered end to end by Elyven's product team.">
-<meta property="og:image" content="https://www.eleven.com/work/salasa-oms/images/dashboard.png">
-<meta property="og:url" content="https://www.eleven.com/work/salasa-oms/">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Salasa OMS — Enterprise Order Management Platform | Elyven">
-<meta name="twitter:description" content="How Elyven's product team engineered a full-scale order management platform for logistics operations.">
-<meta name="twitter:image" content="https://www.eleven.com/work/salasa-oms/images/dashboard.png">
-
-<link rel="icon" href="images/eleven-logo.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "name": "Salasa OMS — Enterprise Order Management Platform",
-  "description": "An enterprise order management platform for logistics operations, covering order workflows, rule-based carrier assignation, merchant pricing and real-time decision visibility.",
-  "creator": {
-    "@type": "Organization",
-    "name": "Elyven",
-    "url": "https://www.eleven.com"
-  },
-  "about": "Enterprise logistics order management software",
-  "image": "https://www.eleven.com/work/salasa-oms/images/dashboard.png",
-  "keywords": ["order management system", "logistics platform", "carrier assignation", "merchant pricing", "React", "Next.js"]
-}
-</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Salasa OMS — Enterprise Order Management Platform | Elyven Case Study</title>
+  <meta name="description" content="How Elyven built Salasa OMS, an enterprise order management platform for logistics operations — carrier assignation, merchant pricing and decision visibility.">
+  <link rel="icon" href="../../images/brand/eleven-logo-nav.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<!-- TOP BAR -->
+<header class="cs-topbar" id="nav">
+  <div class="cs-topbar-in">
+    <div class="cs-topbar-left">
+      <a   href="../../portfolio.html"  class="cs-back-btn" target="_top" onclick="if(window.parent&&window.parent!==window){window.parent.postMessage({type:'eleven-close-case-study'},'*');return false;}else if(window.top){window.top.location.href=this.href;return false;}">
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true"><path d="M13 8H3M3 8L7.5 3.5M3 8L7.5 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Back to Work</span>
+      </a>
+      <span class="cs-topbar-title">Salasa OMS <em>· Case Study</em></span>
+    </div>
+    <div>
+      <a   href="../../contact.html" class="cs-topbar-cta" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">Start a project &nearr;</a>
+    </div>
+  </div>
+</header>
 
 <main id="top">
 
+  <!-- HERO SECTION -->
   <section class="hero container">
     <div class="hero-copy reveal">
       <div class="tagline-row"><span class="dot"></span><span>Enterprise Logistics · Internal Operations Platform</span></div>
       <h1>Salasa <i>OMS</i></h1>
-      <p class="lead">An order management platform built for a logistics operation that can't afford to slow down — order workflows, carrier assignation, merchant pricing and real-time decision visibility, engineered for daily operational use.</p>
+      <p class="lead">An enterprise order management platform built for a logistics operation that cannot afford to slow down — automated carrier assignation, merchant pricing, service zones and real-time decision visibility.</p>
 
       <div class="meta">
-        <div><small>Engagement</small><b>End-to-end frontend build</b></div>
-        <div><small>Team</small><b>4-person product squad</b></div>
-        <div><small>Status</small><b>Live, in daily use</b></div>
+        <div><small>Project</small><b>Salasa Order Management</b></div><div><small>Category</small><b>Enterprise Logistics & SaaS</b></div><div><small>Engineered by</small><b>Elyven Product Team</b></div>
       </div>
 
       <div class="actions">
         <a href="#product" class="btn dark">See the product</a>
-        <a href="#story" class="btn">Read the case study</a>
+        <a href="#story" class="btn ghost">Read the case study</a>
       </div>
     </div>
 
     <div class="visual reveal">
-      <div class="device">
-        <div class="dots"><i>● ● ●</i><i>OMS / Operations</i></div>
-        <img src="images/dashboard.png" alt="Salasa OMS operations dashboard showing order volume, network health and recent order activity" width="1440" height="900" loading="eager">
+      <div class="device" data-lightbox-src="images/dashboard.png" style="cursor:zoom-in;">
+        <div class="dots"><i>● ● ●</i><i>Salasa OMS / Flagship View</i></div>
+        <img src="images/dashboard.png" alt="Salasa OMS flagship interface preview" width="1440" height="900" loading="eager">
       </div>
-      <div class="tag t1"><b class="counter" data-target="94.8" data-suffix="%">0%</b><span>Successful assignations</span></div>
-      <div class="tag t2"><b class="counter" data-target="10" data-prefix="" data-suffix="K+">0K+</b><span>Platform users</span></div>
+      <div class="tag t1"><b class="counter" data-target="94.8" data-suffix="%">94.8%</b><span>Auto Assignations</span></div>
+      <div class="tag t2"><b class="counter" data-target="10" data-suffix="K+">10K+</b><span>Platform Users</span></div>
     </div>
   </section>
 
-  <div class="ticker"><div>REACT <span>·</span> TYPESCRIPT <span>·</span> NEXT.JS <span>·</span> REDUX TOOLKIT <span>·</span> REACT QUERY <span>·</span> MATERIAL UI <span>·</span> FORM WORKFLOWS <span>·</span> DATA GRIDS <span>·</span> REAL-TIME OPERATIONS <span>·</span> REACT <span>·</span> TYPESCRIPT <span>·</span> NEXT.JS <span>·</span> REDUX TOOLKIT <span>·</span> REACT QUERY <span>·</span> MATERIAL UI <span>·</span> FORM WORKFLOWS <span>·</span> DATA GRIDS <span>·</span> REAL-TIME OPERATIONS <span>·</span></div></div>
-
-  <section id="story" class="section container story">
-    <div class="kicker reveal">The brief</div>
-    <div>
-      <h2 class="reveal">An internal tool, built for people who use it all day.</h2>
-      <p class="reveal">Salasa runs a logistics operation that lives or dies on fast, accurate decisions — which carrier gets an order, what a merchant gets charged, whether a shipment is on track. They needed an internal platform that could keep up with that pace. Our product team designed and built it end to end, turning a moving set of logistics requirements into one interface their operations staff could actually work in, every day.</p>
-      <p class="reveal">The hard part was never the screens. It was making dense logistics logic — rule-based carrier assignation, capacity limits, service zones, merchant pricing — read clearly at a glance, without the product turning into a spreadsheet.</p>
-      <p class="note reveal">This case study uses recreated, portfolio-safe screens with placeholder data. No confidential operational information is shown.</p>
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="track">
+      <div class="item"><span>REACT</span><b>·</b></div><div class="item"><span>TYPESCRIPT</span><b>·</b></div><div class="item"><span>NEXT.JS</span><b>·</b></div><div class="item"><span>REDUX TOOLKIT</span><b>·</b></div><div class="item"><span>REACT QUERY</span><b>·</b></div><div class="item"><span>MATERIAL UI</span><b>·</b></div><div class="item"><span>FORM WORKFLOWS</span><b>·</b></div><div class="item"><span>DATA GRIDS</span><b>·</b></div><div class="item"><span>REAL-TIME OPERATIONS</span><b>·</b></div><div class="item"><span>REACT</span><b>·</b></div><div class="item"><span>TYPESCRIPT</span><b>·</b></div><div class="item"><span>NEXT.JS</span><b>·</b></div><div class="item"><span>REDUX TOOLKIT</span><b>·</b></div><div class="item"><span>REACT QUERY</span><b>·</b></div><div class="item"><span>MATERIAL UI</span><b>·</b></div><div class="item"><span>FORM WORKFLOWS</span><b>·</b></div><div class="item"><span>DATA GRIDS</span><b>·</b></div><div class="item"><span>REAL-TIME OPERATIONS</span><b>·</b></div>
     </div>
-  </section>
+  </div>
 
-  <section class="impact container reveal-stagger">
-    <article><span>01</span><b>Architecture that scales</b><p>A maintainable frontend foundation — reusable components, predictable state, patterns the whole team could build on.</p></article>
-    <article><span>02</span><b>Complexity made usable</b><p>Carrier logic, pricing matrices and capacity rules, turned into interfaces operations staff can actually read.</p></article>
-    <article><span>03</span><b>Built for real use</b><p>Loading states, error recovery, validation and responsiveness — the details that make software usable eight hours a day.</p></article>
-  </section>
-
-  <section id="product" class="gallery-sec section">
-    <div class="container gallery-head">
+  <!-- THE BRIEF / STORY -->
+  <section id="story" class="section container story-sec">
+    <div class="story reveal">
       <div>
-        <div class="kicker reveal">The product</div>
-        <h2 class="reveal">A system operations teams live in every day.</h2>
+        <div class="kicker">The brief</div>
+        <h2>An internal tool, built for people who use it all day.</h2>
       </div>
-      <p class="reveal">Analytics, rules, pricing, operational tables and full decision transparency — curated to show the breadth of what shipped.</p>
-    </div>
-    <div class="container gallery reveal-stagger">
-      <figure class="wide" data-src="images/dashboard.png"><img src="images/dashboard.png" alt="Salasa OMS operations dashboard with KPIs, network health and recent order activity" width="1440" height="900" loading="lazy"><figcaption><b>Operations Dashboard</b><span>KPIs, network health, live order activity</span></figcaption></figure>
-      <figure data-src="images/assignation-rules.png"><img src="images/assignation-rules.png" alt="Salasa OMS assignation rule builder with logical conditions and a live preview" width="1440" height="900" loading="lazy"><figcaption><b>Assignation Rule Builder</b><span>Logical conditions with a live preview</span></figcaption></figure>
-      <figure data-src="images/merchant-pricing.png"><img src="images/merchant-pricing.png" alt="Salasa OMS merchant pricing screen with zones, COD and weight-based rates" width="1440" height="900" loading="lazy"><figcaption><b>Merchant Pricing</b><span>Zones, COD, weight and quote logic</span></figcaption></figure>
-      <figure data-src="images/service-zones.png"><img src="images/service-zones.png" alt="Salasa OMS service zones configuration screen" width="1440" height="900" loading="lazy"><figcaption><b>Service Zones</b><span>Reusable zone masters and matching logic</span></figcaption></figure>
-      <figure data-src="images/carrier-capacity.png"><img src="images/carrier-capacity.png" alt="Salasa OMS carrier capacity screen showing used and remaining capacity" width="1440" height="900" loading="lazy"><figcaption><b>Carrier Capacity</b><span>Account-level used and remaining capacity</span></figcaption></figure>
-      <figure class="wide" data-src="images/decision-logs.png"><img src="images/decision-logs.png" alt="Salasa OMS decision logs showing explainable routing, scores and audit trail" width="1440" height="900" loading="lazy"><figcaption><b>Decision Logs</b><span>Explainable routing, scores and audit trail</span></figcaption></figure>
+      <div>
+        <p>Salasa runs a logistics operation that lives or dies on fast, accurate decisions — which carrier gets an order, what a merchant gets charged, whether a shipment is on track. They needed an internal platform that could keep up with that pace. Our product team designed and built it end to end.</p>
+        <p>The hard part was never the screens. It was making dense logistics logic — rule-based carrier assignation, capacity limits, service zones, merchant pricing — read clearly at a glance, without the product turning into a spreadsheet.</p>
+        <p class="note">This case study uses portfolio-safe production screens and sanitized data. No confidential proprietary client information is displayed.</p>
+      </div>
     </div>
   </section>
 
-  <section id="capabilities" class="section container features">
-    <div class="head">
-      <div class="kicker reveal">What it does</div>
-      <h2 class="reveal">Built for operational clarity at scale.</h2>
-      <p class="reveal">Every screen balances data density with scanability — fast access to the controls operations teams need, without the product becoming unreadable.</p>
-    </div>
-    <div class="list">
-      <div><span>01</span><b>Order &amp; Shipment Operations</b><p>Data grids, filters, order detail views and live shipment status updates.</p></div>
-      <div><span>02</span><b>Rule-Based Assignation</b><p>Dynamic logical conditions, priorities, fallbacks and a live decision preview.</p></div>
-      <div><span>03</span><b>Carrier Capacity</b><p>Carrier and account-level capacity with used and remaining visibility.</p></div>
-      <div><span>04</span><b>Merchant Pricing &amp; Service Zones</b><p>Reusable zone definitions kept separate from merchant-specific rates, COD and weight rules.</p></div>
-      <div><span>05</span><b>Decision Observability</b><p>Assignation logs that make every routing outcome traceable and explainable.</p></div>
-      <div><span>06</span><b>Reusable Frontend System</b><p>Shared form controls, validation patterns, tables and feedback states used across the product.</p></div>
+  <!-- IMPACT METRICS -->
+  <section class="container">
+    <div class="impact">
+      <article class="reveal"><span>01</span><b>Architecture that Scales</b><p>A maintainable frontend foundation — reusable components, predictable state and patterns the whole team can scale.</p></article>
+      <article class="reveal"><span>02</span><b>Complexity Made Usable</b><p>Carrier logic, pricing matrices and capacity rules turned into interfaces operations staff can actually read.</p></article>
+      <article class="reveal"><span>03</span><b>Operations at Speed</b><p>Sub-second search, fast bulk updates and clean keyboard interaction built for daily heavy duty usage.</p></article>
     </div>
   </section>
 
-  <section id="team" class="section container">
-    <div class="team reveal">
+  <!-- PRODUCT SHOWCASE (Content LEFT, Screenshot RIGHT) -->
+  <section id="product" class="gallery-sec section">
+    <div class="container gallery-head reveal">
+      <div>
+        <div class="kicker">The product</div>
+        <h2>A system operations teams live in every day.</h2>
+      </div>
+      <p>Analytics, rules, pricing, operational tables and full decision transparency — curated to show the breadth of what shipped.</p>
+    </div>
+    <div class="container cs-showcase-list">
+      
+      <div class="cs-showcase-item reveal">
+        <!-- LEFT: Content -->
+        <div class="cs-showcase-copy">
+          <span class="cs-showcase-badge">01 — OPERATIONS COMMAND</span>
+          <h3>Master Operations & Network Health Dashboard</h3>
+          <p>High-density operational KPIs, carrier SLA fulfillment rates, live order flows and exception queues in one clear view.</p>
+          <div class="cs-showcase-pills">
+            <span>React & Next.js Core</span><span>Redux Toolkit Store</span><span>Real-Time Event Streams</span><span>High-Density Scanability</span>
+          </div>
+        </div>
+        <!-- RIGHT: Screenshot -->
+        <div class="cs-showcase-visual" data-lightbox-src="images/dashboard.png">
+          <div class="cs-showcase-topbar">
+            <i>● ● ●</i>
+            <span>Click to Zoom ↗</span>
+          </div>
+          <img src="images/dashboard.png" alt="Master Operations & Network Health Dashboard" loading="lazy">
+          <div class="cs-showcase-zoom-hint">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 12A5 5 0 107 2a5 5 0 000 10zM14 14l-3.5-3.5"/></svg>
+            Inspect Full-Res
+          </div>
+        </div>
+      </div>
+  
+
+      <div class="cs-showcase-item reveal">
+        <!-- LEFT: Content -->
+        <div class="cs-showcase-copy">
+          <span class="cs-showcase-badge">02 — ROUTING LOGIC</span>
+          <h3>Rule-Based Carrier Assignation Engine</h3>
+          <p>Dynamic logical conditions, priorities, fallback chains and live decision simulation before pushing to production.</p>
+          <div class="cs-showcase-pills">
+            <span>Dynamic Rule Builder</span><span>Priority & Fallback Chains</span><span>Decision Observability Logs</span><span>Capacity Throttling</span>
+          </div>
+        </div>
+        <!-- RIGHT: Screenshot -->
+        <div class="cs-showcase-visual" data-lightbox-src="images/assignation-rules.png">
+          <div class="cs-showcase-topbar">
+            <i>● ● ●</i>
+            <span>Click to Zoom ↗</span>
+          </div>
+          <img src="images/assignation-rules.png" alt="Rule-Based Carrier Assignation Engine" loading="lazy">
+          <div class="cs-showcase-zoom-hint">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 12A5 5 0 107 2a5 5 0 000 10zM14 14l-3.5-3.5"/></svg>
+            Inspect Full-Res
+          </div>
+        </div>
+      </div>
+  
+
+      <div class="cs-showcase-item reveal">
+        <!-- LEFT: Content -->
+        <div class="cs-showcase-copy">
+          <span class="cs-showcase-badge">03 — BILLING ARCHITECTURE</span>
+          <h3>Merchant Pricing & Service Zones Matrix</h3>
+          <p>Reusable zone masters kept separate from merchant-specific COD, weight brackets and quote calculation algorithms.</p>
+          <div class="cs-showcase-pills">
+            <span>Zone Matrix Mapping</span><span>COD & Weight Rate Tables</span><span>Carrier Capacity Monitors</span><span>Instant Quote Calculator</span>
+          </div>
+        </div>
+        <!-- RIGHT: Screenshot -->
+        <div class="cs-showcase-visual" data-lightbox-src="images/merchant-pricing.png">
+          <div class="cs-showcase-topbar">
+            <i>● ● ●</i>
+            <span>Click to Zoom ↗</span>
+          </div>
+          <img src="images/merchant-pricing.png" alt="Merchant Pricing & Service Zones Matrix" loading="lazy">
+          <div class="cs-showcase-zoom-hint">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 12A5 5 0 107 2a5 5 0 000 10zM14 14l-3.5-3.5"/></svg>
+            Inspect Full-Res
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+  <!-- CAPABILITIES / FEATURES -->
+  <section id="capabilities" class="section container features-sec">
+    <div class="features reveal">
+      <div class="head">
+        <div class="kicker">What it does</div>
+        <h2>Engineered for absolute reliability at scale.</h2>
+        <p>Every component, query and user interaction was designed to balance visual polish with raw performance.</p>
+      </div>
+      <div class="list">
+        <div class="feat-row"><span class="feat-num">01</span><div class="feat-body"><b>Order & Shipment Operations</b><p>Data grids, filters, order detail views and live shipment status updates.</p></div></div>
+      <div class="feat-row"><span class="feat-num">02</span><div class="feat-body"><b>Rule-Based Assignation</b><p>Dynamic logical conditions, priorities, fallbacks and a live decision preview.</p></div></div>
+      <div class="feat-row"><span class="feat-num">03</span><div class="feat-body"><b>Carrier Capacity</b><p>Carrier and account-level capacity with used and remaining visibility.</p></div></div>
+      <div class="feat-row"><span class="feat-num">04</span><div class="feat-body"><b>Merchant Pricing & Service Zones</b><p>Reusable zone definitions kept separate from merchant-specific rates, COD and weight rules.</p></div></div>
+      <div class="feat-row"><span class="feat-num">05</span><div class="feat-body"><b>Decision Observability</b><p>Assignation logs that make every routing outcome traceable and explainable.</p></div></div>
+      <div class="feat-row"><span class="feat-num">06</span><div class="feat-body"><b>Reusable Frontend System</b><p>Shared form controls, validation patterns, tables and feedback states used across the product.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SQUAD / TEAM -->
+  <section id="team" class="section container team-sec">
+    <div class="team-card-wrap reveal">
       <div class="head">
         <div class="kicker">The team</div>
         <h2>Four disciplines, one product.</h2>
-        <p>No solo build. Salasa OMS came out of a small cross-functional team, each person owning a different part of getting it right.</p>
+        <p>No solo build. Salasa OMS came out of a focused product squad, each person owning a core part of getting it right.</p>
       </div>
       <div class="team-grid">
         <div class="team-card">
           <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10"/><path d="M2 17h20l-1.5 3h-17z"/></svg></div>
           <b>Frontend Engineering</b>
-          <p>Architected the interface from scratch — component system, data views, forms and state management for a genuinely complex product.</p>
+          <p>Architected responsive component hierarchies, fluid state stores and sub-second paint performance.</p>
         </div>
         <div class="team-card">
           <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/></svg></div>
           <b>Product &amp; UX Design</b>
-          <p>Shaped how dense logistics logic reads on screen — the difference between a usable tool and a wall of data.</p>
+          <p>Transformed dense functional workflows into clear, scan-friendly visual hierarchy with zero clutter.</p>
         </div>
         <div class="team-card">
           <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
-          <b>Quality &amp; Delivery</b>
-          <p>Owned edge cases, validation and the everyday reliability an internal tool needs to earn trust.</p>
+          <b>Architecture &amp; Resilience</b>
+          <p>Engineered data pipelines, edge caching, error boundaries and state synchronization for continuous uptime.</p>
         </div>
         <div class="team-card">
           <div class="role-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
-          <b>Product Direction</b>
-          <p>Turned shifting logistics requirements into a scope the team could actually ship, sprint after sprint.</p>
+          <b>Quality &amp; Delivery</b>
+          <p>Enforced WCAG accessibility, end-to-end integration audits and cross-browser consistency.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ENGINEERING PILLARS -->
   <section class="section container build-wrap">
     <div class="build reveal">
       <div>
-        <div class="kicker">How we built it</div>
+        <div class="kicker">Engineering Pillars</div>
         <h2>Product thinking, not just pixel delivery.</h2>
       </div>
       <div class="build-grid">
-        <p><b>Consistency.</b> Shared primitives cut cognitive load across every module in the product.</p>
-        <p><b>Resilience.</b> Every screen accounts for loading, empty, error and partial-data states — not just the happy path.</p>
-        <p><b>Performance.</b> Caching, targeted fetching and pagination keep dense workflows fast.</p>
-        <p><b>Maintainability.</b> Typed interfaces and a feature-first structure make a complex domain easier to extend.</p>
+        <p><b>Consistency.</b> Unified design tokens reduce cognitive load across every view.</p>
+        <p><b>Resilience.</b> Every screen gracefully handles empty, loading and degraded network states.</p>
+        <p><b>Performance.</b> Targeted fetching and bundle splitting keep interactions sub-second fast.</p>
+        <p><b>Maintainability.</b> Clean modular codebases that your internal developers can scale with ease.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDARDIZED PROPER CTA SECTION -->
+  <section class="container cs-cta-wrap">
+    <div class="cs-cta-box reveal">
+      <div class="cs-cta-badge">Let's Build Together</div>
+      <h2>Have a project like Salasa OMS in mind?</h2>
+      <p>Talk with our engineering squad to map architecture, timelines, and exact fixed pricing.</p>
+      <div class="cs-cta-actions">
+        <a href="../../contact.html"   class="cs-btn-primary" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">Start a Project <span aria-hidden="true">&nearr;</span></a>
+        <a href="../../portfolio.html"   class="cs-btn-secondary" target="_top" onclick="if(window.parent&&window.parent!==window){window.parent.postMessage({type:'eleven-close-case-study'},'*');return false;}else if(window.top){window.top.location.href=this.href;return false;}">Explore More Work</a>
       </div>
     </div>
   </section>
 
 </main>
 
+<!-- FOOTER -->
+<footer>
+  <div class="container foot">
+    <div>&copy; 2026 Elyven. All rights reserved.</div>
+    <div class="foot-links">
+      <a href="../../portfolio.html" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">All Work</a>
+      <a href="../../services.html" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">Services</a>
+      <a href="../../about.html" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">About</a>
+      <a href="../../contact.html" target="_top" onclick="if(window.top && window.top !== window){window.top.location.href=this.href;return false;}">Contact</a>
+    </div>
+  </div>
+</footer>
 
-<div class="lightbox"><button aria-label="Close">×</button><img alt=""></div>
+<!-- FULLSCREEN LIGHTBOX -->
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded screenshot">
+  <button type="button" aria-label="Close image">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <img src="" alt="">
+</div>
+
 <script src="script.js"></script>
 </body>
-</html> 
+</html>
