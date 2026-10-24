@@ -79,7 +79,7 @@
   }
   /* speech must never show emojis */
   var EMOJI_RE = /[\u{1F000}-\u{1FFFF}\u{2190}-\u{21FF}\u{2300}-\u{23FF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu;
-  function noEmoji(t) { return String(t == null ? '' : t).replace(EMOJI_RE, '').replace(/\s+([!?.,])/g, '$1').replace(/\s{2,}/g, ' ').trim(); }
+  function noEmoji(t) { return String(t == null ? '' : t).replace(EMOJI_RE, '').replace(/\s+([!?.,])/g, '$1').replace(/[ \t]{2,}/g, ' ').trim(); }
   function degToRad(d) { return (d || 0) * Math.PI / 180; }
 
   function easeInOut(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
@@ -266,6 +266,7 @@
     sayEl.innerHTML = '<div class="eli-card"><div class="eli-line"></div><div class="eli-trail"><i></i><i></i><i></i></div></div>';
     document.body.appendChild(sayEl);
     var sayLine = sayEl.querySelector('.eli-line');
+    if (sayLine) sayLine.style.whiteSpace = 'pre-line';
 
     /* ════════ 3-D scene ════════ */
     var colors = def.colors || {};
@@ -2274,6 +2275,66 @@
     }
     setInterval(sectionTick, 700);
 
+    /* ════════ case study section guidance ════════ */
+    var CS_SECTION_GUIDES = {
+      'hero': 'This is the verified project case study.\nExplore the live flagship, tech stack, and scope.',
+      'story': 'Here is the client brief and core challenge.\nWhy standard off-the-shelf tools fell short.',
+      'impact': 'These are verified production benchmarks.\nReal gains in speed, uptime, and workflow efficiency.',
+      'product': 'Explore the real product interfaces.\nClick any screenshot to zoom in fullscreen.',
+      'capabilities': 'Here is the core functionality breakdown.\nWorkflows built for speed and high data density.',
+      'team': 'Meet the multidisciplinary product squad.\nFrontend, product UX, backend architecture, and QA.',
+      'build': 'These are our core engineering pillars.\nPrioritizing clean code, security, and long-term scale.',
+      'cta': 'Ready to build a digital platform like this?\nConnect with our team to discuss scope and pricing.'
+    };
+    var csGuideLastAt = 0;
+    var csGuideSeen = {};
+    var csGuidePendingTimer = null;
+
+    function handleCaseStudyGuide(secKey, projectName) {
+      if (!secKey) return;
+      var key = String(secKey).toLowerCase().trim();
+      var msg = CS_SECTION_GUIDES[key];
+      if (!msg) return;
+
+      var now = performance.now();
+      if (bubbleOpen) return;
+      if (dragging || waking || isMad()) return;
+      if (now - csGuideLastAt < 4500) return;
+      if (csGuideSeen[key] && now - csGuideSeen[key] < 35000) return;
+
+      clearTimeout(csGuidePendingTimer);
+      csGuidePendingTimer = setTimeout(function () {
+        var now2 = performance.now();
+        if (bubbleOpen || dragging || waking || isMad()) return;
+        if (now2 - csGuideLastAt < 4500) return;
+        if (csGuideSeen[key] && now2 - csGuideSeen[key] < 35000) return;
+
+        csGuideLastAt = now2;
+        csGuideSeen[key] = now2;
+        lastActivity = now2;
+
+        var moodMap = {
+          hero: 'happy',
+          story: 'curious',
+          impact: 'proud',
+          product: 'playful',
+          capabilities: 'thinking',
+          team: 'happy',
+          build: 'proud',
+          cta: 'wave'
+        };
+        var m = moodMap[key] || 'idle';
+        setMood(m, { once: true, returnTo: 'idle', force: true });
+        say(msg, Math.min(8000, 3200 + msg.length * 45));
+      }, 350);
+    }
+
+    window.addEventListener('message', function (e) {
+      if (e.data && e.data.type === 'ely-case-study-guide') {
+        handleCaseStudyGuide(e.data.section, e.data.project);
+      }
+    });
+
     /* coming back to the tab */
     var hiddenAt = 0;
     document.addEventListener('visibilitychange', function () {
@@ -2353,7 +2414,8 @@
     });
 
     /* tiny public hook for debugging from the console */
-    window.ELY = window.ELEV = window.ELI = { run: runAction, getMood: function () { return player.mood; }, getRage: function () { return rage; }, setMood: setMood, sleep: sleep, wake: wake, celebrate: celebrate, enter: enterRandom, say: say, open: openBubble };
+    window.ELY = window.ELEV = window.ELI = { run: runAction, getMood: function () { return player.mood; }, getRage: function () { return rage; }, setMood: setMood, sleep: sleep, wake: wake, celebrate: celebrate, enter: enterRandom, say: say, open: openBubble, guideCaseStudy: handleCaseStudyGuide };
+    window.handleCaseStudyGuide = handleCaseStudyGuide;
   }
 })();
 ;

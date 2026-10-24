@@ -137,4 +137,71 @@
       }
     });
   });
+
+  /* ---------------- Ely Guide Observer ---------------- */
+  (function initElyGuide() {
+    var targets = [
+      { key: 'hero', sel: 'section.hero, .hero' },
+      { key: 'story', sel: '#story, .story-sec, .story' },
+      { key: 'impact', sel: '.impact, #impact, .stats-grid' },
+      { key: 'product', sel: '#product, .gallery-sec, .product' },
+      { key: 'capabilities', sel: '#capabilities, .features-sec, .capabilities' },
+      { key: 'team', sel: '#team, .team-sec, .team' },
+      { key: 'build', sel: '.build-wrap, #build, .pillars' },
+      { key: 'cta', sel: '.cs-cta-wrap, .cs-cta-box, #cta' }
+    ];
+
+    function notifyEly(key) {
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: 'ely-case-study-guide', section: key, project: document.title }, '*');
+        } else if (typeof window.handleCaseStudyGuide === 'function') {
+          window.handleCaseStudyGuide(key, document.title);
+        } else if (window.ELY && typeof window.ELY.guideCaseStudy === 'function') {
+          window.ELY.guideCaseStudy(key, document.title);
+        }
+      } catch (err) { /* ignore cross-origin */ }
+    }
+
+    if ('IntersectionObserver' in window) {
+      var guideObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
+            var k = entry.target.getAttribute('data-ely-section');
+            if (k) notifyEly(k);
+          }
+        });
+      }, {
+        threshold: [0.2, 0.4]
+      });
+
+      targets.forEach(function (t) {
+        var el = document.querySelector(t.sel);
+        if (el) {
+          el.setAttribute('data-ely-section', t.key);
+          guideObs.observe(el);
+        }
+      });
+    }
+
+    // Standalone mode: load avatar.js if viewed directly without iframe
+    if (window.self === window.top && !document.getElementById('eli-root')) {
+      var tScript = document.createElement('script');
+      tScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+      tScript.onload = function () {
+        var aScript = document.createElement('script');
+        var path = window.location.pathname;
+        var rel = (path.indexOf('Case%20studies') !== -1 || path.indexOf('Case studies') !== -1) ? '../../' : '../';
+        aScript.src = rel + 'js/avatar.js';
+        document.body.appendChild(aScript);
+      };
+      document.body.appendChild(tScript);
+    }
+
+    // Greet hero section after load
+    setTimeout(function () {
+      notifyEly('hero');
+    }, 600);
+  })();
+
 })();

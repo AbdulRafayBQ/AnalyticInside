@@ -2258,9 +2258,10 @@ a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
 }
 .eli-more:hover { text-decoration: underline; }
 
-/* small one-liner bubble (reactions / greetings) */
-.eli-say .eli-card { padding: 10px 14px; border-radius: 22px; }
-.eli-say .eli-line { font-size: 13.5px; font-weight: 700; line-height: 1.3; white-space: normal; }
+/* small one-liner / two-liner bubble (reactions / guides / greetings) */
+.eli-say { max-width: min(300px, calc(100vw - 24px)); }
+.eli-say .eli-card { padding: 11px 15px; border-radius: 20px; }
+.eli-say .eli-line { font-size: 13.5px; font-weight: 600; line-height: 1.38; white-space: pre-line; }
 
 @media (max-width: 680px) {
   #eli-root { width: 66px; height: 66px; }
