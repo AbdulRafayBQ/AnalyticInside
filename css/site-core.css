@@ -49,16 +49,15 @@ body {
 /* ══ NAVBAR ══ */
 .nav-link { font-weight: 700 !important; font-size: 13px !important; padding-bottom: 9px !important; }
 .nav-right-group { display: flex; align-items: center; gap: 12px; }
-.nav-phone {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600;
-  color: rgba(255,255,255,0.72); text-decoration: none;
-  padding: 8px 13px; border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.13);
-  transition: color .25s, border-color .25s, background .25s;
-  white-space: nowrap;
+.nav-whatsapp {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  color: #25D366; border: 1px solid rgba(37,211,102,.4);
+  background: rgba(37,211,102,.08);
+  transition: transform .2s ease, background .2s ease;
 }
-.nav-phone:hover { color:#fff; border-color:rgba(255,255,255,.28); background:rgba(255,255,255,.06); }
+.nav-whatsapp svg { width: 21px; height: 21px; fill: currentColor; }
+.nav-whatsapp:hover { transform: translateY(-1px); background: rgba(37,211,102,.16); }
 .btn-nav-cta { font-weight:700!important; font-size:13px!important; white-space:nowrap; }
 
 /* ══ HERO — LIGHT CREAM REDESIGN ══ */
@@ -5662,22 +5661,6 @@ em { font-style: italic; color: var(--accent); }
 #reviews .clt-wrap { margin-top: 0 !important; }
 
 
-/* ══ NAVBAR PHONE PILL (v3 — icon-free, cleaner) ══ */
-.nav-phone {
-  gap: 0 !important; padding: 9px 18px !important; border-radius: 999px !important;
-  font-size: 12.5px !important; font-weight: 700 !important; letter-spacing: .03em;
-  color: #17130E !important;
-  background: linear-gradient(180deg, #fffdf8, #f7efe1) !important;
-  border: 1px solid rgba(201,155,92,.45) !important;
-  box-shadow: 0 8px 20px -12px rgba(128,92,50,.55), inset 0 1px 0 #fff;
-  transition: transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease, border-color .3s ease !important;
-}
-.nav-phone-text { position: relative; }
-.nav-phone:hover {
-  background: #17130E !important; color: #C99B5C !important; border-color: #17130E !important;
-  transform: translateY(-1px); box-shadow: 0 14px 26px -14px rgba(23,19,14,.7);
-}
-
 /* ==========================================================================
    Source: mobile-fix.css
    ========================================================================== */
@@ -5779,11 +5762,10 @@ img, video, svg, canvas, iframe {
     flex-shrink: 0 !important;
   }
 
-  /* Hide desktop nav links, phone, CTA button */
+  /* Hide desktop nav links and CTA button */
   .nav { display: none !important; }
-  .nav-phone { display: none !important; }
   .btn-nav-cta { display: none !important; }
-  .nav-right-group { display: none !important; }
+  .nav-right-group { display: flex !important; gap: 0 !important; }
 
   /* Hamburger stays visible */
   .menu-toggle {
@@ -6705,4 +6687,43 @@ img, video, svg, canvas, iframe {
     transform: scale(0.78);
     transform-origin: 75% center;
   }
+}
+
+
+/* ══ NAVBAR — "Contact us on (WhatsApp)" button (light green pill, distinct from the black Let's Talk) ══ */
+.btn-nav-wa {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 5px 5px 5px 16px;
+  background: #fff; color: #17130E;
+  border: 1.5px solid rgba(37,211,102,.55); border-radius: 999px;
+  text-decoration: none; white-space: nowrap;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(37,211,102,.14);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+}
+.btn-nav-wa:hover { transform: translateY(-2px); background: #F1FBF5; border-color: #25D366; box-shadow: 0 8px 20px rgba(37,211,102,.28); }
+.wa-badge {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: #25D366; color: #fff;
+  animation: waPulse 2.6s ease-out infinite;
+}
+.wa-badge .wa-ico { width: 18px; height: 18px; fill: currentColor; }
+@keyframes waPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,.5); }
+  70%  { box-shadow: 0 0 0 9px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+@media (prefers-reduced-motion: reduce) { .wa-badge { animation: none; } }
+.nav-mobile-wa { display: none; }
+@media (max-width: 940px) { .btn-nav-wa { padding-left: 12px; font-size: 12px; } }
+@media (max-width: 768px) {
+  .btn-nav-wa { display: none !important; }
+  .nav.open .nav-mobile-wa {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin: 8px 6px 4px; padding: 8px 10px 8px 20px;
+    background: #fff; color: #17130E; border: 1.5px solid rgba(37,211,102,.55); border-radius: 999px;
+    font-family: 'Inter', sans-serif; font-size: 14.5px; font-weight: 700; text-decoration: none;
+  }
+  .nav-mobile-wa .wa-badge { animation: none; }
 }
