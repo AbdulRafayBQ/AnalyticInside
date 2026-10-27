@@ -75,24 +75,24 @@
     {
       title: 'Mateen Food Center',
       short: 'MFC',
-      sub: 'Brand Identity & Growth Marketing',
+      sub: 'Social Media, Video & Paid Advertising',
       folder: 'mateen-food-center',
       images: ['../../images/Marketing and branding/case study hero.png'],
-      tags: ['Brand Identity', 'Meta Ads Campaign', 'Social Strategy', 'Creative Direction'],
-      tagline: 'One name. Three businesses. A unified restaurant & catering brand.',
+      tags: ['Social Media Posts', 'Short-Form Video', 'Paid Ads', 'Brand Creative'],
+      tagline: 'One food brand. Social content and campaigns for three business lines.',
       category: 'web',
       caseStudy: 'Case studies/mateen-food-center-case-study/index.html',
       useDirectPath: true,
       featured: true,
-      desc: 'How Elyven gave Mateen Food Center a single look, a clear voice for each service line, and highly-targeted campaigns that reach real diners, event hosts, and corporate catering clients.',
+      desc: 'How Elyven supports Mateen Food Center with consistent brand direction, social media posts, short-form videos and advertising for its ballroom, catering and restaurant services.',
       process: [
-        { phase: 'Brand Review', detail: 'We looked at how MFC appeared across social pages, menus and banners. The food was strong but the look changed from post to post, so we established one confident direction.' },
-        { phase: 'Visual Identity System', detail: 'We paired the warm gold and deep tones of the MFC badge with rich dark framing so culinary photography stands out. Standardized typography, spacing and logo lockups.' },
-        { phase: 'Multi-Line Strategy', detail: 'Created distinct positioning and ad funnels for Ballroom bookings, Event Catering packages, and Dine-In / Delivery promotions.' },
-        { phase: 'Campaigns & Reels', detail: 'High-converting dish reels, wedding-season enquiry ads and localized delivery campaigns paired with automated WhatsApp quick replies.' },
-        { phase: 'Impact & Reporting', detail: 'Ongoing monthly tracking of verified leads, catering inquiries, and social reach with continuous creative optimization.' }
+        { phase: 'Audience & Offer Planning', detail: 'Shape campaign themes around the different customers and offers for ballroom events, catering, dine-in and delivery.' },
+        { phase: 'Brand-Led Creative', detail: 'Use a consistent visual direction so promotional posts, food imagery and ads feel connected to the Mateen Food Center brand.' },
+        { phase: 'Social Media Content', detail: 'Create social posts that highlight menu items, food, events and service offers in a clear, engaging way.' },
+        { phase: 'Short-Form Video', detail: 'Use video and reels to bring dishes, the dining experience and event spaces to life for potential customers.' },
+        { phase: 'Paid Campaigns & Review', detail: 'Promote relevant offers with paid advertising, then review campaign response alongside enquiries, orders and available sales data.' }
       ],
-      features: ['Unified brand identity & guidelines', 'Ballroom event booking funnels', 'Corporate catering lead generation', 'High-converting dish & offer reels', 'WhatsApp instant quote integration', 'Monthly ROI & reach reports']
+      features: ['Consistent brand-led creative', 'Social media post content', 'Food and event videos', 'Short-form reels', 'Paid promotion for business offers', 'Campaign response and sales review']
     },
     {
       title: 'Dalda Foods',

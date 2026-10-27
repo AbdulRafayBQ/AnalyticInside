@@ -240,14 +240,129 @@
      custom-package checklist above, so the customize form is a direct,
      pick-your-own version of what the cards already describe. ── */
   const BUILD_CATS = [
-    ['Branding & Brand Identity', IC.star, ['Logo refinement', 'Mini brand guidelines', 'Brand voice & tone', 'Social profile setup', 'Full logo design', 'Packaging design']],
-    ['Social Media Marketing', IC.mega, ['8 posts per month', '4 Reels per month', 'Captions & content calendar', 'Extra posts or reels', 'Paid ads & targeting']],
-    ['SEO & Search Visibility', IC.search, ['Basic website SEO audit', 'On-page SEO (up to 5 pages)', 'Google Business Profile optimization', 'Keyword research', 'Monthly SEO blog articles']],
-    ['Website Development', IC.web, ['1-5 page business website', '5-10 page website', 'Online store / e-commerce', 'Custom website or web app']],
-    ['Meta Ads & Google Ads', IC.target, ['Campaign setup', 'Monthly campaign management', 'Extra ad creatives', 'Performance reporting']],
-    ['AI Automation & Chatbots', IC.wa, ['WhatsApp Business setup', 'Automated greeting & quick replies', 'Order / enquiry chatbot', 'Lead qualification & routing']],
-    ['CRM & Integrations', IC.chart, ['Connect your tools and systems', 'CRM setup', 'Workflow automation']],
-    ['Custom AI Development', IC.gem, ['Custom AI tool', 'AI-powered feature', 'Tailored automation build']]
+    {
+      title: 'Branding & Brand Identity',
+      icon: IC.star,
+      groups: [
+        {
+          items: ['Logo refinement', 'Full logo design', 'Mini brand guidelines', 'Brand voice & tone', 'Social profile setup', 'Packaging design']
+        }
+      ]
+    },
+    {
+      title: 'Social Media Marketing',
+      icon: IC.mega,
+      hasContentBuilder: true,
+      groups: [
+        {
+          label: 'Social Media Strategy & Deliverables',
+          items: [
+            'Captions & content calendar',
+            'Stories & highlight covers',
+            'Community & DM management',
+            'Social profile SEO & bio optimization',
+            'Influencer outreach & collabs'
+          ]
+        }
+      ]
+    },
+    {
+      title: 'SEO & Search Visibility',
+      icon: IC.search,
+      groups: [
+        {
+          items: [
+            'Basic website SEO audit',
+            'On-page SEO (up to 5 pages)',
+            'Google Business Profile optimization',
+            'Keyword research',
+            'Monthly SEO blog articles'
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Website Development',
+      icon: IC.web,
+      groups: [
+        {
+          items: ['1-5 page business website', '5-10 page website', 'Online store / e-commerce', 'Custom website or web app']
+        }
+      ]
+    },
+    {
+      title: 'Meta Ads & Google Ads',
+      icon: IC.target,
+      groups: [
+        {
+          label: 'Where to run ads (Platforms)',
+          items: [
+            'Instagram Ads (Feed, Reels & Stories)',
+            'Facebook Ads (Feed & Video Feeds)',
+            'Google Search Ads (High-Intent Keywords)',
+            'Google Display & Performance Max (PMax)',
+            'YouTube Video Ads',
+            'TikTok Ads',
+            'LinkedIn B2B Ads'
+          ]
+        },
+        {
+          label: 'Campaign strategy & management',
+          items: [
+            'Lead Generation & WhatsApp Funnels',
+            'E-commerce Sales & ROAS Scaling',
+            'Retargeting & Custom Lookalike Audiences',
+            'Ad Creatives & Copywriting (A/B Testing)',
+            'Pixel, CAPI & Conversion Tracking Setup',
+            'Monthly Campaign Management & ROI Reports'
+          ]
+        }
+      ]
+    },
+    {
+      title: 'AI Automation & Chatbots',
+      icon: IC.wa,
+      groups: [
+        {
+          label: 'Where to build your chatbot (Platforms)',
+          items: [
+            'WhatsApp Business AI Bot',
+            'Website Live Chat AI Bot',
+            'Instagram DM Automation Bot',
+            'Facebook Messenger Bot',
+            'Telegram Automated Bot'
+          ]
+        },
+        {
+          label: 'Chatbot capabilities & automations',
+          items: [
+            '24/7 Automated Customer Support & FAQ',
+            'Instant Lead Capture & CRM Sync',
+            'Automated Order & Booking System',
+            'Multi-Language AI (Urdu & English)',
+            'Custom AI Workflow & Email Triggers'
+          ]
+        }
+      ]
+    },
+    {
+      title: 'CRM & Integrations',
+      icon: IC.chart,
+      groups: [
+        {
+          items: ['Connect your tools and systems', 'CRM setup', 'Workflow automation']
+        }
+      ]
+    },
+    {
+      title: 'Custom AI Development',
+      icon: IC.gem,
+      groups: [
+        {
+          items: ['Custom AI tool', 'AI-powered feature', 'Tailored automation build']
+        }
+      ]
+    }
   ];
 
   /* ═══════════ MARKUP ═══════════ */
@@ -419,7 +534,7 @@
           <div class="mk-bcards">${BOT_CARDS.map((c, i) => `
             <article class="mk-bc${c[3] ? ' key' : ''}" ${R('up', i * 70)}><i>${ico(c[0])}</i><h4>${c[1]}</h4><p>${c[2]}</p></article>`).join('')}
           </div>
-          <div class="mk-chans" ${R('up')}><b>Where it runs:</b><span>WhatsApp</span><span>Instagram</span><span>Website</span></div>
+          <div class="mk-chans" ${R('up')}><b>Where it runs:</b><span>WhatsApp</span><span>Instagram</span><span>Website</span><span>Messenger</span><span>Telegram</span></div>
           <button class="mk-btn mk-btn--gold" type="button" data-pk="Chatbot" ${R('up')}>Get my chatbot built ${arrow}</button>
         </div>
         <div class="mk-bot-demo" ${R('right', 100)}>
@@ -495,8 +610,57 @@
       <p class="mk-lede" ${R('up', 140)}>Pick exactly what you need, across branding, social media, SEO, website, ads, automation, CRM and custom AI &mdash; the same categories as the packages above. One click sends your list straight to our team.</p>
       <div class="mk-build-grid">
         <div>
-          ${BUILD_CATS.map((g, gi) => `
-          <div class="mk-group" ${R('up', gi * 70)}><h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${g[1]}"/></svg></i>${g[0]}</h4><div>${g[2].map(x => `<button type="button" class="mk-chip" data-s="${x}">${x}</button>`).join('')}</div></div>`).join('')}
+          ${BUILD_CATS.map((cat, gi) => `
+          <div class="mk-group" ${R('up', gi * 70)}>
+            <h4><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${cat.icon}"/></svg></i>${cat.title}</h4>
+            ${cat.hasContentBuilder ? `
+            <div class="mk-manual-content" id="mkManualContent">
+              <div class="mk-cadence-bar">
+                <span class="mk-cadence-label">Content Schedule:</span>
+                <div class="mk-cadence-pills" role="radiogroup" aria-label="Content cadence">
+                  <button type="button" class="mk-cadence-pill on" data-cadence="month">Per Month</button>
+                  <button type="button" class="mk-cadence-pill" data-cadence="week">Per Week</button>
+                </div>
+              </div>
+              <div class="mk-counter-grid">
+                <div class="mk-counter-card">
+                  <div class="mk-counter-info">
+                    <span class="mk-counter-title">Posts</span>
+                    <span class="mk-counter-sub">Carousels, graphics &amp; feed posts</span>
+                  </div>
+                  <div class="mk-stepper">
+                    <button type="button" class="mk-step-btn" data-step="-1" data-target="mkPostsCount" aria-label="Decrease posts">&minus;</button>
+                    <input type="number" id="mkPostsCount" class="mk-step-input" value="8" min="0" max="200" aria-label="Number of posts">
+                    <button type="button" class="mk-step-btn" data-step="1" data-target="mkPostsCount" aria-label="Increase posts">&plus;</button>
+                  </div>
+                </div>
+                <div class="mk-counter-card">
+                  <div class="mk-counter-info">
+                    <span class="mk-counter-title">Reels</span>
+                    <span class="mk-counter-sub">Short-form videos, editing &amp; audio</span>
+                  </div>
+                  <div class="mk-stepper">
+                    <button type="button" class="mk-step-btn" data-step="-1" data-target="mkReelsCount" aria-label="Decrease reels">&minus;</button>
+                    <input type="number" id="mkReelsCount" class="mk-step-input" value="4" min="0" max="100" aria-label="Number of reels">
+                    <button type="button" class="mk-step-btn" data-step="1" data-target="mkReelsCount" aria-label="Increase reels">&plus;</button>
+                  </div>
+                </div>
+              </div>
+              <div class="mk-manual-toggle-row">
+                <label class="mk-manual-check">
+                  <input type="checkbox" id="mkIncludeContent" checked>
+                  <span class="mk-check-box"></span>
+                  <span class="mk-check-txt">Include custom Posts &amp; Reels in package</span>
+                </label>
+              </div>
+            </div>` : ''}
+            ${cat.groups.map(grp => `
+              ${grp.label ? `<div class="mk-group-subhead">${grp.label}</div>` : ''}
+              <div class="mk-chips-wrap">
+                ${grp.items.map(x => `<button type="button" class="mk-chip" data-s="${x}">${x}</button>`).join('')}
+              </div>
+            `).join('')}
+          </div>`).join('')}
         </div>
         <aside class="mk-sum" aria-live="polite" ${R('left', 100)}>
           <h4>Your custom package</h4><div class="cnt" id="mkCnt">0</div><div class="lbl">services selected</div>
@@ -521,23 +685,23 @@
           <span class="mk-case-halo" aria-hidden="true"></span>
           <img src="${encodeURI('images/Portfolio thumbnails/Mateen Food Center Showcase.png')}" alt="Mateen Food Center social media and branding showcase" width="1671" height="941" loading="lazy">
           <span class="mcm-badge"><img src="${IMG}mateen-logo.png" alt="" width="34" height="34" loading="lazy">Mateen Food Center</span>
-          <span class="mk-case-chip"><b data-count="8" data-suffix="x">0</b><small>Monthly reach</small></span>
+          <span class="mk-case-chip"><b>Social</b><small>Posts &amp; Reels</small></span>
           <span class="mk-case-ground" aria-hidden="true"></span>
         </a>
         <div class="mk-case-body" ${R('left', 100)}>
           <span class="mk-case-idx" aria-hidden="true">01</span>
           <div class="mk-case-tag"><b>Case study</b><span>Ballroom &middot; Catering &middot; Restaurant, Karachi</span></div>
           <div class="mk-blocks">
-            <div><i>${ico('bolt')}</i><div><h4>The challenge</h4><p>Three services, one page. Every visitor saw the same posts, with no look of its own.</p></div></div>
-            <div><i>${ico('mega')}</i><div><h4>What we did</h4><p>One brand kit, a content plan per service, and separate ad audiences for events, catering and dine-in.</p></div></div>
-            <div><i>${ico('chart')}</i><div><h4>The result</h4><p>More reach, sharper engagement, and real bookings and orders every month.</p></div></div>
+            <div><i>${ico('bolt')}</i><div><h4>The challenge</h4><p>Ballroom events, catering and restaurant orders serve different customers and need content that makes each offer clear.</p></div></div>
+            <div><i>${ico('mega')}</i><div><h4>What we do</h4><p>Build a consistent brand presence with social posts, short-form videos and ad creative for each business line.</p></div></div>
+            <div><i>${ico('chart')}</i><div><h4>The business goal</h4><p>Help more potential customers discover the right offer and take the next step toward an enquiry, booking or order.</p></div></div>
           </div>
           <div class="mk-stats">
-            <div><b><span data-count="8" data-suffix="x">0</span></b><small>more monthly reach</small></div>
-            <div><b><span data-count="5" data-suffix="x">0</span></b><small>more orders &amp; enquiries</small></div>
-            <div><b><span data-count="5.8" data-dec="1" data-suffix="%">0</span></b><small>engagement rate</small></div>
+            <div><b>Social Posts</b><small>Branded content</small></div>
+            <div><b>Short Videos</b><small>Reels &amp; creative</small></div>
+            <div><b>Paid Ads</b><small>Campaign promotion</small></div>
           </div>
-          <p class="mk-note dk">Figures from the brand's own social and ad reports.</p>
+          <p class="mk-note dk">Campaign and sales results depend on the offer, audience, budget and follow-up. Review enquiries and orders alongside available sales data.</p>
           <div class="mk-case-cta">
             <a class="mk-btn mk-btn--gold" href="Case studies/mateen-food-center-case-study/index.html">See the full case study ${arrow}</a>
             <button class="mk-btn mk-btn--ghost" type="button" data-pk="Branding and marketing plan">Build my plan</button>
@@ -855,16 +1019,106 @@
 
   /* ─── custom builder ─── */
   (function initBuilder() {
-    const picked = new Set(), list = document.getElementById('mkSel'), cnt = document.getElementById('mkCnt'), send = document.getElementById('mkSend');
-    function paintSel() {
-      cnt.textContent = picked.size;
-      list.innerHTML = picked.size ? [...picked].map(x => `<li>${x}</li>`).join('') : '<li class="empty">Nothing selected yet.</li>';
-      send.disabled = !picked.size;
+    const picked = new Set();
+    const list = document.getElementById('mkSel');
+    const cnt = document.getElementById('mkCnt');
+    const send = document.getElementById('mkSend');
+    const builderSec = document.getElementById('builder');
+    if (!builderSec || !list || !cnt || !send) return;
+
+    let cadence = 'month'; // 'month' or 'week'
+    const postsInput = document.getElementById('mkPostsCount');
+    const reelsInput = document.getElementById('mkReelsCount');
+    const includeBox = document.getElementById('mkIncludeContent');
+    const cadencePills = [...builderSec.querySelectorAll('.mk-cadence-pill')];
+
+    function getContentSummary() {
+      const items = [];
+      if (!includeBox || !includeBox.checked) return items;
+      const cadenceText = cadence === 'week' ? 'Per Week' : 'Per Month';
+      const posts = postsInput ? parseInt(postsInput.value, 10) || 0 : 0;
+      const reels = reelsInput ? parseInt(reelsInput.value, 10) || 0 : 0;
+      if (posts > 0) items.push(`${posts} Posts (${cadenceText})`);
+      if (reels > 0) items.push(`${reels} Reels (${cadenceText})`);
+      return items;
     }
-    document.getElementById('builder').addEventListener('click', e => {
-      const c = e.target.closest('.mk-chip[data-s]'); if (!c) return;
-      const k = c.dataset.s; picked.has(k) ? picked.delete(k) : picked.add(k); c.classList.toggle('on', picked.has(k)); paintSel();
+
+    function paintSel() {
+      const contentItems = getContentSummary();
+      const allSelected = [...contentItems, ...picked];
+      cnt.textContent = allSelected.length;
+      list.innerHTML = allSelected.length
+        ? allSelected.map(x => `<li>${x}</li>`).join('')
+        : '<li class="empty">Nothing selected yet.</li>';
+      send.disabled = !allSelected.length;
+    }
+
+    builderSec.addEventListener('click', e => {
+      // 1. Chips toggle
+      const c = e.target.closest('.mk-chip[data-s]');
+      if (c) {
+        const k = c.dataset.s;
+        picked.has(k) ? picked.delete(k) : picked.add(k);
+        c.classList.toggle('on', picked.has(k));
+        paintSel();
+        return;
+      }
+
+      // 2. Stepper +/- buttons
+      const stepBtn = e.target.closest('.mk-step-btn');
+      if (stepBtn) {
+        const targetId = stepBtn.dataset.target;
+        const delta = parseInt(stepBtn.dataset.step, 10) || 0;
+        const input = document.getElementById(targetId);
+        if (input) {
+          const min = parseInt(input.min, 10) || 0;
+          const max = parseInt(input.max, 10) || 200;
+          let val = (parseInt(input.value, 10) || 0) + delta;
+          if (val < min) val = min;
+          if (val > max) val = max;
+          input.value = val;
+          if (includeBox && !includeBox.checked && val > 0) includeBox.checked = true;
+          paintSel();
+        }
+        return;
+      }
+
+      // 3. Cadence toggle pills (month / week)
+      const pill = e.target.closest('.mk-cadence-pill');
+      if (pill) {
+        cadence = pill.dataset.cadence || 'month';
+        cadencePills.forEach(p => p.classList.toggle('on', p === pill));
+        paintSel();
+        return;
+      }
     });
-    send.addEventListener('click', () => openDrawer(`Hi Elyven, I would like a custom marketing and branding package with: ${[...picked].join(', ')}.`, 'a custom package'));
+
+    if (postsInput) {
+      postsInput.addEventListener('input', () => {
+        if (includeBox && !includeBox.checked && parseInt(postsInput.value, 10) > 0) {
+          includeBox.checked = true;
+        }
+        paintSel();
+      });
+    }
+    if (reelsInput) {
+      reelsInput.addEventListener('input', () => {
+        if (includeBox && !includeBox.checked && parseInt(reelsInput.value, 10) > 0) {
+          includeBox.checked = true;
+        }
+        paintSel();
+      });
+    }
+    if (includeBox) {
+      includeBox.addEventListener('change', paintSel);
+    }
+
+    send.addEventListener('click', () => {
+      const contentItems = getContentSummary();
+      const allSelected = [...contentItems, ...picked];
+      openDrawer(`Hi Elyven, I would like a custom marketing and branding package with: ${allSelected.join(', ')}.`, 'a custom package');
+    });
+
+    paintSel();
   })();
 })();

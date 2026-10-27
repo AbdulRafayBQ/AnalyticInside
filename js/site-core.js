@@ -571,14 +571,16 @@ document.addEventListener('DOMContentLoaded', () => {
 (function () {
   'use strict';
 
-  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbxG1PyiSCGRa8KzwPRQ1gZy6KHp-NrGufb9aHjVC9AWB4u6RzkHJA4rzUb_3_xTnabT/exec';
+  window.ANALYTIC_FORMS_ENDPOINT = window.ANALYTIC_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbyWaace-iwJcV_9Sh7eq8TIlGQEqxige85C8-hz8PUmms0RQyULbopjwkR1fbseeMrS/exec';
   const endpoint = window.ANALYTIC_FORMS_ENDPOINT;
   let requestCounter = 0;
 
   function submit(payload) {
     if (!endpoint || endpoint.indexOf('https://script.google.com/macros/s/') !== 0) {
-      return Promise.reject(new Error('Form delivery is not configured. Please email contact@elyvenltd.com directly.'));
+      return Promise.reject(new Error('Form delivery is not configured. Please email elyvenltd@gmail.com directly.'));
     }
+
+    payload = payload || {};
 
     const randomId = window.crypto && typeof window.crypto.randomUUID === 'function'
       ? window.crypto.randomUUID()
@@ -639,8 +641,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.clearTimeout(responseTimeout);
         responseTimeout = window.setTimeout(() => {
-          fail('Google could not confirm this submission. Please try again or email contact@elyvenltd.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
-        }, 1500);
+          fail('The Apps Script response did not confirm this submission. Redeploy the updated LeadIntake.gs as a web app, then update the site with its /exec URL.');
+        }, 10000);
       };
 
       const onMessage = event => {
@@ -676,8 +678,8 @@ document.addEventListener('DOMContentLoaded', () => {
       frame.addEventListener('load', onFrameLoad);
 
       timeout = window.setTimeout(() => {
-        fail('Google did not respond to this submission. Please try again or email contact@elyvenltd.com. If this continues, the Google Apps Script web app must be deployed with access set to Anyone.');
-      }, 15000);
+        fail('The Apps Script web app did not respond. Check its deployment permissions and confirm the site uses the latest /exec URL.');
+      }, 20000);
 
       frame.src = 'about:blank';
       document.body.append(frame, form);

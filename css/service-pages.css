@@ -5184,3 +5184,19 @@ a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
     transform: none;
   }
 }
+
+/* AI Chat Link */
+#svc .ai-msg-bubble--bot .ai-chat-link { color: #C99B5C !important; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; transition: color .2s; }
+#svc .ai-msg-bubble--bot .ai-chat-link:hover { color: #f0caa0 !important; }
+@media (min-width: 993px) and (max-width: 1366px), (min-width: 993px) and (max-height: 840px) {
+  #svc .ai-assistant-layout { gap: 32px; }
+  #svc .ai-assistant-copy .ai-title { font-size: clamp(32px, 3.2vw, 42px); }
+  #svc .ai-chat-frame { max-width: 100%; }
+  #svc .ai-chat-body { max-height: 330px; }
+  #svc .ai-cost-grid { gap: 20px; }
+  #svc .ai-bento { gap: 16px; }
+  #svc .ai-bento-card { padding: 24px 20px; }
+  #svc .ai-timeline-card { padding: 20px 22px; }
+  #svc .ai-outcomes-grid { gap: 16px; }
+  #svc .ai-outcome-card { padding: 22px; }
+}

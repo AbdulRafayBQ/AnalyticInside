@@ -4,7 +4,51 @@
   <link rel="icon" href="images/brand/eleven-logo.png" type="image/png">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ELYVEN</title>
+  <title>Elyven | Software, Web &amp; Mobile App Development</title>
+  <meta name="description" content="Elyven is a Karachi-based software development company building custom software, websites, mobile apps and AI solutions for businesses worldwide." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://elyvenltd.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Elyven" />
+  <meta property="og:title" content="Elyven | Software, Web &amp; Mobile App Development" />
+  <meta property="og:description" content="A Karachi-based product studio building custom software, websites, mobile apps and AI solutions for businesses worldwide." />
+  <meta property="og:url" content="https://elyvenltd.com/" />
+  <meta property="og:image" content="https://elyvenltd.com/images/hero-laptop.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Elyven | Software, Web &amp; Mobile App Development" />
+  <meta name="twitter:description" content="Custom software, websites, mobile apps and AI solutions for businesses worldwide." />
+  <meta name="twitter:image" content="https://elyvenltd.com/images/hero-laptop.png" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://elyvenltd.com/#organization",
+          "name": "Elyven",
+          "url": "https://elyvenltd.com/",
+          "logo": "https://elyvenltd.com/images/brand/eleven-logo-nav.png",
+          "email": "elyvenltd@gmail.com",
+          "telephone": "+923340317145",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Karachi",
+            "addressCountry": "PK"
+          },
+          "areaServed": "Worldwide"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://elyvenltd.com/#website",
+          "url": "https://elyvenltd.com/",
+          "name": "Elyven",
+          "publisher": {
+            "@id": "https://elyvenltd.com/#organization"
+          }
+        }
+      ]
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site-core.css">
@@ -103,7 +147,7 @@
         <textarea id="fd-message" rows="4" placeholder="Describe your idea, goals, or challenges…"></textarea>
       </div>
       <button class="fd-submit" id="fdSubmit">
-        Send Project Brief
+        <span>Send Project Brief</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -2747,7 +2791,7 @@
             Start a Project
             <svg viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a class="sap-btn-secondary" href="mailto:contact@elyvenltd.com">
+          <a class="sap-btn-secondary" href="mailto:elyvenltd@gmail.com">
             Email Us Directly
           </a>
         </div>
@@ -2852,9 +2896,9 @@
         <div class="footer-col footer-col-contact">
           <h3 class="footer-heading">Direct Inquiries</h3>
           <div class="footer-contact-details">
-            <a href="mailto:contact@elyvenltd.com" class="footer-link-highlight">
+            <a href="mailto:elyvenltd@gmail.com" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>contact@elyvenltd.com</span>
+              <span>elyvenltd@gmail.com</span>
             </a>
             <a href="tel:+923340317145" class="footer-link-highlight">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -3994,7 +4038,7 @@
       note.classList.remove('is-error');
     }
     submitBtn.disabled=false;
-    submitBtn.textContent='Send Project Brief';
+    submitBtn.querySelector('span').textContent='Send Project Brief';
     overlay.classList.add('open');drawer.classList.add('open');document.body.style.overflow='hidden';
   }
   function closeDrawer(){
@@ -4021,7 +4065,7 @@
       }
       const note=formEl.querySelector('.fd-note');
       submitBtn.disabled=true;
-      submitBtn.textContent='Sending...';
+      submitBtn.querySelector('span').textContent='Sending...';
       try{
         if (!window.ANALYTIC_LEADS || typeof window.ANALYTIC_LEADS.submit !== 'function') {
           throw new Error('The form service did not load. Refresh the page and try again.');
@@ -4035,7 +4079,7 @@
           source:location.href
         });
         window.ANALYTIC_LEADS.reset(formEl);
-        submitBtn.textContent='Message Sent';
+        submitBtn.querySelector('span').textContent='Message Sent';
         formEl.style.display='none';
         success.classList.add('show');
       }catch(error){
@@ -4044,7 +4088,7 @@
           note.classList.add('is-error');
         }
         submitBtn.disabled=false;
-        submitBtn.textContent='Send Project Brief';
+        submitBtn.querySelector('span').textContent='Send Project Brief';
       }
     });
   }

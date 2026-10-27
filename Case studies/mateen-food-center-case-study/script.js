@@ -131,7 +131,24 @@
         }
       }
     });
+
   });
+
+  var backButton = document.querySelector(".cs-back-btn");
+  if (backButton) {
+    backButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (window.parent !== window.top) {
+        window.parent.postMessage({ type: "eleven-close-case-study" }, "*");
+        return;
+      }
+      if (document.referrer && new URL(document.referrer).origin === window.location.origin) {
+        window.history.back();
+        return;
+      }
+      window.location.href = backButton.href;
+    });
+  }
 
   /* ---------------- Ely Guide Observer ---------------- */
   (function initElyGuide() {
