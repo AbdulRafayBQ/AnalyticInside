@@ -5229,7 +5229,7 @@ em { font-style: italic; color: var(--accent); }
 /* ── 5-Column Grid ── */
 .footer-grid-grand {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1.4fr;
   gap: 40px;
   padding-bottom: 64px;
   border-bottom: 1px solid rgba(245, 239, 224, 0.10);
@@ -6727,3 +6727,6 @@ img, video, svg, canvas, iframe {
   }
   .nav-mobile-wa .wa-badge { animation: none; }
 }
+
+
+.footer-col-contact .footer-link-highlight { white-space: nowrap; }

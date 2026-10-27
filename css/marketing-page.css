@@ -533,7 +533,7 @@ body.mk-page .logo-img { height: 34px; }
    the gold/ink palette), no per-card "build your own" button: that CTA now
    lives only on the dedicated Custom card. ══════════ */
 .pk2-top { text-align: center; max-width: 680px; margin: 0 auto 8px; }
-.pk2-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: 44px; align-items: start; }
+.pk2-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: 44px; align-items: stretch; }
 
 .mk-pkg2 { position: relative; display: flex; flex-direction: column; min-width: 0; height: 100%; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 30px 24px 24px; box-shadow: 0 10px 28px rgba(23,19,14,.05); transition: border-color .3s, box-shadow .3s, translate .3s; }
 .mk-pkg2:hover { translate: 0 -6px; border-color: rgba(201,155,92,.55); box-shadow: 0 24px 50px rgba(23,19,14,.1); }
@@ -554,8 +554,11 @@ body.mk-page .logo-img { height: 34px; }
 .pk2-group h4 { font: 700 13.5px 'Outfit', sans-serif; letter-spacing: -.005em; }
 .pk2-group span { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.5; color: var(--mut); }
 
-.pk2-foot { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); }
+.pk2-foot { margin-top: auto; padding-top: 20px; min-height: 68px; box-sizing: border-box; border-top: 1px solid var(--line); }
+.pk2-groups, .pk2-custom-list { margin-bottom: 26px; }
 .pk2-foot .mk-btn { width: 100%; justify-content: center; }
+.mk-pkg2--custom .pk2-foot { display: flex; align-items: center; justify-content: center; }
+.pk2-foot .mk-btn--gold.mk-show-builder { width: auto; min-height: 40px; padding: 9px 20px; font-size: 13.5px; gap: 8px; }
 .mk-btn--pkg { background: var(--ink); color: #fff; }
 .mk-btn--pkg:hover { translate: 0 -2px; background: var(--ink2); }
 

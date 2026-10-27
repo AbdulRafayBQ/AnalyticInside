@@ -586,7 +586,7 @@
             <ul>${CUSTOM_ITEMS.map(x => `<li>${tick}<span>${x}</span></li>`).join('')}</ul>
           </div>
           <div class="pk2-foot">
-            <button class="mk-btn mk-btn--gold mk-show-builder" type="button">Start Your Custom Plan ${arrow}</button>
+            <button class="mk-btn mk-btn--gold mk-show-builder" type="button">Customize Plan ${arrow}</button>
           </div>
         </article>`;
 

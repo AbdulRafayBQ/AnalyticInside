@@ -217,3 +217,75 @@
   })();
 
 })();
+
+/* ---------------- reels coverflow (ported from Marketing & Branding page) ---------------- */
+(function () {
+  "use strict";
+  var sec = document.getElementById('reels'), stage = document.getElementById('csReelStage');
+  var cf = document.getElementById('csReelCf'); if (!sec || !cf) return;
+  var cards = Array.prototype.slice.call(cf.children), N = cards.length; if (!N) return;
+  var vids = cards.map(function (c) { return c.querySelector('video'); });
+  var capEl = document.getElementById('csReelCap');
+  var CAPS = ["Before and after, in 20 seconds", "An unboxing, slowed right down", "A real customer talking, unscripted", "Behind the scenes on shoot day", "Today's menu, shot fresh", "A reaction worth sharing", "A quick how-to, start to finish", "Opening day, caught live"];
+  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DUR = 6200, cur = 0, t = 0, paused = false, vis = false, last = 0;
+
+  function offsetOf(n) { var d = n - cur; if (d > N / 2) d -= N; if (d < -N / 2) d += N; return d; }
+  function layout() {
+    cards.forEach(function (c, n) {
+      var off = offsetOf(n), a = Math.abs(off), v = vids[n];
+      c.style.setProperty('--off', off);
+      c.style.setProperty('--abs', Math.min(a, 4));
+      c.dataset.active = n === cur ? '1' : '0';
+      c.dataset.hidden = a > 3 ? '1' : '0';
+      c.setAttribute('aria-hidden', n === cur ? 'false' : 'true');
+      if (!v) return;
+      if (a <= 3) { if (v.readyState < 1) v.preload = 'auto'; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else v.pause();
+    });
+    if (capEl && CAPS[cur]) capEl.textContent = CAPS[cur];
+  }
+  function go(i) { i = (i + N) % N; t = 0; if (i === cur) { layout(); return; } cur = i; layout(); }
+  cards.forEach(function (c, n) { c.addEventListener('click', function () { if (n !== cur) go(n); }); });
+
+  function tick(ts) {
+    requestAnimationFrame(tick); var dt = Math.min(ts - last, 80); last = ts;
+    if (!vis || paused || document.hidden || RM) return;
+    t += dt; if (t >= DUR) go(cur + 1);
+  }
+  stage.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') paused = true; });
+  stage.addEventListener('pointerleave', function () { paused = false; });
+
+  /* mouse wheel over the reels loops through them endlessly */
+  var lock = false, lockT;
+  stage.addEventListener('wheel', function (e) {
+    if (!vis) return;
+    e.preventDefault();
+    if (lock) return;
+    lock = true; paused = true;
+    go(e.deltaY > 0 ? cur + 1 : cur - 1);
+    clearTimeout(lockT); lockT = setTimeout(function () { lock = false; paused = false; }, 560);
+  }, { passive: false });
+
+  /* touch swipe left/right */
+  var sx = 0, sy = 0, sw = false;
+  cf.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; sw = true; }, { passive: true });
+  cf.addEventListener('touchmove', function (e) {
+    if (!sw) return; var dx = e.touches[0].clientX - sx, dy = e.touches[0].clientY - sy;
+    if (Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+  }, { passive: false });
+  cf.addEventListener('touchend', function (e) {
+    if (!sw) return; sw = false; var dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 40) go(dx < 0 ? cur + 1 : cur - 1);
+  });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        vis = e.isIntersecting;
+        if (!vis) vids.forEach(function (v) { if (v) v.pause(); }); else layout();
+      });
+    }, { threshold: .3 }).observe(sec);
+  } else vis = true;
+  layout(); requestAnimationFrame(tick);
+})();

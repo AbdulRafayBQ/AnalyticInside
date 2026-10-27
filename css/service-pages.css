@@ -5200,3 +5200,7 @@ a.cap-item { text-decoration: none; color: #17130E; cursor: pointer; }
   #svc .ai-outcomes-grid { gap: 16px; }
   #svc .ai-outcome-card { padding: 22px; }
 }
+
+/* Wide (16:9) artwork shown in full, never cropped at the sides */
+.rp-image-window--fit { background: #0E0C0A; }
+.rp-image-window--fit .rp-image { inset: 0; height: 100%; object-fit: contain; object-position: center; transform: none !important; animation: none !important; }
